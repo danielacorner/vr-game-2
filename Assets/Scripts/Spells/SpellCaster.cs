@@ -431,6 +431,7 @@ namespace VRDungeonCrawler.Spells
         public SpellData spellData;
         private float spawnTime;
         private bool hasExploded = false;
+        private Vector3 hitNormal = Vector3.up; // Store the surface normal for explosion
 
         void Start()
         {
@@ -449,6 +450,20 @@ namespace VRDungeonCrawler.Spells
 
         void Update()
         {
+            // Raycast ahead to detect surface normal before collision
+            RaycastHit hit;
+            float rayDistance = speed * Time.deltaTime * 2f; // Look ahead
+            if (Physics.Raycast(transform.position, direction, out hit, rayDistance))
+            {
+                // Ignore triggers and XR controllers
+                if (!hit.collider.isTrigger &&
+                    !hit.collider.gameObject.name.Contains("Controller") &&
+                    !hit.collider.gameObject.name.Contains("Hand"))
+                {
+                    hitNormal = hit.normal; // Store the surface normal
+                }
+            }
+
             // Move forward
             transform.position += direction * speed * Time.deltaTime;
 
@@ -470,37 +485,60 @@ namespace VRDungeonCrawler.Spells
             if (hasExploded) return;
             hasExploded = true;
 
-            Debug.Log($"[SpellProjectile] Hit {other.gameObject.name}, creating explosion!");
+            Debug.Log($"[SpellProjectile] Hit {other.gameObject.name} with normal {hitNormal}, creating explosion!");
 
-            // Create explosion effect at impact point
-            CreateExplosion(transform.position);
+            // Create explosion effect at impact point with surface normal
+            CreateExplosion(transform.position, hitNormal);
 
             // Destroy projectile
             Destroy(gameObject);
         }
 
-        private void CreateExplosion(Vector3 position)
+        private void CreateExplosion(Vector3 position, Vector3 surfaceNormal)
         {
             if (spellData == null) return;
 
             string spellName = spellData.spellName.ToLower();
 
             if (spellName.Contains("fire") || spellName.Contains("flame"))
-                CreateFireExplosion(position);
+                CreateFireExplosion(position, surfaceNormal);
             else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("shard"))
-                CreateIceExplosion(position);
+                CreateIceExplosion(position, surfaceNormal);
             else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("bolt"))
-                CreateLightningExplosion(position);
+                CreateLightningExplosion(position, surfaceNormal);
             else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("blast"))
-                CreateWindExplosion(position);
+                CreateWindExplosion(position, surfaceNormal);
         }
 
-        private void CreateFireExplosion(Vector3 position)
+        // Helper method to calculate realistic ricochet direction based on surface normal
+        private Vector3 GetRicochetDirection(Vector3 surfaceNormal)
+        {
+            // Reflect the projectile direction off the surface
+            Vector3 reflected = Vector3.Reflect(direction, surfaceNormal);
+
+            // Add random spread to maintain magical burst look (30-60 degree cone)
+            float spreadAngle = Random.Range(30f, 60f);
+            Vector3 randomOffset = Random.insideUnitSphere * Mathf.Tan(spreadAngle * Mathf.Deg2Rad);
+
+            // Blend reflected direction with random spread (70% reflection, 30% random)
+            Vector3 ricochetDir = (reflected.normalized + randomOffset).normalized;
+
+            // Ensure particles mostly go away from surface (dot product with normal should be positive)
+            if (Vector3.Dot(ricochetDir, surfaceNormal) < 0.1f)
+            {
+                // If pointing too much into surface, blend more with surface normal
+                ricochetDir = (ricochetDir + surfaceNormal * 0.5f).normalized;
+            }
+
+            return ricochetDir;
+        }
+
+        private void CreateFireExplosion(Vector3 position, Vector3 surfaceNormal)
         {
             GameObject explosion = new GameObject("FireExplosion");
             explosion.transform.position = position;
 
-            // Expanding fire ring
+            // Expanding fire burst - particles ricochet off surface
             for (int i = 0; i < 12; i++)
             {
                 GameObject flame = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -516,19 +554,19 @@ namespace VRDungeonCrawler.Spells
                 flame.GetComponent<MeshRenderer>().material = mat;
 
                 FireExplosionParticle particle = flame.AddComponent<FireExplosionParticle>();
-                particle.angle = i * 30f;
+                particle.direction = GetRicochetDirection(surfaceNormal); // Realistic ricochet
                 particle.speed = 2f;
             }
 
             Destroy(explosion, 1f);
         }
 
-        private void CreateIceExplosion(Vector3 position)
+        private void CreateIceExplosion(Vector3 position, Vector3 surfaceNormal)
         {
             GameObject explosion = new GameObject("IceExplosion");
             explosion.transform.position = position;
 
-            // Ice shards radiating outward
+            // Ice shards ricocheting off surface
             for (int i = 0; i < 10; i++)
             {
                 GameObject shard = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -545,19 +583,19 @@ namespace VRDungeonCrawler.Spells
                 shard.GetComponent<MeshRenderer>().material = mat;
 
                 IceExplosionParticle particle = shard.AddComponent<IceExplosionParticle>();
-                particle.direction = Random.onUnitSphere;
+                particle.direction = GetRicochetDirection(surfaceNormal); // Realistic ricochet
                 particle.speed = 2.5f;
             }
 
             Destroy(explosion, 1.2f);
         }
 
-        private void CreateLightningExplosion(Vector3 position)
+        private void CreateLightningExplosion(Vector3 position, Vector3 surfaceNormal)
         {
             GameObject explosion = new GameObject("LightningExplosion");
             explosion.transform.position = position;
 
-            // Electric blast with arcs
+            // Electric blast ricocheting off surface
             for (int i = 0; i < 15; i++)
             {
                 GameObject spark = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -573,19 +611,19 @@ namespace VRDungeonCrawler.Spells
                 spark.GetComponent<MeshRenderer>().material = mat;
 
                 LightningExplosionParticle particle = spark.AddComponent<LightningExplosionParticle>();
-                particle.direction = Random.onUnitSphere;
+                particle.direction = GetRicochetDirection(surfaceNormal); // Realistic ricochet
                 particle.speed = 3.5f;
             }
 
             Destroy(explosion, 0.8f);
         }
 
-        private void CreateWindExplosion(Vector3 position)
+        private void CreateWindExplosion(Vector3 position, Vector3 surfaceNormal)
         {
             GameObject explosion = new GameObject("WindExplosion");
             explosion.transform.position = position;
 
-            // Outward wind burst
+            // Outward wind burst ricocheting off surface
             for (int i = 0; i < 16; i++)
             {
                 GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -601,7 +639,7 @@ namespace VRDungeonCrawler.Spells
                 particle.GetComponent<MeshRenderer>().material = mat;
 
                 WindExplosionParticle windParticle = particle.AddComponent<WindExplosionParticle>();
-                windParticle.direction = Random.onUnitSphere;
+                windParticle.direction = GetRicochetDirection(surfaceNormal); // Realistic ricochet
                 windParticle.speed = 2.8f;
             }
 
@@ -791,7 +829,7 @@ namespace VRDungeonCrawler.Spells
 
     public class FireExplosionParticle : MonoBehaviour
     {
-        public float angle;
+        public Vector3 direction;
         public float speed = 2f;
         private float elapsed = 0f;
         private float lifetime = 1f;
@@ -800,14 +838,8 @@ namespace VRDungeonCrawler.Spells
         {
             elapsed += Time.deltaTime;
 
-            // Expand outward in a ring
-            float radius = elapsed * speed;
-            Vector3 direction = new Vector3(
-                Mathf.Cos(angle * Mathf.Deg2Rad),
-                Random.Range(-0.2f, 0.5f), // Slight upward variance
-                Mathf.Sin(angle * Mathf.Deg2Rad)
-            );
-            transform.position += direction * Time.deltaTime * speed;
+            // Move in the ricochet direction
+            transform.position += direction * speed * Time.deltaTime;
 
             // Fade out
             float alpha = 1f - (elapsed / lifetime);
