@@ -67,16 +67,13 @@ namespace VRDungeonCrawler.Spells
 
             isPlayingIntro = true;
 
-            // Create loop effect FIRST (instant feedback)
-            loopEffect = CreateLoopEffect(spell);
-            Debug.Log($"[SpellHandVFX] Loop effect active for {spell.spellName}");
-
-            // Create subtle intro effect that plays simultaneously
+            // Create BOTH effects simultaneously - dramatic intro explosion WITH loop!
             introEffect = CreateIntroEffect(spell);
-            Debug.Log($"[SpellHandVFX] Playing subtle intro animation");
+            loopEffect = CreateLoopEffect(spell);
+            Debug.Log($"[SpellHandVFX] Playing dramatic intro + loop animations together");
 
-            // Wait for intro to complete (0.5 seconds - shorter and more subtle)
-            yield return new WaitForSeconds(0.5f);
+            // Wait for intro to complete (1.2 seconds - dramatic)
+            yield return new WaitForSeconds(1.2f);
 
             // Destroy intro effect (loop continues)
             if (introEffect != null)
@@ -125,29 +122,29 @@ namespace VRDungeonCrawler.Spells
             GameObject intro = new GameObject("FireIntro");
             intro.transform.SetParent(transform);
             intro.transform.localPosition = Vector3.forward * effectDistance;
-            intro.transform.localScale = Vector3.one * effectScale * 1.2f; // Subtle size increase
+            intro.transform.localScale = Vector3.one * effectScale * 1.5f; // Dramatic size increase
 
-            // Subtle burst of fire particles (reduced from 20 to 8)
-            for (int i = 0; i < 8; i++)
+            // DRAMATIC burst of fire particles (20 particles!)
+            for (int i = 0; i < 20; i++)
             {
                 GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 particle.transform.SetParent(intro.transform);
                 particle.transform.localPosition = Vector3.zero;
-                particle.transform.localScale = Vector3.one * Random.Range(0.15f, 0.25f); // Smaller
+                particle.transform.localScale = Vector3.one * Random.Range(0.3f, 0.5f); // BIGGER
 
                 Destroy(particle.GetComponent<Collider>());
 
                 Material mat = new Material(Shader.Find("Sprites/Default"));
-                mat.color = new Color(1f, Random.Range(0.3f, 0.6f), 0f, 0.7f); // More transparent
+                mat.color = new Color(1f, Random.Range(0.3f, 0.6f), 0f, 1f); // OPAQUE
                 mat.SetFloat("_Metallic", 0f);
                 mat.SetFloat("_Smoothness", 0.9f);
                 particle.GetComponent<MeshRenderer>().material = mat;
 
-                // Add explosion animation - slower speed
+                // Add EXPLOSIVE animation - FAST speed
                 FireParticleExplosion explosion = particle.AddComponent<FireParticleExplosion>();
                 explosion.direction = Random.onUnitSphere;
-                explosion.speed = Random.Range(0.5f, 0.8f); // Reduced speed
-                explosion.lifetime = 0.5f; // Shorter lifetime
+                explosion.speed = Random.Range(1.5f, 2.5f); // FAST and EXPLOSIVE
+                explosion.lifetime = 1.2f; // Longer dramatic lifetime
             }
 
             return intro;
@@ -210,30 +207,30 @@ namespace VRDungeonCrawler.Spells
             GameObject intro = new GameObject("IceIntro");
             intro.transform.SetParent(transform);
             intro.transform.localPosition = Vector3.forward * effectDistance;
-            intro.transform.localScale = Vector3.one * effectScale * 1.2f; // Subtle size increase
+            intro.transform.localScale = Vector3.one * effectScale * 1.5f; // Dramatic size increase
 
-            // Subtle crystallization burst (reduced from 12 to 6)
-            for (int i = 0; i < 6; i++)
+            // DRAMATIC crystallization burst (15 crystals!)
+            for (int i = 0; i < 15; i++)
             {
                 GameObject crystal = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 crystal.transform.SetParent(intro.transform);
                 crystal.transform.localPosition = Vector3.zero;
-                crystal.transform.localScale = new Vector3(0.06f, Random.Range(0.2f, 0.35f), 0.06f); // Smaller
+                crystal.transform.localScale = new Vector3(0.1f, Random.Range(0.4f, 0.7f), 0.1f); // BIGGER
                 crystal.transform.localRotation = Random.rotation;
 
                 Destroy(crystal.GetComponent<Collider>());
 
                 Material mat = new Material(Shader.Find("Sprites/Default"));
-                mat.color = new Color(0.6f, 0.9f, 1f, 0.7f); // More transparent
+                mat.color = new Color(0.6f, 0.9f, 1f, 1f); // OPAQUE
                 mat.SetFloat("_Metallic", 0.3f);
                 mat.SetFloat("_Smoothness", 0.95f);
                 crystal.GetComponent<MeshRenderer>().material = mat;
 
-                // Add explosion animation - slower speed
+                // Add EXPLOSIVE animation - FAST speed
                 IceParticleExplosion explosion = crystal.AddComponent<IceParticleExplosion>();
                 explosion.direction = Random.onUnitSphere;
-                explosion.speed = Random.Range(0.4f, 0.7f); // Reduced speed
-                explosion.lifetime = 0.5f; // Shorter lifetime
+                explosion.speed = Random.Range(1.2f, 2.0f); // FAST
+                explosion.lifetime = 1.2f; // Longer dramatic lifetime
             }
 
             return intro;
@@ -278,29 +275,29 @@ namespace VRDungeonCrawler.Spells
             GameObject intro = new GameObject("LightningIntro");
             intro.transform.SetParent(transform);
             intro.transform.localPosition = Vector3.forward * effectDistance;
-            intro.transform.localScale = Vector3.one * effectScale * 1.2f; // Subtle size increase
+            intro.transform.localScale = Vector3.one * effectScale * 1.5f; // Dramatic size increase
 
-            // Subtle electric burst (reduced from 15 to 6)
-            for (int i = 0; i < 6; i++)
+            // DRAMATIC electric burst (18 sparks!)
+            for (int i = 0; i < 18; i++)
             {
                 GameObject spark = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 spark.transform.SetParent(intro.transform);
                 spark.transform.localPosition = Vector3.zero;
-                spark.transform.localScale = Vector3.one * Random.Range(0.1f, 0.18f); // Smaller
+                spark.transform.localScale = Vector3.one * Random.Range(0.25f, 0.4f); // BIGGER
 
                 Destroy(spark.GetComponent<Collider>());
 
                 Material mat = new Material(Shader.Find("Sprites/Default"));
-                mat.color = new Color(0.8f, 0.9f, 1f, 0.7f); // More transparent
+                mat.color = new Color(0.8f, 0.9f, 1f, 1f); // OPAQUE
                 mat.SetFloat("_Metallic", 0.2f);
                 mat.SetFloat("_Smoothness", 1f);
                 spark.GetComponent<MeshRenderer>().material = mat;
 
-                // Add explosion animation - slower speed
+                // Add EXPLOSIVE animation - FAST speed
                 LightningParticleExplosion explosion = spark.AddComponent<LightningParticleExplosion>();
                 explosion.direction = Random.onUnitSphere;
-                explosion.speed = Random.Range(0.8f, 1.2f); // Reduced speed
-                explosion.lifetime = 0.5f; // Shorter lifetime
+                explosion.speed = Random.Range(2.0f, 3.0f); // VERY FAST
+                explosion.lifetime = 1.2f; // Longer dramatic lifetime
             }
 
             return intro;
@@ -361,29 +358,29 @@ namespace VRDungeonCrawler.Spells
             GameObject intro = new GameObject("WindIntro");
             intro.transform.SetParent(transform);
             intro.transform.localPosition = Vector3.forward * effectDistance;
-            intro.transform.localScale = Vector3.one * effectScale * 1.2f; // Subtle size increase
+            intro.transform.localScale = Vector3.one * effectScale * 1.5f; // Dramatic size increase
 
-            // Subtle swirling wind burst (reduced from 16 to 6)
-            for (int i = 0; i < 6; i++)
+            // DRAMATIC swirling wind burst (12 particles!)
+            for (int i = 0; i < 12; i++)
             {
                 GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 particle.transform.SetParent(intro.transform);
                 particle.transform.localPosition = Vector3.zero;
-                particle.transform.localScale = Vector3.one * Random.Range(0.1f, 0.18f); // Smaller
+                particle.transform.localScale = Vector3.one * Random.Range(0.3f, 0.5f); // BIGGER
 
                 Destroy(particle.GetComponent<Collider>());
 
                 Material mat = new Material(Shader.Find("Sprites/Default"));
-                mat.color = new Color(0.85f, 0.95f, 0.95f, 0.5f); // More transparent
+                mat.color = new Color(0.85f, 0.95f, 0.95f, 1f); // OPAQUE
                 mat.SetFloat("_Metallic", 0f);
                 mat.SetFloat("_Smoothness", 0.8f);
                 particle.GetComponent<MeshRenderer>().material = mat;
 
-                // Add spiral explosion animation - slower speed
+                // Add EXPLOSIVE spiral animation - FAST speed
                 WindParticleExplosion explosion = particle.AddComponent<WindParticleExplosion>();
                 explosion.direction = Random.onUnitSphere;
-                explosion.speed = Random.Range(0.5f, 0.9f); // Reduced speed
-                explosion.lifetime = 0.5f; // Shorter lifetime
+                explosion.speed = Random.Range(1.5f, 2.5f); // FAST
+                explosion.lifetime = 1.2f; // Longer dramatic lifetime
             }
 
             return intro;
@@ -428,26 +425,29 @@ namespace VRDungeonCrawler.Spells
             GameObject intro = new GameObject("DefaultIntro");
             intro.transform.SetParent(transform);
             intro.transform.localPosition = Vector3.forward * effectDistance;
-            intro.transform.localScale = Vector3.one * effectScale * 2f;
+            intro.transform.localScale = Vector3.one * effectScale * 1.5f; // Dramatic size increase
 
-            // Simple burst
-            for (int i = 0; i < 10; i++)
+            // DRAMATIC burst (15 particles!)
+            for (int i = 0; i < 15; i++)
             {
                 GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 particle.transform.SetParent(intro.transform);
                 particle.transform.localPosition = Vector3.zero;
-                particle.transform.localScale = Vector3.one * 0.3f;
+                particle.transform.localScale = Vector3.one * Random.Range(0.3f, 0.5f); // BIGGER
 
                 Destroy(particle.GetComponent<Collider>());
 
                 Material mat = new Material(Shader.Find("Sprites/Default"));
-                mat.color = spell.spellColor;
+                Color opaqueColor = spell.spellColor;
+                opaqueColor.a = 1f; // OPAQUE
+                mat.color = opaqueColor;
                 particle.GetComponent<MeshRenderer>().material = mat;
 
-                // Add explosion animation
+                // Add EXPLOSIVE animation - FAST speed
                 FireParticleExplosion explosion = particle.AddComponent<FireParticleExplosion>();
                 explosion.direction = Random.onUnitSphere;
-                explosion.speed = Random.Range(1f, 2f);
+                explosion.speed = Random.Range(1.5f, 2.5f); // FAST
+                explosion.lifetime = 1.2f; // Longer dramatic lifetime
             }
 
             return intro;
