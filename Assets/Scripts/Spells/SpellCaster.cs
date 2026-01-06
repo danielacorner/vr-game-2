@@ -25,10 +25,19 @@ namespace VRDungeonCrawler.Spells
         [Tooltip("Cooldown between casts")]
         public float castCooldown = 0.5f;
 
+        [Tooltip("Time to charge spell before ready to fire")]
+        public float chargeUpTime = 0.5f; // 500ms charge time
+
         private InputDevice device;
         private bool deviceFound = false;
         private float lastCastTime = 0f;
         private bool triggerPressed = false;
+
+        // Charge-up state tracking
+        private bool isCharging = false;
+        private bool isFullyCharged = false;
+        private float chargeStartTime = 0f;
+        private GameObject chargeEffect = null;
 
         private void Start()
         {
@@ -72,27 +81,106 @@ namespace VRDungeonCrawler.Spells
                 triggerValue = buttonValue;
             }
 
-            // Cast spell on trigger press (not hold)
+            // Handle charge-up mechanic
             if (triggerValue && !triggerPressed)
             {
+                // Trigger just pressed - start charging
                 triggerPressed = true;
-                TryCastSpell();
+                StartCharging();
+            }
+            else if (triggerValue && triggerPressed)
+            {
+                // Trigger held - update charge state
+                UpdateCharging();
             }
             else if (!triggerValue && triggerPressed)
             {
+                // Trigger released - fire if fully charged
                 triggerPressed = false;
+                if (isFullyCharged)
+                {
+                    TryCastSpell();
+                }
+                StopCharging();
             }
         }
 
-        private void TryCastSpell()
+        private void StartCharging()
         {
-            // Check cooldown
+            // Check if we're on cooldown
             if (Time.time < lastCastTime + castCooldown)
             {
                 Debug.Log($"[SpellCaster] Spell on cooldown ({Time.time - lastCastTime:F2}s)");
                 return;
             }
 
+            // Get current spell
+            if (SpellManager.Instance == null || SpellManager.Instance.currentSpell == null)
+            {
+                Debug.LogWarning("[SpellCaster] No spell selected!");
+                return;
+            }
+
+            isCharging = true;
+            isFullyCharged = false;
+            chargeStartTime = Time.time;
+
+            // Create charge-up visual effect in hand
+            CreateChargeEffect(SpellManager.Instance.currentSpell);
+
+            Debug.Log($"[SpellCaster] Started charging {SpellManager.Instance.currentSpell.spellName}");
+        }
+
+        private void UpdateCharging()
+        {
+            if (!isCharging) return;
+
+            float chargeProgress = (Time.time - chargeStartTime) / chargeUpTime;
+
+            if (chargeProgress >= 1f && !isFullyCharged)
+            {
+                // Fully charged!
+                isFullyCharged = true;
+                Debug.Log("[SpellCaster] Spell fully charged! Release trigger to fire.");
+
+                // Enhance charge effect to show it's ready to fire
+                if (chargeEffect != null)
+                {
+                    // Increase intensity of charge effect
+                    ParticleSystem[] particles = chargeEffect.GetComponentsInChildren<ParticleSystem>();
+                    foreach (ParticleSystem ps in particles)
+                    {
+                        var emission = ps.emission;
+                        emission.rateOverTime = emission.rateOverTime.constant * 1.5f;
+                    }
+                }
+            }
+
+            // Update charge effect scale based on progress
+            if (chargeEffect != null)
+            {
+                float scale = Mathf.Lerp(0.3f, 1f, Mathf.Min(chargeProgress, 1f));
+                chargeEffect.transform.localScale = Vector3.one * scale;
+            }
+        }
+
+        private void StopCharging()
+        {
+            isCharging = false;
+            isFullyCharged = false;
+
+            // Clean up charge effect
+            if (chargeEffect != null)
+            {
+                Destroy(chargeEffect);
+                chargeEffect = null;
+            }
+
+            Debug.Log("[SpellCaster] Stopped charging");
+        }
+
+        private void TryCastSpell()
+        {
             // Get current spell
             if (SpellManager.Instance == null || SpellManager.Instance.currentSpell == null)
             {
@@ -149,6 +237,314 @@ namespace VRDungeonCrawler.Spells
         }
 
         #region Projectile Visuals
+
+        private void CreateChargeEffect(SpellData spell)
+        {
+            string spellName = spell.spellName.ToLower();
+
+            // Create charge effect at hand position
+            chargeEffect = new GameObject($"ChargeEffect_{spell.spellName}");
+            chargeEffect.transform.SetParent(spawnPoint);
+            chargeEffect.transform.localPosition = Vector3.zero;
+            chargeEffect.transform.localRotation = Quaternion.identity;
+            chargeEffect.transform.localScale = Vector3.one * 0.3f; // Start small
+
+            // Create spell-specific charge effect
+            if (spellName.Contains("fire") || spellName.Contains("flame"))
+                CreateFireChargeEffect(chargeEffect);
+            else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("shard"))
+                CreateIceChargeEffect(chargeEffect);
+            else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("bolt"))
+                CreateLightningChargeEffect(chargeEffect);
+            else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("blast"))
+                CreateWindChargeEffect(chargeEffect);
+            else
+                CreateDefaultChargeEffect(chargeEffect, spell);
+        }
+
+        private void CreateFireChargeEffect(GameObject parent)
+        {
+            // Create fire particles in hand
+            GameObject fireObj = new GameObject("FireCharge");
+            fireObj.transform.SetParent(parent.transform);
+            fireObj.transform.localPosition = Vector3.zero;
+
+            ParticleSystem ps = fireObj.AddComponent<ParticleSystem>();
+            var main = ps.main;
+            main.startLifetime = 0.4f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0f, 0.3f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.15f);
+            main.maxParticles = 100;
+            main.simulationSpace = ParticleSystemSimulationSpace.Local;
+
+            var emission = ps.emission;
+            emission.rateOverTime = 80f;
+
+            var shape = ps.shape;
+            shape.shapeType = ParticleSystemShapeType.Sphere;
+            shape.radius = 0.1f;
+
+            // Fire colors
+            var colorOverLifetime = ps.colorOverLifetime;
+            colorOverLifetime.enabled = true;
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(2f, 2f, 1.5f), 0f),  // HDR white
+                    new GradientColorKey(new Color(2f, 1.2f, 0.4f), 0.5f),  // HDR orange
+                    new GradientColorKey(new Color(1.5f, 0.5f, 0.2f), 1f)   // Red
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.5f, 0f),
+                    new GradientAlphaKey(0.3f, 0.7f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime.color = gradient;
+
+            // Renderer setup
+            var renderer = ps.GetComponent<ParticleSystemRenderer>();
+            renderer.renderMode = ParticleSystemRenderMode.Billboard;
+            Material mat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            mat.mainTexture = GetFireParticleTexture();
+            mat.SetFloat("_Surface", 1);
+            mat.SetFloat("_Blend", 1); // Additive
+            mat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mat.SetFloat("_ZWrite", 0);
+            renderer.material = mat;
+
+            // Add glowing sphere core
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "FireCore";
+            core.transform.SetParent(parent.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.2f;
+            Destroy(core.GetComponent<Collider>());
+
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(1f, 0.6f, 0.3f));
+            coreMat.SetColor("_EmissionColor", new Color(2f, 1.2f, 0.4f) * 8f);
+            core.GetComponent<MeshRenderer>().material = coreMat;
+        }
+
+        private void CreateIceChargeEffect(GameObject parent)
+        {
+            // Ice particles
+            GameObject iceObj = new GameObject("IceCharge");
+            iceObj.transform.SetParent(parent.transform);
+            iceObj.transform.localPosition = Vector3.zero;
+
+            ParticleSystem ps = iceObj.AddComponent<ParticleSystem>();
+            var main = ps.main;
+            main.startLifetime = 0.5f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0f, 0.2f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.03f, 0.1f);
+            main.maxParticles = 80;
+            main.simulationSpace = ParticleSystemSimulationSpace.Local;
+
+            var emission = ps.emission;
+            emission.rateOverTime = 60f;
+
+            var shape = ps.shape;
+            shape.shapeType = ParticleSystemShapeType.Sphere;
+            shape.radius = 0.1f;
+
+            // Ice colors
+            var colorOverLifetime = ps.colorOverLifetime;
+            colorOverLifetime.enabled = true;
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(0.8f, 0.95f, 1f), 0f),
+                    new GradientColorKey(new Color(0.5f, 0.85f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.6f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime.color = gradient;
+
+            var renderer = ps.GetComponent<ParticleSystemRenderer>();
+            renderer.renderMode = ParticleSystemRenderMode.Billboard;
+            Material mat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            mat.mainTexture = GetSoftParticleTexture();
+            mat.SetFloat("_Surface", 1);
+            mat.SetFloat("_Blend", 1);
+            mat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mat.SetFloat("_ZWrite", 0);
+            renderer.material = mat;
+
+            // Glowing ice core
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "IceCore";
+            core.transform.SetParent(parent.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.2f;
+            Destroy(core.GetComponent<Collider>());
+
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(0.5f, 0.85f, 1f));
+            coreMat.SetColor("_EmissionColor", new Color(0.6f, 0.85f, 1f) * 6f);
+            core.GetComponent<MeshRenderer>().material = coreMat;
+        }
+
+        private void CreateLightningChargeEffect(GameObject parent)
+        {
+            // Electric particles
+            GameObject lightningObj = new GameObject("LightningCharge");
+            lightningObj.transform.SetParent(parent.transform);
+            lightningObj.transform.localPosition = Vector3.zero;
+
+            ParticleSystem ps = lightningObj.AddComponent<ParticleSystem>();
+            var main = ps.main;
+            main.startLifetime = 0.3f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0.1f, 0.5f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.04f, 0.12f);
+            main.maxParticles = 120;
+            main.simulationSpace = ParticleSystemSimulationSpace.Local;
+
+            var emission = ps.emission;
+            emission.rateOverTime = 100f;
+
+            var shape = ps.shape;
+            shape.shapeType = ParticleSystemShapeType.Sphere;
+            shape.radius = 0.12f;
+
+            // Lightning colors
+            var colorOverLifetime = ps.colorOverLifetime;
+            colorOverLifetime.enabled = true;
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 1f, 0.95f), 0f),
+                    new GradientColorKey(new Color(0.85f, 0.92f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.7f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime.color = gradient;
+
+            var renderer = ps.GetComponent<ParticleSystemRenderer>();
+            renderer.renderMode = ParticleSystemRenderMode.Billboard;
+            Material mat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            mat.mainTexture = GetSoftParticleTexture();
+            mat.SetFloat("_Surface", 1);
+            mat.SetFloat("_Blend", 1);
+            mat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mat.SetFloat("_ZWrite", 0);
+            renderer.material = mat;
+
+            // Bright electric core
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "LightningCore";
+            core.transform.SetParent(parent.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.2f;
+            Destroy(core.GetComponent<Collider>());
+
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(0.95f, 0.98f, 1f));
+            coreMat.SetColor("_EmissionColor", new Color(0.9f, 0.95f, 1f) * 10f);
+            core.GetComponent<MeshRenderer>().material = coreMat;
+        }
+
+        private void CreateWindChargeEffect(GameObject parent)
+        {
+            // Wind particles
+            GameObject windObj = new GameObject("WindCharge");
+            windObj.transform.SetParent(parent.transform);
+            windObj.transform.localPosition = Vector3.zero;
+
+            ParticleSystem ps = windObj.AddComponent<ParticleSystem>();
+            var main = ps.main;
+            main.startLifetime = 0.5f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0.2f, 0.5f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.15f);
+            main.maxParticles = 90;
+            main.simulationSpace = ParticleSystemSimulationSpace.Local;
+
+            var emission = ps.emission;
+            emission.rateOverTime = 70f;
+
+            var shape = ps.shape;
+            shape.shapeType = ParticleSystemShapeType.Sphere;
+            shape.radius = 0.12f;
+
+            // Wind colors
+            var colorOverLifetime = ps.colorOverLifetime;
+            colorOverLifetime.enabled = true;
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(0.9f, 0.95f, 1f), 0f),
+                    new GradientColorKey(new Color(0.8f, 0.9f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.5f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime.color = gradient;
+
+            // Add rotation for swirling effect
+            var rotationOverLifetime = ps.rotationOverLifetime;
+            rotationOverLifetime.enabled = true;
+            rotationOverLifetime.z = new ParticleSystem.MinMaxCurve(-180f, 180f);
+
+            var renderer = ps.GetComponent<ParticleSystemRenderer>();
+            renderer.renderMode = ParticleSystemRenderMode.Billboard;
+            Material mat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            mat.mainTexture = GetSoftParticleTexture();
+            mat.SetFloat("_Surface", 1);
+            mat.SetFloat("_Blend", 1);
+            mat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mat.SetFloat("_ZWrite", 0);
+            renderer.material = mat;
+
+            // Glowing wind core
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "WindCore";
+            core.transform.SetParent(parent.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.2f;
+            Destroy(core.GetComponent<Collider>());
+
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(0.85f, 0.95f, 1f));
+            coreMat.SetColor("_EmissionColor", new Color(0.85f, 0.93f, 1f) * 5f);
+            core.GetComponent<MeshRenderer>().material = coreMat;
+        }
+
+        private void CreateDefaultChargeEffect(GameObject parent, SpellData spell)
+        {
+            // Generic charge effect
+            GameObject defaultObj = new GameObject("DefaultCharge");
+            defaultObj.transform.SetParent(parent.transform);
+            defaultObj.transform.localPosition = Vector3.zero;
+
+            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sphere.transform.SetParent(defaultObj.transform);
+            sphere.transform.localPosition = Vector3.zero;
+            sphere.transform.localScale = Vector3.one * 0.2f;
+            Destroy(sphere.GetComponent<Collider>());
+
+            Material mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            mat.EnableKeyword("_EMISSION");
+            mat.SetColor("_BaseColor", spell.spellColor);
+            mat.SetColor("_EmissionColor", spell.spellColor * 5f);
+            sphere.GetComponent<MeshRenderer>().material = mat;
+        }
 
         // Create organic fire texture with noise (shared across all fireballs)
         private static Texture2D fireParticleTexture;
