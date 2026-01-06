@@ -38,6 +38,8 @@ namespace VRDungeonCrawler.Spells
         private bool isFullyCharged = false;
         private float chargeStartTime = 0f;
         private GameObject chargeEffect = null;
+        private float currentChargeProgress = 0f; // 0-1, persists during fade-out
+        private bool isFadingOut = false;
 
         private void Start()
         {
@@ -81,10 +83,16 @@ namespace VRDungeonCrawler.Spells
                 triggerValue = buttonValue;
             }
 
+            // Handle charge fade-out when not charging
+            if (isFadingOut && !triggerValue)
+            {
+                UpdateFadeOut();
+            }
+
             // Handle charge-up mechanic
             if (triggerValue && !triggerPressed)
             {
-                // Trigger just pressed - start charging
+                // Trigger just pressed - start charging (or resume if fading)
                 triggerPressed = true;
                 StartCharging();
             }
@@ -121,27 +129,58 @@ namespace VRDungeonCrawler.Spells
                 return;
             }
 
+            // If we're resuming from fade-out, adjust start time to account for existing progress
+            if (isFadingOut && currentChargeProgress > 0f)
+            {
+                // Resume from current progress
+                chargeStartTime = Time.time - (currentChargeProgress * chargeUpTime);
+                isFadingOut = false;
+                Debug.Log($"[SpellCaster] Resuming charge from {currentChargeProgress * 100f:F0}%");
+            }
+            else
+            {
+                // Start fresh
+                chargeStartTime = Time.time;
+                currentChargeProgress = 0f;
+
+                // Create charge-up visual effect in hand
+                CreateChargeEffect(SpellManager.Instance.currentSpell);
+                Debug.Log($"[SpellCaster] Started charging {SpellManager.Instance.currentSpell.spellName}");
+            }
+
             isCharging = true;
             isFullyCharged = false;
-            chargeStartTime = Time.time;
-
-            // Create charge-up visual effect in hand
-            CreateChargeEffect(SpellManager.Instance.currentSpell);
-
-            Debug.Log($"[SpellCaster] Started charging {SpellManager.Instance.currentSpell.spellName}");
+            isFadingOut = false;
         }
 
         private void UpdateCharging()
         {
             if (!isCharging) return;
 
-            float chargeProgress = (Time.time - chargeStartTime) / chargeUpTime;
+            currentChargeProgress = (Time.time - chargeStartTime) / chargeUpTime;
+            float chargeProgress = currentChargeProgress;
+
+            // Send continuous low rumble while charging (but stop once fully charged)
+            if (deviceFound && !isFullyCharged)
+            {
+                // Low intensity rumble (0.15 amplitude) with short pulses
+                device.SendHapticImpulse(0, 0.15f, 0.05f);
+            }
 
             if (chargeProgress >= 1f && !isFullyCharged)
             {
                 // Fully charged!
                 isFullyCharged = true;
                 Debug.Log("[SpellCaster] Spell fully charged! Release trigger to fire.");
+
+                // Strong haptic pulse to indicate fully charged
+                if (deviceFound)
+                {
+                    device.SendHapticImpulse(0, 0.8f, 0.15f);
+                }
+
+                // Create "pop" animation - expanding sphere that fades out
+                CreateChargeCompletePopEffect();
 
                 // Enhance charge effect to show it's ready to fire
                 if (chargeEffect != null)
@@ -159,7 +198,7 @@ namespace VRDungeonCrawler.Spells
             // Update charge effect scale based on progress
             if (chargeEffect != null)
             {
-                float scale = Mathf.Lerp(0.3f, 1f, Mathf.Min(chargeProgress, 1f));
+                float scale = Mathf.Lerp(0.15f, 0.4f, Mathf.Min(chargeProgress, 1f));
                 chargeEffect.transform.localScale = Vector3.one * scale;
             }
         }
@@ -169,14 +208,106 @@ namespace VRDungeonCrawler.Spells
             isCharging = false;
             isFullyCharged = false;
 
-            // Clean up charge effect
-            if (chargeEffect != null)
+            // Start fade-out instead of destroying immediately
+            if (chargeEffect != null && currentChargeProgress > 0f)
             {
+                isFadingOut = true;
+                Debug.Log("[SpellCaster] Starting charge fade-out");
+            }
+            else if (chargeEffect != null)
+            {
+                // No progress, destroy immediately
                 Destroy(chargeEffect);
                 chargeEffect = null;
+                currentChargeProgress = 0f;
             }
+        }
 
-            Debug.Log("[SpellCaster] Stopped charging");
+        private void UpdateFadeOut()
+        {
+            if (!isFadingOut || chargeEffect == null) return;
+
+            // Fade out at same rate as charging (0.5s to fully fade)
+            currentChargeProgress -= Time.deltaTime / chargeUpTime;
+
+            if (currentChargeProgress <= 0f)
+            {
+                // Fully faded - destroy effect
+                currentChargeProgress = 0f;
+                isFadingOut = false;
+                if (chargeEffect != null)
+                {
+                    Destroy(chargeEffect);
+                    chargeEffect = null;
+                }
+                Debug.Log("[SpellCaster] Charge fully faded out");
+            }
+            else
+            {
+                // Update effect scale based on remaining progress
+                if (chargeEffect != null)
+                {
+                    float scale = Mathf.Lerp(0.15f, 0.4f, currentChargeProgress);
+                    chargeEffect.transform.localScale = Vector3.one * scale;
+
+                    // Also fade out particle emission
+                    ParticleSystem[] particles = chargeEffect.GetComponentsInChildren<ParticleSystem>();
+                    foreach (ParticleSystem ps in particles)
+                    {
+                        var main = ps.main;
+                        Color color = main.startColor.color;
+                        color.a = currentChargeProgress;
+                        main.startColor = color;
+                    }
+                }
+            }
+        }
+
+        private void CreateChargeCompletePopEffect()
+        {
+            if (chargeEffect == null) return;
+
+            // Get current spell for color
+            SpellData spell = SpellManager.Instance.currentSpell;
+            if (spell == null) return;
+
+            // Create expanding sphere at charge effect position
+            GameObject popSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            popSphere.name = "ChargeCompletePop";
+            popSphere.transform.position = chargeEffect.transform.position;
+            popSphere.transform.localScale = Vector3.one * 0.1f;
+            Destroy(popSphere.GetComponent<Collider>());
+
+            // Set up material based on spell type
+            Material popMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            popMat.EnableKeyword("_EMISSION");
+
+            string spellName = spell.spellName.ToLower();
+            Color emissionColor;
+            if (spellName.Contains("fire") || spellName.Contains("flame"))
+                emissionColor = new Color(2f, 1.2f, 0.4f);
+            else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("shard"))
+                emissionColor = new Color(0.6f, 0.85f, 1f);
+            else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("bolt"))
+                emissionColor = new Color(0.9f, 0.95f, 1f);
+            else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("blast"))
+                emissionColor = new Color(0.85f, 0.93f, 1f);
+            else
+                emissionColor = spell.spellColor;
+
+            popMat.SetColor("_BaseColor", new Color(emissionColor.r, emissionColor.g, emissionColor.b, 0.8f));
+            popMat.SetColor("_EmissionColor", emissionColor * 8f);
+            popMat.SetFloat("_Surface", 1); // Transparent
+            popMat.SetFloat("_Blend", 0); // Alpha blend
+            popMat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            popMat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            popMat.SetFloat("_ZWrite", 0);
+            popMat.SetInt("_AlphaClip", 0);
+            popMat.renderQueue = 3000;
+            popSphere.GetComponent<MeshRenderer>().material = popMat;
+
+            // Add animation component
+            ChargePopAnimation popAnim = popSphere.AddComponent<ChargePopAnimation>();
         }
 
         private void TryCastSpell()
@@ -188,9 +319,18 @@ namespace VRDungeonCrawler.Spells
                 return;
             }
 
+            // Strong haptic pulse when firing
+            if (deviceFound)
+            {
+                device.SendHapticImpulse(0, 1.0f, 0.12f);
+            }
+
             SpellData spell = SpellManager.Instance.currentSpell;
             CastSpell(spell);
             lastCastTime = Time.time;
+
+            // Reset charge progress after firing
+            currentChargeProgress = 0f;
         }
 
         private void CastSpell(SpellData spell)
@@ -247,7 +387,7 @@ namespace VRDungeonCrawler.Spells
             chargeEffect.transform.SetParent(spawnPoint);
             chargeEffect.transform.localPosition = Vector3.zero;
             chargeEffect.transform.localRotation = Quaternion.identity;
-            chargeEffect.transform.localScale = Vector3.one * 0.3f; // Start small
+            chargeEffect.transform.localScale = Vector3.one * 0.15f; // Start very small
 
             // Create spell-specific charge effect
             if (spellName.Contains("fire") || spellName.Contains("flame"))
@@ -271,18 +411,18 @@ namespace VRDungeonCrawler.Spells
 
             ParticleSystem ps = fireObj.AddComponent<ParticleSystem>();
             var main = ps.main;
-            main.startLifetime = 0.4f;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(0f, 0.3f);
-            main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.15f);
-            main.maxParticles = 100;
+            main.startLifetime = 0.25f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0f, 0.03f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.002f, 0.006f);
+            main.maxParticles = 60;
             main.simulationSpace = ParticleSystemSimulationSpace.Local;
 
             var emission = ps.emission;
-            emission.rateOverTime = 80f;
+            emission.rateOverTime = 50f;
 
             var shape = ps.shape;
             shape.shapeType = ParticleSystemShapeType.Sphere;
-            shape.radius = 0.1f;
+            shape.radius = 0.012f;
 
             // Fire colors
             var colorOverLifetime = ps.colorOverLifetime;
@@ -319,7 +459,7 @@ namespace VRDungeonCrawler.Spells
             core.name = "FireCore";
             core.transform.SetParent(parent.transform);
             core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.2f;
+            core.transform.localScale = Vector3.one * 0.08f;
             Destroy(core.GetComponent<Collider>());
 
             Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
@@ -338,18 +478,18 @@ namespace VRDungeonCrawler.Spells
 
             ParticleSystem ps = iceObj.AddComponent<ParticleSystem>();
             var main = ps.main;
-            main.startLifetime = 0.5f;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(0f, 0.2f);
-            main.startSize = new ParticleSystem.MinMaxCurve(0.03f, 0.1f);
-            main.maxParticles = 80;
+            main.startLifetime = 0.3f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0f, 0.025f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.002f, 0.005f);
+            main.maxParticles = 50;
             main.simulationSpace = ParticleSystemSimulationSpace.Local;
 
             var emission = ps.emission;
-            emission.rateOverTime = 60f;
+            emission.rateOverTime = 40f;
 
             var shape = ps.shape;
             shape.shapeType = ParticleSystemShapeType.Sphere;
-            shape.radius = 0.1f;
+            shape.radius = 0.012f;
 
             // Ice colors
             var colorOverLifetime = ps.colorOverLifetime;
@@ -383,7 +523,7 @@ namespace VRDungeonCrawler.Spells
             core.name = "IceCore";
             core.transform.SetParent(parent.transform);
             core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.2f;
+            core.transform.localScale = Vector3.one * 0.08f;
             Destroy(core.GetComponent<Collider>());
 
             Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
@@ -402,18 +542,18 @@ namespace VRDungeonCrawler.Spells
 
             ParticleSystem ps = lightningObj.AddComponent<ParticleSystem>();
             var main = ps.main;
-            main.startLifetime = 0.3f;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(0.1f, 0.5f);
-            main.startSize = new ParticleSystem.MinMaxCurve(0.04f, 0.12f);
-            main.maxParticles = 120;
+            main.startLifetime = 0.2f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0.01f, 0.04f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.002f, 0.006f);
+            main.maxParticles = 70;
             main.simulationSpace = ParticleSystemSimulationSpace.Local;
 
             var emission = ps.emission;
-            emission.rateOverTime = 100f;
+            emission.rateOverTime = 60f;
 
             var shape = ps.shape;
             shape.shapeType = ParticleSystemShapeType.Sphere;
-            shape.radius = 0.12f;
+            shape.radius = 0.015f;
 
             // Lightning colors
             var colorOverLifetime = ps.colorOverLifetime;
@@ -447,7 +587,7 @@ namespace VRDungeonCrawler.Spells
             core.name = "LightningCore";
             core.transform.SetParent(parent.transform);
             core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.2f;
+            core.transform.localScale = Vector3.one * 0.08f;
             Destroy(core.GetComponent<Collider>());
 
             Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
@@ -466,18 +606,18 @@ namespace VRDungeonCrawler.Spells
 
             ParticleSystem ps = windObj.AddComponent<ParticleSystem>();
             var main = ps.main;
-            main.startLifetime = 0.5f;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(0.2f, 0.5f);
-            main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.15f);
-            main.maxParticles = 90;
+            main.startLifetime = 0.3f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0.02f, 0.05f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.003f, 0.008f);
+            main.maxParticles = 55;
             main.simulationSpace = ParticleSystemSimulationSpace.Local;
 
             var emission = ps.emission;
-            emission.rateOverTime = 70f;
+            emission.rateOverTime = 45f;
 
             var shape = ps.shape;
             shape.shapeType = ParticleSystemShapeType.Sphere;
-            shape.radius = 0.12f;
+            shape.radius = 0.015f;
 
             // Wind colors
             var colorOverLifetime = ps.colorOverLifetime;
@@ -516,7 +656,7 @@ namespace VRDungeonCrawler.Spells
             core.name = "WindCore";
             core.transform.SetParent(parent.transform);
             core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.2f;
+            core.transform.localScale = Vector3.one * 0.08f;
             Destroy(core.GetComponent<Collider>());
 
             Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
@@ -536,7 +676,7 @@ namespace VRDungeonCrawler.Spells
             GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             sphere.transform.SetParent(defaultObj.transform);
             sphere.transform.localPosition = Vector3.zero;
-            sphere.transform.localScale = Vector3.one * 0.2f;
+            sphere.transform.localScale = Vector3.one * 0.08f;
             Destroy(sphere.GetComponent<Collider>());
 
             Material mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
@@ -1802,6 +1942,62 @@ namespace VRDungeonCrawler.Spells
 
             // Spin entire projectile for additional motion
             transform.Rotate(Vector3.forward, 180f * Time.deltaTime);
+        }
+    }
+
+    public class ChargePopAnimation : MonoBehaviour
+    {
+        private float elapsed = 0f;
+        private float lifetime = 0.3f; // Pop lasts 0.3 seconds
+        private Vector3 startScale;
+        private float targetScale = 0.3f; // Expand to this size
+        private Color initialBaseColor;
+        private Color initialEmissionColor;
+        private Material material;
+
+        void Start()
+        {
+            startScale = transform.localScale;
+
+            // Cache material and initial colors
+            MeshRenderer renderer = GetComponent<MeshRenderer>();
+            if (renderer != null)
+            {
+                material = renderer.material; // Create instance
+                initialBaseColor = material.GetColor("_BaseColor");
+                initialEmissionColor = material.GetColor("_EmissionColor");
+            }
+        }
+
+        void Update()
+        {
+            elapsed += Time.deltaTime;
+            float progress = elapsed / lifetime;
+
+            // Expand quickly
+            float scale = Mathf.Lerp(startScale.x, targetScale, progress);
+            transform.localScale = Vector3.one * scale;
+
+            // Fade out smoothly
+            if (material != null)
+            {
+                // Fade base color alpha
+                float alpha = Mathf.Lerp(0.8f, 0f, progress);
+                Color baseColor = initialBaseColor;
+                baseColor.a = alpha;
+                material.SetColor("_BaseColor", baseColor);
+
+                // Fade emission color intensity
+                float emissionIntensity = Mathf.Lerp(1f, 0f, progress);
+                Color emissionColor = initialEmissionColor * emissionIntensity;
+                material.SetColor("_EmissionColor", emissionColor);
+            }
+
+            // Destroy when done
+            if (elapsed >= lifetime)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
