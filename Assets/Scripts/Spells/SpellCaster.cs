@@ -20,7 +20,7 @@ namespace VRDungeonCrawler.Spells
         public Transform spawnPoint;
 
         [Tooltip("Distance from hand if spawnPoint not set")]
-        public float spawnDistance = 0.15f;
+        public float spawnDistance = 0.3f; // Increased from 0.15f to avoid hitting player
 
         [Tooltip("Cooldown between casts")]
         public float castCooldown = 0.5f;
@@ -150,7 +150,64 @@ namespace VRDungeonCrawler.Spells
 
         #region Projectile Visuals
 
-        // Create a soft radial gradient texture for smooth particles (shared across all fireballs)
+        // Create organic fire texture with noise (shared across all fireballs)
+        private static Texture2D fireParticleTexture;
+
+        private Texture2D GetFireParticleTexture()
+        {
+            if (fireParticleTexture != null) return fireParticleTexture;
+
+            int size = 128;
+            fireParticleTexture = new Texture2D(size, size, TextureFormat.RGBA32, false);
+            fireParticleTexture.wrapMode = TextureWrapMode.Clamp;
+            fireParticleTexture.filterMode = FilterMode.Bilinear;
+
+            Color[] pixels = new Color[size * size];
+            Vector2 center = new Vector2(size / 2f, size / 2f);
+
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    Vector2 pos = new Vector2(x, y);
+                    float distance = Vector2.Distance(pos, center) / (size / 2f);
+
+                    // MUCH more aggressive radial gradient to eliminate square edges
+                    float baseAlpha = Mathf.Clamp01(1f - distance);
+                    baseAlpha = Mathf.Pow(baseAlpha, 3.5f); // Much steeper falloff (was 1.5)
+
+                    // Add multiple layers of Perlin noise for organic fire look
+                    float noise1 = Mathf.PerlinNoise(x * 0.08f, y * 0.08f); // Large features
+                    float noise2 = Mathf.PerlinNoise(x * 0.15f, y * 0.15f); // Medium features
+                    float noise3 = Mathf.PerlinNoise(x * 0.3f, y * 0.3f);   // Fine detail
+
+                    // Combine noises with different weights
+                    float combinedNoise = (noise1 * 0.5f + noise2 * 0.3f + noise3 * 0.2f);
+
+                    // Apply noise more strongly towards the edges for wispy effect
+                    float noiseStrength = Mathf.Lerp(0.2f, 1.0f, distance);
+                    float finalAlpha = baseAlpha * Mathf.Lerp(1f, combinedNoise * 0.7f, noiseStrength);
+
+                    // Cut off alpha completely near edges to prevent square artifacts
+                    if (distance > 0.85f)
+                    {
+                        finalAlpha *= Mathf.Pow(1f - ((distance - 0.85f) / 0.15f), 2f);
+                    }
+
+                    // Add some brightness variation for fire texture
+                    float brightness = Mathf.Lerp(1f, 0.6f + combinedNoise * 0.4f, distance * 0.5f);
+
+                    pixels[y * size + x] = new Color(brightness, brightness, brightness, finalAlpha);
+                }
+            }
+
+            fireParticleTexture.SetPixels(pixels);
+            fireParticleTexture.Apply();
+
+            return fireParticleTexture;
+        }
+
+        // Create soft gradient for non-fire effects
         private static Texture2D softParticleTexture;
 
         private Texture2D GetSoftParticleTexture()
@@ -171,9 +228,8 @@ namespace VRDungeonCrawler.Spells
                     Vector2 pos = new Vector2(x, y);
                     float distance = Vector2.Distance(pos, center) / (size / 2f);
 
-                    // Soft radial gradient with smooth falloff
                     float alpha = Mathf.Clamp01(1f - distance);
-                    alpha = Mathf.Pow(alpha, 2f); // Smoother falloff
+                    alpha = Mathf.Pow(alpha, 2f);
 
                     pixels[y * size + x] = new Color(1f, 1f, 1f, alpha);
                 }
@@ -189,123 +245,259 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"Fireball_{spell.spellName}");
 
-            Texture2D particleTex = GetSoftParticleTexture();
+            Texture2D fireTex = GetFireParticleTexture();
+            Texture2D softTex = GetSoftParticleTexture();
 
-            // === SOLID GLOWING CORE: Elongated comet-shaped lava core ===
-            // Inner white-hot core
-            GameObject innerCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            innerCore.name = "InnerCore";
-            innerCore.transform.SetParent(projectile.transform);
-            innerCore.transform.localPosition = new Vector3(0f, 0f, 0.1f); // Pushed forward
-            innerCore.transform.localScale = new Vector3(0.25f, 0.25f, 0.4f); // Elongated comet shape
-            Destroy(innerCore.GetComponent<Collider>());
+            // === 1. ULTRA-BRIGHT HDR CORE (for bloom) ===
+            GameObject ultraCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            ultraCore.name = "UltraCore";
+            ultraCore.transform.SetParent(projectile.transform);
+            ultraCore.transform.localPosition = new Vector3(0f, 0f, 0.15f);
+            ultraCore.transform.localScale = new Vector3(0.15f, 0.15f, 0.3f);
+            Destroy(ultraCore.GetComponent<Collider>());
 
-            Material innerMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            innerMat.EnableKeyword("_EMISSION");
-            innerMat.SetColor("_BaseColor", new Color(1f, 1f, 0.95f));
-            innerMat.SetColor("_EmissionColor", new Color(1f, 0.95f, 0.9f) * 20f); // EXTREMELY bright white-hot
-            innerMat.SetFloat("_Smoothness", 1f);
-            innerCore.GetComponent<MeshRenderer>().material = innerMat;
+            Material ultraMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            ultraMat.EnableKeyword("_EMISSION");
+            ultraMat.SetColor("_BaseColor", Color.white);
+            ultraMat.SetColor("_EmissionColor", Color.white * 50f); // EXTREME HDR for bloom
+            ultraMat.SetFloat("_Smoothness", 1f);
+            ultraCore.GetComponent<MeshRenderer>().material = ultraMat;
 
-            // Middle layer - bright yellow-orange molten lava
-            GameObject middleCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            middleCore.name = "MiddleCore";
-            middleCore.transform.SetParent(projectile.transform);
-            middleCore.transform.localPosition = Vector3.zero;
-            middleCore.transform.localScale = new Vector3(0.4f, 0.4f, 0.65f); // Elongated
-            Destroy(middleCore.GetComponent<Collider>());
+            // === 2. DENSE FIRE CORE PARTICLES (volumetric fire look) ===
+            GameObject fireCoreObj = new GameObject("FireCore");
+            fireCoreObj.transform.SetParent(projectile.transform);
 
-            Material middleMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            middleMat.EnableKeyword("_EMISSION");
-            middleMat.SetColor("_BaseColor", new Color(1f, 0.7f, 0.2f));
-            middleMat.SetColor("_EmissionColor", new Color(1f, 0.6f, 0.1f) * 15f); // Bright molten yellow
-            middleMat.SetFloat("_Smoothness", 0.85f);
-            middleCore.GetComponent<MeshRenderer>().material = middleMat;
+            ParticleSystem fireCore = fireCoreObj.AddComponent<ParticleSystem>();
+            var coreMain = fireCore.main;
+            coreMain.startLifetime = 0.3f;
+            coreMain.startSpeed = new ParticleSystem.MinMaxCurve(-0.3f, 0.3f);
+            coreMain.startSize = new ParticleSystem.MinMaxCurve(0.2f, 0.35f); // Smaller particles
+            coreMain.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f); // Random initial rotation
+            coreMain.maxParticles = 150;
+            coreMain.simulationSpace = ParticleSystemSimulationSpace.Local;
 
-            // Outer layer - orange-red lava crust
-            GameObject outerCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            outerCore.name = "OuterCore";
-            outerCore.transform.SetParent(projectile.transform);
-            outerCore.transform.localPosition = new Vector3(0f, 0f, -0.05f); // Slightly back
-            outerCore.transform.localScale = new Vector3(0.5f, 0.5f, 0.8f); // Very elongated
-            Destroy(outerCore.GetComponent<Collider>());
+            var coreEmission = fireCore.emission;
+            coreEmission.rateOverTime = 500f; // More particles but smaller
 
-            Material outerMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            outerMat.EnableKeyword("_EMISSION");
-            outerMat.SetColor("_BaseColor", new Color(1f, 0.4f, 0.1f));
-            outerMat.SetColor("_EmissionColor", new Color(1f, 0.35f, 0.05f) * 10f); // Bright orange-red
-            outerMat.SetFloat("_Smoothness", 0.7f);
-            outerCore.GetComponent<MeshRenderer>().material = outerMat;
+            var coreShape = fireCore.shape;
+            coreShape.shapeType = ParticleSystemShapeType.Sphere;
+            coreShape.radius = 0.2f;
 
-            // === SUBTLE TRAILING EMBERS: Very soft, barely visible particles ===
-            GameObject emberParticleObj = new GameObject("EmberParticles");
-            emberParticleObj.transform.SetParent(projectile.transform);
-            emberParticleObj.transform.localPosition = Vector3.zero;
+            // Rotate particles over lifetime for organic motion (slow rotation to avoid spinning squares)
+            var coreRotation = fireCore.rotationOverLifetime;
+            coreRotation.enabled = true;
+            coreRotation.z = new ParticleSystem.MinMaxCurve(-45f, 45f); // MUCH slower rotation
 
-            ParticleSystem emberPS = emberParticleObj.AddComponent<ParticleSystem>();
-            var emberMain = emberPS.main;
-            emberMain.startLifetime = 0.4f;
-            emberMain.startSpeed = new ParticleSystem.MinMaxCurve(-2f, -1f); // Backwards
-            emberMain.startSize = new ParticleSystem.MinMaxCurve(0.08f, 0.15f); // Small
-            emberMain.maxParticles = 40; // Fewer particles
-            emberMain.loop = true;
-
-            var emberEmission = emberPS.emission;
-            emberEmission.rateOverTime = 60f; // Moderate emission
-
-            var emberShape = emberPS.shape;
-            emberShape.shapeType = ParticleSystemShapeType.Cone;
-            emberShape.angle = 10f; // Tight cone
-            emberShape.radius = 0.08f;
-
-            // Ember color - bright orange fading to transparent
-            var emberColorOverLifetime = emberPS.colorOverLifetime;
-            emberColorOverLifetime.enabled = true;
-            Gradient emberGradient = new Gradient();
-            emberGradient.SetKeys(
+            var coreColor = fireCore.colorOverLifetime;
+            coreColor.enabled = true;
+            Gradient coreGrad = new Gradient();
+            coreGrad.SetKeys(
                 new GradientColorKey[] {
-                    new GradientColorKey(new Color(1f, 0.7f, 0.2f), 0f),
-                    new GradientColorKey(new Color(1f, 0.4f, 0.1f), 0.5f),
-                    new GradientColorKey(new Color(0.8f, 0.2f, 0f), 1f)
+                    new GradientColorKey(new Color(1f, 1f, 0.9f), 0f),    // White
+                    new GradientColorKey(new Color(1f, 0.9f, 0.4f), 0.15f), // Yellow
+                    new GradientColorKey(new Color(1f, 0.6f, 0.2f), 0.5f),  // Orange
+                    new GradientColorKey(new Color(1f, 0.3f, 0.1f), 0.85f), // Red-orange
+                    new GradientColorKey(new Color(0.6f, 0.15f, 0f), 1f)    // Dark red
                 },
                 new GradientAlphaKey[] {
-                    new GradientAlphaKey(0.8f, 0f),
-                    new GradientAlphaKey(0.5f, 0.5f),
-                    new GradientAlphaKey(0f, 1f) // Fully transparent at end
+                    new GradientAlphaKey(0.7f, 0f),   // Start semi-transparent
+                    new GradientAlphaKey(0.5f, 0.4f), // Fade to more transparent
+                    new GradientAlphaKey(0f, 1f)      // Fully fade out
                 }
             );
-            emberColorOverLifetime.color = new ParticleSystem.MinMaxGradient(emberGradient);
+            coreColor.color = coreGrad;
 
-            var emberRenderer = emberPS.GetComponent<ParticleSystemRenderer>();
+            var coreRenderer = fireCore.GetComponent<ParticleSystemRenderer>();
+            coreRenderer.renderMode = ParticleSystemRenderMode.Billboard;
+            coreRenderer.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            coreRenderer.material.mainTexture = fireTex; // Use fire texture with noise!
+            coreRenderer.material.SetColor("_BaseColor", Color.white);
+            coreRenderer.material.SetFloat("_Surface", 1);
+            coreRenderer.material.SetFloat("_Blend", 1); // Additive
+            coreRenderer.material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            coreRenderer.material.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            coreRenderer.material.renderQueue = 3000;
+
+            // === 3. HEAT DISTORTION PARTICLES (simulates heat haze) ===
+            GameObject heatDistObj = new GameObject("HeatDistortion");
+            heatDistObj.transform.SetParent(projectile.transform);
+
+            ParticleSystem heatDist = heatDistObj.AddComponent<ParticleSystem>();
+            var distMain = heatDist.main;
+            distMain.startLifetime = 0.4f;
+            distMain.startSpeed = new ParticleSystem.MinMaxCurve(-0.5f, 0.5f);
+            distMain.startSize = new ParticleSystem.MinMaxCurve(0.4f, 0.6f); // Smaller, more particles
+            distMain.maxParticles = 80;
+            distMain.simulationSpace = ParticleSystemSimulationSpace.Local;
+
+            var distEmission = heatDist.emission;
+            distEmission.rateOverTime = 200f;
+
+            var distShape = heatDist.shape;
+            distShape.shapeType = ParticleSystemShapeType.Sphere;
+            distShape.radius = 0.25f;
+
+            // Rotate particles over lifetime for organic heat shimmer
+            var distRotation = heatDist.rotationOverLifetime;
+            distRotation.enabled = true;
+            distRotation.z = new ParticleSystem.MinMaxCurve(-30f, 30f); // Very slow rotation for subtle heat shimmer
+
+            var distColor = heatDist.colorOverLifetime;
+            distColor.enabled = true;
+            Gradient distGrad = new Gradient();
+            distGrad.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 0.8f, 0.6f), 0f),
+                    new GradientColorKey(new Color(1f, 0.6f, 0.3f), 0.5f),
+                    new GradientColorKey(new Color(1f, 0.4f, 0.2f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.08f, 0f), // EXTREMELY transparent
+                    new GradientAlphaKey(0.05f, 0.5f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            distColor.color = distGrad;
+
+            var distRenderer = heatDist.GetComponent<ParticleSystemRenderer>();
+            distRenderer.renderMode = ParticleSystemRenderMode.Billboard;
+            distRenderer.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            distRenderer.material.mainTexture = fireTex; // Use fire texture for realistic heat distortion
+            distRenderer.material.SetColor("_BaseColor", new Color(1f, 0.8f, 0.5f));
+            distRenderer.material.SetFloat("_Surface", 1);
+            distRenderer.material.SetFloat("_Blend", 1);
+            distRenderer.material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            distRenderer.material.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            distRenderer.material.renderQueue = 3000;
+
+            // === 4. TRAILING FIRE EMBERS (comet tail) ===
+            GameObject emberObj = new GameObject("Embers");
+            emberObj.transform.SetParent(projectile.transform);
+
+            ParticleSystem embers = emberObj.AddComponent<ParticleSystem>();
+            var emberMain = embers.main;
+            emberMain.startLifetime = 0.5f;
+            emberMain.startSpeed = new ParticleSystem.MinMaxCurve(-2.5f, -1f);
+            emberMain.startSize = new ParticleSystem.MinMaxCurve(0.04f, 0.08f); // Smaller embers
+            emberMain.maxParticles = 120;
+
+            var emberEmission = embers.emission;
+            emberEmission.rateOverTime = 100f;
+
+            var emberShape = embers.shape;
+            emberShape.shapeType = ParticleSystemShapeType.Cone;
+            emberShape.angle = 12f;
+            emberShape.radius = 0.1f;
+
+            // Rotate embers over lifetime for realistic tumbling motion
+            var emberRotation = embers.rotationOverLifetime;
+            emberRotation.enabled = true;
+            emberRotation.z = new ParticleSystem.MinMaxCurve(-90f, 90f); // Gentle tumbling (not spinning)
+
+            var emberColor = embers.colorOverLifetime;
+            emberColor.enabled = true;
+            Gradient emberGrad = new Gradient();
+            emberGrad.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 0.9f, 0.5f), 0f),
+                    new GradientColorKey(new Color(1f, 0.6f, 0.2f), 0.3f),
+                    new GradientColorKey(new Color(1f, 0.4f, 0.1f), 0.7f),
+                    new GradientColorKey(new Color(0.6f, 0.2f, 0f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.6f, 0f),   // Start less opaque
+                    new GradientAlphaKey(0.4f, 0.5f), // Fade more
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            emberColor.color = emberGrad;
+
+            var emberRenderer = embers.GetComponent<ParticleSystemRenderer>();
             emberRenderer.renderMode = ParticleSystemRenderMode.Billboard;
             emberRenderer.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
-            emberRenderer.material.mainTexture = particleTex; // Soft texture
+            emberRenderer.material.mainTexture = fireTex; // Use fire texture for realistic embers
             emberRenderer.material.SetColor("_BaseColor", Color.white);
             emberRenderer.material.SetFloat("_Surface", 1);
-            emberRenderer.material.SetFloat("_Blend", 1); // Additive
-            emberRenderer.material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            emberRenderer.material.SetFloat("_Blend", 1);
+            emberRenderer.material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
             emberRenderer.material.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
             emberRenderer.material.renderQueue = 3000;
 
-            // === TRAIL RENDERER: Bright glowing wake ===
+            // === 5. DARK SMOKE WISPS (adds depth) ===
+            GameObject smokeObj = new GameObject("Smoke");
+            smokeObj.transform.SetParent(projectile.transform);
+
+            ParticleSystem smoke = smokeObj.AddComponent<ParticleSystem>();
+            var smokeMain = smoke.main;
+            smokeMain.startLifetime = 1f;
+            smokeMain.startSpeed = new ParticleSystem.MinMaxCurve(-1.5f, -0.5f);
+            smokeMain.startSize = new ParticleSystem.MinMaxCurve(0.15f, 0.35f);
+            smokeMain.maxParticles = 80;
+
+            var smokeEmission = smoke.emission;
+            smokeEmission.rateOverTime = 50f;
+
+            var smokeShape = smoke.shape;
+            smokeShape.shapeType = ParticleSystemShapeType.Cone;
+            smokeShape.angle = 18f;
+            smokeShape.radius = 0.12f;
+
+            // Rotate smoke over lifetime for organic billowing
+            var smokeRotation = smoke.rotationOverLifetime;
+            smokeRotation.enabled = true;
+            smokeRotation.z = new ParticleSystem.MinMaxCurve(-20f, 20f); // Very gentle rotation for smoke
+
+            var smokeColor = smoke.colorOverLifetime;
+            smokeColor.enabled = true;
+            Gradient smokeGrad = new Gradient();
+            smokeGrad.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(0.15f, 0.08f, 0.03f), 0f),
+                    new GradientColorKey(new Color(0.12f, 0.06f, 0.02f), 0.5f),
+                    new GradientColorKey(new Color(0.08f, 0.04f, 0.01f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.7f, 0f),
+                    new GradientAlphaKey(0.4f, 0.7f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            smokeColor.color = smokeGrad;
+
+            var smokeSize = smoke.sizeOverLifetime;
+            smokeSize.enabled = true;
+            smokeSize.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 0.7f, 1f, 1.5f));
+
+            var smokeRenderer = smoke.GetComponent<ParticleSystemRenderer>();
+            smokeRenderer.renderMode = ParticleSystemRenderMode.Billboard;
+            smokeRenderer.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            smokeRenderer.material.mainTexture = softTex; // Use soft texture for smooth smoke
+            smokeRenderer.material.SetColor("_BaseColor", new Color(0.15f, 0.08f, 0.03f));
+            smokeRenderer.material.SetFloat("_Surface", 1);
+            smokeRenderer.material.SetFloat("_Blend", 0); // Alpha
+            smokeRenderer.material.renderQueue = 3000;
+
+            // === 6. BRIGHT GLOWING TRAIL ===
             TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
-            trail.time = 0.4f;
-            trail.startWidth = 0.5f;
-            trail.endWidth = 0.02f;
+            trail.time = 0.5f;
+            trail.startWidth = 0.6f;
+            trail.endWidth = 0.05f;
+            trail.numCornerVertices = 5;
+            trail.numCapVertices = 5;
 
             Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             trailMat.EnableKeyword("_EMISSION");
-            trailMat.SetColor("_BaseColor", new Color(1f, 0.6f, 0.2f));
-            trailMat.SetColor("_EmissionColor", new Color(1f, 0.5f, 0.1f) * 8f); // Bright glowing trail
+            trailMat.SetColor("_BaseColor", new Color(1f, 0.7f, 0.3f));
+            trailMat.SetColor("_EmissionColor", new Color(1f, 0.6f, 0.2f) * 12f); // Bright HDR
             trailMat.SetFloat("_Surface", 1);
-            trailMat.SetFloat("_Blend", 0); // Alpha blend
+            trailMat.SetFloat("_Blend", 0);
             trailMat.renderQueue = 3000;
             trail.material = trailMat;
 
-            trail.startColor = new Color(1f, 0.7f, 0.2f, 1f);
+            trail.startColor = new Color(1f, 0.8f, 0.4f, 1f);
             trail.endColor = new Color(1f, 0.3f, 0f, 0f);
 
-            // Add animation component
+            // Add animation
             FireballAnimation anim = projectile.AddComponent<FireballAnimation>();
 
             return projectile;
@@ -730,6 +922,7 @@ namespace VRDungeonCrawler.Spells
         private float spawnTime;
         private bool hasExploded = false;
         private Vector3 hitNormal = Vector3.up; // Store the surface normal for explosion
+        private const float GRACE_PERIOD = 0.15f; // Don't collide for first 0.15 seconds
 
         void Start()
         {
@@ -746,6 +939,38 @@ namespace VRDungeonCrawler.Spells
             rb.useGravity = false;
         }
 
+        // Helper method to check if object is part of the player/VR rig
+        private bool IsPlayerObject(GameObject obj)
+        {
+            string name = obj.name.ToLower();
+
+            // Check for common player/VR object names
+            if (name.Contains("controller")) return true;
+            if (name.Contains("hand")) return true;
+            if (name.Contains("camera")) return true;
+            if (name.Contains("main camera")) return true;
+            if (name.Contains("xr")) return true;
+            if (name.Contains("player")) return true;
+            if (name.Contains("origin")) return true;
+            if (name.Contains("offset")) return true;
+
+            // Check parent hierarchy
+            Transform current = obj.transform;
+            while (current.parent != null)
+            {
+                string parentName = current.parent.name.ToLower();
+                if (parentName.Contains("xr") ||
+                    parentName.Contains("player") ||
+                    parentName.Contains("origin"))
+                {
+                    return true;
+                }
+                current = current.parent;
+            }
+
+            return false;
+        }
+
         void Update()
         {
             // Raycast ahead to detect surface normal before collision
@@ -753,10 +978,8 @@ namespace VRDungeonCrawler.Spells
             float rayDistance = speed * Time.deltaTime * 2f; // Look ahead
             if (Physics.Raycast(transform.position, direction, out hit, rayDistance))
             {
-                // Ignore triggers and XR controllers
-                if (!hit.collider.isTrigger &&
-                    !hit.collider.gameObject.name.Contains("Controller") &&
-                    !hit.collider.gameObject.name.Contains("Hand"))
+                // Ignore triggers and player objects
+                if (!hit.collider.isTrigger && !IsPlayerObject(hit.collider.gameObject))
                 {
                     hitNormal = hit.normal; // Store the surface normal
                 }
@@ -774,10 +997,17 @@ namespace VRDungeonCrawler.Spells
 
         void OnTriggerEnter(Collider other)
         {
-            // Ignore triggers and XR controllers
+            // Grace period - don't collide immediately after spawning
+            if (Time.time < spawnTime + GRACE_PERIOD)
+            {
+                return;
+            }
+
+            // Ignore triggers
             if (other.isTrigger) return;
-            if (other.gameObject.name.Contains("Controller")) return;
-            if (other.gameObject.name.Contains("Hand")) return;
+
+            // Ignore player/VR objects
+            if (IsPlayerObject(other.gameObject)) return;
 
             // Only explode once
             if (hasExploded) return;
