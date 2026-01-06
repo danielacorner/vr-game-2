@@ -139,7 +139,7 @@ namespace VRDungeonCrawler.Interaction
         /// </summary>
         private SummonableItem FindNearestSummonableItem()
         {
-            SummonableItem[] allItems = FindObjectsOfType<SummonableItem>();
+            SummonableItem[] allItems = FindObjectsByType<SummonableItem>(FindObjectsSortMode.None);
 
             SummonableItem nearest = null;
             float nearestDistance = maxSearchDistance;

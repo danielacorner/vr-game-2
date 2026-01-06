@@ -22,7 +22,6 @@ namespace VRDungeonCrawler.Spells
         private SpellData currentSpell;
         private GameObject introEffect;
         private GameObject loopEffect;
-        private bool isPlayingIntro = false;
 
         private void Start()
         {
@@ -65,8 +64,6 @@ namespace VRDungeonCrawler.Spells
             // Clean up any existing effects
             CleanupEffects();
 
-            isPlayingIntro = true;
-
             // Create BOTH effects simultaneously - dramatic intro explosion WITH loop!
             introEffect = CreateIntroEffect(spell);
             loopEffect = CreateLoopEffect(spell);
@@ -79,7 +76,6 @@ namespace VRDungeonCrawler.Spells
             if (introEffect != null)
                 Destroy(introEffect);
 
-            isPlayingIntro = false;
             Debug.Log($"[SpellHandVFX] Intro complete, loop continues");
         }
 

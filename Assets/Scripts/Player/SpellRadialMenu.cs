@@ -13,7 +13,9 @@ namespace VRDungeonCrawler.Player
     public class SpellRadialMenu : MonoBehaviour
     {
         [Header("References")]
+#pragma warning disable CS0618 // ActionBasedController deprecated in XRI 3.0
         public ActionBasedController controller; // XR Controller
+#pragma warning restore CS0618
         public Transform menuCanvas; // World space canvas
         public RectTransform menuContainer; // Container for spell icons
 

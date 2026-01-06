@@ -25,7 +25,7 @@ namespace VRDungeonCrawler.Player
             // Example: Find hand pose controllers automatically
             if (leftHand == null || rightHand == null)
             {
-                HandPoseController[] controllers = FindObjectsOfType<HandPoseController>();
+                HandPoseController[] controllers = FindObjectsByType<HandPoseController>(FindObjectsSortMode.None);
                 foreach (var controller in controllers)
                 {
                     if (controller.isLeftHand)

@@ -166,7 +166,9 @@ namespace VRDungeonCrawler.Player
             Debug.Log("[RadialMenuUI] Menu opened");
 
             // Haptic feedback (find controller component if needed)
+#pragma warning disable CS0618 // ActionBasedController deprecated in XRI 3.0
             var controllerComponent = controllerTransform?.GetComponent<UnityEngine.XR.Interaction.Toolkit.ActionBasedController>();
+#pragma warning restore CS0618
             if (controllerComponent != null)
             {
                 controllerComponent.SendHapticImpulse(0.3f, 0.1f);
@@ -253,7 +255,9 @@ namespace VRDungeonCrawler.Player
                 Debug.Log($"[RadialMenuUI] Selected spell at index {hoveredIndex}");
 
                 // Haptic feedback (find controller component if needed)
+#pragma warning disable CS0618 // ActionBasedController deprecated in XRI 3.0
                 var controllerComponent = controllerTransform?.GetComponent<UnityEngine.XR.Interaction.Toolkit.ActionBasedController>();
+#pragma warning restore CS0618
                 if (controllerComponent != null)
                 {
                     controllerComponent.SendHapticImpulse(0.5f, 0.2f);

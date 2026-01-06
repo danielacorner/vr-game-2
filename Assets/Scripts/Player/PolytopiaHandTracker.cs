@@ -60,7 +60,7 @@ namespace VRDungeonCrawler.Player
             if (inputActionsAsset == null)
             {
                 // Try alternative path
-                inputActionsAsset = UnityEngine.Object.FindObjectOfType<UnityEngine.InputSystem.PlayerInput>()?.actions;
+                inputActionsAsset = UnityEngine.Object.FindAnyObjectByType<UnityEngine.InputSystem.PlayerInput>()?.actions;
             }
 
             if (inputActionsAsset != null)

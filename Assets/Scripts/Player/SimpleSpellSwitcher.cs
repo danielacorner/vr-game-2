@@ -11,7 +11,9 @@ namespace VRDungeonCrawler.Player
     public class SimpleSpellSwitcher : MonoBehaviour
     {
         [Header("References")]
+#pragma warning disable CS0618 // ActionBasedController deprecated in XRI 3.0
         public ActionBasedController controller;
+#pragma warning restore CS0618
 
         [Header("Settings")]
         public float inputCooldown = 0.3f; // Prevent rapid switching
