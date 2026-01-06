@@ -34,6 +34,10 @@ namespace VRDungeonCrawler.Player
         [Range(0f, 0.9f)]
         public float selectionDeadzone = 0.3f;
 
+        [Tooltip("Tilt angle toward player (degrees) - makes top/bottom spells easier to reach")]
+        [Range(0f, 45f)]
+        public float menuTiltAngle = -40f;
+
         [Header("Visual Settings")]
         public Color normalColor = new Color(1f, 1f, 1f, 0.7f);
         public Color highlightColor = new Color(1f, 0.8f, 0f, 1f);
@@ -251,8 +255,11 @@ namespace VRDungeonCrawler.Player
                 if (directionToHead != Vector3.zero)
                 {
                     Quaternion lookRotation = Quaternion.LookRotation(directionToHead, Vector3.up);
-                    menuRoot.transform.rotation = lookRotation;
-                    Debug.Log($"[AlyxSpellMenu] Initial rotation set to face headset position");
+                    // Apply tilt toward player (rotate around the menu's local right axis)
+                    Vector3 localRight = lookRotation * Vector3.right;
+                    Quaternion tiltRotation = Quaternion.AngleAxis(menuTiltAngle, localRight);
+                    menuRoot.transform.rotation = tiltRotation * lookRotation;
+                    Debug.Log($"[AlyxSpellMenu] Initial rotation set to face headset position with {menuTiltAngle}° tilt");
                 }
             }
 
@@ -383,7 +390,10 @@ namespace VRDungeonCrawler.Player
                 if (directionToHead != Vector3.zero)
                 {
                     Quaternion lookRotation = Quaternion.LookRotation(directionToHead, Vector3.up);
-                    menuRoot.transform.rotation = lookRotation;
+                    // Apply tilt toward player (rotate around the menu's local right axis)
+                    Vector3 localRight = lookRotation * Vector3.right;
+                    Quaternion tiltRotation = Quaternion.AngleAxis(menuTiltAngle, localRight);
+                    menuRoot.transform.rotation = tiltRotation * lookRotation;
                 }
             }
         }

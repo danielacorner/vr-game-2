@@ -10592,6 +10592,7 @@ MonoBehaviour:
   iconSize: 0.1
   hoverDetectionRadius: 0.08
   selectionDeadzone: 0.3
+  menuTiltAngle: 20
   normalColor: {r: 1, g: 1, b: 1, a: 0.7}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 1}
   highlightScale: 1.3
@@ -22355,10 +22356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71187e3038324ab590b8e0d03544980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VRDungeonCrawler.VR.XRCameraHeightEnforcer
-  minCameraHeight: 1.4
-  targetStandingHeight: 1.6
+  fallbackThreshold: 0.5
+  fallbackHeight: 1.6
+  initialWaitTime: 2
   monitorDuration: 3
-  logCorrections: 1
+  logStatus: 1
 --- !u!28 &1719828031
 Texture2D:
   m_ObjectHideFlags: 0
@@ -28194,6 +28196,7 @@ MonoBehaviour:
   iconSize: 0.1
   hoverDetectionRadius: 0.08
   selectionDeadzone: 0.3
+  menuTiltAngle: 20
   normalColor: {r: 1, g: 1, b: 1, a: 0.7}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 1}
   highlightScale: 1.3
