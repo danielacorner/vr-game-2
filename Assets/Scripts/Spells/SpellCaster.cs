@@ -155,56 +155,9 @@ namespace VRDungeonCrawler.Spells
 
         private Texture2D GetFireParticleTexture()
         {
-            if (fireParticleTexture != null) return fireParticleTexture;
-
-            int size = 128;
-            fireParticleTexture = new Texture2D(size, size, TextureFormat.RGBA32, false);
-            fireParticleTexture.wrapMode = TextureWrapMode.Clamp;
-            fireParticleTexture.filterMode = FilterMode.Bilinear;
-
-            Color[] pixels = new Color[size * size];
-            Vector2 center = new Vector2(size / 2f, size / 2f);
-
-            for (int y = 0; y < size; y++)
-            {
-                for (int x = 0; x < size; x++)
-                {
-                    Vector2 pos = new Vector2(x, y);
-                    float distance = Vector2.Distance(pos, center) / (size / 2f);
-
-                    // MUCH more aggressive radial gradient to eliminate square edges
-                    float baseAlpha = Mathf.Clamp01(1f - distance);
-                    baseAlpha = Mathf.Pow(baseAlpha, 3.5f); // Much steeper falloff (was 1.5)
-
-                    // Add multiple layers of Perlin noise for organic fire look
-                    float noise1 = Mathf.PerlinNoise(x * 0.08f, y * 0.08f); // Large features
-                    float noise2 = Mathf.PerlinNoise(x * 0.15f, y * 0.15f); // Medium features
-                    float noise3 = Mathf.PerlinNoise(x * 0.3f, y * 0.3f);   // Fine detail
-
-                    // Combine noises with different weights
-                    float combinedNoise = (noise1 * 0.5f + noise2 * 0.3f + noise3 * 0.2f);
-
-                    // Apply noise more strongly towards the edges for wispy effect
-                    float noiseStrength = Mathf.Lerp(0.2f, 1.0f, distance);
-                    float finalAlpha = baseAlpha * Mathf.Lerp(1f, combinedNoise * 0.7f, noiseStrength);
-
-                    // Cut off alpha completely near edges to prevent square artifacts
-                    if (distance > 0.85f)
-                    {
-                        finalAlpha *= Mathf.Pow(1f - ((distance - 0.85f) / 0.15f), 2f);
-                    }
-
-                    // Add some brightness variation for fire texture
-                    float brightness = Mathf.Lerp(1f, 0.6f + combinedNoise * 0.4f, distance * 0.5f);
-
-                    pixels[y * size + x] = new Color(brightness, brightness, brightness, finalAlpha);
-                }
-            }
-
-            fireParticleTexture.SetPixels(pixels);
-            fireParticleTexture.Apply();
-
-            return fireParticleTexture;
+            // Use Unity's built-in Default-Particle texture which is optimized and has perfect soft edges
+            // This avoids black square artifacts from procedural textures
+            return Resources.Load<Texture2D>("Default-Particle");
         }
 
         // Create soft gradient for non-fire effects
@@ -248,22 +201,7 @@ namespace VRDungeonCrawler.Spells
             Texture2D fireTex = GetFireParticleTexture();
             Texture2D softTex = GetSoftParticleTexture();
 
-            // === 1. ULTRA-BRIGHT HDR CORE (for bloom) ===
-            GameObject ultraCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            ultraCore.name = "UltraCore";
-            ultraCore.transform.SetParent(projectile.transform);
-            ultraCore.transform.localPosition = new Vector3(0f, 0f, 0.15f);
-            ultraCore.transform.localScale = new Vector3(0.15f, 0.15f, 0.3f);
-            Destroy(ultraCore.GetComponent<Collider>());
-
-            Material ultraMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            ultraMat.EnableKeyword("_EMISSION");
-            ultraMat.SetColor("_BaseColor", Color.white);
-            ultraMat.SetColor("_EmissionColor", Color.white * 50f); // EXTREME HDR for bloom
-            ultraMat.SetFloat("_Smoothness", 1f);
-            ultraCore.GetComponent<MeshRenderer>().material = ultraMat;
-
-            // === 2. DENSE FIRE CORE PARTICLES (volumetric fire look) ===
+            // === 1. DENSE FIRE CORE PARTICLES (volumetric fire look) ===
             GameObject fireCoreObj = new GameObject("FireCore");
             fireCoreObj.transform.SetParent(projectile.transform);
 
@@ -271,22 +209,21 @@ namespace VRDungeonCrawler.Spells
             var coreMain = fireCore.main;
             coreMain.startLifetime = 0.3f;
             coreMain.startSpeed = new ParticleSystem.MinMaxCurve(-0.3f, 0.3f);
-            coreMain.startSize = new ParticleSystem.MinMaxCurve(0.2f, 0.35f); // Smaller particles
-            coreMain.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f); // Random initial rotation
-            coreMain.maxParticles = 150;
-            coreMain.simulationSpace = ParticleSystemSimulationSpace.Local;
+            coreMain.startSize = new ParticleSystem.MinMaxCurve(0.08f, 0.12f); // Very small particles
+            coreMain.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f);
+            coreMain.maxParticles = 500;
+            coreMain.simulationSpace = ParticleSystemSimulationSpace.World; // World space so particles persist
 
             var coreEmission = fireCore.emission;
-            coreEmission.rateOverTime = 500f; // More particles but smaller
+            coreEmission.rateOverTime = 800f; // Many small particles
 
             var coreShape = fireCore.shape;
             coreShape.shapeType = ParticleSystemShapeType.Sphere;
-            coreShape.radius = 0.2f;
+            coreShape.radius = 0.15f;
 
-            // Rotate particles over lifetime for organic motion (slow rotation to avoid spinning squares)
+            // Disable rotation to avoid any square artifacts
             var coreRotation = fireCore.rotationOverLifetime;
-            coreRotation.enabled = true;
-            coreRotation.z = new ParticleSystem.MinMaxCurve(-45f, 45f); // MUCH slower rotation
+            coreRotation.enabled = false;
 
             var coreColor = fireCore.colorOverLifetime;
             coreColor.enabled = true;
@@ -300,8 +237,8 @@ namespace VRDungeonCrawler.Spells
                     new GradientColorKey(new Color(0.6f, 0.15f, 0f), 1f)    // Dark red
                 },
                 new GradientAlphaKey[] {
-                    new GradientAlphaKey(0.7f, 0f),   // Start semi-transparent
-                    new GradientAlphaKey(0.5f, 0.4f), // Fade to more transparent
+                    new GradientAlphaKey(0.15f, 0f),  // Very transparent (avoids black squares)
+                    new GradientAlphaKey(0.1f, 0.5f), // Ultra transparent
                     new GradientAlphaKey(0f, 1f)      // Fully fade out
                 }
             );
@@ -312,35 +249,43 @@ namespace VRDungeonCrawler.Spells
             coreRenderer.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
             coreRenderer.material.mainTexture = fireTex; // Use fire texture with noise!
             coreRenderer.material.SetColor("_BaseColor", Color.white);
-            coreRenderer.material.SetFloat("_Surface", 1);
+            coreRenderer.material.SetFloat("_Surface", 1); // Transparent
             coreRenderer.material.SetFloat("_Blend", 1); // Additive
             coreRenderer.material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
             coreRenderer.material.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            coreRenderer.material.SetFloat("_ZWrite", 0); // Disable depth writes for proper blending
+            // Enable soft particles for smooth edges
+            coreRenderer.material.EnableKeyword("_SOFTPARTICLES_ON");
+            coreRenderer.material.SetFloat("_SoftParticlesNearFadeDistance", 0.0f);
+            coreRenderer.material.SetFloat("_SoftParticlesFarFadeDistance", 1.0f);
+            // Enable camera fade to prevent near-camera artifacts
+            coreRenderer.material.EnableKeyword("_FADING_ON");
+            coreRenderer.material.SetFloat("_CameraNearFadeDistance", 0.5f);
+            coreRenderer.material.SetFloat("_CameraFarFadeDistance", 2.0f);
             coreRenderer.material.renderQueue = 3000;
 
-            // === 3. HEAT DISTORTION PARTICLES (simulates heat haze) ===
+            // === 2. HEAT DISTORTION PARTICLES (simulates heat haze) ===
             GameObject heatDistObj = new GameObject("HeatDistortion");
             heatDistObj.transform.SetParent(projectile.transform);
 
             ParticleSystem heatDist = heatDistObj.AddComponent<ParticleSystem>();
             var distMain = heatDist.main;
-            distMain.startLifetime = 0.4f;
-            distMain.startSpeed = new ParticleSystem.MinMaxCurve(-0.5f, 0.5f);
-            distMain.startSize = new ParticleSystem.MinMaxCurve(0.4f, 0.6f); // Smaller, more particles
-            distMain.maxParticles = 80;
-            distMain.simulationSpace = ParticleSystemSimulationSpace.Local;
+            distMain.startLifetime = 0.35f;
+            distMain.startSpeed = new ParticleSystem.MinMaxCurve(-0.3f, 0.3f);
+            distMain.startSize = new ParticleSystem.MinMaxCurve(0.25f, 0.4f); // Much smaller
+            distMain.maxParticles = 120;
+            distMain.simulationSpace = ParticleSystemSimulationSpace.World; // World space for persistence
 
             var distEmission = heatDist.emission;
-            distEmission.rateOverTime = 200f;
+            distEmission.rateOverTime = 400f; // Many more particles
 
             var distShape = heatDist.shape;
             distShape.shapeType = ParticleSystemShapeType.Sphere;
-            distShape.radius = 0.25f;
+            distShape.radius = 0.2f;
 
-            // Rotate particles over lifetime for organic heat shimmer
+            // Disable rotation to avoid square artifacts
             var distRotation = heatDist.rotationOverLifetime;
-            distRotation.enabled = true;
-            distRotation.z = new ParticleSystem.MinMaxCurve(-30f, 30f); // Very slow rotation for subtle heat shimmer
+            distRotation.enabled = false;
 
             var distColor = heatDist.colorOverLifetime;
             distColor.enabled = true;
@@ -352,8 +297,8 @@ namespace VRDungeonCrawler.Spells
                     new GradientColorKey(new Color(1f, 0.4f, 0.2f), 1f)
                 },
                 new GradientAlphaKey[] {
-                    new GradientAlphaKey(0.08f, 0f), // EXTREMELY transparent
-                    new GradientAlphaKey(0.05f, 0.5f),
+                    new GradientAlphaKey(0.04f, 0f), // Ultra transparent
+                    new GradientAlphaKey(0.02f, 0.5f), // Almost invisible
                     new GradientAlphaKey(0f, 1f)
                 }
             );
@@ -363,36 +308,44 @@ namespace VRDungeonCrawler.Spells
             distRenderer.renderMode = ParticleSystemRenderMode.Billboard;
             distRenderer.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
             distRenderer.material.mainTexture = fireTex; // Use fire texture for realistic heat distortion
-            distRenderer.material.SetColor("_BaseColor", new Color(1f, 0.8f, 0.5f));
+            distRenderer.material.SetColor("_BaseColor", Color.white);
             distRenderer.material.SetFloat("_Surface", 1);
             distRenderer.material.SetFloat("_Blend", 1);
             distRenderer.material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
             distRenderer.material.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            distRenderer.material.SetFloat("_ZWrite", 0);
+            // Enable soft particles
+            distRenderer.material.EnableKeyword("_SOFTPARTICLES_ON");
+            distRenderer.material.SetFloat("_SoftParticlesNearFadeDistance", 0.0f);
+            distRenderer.material.SetFloat("_SoftParticlesFarFadeDistance", 1.0f);
+            // Enable camera fade
+            distRenderer.material.EnableKeyword("_FADING_ON");
+            distRenderer.material.SetFloat("_CameraNearFadeDistance", 0.5f);
+            distRenderer.material.SetFloat("_CameraFarFadeDistance", 2.0f);
             distRenderer.material.renderQueue = 3000;
 
-            // === 4. TRAILING FIRE EMBERS (comet tail) ===
+            // === 3. TRAILING FIRE EMBERS (comet tail) ===
             GameObject emberObj = new GameObject("Embers");
             emberObj.transform.SetParent(projectile.transform);
 
             ParticleSystem embers = emberObj.AddComponent<ParticleSystem>();
             var emberMain = embers.main;
-            emberMain.startLifetime = 0.5f;
-            emberMain.startSpeed = new ParticleSystem.MinMaxCurve(-2.5f, -1f);
-            emberMain.startSize = new ParticleSystem.MinMaxCurve(0.04f, 0.08f); // Smaller embers
-            emberMain.maxParticles = 120;
+            emberMain.startLifetime = 0.45f;
+            emberMain.startSpeed = new ParticleSystem.MinMaxCurve(-2f, -1f);
+            emberMain.startSize = new ParticleSystem.MinMaxCurve(0.03f, 0.05f); // Very small embers
+            emberMain.maxParticles = 100;
 
             var emberEmission = embers.emission;
-            emberEmission.rateOverTime = 100f;
+            emberEmission.rateOverTime = 80f;
 
             var emberShape = embers.shape;
             emberShape.shapeType = ParticleSystemShapeType.Cone;
-            emberShape.angle = 12f;
-            emberShape.radius = 0.1f;
+            emberShape.angle = 10f;
+            emberShape.radius = 0.08f;
 
-            // Rotate embers over lifetime for realistic tumbling motion
+            // Disable rotation to avoid square artifacts
             var emberRotation = embers.rotationOverLifetime;
-            emberRotation.enabled = true;
-            emberRotation.z = new ParticleSystem.MinMaxCurve(-90f, 90f); // Gentle tumbling (not spinning)
+            emberRotation.enabled = false;
 
             var emberColor = embers.colorOverLifetime;
             emberColor.enabled = true;
@@ -405,8 +358,8 @@ namespace VRDungeonCrawler.Spells
                     new GradientColorKey(new Color(0.6f, 0.2f, 0f), 1f)
                 },
                 new GradientAlphaKey[] {
-                    new GradientAlphaKey(0.6f, 0f),   // Start less opaque
-                    new GradientAlphaKey(0.4f, 0.5f), // Fade more
+                    new GradientAlphaKey(0.4f, 0f),   // More transparent
+                    new GradientAlphaKey(0.25f, 0.5f), // Very transparent
                     new GradientAlphaKey(0f, 1f)
                 }
             );
@@ -421,31 +374,41 @@ namespace VRDungeonCrawler.Spells
             emberRenderer.material.SetFloat("_Blend", 1);
             emberRenderer.material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
             emberRenderer.material.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            emberRenderer.material.SetFloat("_ZWrite", 0);
+            // Enable soft particles
+            emberRenderer.material.EnableKeyword("_SOFTPARTICLES_ON");
+            emberRenderer.material.SetFloat("_SoftParticlesNearFadeDistance", 0.0f);
+            emberRenderer.material.SetFloat("_SoftParticlesFarFadeDistance", 1.0f);
+            // Enable camera fade
+            emberRenderer.material.EnableKeyword("_FADING_ON");
+            emberRenderer.material.SetFloat("_CameraNearFadeDistance", 0.5f);
+            emberRenderer.material.SetFloat("_CameraFarFadeDistance", 2.0f);
             emberRenderer.material.renderQueue = 3000;
 
-            // === 5. DARK SMOKE WISPS (adds depth) ===
+            // === 4. DARK SMOKE WISPS (adds depth) ===
             GameObject smokeObj = new GameObject("Smoke");
             smokeObj.transform.SetParent(projectile.transform);
 
             ParticleSystem smoke = smokeObj.AddComponent<ParticleSystem>();
             var smokeMain = smoke.main;
-            smokeMain.startLifetime = 1f;
-            smokeMain.startSpeed = new ParticleSystem.MinMaxCurve(-1.5f, -0.5f);
-            smokeMain.startSize = new ParticleSystem.MinMaxCurve(0.15f, 0.35f);
-            smokeMain.maxParticles = 80;
+            smokeMain.startLifetime = new ParticleSystem.MinMaxCurve(1.5f, 2.5f); // Longer lifetime for realistic smoke
+            smokeMain.startSpeed = new ParticleSystem.MinMaxCurve(-1f, -0.3f);
+            smokeMain.startSize = new ParticleSystem.MinMaxCurve(0.1f, 0.2f);
+            smokeMain.maxParticles = 200;
+            smokeMain.simulationSpace = ParticleSystemSimulationSpace.World; // World space so smoke persists!
+            smokeMain.gravityModifier = -0.1f; // Slight upward drift like real smoke
 
             var smokeEmission = smoke.emission;
-            smokeEmission.rateOverTime = 50f;
+            smokeEmission.rateOverTime = 80f; // More smoke particles
 
             var smokeShape = smoke.shape;
             smokeShape.shapeType = ParticleSystemShapeType.Cone;
             smokeShape.angle = 18f;
             smokeShape.radius = 0.12f;
 
-            // Rotate smoke over lifetime for organic billowing
+            // Disable rotation to avoid square artifacts
             var smokeRotation = smoke.rotationOverLifetime;
-            smokeRotation.enabled = true;
-            smokeRotation.z = new ParticleSystem.MinMaxCurve(-20f, 20f); // Very gentle rotation for smoke
+            smokeRotation.enabled = false;
 
             var smokeColor = smoke.colorOverLifetime;
             smokeColor.enabled = true;
@@ -466,7 +429,22 @@ namespace VRDungeonCrawler.Spells
 
             var smokeSize = smoke.sizeOverLifetime;
             smokeSize.enabled = true;
-            smokeSize.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 0.7f, 1f, 1.5f));
+            // Smoke expands significantly over lifetime like real smoke
+            AnimationCurve smokeSizeCurve = new AnimationCurve();
+            smokeSizeCurve.AddKey(0f, 0.5f);
+            smokeSizeCurve.AddKey(0.3f, 1.2f);
+            smokeSizeCurve.AddKey(1f, 2.5f); // Expands to 2.5x size
+            smokeSize.size = new ParticleSystem.MinMaxCurve(1f, smokeSizeCurve);
+
+            // Add velocity over lifetime to slow down and drift
+            var smokeVelocity = smoke.velocityOverLifetime;
+            smokeVelocity.enabled = true;
+            smokeVelocity.space = ParticleSystemSimulationSpace.World;
+            // Slow down over time (drag effect)
+            smokeVelocity.speedModifier = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 1f, 1f, 0.2f));
+            // Add slight random drift
+            smokeVelocity.x = new ParticleSystem.MinMaxCurve(-0.3f, 0.3f);
+            smokeVelocity.z = new ParticleSystem.MinMaxCurve(-0.3f, 0.3f);
 
             var smokeRenderer = smoke.GetComponent<ParticleSystemRenderer>();
             smokeRenderer.renderMode = ParticleSystemRenderMode.Billboard;
@@ -477,7 +455,7 @@ namespace VRDungeonCrawler.Spells
             smokeRenderer.material.SetFloat("_Blend", 0); // Alpha
             smokeRenderer.material.renderQueue = 3000;
 
-            // === 6. BRIGHT GLOWING TRAIL ===
+            // === 5. BRIGHT GLOWING TRAIL ===
             TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
             trail.time = 0.5f;
             trail.startWidth = 0.6f;
@@ -1018,8 +996,23 @@ namespace VRDungeonCrawler.Spells
             // Create explosion effect at impact point with surface normal
             CreateExplosion(transform.position, hitNormal);
 
-            // Destroy projectile
-            Destroy(gameObject);
+            // Stop emitting particles but let existing particles finish their lifetime
+            ParticleSystem[] particleSystems = GetComponentsInChildren<ParticleSystem>();
+            foreach (ParticleSystem ps in particleSystems)
+            {
+                var emission = ps.emission;
+                emission.enabled = false; // Stop emitting new particles
+
+                // For world-space particles, detach from parent so they persist
+                if (ps.main.simulationSpace == ParticleSystemSimulationSpace.World)
+                {
+                    ps.transform.SetParent(null);
+                    Destroy(ps.gameObject, ps.main.startLifetime.constantMax + 1f); // Clean up after particles die
+                }
+            }
+
+            // Destroy core projectile GameObject after a short delay to let particles detach
+            Destroy(gameObject, 0.1f);
         }
 
         private void CreateExplosion(Vector3 position, Vector3 surfaceNormal)
