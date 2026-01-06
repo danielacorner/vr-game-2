@@ -154,60 +154,100 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"Fireball_{spell.spellName}");
 
-            // Bright glowing core with emission
+            // === LAYER 1: White-hot inner core (VERY bright) ===
+            GameObject whiteCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            whiteCore.name = "WhiteHotCore";
+            whiteCore.transform.SetParent(projectile.transform);
+            whiteCore.transform.localPosition = Vector3.zero;
+            whiteCore.transform.localScale = Vector3.one * 0.25f;
+            Destroy(whiteCore.GetComponent<Collider>());
+
+            Material whiteMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            whiteMat.EnableKeyword("_EMISSION");
+            whiteMat.SetColor("_BaseColor", Color.white);
+            whiteMat.SetColor("_EmissionColor", new Color(1f, 0.95f, 0.8f) * 8f); // Intense white-yellow HDR
+            whiteMat.SetFloat("_Smoothness", 1f);
+            whiteCore.GetComponent<MeshRenderer>().material = whiteMat;
+
+            // === LAYER 2: Bright yellow-orange core ===
             GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             core.name = "FireCore";
             core.transform.SetParent(projectile.transform);
             core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.4f;
-
+            core.transform.localScale = Vector3.one * 0.45f;
             Destroy(core.GetComponent<Collider>());
 
-            Material coreMat = new Material(Shader.Find("Sprites/Default"));
-            if (coreMat.shader == null) coreMat.shader = Shader.Find("Unlit/Color");
-            coreMat.color = new Color(1f, 0.3f, 0f, 1f) * 3f; // Bright emissive orange
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(1f, 0.6f, 0.1f));
+            coreMat.SetColor("_EmissionColor", new Color(1f, 0.5f, 0f) * 5f); // Bright orange HDR
+            coreMat.SetFloat("_Smoothness", 0.8f);
             core.GetComponent<MeshRenderer>().material = coreMat;
 
-            // Outer glow layer
+            // === LAYER 3: Outer fire glow (red-orange) ===
             GameObject glow = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             glow.name = "FireGlow";
             glow.transform.SetParent(projectile.transform);
             glow.transform.localPosition = Vector3.zero;
-            glow.transform.localScale = Vector3.one * 0.6f;
-
+            glow.transform.localScale = Vector3.one * 0.65f;
             Destroy(glow.GetComponent<Collider>());
 
-            Material glowMat = new Material(Shader.Find("Sprites/Default"));
-            if (glowMat.shader == null) glowMat.shader = Shader.Find("Unlit/Color");
-            glowMat.color = new Color(1f, 0.5f, 0f, 0.4f);
+            Material glowMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            glowMat.EnableKeyword("_EMISSION");
+            glowMat.SetColor("_BaseColor", new Color(1f, 0.3f, 0f, 0.5f));
+            glowMat.SetColor("_EmissionColor", new Color(1f, 0.2f, 0f) * 3f);
+            glowMat.SetFloat("_Surface", 1); // Transparent
+            glowMat.SetFloat("_Blend", 0); // Alpha
+            glowMat.renderQueue = 3000;
             glow.GetComponent<MeshRenderer>().material = glowMat;
 
-            // Swirling flame wisps (6) - smaller emissive particles
-            for (int i = 0; i < 6; i++)
+            // === LAYER 4: Dancing flame wisps (12 particles) ===
+            for (int i = 0; i < 12; i++)
             {
                 GameObject wisp = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 wisp.name = $"FireWisp{i}";
                 wisp.transform.SetParent(projectile.transform);
-                wisp.transform.localScale = Vector3.one * 0.15f;
-
+                wisp.transform.localScale = Vector3.one * Random.Range(0.1f, 0.2f);
                 Destroy(wisp.GetComponent<Collider>());
 
-                Material wispMat = new Material(Shader.Find("Sprites/Default"));
-                wispMat.color = new Color(1f, 0.6f, 0f, 1f) * 2f; // Bright yellow-orange
+                Material wispMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                wispMat.EnableKeyword("_EMISSION");
+                // Alternate between yellow and orange wisps
+                Color wispColor = (i % 2 == 0) ? new Color(1f, 0.8f, 0.2f) : new Color(1f, 0.4f, 0f);
+                wispMat.SetColor("_BaseColor", wispColor);
+                wispMat.SetColor("_EmissionColor", wispColor * 4f);
                 wisp.GetComponent<MeshRenderer>().material = wispMat;
             }
 
-            // Trail renderer for motion blur
-            TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
-            trail.time = 0.3f;
-            trail.startWidth = 0.5f;
-            trail.endWidth = 0f;
-            trail.material = new Material(Shader.Find("Sprites/Default"));
-            trail.material.color = new Color(1f, 0.3f, 0f, 0.8f) * 2f;
-            trail.startColor = new Color(1f, 0.4f, 0f, 0.8f);
-            trail.endColor = new Color(1f, 0.2f, 0f, 0f);
+            // === LAYER 5: Dark smoke particles (adds depth) ===
+            for (int i = 0; i < 6; i++)
+            {
+                GameObject smoke = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                smoke.name = $"Smoke{i}";
+                smoke.transform.SetParent(projectile.transform);
+                smoke.transform.localScale = Vector3.one * Random.Range(0.15f, 0.25f);
+                Destroy(smoke.GetComponent<Collider>());
 
-            // Add animation
+                Material smokeMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                smokeMat.SetColor("_BaseColor", new Color(0.2f, 0.1f, 0.05f, 0.3f));
+                smokeMat.SetFloat("_Surface", 1);
+                smokeMat.renderQueue = 3000;
+                smoke.GetComponent<MeshRenderer>().material = smokeMat;
+            }
+
+            // === TRAIL: Fiery motion trail ===
+            TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
+            trail.time = 0.5f;
+            trail.startWidth = 0.6f;
+            trail.endWidth = 0f;
+            Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            trailMat.EnableKeyword("_EMISSION");
+            trailMat.SetColor("_EmissionColor", new Color(1f, 0.4f, 0f) * 3f);
+            trail.material = trailMat;
+            trail.startColor = new Color(1f, 0.5f, 0f, 1f);
+            trail.endColor = new Color(0.8f, 0.2f, 0f, 0f);
+
+            // Add enhanced animation
             FireballAnimation anim = projectile.AddComponent<FireballAnimation>();
 
             return projectile;
@@ -217,59 +257,130 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"IceShard_{spell.spellName}");
 
-            // Main crystal shard - glowing ice core
+            // === LAYER 1: Brilliant white-blue core (ultra-bright crystalline center) ===
+            GameObject brilliantCore = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            brilliantCore.name = "BrilliantCore";
+            brilliantCore.transform.SetParent(projectile.transform);
+            brilliantCore.transform.localPosition = Vector3.zero;
+            brilliantCore.transform.localScale = new Vector3(0.15f, 0.15f, 0.5f);
+            Destroy(brilliantCore.GetComponent<Collider>());
+
+            Material brilliantMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            brilliantMat.EnableKeyword("_EMISSION");
+            brilliantMat.SetColor("_BaseColor", new Color(0.95f, 0.98f, 1f));
+            brilliantMat.SetColor("_EmissionColor", new Color(0.8f, 0.95f, 1f) * 10f); // Intense icy white-blue HDR
+            brilliantMat.SetFloat("_Smoothness", 1f);
+            brilliantMat.SetFloat("_Metallic", 0.9f); // Highly reflective like ice
+            brilliantCore.GetComponent<MeshRenderer>().material = brilliantMat;
+
+            // === LAYER 2: Cyan crystalline core ===
             GameObject core = GameObject.CreatePrimitive(PrimitiveType.Cube);
             core.name = "IceCore";
             core.transform.SetParent(projectile.transform);
             core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = new Vector3(0.2f, 0.2f, 0.7f);
-
+            core.transform.localScale = new Vector3(0.25f, 0.25f, 0.7f);
             Destroy(core.GetComponent<Collider>());
 
-            Material coreMat = new Material(Shader.Find("Sprites/Default"));
-            coreMat.color = new Color(0.6f, 0.9f, 1f, 1f) * 2f; // Bright cyan glow
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(0.5f, 0.85f, 1f));
+            coreMat.SetColor("_EmissionColor", new Color(0.4f, 0.8f, 1f) * 6f); // Bright cyan HDR
+            coreMat.SetFloat("_Smoothness", 0.95f);
+            coreMat.SetFloat("_Metallic", 0.8f);
             core.GetComponent<MeshRenderer>().material = coreMat;
 
-            // Outer crystalline layer
+            // === LAYER 3: Outer crystalline frost layer (transparent) ===
             GameObject outer = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            outer.name = "IceOuter";
+            outer.name = "FrostLayer";
             outer.transform.SetParent(projectile.transform);
             outer.transform.localPosition = Vector3.zero;
-            outer.transform.localScale = new Vector3(0.25f, 0.25f, 0.8f);
-
+            outer.transform.localScale = new Vector3(0.35f, 0.35f, 0.85f);
             Destroy(outer.GetComponent<Collider>());
 
-            Material outerMat = new Material(Shader.Find("Sprites/Default"));
-            if (outerMat.shader == null) outerMat.shader = Shader.Find("Unlit/Color");
-            outerMat.color = new Color(0.7f, 0.95f, 1f, 0.6f);
+            Material outerMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            outerMat.EnableKeyword("_EMISSION");
+            outerMat.SetColor("_BaseColor", new Color(0.7f, 0.9f, 1f, 0.4f));
+            outerMat.SetColor("_EmissionColor", new Color(0.6f, 0.85f, 1f) * 3f);
+            outerMat.SetFloat("_Surface", 1); // Transparent
+            outerMat.SetFloat("_Blend", 0); // Alpha blend
+            outerMat.SetFloat("_Smoothness", 0.9f);
+            outerMat.renderQueue = 3000;
             outer.GetComponent<MeshRenderer>().material = outerMat;
 
-            // Spinning ice crystals (8)
-            for (int i = 0; i < 8; i++)
+            // === LAYER 4: Orbiting ice crystals (16 shards) ===
+            for (int i = 0; i < 16; i++)
             {
                 GameObject crystal = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 crystal.name = $"IceCrystal{i}";
                 crystal.transform.SetParent(projectile.transform);
-                crystal.transform.localScale = new Vector3(0.06f, 0.06f, 0.25f);
-
+                crystal.transform.localScale = new Vector3(0.05f, 0.05f, Random.Range(0.2f, 0.35f));
                 Destroy(crystal.GetComponent<Collider>());
 
-                Material crystalMat = new Material(Shader.Find("Sprites/Default"));
-                crystalMat.color = new Color(0.8f, 0.95f, 1f, 1f) * 1.5f;
+                Material crystalMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                crystalMat.EnableKeyword("_EMISSION");
+                // Vary between pure white and cyan crystals
+                Color crystalColor = (i % 3 == 0) ?
+                    new Color(0.9f, 0.95f, 1f) :
+                    new Color(0.6f, 0.9f, 1f);
+                crystalMat.SetColor("_BaseColor", crystalColor);
+                crystalMat.SetColor("_EmissionColor", crystalColor * 5f); // Bright HDR
+                crystalMat.SetFloat("_Smoothness", 1f);
+                crystalMat.SetFloat("_Metallic", 0.7f);
                 crystal.GetComponent<MeshRenderer>().material = crystalMat;
             }
 
-            // Frost trail
-            TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
-            trail.time = 0.4f;
-            trail.startWidth = 0.4f;
-            trail.endWidth = 0f;
-            trail.material = new Material(Shader.Find("Sprites/Default"));
-            trail.material.color = new Color(0.7f, 0.9f, 1f, 0.6f) * 1.5f;
-            trail.startColor = new Color(0.7f, 0.95f, 1f, 0.8f);
-            trail.endColor = new Color(0.6f, 0.9f, 1f, 0f);
+            // === LAYER 5: Frost vapor particles (10 mist particles) ===
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject vapor = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                vapor.name = $"FrostVapor{i}";
+                vapor.transform.SetParent(projectile.transform);
+                vapor.transform.localScale = Vector3.one * Random.Range(0.12f, 0.22f);
+                Destroy(vapor.GetComponent<Collider>());
 
-            // Add animation
+                Material vaporMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                vaporMat.EnableKeyword("_EMISSION");
+                vaporMat.SetColor("_BaseColor", new Color(0.85f, 0.95f, 1f, 0.25f));
+                vaporMat.SetColor("_EmissionColor", new Color(0.8f, 0.9f, 1f) * 2f);
+                vaporMat.SetFloat("_Surface", 1); // Transparent
+                vaporMat.SetFloat("_Blend", 0);
+                vaporMat.renderQueue = 3000;
+                vapor.GetComponent<MeshRenderer>().material = vaporMat;
+            }
+
+            // === LAYER 6: Icicle spikes (6 pointed shards) ===
+            for (int i = 0; i < 6; i++)
+            {
+                GameObject spike = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                spike.name = $"IcicleSpike{i}";
+                spike.transform.SetParent(projectile.transform);
+                spike.transform.localScale = new Vector3(0.08f, 0.08f, 0.4f);
+                Destroy(spike.GetComponent<Collider>());
+
+                Material spikeMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                spikeMat.EnableKeyword("_EMISSION");
+                spikeMat.SetColor("_BaseColor", new Color(0.75f, 0.92f, 1f, 0.7f));
+                spikeMat.SetColor("_EmissionColor", new Color(0.7f, 0.9f, 1f) * 4f);
+                spikeMat.SetFloat("_Surface", 1);
+                spikeMat.SetFloat("_Smoothness", 1f);
+                spikeMat.SetFloat("_Metallic", 0.85f);
+                spikeMat.renderQueue = 3000;
+                spike.GetComponent<MeshRenderer>().material = spikeMat;
+            }
+
+            // === TRAIL: Frozen frost trail ===
+            TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
+            trail.time = 0.5f;
+            trail.startWidth = 0.55f;
+            trail.endWidth = 0f;
+            Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            trailMat.EnableKeyword("_EMISSION");
+            trailMat.SetColor("_EmissionColor", new Color(0.6f, 0.85f, 1f) * 4f);
+            trail.material = trailMat;
+            trail.startColor = new Color(0.7f, 0.9f, 1f, 1f);
+            trail.endColor = new Color(0.5f, 0.8f, 1f, 0f);
+
+            // Add enhanced animation
             IceShardAnimation anim = projectile.AddComponent<IceShardAnimation>();
 
             return projectile;
@@ -279,59 +390,122 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"LightningBolt_{spell.spellName}");
 
-            // Super bright energy core
+            // === LAYER 1: Pure white plasma core (EXTREMELY bright) ===
+            GameObject plasmaCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            plasmaCore.name = "PlasmaCore";
+            plasmaCore.transform.SetParent(projectile.transform);
+            plasmaCore.transform.localPosition = Vector3.zero;
+            plasmaCore.transform.localScale = Vector3.one * 0.2f;
+            Destroy(plasmaCore.GetComponent<Collider>());
+
+            Material plasmaMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            plasmaMat.EnableKeyword("_EMISSION");
+            plasmaMat.SetColor("_BaseColor", Color.white);
+            plasmaMat.SetColor("_EmissionColor", new Color(1f, 1f, 0.95f) * 15f); // INTENSE white HDR
+            plasmaMat.SetFloat("_Smoothness", 1f);
+            plasmaCore.GetComponent<MeshRenderer>().material = plasmaMat;
+
+            // === LAYER 2: Electric white-blue energy core ===
             GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             core.name = "LightningCore";
             core.transform.SetParent(projectile.transform);
             core.transform.localPosition = Vector3.zero;
             core.transform.localScale = Vector3.one * 0.35f;
-
             Destroy(core.GetComponent<Collider>());
 
-            Material coreMat = new Material(Shader.Find("Sprites/Default"));
-            coreMat.color = new Color(1f, 1f, 0.95f, 1f) * 4f; // Extremely bright white-blue
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(0.95f, 0.98f, 1f));
+            coreMat.SetColor("_EmissionColor", new Color(0.9f, 0.95f, 1f) * 10f); // Bright white-blue HDR
+            coreMat.SetFloat("_Smoothness", 0.9f);
             core.GetComponent<MeshRenderer>().material = coreMat;
 
-            // Electric aura glow
+            // === LAYER 3: Electric aura glow (transparent) ===
             GameObject aura = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            aura.name = "LightningAura";
+            aura.name = "ElectricAura";
             aura.transform.SetParent(projectile.transform);
             aura.transform.localPosition = Vector3.zero;
             aura.transform.localScale = Vector3.one * 0.55f;
-
             Destroy(aura.GetComponent<Collider>());
 
-            Material auraMat = new Material(Shader.Find("Sprites/Default"));
-            if (auraMat.shader == null) auraMat.shader = Shader.Find("Unlit/Color");
-            auraMat.color = new Color(0.8f, 0.9f, 1f, 0.3f);
+            Material auraMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            auraMat.EnableKeyword("_EMISSION");
+            auraMat.SetColor("_BaseColor", new Color(0.8f, 0.9f, 1f, 0.35f));
+            auraMat.SetColor("_EmissionColor", new Color(0.75f, 0.85f, 1f) * 6f);
+            auraMat.SetFloat("_Surface", 1); // Transparent
+            auraMat.SetFloat("_Blend", 0);
+            auraMat.renderQueue = 3000;
             aura.GetComponent<MeshRenderer>().material = auraMat;
 
-            // Chaotic electric arcs (10)
-            for (int i = 0; i < 10; i++)
+            // === LAYER 4: Chaotic electric arcs (18 lightning tendrils) ===
+            for (int i = 0; i < 18; i++)
             {
                 GameObject arc = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 arc.name = $"Arc{i}";
                 arc.transform.SetParent(projectile.transform);
-                arc.transform.localScale = new Vector3(0.04f, 0.25f, 0.04f);
-
+                arc.transform.localScale = new Vector3(0.04f, Random.Range(0.2f, 0.35f), 0.04f);
                 Destroy(arc.GetComponent<Collider>());
 
-                Material arcMat = new Material(Shader.Find("Sprites/Default"));
-                arcMat.color = new Color(1f, 1f, 0.95f, 1f) * 3f; // Bright white
+                Material arcMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                arcMat.EnableKeyword("_EMISSION");
+                // Vary between pure white and electric blue arcs
+                Color arcColor = (i % 4 == 0) ?
+                    new Color(1f, 1f, 1f) :
+                    new Color(0.85f, 0.92f, 1f);
+                arcMat.SetColor("_BaseColor", arcColor);
+                arcMat.SetColor("_EmissionColor", arcColor * 8f); // Very bright HDR
+                arcMat.SetFloat("_Smoothness", 0.8f);
                 arc.GetComponent<MeshRenderer>().material = arcMat;
             }
 
-            // Electric trail
+            // === LAYER 5: Electric sparks (12 small energy particles) ===
+            for (int i = 0; i < 12; i++)
+            {
+                GameObject spark = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                spark.name = $"Spark{i}";
+                spark.transform.SetParent(projectile.transform);
+                spark.transform.localScale = Vector3.one * Random.Range(0.08f, 0.15f);
+                Destroy(spark.GetComponent<Collider>());
+
+                Material sparkMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                sparkMat.EnableKeyword("_EMISSION");
+                Color sparkColor = new Color(1f, 1f, 0.9f);
+                sparkMat.SetColor("_BaseColor", sparkColor);
+                sparkMat.SetColor("_EmissionColor", sparkColor * 12f); // Extremely bright sparks
+                spark.GetComponent<MeshRenderer>().material = sparkMat;
+            }
+
+            // === LAYER 6: Outer plasma discharge (8 energy wisps) ===
+            for (int i = 0; i < 8; i++)
+            {
+                GameObject discharge = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                discharge.name = $"PlasmaDischarge{i}";
+                discharge.transform.SetParent(projectile.transform);
+                discharge.transform.localScale = Vector3.one * Random.Range(0.12f, 0.2f);
+                Destroy(discharge.GetComponent<Collider>());
+
+                Material dischargeMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                dischargeMat.EnableKeyword("_EMISSION");
+                dischargeMat.SetColor("_BaseColor", new Color(0.9f, 0.95f, 1f, 0.5f));
+                dischargeMat.SetColor("_EmissionColor", new Color(0.85f, 0.9f, 1f) * 5f);
+                dischargeMat.SetFloat("_Surface", 1);
+                dischargeMat.renderQueue = 3000;
+                discharge.GetComponent<MeshRenderer>().material = dischargeMat;
+            }
+
+            // === TRAIL: Electric ionization trail ===
             TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
-            trail.time = 0.25f;
-            trail.startWidth = 0.45f;
+            trail.time = 0.3f;
+            trail.startWidth = 0.5f;
             trail.endWidth = 0f;
-            trail.material = new Material(Shader.Find("Sprites/Default"));
-            trail.material.color = new Color(0.9f, 0.95f, 1f, 0.9f) * 2.5f;
-            trail.startColor = new Color(1f, 1f, 0.95f, 0.9f);
+            Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            trailMat.EnableKeyword("_EMISSION");
+            trailMat.SetColor("_EmissionColor", new Color(0.9f, 0.95f, 1f) * 7f);
+            trail.material = trailMat;
+            trail.startColor = new Color(1f, 1f, 0.95f, 1f);
             trail.endColor = new Color(0.8f, 0.9f, 1f, 0f);
 
-            // Add animation
+            // Add enhanced animation
             LightningAnimation anim = projectile.AddComponent<LightningAnimation>();
 
             return projectile;
@@ -341,59 +515,125 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"WindBlast_{spell.spellName}");
 
-            // Bright swirling energy core
+            // === LAYER 1: Bright white energy vortex core ===
+            GameObject vortexCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            vortexCore.name = "VortexCore";
+            vortexCore.transform.SetParent(projectile.transform);
+            vortexCore.transform.localPosition = Vector3.zero;
+            vortexCore.transform.localScale = Vector3.one * 0.18f;
+            Destroy(vortexCore.GetComponent<Collider>());
+
+            Material vortexMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            vortexMat.EnableKeyword("_EMISSION");
+            vortexMat.SetColor("_BaseColor", new Color(0.95f, 0.98f, 1f));
+            vortexMat.SetColor("_EmissionColor", new Color(0.9f, 0.95f, 1f) * 8f); // Bright white-cyan HDR
+            vortexMat.SetFloat("_Smoothness", 0.9f);
+            vortexCore.GetComponent<MeshRenderer>().material = vortexMat;
+
+            // === LAYER 2: Swirling wind energy core ===
             GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             core.name = "WindCore";
             core.transform.SetParent(projectile.transform);
             core.transform.localPosition = Vector3.zero;
             core.transform.localScale = Vector3.one * 0.3f;
-
             Destroy(core.GetComponent<Collider>());
 
-            Material coreMat = new Material(Shader.Find("Sprites/Default"));
-            coreMat.color = new Color(0.85f, 0.95f, 1f, 1f) * 2.5f; // Bright pale cyan-white
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(0.85f, 0.95f, 1f));
+            coreMat.SetColor("_EmissionColor", new Color(0.8f, 0.92f, 1f) * 5f); // Bright pale cyan HDR
+            coreMat.SetFloat("_Smoothness", 0.85f);
             core.GetComponent<MeshRenderer>().material = coreMat;
 
-            // Outer swirling wind layer
+            // === LAYER 3: Outer swirling wind layer (transparent) ===
             GameObject swirl = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             swirl.name = "WindSwirl";
             swirl.transform.SetParent(projectile.transform);
             swirl.transform.localPosition = Vector3.zero;
             swirl.transform.localScale = Vector3.one * 0.5f;
-
             Destroy(swirl.GetComponent<Collider>());
 
-            Material swirlMat = new Material(Shader.Find("Sprites/Default"));
-            if (swirlMat.shader == null) swirlMat.shader = Shader.Find("Unlit/Color");
-            swirlMat.color = new Color(0.9f, 0.97f, 1f, 0.35f);
+            Material swirlMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            swirlMat.EnableKeyword("_EMISSION");
+            swirlMat.SetColor("_BaseColor", new Color(0.9f, 0.97f, 1f, 0.35f));
+            swirlMat.SetColor("_EmissionColor", new Color(0.85f, 0.93f, 1f) * 3f);
+            swirlMat.SetFloat("_Surface", 1); // Transparent
+            swirlMat.SetFloat("_Blend", 0);
+            swirlMat.renderQueue = 3000;
             swirl.GetComponent<MeshRenderer>().material = swirlMat;
 
-            // Swirling air particles (12) - increased from 8
-            for (int i = 0; i < 12; i++)
+            // === LAYER 4: Spiraling air current particles (20 vortex streams) ===
+            for (int i = 0; i < 20; i++)
             {
                 GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 particle.name = $"WindParticle{i}";
                 particle.transform.SetParent(projectile.transform);
-                particle.transform.localScale = Vector3.one * 0.12f;
-
+                particle.transform.localScale = Vector3.one * Random.Range(0.1f, 0.15f);
                 Destroy(particle.GetComponent<Collider>());
 
-                Material particleMat = new Material(Shader.Find("Sprites/Default"));
-                particleMat.color = new Color(0.9f, 0.95f, 1f, 1f) * 1.8f; // Bright white-cyan
+                Material particleMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                particleMat.EnableKeyword("_EMISSION");
+                // Vary between white and pale cyan
+                Color particleColor = (i % 3 == 0) ?
+                    new Color(1f, 1f, 1f) :
+                    new Color(0.85f, 0.95f, 1f);
+                particleMat.SetColor("_BaseColor", particleColor);
+                particleMat.SetColor("_EmissionColor", particleColor * 6f); // Bright HDR
+                particleMat.SetFloat("_Smoothness", 0.8f);
                 particle.GetComponent<MeshRenderer>().material = particleMat;
             }
 
-            // Wind motion trail
+            // === LAYER 5: Turbulent air wisps (12 flowing streams) ===
+            for (int i = 0; i < 12; i++)
+            {
+                GameObject wisp = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                wisp.name = $"AirWisp{i}";
+                wisp.transform.SetParent(projectile.transform);
+                wisp.transform.localScale = new Vector3(0.06f, 0.06f, Random.Range(0.25f, 0.4f));
+                Destroy(wisp.GetComponent<Collider>());
+
+                Material wispMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                wispMat.EnableKeyword("_EMISSION");
+                wispMat.SetColor("_BaseColor", new Color(0.9f, 0.95f, 1f, 0.6f));
+                wispMat.SetColor("_EmissionColor", new Color(0.88f, 0.93f, 1f) * 4f);
+                wispMat.SetFloat("_Surface", 1);
+                wispMat.SetFloat("_Smoothness", 0.75f);
+                wispMat.renderQueue = 3000;
+                wisp.GetComponent<MeshRenderer>().material = wispMat;
+            }
+
+            // === LAYER 6: Outer atmospheric distortion (8 pressure waves) ===
+            for (int i = 0; i < 8; i++)
+            {
+                GameObject pressure = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                pressure.name = $"PressureWave{i}";
+                pressure.transform.SetParent(projectile.transform);
+                pressure.transform.localScale = Vector3.one * Random.Range(0.15f, 0.25f);
+                Destroy(pressure.GetComponent<Collider>());
+
+                Material pressureMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                pressureMat.EnableKeyword("_EMISSION");
+                pressureMat.SetColor("_BaseColor", new Color(0.92f, 0.96f, 1f, 0.25f));
+                pressureMat.SetColor("_EmissionColor", new Color(0.9f, 0.94f, 1f) * 2.5f);
+                pressureMat.SetFloat("_Surface", 1);
+                pressureMat.SetFloat("_Blend", 0);
+                pressureMat.renderQueue = 3000;
+                pressure.GetComponent<MeshRenderer>().material = pressureMat;
+            }
+
+            // === TRAIL: Wind vortex trail ===
             TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
-            trail.time = 0.35f;
-            trail.startWidth = 0.5f;
+            trail.time = 0.4f;
+            trail.startWidth = 0.55f;
             trail.endWidth = 0f;
-            trail.material = new Material(Shader.Find("Sprites/Default"));
-            trail.material.color = new Color(0.85f, 0.93f, 1f, 0.7f) * 1.8f;
-            trail.startColor = new Color(0.9f, 0.95f, 1f, 0.8f);
+            Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            trailMat.EnableKeyword("_EMISSION");
+            trailMat.SetColor("_EmissionColor", new Color(0.85f, 0.93f, 1f) * 4f);
+            trail.material = trailMat;
+            trail.startColor = new Color(0.9f, 0.95f, 1f, 0.9f);
             trail.endColor = new Color(0.8f, 0.9f, 1f, 0f);
 
-            // Add animation
+            // Add enhanced animation
             WindBlastAnimation anim = projectile.AddComponent<WindBlastAnimation>();
 
             return projectile;
