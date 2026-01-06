@@ -150,104 +150,162 @@ namespace VRDungeonCrawler.Spells
 
         #region Projectile Visuals
 
+        // Create a soft radial gradient texture for smooth particles (shared across all fireballs)
+        private static Texture2D softParticleTexture;
+
+        private Texture2D GetSoftParticleTexture()
+        {
+            if (softParticleTexture != null) return softParticleTexture;
+
+            int size = 128;
+            softParticleTexture = new Texture2D(size, size, TextureFormat.RGBA32, false);
+            softParticleTexture.wrapMode = TextureWrapMode.Clamp;
+
+            Color[] pixels = new Color[size * size];
+            Vector2 center = new Vector2(size / 2f, size / 2f);
+
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    Vector2 pos = new Vector2(x, y);
+                    float distance = Vector2.Distance(pos, center) / (size / 2f);
+
+                    // Soft radial gradient with smooth falloff
+                    float alpha = Mathf.Clamp01(1f - distance);
+                    alpha = Mathf.Pow(alpha, 2f); // Smoother falloff
+
+                    pixels[y * size + x] = new Color(1f, 1f, 1f, alpha);
+                }
+            }
+
+            softParticleTexture.SetPixels(pixels);
+            softParticleTexture.Apply();
+
+            return softParticleTexture;
+        }
+
         private GameObject CreateFireball(SpellData spell)
         {
             GameObject projectile = new GameObject($"Fireball_{spell.spellName}");
 
-            // === LAYER 1: White-hot inner core (VERY bright) ===
-            GameObject whiteCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            whiteCore.name = "WhiteHotCore";
-            whiteCore.transform.SetParent(projectile.transform);
-            whiteCore.transform.localPosition = Vector3.zero;
-            whiteCore.transform.localScale = Vector3.one * 0.25f;
-            Destroy(whiteCore.GetComponent<Collider>());
+            Texture2D particleTex = GetSoftParticleTexture();
 
-            Material whiteMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            whiteMat.EnableKeyword("_EMISSION");
-            whiteMat.SetColor("_BaseColor", Color.white);
-            whiteMat.SetColor("_EmissionColor", new Color(1f, 0.95f, 0.8f) * 8f); // Intense white-yellow HDR
-            whiteMat.SetFloat("_Smoothness", 1f);
-            whiteCore.GetComponent<MeshRenderer>().material = whiteMat;
+            // === SOLID GLOWING CORE: Elongated comet-shaped lava core ===
+            // Inner white-hot core
+            GameObject innerCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            innerCore.name = "InnerCore";
+            innerCore.transform.SetParent(projectile.transform);
+            innerCore.transform.localPosition = new Vector3(0f, 0f, 0.1f); // Pushed forward
+            innerCore.transform.localScale = new Vector3(0.25f, 0.25f, 0.4f); // Elongated comet shape
+            Destroy(innerCore.GetComponent<Collider>());
 
-            // === LAYER 2: Bright yellow-orange core ===
-            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            core.name = "FireCore";
-            core.transform.SetParent(projectile.transform);
-            core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.45f;
-            Destroy(core.GetComponent<Collider>());
+            Material innerMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            innerMat.EnableKeyword("_EMISSION");
+            innerMat.SetColor("_BaseColor", new Color(1f, 1f, 0.95f));
+            innerMat.SetColor("_EmissionColor", new Color(1f, 0.95f, 0.9f) * 20f); // EXTREMELY bright white-hot
+            innerMat.SetFloat("_Smoothness", 1f);
+            innerCore.GetComponent<MeshRenderer>().material = innerMat;
 
-            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            coreMat.EnableKeyword("_EMISSION");
-            coreMat.SetColor("_BaseColor", new Color(1f, 0.6f, 0.1f));
-            coreMat.SetColor("_EmissionColor", new Color(1f, 0.5f, 0f) * 5f); // Bright orange HDR
-            coreMat.SetFloat("_Smoothness", 0.8f);
-            core.GetComponent<MeshRenderer>().material = coreMat;
+            // Middle layer - bright yellow-orange molten lava
+            GameObject middleCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            middleCore.name = "MiddleCore";
+            middleCore.transform.SetParent(projectile.transform);
+            middleCore.transform.localPosition = Vector3.zero;
+            middleCore.transform.localScale = new Vector3(0.4f, 0.4f, 0.65f); // Elongated
+            Destroy(middleCore.GetComponent<Collider>());
 
-            // === LAYER 3: Outer fire glow (red-orange) ===
-            GameObject glow = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            glow.name = "FireGlow";
-            glow.transform.SetParent(projectile.transform);
-            glow.transform.localPosition = Vector3.zero;
-            glow.transform.localScale = Vector3.one * 0.65f;
-            Destroy(glow.GetComponent<Collider>());
+            Material middleMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            middleMat.EnableKeyword("_EMISSION");
+            middleMat.SetColor("_BaseColor", new Color(1f, 0.7f, 0.2f));
+            middleMat.SetColor("_EmissionColor", new Color(1f, 0.6f, 0.1f) * 15f); // Bright molten yellow
+            middleMat.SetFloat("_Smoothness", 0.85f);
+            middleCore.GetComponent<MeshRenderer>().material = middleMat;
 
-            Material glowMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            glowMat.EnableKeyword("_EMISSION");
-            glowMat.SetColor("_BaseColor", new Color(1f, 0.3f, 0f, 0.5f));
-            glowMat.SetColor("_EmissionColor", new Color(1f, 0.2f, 0f) * 3f);
-            glowMat.SetFloat("_Surface", 1); // Transparent
-            glowMat.SetFloat("_Blend", 0); // Alpha
-            glowMat.renderQueue = 3000;
-            glow.GetComponent<MeshRenderer>().material = glowMat;
+            // Outer layer - orange-red lava crust
+            GameObject outerCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            outerCore.name = "OuterCore";
+            outerCore.transform.SetParent(projectile.transform);
+            outerCore.transform.localPosition = new Vector3(0f, 0f, -0.05f); // Slightly back
+            outerCore.transform.localScale = new Vector3(0.5f, 0.5f, 0.8f); // Very elongated
+            Destroy(outerCore.GetComponent<Collider>());
 
-            // === LAYER 4: Dancing flame wisps (12 particles) ===
-            for (int i = 0; i < 12; i++)
-            {
-                GameObject wisp = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                wisp.name = $"FireWisp{i}";
-                wisp.transform.SetParent(projectile.transform);
-                wisp.transform.localScale = Vector3.one * Random.Range(0.1f, 0.2f);
-                Destroy(wisp.GetComponent<Collider>());
+            Material outerMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            outerMat.EnableKeyword("_EMISSION");
+            outerMat.SetColor("_BaseColor", new Color(1f, 0.4f, 0.1f));
+            outerMat.SetColor("_EmissionColor", new Color(1f, 0.35f, 0.05f) * 10f); // Bright orange-red
+            outerMat.SetFloat("_Smoothness", 0.7f);
+            outerCore.GetComponent<MeshRenderer>().material = outerMat;
 
-                Material wispMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-                wispMat.EnableKeyword("_EMISSION");
-                // Alternate between yellow and orange wisps
-                Color wispColor = (i % 2 == 0) ? new Color(1f, 0.8f, 0.2f) : new Color(1f, 0.4f, 0f);
-                wispMat.SetColor("_BaseColor", wispColor);
-                wispMat.SetColor("_EmissionColor", wispColor * 4f);
-                wisp.GetComponent<MeshRenderer>().material = wispMat;
-            }
+            // === SUBTLE TRAILING EMBERS: Very soft, barely visible particles ===
+            GameObject emberParticleObj = new GameObject("EmberParticles");
+            emberParticleObj.transform.SetParent(projectile.transform);
+            emberParticleObj.transform.localPosition = Vector3.zero;
 
-            // === LAYER 5: Dark smoke particles (adds depth) ===
-            for (int i = 0; i < 6; i++)
-            {
-                GameObject smoke = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                smoke.name = $"Smoke{i}";
-                smoke.transform.SetParent(projectile.transform);
-                smoke.transform.localScale = Vector3.one * Random.Range(0.15f, 0.25f);
-                Destroy(smoke.GetComponent<Collider>());
+            ParticleSystem emberPS = emberParticleObj.AddComponent<ParticleSystem>();
+            var emberMain = emberPS.main;
+            emberMain.startLifetime = 0.4f;
+            emberMain.startSpeed = new ParticleSystem.MinMaxCurve(-2f, -1f); // Backwards
+            emberMain.startSize = new ParticleSystem.MinMaxCurve(0.08f, 0.15f); // Small
+            emberMain.maxParticles = 40; // Fewer particles
+            emberMain.loop = true;
 
-                Material smokeMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-                smokeMat.SetColor("_BaseColor", new Color(0.2f, 0.1f, 0.05f, 0.3f));
-                smokeMat.SetFloat("_Surface", 1);
-                smokeMat.renderQueue = 3000;
-                smoke.GetComponent<MeshRenderer>().material = smokeMat;
-            }
+            var emberEmission = emberPS.emission;
+            emberEmission.rateOverTime = 60f; // Moderate emission
 
-            // === TRAIL: Fiery motion trail ===
+            var emberShape = emberPS.shape;
+            emberShape.shapeType = ParticleSystemShapeType.Cone;
+            emberShape.angle = 10f; // Tight cone
+            emberShape.radius = 0.08f;
+
+            // Ember color - bright orange fading to transparent
+            var emberColorOverLifetime = emberPS.colorOverLifetime;
+            emberColorOverLifetime.enabled = true;
+            Gradient emberGradient = new Gradient();
+            emberGradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 0.7f, 0.2f), 0f),
+                    new GradientColorKey(new Color(1f, 0.4f, 0.1f), 0.5f),
+                    new GradientColorKey(new Color(0.8f, 0.2f, 0f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.8f, 0f),
+                    new GradientAlphaKey(0.5f, 0.5f),
+                    new GradientAlphaKey(0f, 1f) // Fully transparent at end
+                }
+            );
+            emberColorOverLifetime.color = new ParticleSystem.MinMaxGradient(emberGradient);
+
+            var emberRenderer = emberPS.GetComponent<ParticleSystemRenderer>();
+            emberRenderer.renderMode = ParticleSystemRenderMode.Billboard;
+            emberRenderer.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            emberRenderer.material.mainTexture = particleTex; // Soft texture
+            emberRenderer.material.SetColor("_BaseColor", Color.white);
+            emberRenderer.material.SetFloat("_Surface", 1);
+            emberRenderer.material.SetFloat("_Blend", 1); // Additive
+            emberRenderer.material.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            emberRenderer.material.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            emberRenderer.material.renderQueue = 3000;
+
+            // === TRAIL RENDERER: Bright glowing wake ===
             TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
-            trail.time = 0.5f;
-            trail.startWidth = 0.6f;
-            trail.endWidth = 0f;
+            trail.time = 0.4f;
+            trail.startWidth = 0.5f;
+            trail.endWidth = 0.02f;
+
             Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             trailMat.EnableKeyword("_EMISSION");
-            trailMat.SetColor("_EmissionColor", new Color(1f, 0.4f, 0f) * 3f);
+            trailMat.SetColor("_BaseColor", new Color(1f, 0.6f, 0.2f));
+            trailMat.SetColor("_EmissionColor", new Color(1f, 0.5f, 0.1f) * 8f); // Bright glowing trail
+            trailMat.SetFloat("_Surface", 1);
+            trailMat.SetFloat("_Blend", 0); // Alpha blend
+            trailMat.renderQueue = 3000;
             trail.material = trailMat;
-            trail.startColor = new Color(1f, 0.5f, 0f, 1f);
-            trail.endColor = new Color(0.8f, 0.2f, 0f, 0f);
 
-            // Add enhanced animation
+            trail.startColor = new Color(1f, 0.7f, 0.2f, 1f);
+            trail.endColor = new Color(1f, 0.3f, 0f, 0f);
+
+            // Add animation component
             FireballAnimation anim = projectile.AddComponent<FireballAnimation>();
 
             return projectile;
