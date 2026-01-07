@@ -53,7 +53,21 @@ namespace VRDungeonCrawler.Spells
             if (hasExploded) return;
             hasExploded = true;
 
-            Debug.Log($"[LinearSpellMovement] Hit {other.gameObject.name}, destroying projectile");
+            Debug.Log($"[LinearSpellMovement] Hit {other.gameObject.name}, creating explosion!");
+
+            // Get surface normal from collision point
+            Vector3 surfaceNormal = Vector3.up; // Default
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position - direction * 0.5f, direction, out hit, 1f))
+            {
+                if (!hit.collider.isTrigger && hit.collider.gameObject == other.gameObject)
+                {
+                    surfaceNormal = hit.normal;
+                }
+            }
+
+            // Create explosion with ricochet particles
+            SpellCaster.CreateSpellExplosion(transform.position, surfaceNormal, direction, speed, spellData);
 
             // Stop particle emission
             ParticleSystem[] particleSystems = GetComponentsInChildren<ParticleSystem>();

@@ -1934,6 +1934,214 @@ namespace VRDungeonCrawler.Spells
             return CreateMeteor(spell);
         }
 
+        /// <summary>
+        /// Public static helper to create spell explosions with ricochet particles
+        /// Can be called from LinearSpellMovement or other projectile classes
+        /// </summary>
+        public static void CreateSpellExplosion(Vector3 position, Vector3 surfaceNormal, Vector3 direction, float speed, SpellData spellData)
+        {
+            if (spellData == null) return;
+
+            string spellName = spellData.spellName.ToLower();
+
+            if (spellName.Contains("fire") || spellName.Contains("flame"))
+                CreateFireExplosionStatic(position, surfaceNormal, direction, speed);
+            else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("shard"))
+                CreateIceExplosionStatic(position, surfaceNormal, direction, speed);
+            else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("bolt"))
+                CreateLightningExplosionStatic(position, surfaceNormal, direction, speed);
+            else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("blast"))
+                CreateWindExplosionStatic(position, surfaceNormal, direction, speed);
+        }
+
+        private static Vector3 GetRicochetDirectionStatic(Vector3 direction, Vector3 surfaceNormal)
+        {
+            Vector3 reflected = Vector3.Reflect(direction, surfaceNormal);
+            float spreadAngle = Random.Range(30f, 60f);
+            Vector3 randomOffset = Random.insideUnitSphere * Mathf.Tan(spreadAngle * Mathf.Deg2Rad);
+            Vector3 ricochetDir = (reflected.normalized + randomOffset).normalized;
+
+            if (Vector3.Dot(ricochetDir, surfaceNormal) < 0.1f)
+            {
+                ricochetDir = (ricochetDir + surfaceNormal * 0.5f).normalized;
+            }
+
+            return ricochetDir;
+        }
+
+        private static void CreateFireExplosionStatic(Vector3 position, Vector3 surfaceNormal, Vector3 direction, float speed)
+        {
+            GameObject explosion = new GameObject("FireExplosion");
+            explosion.transform.position = position;
+
+            for (int i = 0; i < 12; i++)
+            {
+                GameObject flame = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                flame.name = $"Flame{i}";
+                flame.transform.SetParent(explosion.transform);
+                flame.transform.localPosition = Vector3.zero;
+                flame.transform.localScale = Vector3.one * 0.15f;
+
+                SphereCollider collider = flame.GetComponent<SphereCollider>();
+                if (collider != null) collider.radius = 0.075f;
+
+                Rigidbody rb = flame.AddComponent<Rigidbody>();
+                rb.mass = 0.1f;
+                rb.linearDamping = 0.5f;
+                rb.useGravity = false;
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                PhysicsMaterial bounceMat = new PhysicsMaterial("FireParticleBounce");
+                bounceMat.bounciness = 0.6f;
+                bounceMat.dynamicFriction = 0.3f;
+                bounceMat.staticFriction = 0.3f;
+                bounceMat.frictionCombine = PhysicsMaterialCombine.Average;
+                bounceMat.bounceCombine = PhysicsMaterialCombine.Average;
+                collider.material = bounceMat;
+
+                Material mat = new Material(Shader.Find("Sprites/Default"));
+                mat.color = new Color(1f, Random.Range(0.3f, 0.6f), 0f, 1f) * 2f;
+                flame.GetComponent<MeshRenderer>().material = mat;
+
+                FireExplosionParticle particle = flame.AddComponent<FireExplosionParticle>();
+                particle.direction = GetRicochetDirectionStatic(direction, surfaceNormal);
+                particle.speed = speed * 0.4f;
+                particle.rb = rb;
+            }
+
+            Object.Destroy(explosion, 1f);
+        }
+
+        private static void CreateIceExplosionStatic(Vector3 position, Vector3 surfaceNormal, Vector3 direction, float speed)
+        {
+            GameObject explosion = new GameObject("IceExplosion");
+            explosion.transform.position = position;
+
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject shard = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                shard.name = $"IceShard{i}";
+                shard.transform.SetParent(explosion.transform);
+                shard.transform.localPosition = Vector3.zero;
+                shard.transform.localScale = new Vector3(0.05f, 0.2f, 0.05f);
+                shard.transform.localRotation = Random.rotation;
+
+                BoxCollider collider = shard.GetComponent<BoxCollider>();
+                if (collider != null) collider.size = new Vector3(0.8f, 0.8f, 0.8f);
+
+                Rigidbody rb = shard.AddComponent<Rigidbody>();
+                rb.mass = 0.15f;
+                rb.linearDamping = 0.4f;
+                rb.useGravity = false;
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                PhysicsMaterial bounceMat = new PhysicsMaterial("IceParticleBounce");
+                bounceMat.bounciness = 0.7f;
+                bounceMat.dynamicFriction = 0.1f;
+                bounceMat.staticFriction = 0.1f;
+                bounceMat.frictionCombine = PhysicsMaterialCombine.Minimum;
+                bounceMat.bounceCombine = PhysicsMaterialCombine.Average;
+                collider.material = bounceMat;
+
+                Material mat = new Material(Shader.Find("Sprites/Default"));
+                mat.color = new Color(0.6f, 0.9f, 1f, 1f) * 1.8f;
+                shard.GetComponent<MeshRenderer>().material = mat;
+
+                IceExplosionParticle particle = shard.AddComponent<IceExplosionParticle>();
+                particle.direction = GetRicochetDirectionStatic(direction, surfaceNormal);
+                particle.speed = speed * 0.45f;
+                particle.rb = rb;
+            }
+
+            Object.Destroy(explosion, 1.2f);
+        }
+
+        private static void CreateLightningExplosionStatic(Vector3 position, Vector3 surfaceNormal, Vector3 direction, float speed)
+        {
+            GameObject explosion = new GameObject("LightningExplosion");
+            explosion.transform.position = position;
+
+            for (int i = 0; i < 15; i++)
+            {
+                GameObject spark = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                spark.name = $"Spark{i}";
+                spark.transform.SetParent(explosion.transform);
+                spark.transform.localPosition = Vector3.zero;
+                spark.transform.localScale = Vector3.one * 0.125f;
+
+                SphereCollider collider = spark.GetComponent<SphereCollider>();
+                if (collider != null) collider.radius = 0.0625f;
+
+                Rigidbody rb = spark.AddComponent<Rigidbody>();
+                rb.mass = 0.05f;
+                rb.linearDamping = 0.3f;
+                rb.useGravity = false;
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                PhysicsMaterial bounceMat = new PhysicsMaterial("LightningParticleBounce");
+                bounceMat.bounciness = 0.8f;
+                bounceMat.dynamicFriction = 0.05f;
+                bounceMat.staticFriction = 0.05f;
+                bounceMat.frictionCombine = PhysicsMaterialCombine.Minimum;
+                bounceMat.bounceCombine = PhysicsMaterialCombine.Maximum;
+                collider.material = bounceMat;
+
+                Material mat = new Material(Shader.Find("Sprites/Default"));
+                mat.color = new Color(1f, 1f, 0.95f, 1f) * 3f;
+                spark.GetComponent<MeshRenderer>().material = mat;
+
+                LightningExplosionParticle particle = spark.AddComponent<LightningExplosionParticle>();
+                particle.direction = GetRicochetDirectionStatic(direction, surfaceNormal);
+                particle.speed = speed * 0.55f;
+                particle.rb = rb;
+            }
+
+            Object.Destroy(explosion, 0.8f);
+        }
+
+        private static void CreateWindExplosionStatic(Vector3 position, Vector3 surfaceNormal, Vector3 direction, float speed)
+        {
+            GameObject explosion = new GameObject("WindExplosion");
+            explosion.transform.position = position;
+
+            for (int i = 0; i < 12; i++)
+            {
+                GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                particle.name = $"WindParticle{i}";
+                particle.transform.SetParent(explosion.transform);
+                particle.transform.localPosition = Vector3.zero;
+                particle.transform.localScale = Vector3.one * 0.12f;
+
+                SphereCollider collider = particle.GetComponent<SphereCollider>();
+                if (collider != null) collider.radius = 0.06f;
+
+                Rigidbody rb = particle.AddComponent<Rigidbody>();
+                rb.mass = 0.08f;
+                rb.linearDamping = 0.6f;
+                rb.useGravity = false;
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                PhysicsMaterial bounceMat = new PhysicsMaterial("WindParticleBounce");
+                bounceMat.bounciness = 0.65f;
+                bounceMat.dynamicFriction = 0.2f;
+                bounceMat.staticFriction = 0.2f;
+                bounceMat.frictionCombine = PhysicsMaterialCombine.Average;
+                bounceMat.bounceCombine = PhysicsMaterialCombine.Average;
+                collider.material = bounceMat;
+
+                Material mat = new Material(Shader.Find("Sprites/Default"));
+                mat.color = new Color(0.85f, 0.95f, 1f, 1f) * 2f;
+                particle.GetComponent<MeshRenderer>().material = mat;
+
+                WindExplosionParticle windParticle = particle.AddComponent<WindExplosionParticle>();
+                windParticle.direction = GetRicochetDirectionStatic(direction, surfaceNormal);
+                windParticle.speed = speed * 0.42f;
+                windParticle.rb = rb;
+            }
+
+            Object.Destroy(explosion, 1f);
+        }
+
         #endregion
     }
 
