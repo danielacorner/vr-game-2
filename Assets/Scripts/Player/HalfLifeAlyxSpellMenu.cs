@@ -55,6 +55,7 @@ namespace VRDungeonCrawler.Player
         private List<SpellIconObject> spellIcons = new List<SpellIconObject>();
         private GameObject menuRoot;
         private int hoveredIndex = -1;
+        private int previousHoveredIndex = -1; // Track previous hover for haptic feedback
         private Vector2 joystickInput;
 
         // Fixed menu position (set when menu opens)
@@ -433,6 +434,19 @@ namespace VRDungeonCrawler.Player
             {
                 hoveredIndex = -1;
             }
+
+            // Send haptic feedback when hovering over a new spell
+            if (hoveredIndex != previousHoveredIndex && hoveredIndex >= 0)
+            {
+                if (deviceFound && device.isValid)
+                {
+                    // Light haptic pulse when entering hover state
+                    device.SendHapticImpulse(0, 0.3f, 0.05f);
+                    Debug.Log($"[AlyxSpellMenu] Haptic feedback for hovering spell {hoveredIndex}");
+                }
+            }
+
+            previousHoveredIndex = hoveredIndex;
         }
 
         private void UpdateVisuals()

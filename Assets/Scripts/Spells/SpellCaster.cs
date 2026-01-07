@@ -38,6 +38,7 @@ namespace VRDungeonCrawler.Spells
         private bool isFullyCharged = false;
         private float chargeStartTime = 0f;
         private GameObject chargeEffect = null;
+        private GameObject chargeBubble = null; // Visual bubble that grows with charge
         private float currentChargeProgress = 0f; // 0-1, persists during fade-out
         private bool isFadingOut = false;
 
@@ -115,13 +116,6 @@ namespace VRDungeonCrawler.Spells
 
         private void StartCharging()
         {
-            // Check if we're on cooldown
-            if (Time.time < lastCastTime + castCooldown)
-            {
-                Debug.Log($"[SpellCaster] Spell on cooldown ({Time.time - lastCastTime:F2}s)");
-                return;
-            }
-
             // Get current spell
             if (SpellManager.Instance == null || SpellManager.Instance.currentSpell == null)
             {
@@ -145,6 +139,10 @@ namespace VRDungeonCrawler.Spells
 
                 // Create charge-up visual effect in hand
                 CreateChargeEffect(SpellManager.Instance.currentSpell);
+
+                // Create charging bubble
+                CreateChargingBubble(SpellManager.Instance.currentSpell);
+
                 Debug.Log($"[SpellCaster] Started charging {SpellManager.Instance.currentSpell.spellName}");
             }
 
@@ -179,7 +177,12 @@ namespace VRDungeonCrawler.Spells
                     device.SendHapticImpulse(0, 0.8f, 0.15f);
                 }
 
-                // Create "pop" animation - expanding sphere that fades out
+                // Destroy charging bubble and create "pop" animation
+                if (chargeBubble != null)
+                {
+                    Destroy(chargeBubble);
+                    chargeBubble = null;
+                }
                 CreateChargeCompletePopEffect();
 
                 // Enhance charge effect to show it's ready to fire
@@ -200,6 +203,14 @@ namespace VRDungeonCrawler.Spells
             {
                 float scale = Mathf.Lerp(0.15f, 0.4f, Mathf.Min(chargeProgress, 1f));
                 chargeEffect.transform.localScale = Vector3.one * scale;
+            }
+
+            // Update charging bubble scale to grow with progress
+            if (chargeBubble != null)
+            {
+                // Bubble grows from 0.1 to 0.6 as charge progresses
+                float bubbleScale = Mathf.Lerp(0.1f, 0.6f, Mathf.Min(chargeProgress, 1f));
+                chargeBubble.transform.localScale = Vector3.one * bubbleScale;
             }
         }
 
@@ -260,6 +271,22 @@ namespace VRDungeonCrawler.Spells
                         main.startColor = color;
                     }
                 }
+
+                // Shrink charging bubble as charge fades
+                if (chargeBubble != null)
+                {
+                    float bubbleScale = Mathf.Lerp(0.1f, 0.6f, currentChargeProgress);
+                    chargeBubble.transform.localScale = Vector3.one * bubbleScale;
+
+                    // Also fade bubble alpha
+                    MeshRenderer renderer = chargeBubble.GetComponent<MeshRenderer>();
+                    if (renderer != null && renderer.material != null)
+                    {
+                        Color baseColor = renderer.material.GetColor("_BaseColor");
+                        baseColor.a = 0.3f * currentChargeProgress;
+                        renderer.material.SetColor("_BaseColor", baseColor);
+                    }
+                }
             }
         }
 
@@ -308,6 +335,48 @@ namespace VRDungeonCrawler.Spells
 
             // Add animation component
             ChargePopAnimation popAnim = popSphere.AddComponent<ChargePopAnimation>();
+            popAnim.isQuickPop = true; // Make it a quick pop
+        }
+
+        private void CreateChargingBubble(SpellData spell)
+        {
+            if (chargeEffect == null) return;
+
+            // Create sphere at charge effect position
+            chargeBubble = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            chargeBubble.name = "ChargingBubble";
+            chargeBubble.transform.SetParent(chargeEffect.transform);
+            chargeBubble.transform.localPosition = Vector3.zero;
+            chargeBubble.transform.localScale = Vector3.one * 0.1f; // Start small
+            Destroy(chargeBubble.GetComponent<Collider>());
+
+            // Set up material based on spell type
+            Material bubbleMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            bubbleMat.EnableKeyword("_EMISSION");
+
+            string spellName = spell.spellName.ToLower();
+            Color emissionColor;
+            if (spellName.Contains("fire") || spellName.Contains("flame"))
+                emissionColor = new Color(2f, 1.2f, 0.4f);
+            else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("shard"))
+                emissionColor = new Color(0.6f, 0.85f, 1f);
+            else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("bolt"))
+                emissionColor = new Color(0.9f, 0.95f, 1f);
+            else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("blast"))
+                emissionColor = new Color(0.85f, 0.93f, 1f);
+            else
+                emissionColor = spell.spellColor;
+
+            bubbleMat.SetColor("_BaseColor", new Color(emissionColor.r, emissionColor.g, emissionColor.b, 0.3f));
+            bubbleMat.SetColor("_EmissionColor", emissionColor * 4f);
+            bubbleMat.SetFloat("_Surface", 1); // Transparent
+            bubbleMat.SetFloat("_Blend", 0); // Alpha blend
+            bubbleMat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            bubbleMat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            bubbleMat.SetFloat("_ZWrite", 0);
+            bubbleMat.SetInt("_AlphaClip", 0);
+            bubbleMat.renderQueue = 3000;
+            chargeBubble.GetComponent<MeshRenderer>().material = bubbleMat;
         }
 
         private void TryCastSpell()
@@ -1667,9 +1736,30 @@ namespace VRDungeonCrawler.Spells
                 flame.name = $"Flame{i}";
                 flame.transform.SetParent(explosion.transform);
                 flame.transform.localPosition = Vector3.zero;
-                flame.transform.localScale = Vector3.one * 0.3f;
+                flame.transform.localScale = Vector3.one * 0.15f; // Reduced by 50%
 
-                Destroy(flame.GetComponent<Collider>());
+                // Keep collider for physics-based collision, but make it smaller
+                SphereCollider collider = flame.GetComponent<SphereCollider>();
+                if (collider != null)
+                {
+                    collider.radius = 0.075f; // Smaller than visual size (also 50% reduction)
+                }
+
+                // Add Rigidbody for physics-based collision
+                Rigidbody rb = flame.AddComponent<Rigidbody>();
+                rb.mass = 0.1f; // Light particles (projectile is ~1.0 mass implied)
+                rb.linearDamping = 0.5f; // Some air resistance
+                rb.useGravity = false; // No gravity on ricochet particles
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                // Add physics material for bouncing
+                PhysicsMaterial bounceMat = new PhysicsMaterial("FireParticleBounce");
+                bounceMat.bounciness = 0.6f; // Bouncy but loses some energy
+                bounceMat.dynamicFriction = 0.3f;
+                bounceMat.staticFriction = 0.3f;
+                bounceMat.frictionCombine = PhysicsMaterialCombine.Average;
+                bounceMat.bounceCombine = PhysicsMaterialCombine.Average;
+                collider.material = bounceMat;
 
                 Material mat = new Material(Shader.Find("Sprites/Default"));
                 mat.color = new Color(1f, Random.Range(0.3f, 0.6f), 0f, 1f) * 2f;
@@ -1677,7 +1767,10 @@ namespace VRDungeonCrawler.Spells
 
                 FireExplosionParticle particle = flame.AddComponent<FireExplosionParticle>();
                 particle.direction = GetRicochetDirection(surfaceNormal); // Realistic ricochet
-                particle.speed = 2f;
+                // Scale speed based on projectile speed (40% of projectile speed accounting for mass difference)
+                float particleSpeed = this.speed * 0.4f;
+                particle.speed = particleSpeed;
+                particle.rb = rb; // Pass rigidbody reference
             }
 
             Destroy(explosion, 1f);
@@ -1695,10 +1788,31 @@ namespace VRDungeonCrawler.Spells
                 shard.name = $"IceShard{i}";
                 shard.transform.SetParent(explosion.transform);
                 shard.transform.localPosition = Vector3.zero;
-                shard.transform.localScale = new Vector3(0.1f, 0.4f, 0.1f);
+                shard.transform.localScale = new Vector3(0.05f, 0.2f, 0.05f); // Reduced by 50%
                 shard.transform.localRotation = Random.rotation;
 
-                Destroy(shard.GetComponent<Collider>());
+                // Keep collider for physics-based collision
+                BoxCollider collider = shard.GetComponent<BoxCollider>();
+                if (collider != null)
+                {
+                    collider.size = new Vector3(0.8f, 0.8f, 0.8f); // Slightly smaller than visual
+                }
+
+                // Add Rigidbody for physics-based collision
+                Rigidbody rb = shard.AddComponent<Rigidbody>();
+                rb.mass = 0.15f; // Slightly heavier than fire (denser ice)
+                rb.linearDamping = 0.4f; // Less air resistance (more aerodynamic shards)
+                rb.useGravity = false; // No gravity on ricochet particles
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                // Add physics material for bouncing
+                PhysicsMaterial bounceMat = new PhysicsMaterial("IceParticleBounce");
+                bounceMat.bounciness = 0.7f; // More bouncy (hard ice)
+                bounceMat.dynamicFriction = 0.1f; // Slippery ice
+                bounceMat.staticFriction = 0.1f;
+                bounceMat.frictionCombine = PhysicsMaterialCombine.Minimum;
+                bounceMat.bounceCombine = PhysicsMaterialCombine.Average;
+                collider.material = bounceMat;
 
                 Material mat = new Material(Shader.Find("Sprites/Default"));
                 mat.color = new Color(0.6f, 0.9f, 1f, 1f) * 1.8f;
@@ -1706,7 +1820,10 @@ namespace VRDungeonCrawler.Spells
 
                 IceExplosionParticle particle = shard.AddComponent<IceExplosionParticle>();
                 particle.direction = GetRicochetDirection(surfaceNormal); // Realistic ricochet
-                particle.speed = 2.5f;
+                // Scale speed based on projectile speed (45% - slightly faster due to less drag)
+                float particleSpeed = this.speed * 0.45f;
+                particle.speed = particleSpeed;
+                particle.rb = rb; // Pass rigidbody reference
             }
 
             Destroy(explosion, 1.2f);
@@ -1724,9 +1841,30 @@ namespace VRDungeonCrawler.Spells
                 spark.name = $"Spark{i}";
                 spark.transform.SetParent(explosion.transform);
                 spark.transform.localPosition = Vector3.zero;
-                spark.transform.localScale = Vector3.one * 0.25f;
+                spark.transform.localScale = Vector3.one * 0.125f; // Reduced by 50%
 
-                Destroy(spark.GetComponent<Collider>());
+                // Keep collider for physics-based collision
+                SphereCollider collider = spark.GetComponent<SphereCollider>();
+                if (collider != null)
+                {
+                    collider.radius = 0.0625f; // Smaller than visual size (also 50% reduction)
+                }
+
+                // Add Rigidbody for physics-based collision
+                Rigidbody rb = spark.AddComponent<Rigidbody>();
+                rb.mass = 0.05f; // Very light (pure energy)
+                rb.linearDamping = 0.3f; // Low drag (fast moving energy)
+                rb.useGravity = false; // Lightning sparks don't fall immediately
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                // Add physics material for bouncing
+                PhysicsMaterial bounceMat = new PhysicsMaterial("LightningParticleBounce");
+                bounceMat.bounciness = 0.8f; // Very bouncy (energetic)
+                bounceMat.dynamicFriction = 0.05f; // Almost no friction (energy discharge)
+                bounceMat.staticFriction = 0.05f;
+                bounceMat.frictionCombine = PhysicsMaterialCombine.Minimum;
+                bounceMat.bounceCombine = PhysicsMaterialCombine.Maximum;
+                collider.material = bounceMat;
 
                 Material mat = new Material(Shader.Find("Sprites/Default"));
                 mat.color = new Color(1f, 1f, 0.95f, 1f) * 3f;
@@ -1734,7 +1872,10 @@ namespace VRDungeonCrawler.Spells
 
                 LightningExplosionParticle particle = spark.AddComponent<LightningExplosionParticle>();
                 particle.direction = GetRicochetDirection(surfaceNormal); // Realistic ricochet
-                particle.speed = 3.5f;
+                // Scale speed based on projectile speed (55% - fastest ricochet due to energy)
+                float particleSpeed = this.speed * 0.55f;
+                particle.speed = particleSpeed;
+                particle.rb = rb; // Pass rigidbody reference
             }
 
             Destroy(explosion, 0.8f);
@@ -1752,9 +1893,30 @@ namespace VRDungeonCrawler.Spells
                 particle.name = $"WindParticle{i}";
                 particle.transform.SetParent(explosion.transform);
                 particle.transform.localPosition = Vector3.zero;
-                particle.transform.localScale = Vector3.one * 0.2f;
+                particle.transform.localScale = Vector3.one * 0.1f; // Reduced by 50%
 
-                Destroy(particle.GetComponent<Collider>());
+                // Keep collider for physics-based collision
+                SphereCollider collider = particle.GetComponent<SphereCollider>();
+                if (collider != null)
+                {
+                    collider.radius = 0.05f; // Smaller than visual size (also 50% reduction)
+                }
+
+                // Add Rigidbody for physics-based collision
+                Rigidbody rb = particle.AddComponent<Rigidbody>();
+                rb.mass = 0.03f; // Very light (air particles)
+                rb.linearDamping = 0.6f; // Higher drag (dispersing air)
+                rb.useGravity = false; // Wind particles float initially
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                // Add physics material for bouncing
+                PhysicsMaterial bounceMat = new PhysicsMaterial("WindParticleBounce");
+                bounceMat.bounciness = 0.5f; // Moderate bounce (soft air)
+                bounceMat.dynamicFriction = 0.4f;
+                bounceMat.staticFriction = 0.4f;
+                bounceMat.frictionCombine = PhysicsMaterialCombine.Average;
+                bounceMat.bounceCombine = PhysicsMaterialCombine.Average;
+                collider.material = bounceMat;
 
                 Material mat = new Material(Shader.Find("Sprites/Default"));
                 mat.color = new Color(0.85f, 0.95f, 1f, 1f) * 2f;
@@ -1762,7 +1924,10 @@ namespace VRDungeonCrawler.Spells
 
                 WindExplosionParticle windParticle = particle.AddComponent<WindExplosionParticle>();
                 windParticle.direction = GetRicochetDirection(surfaceNormal); // Realistic ricochet
-                windParticle.speed = 2.8f;
+                // Scale speed based on projectile speed (42% - moderate speed for air)
+                float particleSpeed = this.speed * 0.42f;
+                windParticle.speed = particleSpeed;
+                windParticle.rb = rb; // Pass rigidbody reference
             }
 
             Destroy(explosion, 1f);
@@ -1947,10 +2112,11 @@ namespace VRDungeonCrawler.Spells
 
     public class ChargePopAnimation : MonoBehaviour
     {
+        public bool isQuickPop = false; // If true, smaller expansion and faster
         private float elapsed = 0f;
-        private float lifetime = 0.3f; // Pop lasts 0.3 seconds
+        private float lifetime;
         private Vector3 startScale;
-        private float targetScale = 0.3f; // Expand to this size
+        private float targetScale;
         private Color initialBaseColor;
         private Color initialEmissionColor;
         private Material material;
@@ -1958,6 +2124,20 @@ namespace VRDungeonCrawler.Spells
         void Start()
         {
             startScale = transform.localScale;
+
+            // Configure based on pop type
+            if (isQuickPop)
+            {
+                // Quick pop: small expansion, fast (bubble was already at 0.6, so expand slightly)
+                lifetime = 0.15f;
+                targetScale = 0.65f; // Only 8% larger than bubble
+            }
+            else
+            {
+                // Normal pop: not used anymore
+                lifetime = 0.3f;
+                targetScale = 0.6f;
+            }
 
             // Cache material and initial colors
             MeshRenderer renderer = GetComponent<MeshRenderer>();
@@ -2009,15 +2189,25 @@ namespace VRDungeonCrawler.Spells
     {
         public Vector3 direction;
         public float speed = 2f;
+        public Rigidbody rb;
         private float elapsed = 0f;
         private float lifetime = 1f;
+
+        void Start()
+        {
+            // Initialize velocity using Rigidbody physics
+            if (rb != null)
+            {
+                rb.linearVelocity = direction * speed;
+            }
+        }
 
         void Update()
         {
             elapsed += Time.deltaTime;
 
-            // Move in the ricochet direction
-            transform.position += direction * speed * Time.deltaTime;
+            // Physics handles movement via Rigidbody.velocity
+            // Collisions and bouncing handled automatically by PhysicMaterial
 
             // Fade out
             float alpha = 1f - (elapsed / lifetime);
@@ -2040,15 +2230,25 @@ namespace VRDungeonCrawler.Spells
     {
         public Vector3 direction;
         public float speed = 2.5f;
+        public Rigidbody rb;
         private float elapsed = 0f;
         private float lifetime = 1.2f;
+
+        void Start()
+        {
+            // Initialize velocity using Rigidbody physics
+            if (rb != null)
+            {
+                rb.linearVelocity = direction * speed;
+            }
+        }
 
         void Update()
         {
             elapsed += Time.deltaTime;
 
-            // Move outward
-            transform.position += direction * speed * Time.deltaTime;
+            // Physics handles movement via Rigidbody.velocity
+            // Collisions and bouncing handled automatically by PhysicMaterial
 
             // Spin
             transform.Rotate(Vector3.up, 800f * Time.deltaTime);
@@ -2074,20 +2274,34 @@ namespace VRDungeonCrawler.Spells
     {
         public Vector3 direction;
         public float speed = 3.5f;
+        public Rigidbody rb;
         private float elapsed = 0f;
         private float lifetime = 0.8f;
+
+        void Start()
+        {
+            // Initialize velocity using Rigidbody physics
+            if (rb != null)
+            {
+                rb.linearVelocity = direction * speed;
+            }
+        }
 
         void Update()
         {
             elapsed += Time.deltaTime;
 
-            // Fast chaotic movement
-            Vector3 randomOffset = new Vector3(
-                Mathf.PerlinNoise(Time.time * 10f, elapsed) - 0.5f,
-                Mathf.PerlinNoise(Time.time * 10f + 10f, elapsed) - 0.5f,
-                Mathf.PerlinNoise(Time.time * 10f + 20f, elapsed) - 0.5f
-            );
-            transform.position += (direction + randomOffset * 0.5f) * speed * Time.deltaTime;
+            // Physics handles basic movement via Rigidbody.velocity
+            // Add chaotic electric behavior as force adjustments
+            if (rb != null)
+            {
+                Vector3 chaoticForce = new Vector3(
+                    Mathf.PerlinNoise(Time.time * 10f, elapsed) - 0.5f,
+                    Mathf.PerlinNoise(Time.time * 10f + 10f, elapsed) - 0.5f,
+                    Mathf.PerlinNoise(Time.time * 10f + 20f, elapsed) - 0.5f
+                );
+                rb.AddForce(chaoticForce * speed * 0.5f, ForceMode.Force);
+            }
 
             // Flicker
             float flicker = Mathf.PerlinNoise(Time.time * 30f, elapsed) > 0.4f ? 1f : 0.6f;
@@ -2111,17 +2325,33 @@ namespace VRDungeonCrawler.Spells
     {
         public Vector3 direction;
         public float speed = 2.8f;
+        public Rigidbody rb;
         private float elapsed = 0f;
         private float lifetime = 1f;
+
+        void Start()
+        {
+            // Initialize velocity using Rigidbody physics
+            if (rb != null)
+            {
+                rb.linearVelocity = direction * speed;
+            }
+        }
 
         void Update()
         {
             elapsed += Time.deltaTime;
 
-            // Spiral outward
-            float spiralAngle = elapsed * 360f * 3f;
-            Vector3 spiralOffset = Quaternion.Euler(0f, spiralAngle, 0f) * direction;
-            transform.position += spiralOffset * speed * Time.deltaTime;
+            // Physics handles basic movement via Rigidbody.velocity
+            // Apply spiral force to create swirling wind effect
+            if (rb != null)
+            {
+                // Rotate velocity vector to create spiral
+                float spiralAngle = elapsed * 360f * 3f;
+                Vector3 currentVelocity = rb.linearVelocity;
+                Vector3 spiralVelocity = Quaternion.Euler(0f, Time.deltaTime * 360f * 3f, 0f) * currentVelocity;
+                rb.linearVelocity = spiralVelocity;
+            }
 
             // Fade out
             float alpha = 1f - (elapsed / lifetime);
