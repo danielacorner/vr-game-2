@@ -14,6 +14,10 @@ namespace VRDungeonCrawler.Player
         public Sprite icon; // Icon shown in radial menu
         public Color spellColor = Color.red;
 
+        [Tooltip("Spell tier: 1 = basic (inner ring), 2 = advanced (outer ring)")]
+        [Range(1, 2)]
+        public int tier = 1;
+
         [Header("Casting")]
         public GameObject projectilePrefab;
         public float castCooldown = 0.5f;

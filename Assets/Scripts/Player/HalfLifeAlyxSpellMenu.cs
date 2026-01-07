@@ -21,8 +21,11 @@ namespace VRDungeonCrawler.Player
         [Tooltip("Distance from hand where menu appears")]
         public float menuDistance = 0.15f;
 
-        [Tooltip("Radius of the spell icon circle")]
-        public float iconRadius = 0.15f;
+        [Tooltip("Radius of the inner tier 1 spell icon circle")]
+        public float tier1Radius = 0.12f;
+
+        [Tooltip("Radius of the outer tier 2 spell icon circle")]
+        public float tier2Radius = 0.24f;
 
         [Tooltip("Size of each 3D spell icon")]
         public float iconSize = 0.1f; // Doubled from 0.05f
@@ -37,6 +40,10 @@ namespace VRDungeonCrawler.Player
         [Tooltip("Tilt angle toward player (degrees) - makes top/bottom spells easier to reach")]
         [Range(0f, 45f)]
         public float menuTiltAngle = -40f;
+
+        [Tooltip("Z-axis rotation (degrees) - positive = counterclockwise")]
+        [Range(-180f, 180f)]
+        public float menuZRotation = 30f;
 
         [Header("Visual Settings")]
         public Color normalColor = new Color(1f, 1f, 1f, 0.7f);
@@ -256,11 +263,13 @@ namespace VRDungeonCrawler.Player
                 if (directionToHead != Vector3.zero)
                 {
                     Quaternion lookRotation = Quaternion.LookRotation(directionToHead, Vector3.up);
+                    // Apply Z-axis rotation (counterclockwise around forward axis)
+                    Quaternion zRotation = Quaternion.AngleAxis(menuZRotation, lookRotation * Vector3.forward);
                     // Apply tilt toward player (rotate around the menu's local right axis)
-                    Vector3 localRight = lookRotation * Vector3.right;
+                    Vector3 localRight = (zRotation * lookRotation) * Vector3.right;
                     Quaternion tiltRotation = Quaternion.AngleAxis(menuTiltAngle, localRight);
-                    menuRoot.transform.rotation = tiltRotation * lookRotation;
-                    Debug.Log($"[AlyxSpellMenu] Initial rotation set to face headset position with {menuTiltAngle}° tilt");
+                    menuRoot.transform.rotation = tiltRotation * zRotation * lookRotation;
+                    Debug.Log($"[AlyxSpellMenu] Initial rotation set with {menuTiltAngle}° tilt and {menuZRotation}° Z-rotation");
                 }
             }
 
@@ -296,77 +305,101 @@ namespace VRDungeonCrawler.Player
                 return;
             }
 
-            int spellCount = SpellManager.Instance.availableSpells.Count;
-            float angleStep = 360f / spellCount;
+            // Organize spells by tier
+            List<SpellData> tier1Spells = new List<SpellData>();
+            List<SpellData> tier2Spells = new List<SpellData>();
 
-            for (int i = 0; i < spellCount; i++)
+            foreach (SpellData spell in SpellManager.Instance.availableSpells)
             {
-                SpellData spell = SpellManager.Instance.availableSpells[i];
-
-                // Calculate position in circle
-                // Start at 90° (top) and go clockwise for intuitive compass layout
-                // This ensures: 0=top, 1=right, 2=bottom, 3=left
-                float angle = (90f - i * angleStep) * Mathf.Deg2Rad;
-                Vector3 offset = new Vector3(
-                    Mathf.Cos(angle) * iconRadius,
-                    Mathf.Sin(angle) * iconRadius,
-                    0f
-                );
-
-                // Create hollow glassy sphere container
-                GameObject iconObj = new GameObject($"SpellIcon_{spell.spellName}");
-                iconObj.transform.SetParent(menuRoot.transform);
-                iconObj.transform.localPosition = offset;
-                iconObj.transform.localScale = Vector3.one * iconSize;
-
-                // Create outer hollow sphere
-                GameObject outerSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                outerSphere.name = "GlassSphere";
-                outerSphere.transform.SetParent(iconObj.transform);
-                outerSphere.transform.localPosition = Vector3.zero;
-                outerSphere.transform.localScale = Vector3.one;
-
-                // Remove collider
-                Collider collider = outerSphere.GetComponent<Collider>();
-                if (collider != null)
-                    Destroy(collider);
-
-                // Create glassy translucent material
-                MeshRenderer renderer = outerSphere.GetComponent<MeshRenderer>();
-                Material glassMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-
-                // Translucent glass with spell color tint
-                Color glassColor = spell.spellColor;
-                glassColor.a = 0.3f; // Translucent
-                glassMat.color = glassColor;
-                glassMat.SetFloat("_Metallic", 0.1f);
-                glassMat.SetFloat("_Smoothness", 0.95f); // Very smooth/glassy
-
-                // Enable transparency (requires URP with alpha)
-                glassMat.SetFloat("_Surface", 1); // Transparent
-                glassMat.SetFloat("_Blend", 0); // Alpha blend
-                glassMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                glassMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                glassMat.SetInt("_ZWrite", 0);
-                glassMat.renderQueue = 3000; // Transparent queue
-
-                renderer.material = glassMat;
-
-                // Add animated spell representation inside
-                SpellIconAnimator animator = iconObj.AddComponent<SpellIconAnimator>();
-                animator.spellData = spell;
-
-                // Store icon data
-                SpellIconObject iconData = new SpellIconObject
-                {
-                    gameObject = iconObj,
-                    renderer = renderer, // Renderer of the glass sphere
-                    spell = spell,
-                    targetPosition = offset,
-                    index = i
-                };
-                spellIcons.Add(iconData);
+                if (spell.tier == 1)
+                    tier1Spells.Add(spell);
+                else if (spell.tier == 2)
+                    tier2Spells.Add(spell);
             }
+
+            int iconIndex = 0;
+
+            // Create tier 1 icons (inner ring)
+            for (int i = 0; i < tier1Spells.Count; i++)
+            {
+                CreateSpellIcon(tier1Spells[i], i, tier1Spells.Count, tier1Radius, iconIndex++);
+            }
+
+            // Create tier 2 icons (outer ring)
+            for (int i = 0; i < tier2Spells.Count; i++)
+            {
+                CreateSpellIcon(tier2Spells[i], i, tier2Spells.Count, tier2Radius, iconIndex++);
+            }
+
+            Debug.Log($"[AlyxSpellMenu] Created {tier1Spells.Count} tier-1 and {tier2Spells.Count} tier-2 spell icons");
+        }
+
+        private void CreateSpellIcon(SpellData spell, int positionIndex, int totalInTier, float radius, int globalIndex)
+        {
+            // Calculate position in circle
+            // Start at 90° (top) and go clockwise for intuitive compass layout
+            // This ensures: 0=top, 1=right, 2=bottom, 3=left
+            float angleStep = 360f / totalInTier;
+            float angle = (90f - positionIndex * angleStep) * Mathf.Deg2Rad;
+            Vector3 offset = new Vector3(
+                Mathf.Cos(angle) * radius,
+                Mathf.Sin(angle) * radius,
+                0f
+            );
+
+            // Create hollow glassy sphere container
+            GameObject iconObj = new GameObject($"SpellIcon_T{spell.tier}_{spell.spellName}");
+            iconObj.transform.SetParent(menuRoot.transform);
+            iconObj.transform.localPosition = offset;
+            iconObj.transform.localScale = Vector3.one * iconSize;
+
+            // Create outer hollow sphere
+            GameObject outerSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            outerSphere.name = "GlassSphere";
+            outerSphere.transform.SetParent(iconObj.transform);
+            outerSphere.transform.localPosition = Vector3.zero;
+            outerSphere.transform.localScale = Vector3.one;
+
+            // Remove collider
+            Collider collider = outerSphere.GetComponent<Collider>();
+            if (collider != null)
+                Destroy(collider);
+
+            // Create glassy translucent material
+            MeshRenderer renderer = outerSphere.GetComponent<MeshRenderer>();
+            Material glassMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+
+            // Translucent glass with spell color tint
+            Color glassColor = spell.spellColor;
+            glassColor.a = 0.3f; // Translucent
+            glassMat.color = glassColor;
+            glassMat.SetFloat("_Metallic", 0.1f);
+            glassMat.SetFloat("_Smoothness", 0.95f); // Very smooth/glassy
+
+            // Enable transparency (requires URP with alpha)
+            glassMat.SetFloat("_Surface", 1); // Transparent
+            glassMat.SetFloat("_Blend", 0); // Alpha blend
+            glassMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            glassMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            glassMat.SetInt("_ZWrite", 0);
+            glassMat.renderQueue = 3000; // Transparent queue
+
+            renderer.material = glassMat;
+
+            // Add animated spell representation inside
+            SpellIconAnimator animator = iconObj.AddComponent<SpellIconAnimator>();
+            animator.spellData = spell;
+
+            // Store icon data
+            SpellIconObject iconData = new SpellIconObject
+            {
+                gameObject = iconObj,
+                renderer = renderer, // Renderer of the glass sphere
+                spell = spell,
+                targetPosition = offset,
+                index = globalIndex
+            };
+            spellIcons.Add(iconData);
         }
 
         private void UpdateMenuPosition()
@@ -391,10 +424,12 @@ namespace VRDungeonCrawler.Player
                 if (directionToHead != Vector3.zero)
                 {
                     Quaternion lookRotation = Quaternion.LookRotation(directionToHead, Vector3.up);
+                    // Apply Z-axis rotation (counterclockwise around forward axis)
+                    Quaternion zRotation = Quaternion.AngleAxis(menuZRotation, lookRotation * Vector3.forward);
                     // Apply tilt toward player (rotate around the menu's local right axis)
-                    Vector3 localRight = lookRotation * Vector3.right;
+                    Vector3 localRight = (zRotation * lookRotation) * Vector3.right;
                     Quaternion tiltRotation = Quaternion.AngleAxis(menuTiltAngle, localRight);
-                    menuRoot.transform.rotation = tiltRotation * lookRotation;
+                    menuRoot.transform.rotation = tiltRotation * zRotation * lookRotation;
                 }
             }
         }
@@ -545,8 +580,11 @@ namespace VRDungeonCrawler.Player
             if (handTransform != null)
             {
                 Vector3 menuPos = handTransform.position + handTransform.forward * menuDistance;
+                // Draw both tier circles
                 Gizmos.color = Color.cyan;
-                Gizmos.DrawWireSphere(menuPos, iconRadius);
+                Gizmos.DrawWireSphere(menuPos, tier1Radius);
+                Gizmos.color = new Color(0f, 1f, 1f, 0.5f);
+                Gizmos.DrawWireSphere(menuPos, tier2Radius);
             }
         }
     }
