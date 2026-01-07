@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83501509be1f8477ea8001b6e560611c, type: 3}
-  m_Name: Fireball
+  m_Name: ThunderOrb
   m_EditorClassIdentifier: Assembly-CSharp::VRDungeonCrawler.Player.SpellData
-  spellName: Fireball
+  spellName: Thunder Orb
   icon: {fileID: 0}
-  spellColor: {r: 1, g: 0.3, b: 0, a: 1}
-  tier: 1
-  projectilePrefab: {fileID: 4411743428698332130, guid: 6c65deed6d3f249d3a17ded829825bff, type: 3}
-  castCooldown: 0.5
+  spellColor: {r: 0.9, g: 0.95, b: 1, a: 1}
+  tier: 2
+  projectilePrefab: {fileID: 0}
+  castCooldown: 1.0
   projectileSpeed: 20
-  projectileLifetime: 3
-  damage: 25
-  splashRadius: 1
+  projectileLifetime: 10
+  damage: 50
+  splashRadius: 3
   castEffect: {fileID: 0}
   hitEffect: {fileID: 0}
   castSound: {fileID: 0}
   hitSound: {fileID: 0}
-  description: A basic spell
+  description: An electric orb that bounces wildly, arcing with lightning

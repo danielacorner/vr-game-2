@@ -15,6 +15,7 @@ MonoBehaviour:
   spellName: Ice Shard
   icon: {fileID: 0}
   spellColor: {r: 0.3, g: 0.7, b: 1, a: 1}
+  tier: 1
   projectilePrefab: {fileID: 7182529734983613242, guid: ed47f8347f50f44ed9fe661cf739d4ca, type: 3}
   castCooldown: 0.6
   projectileSpeed: 15

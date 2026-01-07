@@ -9459,6 +9459,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7eb39fd6473244324bc792860e1df7c5, type: 2}
   - {fileID: 11400000, guid: 44bd55517e0d14ee9a0fe7474d9f2906, type: 2}
   - {fileID: 11400000, guid: 38c3c7d77af9e46aba05c7419862236d, type: 2}
+  - {fileID: 11400000, guid: bd46c2ae9e90e428e8be595f5459a7cf, type: 2}
+  - {fileID: 11400000, guid: fa0c49209938c477da684e7b12d15d8b, type: 2}
+  - {fileID: 11400000, guid: 143ca78b1d9494f2184761002b0a82df, type: 2}
+  - {fileID: 11400000, guid: 5f17ae937e1bb4619bd147df4e713608, type: 2}
   currentSpell: {fileID: 11400000, guid: 9b92856b3d92b4103badeab7a3bbebaa, type: 2}
 --- !u!4 &409917488
 Transform:

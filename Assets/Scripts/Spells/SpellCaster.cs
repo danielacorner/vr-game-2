@@ -417,30 +417,65 @@ namespace VRDungeonCrawler.Spells
         private GameObject CreateProjectile(SpellData spell, Vector3 position, Vector3 direction)
         {
             string spellName = spell.spellName.ToLower();
-
             GameObject projectile;
 
-            if (spellName.Contains("fire") || spellName.Contains("flame"))
-                projectile = CreateFireball(spell);
-            else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("shard"))
-                projectile = CreateIceShard(spell);
-            else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("bolt"))
-                projectile = CreateLightningBolt(spell);
-            else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("blast"))
-                projectile = CreateWindBlast(spell);
+            // Check if tier 2 - use physics-based projectiles
+            if (spell.tier == 2)
+            {
+                if (spellName.Contains("fire") || spellName.Contains("flame") || spellName.Contains("meteor"))
+                    projectile = CreateMeteor(spell);
+                else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("boulder"))
+                    projectile = CreateFrostBoulder(spell);
+                else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("orb"))
+                    projectile = CreateThunderOrb(spell);
+                else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("cyclone"))
+                    projectile = CreateCyclone(spell);
+                else
+                    projectile = CreateDefaultTier2Projectile(spell);
+
+                projectile.transform.position = position;
+                projectile.transform.rotation = Quaternion.LookRotation(direction);
+
+                PhysicsSpellProjectile physicsProj = projectile.GetComponent<PhysicsSpellProjectile>();
+                if (physicsProj != null)
+                {
+                    physicsProj.Throw(direction);
+                }
+            }
             else
-                projectile = CreateDefaultProjectile(spell);
+            {
+                // Tier 1 - use original linear movement
+                if (spellName.Contains("fire") || spellName.Contains("flame"))
+                    projectile = CreateFireball(spell);
+                else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("shard"))
+                    projectile = CreateIceShard(spell);
+                else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("bolt"))
+                    projectile = CreateLightningBolt(spell);
+                else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("blast"))
+                    projectile = CreateWindBlast(spell);
+                else
+                    projectile = CreateDefaultProjectile(spell);
 
-            // Set position and rotation
-            projectile.transform.position = position;
-            projectile.transform.rotation = Quaternion.LookRotation(direction);
+                // Set position and rotation
+                projectile.transform.position = position;
+                projectile.transform.rotation = Quaternion.LookRotation(direction);
 
-            // Add movement component
-            SpellProjectile projScript = projectile.AddComponent<SpellProjectile>();
-            projScript.speed = spell.projectileSpeed;
-            projScript.direction = direction;
-            projScript.lifetime = 5f;
-            projScript.spellData = spell; // Pass spell data for explosion effects
+                // Add collider and rigidbody for collision detection
+                SphereCollider collider = projectile.AddComponent<SphereCollider>();
+                collider.radius = 0.3f;
+                collider.isTrigger = true;
+
+                Rigidbody rb = projectile.AddComponent<Rigidbody>();
+                rb.isKinematic = true;
+                rb.useGravity = false;
+
+                // Add movement component for tier 1
+                LinearSpellMovement movement = projectile.AddComponent<LinearSpellMovement>();
+                movement.direction = direction;
+                movement.speed = spell.projectileSpeed;
+                movement.lifetime = 5f;
+                movement.spellData = spell;
+            }
 
             return projectile;
         }
@@ -1554,6 +1589,349 @@ namespace VRDungeonCrawler.Spells
             sphere.GetComponent<MeshRenderer>().material = mat;
 
             return projectile;
+        }
+
+        #endregion
+
+        #region Tier 2 Physics-Based Projectiles
+
+        private GameObject CreateMeteor(SpellData spell)
+        {
+            GameObject projectile = new GameObject($"Meteor_{spell.spellName}");
+
+            // Large sphere with fire trail
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "MeteorCore";
+            core.transform.SetParent(projectile.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.4f; // 2x larger than tier 1
+
+            // Remove primitive collider (will use parent collider)
+            Destroy(core.GetComponent<Collider>());
+
+            // Create glowing meteor material
+            Material meteorMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            meteorMat.EnableKeyword("_EMISSION");
+            meteorMat.SetColor("_BaseColor", new Color(1f, 0.5f, 0.2f, 1f));
+            meteorMat.SetColor("_EmissionColor", new Color(3f, 1.5f, 0.5f) * 2f);
+            core.GetComponent<MeshRenderer>().material = meteorMat;
+
+            // Add fire particles
+            GameObject fireTrail = new GameObject("FireTrail");
+            fireTrail.transform.SetParent(projectile.transform);
+            fireTrail.transform.localPosition = Vector3.zero;
+
+            ParticleSystem ps = fireTrail.AddComponent<ParticleSystem>();
+            var main = ps.main;
+            main.startLifetime = 0.5f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(1f, 3f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.15f, 0.3f);
+            main.maxParticles = 200;
+            main.simulationSpace = ParticleSystemSimulationSpace.World;
+
+            var emission = ps.emission;
+            emission.rateOverTime = 150f;
+
+            var shape = ps.shape;
+            shape.shapeType = ParticleSystemShapeType.Sphere;
+            shape.radius = 0.2f;
+
+            var colorOverLifetime = ps.colorOverLifetime;
+            colorOverLifetime.enabled = true;
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(2f, 2f, 1.5f), 0f),
+                    new GradientColorKey(new Color(2f, 0.8f, 0.2f), 0.5f),
+                    new GradientColorKey(new Color(0.5f, 0.1f, 0f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(1f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime.color = gradient;
+
+            // Add collider for physics
+            SphereCollider collider = projectile.AddComponent<SphereCollider>();
+            collider.radius = 0.2f;
+
+            // Add rigidbody
+            Rigidbody rb = projectile.AddComponent<Rigidbody>();
+            rb.mass = 2f; // Heavy meteor
+            rb.useGravity = false; // Will be handled by PhysicsSpellProjectile
+
+            // Add physics projectile component
+            PhysicsSpellProjectile physicsProj = projectile.AddComponent<PhysicsSpellProjectile>();
+            physicsProj.throwForce = 18f;
+            physicsProj.useGravity = true;
+            physicsProj.gravityScale = 1.2f; // Slightly heavier fall
+            physicsProj.bounciness = 0.1f; // Minimal bounce
+            physicsProj.maxBounces = 0; // Explode on first hit
+            physicsProj.explodeOnImpact = true;
+            physicsProj.explosionRadius = 4f; // Large explosion
+            physicsProj.explosionForce = 800f;
+            physicsProj.lifetime = 8f;
+            physicsProj.spellData = spell;
+
+            return projectile;
+        }
+
+        private GameObject CreateFrostBoulder(SpellData spell)
+        {
+            GameObject projectile = new GameObject($"FrostBoulder_{spell.spellName}");
+
+            // Ice sphere
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "FrostCore";
+            core.transform.SetParent(projectile.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.35f;
+
+            Destroy(core.GetComponent<Collider>());
+
+            // Icy translucent material
+            Material iceMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            iceMat.EnableKeyword("_EMISSION");
+            iceMat.SetColor("_BaseColor", new Color(0.6f, 0.85f, 1f, 0.7f));
+            iceMat.SetColor("_EmissionColor", new Color(0.5f, 0.8f, 1f) * 1.5f);
+            iceMat.SetFloat("_Surface", 1); // Transparent
+            iceMat.SetFloat("_Blend", 0);
+            iceMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            iceMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            iceMat.SetInt("_ZWrite", 0);
+            iceMat.renderQueue = 3000;
+            core.GetComponent<MeshRenderer>().material = iceMat;
+
+            // Frost trail particles
+            GameObject frostTrail = new GameObject("FrostTrail");
+            frostTrail.transform.SetParent(projectile.transform);
+            frostTrail.transform.localPosition = Vector3.zero;
+
+            ParticleSystem ps = frostTrail.AddComponent<ParticleSystem>();
+            var main = ps.main;
+            main.startLifetime = 1f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0.5f, 1.5f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.1f, 0.2f);
+            main.maxParticles = 150;
+            main.simulationSpace = ParticleSystemSimulationSpace.World;
+
+            var emission = ps.emission;
+            emission.rateOverTime = 80f;
+
+            var colorOverLifetime = ps.colorOverLifetime;
+            colorOverLifetime.enabled = true;
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(0.8f, 0.95f, 1f), 0f),
+                    new GradientColorKey(new Color(0.5f, 0.7f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.8f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime.color = gradient;
+
+            // Collider and rigidbody
+            SphereCollider collider = projectile.AddComponent<SphereCollider>();
+            collider.radius = 0.18f;
+
+            Rigidbody rb = projectile.AddComponent<Rigidbody>();
+            rb.mass = 1.5f;
+            rb.useGravity = false;
+
+            // Physics with rolling
+            PhysicsSpellProjectile physicsProj = projectile.AddComponent<PhysicsSpellProjectile>();
+            physicsProj.throwForce = 16f;
+            physicsProj.useGravity = true;
+            physicsProj.gravityScale = 1f;
+            physicsProj.bounciness = 0.4f; // Bounces a bit
+            physicsProj.maxBounces = 2; // Bounces twice before exploding
+            physicsProj.explodeOnImpact = true;
+            physicsProj.explosionRadius = 3.5f;
+            physicsProj.explosionForce = 600f;
+            physicsProj.lifetime = 8f;
+            physicsProj.spellData = spell;
+
+            return projectile;
+        }
+
+        private GameObject CreateThunderOrb(SpellData spell)
+        {
+            GameObject projectile = new GameObject($"ThunderOrb_{spell.spellName}");
+
+            // Electric sphere
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "ThunderCore";
+            core.transform.SetParent(projectile.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.3f;
+
+            Destroy(core.GetComponent<Collider>());
+
+            // Bright electric material
+            Material thunderMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            thunderMat.EnableKeyword("_EMISSION");
+            thunderMat.SetColor("_BaseColor", new Color(0.9f, 0.95f, 1f, 1f));
+            thunderMat.SetColor("_EmissionColor", new Color(2f, 2.5f, 3f) * 2f);
+            core.GetComponent<MeshRenderer>().material = thunderMat;
+
+            // Electric arc particles
+            GameObject arcParticles = new GameObject("ElectricArcs");
+            arcParticles.transform.SetParent(projectile.transform);
+            arcParticles.transform.localPosition = Vector3.zero;
+
+            ParticleSystem ps = arcParticles.AddComponent<ParticleSystem>();
+            var main = ps.main;
+            main.startLifetime = 0.2f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0.5f, 2f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.1f);
+            main.maxParticles = 100;
+            main.simulationSpace = ParticleSystemSimulationSpace.World;
+
+            var emission = ps.emission;
+            emission.rateOverTime = 200f;
+
+            var shape = ps.shape;
+            shape.shapeType = ParticleSystemShapeType.Sphere;
+            shape.radius = 0.2f;
+
+            var colorOverLifetime = ps.colorOverLifetime;
+            colorOverLifetime.enabled = true;
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 1f, 1f), 0f),
+                    new GradientColorKey(new Color(0.6f, 0.7f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(1f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime.color = gradient;
+
+            // Collider and rigidbody
+            SphereCollider collider = projectile.AddComponent<SphereCollider>();
+            collider.radius = 0.15f;
+
+            Rigidbody rb = projectile.AddComponent<Rigidbody>();
+            rb.mass = 0.8f; // Lighter
+            rb.useGravity = false;
+
+            // Physics with bouncing
+            PhysicsSpellProjectile physicsProj = projectile.AddComponent<PhysicsSpellProjectile>();
+            physicsProj.throwForce = 20f;
+            physicsProj.useGravity = true;
+            physicsProj.gravityScale = 0.6f; // Floats more
+            physicsProj.bounciness = 0.7f; // Very bouncy
+            physicsProj.maxBounces = 3; // Bounces 3 times
+            physicsProj.explodeOnImpact = true;
+            physicsProj.explosionRadius = 3f;
+            physicsProj.explosionForce = 700f;
+            physicsProj.lifetime = 10f;
+            physicsProj.spellData = spell;
+
+            return projectile;
+        }
+
+        private GameObject CreateCyclone(SpellData spell)
+        {
+            GameObject projectile = new GameObject($"Cyclone_{spell.spellName}");
+
+            // Swirling air sphere
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "CycloneCore";
+            core.transform.SetParent(projectile.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.35f;
+
+            Destroy(core.GetComponent<Collider>());
+
+            // Translucent air material
+            Material windMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            windMat.EnableKeyword("_EMISSION");
+            windMat.SetColor("_BaseColor", new Color(0.85f, 0.93f, 1f, 0.5f));
+            windMat.SetColor("_EmissionColor", new Color(0.8f, 0.9f, 1f) * 1.2f);
+            windMat.SetFloat("_Surface", 1); // Transparent
+            windMat.SetFloat("_Blend", 0);
+            windMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            windMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            windMat.SetInt("_ZWrite", 0);
+            windMat.renderQueue = 3000;
+            core.GetComponent<MeshRenderer>().material = windMat;
+
+            // Add spinning animation to core
+            CycloneSpinner spinner = core.AddComponent<CycloneSpinner>();
+            spinner.spinSpeed = 360f;
+
+            // Swirling particles
+            GameObject windParticles = new GameObject("WindSwirl");
+            windParticles.transform.SetParent(projectile.transform);
+            windParticles.transform.localPosition = Vector3.zero;
+
+            ParticleSystem ps = windParticles.AddComponent<ParticleSystem>();
+            var main = ps.main;
+            main.startLifetime = 1.5f;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(2f, 4f);
+            main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.15f);
+            main.maxParticles = 120;
+            main.simulationSpace = ParticleSystemSimulationSpace.World;
+
+            var emission = ps.emission;
+            emission.rateOverTime = 100f;
+
+            var shape = ps.shape;
+            shape.shapeType = ParticleSystemShapeType.Cone;
+            shape.angle = 25f;
+            shape.radius = 0.1f;
+
+            var colorOverLifetime = ps.colorOverLifetime;
+            colorOverLifetime.enabled = true;
+            Gradient gradient = new Gradient();
+            gradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(0.9f, 0.95f, 1f), 0f),
+                    new GradientColorKey(new Color(0.7f, 0.8f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.6f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime.color = gradient;
+
+            // Collider and rigidbody
+            SphereCollider collider = projectile.AddComponent<SphereCollider>();
+            collider.radius = 0.18f;
+
+            Rigidbody rb = projectile.AddComponent<Rigidbody>();
+            rb.mass = 0.5f; // Very light
+            rb.useGravity = false;
+            rb.linearDamping = 0.5f; // More air resistance
+
+            // Physics with floaty movement
+            PhysicsSpellProjectile physicsProj = projectile.AddComponent<PhysicsSpellProjectile>();
+            physicsProj.throwForce = 15f;
+            physicsProj.useGravity = true;
+            physicsProj.gravityScale = 0.3f; // Very floaty
+            physicsProj.bounciness = 0.5f;
+            physicsProj.maxBounces = 2;
+            physicsProj.explodeOnImpact = true;
+            physicsProj.explosionRadius = 4f; // Large wind blast
+            physicsProj.explosionForce = 1000f; // Strong pushback
+            physicsProj.lifetime = 10f;
+            physicsProj.spellData = spell;
+
+            return projectile;
+        }
+
+        private GameObject CreateDefaultTier2Projectile(SpellData spell)
+        {
+            // Fallback tier 2 projectile
+            return CreateMeteor(spell);
         }
 
         #endregion
