@@ -57,6 +57,10 @@ public class TerrainGrassApplier
         terrainLayer.tileSize = new Vector2(15, 15);
         terrainLayer.tileOffset = Vector2.zero;
 
+        // Set material properties for realistic dirt/grass (not reflective)
+        terrainLayer.metallic = 0f; // Dirt/grass is not metallic
+        terrainLayer.smoothness = 0.15f; // Rough surface like dirt/grass
+
         // Save terrain layer
         string layerPath = "Assets/Materials/DarkGrassLayer.terrainlayer";
         AssetDatabase.CreateAsset(terrainLayer, layerPath);

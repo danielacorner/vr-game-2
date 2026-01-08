@@ -11211,11 +11211,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRDungeonCrawler.Player.HalfLifeAlyxSpellMenu
   isLeftHand: 1
   menuDistance: 0.15
-  iconRadius: 0.15
+  tier1Radius: 0.12
+  tier2Radius: 0.24
   iconSize: 0.1
   hoverDetectionRadius: 0.08
   selectionDeadzone: 0.3
   menuTiltAngle: 20
+  menuZRotation: 30
   normalColor: {r: 1, g: 1, b: 1, a: 0.7}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 1}
   highlightScale: 1.3
@@ -25967,15 +25969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9af4630574184407b3b34486447c72d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VRDungeonCrawler.Core.HomeAreaBuilder
-  roomSize: 10
-  wallHeight: 3
-  wallThickness: 0.5
-  floorMaterial: {fileID: 0}
-  wallMaterial: {fileID: 0}
-  ceilingMaterial: {fileID: 0}
-  portalPrefab: {fileID: 0}
-  portalPosition: {x: 0, y: 1.2, z: 4}
-  playerSpawnPoint: {fileID: 0}
 --- !u!21 &1812895376
 Material:
   serializedVersion: 8
@@ -31717,11 +31710,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRDungeonCrawler.Player.HalfLifeAlyxSpellMenu
   isLeftHand: 0
   menuDistance: 0.15
-  iconRadius: 0.15
+  tier1Radius: 0.12
+  tier2Radius: 0.24
   iconSize: 0.1
   hoverDetectionRadius: 0.08
   selectionDeadzone: 0.3
   menuTiltAngle: 20
+  menuZRotation: 30
   normalColor: {r: 1, g: 1, b: 1, a: 0.7}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 1}
   highlightScale: 1.3

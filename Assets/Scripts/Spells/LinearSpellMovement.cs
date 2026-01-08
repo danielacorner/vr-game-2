@@ -57,12 +57,30 @@ namespace VRDungeonCrawler.Spells
 
             // Get surface normal from collision point
             Vector3 surfaceNormal = Vector3.up; // Default
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position - direction * 0.5f, direction, out hit, 1f))
+
+            // Special handling for terrain
+            if (other is TerrainCollider)
             {
-                if (!hit.collider.isTrigger && hit.collider.gameObject == other.gameObject)
+                // For terrain, raycast downward from projectile position
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 2f))
                 {
-                    surfaceNormal = hit.normal;
+                    if (hit.collider == other)
+                    {
+                        surfaceNormal = hit.normal;
+                    }
+                }
+            }
+            else
+            {
+                // For other objects, raycast in direction of travel
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position - direction * 0.5f, direction, out hit, 1f))
+                {
+                    if (!hit.collider.isTrigger && hit.collider.gameObject == other.gameObject)
+                    {
+                        surfaceNormal = hit.normal;
+                    }
                 }
             }
 
