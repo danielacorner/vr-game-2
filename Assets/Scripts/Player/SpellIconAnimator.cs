@@ -43,23 +43,36 @@ namespace VRDungeonCrawler.Player
             if (spellData == null) return;
 
             string spellName = spellData.spellName.ToLower();
+            int tier = spellData.tier;
 
-            // Create appropriate animation based on spell type
+            // Create appropriate animation based on spell type and tier
             if (spellName.Contains("fire") || spellName.Contains("flame") || spellName.Contains("meteor"))
             {
-                CreateFireballAnimation();
+                if (tier == 2 || spellName.Contains("meteor"))
+                    CreateMeteorAnimation();
+                else
+                    CreateFireballAnimation();
             }
             else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("shard") || spellName.Contains("boulder"))
             {
-                CreateIceShardAnimation();
+                if (tier == 2 || spellName.Contains("boulder"))
+                    CreateFrostBoulderAnimation();
+                else
+                    CreateIceShardAnimation();
             }
             else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("bolt") || spellName.Contains("orb"))
             {
-                CreateLightningAnimation();
+                if (tier == 2 || spellName.Contains("orb"))
+                    CreateThunderOrbAnimation();
+                else
+                    CreateLightningAnimation();
             }
             else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("blast") || spellName.Contains("cyclone"))
             {
-                CreateWindBlastAnimation();
+                if (tier == 2 || spellName.Contains("cyclone"))
+                    CreateCycloneAnimation();
+                else
+                    CreateWindBlastAnimation();
             }
             else
             {
@@ -298,6 +311,300 @@ namespace VRDungeonCrawler.Player
             }
         }
 
+        /// <summary>
+        /// Meteor (Tier 2): Molten lava core with orbiting fiery chunks
+        /// </summary>
+        private void CreateMeteorAnimation()
+        {
+            animatedContent = new GameObject("MeteorAnimation");
+            animatedContent.transform.SetParent(transform);
+            animatedContent.transform.localPosition = Vector3.zero;
+            animatedContent.transform.localScale = Vector3.one * 0.75f;
+
+            // Ultra-bright white core (molten center)
+            GameObject whiteCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            whiteCore.name = "MoltenCore";
+            whiteCore.transform.SetParent(animatedContent.transform);
+            whiteCore.transform.localPosition = Vector3.zero;
+            whiteCore.transform.localScale = Vector3.one * 0.15f;
+            Destroy(whiteCore.GetComponent<Collider>());
+
+            Material whiteMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            whiteMat.EnableKeyword("_EMISSION");
+            whiteMat.SetColor("_BaseColor", Color.white);
+            whiteMat.SetColor("_EmissionColor", Color.white * 15f);
+            whiteMat.SetFloat("_Smoothness", 1f);
+            whiteCore.GetComponent<MeshRenderer>().material = whiteMat;
+
+            // Lava layer (orange-red)
+            GameObject lavaLayer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            lavaLayer.name = "LavaLayer";
+            lavaLayer.transform.SetParent(animatedContent.transform);
+            lavaLayer.transform.localPosition = Vector3.zero;
+            lavaLayer.transform.localScale = Vector3.one * 0.35f;
+            Destroy(lavaLayer.GetComponent<Collider>());
+
+            Material lavaMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            lavaMat.EnableKeyword("_EMISSION");
+            lavaMat.SetColor("_BaseColor", new Color(1f, 0.3f, 0f, 0.85f));
+            lavaMat.SetColor("_EmissionColor", new Color(1f, 0.25f, 0f) * 6f);
+            lavaMat.SetFloat("_Surface", 1);
+            lavaMat.renderQueue = 3000;
+            lavaLayer.GetComponent<MeshRenderer>().material = lavaMat;
+
+            // Orbiting lava chunks (10 irregular pieces)
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject chunk = GameObject.CreatePrimitive(i % 3 == 0 ? PrimitiveType.Cube : PrimitiveType.Sphere);
+                chunk.name = $"LavaChunk{i}";
+                chunk.transform.SetParent(animatedContent.transform);
+                chunk.transform.localScale = Vector3.one * (0.12f + (i % 3) * 0.05f);
+                Destroy(chunk.GetComponent<Collider>());
+
+                Material chunkMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                chunkMat.EnableKeyword("_EMISSION");
+                chunkMat.SetColor("_BaseColor", new Color(0.3f, 0.15f, 0.05f));
+                chunkMat.SetColor("_EmissionColor", new Color(2f, 0.8f, 0.1f));
+                chunkMat.SetFloat("_Smoothness", 0.3f);
+                chunk.GetComponent<MeshRenderer>().material = chunkMat;
+            }
+
+            // Smoke wisps (8 dark particles)
+            for (int i = 0; i < 8; i++)
+            {
+                GameObject smoke = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                smoke.name = $"Smoke{i}";
+                smoke.transform.SetParent(animatedContent.transform);
+                smoke.transform.localScale = Vector3.one * 0.15f;
+                Destroy(smoke.GetComponent<Collider>());
+
+                Material smokeMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                smokeMat.SetColor("_BaseColor", new Color(0.15f, 0.1f, 0.08f, 0.4f));
+                smokeMat.SetFloat("_Surface", 1);
+                smokeMat.renderQueue = 3000;
+                smoke.GetComponent<MeshRenderer>().material = smokeMat;
+            }
+        }
+
+        /// <summary>
+        /// FrostBoulder (Tier 2): Massive crystalline ice formation
+        /// </summary>
+        private void CreateFrostBoulderAnimation()
+        {
+            animatedContent = new GameObject("FrostBoulderAnimation");
+            animatedContent.transform.SetParent(transform);
+            animatedContent.transform.localPosition = Vector3.zero;
+            animatedContent.transform.localScale = Vector3.one * 0.7f;
+
+            // Ultra-bright cyan core
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "FrozenCore";
+            core.transform.SetParent(animatedContent.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.2f;
+            Destroy(core.GetComponent<Collider>());
+
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(0.4f, 0.9f, 1f));
+            coreMat.SetColor("_EmissionColor", new Color(0.4f, 0.9f, 1f) * 10f);
+            coreMat.SetFloat("_Smoothness", 1f);
+            core.GetComponent<MeshRenderer>().material = coreMat;
+
+            // Large ice crystals (6 major spikes)
+            for (int i = 0; i < 6; i++)
+            {
+                GameObject spike = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                spike.name = $"IceSpike{i}";
+                spike.transform.SetParent(animatedContent.transform);
+                spike.transform.localScale = new Vector3(0.12f, 0.7f, 0.12f);
+                Destroy(spike.GetComponent<Collider>());
+
+                Material spikeMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                spikeMat.EnableKeyword("_EMISSION");
+                spikeMat.SetColor("_BaseColor", new Color(0.6f, 0.85f, 1f, 0.85f));
+                spikeMat.SetColor("_EmissionColor", new Color(0.5f, 0.8f, 1f) * 3f);
+                spikeMat.SetFloat("_Smoothness", 0.95f);
+                spikeMat.SetFloat("_Surface", 1);
+                spikeMat.renderQueue = 3000;
+                spike.GetComponent<MeshRenderer>().material = spikeMat;
+
+                // Position in hexagonal pattern
+                float angle = i * 60f * Mathf.Deg2Rad;
+                spike.transform.localPosition = new Vector3(
+                    Mathf.Cos(angle) * 0.25f,
+                    0f,
+                    Mathf.Sin(angle) * 0.25f
+                );
+                spike.transform.localRotation = Quaternion.Euler(
+                    Random.Range(-15f, 15f),
+                    angle * Mathf.Rad2Deg,
+                    Random.Range(-15f, 15f)
+                );
+            }
+
+            // Small ice fragments (12 orbiting pieces)
+            for (int i = 0; i < 12; i++)
+            {
+                GameObject fragment = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                fragment.name = $"IceFragment{i}";
+                fragment.transform.SetParent(animatedContent.transform);
+                fragment.transform.localScale = new Vector3(0.06f, 0.1f, 0.06f);
+                Destroy(fragment.GetComponent<Collider>());
+
+                Material fragMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                fragMat.EnableKeyword("_EMISSION");
+                fragMat.SetColor("_BaseColor", new Color(0.7f, 0.9f, 1f, 0.7f));
+                fragMat.SetColor("_EmissionColor", new Color(0.6f, 0.85f, 1f) * 2f);
+                fragMat.SetFloat("_Smoothness", 0.95f);
+                fragMat.SetFloat("_Surface", 1);
+                fragMat.renderQueue = 3000;
+                fragment.GetComponent<MeshRenderer>().material = fragMat;
+            }
+        }
+
+        /// <summary>
+        /// ThunderOrb (Tier 2): Electric sphere with multiple arc rings
+        /// </summary>
+        private void CreateThunderOrbAnimation()
+        {
+            animatedContent = new GameObject("ThunderOrbAnimation");
+            animatedContent.transform.SetParent(transform);
+            animatedContent.transform.localPosition = Vector3.zero;
+            animatedContent.transform.localScale = Vector3.one * 0.75f;
+
+            // Ultra-bright white core
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "PlasmaCore";
+            core.transform.SetParent(animatedContent.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.2f;
+            Destroy(core.GetComponent<Collider>());
+
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", Color.white);
+            coreMat.SetColor("_EmissionColor", Color.white * 18f);
+            coreMat.SetFloat("_Smoothness", 1f);
+            core.GetComponent<MeshRenderer>().material = coreMat;
+
+            // Electric arc rings (3 rings at different angles)
+            for (int ring = 0; ring < 3; ring++)
+            {
+                int segmentsPerRing = 8;
+                for (int i = 0; i < segmentsPerRing; i++)
+                {
+                    GameObject segment = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    segment.name = $"ArcRing{ring}_Seg{i}";
+                    segment.transform.SetParent(animatedContent.transform);
+                    segment.transform.localScale = new Vector3(0.04f, 0.15f, 0.04f);
+                    Destroy(segment.GetComponent<Collider>());
+
+                    Material segMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    segMat.EnableKeyword("_EMISSION");
+                    segMat.SetColor("_BaseColor", new Color(0.8f, 0.85f, 1f));
+                    segMat.SetColor("_EmissionColor", new Color(0.7f, 0.8f, 1f) * 5f);
+                    segMat.SetFloat("_Smoothness", 0.9f);
+                    segment.GetComponent<MeshRenderer>().material = segMat;
+
+                    // Position segments in circle
+                    float angle = i * (360f / segmentsPerRing) * Mathf.Deg2Rad;
+                    float radius = 0.35f;
+                    segment.transform.localPosition = new Vector3(
+                        Mathf.Cos(angle) * radius,
+                        Mathf.Sin(angle) * radius * (ring == 1 ? 0.5f : 0f),
+                        Mathf.Sin(angle) * radius * (ring == 2 ? 0.5f : 1f)
+                    );
+                }
+            }
+
+            // Crackling energy spheres (10 random sparks)
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject spark = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                spark.name = $"EnergySpark{i}";
+                spark.transform.SetParent(animatedContent.transform);
+                spark.transform.localScale = Vector3.one * 0.1f;
+                Destroy(spark.GetComponent<Collider>());
+
+                Material sparkMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                sparkMat.EnableKeyword("_EMISSION");
+                sparkMat.SetColor("_BaseColor", new Color(1f, 1f, 0.9f));
+                sparkMat.SetColor("_EmissionColor", new Color(1f, 1f, 0.9f) * 8f);
+                sparkMat.SetFloat("_Smoothness", 1f);
+                spark.GetComponent<MeshRenderer>().material = sparkMat;
+            }
+        }
+
+        /// <summary>
+        /// Cyclone (Tier 2): Multi-layered vortex with tornado structure
+        /// </summary>
+        private void CreateCycloneAnimation()
+        {
+            animatedContent = new GameObject("CycloneAnimation");
+            animatedContent.transform.SetParent(transform);
+            animatedContent.transform.localPosition = Vector3.zero;
+            animatedContent.transform.localScale = Vector3.one * 0.7f;
+
+            // Bright vortex core
+            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            core.name = "VortexEye";
+            core.transform.SetParent(animatedContent.transform);
+            core.transform.localPosition = Vector3.zero;
+            core.transform.localScale = Vector3.one * 0.15f;
+            Destroy(core.GetComponent<Collider>());
+
+            Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            coreMat.EnableKeyword("_EMISSION");
+            coreMat.SetColor("_BaseColor", new Color(0.95f, 0.98f, 1f));
+            coreMat.SetColor("_EmissionColor", new Color(0.95f, 0.98f, 1f) * 8f);
+            coreMat.SetFloat("_Smoothness", 1f);
+            core.GetComponent<MeshRenderer>().material = coreMat;
+
+            // Tornado structure - 3 spiral layers
+            for (int layer = 0; layer < 3; layer++)
+            {
+                int particlesPerLayer = 10;
+                float layerRadius = 0.2f + layer * 0.1f;
+
+                for (int i = 0; i < particlesPerLayer; i++)
+                {
+                    GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    particle.name = $"WindLayer{layer}_P{i}";
+                    particle.transform.SetParent(animatedContent.transform);
+                    particle.transform.localScale = Vector3.one * (0.08f + layer * 0.02f);
+                    Destroy(particle.GetComponent<Collider>());
+
+                    Material partMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    partMat.EnableKeyword("_EMISSION");
+                    float alpha = 0.5f - layer * 0.1f;
+                    partMat.SetColor("_BaseColor", new Color(0.88f, 0.94f, 1f, alpha));
+                    partMat.SetColor("_EmissionColor", new Color(0.88f, 0.94f, 1f) * (3f - layer * 0.5f));
+                    partMat.SetFloat("_Smoothness", 0.9f);
+                    partMat.SetFloat("_Surface", 1);
+                    partMat.renderQueue = 3000;
+                    particle.GetComponent<MeshRenderer>().material = partMat;
+                }
+            }
+
+            // Debris particles (8 flying objects)
+            for (int i = 0; i < 8; i++)
+            {
+                GameObject debris = GameObject.CreatePrimitive(i % 2 == 0 ? PrimitiveType.Cube : PrimitiveType.Sphere);
+                debris.name = $"Debris{i}";
+                debris.transform.SetParent(animatedContent.transform);
+                debris.transform.localScale = Vector3.one * 0.06f;
+                Destroy(debris.GetComponent<Collider>());
+
+                Material debrisMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                debrisMat.SetColor("_BaseColor", new Color(0.7f, 0.75f, 0.8f, 0.6f));
+                debrisMat.SetFloat("_Smoothness", 0.5f);
+                debrisMat.SetFloat("_Surface", 1);
+                debrisMat.renderQueue = 3000;
+                debris.GetComponent<MeshRenderer>().material = debrisMat;
+            }
+        }
+
         private void CreateDefaultAnimation()
         {
             animatedContent = new GameObject("DefaultAnimation");
@@ -322,22 +629,35 @@ namespace VRDungeonCrawler.Player
             if (animatedContent == null || spellData == null) return;
 
             string spellName = spellData.spellName.ToLower();
+            int tier = spellData.tier;
 
             if (spellName.Contains("fire") || spellName.Contains("flame") || spellName.Contains("meteor"))
             {
-                AnimateFireball();
+                if (tier == 2 || spellName.Contains("meteor"))
+                    AnimateMeteor();
+                else
+                    AnimateFireball();
             }
             else if (spellName.Contains("ice") || spellName.Contains("frost") || spellName.Contains("shard") || spellName.Contains("boulder"))
             {
-                AnimateIceShard();
+                if (tier == 2 || spellName.Contains("boulder"))
+                    AnimateFrostBoulder();
+                else
+                    AnimateIceShard();
             }
             else if (spellName.Contains("light") || spellName.Contains("thunder") || spellName.Contains("bolt") || spellName.Contains("orb"))
             {
-                AnimateLightning();
+                if (tier == 2 || spellName.Contains("orb"))
+                    AnimateThunderOrb();
+                else
+                    AnimateLightning();
             }
             else if (spellName.Contains("wind") || spellName.Contains("air") || spellName.Contains("blast") || spellName.Contains("cyclone"))
             {
-                AnimateWindBlast();
+                if (tier == 2 || spellName.Contains("cyclone"))
+                    AnimateCyclone();
+                else
+                    AnimateWindBlast();
             }
             else
             {
@@ -499,6 +819,249 @@ namespace VRDungeonCrawler.Player
                     // Scale down as they rise
                     float scale = 0.12f * (1f - t * 0.5f);
                     particle.localScale = Vector3.one * scale;
+                }
+            }
+        }
+
+        private void AnimateMeteor()
+        {
+            // Pulse molten core intensely
+            Transform core = animatedContent.transform.Find("MoltenCore");
+            if (core != null)
+            {
+                float pulse = 1f + Mathf.Sin(animationTime * 8f) * 0.4f;
+                core.localScale = Vector3.one * 0.15f * pulse;
+            }
+
+            // Pulse lava layer
+            Transform lava = animatedContent.transform.Find("LavaLayer");
+            if (lava != null)
+            {
+                float pulse = 1f + Mathf.Sin(animationTime * 5f) * 0.25f;
+                lava.localScale = Vector3.one * 0.35f * pulse;
+            }
+
+            // Orbit lava chunks chaotically
+            for (int i = 0; i < 10; i++)
+            {
+                Transform chunk = animatedContent.transform.Find($"LavaChunk{i}");
+                if (chunk != null)
+                {
+                    float angle = (animationTime * 3f + i * 36f) * Mathf.Deg2Rad;
+                    float radius = 0.4f + Mathf.Sin(animationTime * 2f + i) * 0.1f;
+                    float height = Mathf.Sin(animationTime * 2.5f + i * 0.5f) * 0.2f;
+
+                    chunk.localPosition = new Vector3(
+                        Mathf.Cos(angle) * radius,
+                        height,
+                        Mathf.Sin(angle) * radius
+                    );
+
+                    // Tumble chunks
+                    chunk.localRotation = Quaternion.Euler(
+                        animationTime * 40f + i * 30f,
+                        animationTime * 60f + i * 45f,
+                        animationTime * 50f + i * 20f
+                    );
+                }
+            }
+
+            // Smoke drifts upward
+            for (int i = 0; i < 8; i++)
+            {
+                Transform smoke = animatedContent.transform.Find($"Smoke{i}");
+                if (smoke != null)
+                {
+                    float t = (animationTime * 0.3f + i / 8f) % 1f;
+                    float angle = (t * 180f + i * 45f) * Mathf.Deg2Rad;
+                    float radius = 0.35f * (1f - t * 0.5f);
+                    float height = (t - 0.5f) * 0.6f + 0.3f;
+
+                    smoke.localPosition = new Vector3(
+                        Mathf.Cos(angle) * radius,
+                        height,
+                        Mathf.Sin(angle) * radius
+                    );
+                }
+            }
+        }
+
+        private void AnimateFrostBoulder()
+        {
+            // Pulse frozen core
+            Transform core = animatedContent.transform.Find("FrozenCore");
+            if (core != null)
+            {
+                float pulse = 1f + Mathf.Sin(animationTime * 6f) * 0.3f;
+                core.localScale = Vector3.one * 0.2f * pulse;
+            }
+
+            // Rotate entire formation slowly
+            animatedContent.transform.localRotation = Quaternion.Euler(
+                Mathf.Sin(animationTime * 0.3f) * 15f,
+                animationTime * 40f,
+                Mathf.Cos(animationTime * 0.3f) * 15f
+            );
+
+            // Individual spike rotation
+            for (int i = 0; i < 6; i++)
+            {
+                Transform spike = animatedContent.transform.Find($"IceSpike{i}");
+                if (spike != null)
+                {
+                    float angle = i * 60f * Mathf.Deg2Rad;
+                    spike.transform.localPosition = new Vector3(
+                        Mathf.Cos(angle) * 0.25f,
+                        Mathf.Sin(animationTime * 2f + i) * 0.05f,
+                        Mathf.Sin(angle) * 0.25f
+                    );
+                }
+            }
+
+            // Orbit ice fragments
+            for (int i = 0; i < 12; i++)
+            {
+                Transform fragment = animatedContent.transform.Find($"IceFragment{i}");
+                if (fragment != null)
+                {
+                    float angle = (animationTime * 2.5f + i * 30f) * Mathf.Deg2Rad;
+                    float radius = 0.45f + Mathf.Sin(animationTime * 3f + i) * 0.08f;
+
+                    fragment.localPosition = new Vector3(
+                        Mathf.Cos(angle) * radius,
+                        Mathf.Sin(animationTime * 3f + i * 0.5f) * 0.15f,
+                        Mathf.Sin(angle) * radius
+                    );
+
+                    fragment.localRotation = Quaternion.Euler(
+                        animationTime * 50f + i * 20f,
+                        animationTime * 40f + i * 30f,
+                        0f
+                    );
+                }
+            }
+        }
+
+        private void AnimateThunderOrb()
+        {
+            // Pulse plasma core violently
+            Transform core = animatedContent.transform.Find("PlasmaCore");
+            if (core != null)
+            {
+                float pulse = 1f + Mathf.Sin(animationTime * 10f) * 0.5f;
+                core.localScale = Vector3.one * 0.2f * pulse;
+            }
+
+            // Rotate arc rings at different speeds
+            for (int ring = 0; ring < 3; ring++)
+            {
+                float ringSpeed = 80f + ring * 40f;
+                for (int i = 0; i < 8; i++)
+                {
+                    Transform segment = animatedContent.transform.Find($"ArcRing{ring}_Seg{i}");
+                    if (segment != null)
+                    {
+                        float baseAngle = i * (360f / 8f);
+                        float angle = (baseAngle + animationTime * ringSpeed * (ring % 2 == 0 ? 1f : -1f)) * Mathf.Deg2Rad;
+                        float radius = 0.35f;
+
+                        Vector3 pos = new Vector3(
+                            Mathf.Cos(angle) * radius,
+                            Mathf.Sin(angle) * radius * (ring == 1 ? 0.5f : 0f),
+                            Mathf.Sin(angle) * radius * (ring == 2 ? 0.5f : 1f)
+                        );
+                        segment.localPosition = pos;
+
+                        // Flicker effect
+                        float flicker = Mathf.PerlinNoise(animationTime * 15f + i, ring) > 0.4f ? 1f : 0.8f;
+                        segment.localScale = new Vector3(0.04f * flicker, 0.15f, 0.04f * flicker);
+                    }
+                }
+            }
+
+            // Crackling energy sparks
+            for (int i = 0; i < 10; i++)
+            {
+                Transform spark = animatedContent.transform.Find($"EnergySpark{i}");
+                if (spark != null)
+                {
+                    float angle = (animationTime * 4f + i * 36f) * Mathf.Deg2Rad;
+                    float radius = 0.3f + Mathf.Sin(animationTime * 6f + i) * 0.15f;
+
+                    spark.localPosition = new Vector3(
+                        Mathf.Cos(angle) * radius,
+                        Mathf.Sin(animationTime * 5f + i * 2f) * 0.3f,
+                        Mathf.Sin(angle) * radius
+                    );
+
+                    float pulse = 1f + Mathf.Sin(animationTime * 12f + i) * 0.6f;
+                    spark.localScale = Vector3.one * 0.1f * pulse;
+                }
+            }
+        }
+
+        private void AnimateCyclone()
+        {
+            // Pulse vortex eye
+            Transform core = animatedContent.transform.Find("VortexEye");
+            if (core != null)
+            {
+                float pulse = 1f + Mathf.Sin(animationTime * 7f) * 0.3f;
+                core.localScale = Vector3.one * 0.15f * pulse;
+            }
+
+            // Animate tornado layers
+            for (int layer = 0; layer < 3; layer++)
+            {
+                int particlesPerLayer = 10;
+                float layerSpeed = 0.8f - layer * 0.15f;
+
+                for (int i = 0; i < particlesPerLayer; i++)
+                {
+                    Transform particle = animatedContent.transform.Find($"WindLayer{layer}_P{i}");
+                    if (particle != null)
+                    {
+                        float t = (animationTime * layerSpeed + i / (float)particlesPerLayer) % 1f;
+                        float angle = t * 360f * 3f; // Multiple spirals
+                        float layerRadius = (0.2f + layer * 0.1f) * (1f - t * 0.3f);
+                        float height = (t - 0.5f) * 0.8f;
+
+                        particle.localPosition = new Vector3(
+                            Mathf.Cos(angle * Mathf.Deg2Rad) * layerRadius,
+                            height,
+                            Mathf.Sin(angle * Mathf.Deg2Rad) * layerRadius
+                        );
+
+                        // Fade and shrink as they rise
+                        float alpha = 0.5f * (1f - t) - layer * 0.1f;
+                        Material mat = particle.GetComponent<MeshRenderer>().material;
+                        Color col = mat.color;
+                        col.a = alpha;
+                        mat.color = col;
+                    }
+                }
+            }
+
+            // Debris swirls around violently
+            for (int i = 0; i < 8; i++)
+            {
+                Transform debris = animatedContent.transform.Find($"Debris{i}");
+                if (debris != null)
+                {
+                    float angle = (animationTime * 5f + i * 45f) * Mathf.Deg2Rad;
+                    float radius = 0.35f + Mathf.Sin(animationTime * 3f + i) * 0.1f;
+
+                    debris.localPosition = new Vector3(
+                        Mathf.Cos(angle) * radius,
+                        Mathf.Sin(animationTime * 4f + i) * 0.25f,
+                        Mathf.Sin(angle) * radius
+                    );
+
+                    debris.localRotation = Quaternion.Euler(
+                        animationTime * 100f + i * 40f,
+                        animationTime * 120f + i * 50f,
+                        animationTime * 80f + i * 30f
+                    );
                 }
             }
         }
