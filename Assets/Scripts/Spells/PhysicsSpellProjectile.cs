@@ -156,6 +156,12 @@ namespace VRDungeonCrawler.Spells
         {
             if (hasExploded) return;
 
+            // Grace period - don't collide immediately after spawning
+            if (Time.time < spawnTime + 0.1f) return;
+
+            // Ignore player/VR objects
+            if (IsPlayerObject(collision.gameObject)) return;
+
             bounceCount++;
 
             if (showDebug)
@@ -305,6 +311,40 @@ namespace VRDungeonCrawler.Spells
         {
             if (showDebug)
                 Debug.Log($"[PhysicsProjectile] Impact at {position}");
+        }
+
+        /// <summary>
+        /// Check if a GameObject is part of the player/VR rig (should be ignored)
+        /// </summary>
+        private bool IsPlayerObject(GameObject obj)
+        {
+            string name = obj.name.ToLower();
+
+            // Check for common player/VR object names
+            if (name.Contains("controller")) return true;
+            if (name.Contains("hand")) return true;
+            if (name.Contains("camera")) return true;
+            if (name.Contains("main camera")) return true;
+            if (name.Contains("xr")) return true;
+            if (name.Contains("player")) return true;
+            if (name.Contains("origin")) return true;
+            if (name.Contains("offset")) return true;
+
+            // Check parent hierarchy
+            Transform current = obj.transform;
+            while (current.parent != null)
+            {
+                string parentName = current.parent.name.ToLower();
+                if (parentName.Contains("xr") ||
+                    parentName.Contains("player") ||
+                    parentName.Contains("origin"))
+                {
+                    return true;
+                }
+                current = current.parent;
+            }
+
+            return false;
         }
 
         void OnDrawGizmosSelected()

@@ -450,8 +450,8 @@ namespace VRDungeonCrawler.Spells
                 PhysicsSpellProjectile physicsProj = projectile.GetComponent<PhysicsSpellProjectile>();
                 if (physicsProj != null)
                 {
-                    // Use hand velocity for realistic throwing (like baseball)
-                    physicsProj.ThrowWithVelocity(releaseVelocity, velocityBoost: 1.5f);
+                    // Use hand velocity with ball-launcher boost for satisfying long throws
+                    physicsProj.ThrowWithVelocity(releaseVelocity, velocityBoost: 4.5f);
                 }
             }
             else
@@ -1747,13 +1747,13 @@ namespace VRDungeonCrawler.Spells
             collider.radius = 0.3f;
 
             Rigidbody rb = projectile.AddComponent<Rigidbody>();
-            rb.mass = 2f;
+            rb.mass = 0.1f; // Very light for satisfying long-distance throwing
             rb.useGravity = false;
 
             PhysicsSpellProjectile physicsProj = projectile.AddComponent<PhysicsSpellProjectile>();
             physicsProj.throwForce = 18f;
             physicsProj.useGravity = true;
-            physicsProj.gravityScale = 1.2f;
+            physicsProj.gravityScale = 0.4f; // Low gravity for ball-launcher feel
             physicsProj.bounciness = 0.1f;
             physicsProj.maxBounces = 0;
             physicsProj.explodeOnImpact = true;
