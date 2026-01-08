@@ -1044,42 +1044,54 @@ namespace VRDungeonCrawler.Spells
             distRenderer.material.SetFloat("_ZWrite", 0);
             distRenderer.material.renderQueue = 3000;
 
-            // === 3. TRAILING FIRE EMBERS (comet tail) ===
+            // === 3. TRAILING FIRE EMBERS (enhanced comet tail with sparkle) ===
             GameObject emberObj = new GameObject("Embers");
             emberObj.transform.SetParent(projectile.transform);
 
             ParticleSystem embers = emberObj.AddComponent<ParticleSystem>();
             var emberMain = embers.main;
-            emberMain.startLifetime = 0.45f;
-            emberMain.startSpeed = new ParticleSystem.MinMaxCurve(-1f, -0.5f); // 50% speed
-            emberMain.startSize = new ParticleSystem.MinMaxCurve(0.015f, 0.025f); // 50% smaller embers
-            emberMain.maxParticles = 100;
+            emberMain.startLifetime = new ParticleSystem.MinMaxCurve(0.35f, 0.65f); // More lifetime variation
+            emberMain.startSpeed = new ParticleSystem.MinMaxCurve(-1.5f, -0.3f); // Wider speed range for more dynamic trail
+            emberMain.startSize = new ParticleSystem.MinMaxCurve(0.01f, 0.04f); // More size variation (small sparkles to large embers)
+            emberMain.maxParticles = 150; // More particles for denser trail
+            emberMain.simulationSpace = ParticleSystemSimulationSpace.World;
 
             var emberEmission = embers.emission;
-            emberEmission.rateOverTime = 80f;
+            emberEmission.rateOverTime = 120f; // Increased emission for denser comet tail
 
             var emberShape = embers.shape;
             emberShape.shapeType = ParticleSystemShapeType.Cone;
-            emberShape.angle = 10f;
-            emberShape.radius = 0.04f; // 50% smaller cone radius
+            emberShape.angle = 12f;
+            emberShape.radius = 0.05f;
 
-            // Disable rotation to avoid square artifacts
+            // Add turbulent noise for organic movement
+            var emberNoise = embers.noise;
+            emberNoise.enabled = true;
+            emberNoise.strength = 0.8f; // Strong turbulence for dancing embers
+            emberNoise.frequency = 2f;
+            emberNoise.scrollSpeed = 1.5f;
+            emberNoise.damping = true;
+
+            // Enable rotation for sparkling effect
             var emberRotation = embers.rotationOverLifetime;
-            emberRotation.enabled = false;
+            emberRotation.enabled = true;
+            emberRotation.z = new ParticleSystem.MinMaxCurve(-360f, 360f); // Fast rotation for sparkle
 
             var emberColor = embers.colorOverLifetime;
             emberColor.enabled = true;
             Gradient emberGrad = new Gradient();
             emberGrad.SetKeys(
                 new GradientColorKey[] {
-                    new GradientColorKey(new Color(2.5f, 2.2f, 1.5f), 0f),  // HDR hot white-yellow
-                    new GradientColorKey(new Color(2f, 1.2f, 0.5f), 0.3f),  // HDR bright orange
-                    new GradientColorKey(new Color(1.5f, 0.6f, 0.2f), 0.7f), // HDR orange-red
-                    new GradientColorKey(new Color(0.8f, 0.3f, 0f), 1f)      // Dim red ember
+                    new GradientColorKey(new Color(3f, 2.8f, 2f), 0f),     // BRIGHTER HDR white-hot
+                    new GradientColorKey(new Color(2.5f, 1.5f, 0.6f), 0.2f), // HDR yellow-orange
+                    new GradientColorKey(new Color(2f, 1f, 0.3f), 0.4f),   // HDR orange
+                    new GradientColorKey(new Color(1.5f, 0.5f, 0.2f), 0.7f), // HDR red-orange
+                    new GradientColorKey(new Color(0.8f, 0.2f, 0f), 1f)     // Deep red ember
                 },
                 new GradientAlphaKey[] {
-                    new GradientAlphaKey(0.4f, 0f),   // More transparent
-                    new GradientAlphaKey(0.25f, 0.5f), // Very transparent
+                    new GradientAlphaKey(0.6f, 0f),   // More visible at start
+                    new GradientAlphaKey(0.4f, 0.3f), // Stay visible longer
+                    new GradientAlphaKey(0.15f, 0.8f), // Gradual fade
                     new GradientAlphaKey(0f, 1f)
                 }
             );
@@ -1172,25 +1184,42 @@ namespace VRDungeonCrawler.Spells
             smokeRenderer.material.SetFloat("_ZWrite", 0);
             smokeRenderer.material.renderQueue = 3000;
 
-            // === 5. BRIGHT GLOWING TRAIL ===
+            // === 5. ENHANCED GLOWING TRAIL (dynamic gradient) ===
             TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
-            trail.time = 0.5f;
-            trail.startWidth = 0.3f; // 50% smaller width (0.6 → 0.3)
-            trail.endWidth = 0.025f; // 50% smaller end (0.05 → 0.025)
-            trail.numCornerVertices = 5;
-            trail.numCapVertices = 5;
+            trail.time = 0.6f; // Slightly longer for more dramatic trail
+            trail.startWidth = 0.35f; // Wider for more presence
+            trail.endWidth = 0.01f; // Taper to sharp point
+            trail.numCornerVertices = 8; // Smoother curves
+            trail.numCapVertices = 8;
+            trail.minVertexDistance = 0.02f; // More detail
 
             Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             trailMat.EnableKeyword("_EMISSION");
             trailMat.SetColor("_BaseColor", new Color(1f, 0.7f, 0.3f));
-            trailMat.SetColor("_EmissionColor", new Color(1f, 0.6f, 0.2f) * 12f); // Bright HDR
+            trailMat.SetColor("_EmissionColor", new Color(1f, 0.6f, 0.2f) * 15f); // BRIGHTER HDR glow
             trailMat.SetFloat("_Surface", 1);
             trailMat.SetFloat("_Blend", 0);
             trailMat.renderQueue = 3000;
             trail.material = trailMat;
 
-            trail.startColor = new Color(1f, 0.8f, 0.4f, 1f);
-            trail.endColor = new Color(1f, 0.3f, 0f, 0f);
+            // Rich gradient from white-hot core to deep red
+            Gradient trailGradient = new Gradient();
+            trailGradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 0.95f, 0.85f), 0f),  // Hot white at core
+                    new GradientColorKey(new Color(1f, 0.8f, 0.4f), 0.15f), // Yellow-orange
+                    new GradientColorKey(new Color(1f, 0.6f, 0.2f), 0.4f),  // Bright orange
+                    new GradientColorKey(new Color(1f, 0.4f, 0.1f), 0.7f),  // Orange-red
+                    new GradientColorKey(new Color(0.8f, 0.2f, 0f), 1f)     // Deep red end
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(1f, 0f),    // Fully visible at start
+                    new GradientAlphaKey(0.8f, 0.3f), // Stay bright
+                    new GradientAlphaKey(0.4f, 0.7f), // Gradual fade
+                    new GradientAlphaKey(0f, 1f)      // Fade to nothing
+                }
+            );
+            trail.colorGradient = trailGradient;
 
             // Add animation
             FireballAnimation anim = projectile.AddComponent<FireballAnimation>();
@@ -1325,6 +1354,80 @@ namespace VRDungeonCrawler.Spells
             trail.startColor = new Color(0.7f, 0.9f, 1f, 1f);
             trail.endColor = new Color(0.5f, 0.8f, 1f, 0f);
 
+            // === LAYER 7: CRYSTALLINE SPARKLES (diamond-like shimmer) ===
+            GameObject sparkleObj = new GameObject("CrystallineSparkles");
+            sparkleObj.transform.SetParent(projectile.transform);
+            sparkleObj.transform.localPosition = Vector3.zero;
+
+            ParticleSystem sparkles = sparkleObj.AddComponent<ParticleSystem>();
+            var sparkleMain = sparkles.main;
+            sparkleMain.startLifetime = new ParticleSystem.MinMaxCurve(0.2f, 0.5f); // Fast twinkling
+            sparkleMain.startSpeed = new ParticleSystem.MinMaxCurve(0.05f, 0.15f); // Slow drift
+            sparkleMain.startSize = new ParticleSystem.MinMaxCurve(0.02f, 0.05f); // Small sparkles
+            sparkleMain.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f); // Random rotation
+            sparkleMain.maxParticles = 100;
+            sparkleMain.simulationSpace = ParticleSystemSimulationSpace.Local;
+
+            var sparkleEmission = sparkles.emission;
+            sparkleEmission.rateOverTime = 80f; // Frequent sparkles
+
+            var sparkleShape = sparkles.shape;
+            sparkleShape.shapeType = ParticleSystemShapeType.Sphere;
+            sparkleShape.radius = 0.4f; // Around the ice shard
+
+            // Fast rotation for shimmer effect
+            var sparkleRotation = sparkles.rotationOverLifetime;
+            sparkleRotation.enabled = true;
+            sparkleRotation.z = new ParticleSystem.MinMaxCurve(-720f, 720f); // Very fast rotation for sparkle
+
+            // Size pulsing for twinkling effect
+            var sparkleSize = sparkles.sizeOverLifetime;
+            sparkleSize.enabled = true;
+            AnimationCurve twinkleCurve = new AnimationCurve();
+            twinkleCurve.AddKey(0f, 0.3f);    // Small start
+            twinkleCurve.AddKey(0.15f, 1f);   // Bright flash
+            twinkleCurve.AddKey(0.3f, 0.4f);  // Dim
+            twinkleCurve.AddKey(0.5f, 1.2f);  // Bright flash
+            twinkleCurve.AddKey(1f, 0f);      // Fade out
+            sparkleSize.size = new ParticleSystem.MinMaxCurve(1f, twinkleCurve);
+
+            // Diamond sparkle colors (white and cyan)
+            var sparkleColor = sparkles.colorOverLifetime;
+            sparkleColor.enabled = true;
+            Gradient sparkleGrad = new Gradient();
+            sparkleGrad.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 1f, 1f), 0f),        // Pure white sparkle
+                    new GradientColorKey(new Color(0.9f, 0.98f, 1f), 0.3f), // Diamond white-blue
+                    new GradientColorKey(new Color(0.7f, 0.95f, 1f), 0.6f), // Cyan sparkle
+                    new GradientColorKey(new Color(0.85f, 0.92f, 1f), 1f)   // Pale cyan
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.8f, 0f),   // Bright flash
+                    new GradientAlphaKey(1f, 0.2f),   // Peak brightness
+                    new GradientAlphaKey(0.6f, 0.5f), // Dim
+                    new GradientAlphaKey(1f, 0.7f),   // Flash again
+                    new GradientAlphaKey(0f, 1f)      // Fade out
+                }
+            );
+            sparkleColor.color = sparkleGrad;
+
+            var sparkleRenderer = sparkles.GetComponent<ParticleSystemRenderer>();
+            sparkleRenderer.renderMode = ParticleSystemRenderMode.Billboard;
+            sparkleRenderer.alignment = ParticleSystemRenderSpace.View;
+
+            // Use bright additive blend for sparkle effect
+            Material sparkleMat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            sparkleMat.mainTexture = GetSoftParticleTexture(); // Soft texture for sparkle
+            sparkleMat.SetColor("_BaseColor", Color.white);
+            sparkleMat.SetFloat("_Surface", 1); // Transparent
+            sparkleMat.SetFloat("_Blend", 1); // Additive blend for bright sparkles
+            sparkleMat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            sparkleMat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            sparkleMat.SetFloat("_ZWrite", 0);
+            sparkleMat.renderQueue = 3000;
+            sparkleRenderer.material = sparkleMat;
+
             // Add enhanced animation
             IceShardAnimation anim = projectile.AddComponent<IceShardAnimation>();
 
@@ -1335,7 +1438,7 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"LightningBolt_{spell.spellName}");
 
-            // === LAYER 1: Pure white plasma core (EXTREMELY bright) ===
+            // === LAYER 1: Pure white-YELLOW plasma core (electric taser color) ===
             GameObject plasmaCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             plasmaCore.name = "PlasmaCore";
             plasmaCore.transform.SetParent(projectile.transform);
@@ -1345,12 +1448,12 @@ namespace VRDungeonCrawler.Spells
 
             Material plasmaMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             plasmaMat.EnableKeyword("_EMISSION");
-            plasmaMat.SetColor("_BaseColor", Color.white);
-            plasmaMat.SetColor("_EmissionColor", new Color(1f, 1f, 0.95f) * 15f); // INTENSE white HDR
+            plasmaMat.SetColor("_BaseColor", new Color(1f, 1f, 0.85f)); // Warm white-yellow
+            plasmaMat.SetColor("_EmissionColor", new Color(1f, 0.95f, 0.7f) * 18f); // INTENSE yellow-white HDR
             plasmaMat.SetFloat("_Smoothness", 1f);
             plasmaCore.GetComponent<MeshRenderer>().material = plasmaMat;
 
-            // === LAYER 2: Electric white-blue energy core ===
+            // === LAYER 2: Electric YELLOW energy core (NOT cyan!) ===
             GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             core.name = "LightningCore";
             core.transform.SetParent(projectile.transform);
@@ -1360,12 +1463,12 @@ namespace VRDungeonCrawler.Spells
 
             Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             coreMat.EnableKeyword("_EMISSION");
-            coreMat.SetColor("_BaseColor", new Color(0.95f, 0.98f, 1f));
-            coreMat.SetColor("_EmissionColor", new Color(0.9f, 0.95f, 1f) * 10f); // Bright white-blue HDR
+            coreMat.SetColor("_BaseColor", new Color(1f, 0.95f, 0.75f)); // Yellow tint
+            coreMat.SetColor("_EmissionColor", new Color(1f, 0.9f, 0.6f) * 12f); // Bright yellow HDR
             coreMat.SetFloat("_Smoothness", 0.9f);
             core.GetComponent<MeshRenderer>().material = coreMat;
 
-            // === LAYER 3: Electric aura glow (transparent) ===
+            // === LAYER 3: Electric ORANGE-YELLOW aura (not blue!) ===
             GameObject aura = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             aura.name = "ElectricAura";
             aura.transform.SetParent(projectile.transform);
@@ -1375,8 +1478,8 @@ namespace VRDungeonCrawler.Spells
 
             Material auraMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             auraMat.EnableKeyword("_EMISSION");
-            auraMat.SetColor("_BaseColor", new Color(0.8f, 0.9f, 1f, 0.35f));
-            auraMat.SetColor("_EmissionColor", new Color(0.75f, 0.85f, 1f) * 6f);
+            auraMat.SetColor("_BaseColor", new Color(1f, 0.85f, 0.6f, 0.4f)); // Orange-yellow tint
+            auraMat.SetColor("_EmissionColor", new Color(1f, 0.8f, 0.5f) * 8f); // Yellow-orange HDR
             auraMat.SetFloat("_Surface", 1); // Transparent
             auraMat.SetFloat("_Blend", 0);
             auraMat.renderQueue = 3000;
@@ -1393,12 +1496,12 @@ namespace VRDungeonCrawler.Spells
 
                 Material arcMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
                 arcMat.EnableKeyword("_EMISSION");
-                // Vary between pure white and electric blue arcs
+                // Vary between pure white and electric YELLOW arcs (not blue!)
                 Color arcColor = (i % 4 == 0) ?
-                    new Color(1f, 1f, 1f) :
-                    new Color(0.85f, 0.92f, 1f);
+                    new Color(1f, 1f, 0.95f) :  // Warm white
+                    new Color(1f, 0.9f, 0.6f);  // Yellow-orange
                 arcMat.SetColor("_BaseColor", arcColor);
-                arcMat.SetColor("_EmissionColor", arcColor * 8f); // Very bright HDR
+                arcMat.SetColor("_EmissionColor", arcColor * 10f); // Very bright HDR
                 arcMat.SetFloat("_Smoothness", 0.8f);
                 arc.GetComponent<MeshRenderer>().material = arcMat;
             }
@@ -1431,24 +1534,24 @@ namespace VRDungeonCrawler.Spells
 
                 Material dischargeMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
                 dischargeMat.EnableKeyword("_EMISSION");
-                dischargeMat.SetColor("_BaseColor", new Color(0.9f, 0.95f, 1f, 0.5f));
-                dischargeMat.SetColor("_EmissionColor", new Color(0.85f, 0.9f, 1f) * 5f);
+                dischargeMat.SetColor("_BaseColor", new Color(1f, 0.9f, 0.7f, 0.5f)); // Yellow glow
+                dischargeMat.SetColor("_EmissionColor", new Color(1f, 0.85f, 0.6f) * 6f); // Yellow HDR
                 dischargeMat.SetFloat("_Surface", 1);
                 dischargeMat.renderQueue = 3000;
                 discharge.GetComponent<MeshRenderer>().material = dischargeMat;
             }
 
-            // === TRAIL: Electric ionization trail ===
+            // === TRAIL: Electric YELLOW ionization trail (short, sharp) ===
             TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
-            trail.time = 0.3f;
-            trail.startWidth = 0.5f;
+            trail.time = 0.25f; // Shorter, sharper trail
+            trail.startWidth = 0.4f;
             trail.endWidth = 0f;
             Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             trailMat.EnableKeyword("_EMISSION");
-            trailMat.SetColor("_EmissionColor", new Color(0.9f, 0.95f, 1f) * 7f);
+            trailMat.SetColor("_EmissionColor", new Color(1f, 0.9f, 0.6f) * 8f); // Yellow HDR
             trail.material = trailMat;
-            trail.startColor = new Color(1f, 1f, 0.95f, 1f);
-            trail.endColor = new Color(0.8f, 0.9f, 1f, 0f);
+            trail.startColor = new Color(1f, 0.95f, 0.7f, 1f); // Yellow-white
+            trail.endColor = new Color(1f, 0.7f, 0.3f, 0f); // Orange fade
 
             // Add enhanced animation
             LightningAnimation anim = projectile.AddComponent<LightningAnimation>();
@@ -1460,7 +1563,7 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"WindBlast_{spell.spellName}");
 
-            // === LAYER 1: Bright white energy vortex core ===
+            // === LAYER 1: Soft pale cyan ethereal core (ghostly, not bright) ===
             GameObject vortexCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             vortexCore.name = "VortexCore";
             vortexCore.transform.SetParent(projectile.transform);
@@ -1470,12 +1573,14 @@ namespace VRDungeonCrawler.Spells
 
             Material vortexMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             vortexMat.EnableKeyword("_EMISSION");
-            vortexMat.SetColor("_BaseColor", new Color(0.95f, 0.98f, 1f));
-            vortexMat.SetColor("_EmissionColor", new Color(0.9f, 0.95f, 1f) * 8f); // Bright white-cyan HDR
+            vortexMat.SetColor("_BaseColor", new Color(0.88f, 0.94f, 1f, 0.6f)); // More transparent
+            vortexMat.SetColor("_EmissionColor", new Color(0.85f, 0.92f, 1f) * 4f); // Softer glow
+            vortexMat.SetFloat("_Surface", 1); // Transparent
             vortexMat.SetFloat("_Smoothness", 0.9f);
+            vortexMat.renderQueue = 3000;
             vortexCore.GetComponent<MeshRenderer>().material = vortexMat;
 
-            // === LAYER 2: Swirling wind energy core ===
+            // === LAYER 2: Swirling wind energy core (very transparent) ===
             GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             core.name = "WindCore";
             core.transform.SetParent(projectile.transform);
@@ -1485,12 +1590,14 @@ namespace VRDungeonCrawler.Spells
 
             Material coreMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             coreMat.EnableKeyword("_EMISSION");
-            coreMat.SetColor("_BaseColor", new Color(0.85f, 0.95f, 1f));
-            coreMat.SetColor("_EmissionColor", new Color(0.8f, 0.92f, 1f) * 5f); // Bright pale cyan HDR
+            coreMat.SetColor("_BaseColor", new Color(0.85f, 0.93f, 1f, 0.4f)); // Much more transparent
+            coreMat.SetColor("_EmissionColor", new Color(0.8f, 0.9f, 1f) * 3f); // Softer glow
+            coreMat.SetFloat("_Surface", 1); // Transparent
             coreMat.SetFloat("_Smoothness", 0.85f);
+            coreMat.renderQueue = 3000;
             core.GetComponent<MeshRenderer>().material = coreMat;
 
-            // === LAYER 3: Outer swirling wind layer (transparent) ===
+            // === LAYER 3: Outer swirling wind layer (ultra transparent, ghostly) ===
             GameObject swirl = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             swirl.name = "WindSwirl";
             swirl.transform.SetParent(projectile.transform);
@@ -1500,14 +1607,14 @@ namespace VRDungeonCrawler.Spells
 
             Material swirlMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             swirlMat.EnableKeyword("_EMISSION");
-            swirlMat.SetColor("_BaseColor", new Color(0.9f, 0.97f, 1f, 0.35f));
-            swirlMat.SetColor("_EmissionColor", new Color(0.85f, 0.93f, 1f) * 3f);
+            swirlMat.SetColor("_BaseColor", new Color(0.9f, 0.96f, 1f, 0.2f)); // Very transparent
+            swirlMat.SetColor("_EmissionColor", new Color(0.85f, 0.92f, 1f) * 2f); // Soft glow
             swirlMat.SetFloat("_Surface", 1); // Transparent
             swirlMat.SetFloat("_Blend", 0);
             swirlMat.renderQueue = 3000;
             swirl.GetComponent<MeshRenderer>().material = swirlMat;
 
-            // === LAYER 4: Spiraling air current particles (20 vortex streams) ===
+            // === LAYER 4: Spiraling air current particles (20 vortex streams - ghostly) ===
             for (int i = 0; i < 20; i++)
             {
                 GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -1518,17 +1625,19 @@ namespace VRDungeonCrawler.Spells
 
                 Material particleMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
                 particleMat.EnableKeyword("_EMISSION");
-                // Vary between white and pale cyan
+                // Vary between white and pale cyan (with transparency for ghostly effect)
                 Color particleColor = (i % 3 == 0) ?
-                    new Color(1f, 1f, 1f) :
-                    new Color(0.85f, 0.95f, 1f);
+                    new Color(1f, 1f, 1f, 0.5f) :  // Transparent white
+                    new Color(0.85f, 0.95f, 1f, 0.5f);  // Transparent cyan
                 particleMat.SetColor("_BaseColor", particleColor);
-                particleMat.SetColor("_EmissionColor", particleColor * 6f); // Bright HDR
+                particleMat.SetColor("_EmissionColor", particleColor * 3f); // Softer glow (was 6f)
+                particleMat.SetFloat("_Surface", 1); // Transparent
                 particleMat.SetFloat("_Smoothness", 0.8f);
+                particleMat.renderQueue = 3000;
                 particle.GetComponent<MeshRenderer>().material = particleMat;
             }
 
-            // === LAYER 5: Turbulent air wisps (12 flowing streams) ===
+            // === LAYER 5: Turbulent air wisps (12 flowing streams - ethereal) ===
             for (int i = 0; i < 12; i++)
             {
                 GameObject wisp = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -1540,7 +1649,7 @@ namespace VRDungeonCrawler.Spells
                 Material wispMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
                 wispMat.EnableKeyword("_EMISSION");
                 wispMat.SetColor("_BaseColor", new Color(0.9f, 0.95f, 1f, 0.6f));
-                wispMat.SetColor("_EmissionColor", new Color(0.88f, 0.93f, 1f) * 4f);
+                wispMat.SetColor("_EmissionColor", new Color(0.88f, 0.93f, 1f) * 2.5f); // Softer glow (was 4f)
                 wispMat.SetFloat("_Surface", 1);
                 wispMat.SetFloat("_Smoothness", 0.75f);
                 wispMat.renderQueue = 3000;
@@ -1566,16 +1675,17 @@ namespace VRDungeonCrawler.Spells
                 pressure.GetComponent<MeshRenderer>().material = pressureMat;
             }
 
-            // === TRAIL: Wind vortex trail ===
+            // === TRAIL: Wind vortex trail (ethereal, ghostly) ===
             TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
-            trail.time = 0.4f;
+            trail.time = 0.5f; // Slightly longer for ethereal feel
             trail.startWidth = 0.55f;
             trail.endWidth = 0f;
             Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             trailMat.EnableKeyword("_EMISSION");
-            trailMat.SetColor("_EmissionColor", new Color(0.85f, 0.93f, 1f) * 4f);
+            trailMat.SetColor("_EmissionColor", new Color(0.85f, 0.93f, 1f) * 2.5f); // Softer glow (was 4f)
+            trailMat.SetFloat("_Surface", 1); // Transparent
             trail.material = trailMat;
-            trail.startColor = new Color(0.9f, 0.95f, 1f, 0.9f);
+            trail.startColor = new Color(0.9f, 0.95f, 1f, 0.5f); // More transparent (was 0.9f)
             trail.endColor = new Color(0.8f, 0.9f, 1f, 0f);
 
             // Add enhanced animation
@@ -2016,9 +2126,9 @@ namespace VRDungeonCrawler.Spells
             trail.startWidth = 0.5f;
             trail.endWidth = 0f;
             trail.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
-            trail.material.EnableKeyword("_EMISSION");
-            trail.material.SetColor("_BaseColor", new Color(0.6f, 0.85f, 1f, 0.8f));
-            trail.material.SetColor("_EmissionColor", new Color(0.5f, 0.8f, 1f) * 3f);
+            trail.material.SetColor("_BaseColor", new Color(0.7f, 0.9f, 1f, 1f));
+            trail.material.SetFloat("_Surface", 1);
+            trail.material.SetFloat("_Blend", 1); // Additive blend
             Gradient trailGradient = new Gradient();
             trailGradient.SetKeys(
                 new GradientColorKey[] {
@@ -2253,9 +2363,9 @@ namespace VRDungeonCrawler.Spells
             trail.startWidth = 0.45f;
             trail.endWidth = 0f;
             trail.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
-            trail.material.EnableKeyword("_EMISSION");
-            trail.material.SetColor("_BaseColor", new Color(0.85f, 0.9f, 1f, 0.9f));
-            trail.material.SetColor("_EmissionColor", new Color(0.8f, 0.9f, 1f) * 5f);
+            trail.material.SetColor("_BaseColor", new Color(1f, 1f, 1f, 1f));
+            trail.material.SetFloat("_Surface", 1);
+            trail.material.SetFloat("_Blend", 1); // Additive blend
             Gradient trailGradient = new Gradient();
             trailGradient.SetKeys(
                 new GradientColorKey[] {
@@ -2490,9 +2600,9 @@ namespace VRDungeonCrawler.Spells
             trail.startWidth = 0.5f;
             trail.endWidth = 0f;
             trail.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
-            trail.material.EnableKeyword("_EMISSION");
-            trail.material.SetColor("_BaseColor", new Color(0.88f, 0.94f, 1f, 0.6f));
-            trail.material.SetColor("_EmissionColor", new Color(0.88f, 0.94f, 1f) * 2.5f);
+            trail.material.SetColor("_BaseColor", new Color(0.9f, 0.95f, 1f, 1f));
+            trail.material.SetFloat("_Surface", 1);
+            trail.material.SetFloat("_Blend", 1); // Additive blend
             Gradient trailGradient = new Gradient();
             trailGradient.SetKeys(
                 new GradientColorKey[] {
