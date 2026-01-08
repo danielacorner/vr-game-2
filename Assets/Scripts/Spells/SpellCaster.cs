@@ -42,6 +42,10 @@ namespace VRDungeonCrawler.Spells
         private float currentChargeProgress = 0f; // 0-1, persists during fade-out
         private bool isFadingOut = false;
 
+        // Hand velocity tracking for throwing
+        private Vector3 currentHandVelocity = Vector3.zero;
+        private Vector3 releaseVelocity = Vector3.zero;
+
         private void Start()
         {
             // Auto-set spawn point if not assigned
@@ -77,6 +81,12 @@ namespace VRDungeonCrawler.Spells
                 return;
             }
 
+            // Track hand velocity continuously for throwing physics
+            if (device.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity))
+            {
+                currentHandVelocity = velocity;
+            }
+
             // Check trigger input
             bool triggerValue = false;
             if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool buttonValue))
@@ -104,8 +114,9 @@ namespace VRDungeonCrawler.Spells
             }
             else if (!triggerValue && triggerPressed)
             {
-                // Trigger released - fire if fully charged
+                // Trigger released - capture velocity and fire if fully charged
                 triggerPressed = false;
+                releaseVelocity = currentHandVelocity; // Capture velocity at moment of release
                 if (isFullyCharged)
                 {
                     TryCastSpell();
@@ -439,7 +450,8 @@ namespace VRDungeonCrawler.Spells
                 PhysicsSpellProjectile physicsProj = projectile.GetComponent<PhysicsSpellProjectile>();
                 if (physicsProj != null)
                 {
-                    physicsProj.Throw(direction);
+                    // Use hand velocity for realistic throwing (like baseball)
+                    physicsProj.ThrowWithVelocity(releaseVelocity, velocityBoost: 1.5f);
                 }
             }
             else
@@ -1599,77 +1611,153 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"Meteor_{spell.spellName}");
 
-            // Large sphere with fire trail
-            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            core.name = "MeteorCore";
-            core.transform.SetParent(projectile.transform);
-            core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.4f; // 2x larger than tier 1
+            // === LAYER 1: Ultra-bright core (white-hot center) ===
+            GameObject whiteCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            whiteCore.name = "WhiteHotCore";
+            whiteCore.transform.SetParent(projectile.transform);
+            whiteCore.transform.localPosition = Vector3.zero;
+            whiteCore.transform.localScale = Vector3.one * 0.25f;
+            Destroy(whiteCore.GetComponent<Collider>());
 
-            // Remove primitive collider (will use parent collider)
-            Destroy(core.GetComponent<Collider>());
+            Material whiteMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            whiteMat.EnableKeyword("_EMISSION");
+            whiteMat.SetColor("_BaseColor", Color.white);
+            whiteMat.SetColor("_EmissionColor", Color.white * 15f); // Intense HDR white
+            whiteMat.SetFloat("_Smoothness", 1f);
+            whiteCore.GetComponent<MeshRenderer>().material = whiteMat;
 
-            // Create glowing meteor material
-            Material meteorMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            meteorMat.EnableKeyword("_EMISSION");
-            meteorMat.SetColor("_BaseColor", new Color(1f, 0.5f, 0.2f, 1f));
-            meteorMat.SetColor("_EmissionColor", new Color(3f, 1.5f, 0.5f) * 2f);
-            core.GetComponent<MeshRenderer>().material = meteorMat;
+            // === LAYER 2: Orange-yellow fire core ===
+            GameObject fireCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            fireCore.name = "FireCore";
+            fireCore.transform.SetParent(projectile.transform);
+            fireCore.transform.localPosition = Vector3.zero;
+            fireCore.transform.localScale = Vector3.one * 0.45f;
+            Destroy(fireCore.GetComponent<Collider>());
 
-            // Add fire particles
-            GameObject fireTrail = new GameObject("FireTrail");
-            fireTrail.transform.SetParent(projectile.transform);
-            fireTrail.transform.localPosition = Vector3.zero;
+            Material fireMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            fireMat.EnableKeyword("_EMISSION");
+            fireMat.SetColor("_BaseColor", new Color(1f, 0.6f, 0.1f, 0.9f));
+            fireMat.SetColor("_EmissionColor", new Color(8f, 4f, 0.5f)); // Bright orange HDR
+            fireMat.SetFloat("_Surface", 1); // Transparent
+            fireMat.SetFloat("_Blend", 0);
+            fireMat.renderQueue = 3000;
+            fireCore.GetComponent<MeshRenderer>().material = fireMat;
 
-            ParticleSystem ps = fireTrail.AddComponent<ParticleSystem>();
-            var main = ps.main;
-            main.startLifetime = 0.5f;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(1f, 3f);
-            main.startSize = new ParticleSystem.MinMaxCurve(0.15f, 0.3f);
-            main.maxParticles = 200;
-            main.simulationSpace = ParticleSystemSimulationSpace.World;
+            // === LAYER 3: Dark red outer shell (lava crust) ===
+            GameObject lavaShell = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            lavaShell.name = "LavaShell";
+            lavaShell.transform.SetParent(projectile.transform);
+            lavaShell.transform.localPosition = Vector3.zero;
+            lavaShell.transform.localScale = Vector3.one * 0.55f;
+            Destroy(lavaShell.GetComponent<Collider>());
 
-            var emission = ps.emission;
-            emission.rateOverTime = 150f;
+            Material lavaMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            lavaMat.EnableKeyword("_EMISSION");
+            lavaMat.SetColor("_BaseColor", new Color(0.3f, 0.1f, 0.05f, 0.7f));
+            lavaMat.SetColor("_EmissionColor", new Color(2f, 0.5f, 0.1f)); // Glowing cracks
+            lavaMat.SetFloat("_Surface", 1);
+            lavaMat.SetFloat("_Blend", 0);
+            lavaMat.SetFloat("_Smoothness", 0.3f);
+            lavaMat.renderQueue = 3000;
+            lavaShell.GetComponent<MeshRenderer>().material = lavaMat;
 
-            var shape = ps.shape;
-            shape.shapeType = ParticleSystemShapeType.Sphere;
-            shape.radius = 0.2f;
+            // === PARTICLE SYSTEM 1: Intense fire burst ===
+            GameObject fireBurst = new GameObject("FireBurst");
+            fireBurst.transform.SetParent(projectile.transform);
+            ParticleSystem ps1 = fireBurst.AddComponent<ParticleSystem>();
+            var main1 = ps1.main;
+            main1.startLifetime = 0.6f;
+            main1.startSpeed = new ParticleSystem.MinMaxCurve(0.5f, 2f);
+            main1.startSize = new ParticleSystem.MinMaxCurve(0.02f, 0.05f); // Very very small particles
+            main1.startRotation = new ParticleSystem.MinMaxCurve(0f, 360f);
+            main1.maxParticles = 300;
+            main1.simulationSpace = ParticleSystemSimulationSpace.World;
 
-            var colorOverLifetime = ps.colorOverLifetime;
-            colorOverLifetime.enabled = true;
-            Gradient gradient = new Gradient();
-            gradient.SetKeys(
+            var emission1 = ps1.emission;
+            emission1.rateOverTime = 250f;
+
+            var shape1 = ps1.shape;
+            shape1.shapeType = ParticleSystemShapeType.Sphere;
+            shape1.radius = 0.3f;
+
+            var colorOverLifetime1 = ps1.colorOverLifetime;
+            colorOverLifetime1.enabled = true;
+            Gradient grad1 = new Gradient();
+            grad1.SetKeys(
                 new GradientColorKey[] {
-                    new GradientColorKey(new Color(2f, 2f, 1.5f), 0f),
-                    new GradientColorKey(new Color(2f, 0.8f, 0.2f), 0.5f),
-                    new GradientColorKey(new Color(0.5f, 0.1f, 0f), 1f)
+                    new GradientColorKey(new Color(1f, 1f, 0.9f), 0f),   // White-hot
+                    new GradientColorKey(new Color(1f, 0.7f, 0.2f), 0.3f), // Yellow
+                    new GradientColorKey(new Color(1f, 0.3f, 0.1f), 0.7f), // Orange
+                    new GradientColorKey(new Color(0.3f, 0.05f, 0f), 1f)   // Dark red
                 },
                 new GradientAlphaKey[] {
-                    new GradientAlphaKey(1f, 0f),
+                    new GradientAlphaKey(0.9f, 0f),
+                    new GradientAlphaKey(0.6f, 0.5f),
                     new GradientAlphaKey(0f, 1f)
                 }
             );
-            colorOverLifetime.color = gradient;
+            colorOverLifetime1.color = grad1;
 
-            // Add collider for physics
+            // === PARTICLE SYSTEM 2: Smoke trail ===
+            GameObject smokeTrail = new GameObject("SmokeTrail");
+            smokeTrail.transform.SetParent(projectile.transform);
+            ParticleSystem ps2 = smokeTrail.AddComponent<ParticleSystem>();
+            var main2 = ps2.main;
+            main2.startLifetime = 2f;
+            main2.startSpeed = new ParticleSystem.MinMaxCurve(0.2f, 1f);
+            main2.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.1f); // Much smaller smoke particles
+            main2.startColor = new Color(0.1f, 0.05f, 0.05f, 0.3f); // More transparent
+            main2.maxParticles = 100;
+            main2.simulationSpace = ParticleSystemSimulationSpace.World;
+
+            var emission2 = ps2.emission;
+            emission2.rateOverTime = 50f;
+
+            // === TRAIL RENDERER: Fiery streak ===
+            TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
+            trail.time = 0.8f;
+            trail.startWidth = 0.6f;
+            trail.endWidth = 0f;
+            trail.numCornerVertices = 5;
+            trail.numCapVertices = 5;
+
+            Material trailMat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            trailMat.SetColor("_BaseColor", new Color(1f, 0.5f, 0.1f, 0.8f));
+            trailMat.SetFloat("_Surface", 1);
+            trailMat.SetFloat("_Blend", 1); // Additive
+            trail.material = trailMat;
+
+            Gradient trailGrad = new Gradient();
+            trailGrad.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 0.9f, 0.5f), 0f),
+                    new GradientColorKey(new Color(1f, 0.3f, 0.1f), 0.5f),
+                    new GradientColorKey(new Color(0.3f, 0.1f, 0f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(1f, 0f),
+                    new GradientAlphaKey(0.5f, 0.5f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            trail.colorGradient = trailGrad;
+
+            // === PHYSICS ===
             SphereCollider collider = projectile.AddComponent<SphereCollider>();
-            collider.radius = 0.2f;
+            collider.radius = 0.3f;
 
-            // Add rigidbody
             Rigidbody rb = projectile.AddComponent<Rigidbody>();
-            rb.mass = 2f; // Heavy meteor
-            rb.useGravity = false; // Will be handled by PhysicsSpellProjectile
+            rb.mass = 2f;
+            rb.useGravity = false;
 
-            // Add physics projectile component
             PhysicsSpellProjectile physicsProj = projectile.AddComponent<PhysicsSpellProjectile>();
             physicsProj.throwForce = 18f;
             physicsProj.useGravity = true;
-            physicsProj.gravityScale = 1.2f; // Slightly heavier fall
-            physicsProj.bounciness = 0.1f; // Minimal bounce
-            physicsProj.maxBounces = 0; // Explode on first hit
+            physicsProj.gravityScale = 1.2f;
+            physicsProj.bounciness = 0.1f;
+            physicsProj.maxBounces = 0;
             physicsProj.explodeOnImpact = true;
-            physicsProj.explosionRadius = 4f; // Large explosion
+            physicsProj.explosionRadius = 4f;
             physicsProj.explosionForce = 800f;
             physicsProj.lifetime = 8f;
             physicsProj.spellData = spell;

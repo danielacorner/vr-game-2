@@ -106,7 +106,33 @@ namespace VRDungeonCrawler.Spells
         }
 
         /// <summary>
-        /// Throw the projectile in a direction
+        /// Throw the projectile using hand velocity (like throwing a baseball)
+        /// </summary>
+        /// <param name="handVelocity">Velocity of the controller/hand at release</param>
+        /// <param name="velocityBoost">Multiplier for hand velocity (default 1.5x)</param>
+        public void ThrowWithVelocity(Vector3 handVelocity, float velocityBoost = 1.5f)
+        {
+            if (rb != null)
+            {
+                // Apply hand velocity with boost - pure velocity-based throwing
+                Vector3 throwVelocity = handVelocity * velocityBoost;
+
+                rb.linearVelocity = throwVelocity;
+
+                // Add spin based on velocity direction for realism (only if moving)
+                if (throwVelocity.magnitude > 0.1f)
+                {
+                    Vector3 spinAxis = Vector3.Cross(Vector3.up, throwVelocity.normalized);
+                    rb.AddTorque(spinAxis * throwVelocity.magnitude * 0.1f, ForceMode.VelocityChange);
+                }
+
+                if (showDebug)
+                    Debug.Log($"[PhysicsProjectile] Thrown with velocity {throwVelocity.magnitude:F1} m/s (hand: {handVelocity.magnitude:F1}, boost: {velocityBoost}x)");
+            }
+        }
+
+        /// <summary>
+        /// Legacy method - throws in a direction (kept for compatibility)
         /// </summary>
         public void Throw(Vector3 direction)
         {
@@ -114,7 +140,6 @@ namespace VRDungeonCrawler.Spells
             {
                 rb.AddForce(direction.normalized * throwForce, ForceMode.VelocityChange);
 
-                // Add slight random spin for realism
                 Vector3 randomTorque = new Vector3(
                     Random.Range(-2f, 2f),
                     Random.Range(-2f, 2f),
