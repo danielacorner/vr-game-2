@@ -1769,73 +1769,137 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"FrostBoulder_{spell.spellName}");
 
-            // Ice sphere
-            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            core.name = "FrostCore";
-            core.transform.SetParent(projectile.transform);
-            core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.35f;
+            // === LAYER 1: Bright cyan core (frozen heart) ===
+            GameObject cyanCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            cyanCore.name = "CyanCore";
+            cyanCore.transform.SetParent(projectile.transform);
+            cyanCore.transform.localPosition = Vector3.zero;
+            cyanCore.transform.localScale = Vector3.one * 0.2f;
+            Destroy(cyanCore.GetComponent<Collider>());
 
-            Destroy(core.GetComponent<Collider>());
+            Material cyanMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            cyanMat.EnableKeyword("_EMISSION");
+            cyanMat.SetColor("_BaseColor", new Color(0.5f, 0.9f, 1f));
+            cyanMat.SetColor("_EmissionColor", new Color(0.5f, 0.9f, 1f) * 12f); // Bright cyan HDR
+            cyanMat.SetFloat("_Smoothness", 1f);
+            cyanCore.GetComponent<MeshRenderer>().material = cyanMat;
 
-            // Icy translucent material
+            // === LAYER 2: Icy blue middle layer ===
+            GameObject iceLayer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            iceLayer.name = "IceLayer";
+            iceLayer.transform.SetParent(projectile.transform);
+            iceLayer.transform.localPosition = Vector3.zero;
+            iceLayer.transform.localScale = Vector3.one * 0.4f;
+            Destroy(iceLayer.GetComponent<Collider>());
+
             Material iceMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             iceMat.EnableKeyword("_EMISSION");
             iceMat.SetColor("_BaseColor", new Color(0.6f, 0.85f, 1f, 0.7f));
-            iceMat.SetColor("_EmissionColor", new Color(0.5f, 0.8f, 1f) * 1.5f);
-            iceMat.SetFloat("_Surface", 1); // Transparent
+            iceMat.SetColor("_EmissionColor", new Color(0.5f, 0.8f, 1f) * 4f);
+            iceMat.SetFloat("_Surface", 1);
             iceMat.SetFloat("_Blend", 0);
-            iceMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            iceMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            iceMat.SetInt("_ZWrite", 0);
+            iceMat.SetFloat("_Smoothness", 0.9f);
             iceMat.renderQueue = 3000;
-            core.GetComponent<MeshRenderer>().material = iceMat;
+            iceLayer.GetComponent<MeshRenderer>().material = iceMat;
 
-            // Frost trail particles
-            GameObject frostTrail = new GameObject("FrostTrail");
-            frostTrail.transform.SetParent(projectile.transform);
-            frostTrail.transform.localPosition = Vector3.zero;
+            // === LAYER 3: Frosty outer shell ===
+            GameObject frostShell = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            frostShell.name = "FrostShell";
+            frostShell.transform.SetParent(projectile.transform);
+            frostShell.transform.localPosition = Vector3.zero;
+            frostShell.transform.localScale = Vector3.one * 0.5f;
+            Destroy(frostShell.GetComponent<Collider>());
 
-            ParticleSystem ps = frostTrail.AddComponent<ParticleSystem>();
-            var main = ps.main;
-            main.startLifetime = 1f;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(0.5f, 1.5f);
-            main.startSize = new ParticleSystem.MinMaxCurve(0.1f, 0.2f);
-            main.maxParticles = 150;
-            main.simulationSpace = ParticleSystemSimulationSpace.World;
+            Material frostMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            frostMat.EnableKeyword("_EMISSION");
+            frostMat.SetColor("_BaseColor", new Color(0.7f, 0.85f, 0.95f, 0.5f));
+            frostMat.SetColor("_EmissionColor", new Color(0.6f, 0.8f, 1f) * 1.5f);
+            frostMat.SetFloat("_Surface", 1);
+            frostMat.SetFloat("_Blend", 0);
+            frostMat.SetFloat("_Smoothness", 0.7f);
+            frostMat.renderQueue = 3000;
+            frostShell.GetComponent<MeshRenderer>().material = frostMat;
 
-            var emission = ps.emission;
-            emission.rateOverTime = 80f;
+            // === PARTICLE SYSTEM 1: Ice crystal burst ===
+            GameObject iceCrystals = new GameObject("IceCrystals");
+            iceCrystals.transform.SetParent(projectile.transform);
+            ParticleSystem ps1 = iceCrystals.AddComponent<ParticleSystem>();
+            var main1 = ps1.main;
+            main1.startLifetime = 0.8f;
+            main1.startSpeed = new ParticleSystem.MinMaxCurve(0.3f, 1.5f);
+            main1.startSize = new ParticleSystem.MinMaxCurve(0.02f, 0.05f);
+            main1.startRotation = new ParticleSystem.MinMaxCurve(0f, 360f);
+            main1.maxParticles = 200;
+            main1.simulationSpace = ParticleSystemSimulationSpace.World;
 
-            var colorOverLifetime = ps.colorOverLifetime;
-            colorOverLifetime.enabled = true;
-            Gradient gradient = new Gradient();
-            gradient.SetKeys(
+            var emission1 = ps1.emission;
+            emission1.rateOverTime = 150f;
+
+            var colorOverLifetime1 = ps1.colorOverLifetime;
+            colorOverLifetime1.enabled = true;
+            Gradient gradient1 = new Gradient();
+            gradient1.SetKeys(
                 new GradientColorKey[] {
                     new GradientColorKey(new Color(0.8f, 0.95f, 1f), 0f),
                     new GradientColorKey(new Color(0.5f, 0.7f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.9f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime1.color = gradient1;
+
+            // === PARTICLE SYSTEM 2: Frost mist trail ===
+            GameObject frostMist = new GameObject("FrostMist");
+            frostMist.transform.SetParent(projectile.transform);
+            ParticleSystem ps2 = frostMist.AddComponent<ParticleSystem>();
+            var main2 = ps2.main;
+            main2.startLifetime = 1.5f;
+            main2.startSpeed = new ParticleSystem.MinMaxCurve(0.2f, 0.8f);
+            main2.startSize = new ParticleSystem.MinMaxCurve(0.08f, 0.15f);
+            main2.startColor = new Color(0.7f, 0.85f, 1f, 0.4f);
+            main2.maxParticles = 80;
+            main2.simulationSpace = ParticleSystemSimulationSpace.World;
+
+            var emission2 = ps2.emission;
+            emission2.rateOverTime = 60f;
+
+            // === TRAIL RENDERER: Icy streak ===
+            TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
+            trail.time = 0.6f;
+            trail.startWidth = 0.5f;
+            trail.endWidth = 0f;
+            trail.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            trail.material.EnableKeyword("_EMISSION");
+            trail.material.SetColor("_BaseColor", new Color(0.6f, 0.85f, 1f, 0.8f));
+            trail.material.SetColor("_EmissionColor", new Color(0.5f, 0.8f, 1f) * 3f);
+            Gradient trailGradient = new Gradient();
+            trailGradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(0.6f, 0.85f, 1f), 0f),
+                    new GradientColorKey(new Color(0.4f, 0.6f, 0.8f), 1f)
                 },
                 new GradientAlphaKey[] {
                     new GradientAlphaKey(0.8f, 0f),
                     new GradientAlphaKey(0f, 1f)
                 }
             );
-            colorOverLifetime.color = gradient;
+            trail.colorGradient = trailGradient;
 
-            // Collider and rigidbody
+            // === PHYSICS ===
             SphereCollider collider = projectile.AddComponent<SphereCollider>();
-            collider.radius = 0.18f;
+            collider.radius = 0.25f;
 
             Rigidbody rb = projectile.AddComponent<Rigidbody>();
-            rb.mass = 1.5f;
+            rb.mass = 0.1f; // Very light for satisfying long-distance throwing
             rb.useGravity = false;
 
-            // Physics with rolling
             PhysicsSpellProjectile physicsProj = projectile.AddComponent<PhysicsSpellProjectile>();
-            physicsProj.throwForce = 16f;
+            physicsProj.throwForce = 18f;
             physicsProj.useGravity = true;
-            physicsProj.gravityScale = 1f;
-            physicsProj.bounciness = 0.4f; // Bounces a bit
+            physicsProj.gravityScale = 0.4f; // Low gravity for ball-launcher feel
+            physicsProj.bounciness = 0.4f;
             physicsProj.maxBounces = 2; // Bounces twice before exploding
             physicsProj.explodeOnImpact = true;
             physicsProj.explosionRadius = 3.5f;
@@ -1850,70 +1914,139 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"ThunderOrb_{spell.spellName}");
 
-            // Electric sphere
-            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            core.name = "ThunderCore";
-            core.transform.SetParent(projectile.transform);
-            core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.3f;
+            // === LAYER 1: Pure white lightning core ===
+            GameObject whiteCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            whiteCore.name = "LightningCore";
+            whiteCore.transform.SetParent(projectile.transform);
+            whiteCore.transform.localPosition = Vector3.zero;
+            whiteCore.transform.localScale = Vector3.one * 0.18f;
+            Destroy(whiteCore.GetComponent<Collider>());
 
-            Destroy(core.GetComponent<Collider>());
+            Material whiteMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            whiteMat.EnableKeyword("_EMISSION");
+            whiteMat.SetColor("_BaseColor", Color.white);
+            whiteMat.SetColor("_EmissionColor", Color.white * 18f); // Intense white HDR
+            whiteMat.SetFloat("_Smoothness", 1f);
+            whiteCore.GetComponent<MeshRenderer>().material = whiteMat;
 
-            // Bright electric material
-            Material thunderMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            thunderMat.EnableKeyword("_EMISSION");
-            thunderMat.SetColor("_BaseColor", new Color(0.9f, 0.95f, 1f, 1f));
-            thunderMat.SetColor("_EmissionColor", new Color(2f, 2.5f, 3f) * 2f);
-            core.GetComponent<MeshRenderer>().material = thunderMat;
+            // === LAYER 2: Electric blue energy layer ===
+            GameObject blueLayer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            blueLayer.name = "ElectricBlueLayer";
+            blueLayer.transform.SetParent(projectile.transform);
+            blueLayer.transform.localPosition = Vector3.zero;
+            blueLayer.transform.localScale = Vector3.one * 0.35f;
+            Destroy(blueLayer.GetComponent<Collider>());
 
-            // Electric arc particles
-            GameObject arcParticles = new GameObject("ElectricArcs");
-            arcParticles.transform.SetParent(projectile.transform);
-            arcParticles.transform.localPosition = Vector3.zero;
+            Material blueMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            blueMat.EnableKeyword("_EMISSION");
+            blueMat.SetColor("_BaseColor", new Color(0.7f, 0.8f, 1f, 0.8f));
+            blueMat.SetColor("_EmissionColor", new Color(0.7f, 0.85f, 1f) * 8f);
+            blueMat.SetFloat("_Surface", 1);
+            blueMat.SetFloat("_Blend", 0);
+            blueMat.SetFloat("_Smoothness", 0.9f);
+            blueMat.renderQueue = 3000;
+            blueLayer.GetComponent<MeshRenderer>().material = blueMat;
 
-            ParticleSystem ps = arcParticles.AddComponent<ParticleSystem>();
-            var main = ps.main;
-            main.startLifetime = 0.2f;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(0.5f, 2f);
-            main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.1f);
-            main.maxParticles = 100;
-            main.simulationSpace = ParticleSystemSimulationSpace.World;
+            // === LAYER 3: Crackling energy shell ===
+            GameObject energyShell = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            energyShell.name = "EnergyShell";
+            energyShell.transform.SetParent(projectile.transform);
+            energyShell.transform.localPosition = Vector3.zero;
+            energyShell.transform.localScale = Vector3.one * 0.45f;
+            Destroy(energyShell.GetComponent<Collider>());
 
-            var emission = ps.emission;
-            emission.rateOverTime = 200f;
+            Material energyMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            energyMat.EnableKeyword("_EMISSION");
+            energyMat.SetColor("_BaseColor", new Color(0.85f, 0.9f, 1f, 0.6f));
+            energyMat.SetColor("_EmissionColor", new Color(0.8f, 0.9f, 1f) * 3f);
+            energyMat.SetFloat("_Surface", 1);
+            energyMat.SetFloat("_Blend", 0);
+            energyMat.SetFloat("_Smoothness", 0.8f);
+            energyMat.renderQueue = 3000;
+            energyShell.GetComponent<MeshRenderer>().material = energyMat;
 
-            var shape = ps.shape;
-            shape.shapeType = ParticleSystemShapeType.Sphere;
-            shape.radius = 0.2f;
+            // === PARTICLE SYSTEM 1: Electric sparks ===
+            GameObject electricSparks = new GameObject("ElectricSparks");
+            electricSparks.transform.SetParent(projectile.transform);
+            ParticleSystem ps1 = electricSparks.AddComponent<ParticleSystem>();
+            var main1 = ps1.main;
+            main1.startLifetime = 0.3f;
+            main1.startSpeed = new ParticleSystem.MinMaxCurve(1f, 3f);
+            main1.startSize = new ParticleSystem.MinMaxCurve(0.01f, 0.03f);
+            main1.maxParticles = 250;
+            main1.simulationSpace = ParticleSystemSimulationSpace.World;
 
-            var colorOverLifetime = ps.colorOverLifetime;
-            colorOverLifetime.enabled = true;
-            Gradient gradient = new Gradient();
-            gradient.SetKeys(
+            var emission1 = ps1.emission;
+            emission1.rateOverTime = 300f;
+
+            var shape1 = ps1.shape;
+            shape1.shapeType = ParticleSystemShapeType.Sphere;
+            shape1.radius = 0.25f;
+
+            var colorOverLifetime1 = ps1.colorOverLifetime;
+            colorOverLifetime1.enabled = true;
+            Gradient gradient1 = new Gradient();
+            gradient1.SetKeys(
                 new GradientColorKey[] {
                     new GradientColorKey(new Color(1f, 1f, 1f), 0f),
-                    new GradientColorKey(new Color(0.6f, 0.7f, 1f), 1f)
+                    new GradientColorKey(new Color(0.6f, 0.75f, 1f), 1f)
                 },
                 new GradientAlphaKey[] {
                     new GradientAlphaKey(1f, 0f),
                     new GradientAlphaKey(0f, 1f)
                 }
             );
-            colorOverLifetime.color = gradient;
+            colorOverLifetime1.color = gradient1;
 
-            // Collider and rigidbody
+            // === PARTICLE SYSTEM 2: Energy crackle ===
+            GameObject energyCrackle = new GameObject("EnergyCrackle");
+            energyCrackle.transform.SetParent(projectile.transform);
+            ParticleSystem ps2 = energyCrackle.AddComponent<ParticleSystem>();
+            var main2 = ps2.main;
+            main2.startLifetime = 0.5f;
+            main2.startSpeed = new ParticleSystem.MinMaxCurve(0.5f, 1.5f);
+            main2.startSize = new ParticleSystem.MinMaxCurve(0.03f, 0.06f);
+            main2.startColor = new Color(0.8f, 0.9f, 1f, 0.7f);
+            main2.maxParticles = 120;
+            main2.simulationSpace = ParticleSystemSimulationSpace.World;
+
+            var emission2 = ps2.emission;
+            emission2.rateOverTime = 150f;
+
+            // === TRAIL RENDERER: Lightning streak ===
+            TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
+            trail.time = 0.4f;
+            trail.startWidth = 0.45f;
+            trail.endWidth = 0f;
+            trail.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            trail.material.EnableKeyword("_EMISSION");
+            trail.material.SetColor("_BaseColor", new Color(0.85f, 0.9f, 1f, 0.9f));
+            trail.material.SetColor("_EmissionColor", new Color(0.8f, 0.9f, 1f) * 5f);
+            Gradient trailGradient = new Gradient();
+            trailGradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 1f, 1f), 0f),
+                    new GradientColorKey(new Color(0.6f, 0.75f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.9f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            trail.colorGradient = trailGradient;
+
+            // === PHYSICS ===
             SphereCollider collider = projectile.AddComponent<SphereCollider>();
-            collider.radius = 0.15f;
+            collider.radius = 0.23f;
 
             Rigidbody rb = projectile.AddComponent<Rigidbody>();
-            rb.mass = 0.8f; // Lighter
+            rb.mass = 0.1f; // Very light for satisfying long-distance throwing
             rb.useGravity = false;
 
-            // Physics with bouncing
             PhysicsSpellProjectile physicsProj = projectile.AddComponent<PhysicsSpellProjectile>();
-            physicsProj.throwForce = 20f;
+            physicsProj.throwForce = 18f;
             physicsProj.useGravity = true;
-            physicsProj.gravityScale = 0.6f; // Floats more
+            physicsProj.gravityScale = 0.4f; // Low gravity for ball-launcher feel
             physicsProj.bounciness = 0.7f; // Very bouncy
             physicsProj.maxBounces = 3; // Bounces 3 times
             physicsProj.explodeOnImpact = true;
@@ -1929,82 +2062,150 @@ namespace VRDungeonCrawler.Spells
         {
             GameObject projectile = new GameObject($"Cyclone_{spell.spellName}");
 
-            // Swirling air sphere
-            GameObject core = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            core.name = "CycloneCore";
-            core.transform.SetParent(projectile.transform);
-            core.transform.localPosition = Vector3.zero;
-            core.transform.localScale = Vector3.one * 0.35f;
+            // === LAYER 1: Bright white vortex core ===
+            GameObject whiteCore = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            whiteCore.name = "VortexCore";
+            whiteCore.transform.SetParent(projectile.transform);
+            whiteCore.transform.localPosition = Vector3.zero;
+            whiteCore.transform.localScale = Vector3.one * 0.15f;
+            Destroy(whiteCore.GetComponent<Collider>());
 
-            Destroy(core.GetComponent<Collider>());
+            Material whiteMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            whiteMat.EnableKeyword("_EMISSION");
+            whiteMat.SetColor("_BaseColor", new Color(0.95f, 0.98f, 1f));
+            whiteMat.SetColor("_EmissionColor", new Color(0.95f, 0.98f, 1f) * 10f);
+            whiteMat.SetFloat("_Smoothness", 1f);
+            whiteCore.GetComponent<MeshRenderer>().material = whiteMat;
 
-            // Translucent air material
+            // === LAYER 2: Swirling air layer (spinning) ===
+            GameObject airLayer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            airLayer.name = "AirLayer";
+            airLayer.transform.SetParent(projectile.transform);
+            airLayer.transform.localPosition = Vector3.zero;
+            airLayer.transform.localScale = Vector3.one * 0.32f;
+            Destroy(airLayer.GetComponent<Collider>());
+
+            Material airMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            airMat.EnableKeyword("_EMISSION");
+            airMat.SetColor("_BaseColor", new Color(0.85f, 0.92f, 1f, 0.6f));
+            airMat.SetColor("_EmissionColor", new Color(0.85f, 0.92f, 1f) * 3f);
+            airMat.SetFloat("_Surface", 1);
+            airMat.SetFloat("_Blend", 0);
+            airMat.SetFloat("_Smoothness", 0.8f);
+            airMat.renderQueue = 3000;
+            airLayer.GetComponent<MeshRenderer>().material = airMat;
+
+            // Add spinning animation
+            CycloneSpinner spinner = airLayer.AddComponent<CycloneSpinner>();
+            spinner.spinSpeed = 450f;
+
+            // === LAYER 3: Outer wind vortex ===
+            GameObject windShell = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            windShell.name = "WindShell";
+            windShell.transform.SetParent(projectile.transform);
+            windShell.transform.localPosition = Vector3.zero;
+            windShell.transform.localScale = Vector3.one * 0.42f;
+            Destroy(windShell.GetComponent<Collider>());
+
             Material windMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             windMat.EnableKeyword("_EMISSION");
-            windMat.SetColor("_BaseColor", new Color(0.85f, 0.93f, 1f, 0.5f));
-            windMat.SetColor("_EmissionColor", new Color(0.8f, 0.9f, 1f) * 1.2f);
-            windMat.SetFloat("_Surface", 1); // Transparent
+            windMat.SetColor("_BaseColor", new Color(0.88f, 0.94f, 1f, 0.4f));
+            windMat.SetColor("_EmissionColor", new Color(0.88f, 0.94f, 1f) * 1.5f);
+            windMat.SetFloat("_Surface", 1);
             windMat.SetFloat("_Blend", 0);
-            windMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            windMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            windMat.SetInt("_ZWrite", 0);
+            windMat.SetFloat("_Smoothness", 0.7f);
             windMat.renderQueue = 3000;
-            core.GetComponent<MeshRenderer>().material = windMat;
+            windShell.GetComponent<MeshRenderer>().material = windMat;
 
-            // Add spinning animation to core
-            CycloneSpinner spinner = core.AddComponent<CycloneSpinner>();
-            spinner.spinSpeed = 360f;
+            // === PARTICLE SYSTEM 1: Wind streaks ===
+            GameObject windStreaks = new GameObject("WindStreaks");
+            windStreaks.transform.SetParent(projectile.transform);
+            ParticleSystem ps1 = windStreaks.AddComponent<ParticleSystem>();
+            var main1 = ps1.main;
+            main1.startLifetime = 1.2f;
+            main1.startSpeed = new ParticleSystem.MinMaxCurve(2f, 5f);
+            main1.startSize = new ParticleSystem.MinMaxCurve(0.02f, 0.04f);
+            main1.startRotation = new ParticleSystem.MinMaxCurve(0f, 360f);
+            main1.maxParticles = 180;
+            main1.simulationSpace = ParticleSystemSimulationSpace.World;
 
-            // Swirling particles
-            GameObject windParticles = new GameObject("WindSwirl");
-            windParticles.transform.SetParent(projectile.transform);
-            windParticles.transform.localPosition = Vector3.zero;
+            var emission1 = ps1.emission;
+            emission1.rateOverTime = 150f;
 
-            ParticleSystem ps = windParticles.AddComponent<ParticleSystem>();
-            var main = ps.main;
-            main.startLifetime = 1.5f;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(2f, 4f);
-            main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.15f);
-            main.maxParticles = 120;
-            main.simulationSpace = ParticleSystemSimulationSpace.World;
+            var shape1 = ps1.shape;
+            shape1.shapeType = ParticleSystemShapeType.Cone;
+            shape1.angle = 30f;
+            shape1.radius = 0.15f;
 
-            var emission = ps.emission;
-            emission.rateOverTime = 100f;
-
-            var shape = ps.shape;
-            shape.shapeType = ParticleSystemShapeType.Cone;
-            shape.angle = 25f;
-            shape.radius = 0.1f;
-
-            var colorOverLifetime = ps.colorOverLifetime;
-            colorOverLifetime.enabled = true;
-            Gradient gradient = new Gradient();
-            gradient.SetKeys(
+            var colorOverLifetime1 = ps1.colorOverLifetime;
+            colorOverLifetime1.enabled = true;
+            Gradient gradient1 = new Gradient();
+            gradient1.SetKeys(
                 new GradientColorKey[] {
                     new GradientColorKey(new Color(0.9f, 0.95f, 1f), 0f),
-                    new GradientColorKey(new Color(0.7f, 0.8f, 1f), 1f)
+                    new GradientColorKey(new Color(0.7f, 0.85f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.7f, 0f),
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            colorOverLifetime1.color = gradient1;
+
+            // === PARTICLE SYSTEM 2: Air burst ===
+            GameObject airBurst = new GameObject("AirBurst");
+            airBurst.transform.SetParent(projectile.transform);
+            ParticleSystem ps2 = airBurst.AddComponent<ParticleSystem>();
+            var main2 = ps2.main;
+            main2.startLifetime = 0.8f;
+            main2.startSpeed = new ParticleSystem.MinMaxCurve(1f, 3f);
+            main2.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.12f);
+            main2.startColor = new Color(0.88f, 0.94f, 1f, 0.5f);
+            main2.maxParticles = 100;
+            main2.simulationSpace = ParticleSystemSimulationSpace.World;
+
+            var emission2 = ps2.emission;
+            emission2.rateOverTime = 80f;
+
+            var shape2 = ps2.shape;
+            shape2.shapeType = ParticleSystemShapeType.Sphere;
+            shape2.radius = 0.25f;
+
+            // === TRAIL RENDERER: Wind streak ===
+            TrailRenderer trail = projectile.AddComponent<TrailRenderer>();
+            trail.time = 0.7f;
+            trail.startWidth = 0.5f;
+            trail.endWidth = 0f;
+            trail.material = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            trail.material.EnableKeyword("_EMISSION");
+            trail.material.SetColor("_BaseColor", new Color(0.88f, 0.94f, 1f, 0.6f));
+            trail.material.SetColor("_EmissionColor", new Color(0.88f, 0.94f, 1f) * 2.5f);
+            Gradient trailGradient = new Gradient();
+            trailGradient.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(0.9f, 0.95f, 1f), 0f),
+                    new GradientColorKey(new Color(0.7f, 0.85f, 1f), 1f)
                 },
                 new GradientAlphaKey[] {
                     new GradientAlphaKey(0.6f, 0f),
                     new GradientAlphaKey(0f, 1f)
                 }
             );
-            colorOverLifetime.color = gradient;
+            trail.colorGradient = trailGradient;
 
-            // Collider and rigidbody
+            // === PHYSICS ===
             SphereCollider collider = projectile.AddComponent<SphereCollider>();
-            collider.radius = 0.18f;
+            collider.radius = 0.22f;
 
             Rigidbody rb = projectile.AddComponent<Rigidbody>();
-            rb.mass = 0.5f; // Very light
+            rb.mass = 0.1f; // Very light for satisfying long-distance throwing
             rb.useGravity = false;
             rb.linearDamping = 0.5f; // More air resistance
 
-            // Physics with floaty movement
             PhysicsSpellProjectile physicsProj = projectile.AddComponent<PhysicsSpellProjectile>();
-            physicsProj.throwForce = 15f;
+            physicsProj.throwForce = 18f;
             physicsProj.useGravity = true;
-            physicsProj.gravityScale = 0.3f; // Very floaty
+            physicsProj.gravityScale = 0.3f; // Very floaty for wind
             physicsProj.bounciness = 0.5f;
             physicsProj.maxBounces = 2;
             physicsProj.explodeOnImpact = true;
