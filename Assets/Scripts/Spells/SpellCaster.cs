@@ -451,7 +451,9 @@ namespace VRDungeonCrawler.Spells
                 if (physicsProj != null)
                 {
                     // Use hand velocity with ball-launcher boost for satisfying long throws
-                    physicsProj.ThrowWithVelocity(releaseVelocity, velocityBoost: 4.5f);
+                    // Fire spells get 2x boost for faster throwing
+                    float boost = (spellName.Contains("fire") || spellName.Contains("flame") || spellName.Contains("meteor")) ? 9.0f : 4.5f;
+                    physicsProj.ThrowWithVelocity(releaseVelocity, velocityBoost: boost);
                 }
             }
             else
@@ -1553,6 +1555,165 @@ namespace VRDungeonCrawler.Spells
             trail.startColor = new Color(1f, 0.95f, 0.7f, 1f); // Yellow-white
             trail.endColor = new Color(1f, 0.7f, 0.3f, 0f); // Orange fade
 
+            // === LAYER 7: ELECTRIC SPARK BURSTS (chaotic energy discharge) ===
+            GameObject sparkBurstObj = new GameObject("SparkBursts");
+            sparkBurstObj.transform.SetParent(projectile.transform);
+            sparkBurstObj.transform.localPosition = Vector3.zero;
+
+            ParticleSystem sparkBursts = sparkBurstObj.AddComponent<ParticleSystem>();
+            var burstMain = sparkBursts.main;
+            burstMain.startLifetime = new ParticleSystem.MinMaxCurve(0.1f, 0.3f); // Very fast, sharp sparks
+            burstMain.startSpeed = new ParticleSystem.MinMaxCurve(3f, 8f); // Fast, explosive bursts
+            burstMain.startSize = new ParticleSystem.MinMaxCurve(0.02f, 0.06f); // Small sharp sparks
+            burstMain.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f);
+            burstMain.maxParticles = 200;
+            burstMain.simulationSpace = ParticleSystemSimulationSpace.World;
+            burstMain.gravityModifier = 0.5f; // Slight gravity for realism
+
+            var burstEmission = sparkBursts.emission;
+            burstEmission.rateOverTime = 150f; // Frequent spark bursts
+            // Add burst emissions for explosive effect
+            burstEmission.SetBursts(new ParticleSystem.Burst[] {
+                new ParticleSystem.Burst(0f, 30, 50, 1, 0.2f), // Initial burst
+                new ParticleSystem.Burst(0.15f, 20, 40, 1, 0.15f), // Secondary burst
+                new ParticleSystem.Burst(0.3f, 15, 30, 1, 0.15f)  // Tertiary burst
+            });
+
+            var burstShape = sparkBursts.shape;
+            burstShape.shapeType = ParticleSystemShapeType.Sphere;
+            burstShape.radius = 0.2f;
+            burstShape.radiusMode = ParticleSystemShapeMultiModeValue.Random;
+
+            // Fast rotation for spark effect
+            var burstRotation = sparkBursts.rotationOverLifetime;
+            burstRotation.enabled = true;
+            burstRotation.z = new ParticleSystem.MinMaxCurve(-1800f, 1800f); // Ultra-fast rotation
+
+            // Size decay for spark fade
+            var burstSize = sparkBursts.sizeOverLifetime;
+            burstSize.enabled = true;
+            AnimationCurve sparkDecay = AnimationCurve.Linear(0f, 1f, 1f, 0f); // Sharp decay
+            burstSize.size = new ParticleSystem.MinMaxCurve(1f, sparkDecay);
+
+            // Bright yellow-white electric color
+            var burstColor = sparkBursts.colorOverLifetime;
+            burstColor.enabled = true;
+            Gradient burstGrad = new Gradient();
+            burstGrad.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 1f, 0.95f), 0f),    // Pure white-hot
+                    new GradientColorKey(new Color(1f, 0.95f, 0.7f), 0.3f), // Yellow-white
+                    new GradientColorKey(new Color(1f, 0.8f, 0.4f), 0.7f),  // Yellow-orange
+                    new GradientColorKey(new Color(1f, 0.6f, 0.2f), 1f)     // Orange fade
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(1f, 0f),    // Full brightness
+                    new GradientAlphaKey(0.8f, 0.3f), // Stay bright
+                    new GradientAlphaKey(0.3f, 0.8f), // Quick fade
+                    new GradientAlphaKey(0f, 1f)      // Gone
+                }
+            );
+            burstColor.color = burstGrad;
+
+            var burstRenderer = sparkBursts.GetComponent<ParticleSystemRenderer>();
+            burstRenderer.renderMode = ParticleSystemRenderMode.Billboard;
+            burstRenderer.alignment = ParticleSystemRenderSpace.View;
+
+            // Bright additive blend for electric sparks
+            Material burstMat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            burstMat.mainTexture = GetSoftParticleTexture();
+            burstMat.SetColor("_BaseColor", Color.white);
+            burstMat.SetFloat("_Surface", 1);
+            burstMat.SetFloat("_Blend", 1); // Additive blend
+            burstMat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            burstMat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            burstMat.SetFloat("_ZWrite", 0);
+            burstMat.renderQueue = 3000;
+            burstRenderer.material = burstMat;
+
+            // === LAYER 8: CRACKLING ARC PARTICLES (animated lightning branches) ===
+            GameObject crackleObj = new GameObject("CracklingArcs");
+            crackleObj.transform.SetParent(projectile.transform);
+            crackleObj.transform.localPosition = Vector3.zero;
+
+            ParticleSystem crackles = crackleObj.AddComponent<ParticleSystem>();
+            var crackleMain = crackles.main;
+            crackleMain.startLifetime = new ParticleSystem.MinMaxCurve(0.15f, 0.35f); // Fast flicker
+            crackleMain.startSpeed = new ParticleSystem.MinMaxCurve(0.5f, 2f); // Slow drift
+            crackleMain.startSize = new ParticleSystem.MinMaxCurve(0.08f, 0.15f); // Medium arcs
+            crackleMain.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f);
+            crackleMain.maxParticles = 100;
+            crackleMain.simulationSpace = ParticleSystemSimulationSpace.Local;
+
+            var crackleEmission = crackles.emission;
+            crackleEmission.rateOverTime = 80f; // Constant crackling
+
+            var crackleShape = crackles.shape;
+            crackleShape.shapeType = ParticleSystemShapeType.Sphere;
+            crackleShape.radius = 0.3f; // Around the lightning
+
+            // Random velocity for erratic movement
+            var crackleVelocity = crackles.velocityOverLifetime;
+            crackleVelocity.enabled = true;
+            crackleVelocity.space = ParticleSystemSimulationSpace.Local;
+            crackleVelocity.x = new ParticleSystem.MinMaxCurve(-2f, 2f); // Erratic X
+            crackleVelocity.y = new ParticleSystem.MinMaxCurve(-2f, 2f); // Erratic Y
+            crackleVelocity.z = new ParticleSystem.MinMaxCurve(-2f, 2f); // Erratic Z
+
+            // Fast random rotation for flickering
+            var crackleRotation = crackles.rotationOverLifetime;
+            crackleRotation.enabled = true;
+            crackleRotation.z = new ParticleSystem.MinMaxCurve(-900f, 900f); // Chaotic rotation
+
+            // Flicker effect with size
+            var crackleSize = crackles.sizeOverLifetime;
+            crackleSize.enabled = true;
+            AnimationCurve flickerCurve = new AnimationCurve();
+            flickerCurve.AddKey(0f, 0.2f);   // Small
+            flickerCurve.AddKey(0.1f, 1f);   // Flash
+            flickerCurve.AddKey(0.25f, 0.4f); // Dim
+            flickerCurve.AddKey(0.4f, 1.2f);  // Flash
+            flickerCurve.AddKey(0.6f, 0.3f);  // Dim
+            flickerCurve.AddKey(0.8f, 0.8f);  // Flash
+            flickerCurve.AddKey(1f, 0f);      // Gone
+            crackleSize.size = new ParticleSystem.MinMaxCurve(1f, flickerCurve);
+
+            // Intense yellow-white flicker
+            var crackleColor = crackles.colorOverLifetime;
+            crackleColor.enabled = true;
+            Gradient crackleGrad = new Gradient();
+            crackleGrad.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(1f, 1f, 0.9f), 0f),     // White-yellow
+                    new GradientColorKey(new Color(1f, 0.9f, 0.6f), 0.5f), // Yellow
+                    new GradientColorKey(new Color(1f, 0.7f, 0.3f), 1f)    // Orange
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(1f, 0f),    // Full brightness
+                    new GradientAlphaKey(0.7f, 0.5f), // Flicker
+                    new GradientAlphaKey(0f, 1f)      // Gone
+                }
+            );
+            crackleColor.color = crackleGrad;
+
+            var crackleRenderer = crackles.GetComponent<ParticleSystemRenderer>();
+            crackleRenderer.renderMode = ParticleSystemRenderMode.Billboard;
+            crackleRenderer.alignment = ParticleSystemRenderSpace.View;
+            crackleRenderer.renderMode = ParticleSystemRenderMode.Stretch; // Stretch for arc effect
+            crackleRenderer.lengthScale = 2f; // Elongate particles
+            crackleRenderer.velocityScale = 0.3f; // Stretch based on velocity
+
+            Material crackleMat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            crackleMat.mainTexture = GetSoftParticleTexture();
+            crackleMat.SetColor("_BaseColor", Color.white);
+            crackleMat.SetFloat("_Surface", 1);
+            crackleMat.SetFloat("_Blend", 1); // Additive
+            crackleMat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            crackleMat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            crackleMat.SetFloat("_ZWrite", 0);
+            crackleMat.renderQueue = 3000;
+            crackleRenderer.material = crackleMat;
+
             // Add enhanced animation
             LightningAnimation anim = projectile.AddComponent<LightningAnimation>();
 
@@ -1687,6 +1848,153 @@ namespace VRDungeonCrawler.Spells
             trail.material = trailMat;
             trail.startColor = new Color(0.9f, 0.95f, 1f, 0.5f); // More transparent (was 0.9f)
             trail.endColor = new Color(0.8f, 0.9f, 1f, 0f);
+
+            // === LAYER 7: SPIRALING WIND DEBRIS PARTICLES (dynamic tornado effect) ===
+            GameObject debrisObj = new GameObject("WindDebris");
+            debrisObj.transform.SetParent(projectile.transform);
+            debrisObj.transform.localPosition = Vector3.zero;
+
+            ParticleSystem debris = debrisObj.AddComponent<ParticleSystem>();
+            var debrisMain = debris.main;
+            debrisMain.startLifetime = new ParticleSystem.MinMaxCurve(0.4f, 0.8f);
+            debrisMain.startSpeed = new ParticleSystem.MinMaxCurve(1f, 3f); // Spiraling outward
+            debrisMain.startSize = new ParticleSystem.MinMaxCurve(0.03f, 0.08f);
+            debrisMain.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f);
+            debrisMain.maxParticles = 120;
+            debrisMain.simulationSpace = ParticleSystemSimulationSpace.Local;
+
+            var debrisEmission = debris.emission;
+            debrisEmission.rateOverTime = 100f; // Frequent debris particles
+
+            var debrisShape = debris.shape;
+            debrisShape.shapeType = ParticleSystemShapeType.Sphere;
+            debrisShape.radius = 0.15f; // From center
+
+            // Add vortex force for spiraling motion
+            var debrisVelocity = debris.velocityOverLifetime;
+            debrisVelocity.enabled = true;
+            debrisVelocity.space = ParticleSystemSimulationSpace.Local;
+            // Create spiraling motion using sin/cos curves
+            AnimationCurve spiralX = AnimationCurve.EaseInOut(0f, 0f, 1f, 2f);
+            AnimationCurve spiralZ = AnimationCurve.EaseInOut(0f, 0f, 1f, -2f);
+            debrisVelocity.x = new ParticleSystem.MinMaxCurve(1f, spiralX);
+            debrisVelocity.z = new ParticleSystem.MinMaxCurve(1f, spiralZ);
+            debrisVelocity.orbitalX = new ParticleSystem.MinMaxCurve(180f); // Orbital motion
+            debrisVelocity.orbitalY = new ParticleSystem.MinMaxCurve(360f); // Full rotation
+            debrisVelocity.orbitalZ = new ParticleSystem.MinMaxCurve(180f);
+
+            // Rotation for dynamic movement
+            var debrisRotation = debris.rotationOverLifetime;
+            debrisRotation.enabled = true;
+            debrisRotation.z = new ParticleSystem.MinMaxCurve(-540f, 540f); // Fast spinning
+
+            // Size change to simulate distance
+            var debrisSize = debris.sizeOverLifetime;
+            debrisSize.enabled = true;
+            AnimationCurve sizeCurve = new AnimationCurve();
+            sizeCurve.AddKey(0f, 0.5f);  // Start small
+            sizeCurve.AddKey(0.3f, 1.2f); // Grow
+            sizeCurve.AddKey(1f, 0.3f);   // Shrink as it spirals away
+            debrisSize.size = new ParticleSystem.MinMaxCurve(1f, sizeCurve);
+
+            // Ethereal cyan-white gradient
+            var debrisColor = debris.colorOverLifetime;
+            debrisColor.enabled = true;
+            Gradient debrisGrad = new Gradient();
+            debrisGrad.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(0.95f, 0.98f, 1f), 0f),  // Pale white-cyan
+                    new GradientColorKey(new Color(0.85f, 0.93f, 1f), 0.4f), // Cyan
+                    new GradientColorKey(new Color(0.8f, 0.9f, 1f), 1f)     // Deeper cyan
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.6f, 0f),   // Visible start
+                    new GradientAlphaKey(0.8f, 0.3f), // Peak visibility
+                    new GradientAlphaKey(0.4f, 0.7f), // Fade
+                    new GradientAlphaKey(0f, 1f)      // Gone
+                }
+            );
+            debrisColor.color = debrisGrad;
+
+            var debrisRenderer = debris.GetComponent<ParticleSystemRenderer>();
+            debrisRenderer.renderMode = ParticleSystemRenderMode.Billboard;
+            debrisRenderer.alignment = ParticleSystemRenderSpace.View;
+
+            // Soft additive blend for ethereal look
+            Material debrisMat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            debrisMat.mainTexture = GetSoftParticleTexture();
+            debrisMat.SetColor("_BaseColor", new Color(0.9f, 0.95f, 1f, 1f));
+            debrisMat.SetFloat("_Surface", 1); // Transparent
+            debrisMat.SetFloat("_Blend", 1); // Additive blend
+            debrisMat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            debrisMat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            debrisMat.SetFloat("_ZWrite", 0);
+            debrisMat.renderQueue = 3000;
+            debrisRenderer.material = debrisMat;
+
+            // === LAYER 8: FLOWING MIST TRAILS (vapor streamers) ===
+            GameObject mistObj = new GameObject("FlowingMist");
+            mistObj.transform.SetParent(projectile.transform);
+            mistObj.transform.localPosition = Vector3.zero;
+
+            ParticleSystem mist = mistObj.AddComponent<ParticleSystem>();
+            var mistMain = mist.main;
+            mistMain.startLifetime = new ParticleSystem.MinMaxCurve(0.6f, 1.2f); // Longer trails
+            mistMain.startSpeed = new ParticleSystem.MinMaxCurve(-2f, -0.5f); // Trailing behind
+            mistMain.startSize = new ParticleSystem.MinMaxCurve(0.15f, 0.3f); // Larger misty particles
+            mistMain.maxParticles = 80;
+            mistMain.simulationSpace = ParticleSystemSimulationSpace.World;
+
+            var mistEmission = mist.emission;
+            mistEmission.rateOverTime = 60f;
+
+            var mistShape = mist.shape;
+            mistShape.shapeType = ParticleSystemShapeType.Cone;
+            mistShape.angle = 15f;
+            mistShape.radius = 0.1f;
+
+            // Expand and slow down over lifetime
+            var mistSize = mist.sizeOverLifetime;
+            mistSize.enabled = true;
+            AnimationCurve mistSizeCurve = AnimationCurve.EaseInOut(0f, 0.5f, 1f, 2f); // Expand
+            mistSize.size = new ParticleSystem.MinMaxCurve(1f, mistSizeCurve);
+
+            var mistVelocity = mist.velocityOverLifetime;
+            mistVelocity.enabled = true;
+            mistVelocity.speedModifier = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 1f, 1f, 0.3f)); // Slow down
+
+            // Very soft cyan color
+            var mistColor = mist.colorOverLifetime;
+            mistColor.enabled = true;
+            Gradient mistGrad = new Gradient();
+            mistGrad.SetKeys(
+                new GradientColorKey[] {
+                    new GradientColorKey(new Color(0.9f, 0.96f, 1f), 0f),
+                    new GradientColorKey(new Color(0.8f, 0.92f, 1f), 1f)
+                },
+                new GradientAlphaKey[] {
+                    new GradientAlphaKey(0.3f, 0f),   // Very transparent
+                    new GradientAlphaKey(0.5f, 0.3f), // Peak
+                    new GradientAlphaKey(0.2f, 0.7f), // Very faint
+                    new GradientAlphaKey(0f, 1f)
+                }
+            );
+            mistColor.color = mistGrad;
+
+            var mistRenderer = mist.GetComponent<ParticleSystemRenderer>();
+            mistRenderer.renderMode = ParticleSystemRenderMode.Billboard;
+            mistRenderer.alignment = ParticleSystemRenderSpace.Facing;
+
+            Material mistMat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+            mistMat.mainTexture = GetSoftParticleTexture();
+            mistMat.SetColor("_BaseColor", new Color(0.85f, 0.93f, 1f, 1f));
+            mistMat.SetFloat("_Surface", 1);
+            mistMat.SetFloat("_Blend", 1); // Additive
+            mistMat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            mistMat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            mistMat.SetFloat("_ZWrite", 0);
+            mistMat.renderQueue = 3000;
+            mistRenderer.material = mistMat;
 
             // Add enhanced animation
             WindBlastAnimation anim = projectile.AddComponent<WindBlastAnimation>();
