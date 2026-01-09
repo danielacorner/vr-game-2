@@ -113,12 +113,7 @@ namespace VRDungeonCrawler.AI
         void SpawnRandomAnimal(int index)
         {
             // Select random animal type based on weights
-            GameObject prefab = SelectRandomPrefab();
-            if (prefab == null)
-            {
-                Debug.LogWarning("[AnimalSpawnManager] No valid prefab selected, skipping spawn");
-                return;
-            }
+            AnimalType animalType = SelectRandomAnimalType();
 
             // Find valid spawn position
             Vector3 spawnPosition = GetRandomSpawnPosition();
@@ -129,13 +124,77 @@ namespace VRDungeonCrawler.AI
                 return;
             }
 
-            // Spawn the animal
-            GameObject animal = Instantiate(prefab, spawnPosition, Quaternion.identity, transform);
-            animal.name = $"{prefab.name}_{index}";
+            // Create the animal using AnimalBuilder (with realistic colors!)
+            GameObject animal = CreateAnimalWithType(animalType);
+            if (animal == null)
+            {
+                Debug.LogWarning($"[AnimalSpawnManager] Failed to create {animalType}, skipping spawn");
+                return;
+            }
+
+            animal.transform.position = spawnPosition;
+            animal.transform.rotation = Quaternion.identity;
+            animal.transform.SetParent(transform);
+            animal.name = $"{animalType}_{index}";
+
+            // Add AI component
+            AnimalAI ai = animal.AddComponent<AnimalAI>();
+            ai.animalType = animalType;
+            ai.showDebug = showDebug;
+
+            // Add trigger collider for spell detection
+            SphereCollider triggerCol = animal.AddComponent<SphereCollider>();
+            triggerCol.radius = 0.3f;
+            triggerCol.isTrigger = true;
+
+            // Add solid collider for physics (prevents falling through floor)
+            CapsuleCollider physicsCol = animal.AddComponent<CapsuleCollider>();
+            physicsCol.radius = 0.25f;
+            physicsCol.height = 0.5f;
+            physicsCol.center = Vector3.zero;
+
+            // Add animation controller
+            AnimalAnimationController animController = animal.AddComponent<AnimalAnimationController>();
+
             spawnedAnimals.Add(animal);
 
             if (showDebug)
-                Debug.Log($"[AnimalSpawnManager] Spawned {animal.name} at {spawnPosition}");
+                Debug.Log($"[AnimalSpawnManager] Spawned {animalType} {animal.name} at {spawnPosition}");
+        }
+
+        GameObject CreateAnimalWithType(AnimalType type)
+        {
+            switch (type)
+            {
+                case AnimalType.Rabbit:
+                    return AnimalBuilder.CreateRabbit();
+                case AnimalType.Squirrel:
+                    return AnimalBuilder.CreateSquirrel();
+                case AnimalType.Bird:
+                    return AnimalBuilder.CreateBird();
+                default:
+                    return AnimalBuilder.CreateRabbit();
+            }
+        }
+
+        AnimalType SelectRandomAnimalType()
+        {
+            // Normalize weights
+            float totalWeight = rabbitWeight + squirrelWeight + birdWeight;
+            if (totalWeight == 0)
+            {
+                return AnimalType.Rabbit;
+            }
+
+            // Random selection based on weights
+            float roll = Random.Range(0f, totalWeight);
+
+            if (roll < rabbitWeight)
+                return AnimalType.Rabbit;
+            else if (roll < rabbitWeight + squirrelWeight)
+                return AnimalType.Squirrel;
+            else
+                return AnimalType.Bird;
         }
 
         GameObject SelectRandomPrefab()
