@@ -15,13 +15,36 @@ namespace VRDungeonCrawler.Player
     {
         [Header("Movement Settings")]
         [Tooltip("Base movement speed multiplier (1.5 = 1.5x faster)")]
-        public float moveSpeedMultiplier = 2f;
+        public float moveSpeedMultiplier = 4f;
 
         [Tooltip("Enable dual joystick movement (both left and right sticks move player)")]
         public bool enableDualJoystickMovement = true;
 
         [Tooltip("Reference to ContinuousMoveProvider (auto-found if null)")]
         public ActionBasedContinuousMoveProvider continuousMoveProvider;
+
+        [Header("Snap Turn Settings")]
+        [Tooltip("Angle to turn when snap-turning")]
+        public float snapTurnAngle = 45f;
+
+        [Tooltip("Deadzone for snap-turn (must move joystick this far horizontally to trigger)")]
+        [Range(0.1f, 0.9f)]
+        public float snapTurnDeadzone = 0.75f;
+
+        [Tooltip("Cooldown between snap turns (prevents double snap-turns)")]
+        public float snapTurnCooldown = 1.0f;
+
+        [Tooltip("Joystick must return below this threshold before allowing another snap-turn")]
+        [Range(0.05f, 0.3f)]
+        public float snapTurnResetThreshold = 0.15f;
+
+        [Tooltip("Max vertical movement allowed during snap-turn (prevents snap-turn when moving forward/back)")]
+        [Range(0.1f, 0.7f)]
+        public float snapTurnMaxVertical = 0.4f;
+
+        [Header("Movement Direction Settings")]
+        [Tooltip("Invert backward movement (check this if pulling back flips you around instead of moving backward)")]
+        public bool invertBackwardMovement = false;
 
         [Header("Dash Settings")]
         [Tooltip("Dash force multiplier")]
@@ -46,6 +69,8 @@ namespace VRDungeonCrawler.Player
         private CharacterController characterController;
         private Vector3 dashDirection;
         private Transform cameraTransform; // Cache VR camera transform
+        private float lastSnapTurnTime = -999f;
+        private bool wasSnapTurnPressed = false;
 
         void Awake()
         {
@@ -162,6 +187,7 @@ namespace VRDungeonCrawler.Player
             if (enableDualJoystickMovement && !isDashing)
             {
                 ApplyDualJoystickMovement();
+                ApplySnapTurn();
             }
 
             // Apply dash movement
@@ -181,7 +207,19 @@ namespace VRDungeonCrawler.Player
 
             // Right joystick: only use Y-axis (forward/back) for movement
             // X-axis (left/right) is reserved for snap-turn
+            // Store original for snap-turn detection before zeroing
+            float rightStickX = rightStickInput.x;
             rightStickInput.x = 0;
+
+            // Apply inversion if needed (some users experience backward flipping without this)
+            if (invertBackwardMovement)
+            {
+                rightStickInput.y = -rightStickInput.y;
+                if (showDebug && Time.frameCount % 60 == 0 && Mathf.Abs(rightStickInput.y) > 0.1f)
+                {
+                    Debug.Log($"[PlayerMovementController] Right stick Y INVERTED: {rightStickInput.y:F2}");
+                }
+            }
 
             // Combine inputs (left stick full movement + right stick forward/back only)
             Vector2 combinedInput = leftStickInput + rightStickInput;
@@ -206,23 +244,111 @@ namespace VRDungeonCrawler.Player
 
                     // Calculate movement vector
                     // Forward = positive Y, Backward = negative Y (both relative to headset facing direction)
+                    // combinedInput.y is positive when pushing forward, negative when pulling back
                     Vector3 moveDirection = (cameraForward * combinedInput.y + cameraRight * combinedInput.x);
 
                     // Apply movement - use moveSpeedMultiplier as base speed if no ContinuousMoveProvider
                     float moveSpeed = continuousMoveProvider != null ? continuousMoveProvider.moveSpeed : (2f * moveSpeedMultiplier);
+
+                    // Reduce backward speed to 60% for better VR comfort
+                    if (combinedInput.y < 0)
+                    {
+                        moveSpeed *= 0.6f;
+                    }
+
                     Vector3 movement = moveDirection * moveSpeed * Time.deltaTime;
 
                     characterController.Move(movement);
 
-                    if (showDebug && Time.frameCount % 30 == 0)
+                    // Log movement details every frame when moving backward
+                    Vector2 rightStickRaw = GetJoystickInput(XRNode.RightHand);
+                    if (rightStickRaw.y < -0.2f && Time.frameCount % 30 == 0)
                     {
-                        Debug.Log($"[PlayerMovementController] Camera: {cameraTransform.name}, Forward: ({cameraForward.x:F2},{cameraForward.z:F2}), Input Y: {combinedInput.y:F2}, MoveDir: ({moveDirection.x:F2},{moveDirection.z:F2})");
+                        Debug.Log($"========================================");
+                        Debug.Log($"[BACKWARD MOVEMENT]");
+                        Debug.Log($"  Right stick Y: {rightStickRaw.y:F3}");
+                        Debug.Log($"  Combined Y: {combinedInput.y:F3}");
+                        Debug.Log($"  Camera Forward: ({cameraForward.x:F2}, {cameraForward.z:F2})");
+                        Debug.Log($"  Move Direction: ({moveDirection.x:F2}, {moveDirection.z:F2})");
+                        Debug.Log($"  Player rotation: {transform.eulerAngles.y:F1}°");
+                        Debug.Log($"========================================");
                     }
                 }
                 else
                 {
                     Debug.LogWarning("[PlayerMovementController] Camera transform is NULL!");
                 }
+            }
+        }
+
+        void ApplySnapTurn()
+        {
+            // Get right joystick input for snap-turn
+            Vector2 rightStickInput = GetJoystickInput(XRNode.RightHand);
+
+            float absX = Mathf.Abs(rightStickInput.x);
+            float absY = Mathf.Abs(rightStickInput.y);
+
+            // CRITICAL: Log ALL joystick input when active to debug the flipping issue
+            if ((absX > 0.3f || absY > 0.3f) && Time.frameCount % 30 == 0)
+            {
+                Debug.Log($"[JOYSTICK] Right stick RAW: X={rightStickInput.x:F3}, Y={rightStickInput.y:F3}");
+            }
+
+            // Reset pressed flag ONLY when joystick returns very close to center
+            // This prevents double-snaps from quick back-and-forth movements
+            if (absX < snapTurnResetThreshold && absY < snapTurnResetThreshold)
+            {
+                if (wasSnapTurnPressed)
+                {
+                    wasSnapTurnPressed = false;
+                    Debug.Log($"[PlayerMovementController] Snap-turn RESET (joystick at center)");
+                }
+            }
+
+            // CRITICAL: Completely block snap-turn if user is moving backward
+            // This prevents the "backward flipping" issue
+            bool isMovingBackward = rightStickInput.y < -0.2f;
+            if (isMovingBackward)
+            {
+                // Don't even check snap-turn conditions when moving backward
+                return;
+            }
+
+            // Very strict conditions for snap-turn:
+            // 1. Horizontal movement is above deadzone threshold (0.75)
+            // 2. Vertical movement is LOW (below 0.4) - not trying to move forward/back
+            // 3. Horizontal is 3x larger than vertical (very intentional left/right)
+            // 4. Not already pressed (prevents holding to spam)
+            // 5. Cooldown has elapsed (0.8s minimum between snaps)
+            bool horizontalAboveDeadzone = absX > snapTurnDeadzone;
+            bool verticalIsLow = absY < snapTurnMaxVertical;
+            bool horizontalMuchLargerThanVertical = absX > absY * 3f;
+
+            float timeSinceLastSnap = Time.time - lastSnapTurnTime;
+            bool cooldownElapsed = timeSinceLastSnap >= snapTurnCooldown;
+
+            bool isIntentionalHorizontalMovement = horizontalAboveDeadzone &&
+                                                   verticalIsLow &&
+                                                   horizontalMuchLargerThanVertical;
+
+            if (isIntentionalHorizontalMovement && !wasSnapTurnPressed && cooldownElapsed)
+            {
+                // Determine turn direction
+                float turnDirection = Mathf.Sign(rightStickInput.x);
+                float turnAngle = snapTurnAngle * turnDirection;
+
+                // Rotate the XR Origin (this GameObject)
+                transform.Rotate(0, turnAngle, 0);
+
+                lastSnapTurnTime = Time.time;
+                wasSnapTurnPressed = true;
+
+                Debug.Log($"========================================");
+                Debug.Log($"[SNAP-TURN TRIGGERED] Angle: {turnAngle}°");
+                Debug.Log($"  Input: X={rightStickInput.x:F3}, Y={rightStickInput.y:F3}");
+                Debug.Log($"  Conditions: H_deadzone={horizontalAboveDeadzone}, V_low={verticalIsLow}, H>V*3={horizontalMuchLargerThanVertical}");
+                Debug.Log($"========================================");
             }
         }
 
@@ -416,12 +542,25 @@ namespace VRDungeonCrawler.Player
                     }
                 }
 
-                // Keep turn providers enabled (snap-turn is useful!)
-                // Turn providers handle right joystick left/right for rotation
+                // Disable turn providers - we handle snap-turn manually with proper deadzone
                 var snapTurnProviders = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.ActionBasedSnapTurnProvider>(true);
                 var continuousTurnProviders = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousTurnProvider>(true);
 
-                Debug.Log($"[PlayerMovementController] Found {snapTurnProviders.Length} snap turn and {continuousTurnProviders.Length} continuous turn providers (keeping enabled)");
+                foreach (var provider in snapTurnProviders)
+                {
+                    provider.enabled = false;
+                    disabledCount++;
+                    Debug.Log($"[PlayerMovementController] ✓ Disabled snap turn provider (using manual snap-turn with deadzone)");
+                }
+
+                foreach (var provider in continuousTurnProviders)
+                {
+                    provider.enabled = false;
+                    disabledCount++;
+                    Debug.Log($"[PlayerMovementController] ✓ Disabled continuous turn provider");
+                }
+
+                Debug.Log($"[PlayerMovementController] Disabled {snapTurnProviders.Length} snap turn and {continuousTurnProviders.Length} continuous turn providers");
 
                 Debug.Log($"[PlayerMovementController] === DISABLED {disabledCount} COMPONENTS in attempt {attempt + 1} ===");
 
