@@ -10,7 +10,7 @@ namespace VRDungeonCrawler.Environment
     {
         [Header("Fog Settings")]
         [Tooltip("Enable drifting fog particles")]
-        public bool enableFog = true;
+        public bool enableFog = false;
 
         [Range(10, 100)]
         [Tooltip("Number of fog particles")]

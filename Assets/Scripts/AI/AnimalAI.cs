@@ -64,11 +64,28 @@ namespace VRDungeonCrawler.AI
         [Tooltip("Time between hops for rabbits")]
         public float hopInterval = 0.5f;
 
+        [Tooltip("Rabbit pause chance after each hop (realistic stop-and-go)")]
+        [Range(0f, 1f)]
+        public float rabbitPauseChance = 0.3f;
+
         [Tooltip("Erratic movement frequency for squirrels")]
         public float erraticFrequency = 0.2f;
 
+        [Tooltip("Squirrel dash probability (sudden bursts of speed)")]
+        [Range(0f, 1f)]
+        public float squirrelDashProbability = 0.15f;
+
+        [Tooltip("Squirrel dash speed multiplier")]
+        public float squirrelDashSpeed = 2.5f;
+
         [Tooltip("Flying height for birds")]
         public float flyingHeight = 2f;
+
+        [Tooltip("Bird swoop behavior (diving down periodically)")]
+        public bool birdCanSwoop = true;
+
+        [Tooltip("Time between bird swoops")]
+        public float birdSwoopInterval = 8f;
 
         [Header("Damage Reaction")]
         [Tooltip("Flash color when hit (Zelda-style)")]
@@ -100,6 +117,13 @@ namespace VRDungeonCrawler.AI
         private bool isInitialized = false;
         private float hopTimer;
         private float erraticTimer;
+        private bool isRabbitPaused = false;
+        private float rabbitPauseTimer;
+        private bool isSquirrelDashing = false;
+        private float squirrelDashTimer;
+        private float birdSwoopTimer;
+        private bool isBirdSwooping = false;
+        private float birdSwoopStartHeight;
 
         // Damage reaction
         private bool isFlashing = false;
@@ -108,6 +132,9 @@ namespace VRDungeonCrawler.AI
         private List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
         private Dictionary<MeshRenderer, Color[]> originalColors = new Dictionary<MeshRenderer, Color[]>();
         private Dictionary<MeshRenderer, Material[]> originalMaterials = new Dictionary<MeshRenderer, Material[]>();
+
+        // Boundary control
+        private VRDungeonCrawler.Environment.BoundaryController boundaryController;
 
         void Awake()
         {
@@ -153,6 +180,13 @@ namespace VRDungeonCrawler.AI
 
         void Start()
         {
+            // Find boundary controller
+            boundaryController = FindObjectOfType<VRDungeonCrawler.Environment.BoundaryController>();
+            if (boundaryController == null && showDebug)
+            {
+                Debug.LogWarning("[AnimalAI] No BoundaryController found - animal may fall off edges!");
+            }
+
             // Find player (VR camera or XR Origin)
             FindPlayer();
 
@@ -246,6 +280,12 @@ namespace VRDungeonCrawler.AI
         {
             if (!isInitialized || agent == null) return;
 
+            // Enforce boundary constraints
+            if (boundaryController != null)
+            {
+                boundaryController.EnforceBoundary(transform);
+            }
+
             // Handle flash effect
             if (isFlashing)
             {
@@ -292,6 +332,18 @@ namespace VRDungeonCrawler.AI
 
         void UpdateRabbitHopping()
         {
+            // Handle pause state (realistic stop-and-go behavior)
+            if (isRabbitPaused)
+            {
+                rabbitPauseTimer -= Time.deltaTime;
+                if (rabbitPauseTimer <= 0f)
+                {
+                    isRabbitPaused = false;
+                    agent.isStopped = false;
+                }
+                return;
+            }
+
             hopTimer += Time.deltaTime;
 
             // Hop when moving and enough time has passed
@@ -309,6 +361,17 @@ namespace VRDungeonCrawler.AI
                 }
 
                 hopTimer = 0f;
+
+                // Chance to pause after hop (not during flee)
+                if (currentState != AnimalState.Flee && Random.value < rabbitPauseChance)
+                {
+                    isRabbitPaused = true;
+                    rabbitPauseTimer = Random.Range(0.5f, 1.5f);
+                    agent.isStopped = true;
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {gameObject.name} paused to look around");
+                }
             }
         }
 
@@ -336,7 +399,20 @@ namespace VRDungeonCrawler.AI
         {
             erraticTimer += Time.deltaTime;
 
-            if (erraticTimer >= erraticFrequency && agent.hasPath)
+            // Handle dash state (sudden burst of speed)
+            if (isSquirrelDashing)
+            {
+                squirrelDashTimer -= Time.deltaTime;
+                if (squirrelDashTimer <= 0f)
+                {
+                    isSquirrelDashing = false;
+                    agent.speed = currentState == AnimalState.Flee ? fleeSpeed : walkSpeed;
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {gameObject.name} finished dash");
+                }
+            }
+            else if (erraticTimer >= erraticFrequency && agent.hasPath)
             {
                 // Add random offset to current path
                 Vector3 randomOffset = new Vector3(
@@ -348,15 +424,68 @@ namespace VRDungeonCrawler.AI
                 Vector3 newDestination = agent.destination + randomOffset;
                 agent.SetDestination(newDestination);
 
+                // Chance to start dashing (sudden burst of speed)
+                if (Random.value < squirrelDashProbability)
+                {
+                    isSquirrelDashing = true;
+                    squirrelDashTimer = Random.Range(0.5f, 1f);
+                    agent.speed *= squirrelDashSpeed;
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {gameObject.name} started dash!");
+                }
+
                 erraticTimer = 0f;
             }
         }
 
         void UpdateBirdFlying()
         {
-            // Birds bob up and down while flying
-            float bobAmount = Mathf.Sin(Time.time * 2f) * 0.15f;
-            agent.baseOffset = flyingHeight + bobAmount;
+            birdSwoopTimer += Time.deltaTime;
+
+            // Handle swooping behavior (dive down periodically)
+            if (birdCanSwoop && currentState == AnimalState.Wander)
+            {
+                if (!isBirdSwooping && birdSwoopTimer >= birdSwoopInterval)
+                {
+                    // Start swoop
+                    isBirdSwooping = true;
+                    birdSwoopStartHeight = agent.baseOffset;
+                    birdSwoopTimer = 0f;
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {gameObject.name} starting swoop!");
+                }
+                else if (isBirdSwooping)
+                {
+                    float swoopDuration = 2f;
+                    float swoopProgress = birdSwoopTimer / swoopDuration;
+
+                    if (swoopProgress < 1f)
+                    {
+                        // Swoop down and back up (parabolic arc)
+                        float swoopHeight = Mathf.Sin(swoopProgress * Mathf.PI) * (flyingHeight * 0.7f);
+                        agent.baseOffset = flyingHeight - swoopHeight;
+                    }
+                    else
+                    {
+                        // End swoop
+                        isBirdSwooping = false;
+                        agent.baseOffset = flyingHeight;
+                        birdSwoopTimer = 0f;
+
+                        if (showDebug)
+                            Debug.Log($"[AnimalAI] {gameObject.name} finished swoop");
+                    }
+                }
+            }
+
+            // Normal bobbing when not swooping
+            if (!isBirdSwooping)
+            {
+                float bobAmount = Mathf.Sin(Time.time * 2f) * 0.15f;
+                agent.baseOffset = flyingHeight + bobAmount;
+            }
         }
 
         void UpdateStateTransitions()
@@ -485,24 +614,41 @@ namespace VRDungeonCrawler.AI
 
         Vector3 GetRandomWanderPoint()
         {
-            // Pick random point within wander radius from home
-            Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
-            randomDirection += homePosition;
-            randomDirection.y = homePosition.y; // Keep at ground level
-
-            // Find valid NavMesh position
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, NavMesh.AllAreas))
+            int maxAttempts = 10;
+            for (int attempt = 0; attempt < maxAttempts; attempt++)
             {
-                return hit.position;
+                // Pick random point within wander radius from home
+                Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
+                randomDirection += homePosition;
+                randomDirection.y = homePosition.y; // Keep at ground level
+
+                // Check boundary constraints
+                if (boundaryController != null && !boundaryController.IsWithinBoundary(randomDirection))
+                {
+                    continue; // Try again
+                }
+
+                // Find valid NavMesh position
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, NavMesh.AllAreas))
+                {
+                    // Double-check boundary
+                    if (boundaryController != null && !boundaryController.IsWithinBoundary(hit.position))
+                    {
+                        continue;
+                    }
+
+                    return hit.position;
+                }
             }
 
-            return Vector3.zero; // Invalid point
+            // If all attempts failed, return home position (safe)
+            return homePosition;
         }
 
         /// <summary>
         /// Called when animal is hit by a spell (Zelda-style reaction)
-        /// Flash white and bounce upward
+        /// Flash white and bounce upward, then flee temporarily
         /// </summary>
         public void OnSpellHit(Vector3 hitDirection, float hitForce = 0f)
         {
@@ -515,8 +661,29 @@ namespace VRDungeonCrawler.AI
             // Apply bounce force
             ApplyBounce(hitDirection, hitForce);
 
-            // Flee from hit direction
+            // Flee dramatically from hit direction
             ChangeState(AnimalState.Flee);
+
+            // Temporarily increase flee speed for panic effect
+            float originalFleeSpeed = fleeSpeed;
+            fleeSpeed *= 1.5f;
+
+            // Reset flee speed after panic period
+            StartCoroutine(ResetFleeSpeedAfterPanic(originalFleeSpeed));
+
+            // Cancel any animal-specific behaviors during panic
+            isRabbitPaused = false;
+            isSquirrelDashing = false;
+            isBirdSwooping = false;
+        }
+
+        System.Collections.IEnumerator ResetFleeSpeedAfterPanic(float originalSpeed)
+        {
+            yield return new WaitForSeconds(3f);
+            fleeSpeed = originalSpeed;
+
+            if (showDebug)
+                Debug.Log($"[AnimalAI] {gameObject.name} calmed down from panic");
         }
 
         void StartFlashEffect()

@@ -71,6 +71,7 @@ namespace VRDungeonCrawler.Player
         private Transform cameraTransform; // Cache VR camera transform
         private float lastSnapTurnTime = -999f;
         private bool wasSnapTurnPressed = false;
+        private VRDungeonCrawler.Environment.BoundaryController boundaryController;
 
         void Awake()
         {
@@ -91,6 +92,13 @@ namespace VRDungeonCrawler.Player
 
         void Start()
         {
+            // Find boundary controller
+            boundaryController = FindObjectOfType<VRDungeonCrawler.Environment.BoundaryController>();
+            if (boundaryController == null && showDebug)
+            {
+                Debug.LogWarning("[PlayerMovementController] No BoundaryController found - player may fall off edges!");
+            }
+
             // Find the VR camera (should be a child of this XR Origin)
             Camera mainCamera = GetComponentInChildren<Camera>();
             if (mainCamera != null)
@@ -194,6 +202,12 @@ namespace VRDungeonCrawler.Player
             if (isDashing)
             {
                 ApplyDashMovement();
+            }
+
+            // Enforce boundary constraints
+            if (boundaryController != null)
+            {
+                boundaryController.EnforceBoundary(transform, characterController);
             }
         }
 
