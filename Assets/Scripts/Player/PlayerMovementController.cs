@@ -45,9 +45,45 @@ namespace VRDungeonCrawler.Player
         private float lastDashTime = -999f;
         private CharacterController characterController;
         private Vector3 dashDirection;
+        private Transform cameraTransform; // Cache VR camera transform
+
+        void Awake()
+        {
+            Debug.Log("========================================");
+            Debug.Log("========================================");
+            Debug.Log("PLAYERMOVEMENT AWAKE CALLED!!!");
+            Debug.Log("GameObject: " + gameObject.name);
+            Debug.Log("enableDualJoystick: " + enableDualJoystickMovement);
+            Debug.Log("========================================");
+            Debug.Log("========================================");
+
+            // CRITICAL: Disable teleportation FIRST before anything else runs
+            if (enableDualJoystickMovement)
+            {
+                StartCoroutine(DisableTeleportationSystemsDelayed());
+            }
+        }
 
         void Start()
         {
+            // Find the VR camera (should be a child of this XR Origin)
+            Camera mainCamera = GetComponentInChildren<Camera>();
+            if (mainCamera != null)
+            {
+                cameraTransform = mainCamera.transform;
+                Debug.Log($"[PlayerMovementController] Found VR camera: {mainCamera.name}");
+            }
+            else
+            {
+                Debug.LogError("[PlayerMovementController] No camera found in XR Origin children!");
+                // Fallback to Camera.main
+                if (Camera.main != null)
+                {
+                    cameraTransform = Camera.main.transform;
+                    Debug.LogWarning("[PlayerMovementController] Using Camera.main as fallback");
+                }
+            }
+
             // Auto-find ContinuousMoveProvider if not assigned
             if (continuousMoveProvider == null)
             {
@@ -80,6 +116,9 @@ namespace VRDungeonCrawler.Player
                     continuousMoveProvider.enabled = false;
                     if (showDebug)
                         Debug.Log("[PlayerMovementController] ContinuousMoveProvider disabled - using dual joystick movement");
+
+                    // CRITICAL: Disable teleportation - use delayed coroutine for proper timing
+                    StartCoroutine(DisableTeleportationSystemsDelayed());
                 }
             }
 
@@ -134,13 +173,17 @@ namespace VRDungeonCrawler.Player
 
         void ApplyDualJoystickMovement()
         {
-            if (characterController == null || continuousMoveProvider == null) return;
+            if (characterController == null) return;
 
             // Get joystick input from both controllers
             Vector2 leftStickInput = GetJoystickInput(XRNode.LeftHand);
             Vector2 rightStickInput = GetJoystickInput(XRNode.RightHand);
 
-            // Combine inputs (take the larger magnitude input, or add them)
+            // Right joystick: only use Y-axis (forward/back) for movement
+            // X-axis (left/right) is reserved for snap-turn
+            rightStickInput.x = 0;
+
+            // Combine inputs (left stick full movement + right stick forward/back only)
             Vector2 combinedInput = leftStickInput + rightStickInput;
 
             // Clamp to prevent overly fast movement
@@ -148,33 +191,37 @@ namespace VRDungeonCrawler.Player
 
             if (combinedInput.magnitude > 0.1f)
             {
-                // Get camera for direction
-                Camera mainCamera = Camera.main;
-                if (mainCamera != null)
+                // Use cached VR camera's forward direction to track both head rotation and snap-turn
+                if (cameraTransform != null)
                 {
-                    // Calculate movement direction based on camera forward/right
-                    Vector3 forward = mainCamera.transform.forward;
-                    Vector3 right = mainCamera.transform.right;
+                    // Get the direction where the headset is actually looking
+                    Vector3 cameraForward = cameraTransform.forward;
+                    Vector3 cameraRight = cameraTransform.right;
 
-                    // Flatten to XZ plane
-                    forward.y = 0;
-                    right.y = 0;
-                    forward.Normalize();
-                    right.Normalize();
+                    // Flatten to XZ plane (ignore vertical look angle)
+                    cameraForward.y = 0;
+                    cameraRight.y = 0;
+                    cameraForward.Normalize();
+                    cameraRight.Normalize();
 
                     // Calculate movement vector
-                    Vector3 moveDirection = (forward * combinedInput.y + right * combinedInput.x);
+                    // Forward = positive Y, Backward = negative Y (both relative to headset facing direction)
+                    Vector3 moveDirection = (cameraForward * combinedInput.y + cameraRight * combinedInput.x);
 
-                    // Apply movement
-                    float moveSpeed = continuousMoveProvider.moveSpeed;
+                    // Apply movement - use moveSpeedMultiplier as base speed if no ContinuousMoveProvider
+                    float moveSpeed = continuousMoveProvider != null ? continuousMoveProvider.moveSpeed : (2f * moveSpeedMultiplier);
                     Vector3 movement = moveDirection * moveSpeed * Time.deltaTime;
 
                     characterController.Move(movement);
 
-                    if (showDebug && Time.frameCount % 60 == 0)
+                    if (showDebug && Time.frameCount % 30 == 0)
                     {
-                        Debug.Log($"[PlayerMovementController] Dual joystick movement: L({leftStickInput.x:F2},{leftStickInput.y:F2}) R({rightStickInput.x:F2},{rightStickInput.y:F2})");
+                        Debug.Log($"[PlayerMovementController] Camera: {cameraTransform.name}, Forward: ({cameraForward.x:F2},{cameraForward.z:F2}), Input Y: {combinedInput.y:F2}, MoveDir: ({moveDirection.x:F2},{moveDirection.z:F2})");
                     }
+                }
+                else
+                {
+                    Debug.LogWarning("[PlayerMovementController] Camera transform is NULL!");
                 }
             }
         }
@@ -312,6 +359,84 @@ namespace VRDungeonCrawler.Player
             {
                 StartDash();
             }
+        }
+
+        /// <summary>
+        /// Disables Unity XR Toolkit teleportation systems - runs with delay to ensure XR is initialized
+        /// Tries multiple times over 2 seconds to catch all components
+        /// </summary>
+        System.Collections.IEnumerator DisableTeleportationSystemsDelayed()
+        {
+            Debug.Log("[PlayerMovementController] === STARTING TELEPORTATION DISABLE (DELAYED) ===");
+
+            // Wait for XR to initialize
+            yield return new WaitForSeconds(1f);
+
+            // Try multiple times
+            for (int attempt = 0; attempt < 3; attempt++)
+            {
+                Debug.Log($"[PlayerMovementController] Attempt {attempt + 1}/3 to disable teleportation...");
+
+                int disabledCount = 0;
+
+                // Find and disable XRRayInteractor on right controller (this shows the teleport ray)
+                var allRayInteractors = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor>(true);
+                Debug.Log($"[PlayerMovementController] Found {allRayInteractors.Length} total XRRayInteractor components");
+
+                foreach (var rayInteractor in allRayInteractors)
+                {
+                    string objName = rayInteractor.gameObject.name.ToLower();
+                    Debug.Log($"[PlayerMovementController] Checking XRRayInteractor on: {rayInteractor.gameObject.name}");
+
+                    // Disable all teleport interactors (both left and right)
+                    if (objName.Contains("teleport"))
+                    {
+                        // Disable the component
+                        rayInteractor.enabled = false;
+
+                        // Also disable the GameObject to be extra sure
+                        rayInteractor.gameObject.SetActive(false);
+
+                        disabledCount++;
+                        Debug.Log($"[PlayerMovementController] ✓✓✓ DISABLED XRRayInteractor GameObject: {rayInteractor.gameObject.name}");
+                    }
+                }
+
+                // Disable all TeleportationProvider components
+                var teleportProviders = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider>(true);
+                Debug.Log($"[PlayerMovementController] Found {teleportProviders.Length} TeleportationProvider components");
+
+                foreach (var provider in teleportProviders)
+                {
+                    if (provider.enabled)
+                    {
+                        provider.enabled = false;
+                        disabledCount++;
+                        Debug.Log($"[PlayerMovementController] ✓ Disabled TeleportationProvider on {provider.gameObject.name}");
+                    }
+                }
+
+                // Keep turn providers enabled (snap-turn is useful!)
+                // Turn providers handle right joystick left/right for rotation
+                var snapTurnProviders = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.ActionBasedSnapTurnProvider>(true);
+                var continuousTurnProviders = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousTurnProvider>(true);
+
+                Debug.Log($"[PlayerMovementController] Found {snapTurnProviders.Length} snap turn and {continuousTurnProviders.Length} continuous turn providers (keeping enabled)");
+
+                Debug.Log($"[PlayerMovementController] === DISABLED {disabledCount} COMPONENTS in attempt {attempt + 1} ===");
+
+                if (disabledCount > 0)
+                {
+                    Debug.Log($"[PlayerMovementController] ✓✓✓ SUCCESS! Right joystick ready for movement!");
+                    yield break; // Success, stop trying
+                }
+
+                // Wait before next attempt
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            Debug.LogWarning("[PlayerMovementController] ⚠️ WARNING: Could not find teleportation components after 3 attempts!");
+            Debug.LogWarning("[PlayerMovementController] The teleport ray may still appear. Check Console for XRRayInteractor names.");
         }
     }
 }
