@@ -26,6 +26,10 @@ namespace VRDungeonCrawler.VR
         [Tooltip("Delay between initialization attempts (seconds)")]
         public float attemptDelay = 0.3f;
 
+        [Header("Locomotion Settings")]
+        [Tooltip("Input actions asset for locomotion configuration")]
+        public UnityEngine.InputSystem.InputActionAsset inputActionAsset;
+
         private XROrigin xrOrigin;
 
         private void Awake()
@@ -70,7 +74,7 @@ namespace VRDungeonCrawler.VR
                         if (cameraPos.magnitude > 0.01f)
                         {
                             trackingActive = true;
-                            Debug.Log($"[XROriginInitializer] ✓ XR tracking is ACTIVE! Camera at local: {cameraPos}");
+                            Debug.Log($"[XROriginInitializer] XR tracking is ACTIVE! Camera at local: {cameraPos}");
                         }
                     }
                 }
@@ -106,7 +110,7 @@ namespace VRDungeonCrawler.VR
 
                 if (inputSubsystem.TrySetTrackingOriginMode(requestedMode))
                 {
-                    Debug.Log($"[XROriginInitializer] ✓ Tracking mode set to {requestedMode}");
+                    Debug.Log($"[XROriginInitializer] Tracking mode set to {requestedMode}");
                 }
 
                 // Get current tracking origin mode to verify
@@ -121,12 +125,20 @@ namespace VRDungeonCrawler.VR
 
             yield return new WaitForSeconds(0.5f);
 
-            // Log final camera position
+            // Log final camera position if camera exists
             if (xrOrigin.Camera != null)
             {
                 float cameraY = xrOrigin.CameraInOriginSpacePos.y;
-                Debug.Log($"[XROriginInitializer] ✓✓✓ Initialization complete. Camera height: {cameraY:F2}m");
+                Debug.Log($"[XROriginInitializer] Initialization complete. Camera height: {cameraY:F2}m");
             }
+            else
+            {
+                Debug.LogWarning("[XROriginInitializer] Camera is null, but continuing with configuration...");
+            }
+
+            // Configure locomotion input actions (moved outside camera check)
+            Debug.Log("[XROriginInitializer] Starting locomotion configuration...");
+            ConfigureLocomotionInputActions();
         }
 
         // Optional: Add method to manually recenter if needed
@@ -147,5 +159,54 @@ namespace VRDungeonCrawler.VR
                 xrOrigin.MoveCameraToWorldLocation(xrOrigin.transform.position);
             }
         }
-    }
+    
+
+        private void ConfigureLocomotionInputActions()
+        {
+            if (inputActionAsset == null)
+            {
+                Debug.LogError("[XROriginInitializer] InputActionAsset is not assigned!");
+                return;
+            }
+
+            // Find the action map
+            var actionMap = inputActionAsset.FindActionMap("XRI Right Locomotion");
+            if (actionMap == null)
+            {
+                Debug.LogError("[XROriginInitializer] Could not find 'XRI Right Locomotion' action map");
+                return;
+            }
+
+            // Get the locomotion providers
+            var moveProvider = GetComponent<UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider>();
+            var snapTurnProvider = GetComponent<UnityEngine.XR.Interaction.Toolkit.ActionBasedSnapTurnProvider>();
+
+            // Configure move action
+            if (moveProvider != null)
+            {
+                var moveAction = actionMap.FindAction("Move");
+                if (moveAction != null)
+                {
+                    moveProvider.rightHandMoveAction = new UnityEngine.InputSystem.InputActionProperty(moveAction);
+                    moveProvider.moveSpeed = 20f; // 4x default speed
+                    Debug.Log("[XROriginInitializer]  Configured move action");
+                }
+            }
+
+            // Configure snap turn action
+            if (snapTurnProvider != null)
+            {
+                var snapTurnAction = actionMap.FindAction("Snap Turn");
+                if (snapTurnAction != null)
+                {
+                    snapTurnProvider.rightHandSnapTurnAction = new UnityEngine.InputSystem.InputActionProperty(snapTurnAction);
+                    snapTurnProvider.turnAmount = 45f;
+                    snapTurnProvider.debounceTime = 0.3f;
+                    snapTurnProvider.enableTurnLeftRight = true;
+                    snapTurnProvider.enableTurnAround = false;
+                    Debug.Log("[XROriginInitializer]  Configured snap turn action");
+                }
+            }
+        }
+}
 }

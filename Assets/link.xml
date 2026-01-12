@@ -1,0 +1,10 @@
+<linker>
+  <!-- Preserve all types in the VRDungeonCrawler namespace -->
+  <assembly fullname="Assembly-CSharp">
+    <namespace fullname="VRDungeonCrawler.VR" preserve="all"/>
+    <namespace fullname="VRDungeonCrawler.Player" preserve="all"/>
+    <namespace fullname="VRDungeonCrawler.Editor" preserve="all"/>
+    <namespace fullname="VRDungeonCrawler.AI" preserve="all"/>
+    <namespace fullname="VRDungeonCrawler.Environment" preserve="all"/>
+  </assembly>
+</linker>

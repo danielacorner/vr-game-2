@@ -18,6 +18,9 @@ namespace VRDungeonCrawler.Core
         public string homeSceneName = "HomeArea";
         public string dungeonSceneName = "Dungeon";
 
+        [Header("Game Mode")]
+        public string currentGameMode = "Standard";
+
         private void Awake()
         {
             // Singleton pattern
@@ -54,6 +57,12 @@ namespace VRDungeonCrawler.Core
         {
             Debug.Log("[GameManager] Returning to home");
             EnterHomeArea();
+        }
+
+        public void SetGameMode(string mode)
+        {
+            currentGameMode = mode;
+            Debug.Log($"[GameManager] Game mode set to: {mode}");
         }
     }
 
