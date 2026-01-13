@@ -201,11 +201,11 @@ namespace VRDungeonCrawler.Editor
             menu.hoverDetectionRadius = 0.12f; // Increased for easier selection
             menu.selectionDeadzone = 0.3f;
 
-            // FIXED ROTATION VALUES
-            menu.menuTiltAngle = -20f;  // Less tilt (was -40°)
-            menu.menuZRotation = 15f;   // Less rotation (was 30°)
+            // FIXED ROTATION VALUES - Fire spells directly up
+            menu.menuTiltAngle = 25f;  // Slight tilt toward player for comfortable viewing
+            menu.menuZRotation = 0f;    // No rotation - fire spells point straight up
 
-            Debug.Log($"[CompleteSpellSystem] ✓ Added spell menu to {handName} (tilt=-20°, zRot=15°)");
+            Debug.Log($"[CompleteSpellSystem] ✓ Added spell menu to {handName} (tilt=-20°, zRot=0° - fire up)");
 
             EditorUtility.SetDirty(controller.gameObject);
         }
