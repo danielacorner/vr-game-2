@@ -20,28 +20,15 @@ namespace VRDungeonCrawler.Editor
 
         static RestoreCompleteSpellSystem()
         {
-            // Check both EditorPrefs flag AND if components actually exist
+            // DISABLED - Run manually via "Tools/VR Dungeon Crawler/Force Restore Complete Spell System"
+            return;
+
+            // Check flag only - don't re-verify every startup to avoid repeated dialogs
             if (EditorPrefs.GetBool(PREF_KEY, false))
             {
-                // Verify components actually exist before skipping
-                XROrigin xrOrigin = Object.FindFirstObjectByType<XROrigin>();
-                if (xrOrigin != null)
-                {
-                    Transform rightController = xrOrigin.transform.Find("Camera Offset/Right Controller");
-                    if (rightController != null)
-                    {
-                        var caster = rightController.GetComponent<VRDungeonCrawler.Spells.SpellCaster>();
-                        if (caster != null && caster.spawnPoint != null)
-                        {
-                            Debug.Log("[CompleteSpellSystem] Already restored and verified");
-                            return;
-                        }
-                    }
-                }
-
-                // Components missing despite flag - clear flag and continue
-                Debug.LogWarning("[CompleteSpellSystem] Flag set but components missing - will restore");
-                EditorPrefs.DeleteKey(PREF_KEY);
+                // Already restored, skip
+                // Use "Reset Complete Spell System Flag" menu item if you need to re-run
+                return;
             }
 
             EditorApplication.delayCall += () =>

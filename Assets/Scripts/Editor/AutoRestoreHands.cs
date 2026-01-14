@@ -16,10 +16,13 @@ namespace VRDungeonCrawler.Editor
 
         static AutoRestoreHands()
         {
-            // Only run once
+            // DISABLED - Run manually via "Tools/VR Dungeon Crawler/Reset Auto-Restore Hands Flag"
+            return;
+
+            // Only run once - check flag and skip to avoid repeated dialogs
+            // Use "Reset Auto-Restore Hands Flag" menu item if you need to re-run
             if (EditorPrefs.GetBool(PREF_KEY, false))
             {
-                Debug.Log("[AutoRestoreHands] Hands already restored, skipping auto-restore");
                 return;
             }
 

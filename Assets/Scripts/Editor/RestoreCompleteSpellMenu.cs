@@ -16,10 +16,13 @@ namespace VRDungeonCrawler.Editor
 
         static RestoreCompleteSpellMenu()
         {
-            // Only run once
+            // DISABLED - Run manually via "Tools/VR Dungeon Crawler/Reset Spell Menu Flag"
+            return;
+
+            // Only run once - skip silently to avoid repeated dialogs
+            // Use "Reset Spell Menu Flag" menu item if you need to re-run
             if (EditorPrefs.GetBool(PREF_KEY, false))
             {
-                Debug.Log("[RestoreSpellMenu] Spell menu already restored");
                 return;
             }
 
