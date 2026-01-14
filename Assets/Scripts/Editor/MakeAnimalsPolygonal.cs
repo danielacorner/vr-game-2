@@ -38,22 +38,24 @@ namespace VRDungeonCrawler.Editor
 
                 foreach (MeshFilter meshFilter in meshFilters)
                 {
-                    // Check if it's using a sphere mesh (Unity's default sphere has ~960 vertices)
+                    // Check if it's using a smooth primitive mesh (Sphere, Capsule, or high-poly mesh)
                     if (meshFilter.sharedMesh != null &&
-                        (meshFilter.sharedMesh.name.Contains("Sphere") || meshFilter.sharedMesh.vertexCount > 100))
+                        (meshFilter.sharedMesh.name.Contains("Sphere") ||
+                         meshFilter.sharedMesh.name.Contains("Capsule") ||
+                         meshFilter.sharedMesh.name.Contains("Cylinder") ||
+                         meshFilter.sharedMesh.vertexCount > 24)) // Cube has 24 vertices, anything more is too smooth
                     {
-                        // Replace with cube mesh (8 vertices, flat faces)
+                        // Replace with cube mesh (24 vertices, flat faces)
                         GameObject tempCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         Mesh cubeMesh = tempCube.GetComponent<MeshFilter>().sharedMesh;
                         Object.DestroyImmediate(tempCube);
 
                         meshFilter.sharedMesh = cubeMesh;
 
-                        // Also update collider if it's a SphereCollider
+                        // Also update colliders to BoxCollider
                         SphereCollider sphereCollider = meshFilter.GetComponent<SphereCollider>();
                         if (sphereCollider != null)
                         {
-                            // Replace with BoxCollider
                             Vector3 center = sphereCollider.center;
                             float radius = sphereCollider.radius;
                             bool isTrigger = sphereCollider.isTrigger;
@@ -63,6 +65,22 @@ namespace VRDungeonCrawler.Editor
                             BoxCollider boxCollider = meshFilter.gameObject.AddComponent<BoxCollider>();
                             boxCollider.center = center;
                             boxCollider.size = Vector3.one * radius * 2f;
+                            boxCollider.isTrigger = isTrigger;
+                        }
+
+                        CapsuleCollider capsuleCollider = meshFilter.GetComponent<CapsuleCollider>();
+                        if (capsuleCollider != null)
+                        {
+                            Vector3 center = capsuleCollider.center;
+                            float radius = capsuleCollider.radius;
+                            float height = capsuleCollider.height;
+                            bool isTrigger = capsuleCollider.isTrigger;
+
+                            Object.DestroyImmediate(capsuleCollider);
+
+                            BoxCollider boxCollider = meshFilter.gameObject.AddComponent<BoxCollider>();
+                            boxCollider.center = center;
+                            boxCollider.size = new Vector3(radius * 2f, height, radius * 2f);
                             boxCollider.isTrigger = isTrigger;
                         }
 
