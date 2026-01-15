@@ -38,59 +38,66 @@ namespace VRDungeonCrawler.Editor
 
                 foreach (MeshFilter meshFilter in meshFilters)
                 {
-                    // Check if it's using a smooth primitive mesh (Sphere, Capsule, or high-poly mesh)
-                    if (meshFilter.sharedMesh != null &&
-                        (meshFilter.sharedMesh.name.Contains("Sphere") ||
-                         meshFilter.sharedMesh.name.Contains("Capsule") ||
-                         meshFilter.sharedMesh.name.Contains("Cylinder") ||
-                         meshFilter.sharedMesh.vertexCount > 24)) // Cube has 24 vertices, anything more is too smooth
+                    if (meshFilter.sharedMesh == null)
+                        continue;
+
+                    string meshName = meshFilter.sharedMesh.name;
+                    Debug.Log($"[Polygonal] Processing mesh: {meshName} on {meshFilter.gameObject.name} (vertices: {meshFilter.sharedMesh.vertexCount})");
+
+                    // Convert ALL meshes to cubes - no exceptions
+                    // Replace with cube mesh (24 vertices, flat faces)
+                    GameObject tempCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Mesh cubeMesh = tempCube.GetComponent<MeshFilter>().sharedMesh;
+                    Object.DestroyImmediate(tempCube);
+
+                    meshFilter.sharedMesh = cubeMesh;
+
+                    // Also update colliders to BoxCollider
+                    SphereCollider sphereCollider = meshFilter.GetComponent<SphereCollider>();
+                    if (sphereCollider != null)
                     {
-                        // Replace with cube mesh (24 vertices, flat faces)
-                        GameObject tempCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        Mesh cubeMesh = tempCube.GetComponent<MeshFilter>().sharedMesh;
-                        Object.DestroyImmediate(tempCube);
+                        Vector3 center = sphereCollider.center;
+                        float radius = sphereCollider.radius;
+                        bool isTrigger = sphereCollider.isTrigger;
 
-                        meshFilter.sharedMesh = cubeMesh;
+                        Object.DestroyImmediate(sphereCollider);
 
-                        // Also update colliders to BoxCollider
-                        SphereCollider sphereCollider = meshFilter.GetComponent<SphereCollider>();
-                        if (sphereCollider != null)
-                        {
-                            Vector3 center = sphereCollider.center;
-                            float radius = sphereCollider.radius;
-                            bool isTrigger = sphereCollider.isTrigger;
+                        BoxCollider boxCollider = meshFilter.gameObject.AddComponent<BoxCollider>();
+                        boxCollider.center = center;
+                        boxCollider.size = Vector3.one * radius * 2f;
+                        boxCollider.isTrigger = isTrigger;
 
-                            Object.DestroyImmediate(sphereCollider);
-
-                            BoxCollider boxCollider = meshFilter.gameObject.AddComponent<BoxCollider>();
-                            boxCollider.center = center;
-                            boxCollider.size = Vector3.one * radius * 2f;
-                            boxCollider.isTrigger = isTrigger;
-                        }
-
-                        CapsuleCollider capsuleCollider = meshFilter.GetComponent<CapsuleCollider>();
-                        if (capsuleCollider != null)
-                        {
-                            Vector3 center = capsuleCollider.center;
-                            float radius = capsuleCollider.radius;
-                            float height = capsuleCollider.height;
-                            bool isTrigger = capsuleCollider.isTrigger;
-
-                            Object.DestroyImmediate(capsuleCollider);
-
-                            BoxCollider boxCollider = meshFilter.gameObject.AddComponent<BoxCollider>();
-                            boxCollider.center = center;
-                            boxCollider.size = new Vector3(radius * 2f, height, radius * 2f);
-                            boxCollider.isTrigger = isTrigger;
-                        }
-
-                        convertedCount++;
+                        Debug.Log($"[Polygonal] Converted SphereCollider to BoxCollider on {meshFilter.gameObject.name}");
                     }
+
+                    CapsuleCollider capsuleCollider = meshFilter.GetComponent<CapsuleCollider>();
+                    if (capsuleCollider != null)
+                    {
+                        Vector3 center = capsuleCollider.center;
+                        float radius = capsuleCollider.radius;
+                        float height = capsuleCollider.height;
+                        bool isTrigger = capsuleCollider.isTrigger;
+
+                        Object.DestroyImmediate(capsuleCollider);
+
+                        BoxCollider boxCollider = meshFilter.gameObject.AddComponent<BoxCollider>();
+                        boxCollider.center = center;
+                        boxCollider.size = new Vector3(radius * 2f, height, radius * 2f);
+                        boxCollider.isTrigger = isTrigger;
+
+                        Debug.Log($"[Polygonal] Converted CapsuleCollider to BoxCollider on {meshFilter.gameObject.name}");
+                    }
+
+                    convertedCount++;
                 }
 
-                // Apply changes back to prefab
-                PrefabUtility.ApplyPrefabInstance(instance, InteractionMode.AutomatedAction);
+                // Save the modified instance back to the prefab asset
+                string prefabAssetPath = prefabPath;
+                PrefabUtility.SaveAsPrefabAssetAndConnect(instance, prefabAssetPath, InteractionMode.AutomatedAction);
                 Object.DestroyImmediate(instance);
+
+                // Force save the prefab asset
+                PrefabUtility.SavePrefabAsset(AssetDatabase.LoadAssetAtPath<GameObject>(prefabAssetPath));
 
                 Debug.Log($"[Polygonal] ✓ Converted {prefab.name} to polygonal style");
             }
