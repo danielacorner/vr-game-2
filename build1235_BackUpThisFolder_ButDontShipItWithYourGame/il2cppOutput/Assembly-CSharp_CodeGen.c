@@ -799,43 +799,17 @@ extern void AnimalSpawnManager_ValidatePrefabs_m6A4F4A6F1D0C3FDC256F4E9FE07CD9A6
 extern void AnimalSpawnManager_OnDrawGizmosSelected_m49BC9E0EA2B7E4CBEA35A4DB55E3DD32060FDE08 (void);
 extern void AnimalSpawnManager_DrawGizmoCircle_mA633CC7BD0B35957DC3C3E96C185AEAB85FA93F8 (void);
 extern void AnimalSpawnManager__ctor_m771A187FBAD3C27F909B690A029A631A6167EBEE (void);
+extern void DamageNumber_Initialize_m013126E90AD9A8D7403A27A7F9084AFBAB3D843F (void);
+extern void DamageNumber_Update_m59B88661E103CB644ED3DA2E61B6219AE1FE1776 (void);
+extern void DamageNumber_Create_mC8C391CEECDB90C380C5F62804C0C51171026B5F (void);
+extern void DamageNumber__ctor_m1206B72743F414F7FD35EEA008824A343D7581C7 (void);
 extern void MonsterAI_Awake_m0C879B58D9524B26A1DDD47112DC9D33974C7FF9 (void);
 extern void MonsterAI_Start_mB037DE761D05DDB01646C36EBBF95DF437826568 (void);
 extern void MonsterAI_Update_mB8FBD8D58030C72C9B4BA930C1EB5A602CD91ACF (void);
 extern void MonsterAI_FixedUpdate_m126FA85D5264E265CC9F3AD6EDBFD9033566D935 (void);
-extern void MonsterAI_UpdateGoblinMovement_mE24191BA3DB29178F48EF9DF55C33F9790BDD447 (void);
-extern void MonsterAI_ApplyGoblinMovement_m484B67F39AFCD345C9D2DEACEC7A569F88468264 (void);
-extern void MonsterAI_UpdateSkeletonMovement_m0C15E79168E891776505463D8D48EAE45C3ED03A (void);
-extern void MonsterAI_ApplySkeletonMovement_m7EEFB244E2A498ABCA084B728C7D5332459F125D (void);
-extern void MonsterAI_UpdateSlimeMovement_m299E8D03332B1C049219F1FB63EE0E0AE8D36982 (void);
-extern void MonsterAI_SlimeHop_m6272A905BBA03223A9591E57A69A90D2D7455F21 (void);
-extern void MonsterAI_SlimeSquash_mA2A851A171B4031A8080368B69032317B6F44BA8 (void);
-extern void MonsterAI_SlimeStretch_m37FCDADE85FBB41F9F6D17A5A3799558F043DA57 (void);
 extern void MonsterAI_ChooseRandomDirection_m3F87F5A2504F2D5869EA81A98FEE4D88F4E23B69 (void);
 extern void MonsterAI_CheckBounds_mD8BACFDFE0F69D4B96B99FC85C0A3208741AF620 (void);
-extern void MonsterAI_OnCollisionEnter_m27721010CC938C6B5E143E07CBBEADCE38339DD5 (void);
-extern void MonsterAI_OnCollisionStay_m11DEC6F71D43647BB35624FCBB0FABA033D27827 (void);
-extern void MonsterAI_OnCollisionExit_m821132AB16C660B3F537A3694310F6B950E176B4 (void);
 extern void MonsterAI__ctor_mADAF8706E9EA328B5BF3FC84C7494A8F948214D3 (void);
-extern void MonsterAI_U3CSlimeHopU3Eb__33_0_m321B45C28D5F40DD655E840DF58B23BDFE3B493C (void);
-extern void U3CSlimeHopU3Ed__33__ctor_mBF699417C7D3787438A33F810C974D08AAE772DB (void);
-extern void U3CSlimeHopU3Ed__33_System_IDisposable_Dispose_m84909755F2F8AE18BCA5B57C02E125B0F26B4E89 (void);
-extern void U3CSlimeHopU3Ed__33_MoveNext_mB577004ADF2F1866B477B83F3BF3BE4DDA7E805D (void);
-extern void U3CSlimeHopU3Ed__33_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mEF4DF592CD76657FCC2BCD5C7C613BE16D981A34 (void);
-extern void U3CSlimeHopU3Ed__33_System_Collections_IEnumerator_Reset_m17093E51578AC7ED58F4BC551DCC1366F3032901 (void);
-extern void U3CSlimeHopU3Ed__33_System_Collections_IEnumerator_get_Current_m1921A7B9EC9884726637C330062FD7AE74ED058C (void);
-extern void U3CSlimeSquashU3Ed__34__ctor_mD9BD63C27C2C9802110CE4A71AA4646EE5A3AD78 (void);
-extern void U3CSlimeSquashU3Ed__34_System_IDisposable_Dispose_mE5A17455280575851ED2B184609D9CFD3BC1A823 (void);
-extern void U3CSlimeSquashU3Ed__34_MoveNext_m6D921A715BFC05AE961551563B3464FA5C892068 (void);
-extern void U3CSlimeSquashU3Ed__34_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mE26239DD7052032DEF4BF9F1B619087A10D6DF5B (void);
-extern void U3CSlimeSquashU3Ed__34_System_Collections_IEnumerator_Reset_mD7EEDF78AE1FFB274C090B958CA7CD5FCD804E69 (void);
-extern void U3CSlimeSquashU3Ed__34_System_Collections_IEnumerator_get_Current_m18A50E761A0358D14A340F3A7FAD150A61AFECF6 (void);
-extern void U3CSlimeStretchU3Ed__35__ctor_m5D08FF62BFC08F5FDB09E815F042CD0D77771DCF (void);
-extern void U3CSlimeStretchU3Ed__35_System_IDisposable_Dispose_m257F4CD8345ABC83DDFDDF6377E75C30E3CF99BC (void);
-extern void U3CSlimeStretchU3Ed__35_MoveNext_m3E11AD71FC90102393B2C9C9BA5A61AB9E2C9675 (void);
-extern void U3CSlimeStretchU3Ed__35_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m1A5651F8EE2608D03AD909399E5B380528EC643F (void);
-extern void U3CSlimeStretchU3Ed__35_System_Collections_IEnumerator_Reset_m69A214405FF7842B377D5532D696AAB25F5F0FE3 (void);
-extern void U3CSlimeStretchU3Ed__35_System_Collections_IEnumerator_get_Current_m18A80FC83C02591BB03852B14D9EEAED7404A2EB (void);
 extern void MonsterBase_Awake_m23A08B466467DE7AF4E8094C11D8C483166D4128 (void);
 extern void MonsterBase_SetSpawner_mB6A38F290889468BA7C276818513EB01EA855292 (void);
 extern void MonsterBase_Update_m2824EE3ECCE69B9BDD54E80E3CB5ECDC6941E670 (void);
@@ -847,10 +821,26 @@ extern void MonsterBase_ApplyKnockback_m2298ECDB71DD81F245401CA1327336EDECB513DF
 extern void MonsterBase_Die_mA735D95F82BE63833557B09286698218C916D8F0 (void);
 extern void MonsterBase_PlayDeathAnimation_m5E56358E0FA08065607D92261398EADDC4C9C127 (void);
 extern void MonsterBase_GoblinDeathAnimation_mDD2B54CCF8A0F26FB43B6A37C289865B31C18B78 (void);
+extern void MonsterBase_FadeOutAndShrink_m7D33F5A4CA9BB3F99BDE1809DC25D7DC2E710EDA (void);
 extern void MonsterBase_SkeletonDeathAnimation_mDA30365F0F4AAD61B41F6CAA2B3BAECAA45DC175 (void);
 extern void MonsterBase_SlimeDeathAnimation_m82642C6E3A1D55414354E0DF59AA091BAAB69DF5 (void);
+extern void MonsterBase_DamageRecoilAnimation_m9362934FEB7391B5D4C581333E1E6AD204665B52 (void);
 extern void MonsterBase_OnTriggerEnter_mAF5ACC7BFCC29E80A86EF2BA8EDD9E4C1AA68B9E (void);
+extern void MonsterBase_OnCollisionEnter_m43EBCCF8A321D482F09443BA02B45C7947D9654A (void);
+extern void MonsterBase_HandleSpellHit_m6FF7C538E3667822590D06DB166F05290A2331D1 (void);
 extern void MonsterBase__ctor_m76BCD3E9A8A6F0DA85B6984E3FC8731DF0FC30C7 (void);
+extern void U3CDamageRecoilAnimationU3Ed__31__ctor_m0C116136E0698E33191AFAEB4243BEC7C2C1C4CC (void);
+extern void U3CDamageRecoilAnimationU3Ed__31_System_IDisposable_Dispose_m940F91BFA67651E17152AFAA3D5611E0D3F99E4C (void);
+extern void U3CDamageRecoilAnimationU3Ed__31_MoveNext_m7686CEE1854F521E779BD83105BC58F9B196E760 (void);
+extern void U3CDamageRecoilAnimationU3Ed__31_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m16FE4E902CCBC318295A60D6C2580E2DD0A1C20D (void);
+extern void U3CDamageRecoilAnimationU3Ed__31_System_Collections_IEnumerator_Reset_m61A443E1AFA801EB986874838A3BF94B883079EB (void);
+extern void U3CDamageRecoilAnimationU3Ed__31_System_Collections_IEnumerator_get_Current_m156A3B8EF8E94D0039FED0121637B47B45692BF9 (void);
+extern void U3CFadeOutAndShrinkU3Ed__28__ctor_mD2308BD50EA973FCF31F22BD23451DB2E6C4D9B9 (void);
+extern void U3CFadeOutAndShrinkU3Ed__28_System_IDisposable_Dispose_m31C7E349A3BA4B6F7D19B540623B563E15E1DFA6 (void);
+extern void U3CFadeOutAndShrinkU3Ed__28_MoveNext_mEB2D4EF4984B7D65FE44A347F2851B9D78F712EB (void);
+extern void U3CFadeOutAndShrinkU3Ed__28_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m5CCD654AB1CC015410F72FEC5EB8936D91FAB664 (void);
+extern void U3CFadeOutAndShrinkU3Ed__28_System_Collections_IEnumerator_Reset_mB6E96D1366BD9A127CC7E39020201A80433A73A7 (void);
+extern void U3CFadeOutAndShrinkU3Ed__28_System_Collections_IEnumerator_get_Current_mAB6A507BCECFB98AF7CB281176211E62E73E8639 (void);
 extern void U3CGoblinDeathAnimationU3Ed__27__ctor_m1FC0E543316AB7BF1666B8508B19736F75EC9F78 (void);
 extern void U3CGoblinDeathAnimationU3Ed__27_System_IDisposable_Dispose_m5E375E6F9321EA7CDF81832B8EA8C6B9A9409B9E (void);
 extern void U3CGoblinDeathAnimationU3Ed__27_MoveNext_m2137C9E49BB014293A4B6E5004FD4DDD3ACF8056 (void);
@@ -863,18 +853,18 @@ extern void U3CPlayDeathAnimationU3Ed__26_MoveNext_mFF4DF8321E12DBDEFAB11B8881AE
 extern void U3CPlayDeathAnimationU3Ed__26_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m943879851BBDCB9C9B878B09DE037FD459448689 (void);
 extern void U3CPlayDeathAnimationU3Ed__26_System_Collections_IEnumerator_Reset_m46C07079202DA0B754B1C95AF2D81D5716F487BD (void);
 extern void U3CPlayDeathAnimationU3Ed__26_System_Collections_IEnumerator_get_Current_m60246C91EDC8B48282D05D7857E15E6BA1CCE2C6 (void);
-extern void U3CSkeletonDeathAnimationU3Ed__28__ctor_m05CF2D3B1C37662F30B26281F51B2889EB10A622 (void);
-extern void U3CSkeletonDeathAnimationU3Ed__28_System_IDisposable_Dispose_mE111484FE6854EE45F587097C413402D664B85C4 (void);
-extern void U3CSkeletonDeathAnimationU3Ed__28_MoveNext_m765D5529274D26BBF6FFF7A3B86D6A9CB46F897B (void);
-extern void U3CSkeletonDeathAnimationU3Ed__28_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m2980561E73E90035BB47725B2D41E6AE6C8DE4FA (void);
-extern void U3CSkeletonDeathAnimationU3Ed__28_System_Collections_IEnumerator_Reset_m2B9A43B45013BCD7A94CEE0A9BDBB6990187CE97 (void);
-extern void U3CSkeletonDeathAnimationU3Ed__28_System_Collections_IEnumerator_get_Current_m2BB42B426448C7A6D7C3E523A8386F8CF30EE5AB (void);
-extern void U3CSlimeDeathAnimationU3Ed__29__ctor_m7FE312D39B097750CE4A6F295A5AEA7344F80603 (void);
-extern void U3CSlimeDeathAnimationU3Ed__29_System_IDisposable_Dispose_m030168C0F8057C51A2DD025B79D5DB2029BCDD86 (void);
-extern void U3CSlimeDeathAnimationU3Ed__29_MoveNext_m44230B3AEC71981AAA9B89C7783384C4165631C6 (void);
-extern void U3CSlimeDeathAnimationU3Ed__29_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m36A45160EBF0AC8F35CC64D1ED5214FFEBFD0D28 (void);
-extern void U3CSlimeDeathAnimationU3Ed__29_System_Collections_IEnumerator_Reset_m5074D570FFE48CDF6F8C131087A264F3A40A61DC (void);
-extern void U3CSlimeDeathAnimationU3Ed__29_System_Collections_IEnumerator_get_Current_mD92F7ADE514087281A0288C531006F6B7E1C3785 (void);
+extern void U3CSkeletonDeathAnimationU3Ed__29__ctor_mA69F6CF9395809FFB15292A3057A266D8700B0E9 (void);
+extern void U3CSkeletonDeathAnimationU3Ed__29_System_IDisposable_Dispose_mF8DF8B31D178F883D90553C997099A6D6F297BA0 (void);
+extern void U3CSkeletonDeathAnimationU3Ed__29_MoveNext_m9D728E8E5797529E2D4C37952C5D41AF13E5902C (void);
+extern void U3CSkeletonDeathAnimationU3Ed__29_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mBF12C955440FCEC2DB196CFA776C0AAD3EED340B (void);
+extern void U3CSkeletonDeathAnimationU3Ed__29_System_Collections_IEnumerator_Reset_m6B4037FA2505BB1BAB610E86D479C12C502F3272 (void);
+extern void U3CSkeletonDeathAnimationU3Ed__29_System_Collections_IEnumerator_get_Current_m9EC7A693C7CEB89A8960CBDA6A39EA5E5466A23D (void);
+extern void U3CSlimeDeathAnimationU3Ed__30__ctor_m3BF52450E6CAAD0D402DCDE1CC196D7ACFF4B8BD (void);
+extern void U3CSlimeDeathAnimationU3Ed__30_System_IDisposable_Dispose_m83868482DC84AB8FEA31B3A0D40FF56E753E5292 (void);
+extern void U3CSlimeDeathAnimationU3Ed__30_MoveNext_m7FB80C5EA8F68E19950AF4FB3C723C0F3A317CD5 (void);
+extern void U3CSlimeDeathAnimationU3Ed__30_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m4E750262CCC9CBA09DA497CE99250184F3490467 (void);
+extern void U3CSlimeDeathAnimationU3Ed__30_System_Collections_IEnumerator_Reset_mEC1E9E5FEFACBEEBF59C2434F52D9740DAD29633 (void);
+extern void U3CSlimeDeathAnimationU3Ed__30_System_Collections_IEnumerator_get_Current_m10FA4BD23F4D7389A01AF2AF02C1760B8CA5EFA9 (void);
 extern void MonsterBuilder_CreateGoblin_m8296FC28EDF513EAE49F5514ABBB816F8DAC1963 (void);
 extern void MonsterBuilder_CreateGoblinArm_m20598103D9980E492586A386EFC245197E035457 (void);
 extern void MonsterBuilder_CreateGoblinLeg_mDC821E4E941C09109AA4131E4104012203F509B9 (void);
@@ -913,7 +903,7 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[906] = 
+static Il2CppMethodPointer s_methodPointers[896] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1707,43 +1697,17 @@ static Il2CppMethodPointer s_methodPointers[906] =
 	AnimalSpawnManager_OnDrawGizmosSelected_m49BC9E0EA2B7E4CBEA35A4DB55E3DD32060FDE08,
 	AnimalSpawnManager_DrawGizmoCircle_mA633CC7BD0B35957DC3C3E96C185AEAB85FA93F8,
 	AnimalSpawnManager__ctor_m771A187FBAD3C27F909B690A029A631A6167EBEE,
+	DamageNumber_Initialize_m013126E90AD9A8D7403A27A7F9084AFBAB3D843F,
+	DamageNumber_Update_m59B88661E103CB644ED3DA2E61B6219AE1FE1776,
+	DamageNumber_Create_mC8C391CEECDB90C380C5F62804C0C51171026B5F,
+	DamageNumber__ctor_m1206B72743F414F7FD35EEA008824A343D7581C7,
 	MonsterAI_Awake_m0C879B58D9524B26A1DDD47112DC9D33974C7FF9,
 	MonsterAI_Start_mB037DE761D05DDB01646C36EBBF95DF437826568,
 	MonsterAI_Update_mB8FBD8D58030C72C9B4BA930C1EB5A602CD91ACF,
 	MonsterAI_FixedUpdate_m126FA85D5264E265CC9F3AD6EDBFD9033566D935,
-	MonsterAI_UpdateGoblinMovement_mE24191BA3DB29178F48EF9DF55C33F9790BDD447,
-	MonsterAI_ApplyGoblinMovement_m484B67F39AFCD345C9D2DEACEC7A569F88468264,
-	MonsterAI_UpdateSkeletonMovement_m0C15E79168E891776505463D8D48EAE45C3ED03A,
-	MonsterAI_ApplySkeletonMovement_m7EEFB244E2A498ABCA084B728C7D5332459F125D,
-	MonsterAI_UpdateSlimeMovement_m299E8D03332B1C049219F1FB63EE0E0AE8D36982,
-	MonsterAI_SlimeHop_m6272A905BBA03223A9591E57A69A90D2D7455F21,
-	MonsterAI_SlimeSquash_mA2A851A171B4031A8080368B69032317B6F44BA8,
-	MonsterAI_SlimeStretch_m37FCDADE85FBB41F9F6D17A5A3799558F043DA57,
 	MonsterAI_ChooseRandomDirection_m3F87F5A2504F2D5869EA81A98FEE4D88F4E23B69,
 	MonsterAI_CheckBounds_mD8BACFDFE0F69D4B96B99FC85C0A3208741AF620,
-	MonsterAI_OnCollisionEnter_m27721010CC938C6B5E143E07CBBEADCE38339DD5,
-	MonsterAI_OnCollisionStay_m11DEC6F71D43647BB35624FCBB0FABA033D27827,
-	MonsterAI_OnCollisionExit_m821132AB16C660B3F537A3694310F6B950E176B4,
 	MonsterAI__ctor_mADAF8706E9EA328B5BF3FC84C7494A8F948214D3,
-	MonsterAI_U3CSlimeHopU3Eb__33_0_m321B45C28D5F40DD655E840DF58B23BDFE3B493C,
-	U3CSlimeHopU3Ed__33__ctor_mBF699417C7D3787438A33F810C974D08AAE772DB,
-	U3CSlimeHopU3Ed__33_System_IDisposable_Dispose_m84909755F2F8AE18BCA5B57C02E125B0F26B4E89,
-	U3CSlimeHopU3Ed__33_MoveNext_mB577004ADF2F1866B477B83F3BF3BE4DDA7E805D,
-	U3CSlimeHopU3Ed__33_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mEF4DF592CD76657FCC2BCD5C7C613BE16D981A34,
-	U3CSlimeHopU3Ed__33_System_Collections_IEnumerator_Reset_m17093E51578AC7ED58F4BC551DCC1366F3032901,
-	U3CSlimeHopU3Ed__33_System_Collections_IEnumerator_get_Current_m1921A7B9EC9884726637C330062FD7AE74ED058C,
-	U3CSlimeSquashU3Ed__34__ctor_mD9BD63C27C2C9802110CE4A71AA4646EE5A3AD78,
-	U3CSlimeSquashU3Ed__34_System_IDisposable_Dispose_mE5A17455280575851ED2B184609D9CFD3BC1A823,
-	U3CSlimeSquashU3Ed__34_MoveNext_m6D921A715BFC05AE961551563B3464FA5C892068,
-	U3CSlimeSquashU3Ed__34_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mE26239DD7052032DEF4BF9F1B619087A10D6DF5B,
-	U3CSlimeSquashU3Ed__34_System_Collections_IEnumerator_Reset_mD7EEDF78AE1FFB274C090B958CA7CD5FCD804E69,
-	U3CSlimeSquashU3Ed__34_System_Collections_IEnumerator_get_Current_m18A50E761A0358D14A340F3A7FAD150A61AFECF6,
-	U3CSlimeStretchU3Ed__35__ctor_m5D08FF62BFC08F5FDB09E815F042CD0D77771DCF,
-	U3CSlimeStretchU3Ed__35_System_IDisposable_Dispose_m257F4CD8345ABC83DDFDDF6377E75C30E3CF99BC,
-	U3CSlimeStretchU3Ed__35_MoveNext_m3E11AD71FC90102393B2C9C9BA5A61AB9E2C9675,
-	U3CSlimeStretchU3Ed__35_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m1A5651F8EE2608D03AD909399E5B380528EC643F,
-	U3CSlimeStretchU3Ed__35_System_Collections_IEnumerator_Reset_m69A214405FF7842B377D5532D696AAB25F5F0FE3,
-	U3CSlimeStretchU3Ed__35_System_Collections_IEnumerator_get_Current_m18A80FC83C02591BB03852B14D9EEAED7404A2EB,
 	MonsterBase_Awake_m23A08B466467DE7AF4E8094C11D8C483166D4128,
 	MonsterBase_SetSpawner_mB6A38F290889468BA7C276818513EB01EA855292,
 	MonsterBase_Update_m2824EE3ECCE69B9BDD54E80E3CB5ECDC6941E670,
@@ -1755,10 +1719,26 @@ static Il2CppMethodPointer s_methodPointers[906] =
 	MonsterBase_Die_mA735D95F82BE63833557B09286698218C916D8F0,
 	MonsterBase_PlayDeathAnimation_m5E56358E0FA08065607D92261398EADDC4C9C127,
 	MonsterBase_GoblinDeathAnimation_mDD2B54CCF8A0F26FB43B6A37C289865B31C18B78,
+	MonsterBase_FadeOutAndShrink_m7D33F5A4CA9BB3F99BDE1809DC25D7DC2E710EDA,
 	MonsterBase_SkeletonDeathAnimation_mDA30365F0F4AAD61B41F6CAA2B3BAECAA45DC175,
 	MonsterBase_SlimeDeathAnimation_m82642C6E3A1D55414354E0DF59AA091BAAB69DF5,
+	MonsterBase_DamageRecoilAnimation_m9362934FEB7391B5D4C581333E1E6AD204665B52,
 	MonsterBase_OnTriggerEnter_mAF5ACC7BFCC29E80A86EF2BA8EDD9E4C1AA68B9E,
+	MonsterBase_OnCollisionEnter_m43EBCCF8A321D482F09443BA02B45C7947D9654A,
+	MonsterBase_HandleSpellHit_m6FF7C538E3667822590D06DB166F05290A2331D1,
 	MonsterBase__ctor_m76BCD3E9A8A6F0DA85B6984E3FC8731DF0FC30C7,
+	U3CDamageRecoilAnimationU3Ed__31__ctor_m0C116136E0698E33191AFAEB4243BEC7C2C1C4CC,
+	U3CDamageRecoilAnimationU3Ed__31_System_IDisposable_Dispose_m940F91BFA67651E17152AFAA3D5611E0D3F99E4C,
+	U3CDamageRecoilAnimationU3Ed__31_MoveNext_m7686CEE1854F521E779BD83105BC58F9B196E760,
+	U3CDamageRecoilAnimationU3Ed__31_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m16FE4E902CCBC318295A60D6C2580E2DD0A1C20D,
+	U3CDamageRecoilAnimationU3Ed__31_System_Collections_IEnumerator_Reset_m61A443E1AFA801EB986874838A3BF94B883079EB,
+	U3CDamageRecoilAnimationU3Ed__31_System_Collections_IEnumerator_get_Current_m156A3B8EF8E94D0039FED0121637B47B45692BF9,
+	U3CFadeOutAndShrinkU3Ed__28__ctor_mD2308BD50EA973FCF31F22BD23451DB2E6C4D9B9,
+	U3CFadeOutAndShrinkU3Ed__28_System_IDisposable_Dispose_m31C7E349A3BA4B6F7D19B540623B563E15E1DFA6,
+	U3CFadeOutAndShrinkU3Ed__28_MoveNext_mEB2D4EF4984B7D65FE44A347F2851B9D78F712EB,
+	U3CFadeOutAndShrinkU3Ed__28_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m5CCD654AB1CC015410F72FEC5EB8936D91FAB664,
+	U3CFadeOutAndShrinkU3Ed__28_System_Collections_IEnumerator_Reset_mB6E96D1366BD9A127CC7E39020201A80433A73A7,
+	U3CFadeOutAndShrinkU3Ed__28_System_Collections_IEnumerator_get_Current_mAB6A507BCECFB98AF7CB281176211E62E73E8639,
 	U3CGoblinDeathAnimationU3Ed__27__ctor_m1FC0E543316AB7BF1666B8508B19736F75EC9F78,
 	U3CGoblinDeathAnimationU3Ed__27_System_IDisposable_Dispose_m5E375E6F9321EA7CDF81832B8EA8C6B9A9409B9E,
 	U3CGoblinDeathAnimationU3Ed__27_MoveNext_m2137C9E49BB014293A4B6E5004FD4DDD3ACF8056,
@@ -1771,18 +1751,18 @@ static Il2CppMethodPointer s_methodPointers[906] =
 	U3CPlayDeathAnimationU3Ed__26_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m943879851BBDCB9C9B878B09DE037FD459448689,
 	U3CPlayDeathAnimationU3Ed__26_System_Collections_IEnumerator_Reset_m46C07079202DA0B754B1C95AF2D81D5716F487BD,
 	U3CPlayDeathAnimationU3Ed__26_System_Collections_IEnumerator_get_Current_m60246C91EDC8B48282D05D7857E15E6BA1CCE2C6,
-	U3CSkeletonDeathAnimationU3Ed__28__ctor_m05CF2D3B1C37662F30B26281F51B2889EB10A622,
-	U3CSkeletonDeathAnimationU3Ed__28_System_IDisposable_Dispose_mE111484FE6854EE45F587097C413402D664B85C4,
-	U3CSkeletonDeathAnimationU3Ed__28_MoveNext_m765D5529274D26BBF6FFF7A3B86D6A9CB46F897B,
-	U3CSkeletonDeathAnimationU3Ed__28_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m2980561E73E90035BB47725B2D41E6AE6C8DE4FA,
-	U3CSkeletonDeathAnimationU3Ed__28_System_Collections_IEnumerator_Reset_m2B9A43B45013BCD7A94CEE0A9BDBB6990187CE97,
-	U3CSkeletonDeathAnimationU3Ed__28_System_Collections_IEnumerator_get_Current_m2BB42B426448C7A6D7C3E523A8386F8CF30EE5AB,
-	U3CSlimeDeathAnimationU3Ed__29__ctor_m7FE312D39B097750CE4A6F295A5AEA7344F80603,
-	U3CSlimeDeathAnimationU3Ed__29_System_IDisposable_Dispose_m030168C0F8057C51A2DD025B79D5DB2029BCDD86,
-	U3CSlimeDeathAnimationU3Ed__29_MoveNext_m44230B3AEC71981AAA9B89C7783384C4165631C6,
-	U3CSlimeDeathAnimationU3Ed__29_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m36A45160EBF0AC8F35CC64D1ED5214FFEBFD0D28,
-	U3CSlimeDeathAnimationU3Ed__29_System_Collections_IEnumerator_Reset_m5074D570FFE48CDF6F8C131087A264F3A40A61DC,
-	U3CSlimeDeathAnimationU3Ed__29_System_Collections_IEnumerator_get_Current_mD92F7ADE514087281A0288C531006F6B7E1C3785,
+	U3CSkeletonDeathAnimationU3Ed__29__ctor_mA69F6CF9395809FFB15292A3057A266D8700B0E9,
+	U3CSkeletonDeathAnimationU3Ed__29_System_IDisposable_Dispose_mF8DF8B31D178F883D90553C997099A6D6F297BA0,
+	U3CSkeletonDeathAnimationU3Ed__29_MoveNext_m9D728E8E5797529E2D4C37952C5D41AF13E5902C,
+	U3CSkeletonDeathAnimationU3Ed__29_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mBF12C955440FCEC2DB196CFA776C0AAD3EED340B,
+	U3CSkeletonDeathAnimationU3Ed__29_System_Collections_IEnumerator_Reset_m6B4037FA2505BB1BAB610E86D479C12C502F3272,
+	U3CSkeletonDeathAnimationU3Ed__29_System_Collections_IEnumerator_get_Current_m9EC7A693C7CEB89A8960CBDA6A39EA5E5466A23D,
+	U3CSlimeDeathAnimationU3Ed__30__ctor_m3BF52450E6CAAD0D402DCDE1CC196D7ACFF4B8BD,
+	U3CSlimeDeathAnimationU3Ed__30_System_IDisposable_Dispose_m83868482DC84AB8FEA31B3A0D40FF56E753E5292,
+	U3CSlimeDeathAnimationU3Ed__30_MoveNext_m7FB80C5EA8F68E19950AF4FB3C723C0F3A317CD5,
+	U3CSlimeDeathAnimationU3Ed__30_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m4E750262CCC9CBA09DA497CE99250184F3490467,
+	U3CSlimeDeathAnimationU3Ed__30_System_Collections_IEnumerator_Reset_mEC1E9E5FEFACBEEBF59C2434F52D9740DAD29633,
+	U3CSlimeDeathAnimationU3Ed__30_System_Collections_IEnumerator_get_Current_m10FA4BD23F4D7389A01AF2AF02C1760B8CA5EFA9,
 	MonsterBuilder_CreateGoblin_m8296FC28EDF513EAE49F5514ABBB816F8DAC1963,
 	MonsterBuilder_CreateGoblinArm_m20598103D9980E492586A386EFC245197E035457,
 	MonsterBuilder_CreateGoblinLeg_mDC821E4E941C09109AA4131E4104012203F509B9,
@@ -1827,7 +1807,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x06000112, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[906] = 
+static const int32_t s_InvokerIndices[896] = 
 {
 	15276,
 	15276,
@@ -1835,7 +1815,7 @@ static const int32_t s_InvokerIndices[906] =
 	15276,
 	15276,
 	15276,
-	26547,
+	26548,
 	15276,
 	15276,
 	15276,
@@ -1888,19 +1868,19 @@ static const int32_t s_InvokerIndices[906] =
 	15064,
 	15276,
 	15064,
-	24805,
+	24806,
 	15923,
 	16115,
 	16116,
 	15694,
-	24807,
-	24514,
-	21501,
-	21515,
+	24808,
+	24515,
+	21502,
+	21516,
 	15808,
-	24845,
-	26408,
-	24514,
+	24846,
+	26409,
+	24515,
 	15276,
 	15276,
 	15276,
@@ -1969,7 +1949,7 @@ static const int32_t s_InvokerIndices[906] =
 	9935,
 	9935,
 	17384,
-	21789,
+	21790,
 	18293,
 	18293,
 	18293,
@@ -2205,14 +2185,14 @@ static const int32_t s_InvokerIndices[906] =
 	15276,
 	15276,
 	15276,
-	26408,
-	25221,
+	26409,
+	25222,
 	15276,
 	11519,
 	11587,
 	15064,
 	15276,
-	26512,
+	26513,
 	15276,
 	8192,
 	15276,
@@ -2504,17 +2484,17 @@ static const int32_t s_InvokerIndices[906] =
 	15276,
 	15276,
 	18000,
-	21491,
-	26408,
+	21492,
+	26409,
 	19160,
-	24839,
-	26408,
-	26408,
-	26408,
-	21531,
-	24807,
+	24840,
+	26409,
+	26409,
+	26409,
+	21532,
+	24808,
 	19116,
-	26512,
+	26513,
 	15276,
 	15276,
 	15276,
@@ -2526,8 +2506,8 @@ static const int32_t s_InvokerIndices[906] =
 	15276,
 	15276,
 	15276,
-	26408,
-	25221,
+	26409,
+	25222,
 	15276,
 	15276,
 	15276,
@@ -2596,19 +2576,19 @@ static const int32_t s_InvokerIndices[906] =
 	11682,
 	15276,
 	15276,
-	24822,
+	24823,
 	18263,
-	24822,
-	20046,
-	24822,
-	20046,
-	24822,
+	24823,
+	20047,
+	24823,
+	20047,
+	24823,
 	18264,
-	20046,
-	24822,
-	20046,
-	24822,
-	22394,
+	20047,
+	24823,
+	20047,
+	24823,
+	22395,
 	15276,
 	15276,
 	15276,
@@ -2621,6 +2601,9 @@ static const int32_t s_InvokerIndices[906] =
 	15276,
 	2711,
 	15276,
+	5559,
+	15276,
+	19811,
 	15276,
 	15276,
 	15276,
@@ -2629,35 +2612,6 @@ static const int32_t s_InvokerIndices[906] =
 	15276,
 	15276,
 	15276,
-	15276,
-	15064,
-	15064,
-	15064,
-	15276,
-	15276,
-	11587,
-	11587,
-	11587,
-	15276,
-	14861,
-	11519,
-	15276,
-	14861,
-	15064,
-	15276,
-	15064,
-	11519,
-	15276,
-	14861,
-	15064,
-	15276,
-	15064,
-	11519,
-	15276,
-	14861,
-	15064,
-	15276,
-	15064,
 	15276,
 	11587,
 	15276,
@@ -2671,6 +2625,10 @@ static const int32_t s_InvokerIndices[906] =
 	15064,
 	15064,
 	15064,
+	15064,
+	15064,
+	11587,
+	11587,
 	11587,
 	15276,
 	11519,
@@ -2697,15 +2655,27 @@ static const int32_t s_InvokerIndices[906] =
 	15064,
 	15276,
 	15064,
-	24822,
+	11519,
+	15276,
+	14861,
+	15064,
+	15276,
+	15064,
+	11519,
+	15276,
+	14861,
+	15064,
+	15276,
+	15064,
+	24823,
 	18264,
-	20046,
-	24822,
+	20047,
+	24823,
 	18264,
-	20046,
-	24822,
-	24822,
-	20015,
+	20047,
+	24823,
+	24823,
+	20016,
 	15276,
 	15276,
 	15276,
@@ -2730,17 +2700,17 @@ static const int32_t s_InvokerIndices[906] =
 	15064,
 	15276,
 	15064,
-	26408,
+	26409,
 	19160,
-	24839,
-	26408,
-	24839,
+	24840,
+	26409,
+	24840,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	906,
+	896,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

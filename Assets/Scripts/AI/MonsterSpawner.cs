@@ -17,7 +17,7 @@ namespace VRDungeonCrawler.AI
         public float spawnInterval = 5f;
 
         [Tooltip("Spawn radius around spawner")]
-        public float spawnRadius = 2f;
+        public float spawnRadius = 4f;
 
         [Tooltip("Starting HP for Goblin")]
         public int goblinHP = 6;
@@ -100,11 +100,38 @@ namespace VRDungeonCrawler.AI
 
         void SpawnMonster(MonsterType type)
         {
-            // Calculate spawn position (random around spawner)
+            // Calculate spawn position (random around spawner, away from structure)
             Vector3 spawnOffset = Random.insideUnitSphere * spawnRadius;
             spawnOffset.y = 0f; // Keep on ground level
             Vector3 spawnPosition = transform.position + spawnOffset;
-            spawnPosition.y = transform.position.y; // Match spawner Y position
+
+            // Ensure minimum distance from spawner center to avoid collision
+            Vector2 horizontalOffset = new Vector2(spawnOffset.x, spawnOffset.z);
+            if (horizontalOffset.magnitude < 2.5f)
+            {
+                horizontalOffset = horizontalOffset.normalized * 2.5f;
+                spawnPosition.x = transform.position.x + horizontalOffset.x;
+                spawnPosition.z = transform.position.z + horizontalOffset.y;
+            }
+
+            // Raycast down to find the actual ground height
+            RaycastHit hit;
+            Vector3 rayStart = new Vector3(spawnPosition.x, 50f, spawnPosition.z);
+            if (Physics.Raycast(rayStart, Vector3.down, out hit, 100f))
+            {
+                spawnPosition.y = hit.point.y + 0.5f; // Spawn slightly above ground
+
+                if (showDebug)
+                    Debug.Log($"[MonsterSpawner] Ground found at Y={hit.point.y}, spawning at Y={spawnPosition.y}");
+            }
+            else
+            {
+                // Fallback if raycast fails
+                spawnPosition.y = 0.5f;
+
+                if (showDebug)
+                    Debug.LogWarning($"[MonsterSpawner] No ground found, using fallback Y=0.5");
+            }
 
             // Build monster based on type
             GameObject monster = null;

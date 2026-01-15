@@ -46,7 +46,7 @@ namespace VRDungeonCrawler.AI
 
         [Header("Debug")]
         [Tooltip("Show debug logs")]
-        public bool showDebug = false;
+        public bool showDebug = true;
 
         // Internal state
         private bool isDead = false;
@@ -131,8 +131,15 @@ namespace VRDungeonCrawler.AI
             if (showDebug)
                 Debug.Log($"[MonsterBase] {gameObject.name} took {damage} damage. HP: {currentHP}/{maxHP}");
 
-            // Flash effect
+            // Spawn damage number indicator
+            Vector3 damageNumberPos = transform.position + Vector3.up * 1.5f;
+            DamageNumber.Create(damage, damageNumberPos, Color.white);
+
+            // Flash effect (red flash twice)
             StartFlashEffect();
+
+            // Damage taken animation (quick recoil)
+            StartCoroutine(DamageRecoilAnimation());
 
             // Knockback
             ApplyKnockback(hitDirection);
@@ -235,8 +242,11 @@ namespace VRDungeonCrawler.AI
                     break;
             }
 
+            // Fade out and shrink at the end
+            yield return FadeOutAndShrink();
+
             // Wait a bit then remove
-            yield return new WaitForSeconds(deathRemovalDelay);
+            yield return new WaitForSeconds(0.5f);
             Destroy(gameObject);
         }
 
@@ -258,6 +268,67 @@ namespace VRDungeonCrawler.AI
 
                 // Shrink
                 transform.localScale = Vector3.Lerp(startScale, Vector3.zero, progress);
+
+                yield return null;
+            }
+        }
+
+        IEnumerator FadeOutAndShrink()
+        {
+            // Final fade and shrink
+            float duration = 1f;
+            float elapsed = 0f;
+            Vector3 startScale = transform.localScale;
+
+            // Get all materials for fading
+            MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+            Dictionary<MeshRenderer, Color[]> originalColors = new Dictionary<MeshRenderer, Color[]>();
+
+            // Store original colors and enable transparency
+            foreach (MeshRenderer renderer in renderers)
+            {
+                Material[] materials = renderer.materials;
+                Color[] colors = new Color[materials.Length];
+
+                for (int i = 0; i < materials.Length; i++)
+                {
+                    colors[i] = materials[i].color;
+
+                    // Enable transparency
+                    materials[i].SetFloat("_Surface", 1); // Transparent
+                    materials[i].SetFloat("_Blend", 0); // Alpha blending
+                    materials[i].renderQueue = 3000;
+                }
+
+                renderer.materials = materials;
+                originalColors[renderer] = colors;
+            }
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float progress = elapsed / duration;
+
+                // Shrink to 10% size
+                transform.localScale = Vector3.Lerp(startScale, startScale * 0.1f, progress);
+
+                // Fade out all materials
+                foreach (MeshRenderer renderer in renderers)
+                {
+                    if (renderer == null || !originalColors.ContainsKey(renderer)) continue;
+
+                    Material[] materials = renderer.materials;
+                    Color[] origColors = originalColors[renderer];
+
+                    for (int i = 0; i < materials.Length; i++)
+                    {
+                        Color color = origColors[i];
+                        color.a = 1f - progress;
+                        materials[i].color = color;
+                    }
+
+                    renderer.materials = materials;
+                }
 
                 yield return null;
             }
@@ -320,43 +391,94 @@ namespace VRDungeonCrawler.AI
         }
 
         /// <summary>
+        /// Quick recoil animation when taking damage
+        /// </summary>
+        IEnumerator DamageRecoilAnimation()
+        {
+            Vector3 originalScale = transform.localScale;
+            float duration = 0.15f;
+            float elapsed = 0f;
+
+            // Squeeze animation (quick squash and stretch)
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float progress = elapsed / duration;
+
+                // Squash slightly then return to normal
+                float squash = 1f - (Mathf.Sin(progress * Mathf.PI) * 0.15f);
+                transform.localScale = new Vector3(
+                    originalScale.x * (1f + (1f - squash) * 0.2f),
+                    originalScale.y * squash,
+                    originalScale.z * (1f + (1f - squash) * 0.2f)
+                );
+
+                yield return null;
+            }
+
+            // Ensure we return to original scale
+            transform.localScale = originalScale;
+        }
+
+        /// <summary>
         /// Called when hit by a spell (from trigger collision)
         /// </summary>
         void OnTriggerEnter(Collider other)
         {
-            // Check if hit by spell projectile
-            if (other.CompareTag("Spell") || other.CompareTag("Projectile"))
+            if (showDebug)
+                Debug.Log($"[MonsterBase] OnTriggerEnter with {other.gameObject.name}");
+
+            HandleSpellHit(other.gameObject);
+        }
+
+        /// <summary>
+        /// Called when hit by a spell (from physics collision)
+        /// </summary>
+        void OnCollisionEnter(Collision collision)
+        {
+            if (showDebug)
+                Debug.Log($"[MonsterBase] OnCollisionEnter with {collision.gameObject.name}");
+
+            HandleSpellHit(collision.gameObject);
+        }
+
+        /// <summary>
+        /// Check if hit object is a spell and apply damage
+        /// </summary>
+        void HandleSpellHit(GameObject hitObject)
+        {
+            int damage = 0;
+            bool hitDetected = false;
+
+            // Check for PhysicsSpellProjectile (tier 2 thrown spells)
+            var physicsProjectile = hitObject.GetComponent<VRDungeonCrawler.Spells.PhysicsSpellProjectile>();
+            if (physicsProjectile != null)
             {
-                int damage = 0;
-                bool hitDetected = false;
+                damage = physicsProjectile.GetDamage();
+                hitDetected = true;
 
-                // Check for PhysicsSpellProjectile (tier 2 thrown spells)
-                var physicsProjectile = other.GetComponent<VRDungeonCrawler.Spells.PhysicsSpellProjectile>();
-                if (physicsProjectile != null)
+                if (showDebug)
+                    Debug.Log($"[MonsterBase] Detected PhysicsSpellProjectile, damage={damage}");
+            }
+
+            // Check for SpellProjectile (tier 1 shot spells)
+            if (!hitDetected)
+            {
+                var spellProjectile = hitObject.GetComponent<VRDungeonCrawler.Player.SpellProjectile>();
+                if (spellProjectile != null)
                 {
-                    damage = physicsProjectile.GetDamage();
+                    damage = spellProjectile.GetDamage();
                     hitDetected = true;
-                }
-
-                // Check for SpellProjectile (tier 1 shot spells)
-                if (!hitDetected)
-                {
-                    var spellProjectile = other.GetComponent<VRDungeonCrawler.Player.SpellProjectile>();
-                    if (spellProjectile != null)
-                    {
-                        damage = spellProjectile.GetDamage();
-                        hitDetected = true;
-                    }
-                }
-
-                if (hitDetected)
-                {
-                    Vector3 hitDirection = (transform.position - other.transform.position).normalized;
-                    TakeDamage(damage, hitDirection);
 
                     if (showDebug)
-                        Debug.Log($"[MonsterBase] {gameObject.name} hit by spell for {damage} damage");
+                        Debug.Log($"[MonsterBase] Detected SpellProjectile, damage={damage}");
                 }
+            }
+
+            if (hitDetected)
+            {
+                Vector3 hitDirection = (transform.position - hitObject.transform.position).normalized;
+                TakeDamage(damage, hitDirection);
             }
         }
     }
