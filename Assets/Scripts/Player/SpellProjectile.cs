@@ -135,5 +135,21 @@ namespace VRDungeonCrawler.Player
             spellColor = color;
             SetupVisuals();
         }
+
+        /// <summary>
+        /// Get damage dealt by this spell projectile
+        /// Returns 2 for basic projectiles (tier 1), 5 for advanced (tier 2)
+        /// Note: SpellProjectile doesn't have tier info, so returns fixed value
+        /// </summary>
+        public int GetDamage()
+        {
+            // Convert float damage to int
+            // If damage is default 25f, assume tier 1 (2 damage)
+            // For tier 2, damage would typically be higher
+            if (damage >= 40f)
+                return 5; // Tier 2
+            else
+                return 2; // Tier 1
+        }
     }
 }

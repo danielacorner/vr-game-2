@@ -353,5 +353,18 @@ namespace VRDungeonCrawler.Spells
             Gizmos.color = new Color(1f, 0.5f, 0f, 0.3f);
             Gizmos.DrawWireSphere(transform.position, explosionRadius);
         }
+
+        /// <summary>
+        /// Get damage dealt by this spell projectile
+        /// Tier 1 spells deal 2 damage, Tier 2 spells deal 5 damage
+        /// </summary>
+        public int GetDamage()
+        {
+            if (spellData != null)
+            {
+                return spellData.tier == 1 ? 2 : 5;
+            }
+            return 2; // Default to tier 1 damage
+        }
     }
 }
