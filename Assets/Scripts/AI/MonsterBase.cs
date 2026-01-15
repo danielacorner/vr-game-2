@@ -60,8 +60,11 @@ namespace VRDungeonCrawler.AI
 
         void Awake()
         {
+            Debug.Log($"[MonsterBase] ==================== AWAKE CALLED for {gameObject.name} ====================");
+
             // Set HP to max at start
             currentHP = maxHP;
+            Debug.Log($"[MonsterBase] HP set to {currentHP}/{maxHP}");
 
             // Get rigidbody or add one
             rb = GetComponent<Rigidbody>();
@@ -73,6 +76,27 @@ namespace VRDungeonCrawler.AI
                 rb.angularDamping = 1f;
                 rb.useGravity = true;
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
+                Debug.Log($"[MonsterBase] Created Rigidbody");
+            }
+            else
+            {
+                Debug.Log($"[MonsterBase] Found existing Rigidbody");
+            }
+
+            // Log all colliders
+            Collider[] colliders = GetComponents<Collider>();
+            Debug.Log($"[MonsterBase] Found {colliders.Length} colliders on {gameObject.name}:");
+            foreach (Collider col in colliders)
+            {
+                BoxCollider box = col as BoxCollider;
+                if (box != null)
+                {
+                    Debug.Log($"  - BoxCollider: isTrigger={col.isTrigger}, size={box.size}, center={box.center}");
+                }
+                else
+                {
+                    Debug.Log($"  - {col.GetType().Name}: isTrigger={col.isTrigger}");
+                }
             }
 
             // Store all mesh renderers for flash effect
@@ -80,6 +104,25 @@ namespace VRDungeonCrawler.AI
             foreach (MeshRenderer renderer in meshRenderers)
             {
                 originalMaterials[renderer] = renderer.materials;
+            }
+
+            Debug.Log($"[MonsterBase] Found {meshRenderers.Count} mesh renderers");
+            Debug.Log($"[MonsterBase] ==================== AWAKE COMPLETE ====================");
+        }
+
+        void OnDrawGizmosSelected()
+        {
+            // Draw collider bounds for debugging
+            Collider[] colliders = GetComponents<Collider>();
+            foreach (Collider col in colliders)
+            {
+                BoxCollider box = col as BoxCollider;
+                if (box != null)
+                {
+                    Gizmos.color = col.isTrigger ? Color.yellow : Color.green;
+                    Gizmos.matrix = transform.localToWorldMatrix;
+                    Gizmos.DrawWireCube(box.center, box.size);
+                }
             }
         }
 

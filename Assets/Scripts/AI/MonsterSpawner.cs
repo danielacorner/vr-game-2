@@ -180,17 +180,39 @@ namespace VRDungeonCrawler.AI
                     rb.constraints = RigidbodyConstraints.FreezeRotation;
                 }
 
-                // Add collider for spell hits (trigger)
+                // Add collider for spell hits (trigger) - LARGE for easy hits
                 BoxCollider triggerCollider = monster.AddComponent<BoxCollider>();
                 triggerCollider.isTrigger = true;
-                triggerCollider.size = new Vector3(1f, 1.5f, 1f);
-                triggerCollider.center = Vector3.zero;
+                triggerCollider.size = new Vector3(2f, 2.5f, 2f);
+                triggerCollider.center = Vector3.up * 0.5f;
 
-                // Add collider for physics (non-trigger)
+                // Add collider for physics (non-trigger) - LARGE for easy hits
                 BoxCollider physicsCollider = monster.AddComponent<BoxCollider>();
                 physicsCollider.isTrigger = false;
-                physicsCollider.size = new Vector3(0.8f, 1.2f, 0.8f);
-                physicsCollider.center = Vector3.zero;
+                physicsCollider.size = new Vector3(1.8f, 2.3f, 1.8f);
+                physicsCollider.center = Vector3.up * 0.5f;
+
+                // Add visual debug sphere to see collider bounds
+                if (showDebug)
+                {
+                    GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    debugSphere.name = "DebugColliderVisual";
+                    debugSphere.transform.SetParent(monster.transform);
+                    debugSphere.transform.localPosition = Vector3.up * 0.5f;
+                    debugSphere.transform.localScale = new Vector3(2f, 2.5f, 2f);
+
+                    // Make it transparent green
+                    MeshRenderer debugRenderer = debugSphere.GetComponent<MeshRenderer>();
+                    Material debugMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    debugMat.color = new Color(0f, 1f, 0f, 0.3f);
+                    debugMat.SetFloat("_Surface", 1); // Transparent
+                    debugMat.SetFloat("_Blend", 0);
+                    debugMat.renderQueue = 3000;
+                    debugRenderer.material = debugMat;
+
+                    // Remove the sphere's collider so it doesn't interfere
+                    Destroy(debugSphere.GetComponent<Collider>());
+                }
 
                 // Track active monster
                 activeMonsters[type] = monster;

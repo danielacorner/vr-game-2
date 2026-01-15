@@ -41,12 +41,12 @@ namespace VRDungeonCrawler.AI
 
             int[] triangles = new int[]
             {
-                0, 2, 1, 0, 3, 2,       // Front
-                4, 6, 5, 4, 7, 6,       // Back
-                8, 10, 9, 8, 11, 10,    // Left
-                12, 14, 13, 12, 15, 14, // Right
-                16, 18, 17, 16, 19, 18, // Top
-                20, 22, 21, 20, 23, 22  // Bottom
+                0, 1, 2, 0, 2, 3,       // Front (reversed winding)
+                4, 5, 6, 4, 6, 7,       // Back (reversed winding)
+                8, 9, 10, 8, 10, 11,    // Left (reversed winding)
+                12, 13, 14, 12, 14, 15, // Right (reversed winding)
+                16, 17, 18, 16, 18, 19, // Top (reversed winding)
+                20, 21, 22, 20, 22, 23  // Bottom (reversed winding)
             };
 
             mesh.vertices = vertices;
@@ -102,12 +102,12 @@ namespace VRDungeonCrawler.AI
 
             int[] triangles = new int[]
             {
-                0, 2, 1, 0, 3, 2,       // Front
-                4, 6, 5, 4, 7, 6,       // Back
-                8, 10, 9, 8, 11, 10,    // Left
-                12, 14, 13, 12, 15, 14, // Right
-                16, 18, 17, 16, 19, 18, // Top
-                20, 22, 21, 20, 23, 22  // Bottom
+                0, 1, 2, 0, 2, 3,       // Front (reversed winding)
+                4, 5, 6, 4, 6, 7,       // Back (reversed winding)
+                8, 9, 10, 8, 10, 11,    // Left (reversed winding)
+                12, 13, 14, 12, 14, 15, // Right (reversed winding)
+                16, 17, 18, 16, 18, 19, // Top (reversed winding)
+                20, 21, 22, 20, 22, 23  // Bottom (reversed winding)
             };
 
             mesh.vertices = vertices;
@@ -143,16 +143,16 @@ namespace VRDungeonCrawler.AI
 
             int[] triangles = new int[]
             {
-                // Back face
-                0, 2, 1, 0, 3, 2,
-                // Bottom
-                0, 1, 4, 1, 5, 4,
-                // Left side
-                7, 9, 10, 7, 8, 9,
-                // Right side
-                11, 13, 14, 11, 12, 13,
-                // Top
-                3, 8, 2, 2, 8, 6, 2, 6, 12, 2, 12, 13
+                // Back face (reversed winding)
+                0, 1, 2, 0, 2, 3,
+                // Bottom (reversed winding)
+                0, 4, 1, 1, 4, 5,
+                // Left side (reversed winding)
+                7, 10, 9, 7, 9, 8,
+                // Right side (reversed winding)
+                11, 14, 13, 11, 13, 12,
+                // Top (reversed winding)
+                3, 2, 8, 2, 6, 8, 2, 12, 6, 2, 13, 12
             };
 
             mesh.vertices = vertices;
