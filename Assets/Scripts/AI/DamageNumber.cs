@@ -24,10 +24,10 @@ namespace VRDungeonCrawler.AI
 
         [Header("Visual")]
         [Tooltip("Text color")]
-        public Color textColor = Color.white;
+        public Color textColor = new Color(1f, 1f, 0f, 1f); // Bright yellow
 
         [Tooltip("Font size")]
-        public int fontSize = 48;
+        public int fontSize = 72; // Much larger for VR visibility
 
         private Canvas canvas;
         private Text text;
@@ -41,8 +41,13 @@ namespace VRDungeonCrawler.AI
         /// </summary>
         public void Initialize(int damage, Vector3 worldPosition)
         {
+            Debug.Log($"[DamageNumber] ==================== INITIALIZING DAMAGE NUMBER ====================");
+            Debug.Log($"[DamageNumber] Creating damage number for {damage} damage at {worldPosition}");
+
             spawnTime = Time.time;
             transform.position = worldPosition;
+
+            Debug.Log($"[DamageNumber] Transform position set to {transform.position}");
 
             // Random sideways direction
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
@@ -52,23 +57,43 @@ namespace VRDungeonCrawler.AI
                 Mathf.Sin(angle) * sidewaysDrift
             );
 
+            Debug.Log($"[DamageNumber] Float direction: {floatDirection}");
+
+            // Check for camera
+            if (Camera.main == null)
+            {
+                Debug.LogError($"[DamageNumber] Camera.main is NULL! Cannot create WorldSpace canvas.");
+                Destroy(gameObject);
+                return;
+            }
+
+            Debug.Log($"[DamageNumber] Camera.main found: {Camera.main.name}");
+
             // Create canvas
             canvas = gameObject.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.WorldSpace;
             canvas.worldCamera = Camera.main;
 
-            // Set canvas size and scale for VR
+            Debug.Log($"[DamageNumber] Canvas created with RenderMode.WorldSpace");
+
+            // Set canvas size and scale for VR - MUCH LARGER
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-            canvasRect.sizeDelta = new Vector2(200, 100);
-            canvasRect.localScale = Vector3.one * 0.01f; // Small for world space
+            canvasRect.sizeDelta = new Vector2(400, 200);
+            canvasRect.localScale = Vector3.one * 0.02f; // Larger for visibility
+
+            Debug.Log($"[DamageNumber] Canvas RectTransform configured: size={canvasRect.sizeDelta}, scale={canvasRect.localScale}");
 
             // Add canvas group for fading
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+            Debug.Log($"[DamageNumber] CanvasGroup added");
 
             // Create text GameObject
             GameObject textObj = new GameObject("Text");
             textObj.transform.SetParent(transform);
             text = textObj.AddComponent<Text>();
+
+            Debug.Log($"[DamageNumber] Text GameObject created");
 
             // Configure text
             text.text = damage.ToString();
@@ -78,10 +103,14 @@ namespace VRDungeonCrawler.AI
             text.alignment = TextAnchor.MiddleCenter;
             text.fontStyle = FontStyle.Bold;
 
+            Debug.Log($"[DamageNumber] Text configured: '{text.text}', font={text.font?.name}, size={fontSize}, color={textColor}");
+
             // Add outline for better visibility
             Outline outline = textObj.AddComponent<Outline>();
             outline.effectColor = Color.black;
             outline.effectDistance = new Vector2(2, -2);
+
+            Debug.Log($"[DamageNumber] Outline added");
 
             // Set text rect
             RectTransform textRect = text.GetComponent<RectTransform>();
@@ -90,8 +119,13 @@ namespace VRDungeonCrawler.AI
             textRect.sizeDelta = Vector2.zero;
             textRect.anchoredPosition = Vector2.zero;
 
+            Debug.Log($"[DamageNumber] Text RectTransform configured");
+
             // Store start scale
             startScale = transform.localScale;
+
+            Debug.Log($"[DamageNumber] ==================== DAMAGE NUMBER INITIALIZED ====================");
+            Debug.Log($"[DamageNumber] GameObject active: {gameObject.activeInHierarchy}, Canvas enabled: {canvas.enabled}");
         }
 
         void Update()
@@ -138,13 +172,24 @@ namespace VRDungeonCrawler.AI
         /// </summary>
         public static void Create(int damage, Vector3 worldPosition, Color? color = null)
         {
+            Debug.Log($"[DamageNumber] ==================== CREATE CALLED ====================");
+            Debug.Log($"[DamageNumber] Creating damage number: damage={damage}, position={worldPosition}, color={color}");
+
             GameObject damageNumberObj = new GameObject("DamageNumber");
+            Debug.Log($"[DamageNumber] GameObject created: {damageNumberObj.name}");
+
             DamageNumber damageNumber = damageNumberObj.AddComponent<DamageNumber>();
+            Debug.Log($"[DamageNumber] DamageNumber component added");
 
             if (color.HasValue)
+            {
                 damageNumber.textColor = color.Value;
+                Debug.Log($"[DamageNumber] Custom color set: {color.Value}");
+            }
 
             damageNumber.Initialize(damage, worldPosition);
+
+            Debug.Log($"[DamageNumber] ==================== CREATE COMPLETE ====================");
         }
     }
 }

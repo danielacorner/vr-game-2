@@ -13349,37 +13349,37 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_Start_m03D14E8A530FE7C1B
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3186>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3192>
 		float L_0;
 		L_0 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		__this->___spawnTime = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3189>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3195>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1;
 		L_1 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_1);
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_2;
 		L_2 = GameObject_AddComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_m3D05F19667844A2949840753F7A3287115BE029E(L_1, GameObject_AddComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_m3D05F19667844A2949840753F7A3287115BE029E_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3190>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3196>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_3 = L_2;
 		NullCheck(L_3);
 		SphereCollider_set_radius_m6119FE18C6739B077AB17334B1B53984911017FF(L_3, (0.300000012f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3191>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3197>
 		NullCheck(L_3);
 		Collider_set_isTrigger_mFCD22F3EB5E28C97863956AB725D53F7F4B7CA78(L_3, (bool)1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3194>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3200>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
 		L_4 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		NullCheck(L_4);
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_5;
 		L_5 = GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093(L_4, GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3195>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3201>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_6 = L_5;
 		NullCheck(L_6);
 		Rigidbody_set_isKinematic_m6C3FD3EA358DADA3B191F2449CF1C4F8B22695ED(L_6, (bool)1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3196>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3202>
 		NullCheck(L_6);
 		Rigidbody_set_useGravity_m1B1B22E093F9DC92D7BEEBBE6B02642B3B6C4389(L_6, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3197>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3203>
 		return;
 	}
 }
@@ -13404,7 +13404,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SpellProjectile_IsPlayerObject_mA11027D2
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_1 = NULL;
 	String_t* V_2 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3202>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3208>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_obj;
 		NullCheck(L_0);
 		String_t* L_1;
@@ -13413,7 +13413,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SpellProjectile_IsPlayerObject_mA11027D2
 		String_t* L_2;
 		L_2 = String_ToLower_m6191ABA3DC514ED47C10BDA23FD0DDCEAE7ACFBD(L_1, NULL);
 		V_0 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3205>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3211>
 		String_t* L_3 = V_0;
 		NullCheck(L_3);
 		bool L_4;
@@ -13424,13 +13424,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SpellProjectile_IsPlayerObject_mA11027D2
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3205>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3211>
 		return (bool)1;
 	}
 
 IL_001b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3212>
 		String_t* L_5 = V_0;
 		NullCheck(L_5);
 		bool L_6;
@@ -13441,13 +13441,13 @@ IL_001b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3212>
 		return (bool)1;
 	}
 
 IL_002a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3207>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3213>
 		String_t* L_7 = V_0;
 		NullCheck(L_7);
 		bool L_8;
@@ -13458,13 +13458,13 @@ IL_002a:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3207>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3213>
 		return (bool)1;
 	}
 
 IL_0039:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3208>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3214>
 		String_t* L_9 = V_0;
 		NullCheck(L_9);
 		bool L_10;
@@ -13475,13 +13475,13 @@ IL_0039:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3208>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3214>
 		return (bool)1;
 	}
 
 IL_0048:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3209>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3215>
 		String_t* L_11 = V_0;
 		NullCheck(L_11);
 		bool L_12;
@@ -13492,13 +13492,13 @@ IL_0048:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3209>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3215>
 		return (bool)1;
 	}
 
 IL_0057:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3210>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3216>
 		String_t* L_13 = V_0;
 		NullCheck(L_13);
 		bool L_14;
@@ -13509,13 +13509,13 @@ IL_0057:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3210>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3216>
 		return (bool)1;
 	}
 
 IL_0066:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3211>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3217>
 		String_t* L_15 = V_0;
 		NullCheck(L_15);
 		bool L_16;
@@ -13526,13 +13526,13 @@ IL_0066:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3211>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3217>
 		return (bool)1;
 	}
 
 IL_0075:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3212>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3218>
 		String_t* L_17 = V_0;
 		NullCheck(L_17);
 		bool L_18;
@@ -13543,13 +13543,13 @@ IL_0075:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3212>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3218>
 		return (bool)1;
 	}
 
 IL_0084:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3215>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3221>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19 = ___0_obj;
 		NullCheck(L_19);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_20;
@@ -13560,7 +13560,7 @@ IL_0084:
 
 IL_008d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3218>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3224>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21 = V_1;
 		NullCheck(L_21);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22;
@@ -13572,9 +13572,9 @@ IL_008d:
 		String_t* L_24;
 		L_24 = String_ToLower_m6191ABA3DC514ED47C10BDA23FD0DDCEAE7ACFBD(L_23, NULL);
 		V_2 = L_24;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3219>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3220>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3221>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3225>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3226>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3227>
 		String_t* L_25 = V_2;
 		NullCheck(L_25);
 		bool L_26;
@@ -13607,13 +13607,13 @@ IL_008d:
 
 IL_00c5:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3223>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3229>
 		return (bool)1;
 	}
 
 IL_00c7:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3225>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3231>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31 = V_1;
 		NullCheck(L_31);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_32;
@@ -13623,7 +13623,7 @@ IL_00c7:
 
 IL_00ce:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3216>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3222>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_33 = V_1;
 		NullCheck(L_33);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_34;
@@ -13637,7 +13637,7 @@ IL_00ce:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3228>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3234>
 		return (bool)0;
 	}
 }
@@ -13655,12 +13655,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_Update_m34DE4A349BA421E4
 	memset((&V_0), 0, sizeof(V_0));
 	float V_1 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3235>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3241>
 		float L_0 = __this->___speed;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		V_1 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_0, L_1)), (2.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3236>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3242>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
@@ -13677,7 +13677,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_Update_m34DE4A349BA421E4
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3239>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3245>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_7;
 		L_7 = RaycastHit_get_collider_m84B160439BBEAB6D9E94B799F720E25C9E2D444D((&V_0), NULL);
 		NullCheck(L_7);
@@ -13702,7 +13702,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_Update_m34DE4A349BA421E4
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3241>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3247>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
 		L_12 = RaycastHit_get_normal_mD8741B70D2039C5CAFC4368D4CE59D89562040B5((&V_0), NULL);
 		__this->___hitNormal = L_12;
@@ -13710,7 +13710,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_Update_m34DE4A349BA421E4
 
 IL_005d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3246>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3252>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
 		L_13 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14 = L_13;
@@ -13729,7 +13729,7 @@ IL_005d:
 		L_21 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_15, L_20, NULL);
 		NullCheck(L_14);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_14, L_21, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3249>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3255>
 		float L_22;
 		L_22 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		float L_23 = __this->___spawnTime;
@@ -13740,7 +13740,7 @@ IL_005d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3251>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3257>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_25;
 		L_25 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
@@ -13749,7 +13749,7 @@ IL_005d:
 
 IL_00ad:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3253>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3259>
 		return;
 	}
 }
@@ -13776,7 +13776,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_OnTriggerEnter_m793F52BD
 	MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 V_5;
 	memset((&V_5), 0, sizeof(V_5));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3258>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3264>
 		float L_0;
 		L_0 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		float L_1 = __this->___spawnTime;
@@ -13786,13 +13786,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_OnTriggerEnter_m793F52BD
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3260>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3266>
 		return;
 	}
 
 IL_0014:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3264>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3270>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_2 = ___0_other;
 		NullCheck(L_2);
 		bool L_3;
@@ -13803,13 +13803,13 @@ IL_0014:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3264>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3270>
 		return;
 	}
 
 IL_001d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3267>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3273>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_4 = ___0_other;
 		NullCheck(L_4);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5;
@@ -13822,13 +13822,13 @@ IL_001d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3267>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3273>
 		return;
 	}
 
 IL_002c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3270>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3276>
 		bool L_7 = __this->___hasExploded;
 		if (!L_7)
 		{
@@ -13836,15 +13836,15 @@ IL_002c:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3270>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3276>
 		return;
 	}
 
 IL_0035:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3271>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3277>
 		__this->___hasExploded = (bool)1;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3273>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3279>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_8 = ___0_other;
 		NullCheck(L_8);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9;
@@ -13859,7 +13859,7 @@ IL_0035:
 		L_14 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteralA91E841BB9D4FE813B7EB7280FA8732783A93F21, L_10, L_13, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_14, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3276>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3282>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15;
 		L_15 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_15);
@@ -13867,10 +13867,10 @@ IL_0035:
 		L_16 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_15, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17 = __this->___hitNormal;
 		SpellProjectile_CreateExplosion_mCF1D86742EC09C6C5605B6C360F78A80B7B2A3AC(__this, L_16, L_17, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3279>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3285>
 		ParticleSystemU5BU5D_tC5E33DA557C9C2064085128B3530C5F04D48F6E6* L_18;
 		L_18 = Component_GetComponentsInChildren_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_m4A6A34D7CF3ABDD3C27C0FB3017B5B0D05AF407D(__this, Component_GetComponentsInChildren_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_m4A6A34D7CF3ABDD3C27C0FB3017B5B0D05AF407D_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3280>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3286>
 		V_0 = L_18;
 		V_1 = 0;
 		goto IL_00e1;
@@ -13878,22 +13878,22 @@ IL_0035:
 
 IL_0083:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3280>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3286>
 		ParticleSystemU5BU5D_tC5E33DA557C9C2064085128B3530C5F04D48F6E6* L_19 = V_0;
 		int32_t L_20 = V_1;
 		NullCheck(L_19);
 		int32_t L_21 = L_20;
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_22 = (L_19)->GetAt(static_cast<il2cpp_array_size_t>(L_21));
 		V_2 = L_22;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3282>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3288>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_23 = V_2;
 		NullCheck(L_23);
 		EmissionModule_t0F469FA4A08003F6D9C610D2F716A9DFDB9A3678 L_24;
 		L_24 = ParticleSystem_get_emission_mD9402CE632A3607DA0B0486F9F58F7FB2B44CF08(L_23, NULL);
 		V_3 = L_24;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3283>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3289>
 		EmissionModule_set_enabled_mC82B6915ED485AB8DB54DFA6599C9C973BB5D867((&V_3), (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3286>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3292>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_25 = V_2;
 		NullCheck(L_25);
 		MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9 L_26;
@@ -13907,14 +13907,14 @@ IL_0083:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3288>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3294>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_28 = V_2;
 		NullCheck(L_28);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_29;
 		L_29 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_28, NULL);
 		NullCheck(L_29);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_29, (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3289>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3295>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_30 = V_2;
 		NullCheck(L_30);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_31;
@@ -13941,7 +13941,7 @@ IL_00dd:
 
 IL_00e1:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3280>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3286>
 		int32_t L_37 = V_1;
 		ParticleSystemU5BU5D_tC5E33DA557C9C2064085128B3530C5F04D48F6E6* L_38 = V_0;
 		NullCheck(L_38);
@@ -13951,12 +13951,12 @@ IL_00e1:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3294>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3300>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_39;
 		L_39 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_39, (0.100000001f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3295>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3301>
 		return;
 	}
 }
@@ -13982,7 +13982,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateExplosion_mCF1D867
 	}
 	String_t* V_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3299>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3305>
 		SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* L_0 = __this->___spellData;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -13993,13 +13993,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateExplosion_mCF1D867
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3299>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3305>
 		return;
 	}
 
 IL_000f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3301>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3307>
 		SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* L_2 = __this->___spellData;
 		NullCheck(L_2);
 		String_t* L_3 = L_2->___spellName;
@@ -14007,7 +14007,7 @@ IL_000f:
 		String_t* L_4;
 		L_4 = String_ToLower_m6191ABA3DC514ED47C10BDA23FD0DDCEAE7ACFBD(L_3, NULL);
 		V_0 = L_4;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3303>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3309>
 		String_t* L_5 = V_0;
 		NullCheck(L_5);
 		bool L_6;
@@ -14030,7 +14030,7 @@ IL_000f:
 
 IL_003a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3304>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3310>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9 = ___0_position;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10 = ___1_surfaceNormal;
 		SpellProjectile_CreateFireExplosion_m4E67A4D13C431572D9D7D84C033F6D363D868DA2(__this, L_9, L_10, NULL);
@@ -14039,7 +14039,7 @@ IL_003a:
 
 IL_0043:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3305>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3311>
 		String_t* L_11 = V_0;
 		NullCheck(L_11);
 		bool L_12;
@@ -14072,7 +14072,7 @@ IL_0043:
 
 IL_006a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3306>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3312>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17 = ___0_position;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18 = ___1_surfaceNormal;
 		SpellProjectile_CreateIceExplosion_m432AAB71E53E0E8F9D274B4725C6A92A0DB3687F(__this, L_17, L_18, NULL);
@@ -14081,7 +14081,7 @@ IL_006a:
 
 IL_0073:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3307>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3313>
 		String_t* L_19 = V_0;
 		NullCheck(L_19);
 		bool L_20;
@@ -14114,7 +14114,7 @@ IL_0073:
 
 IL_009a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3308>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3314>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25 = ___0_position;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_26 = ___1_surfaceNormal;
 		SpellProjectile_CreateLightningExplosion_m589DEA62766669682F655706AFE39A6C16D0F2E0(__this, L_25, L_26, NULL);
@@ -14123,7 +14123,7 @@ IL_009a:
 
 IL_00a3:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3309>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3315>
 		String_t* L_27 = V_0;
 		NullCheck(L_27);
 		bool L_28;
@@ -14156,7 +14156,7 @@ IL_00a3:
 
 IL_00ca:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3310>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3316>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_33 = ___0_position;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_34 = ___1_surfaceNormal;
 		SpellProjectile_CreateWindExplosion_m058902A59BBDF9C8B76A6C68888437B8B8D957D4(__this, L_33, L_34, NULL);
@@ -14164,7 +14164,7 @@ IL_00ca:
 
 IL_00d2:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3311>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3317>
 		return;
 	}
 }
@@ -14181,17 +14181,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_4;
 	memset((&V_4), 0, sizeof(V_4));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3317>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3323>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = __this->___direction;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = ___0_surfaceNormal;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2;
 		L_2 = Vector3_Reflect_mE584AF88A0C648C9559633260F24DB697AB176CF_inline(L_0, L_1, NULL);
 		V_0 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3320>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3326>
 		float L_3;
 		L_3 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494((30.0f), (60.0f), NULL);
 		V_1 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3321>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3327>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		L_4 = Random_get_insideUnitSphere_mA488D6859560B73565B8D890ED6B39DB4091C54F(NULL);
 		float L_5 = V_1;
@@ -14200,7 +14200,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7;
 		L_7 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_4, L_6, NULL);
 		V_2 = L_7;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3324>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3330>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
 		L_8 = Vector3_get_normalized_m736BBF65D5CDA7A18414370D15B4DFCC1E466F07_inline((&V_0), NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9 = V_2;
@@ -14210,7 +14210,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
 		L_11 = Vector3_get_normalized_m736BBF65D5CDA7A18414370D15B4DFCC1E466F07_inline((&V_4), NULL);
 		V_3 = L_11;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3327>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3333>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12 = V_3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13 = ___0_surfaceNormal;
 		float L_14;
@@ -14221,7 +14221,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3330>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3336>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15 = V_3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16 = ___0_surfaceNormal;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17;
@@ -14236,7 +14236,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 
 IL_0074:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3333>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3339>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20 = V_3;
 		return L_20;
 	}
@@ -14271,11 +14271,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateFireExplosion_m4E6
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B3_0 = NULL;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B2_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3338>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3344>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral5E407FAEE67E01BC4214806BF8F8DFDEBEB50C7A, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3339>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3345>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
@@ -14283,17 +14283,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateFireExplosion_m4E6
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = ___0_position;
 		NullCheck(L_2);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_2, L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3342>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3348>
 		V_1 = 0;
 		goto IL_0187;
 	}
 
 IL_001e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3344>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3350>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
 		L_4 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3345>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3351>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_4;
 		int32_t L_6 = V_1;
 		int32_t L_7 = L_6;
@@ -14302,7 +14302,7 @@ IL_001e:
 		L_9 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral43F23C2C59151C1A9066F1D18B7167BD3B5672DD, L_8, NULL);
 		NullCheck(L_5);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_5, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3346>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3352>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = L_5;
 		NullCheck(L_10);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11;
@@ -14313,7 +14313,7 @@ IL_001e:
 		L_13 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_12, NULL);
 		NullCheck(L_11);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_11, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3347>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3353>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = L_10;
 		NullCheck(L_14);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15;
@@ -14322,7 +14322,7 @@ IL_001e:
 		L_16 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_15);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_15, L_16, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3348>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3354>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = L_14;
 		NullCheck(L_17);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
@@ -14333,13 +14333,13 @@ IL_001e:
 		L_20 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_19, (0.150000006f), NULL);
 		NullCheck(L_18);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_18, L_20, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3351>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3357>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = L_17;
 		NullCheck(L_21);
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_22;
 		L_22 = GameObject_GetComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_mD342F4F06F3848B43732DD183CDDA00AED3EE0A0(L_21, GameObject_GetComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_mD342F4F06F3848B43732DD183CDDA00AED3EE0A0_RuntimeMethod_var);
 		V_2 = L_22;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3352>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3358>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_23 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_24;
@@ -14352,7 +14352,7 @@ IL_001e:
 		G_B2_0 = L_21;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3354>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3360>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_25 = V_2;
 		NullCheck(L_25);
 		SphereCollider_set_radius_m6119FE18C6739B077AB17334B1B53984911017FF(L_25, (0.075000003f), NULL);
@@ -14361,64 +14361,64 @@ IL_001e:
 
 IL_0090:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3358>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3364>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_26 = G_B3_0;
 		NullCheck(L_26);
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_27;
 		L_27 = GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093(L_26, GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093_RuntimeMethod_var);
 		V_3 = L_27;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3359>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3365>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_28 = V_3;
 		NullCheck(L_28);
 		Rigidbody_set_mass_mC7F886DEDB57C742A16F8B6B779F69AFE164CA4B(L_28, (0.100000001f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3360>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3366>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_29 = V_3;
 		NullCheck(L_29);
 		Rigidbody_set_linearDamping_m42BB8ADA5D26250A11256502D08BDC2DAB980242(L_29, (0.5f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3361>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3367>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_30 = V_3;
 		NullCheck(L_30);
 		Rigidbody_set_useGravity_m1B1B22E093F9DC92D7BEEBBE6B02642B3B6C4389(L_30, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3362>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3368>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_31 = V_3;
 		NullCheck(L_31);
 		Rigidbody_set_collisionDetectionMode_m70A22E9878027BF6D3D7E851A43A8E32B8E02343(L_31, 1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3365>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3371>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_32 = (PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C*)il2cpp_codegen_object_new(PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C_il2cpp_TypeInfo_var);
 		PhysicsMaterial__ctor_m778D22F87081502CF8820CCC092931512CA1EBE5(L_32, _stringLiteralF40F5BE7AEE78BF764CFC4909B842608732BD128, NULL);
 		V_4 = L_32;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3366>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3372>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_33 = V_4;
 		NullCheck(L_33);
 		PhysicsMaterial_set_bounciness_m115EAFCE676550B7AEF1578ADEB6EAC5CEA2F354(L_33, (0.600000024f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3367>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3373>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_34 = V_4;
 		NullCheck(L_34);
 		PhysicsMaterial_set_dynamicFriction_m59BE25A0D523F1C16E8E5EA3605D5D9C068D6AAE(L_34, (0.300000012f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3368>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3374>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_35 = V_4;
 		NullCheck(L_35);
 		PhysicsMaterial_set_staticFriction_m67DE5F3AD796C8AB92871E3A0B7338862BB27B9B(L_35, (0.300000012f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3369>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3375>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_36 = V_4;
 		NullCheck(L_36);
 		PhysicsMaterial_set_frictionCombine_m5095E28E658737F90616372006D6FA093DA875DF(L_36, 0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3370>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3376>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_37 = V_4;
 		NullCheck(L_37);
 		PhysicsMaterial_set_bounceCombine_mBB851399A0737AF067F4B51D8EF0F629CB53F9AD(L_37, 0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3371>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3377>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_38 = V_2;
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_39 = V_4;
 		NullCheck(L_38);
 		Collider_set_material_m2E6C7BEE5FE88DD839FD0BBA83DD501E38B85499(L_38, L_39, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3373>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3379>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_40;
 		L_40 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral975A5F46FC6E6D8BC7943A3A38CEA489C122E4F1, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_41 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_41, L_40, NULL);
 		V_5 = L_41;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3374>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3380>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_42 = V_5;
 		float L_43;
 		L_43 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494((0.300000012f), (0.600000024f), NULL);
@@ -14429,7 +14429,7 @@ IL_0090:
 		L_45 = Color_op_Multiply_m379B20A820266ACF82A21425B9CAE8DCD773CFBB_inline(L_44, (2.0f), NULL);
 		NullCheck(L_42);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_42, L_45, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3375>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3381>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_46 = L_26;
 		NullCheck(L_46);
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_47;
@@ -14437,38 +14437,38 @@ IL_0090:
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_48 = V_5;
 		NullCheck(L_47);
 		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_47, L_48, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3377>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3383>
 		NullCheck(L_46);
 		FireExplosionParticle_t3145986BEE4E30484CC4E64B5079F65E3AE41675* L_49;
 		L_49 = GameObject_AddComponent_TisFireExplosionParticle_t3145986BEE4E30484CC4E64B5079F65E3AE41675_m457A10590293C19A0C51A6CCE7E387029B9D9374(L_46, GameObject_AddComponent_TisFireExplosionParticle_t3145986BEE4E30484CC4E64B5079F65E3AE41675_m457A10590293C19A0C51A6CCE7E387029B9D9374_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3378>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3384>
 		FireExplosionParticle_t3145986BEE4E30484CC4E64B5079F65E3AE41675* L_50 = L_49;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_51 = ___1_surfaceNormal;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_52;
 		L_52 = SpellProjectile_GetRicochetDirection_m1546DD056EAE10B29CB78637486F85ECDE17FA13(__this, L_51, NULL);
 		NullCheck(L_50);
 		L_50->___direction = L_52;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3380>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3386>
 		float L_53 = __this->___speed;
 		V_6 = ((float)il2cpp_codegen_multiply(L_53, (0.400000006f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3381>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3387>
 		FireExplosionParticle_t3145986BEE4E30484CC4E64B5079F65E3AE41675* L_54 = L_50;
 		float L_55 = V_6;
 		NullCheck(L_54);
 		L_54->___speed = L_55;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3382>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3388>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_56 = V_3;
 		NullCheck(L_54);
 		L_54->___rb = L_56;
 		Il2CppCodeGenWriteBarrier((void**)(&L_54->___rb), (void*)L_56);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3342>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3348>
 		int32_t L_57 = V_1;
 		V_1 = ((int32_t)il2cpp_codegen_add(L_57, 1));
 	}
 
 IL_0187:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3342>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3348>
 		int32_t L_58 = V_1;
 		if ((((int32_t)L_58) < ((int32_t)((int32_t)12))))
 		{
@@ -14476,11 +14476,11 @@ IL_0187:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3385>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3391>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_59 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_59, (1.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3386>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3392>
 		return;
 	}
 }
@@ -14514,11 +14514,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateIceExplosion_m432A
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B3_0 = NULL;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B2_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3390>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3396>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteralAE8E3FBC70F621CE6FCB89CF49B2ED23E3E769AB, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3391>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3397>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
@@ -14526,17 +14526,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateIceExplosion_m432A
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = ___0_position;
 		NullCheck(L_2);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_2, L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3394>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3400>
 		V_1 = 0;
 		goto IL_01a1;
 	}
 
 IL_001e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3396>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3402>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
 		L_4 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3397>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3403>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_4;
 		int32_t L_6 = V_1;
 		int32_t L_7 = L_6;
@@ -14545,7 +14545,7 @@ IL_001e:
 		L_9 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral47A54D772EDA8E53356C03D3169667651B79D1DD, L_8, NULL);
 		NullCheck(L_5);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_5, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3398>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3404>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = L_5;
 		NullCheck(L_10);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11;
@@ -14556,7 +14556,7 @@ IL_001e:
 		L_13 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_12, NULL);
 		NullCheck(L_11);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_11, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3399>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3405>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = L_10;
 		NullCheck(L_14);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15;
@@ -14565,7 +14565,7 @@ IL_001e:
 		L_16 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_15);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_15, L_16, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3400>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3406>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = L_14;
 		NullCheck(L_17);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
@@ -14575,7 +14575,7 @@ IL_001e:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_19), (0.0500000007f), (0.200000003f), (0.0500000007f), NULL);
 		NullCheck(L_18);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_18, L_19, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3401>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3407>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_20 = L_17;
 		NullCheck(L_20);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
@@ -14584,13 +14584,13 @@ IL_001e:
 		L_22 = Random_get_rotation_m8B04B3FB3927208F0CB8C65295B0226E7FC7E9E2(NULL);
 		NullCheck(L_21);
 		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(L_21, L_22, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3404>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3410>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_23 = L_20;
 		NullCheck(L_23);
 		BoxCollider_tFA5D239388334D6DE0B8FFDAD6825C5B03786E23* L_24;
 		L_24 = GameObject_GetComponent_TisBoxCollider_tFA5D239388334D6DE0B8FFDAD6825C5B03786E23_m704160C10BDAB9B54429D2DEB921575D3DF7622C(L_23, GameObject_GetComponent_TisBoxCollider_tFA5D239388334D6DE0B8FFDAD6825C5B03786E23_m704160C10BDAB9B54429D2DEB921575D3DF7622C_RuntimeMethod_var);
 		V_2 = L_24;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3405>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3411>
 		BoxCollider_tFA5D239388334D6DE0B8FFDAD6825C5B03786E23* L_25 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_26;
@@ -14603,7 +14603,7 @@ IL_001e:
 		G_B2_0 = L_23;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3407>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3413>
 		BoxCollider_tFA5D239388334D6DE0B8FFDAD6825C5B03786E23* L_27 = V_2;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28;
 		memset((&L_28), 0, sizeof(L_28));
@@ -14615,64 +14615,64 @@ IL_001e:
 
 IL_00b4:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3411>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3417>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_29 = G_B3_0;
 		NullCheck(L_29);
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_30;
 		L_30 = GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093(L_29, GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093_RuntimeMethod_var);
 		V_3 = L_30;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3412>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3418>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_31 = V_3;
 		NullCheck(L_31);
 		Rigidbody_set_mass_mC7F886DEDB57C742A16F8B6B779F69AFE164CA4B(L_31, (0.150000006f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3413>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3419>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_32 = V_3;
 		NullCheck(L_32);
 		Rigidbody_set_linearDamping_m42BB8ADA5D26250A11256502D08BDC2DAB980242(L_32, (0.400000006f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3414>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3420>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_33 = V_3;
 		NullCheck(L_33);
 		Rigidbody_set_useGravity_m1B1B22E093F9DC92D7BEEBBE6B02642B3B6C4389(L_33, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3415>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3421>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_34 = V_3;
 		NullCheck(L_34);
 		Rigidbody_set_collisionDetectionMode_m70A22E9878027BF6D3D7E851A43A8E32B8E02343(L_34, 1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3418>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3424>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_35 = (PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C*)il2cpp_codegen_object_new(PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C_il2cpp_TypeInfo_var);
 		PhysicsMaterial__ctor_m778D22F87081502CF8820CCC092931512CA1EBE5(L_35, _stringLiteral07CA4EF2ADC94F3FE534D43205EAC5907A77E4E3, NULL);
 		V_4 = L_35;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3419>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3425>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_36 = V_4;
 		NullCheck(L_36);
 		PhysicsMaterial_set_bounciness_m115EAFCE676550B7AEF1578ADEB6EAC5CEA2F354(L_36, (0.699999988f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3420>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3426>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_37 = V_4;
 		NullCheck(L_37);
 		PhysicsMaterial_set_dynamicFriction_m59BE25A0D523F1C16E8E5EA3605D5D9C068D6AAE(L_37, (0.100000001f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3421>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3427>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_38 = V_4;
 		NullCheck(L_38);
 		PhysicsMaterial_set_staticFriction_m67DE5F3AD796C8AB92871E3A0B7338862BB27B9B(L_38, (0.100000001f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3422>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3428>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_39 = V_4;
 		NullCheck(L_39);
 		PhysicsMaterial_set_frictionCombine_m5095E28E658737F90616372006D6FA093DA875DF(L_39, 2, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3423>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3429>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_40 = V_4;
 		NullCheck(L_40);
 		PhysicsMaterial_set_bounceCombine_mBB851399A0737AF067F4B51D8EF0F629CB53F9AD(L_40, 0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3424>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3430>
 		BoxCollider_tFA5D239388334D6DE0B8FFDAD6825C5B03786E23* L_41 = V_2;
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_42 = V_4;
 		NullCheck(L_41);
 		Collider_set_material_m2E6C7BEE5FE88DD839FD0BBA83DD501E38B85499(L_41, L_42, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3426>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3432>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_43;
 		L_43 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral975A5F46FC6E6D8BC7943A3A38CEA489C122E4F1, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_44 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_44, L_43, NULL);
 		V_5 = L_44;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3427>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3433>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_45 = V_5;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_46;
 		memset((&L_46), 0, sizeof(L_46));
@@ -14681,7 +14681,7 @@ IL_00b4:
 		L_47 = Color_op_Multiply_m379B20A820266ACF82A21425B9CAE8DCD773CFBB_inline(L_46, (1.79999995f), NULL);
 		NullCheck(L_45);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_45, L_47, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3428>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3434>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_48 = L_29;
 		NullCheck(L_48);
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_49;
@@ -14689,38 +14689,38 @@ IL_00b4:
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_50 = V_5;
 		NullCheck(L_49);
 		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_49, L_50, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3430>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3436>
 		NullCheck(L_48);
 		IceExplosionParticle_t2C549B8EE486DFFD842DEA04D31FBFA47F28AA88* L_51;
 		L_51 = GameObject_AddComponent_TisIceExplosionParticle_t2C549B8EE486DFFD842DEA04D31FBFA47F28AA88_mF80E09AEC96529132D5DF3A3EBD18615D5BF902E(L_48, GameObject_AddComponent_TisIceExplosionParticle_t2C549B8EE486DFFD842DEA04D31FBFA47F28AA88_mF80E09AEC96529132D5DF3A3EBD18615D5BF902E_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3431>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3437>
 		IceExplosionParticle_t2C549B8EE486DFFD842DEA04D31FBFA47F28AA88* L_52 = L_51;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_53 = ___1_surfaceNormal;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_54;
 		L_54 = SpellProjectile_GetRicochetDirection_m1546DD056EAE10B29CB78637486F85ECDE17FA13(__this, L_53, NULL);
 		NullCheck(L_52);
 		L_52->___direction = L_54;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3433>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3439>
 		float L_55 = __this->___speed;
 		V_6 = ((float)il2cpp_codegen_multiply(L_55, (0.449999988f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3434>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3440>
 		IceExplosionParticle_t2C549B8EE486DFFD842DEA04D31FBFA47F28AA88* L_56 = L_52;
 		float L_57 = V_6;
 		NullCheck(L_56);
 		L_56->___speed = L_57;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3435>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3441>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_58 = V_3;
 		NullCheck(L_56);
 		L_56->___rb = L_58;
 		Il2CppCodeGenWriteBarrier((void**)(&L_56->___rb), (void*)L_58);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3394>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3400>
 		int32_t L_59 = V_1;
 		V_1 = ((int32_t)il2cpp_codegen_add(L_59, 1));
 	}
 
 IL_01a1:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3394>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3400>
 		int32_t L_60 = V_1;
 		if ((((int32_t)L_60) < ((int32_t)((int32_t)10))))
 		{
@@ -14728,11 +14728,11 @@ IL_01a1:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3438>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3444>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_61 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_61, (1.20000005f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3439>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3445>
 		return;
 	}
 }
@@ -14766,11 +14766,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateLightningExplosion
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B3_0 = NULL;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B2_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3443>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3449>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral319008440CE909B4902A5C36984163FFA363D565, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3444>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3450>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
@@ -14778,17 +14778,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateLightningExplosion
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = ___0_position;
 		NullCheck(L_2);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_2, L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3447>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3453>
 		V_1 = 0;
 		goto IL_017d;
 	}
 
 IL_001e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3449>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3455>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
 		L_4 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3450>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3456>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_4;
 		int32_t L_6 = V_1;
 		int32_t L_7 = L_6;
@@ -14797,7 +14797,7 @@ IL_001e:
 		L_9 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteralD550A2A9122DF84E44813DD82795E5E234D0C1A0, L_8, NULL);
 		NullCheck(L_5);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_5, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3451>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3457>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = L_5;
 		NullCheck(L_10);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11;
@@ -14808,7 +14808,7 @@ IL_001e:
 		L_13 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_12, NULL);
 		NullCheck(L_11);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_11, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3452>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3458>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = L_10;
 		NullCheck(L_14);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15;
@@ -14817,7 +14817,7 @@ IL_001e:
 		L_16 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_15);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_15, L_16, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3453>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3459>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = L_14;
 		NullCheck(L_17);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
@@ -14828,13 +14828,13 @@ IL_001e:
 		L_20 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_19, (0.125f), NULL);
 		NullCheck(L_18);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_18, L_20, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3456>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3462>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = L_17;
 		NullCheck(L_21);
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_22;
 		L_22 = GameObject_GetComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_mD342F4F06F3848B43732DD183CDDA00AED3EE0A0(L_21, GameObject_GetComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_mD342F4F06F3848B43732DD183CDDA00AED3EE0A0_RuntimeMethod_var);
 		V_2 = L_22;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3457>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3463>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_23 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_24;
@@ -14847,7 +14847,7 @@ IL_001e:
 		G_B2_0 = L_21;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3459>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3465>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_25 = V_2;
 		NullCheck(L_25);
 		SphereCollider_set_radius_m6119FE18C6739B077AB17334B1B53984911017FF(L_25, (0.0625f), NULL);
@@ -14856,64 +14856,64 @@ IL_001e:
 
 IL_0090:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3463>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3469>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_26 = G_B3_0;
 		NullCheck(L_26);
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_27;
 		L_27 = GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093(L_26, GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093_RuntimeMethod_var);
 		V_3 = L_27;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3464>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3470>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_28 = V_3;
 		NullCheck(L_28);
 		Rigidbody_set_mass_mC7F886DEDB57C742A16F8B6B779F69AFE164CA4B(L_28, (0.0500000007f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3465>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3471>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_29 = V_3;
 		NullCheck(L_29);
 		Rigidbody_set_linearDamping_m42BB8ADA5D26250A11256502D08BDC2DAB980242(L_29, (0.300000012f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3466>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3472>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_30 = V_3;
 		NullCheck(L_30);
 		Rigidbody_set_useGravity_m1B1B22E093F9DC92D7BEEBBE6B02642B3B6C4389(L_30, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3467>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3473>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_31 = V_3;
 		NullCheck(L_31);
 		Rigidbody_set_collisionDetectionMode_m70A22E9878027BF6D3D7E851A43A8E32B8E02343(L_31, 1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3470>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3476>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_32 = (PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C*)il2cpp_codegen_object_new(PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C_il2cpp_TypeInfo_var);
 		PhysicsMaterial__ctor_m778D22F87081502CF8820CCC092931512CA1EBE5(L_32, _stringLiteralBE167FF3861609BF50767DDD95C444E082CB6E5E, NULL);
 		V_4 = L_32;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3471>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3477>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_33 = V_4;
 		NullCheck(L_33);
 		PhysicsMaterial_set_bounciness_m115EAFCE676550B7AEF1578ADEB6EAC5CEA2F354(L_33, (0.800000012f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3472>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3478>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_34 = V_4;
 		NullCheck(L_34);
 		PhysicsMaterial_set_dynamicFriction_m59BE25A0D523F1C16E8E5EA3605D5D9C068D6AAE(L_34, (0.0500000007f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3473>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3479>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_35 = V_4;
 		NullCheck(L_35);
 		PhysicsMaterial_set_staticFriction_m67DE5F3AD796C8AB92871E3A0B7338862BB27B9B(L_35, (0.0500000007f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3474>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3480>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_36 = V_4;
 		NullCheck(L_36);
 		PhysicsMaterial_set_frictionCombine_m5095E28E658737F90616372006D6FA093DA875DF(L_36, 2, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3475>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3481>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_37 = V_4;
 		NullCheck(L_37);
 		PhysicsMaterial_set_bounceCombine_mBB851399A0737AF067F4B51D8EF0F629CB53F9AD(L_37, 3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3476>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3482>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_38 = V_2;
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_39 = V_4;
 		NullCheck(L_38);
 		Collider_set_material_m2E6C7BEE5FE88DD839FD0BBA83DD501E38B85499(L_38, L_39, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3478>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3484>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_40;
 		L_40 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral975A5F46FC6E6D8BC7943A3A38CEA489C122E4F1, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_41 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_41, L_40, NULL);
 		V_5 = L_41;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3479>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3485>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_42 = V_5;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_43;
 		memset((&L_43), 0, sizeof(L_43));
@@ -14922,7 +14922,7 @@ IL_0090:
 		L_44 = Color_op_Multiply_m379B20A820266ACF82A21425B9CAE8DCD773CFBB_inline(L_43, (3.0f), NULL);
 		NullCheck(L_42);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_42, L_44, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3480>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3486>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_45 = L_26;
 		NullCheck(L_45);
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_46;
@@ -14930,38 +14930,38 @@ IL_0090:
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_47 = V_5;
 		NullCheck(L_46);
 		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_46, L_47, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3482>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3488>
 		NullCheck(L_45);
 		LightningExplosionParticle_t010F6F6E8624374E0EFB5304B8D50F5B20E87E82* L_48;
 		L_48 = GameObject_AddComponent_TisLightningExplosionParticle_t010F6F6E8624374E0EFB5304B8D50F5B20E87E82_mA1FFA2F811F77146862960ACE60CB8613CD5E014(L_45, GameObject_AddComponent_TisLightningExplosionParticle_t010F6F6E8624374E0EFB5304B8D50F5B20E87E82_mA1FFA2F811F77146862960ACE60CB8613CD5E014_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3483>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3489>
 		LightningExplosionParticle_t010F6F6E8624374E0EFB5304B8D50F5B20E87E82* L_49 = L_48;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_50 = ___1_surfaceNormal;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_51;
 		L_51 = SpellProjectile_GetRicochetDirection_m1546DD056EAE10B29CB78637486F85ECDE17FA13(__this, L_50, NULL);
 		NullCheck(L_49);
 		L_49->___direction = L_51;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3485>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3491>
 		float L_52 = __this->___speed;
 		V_6 = ((float)il2cpp_codegen_multiply(L_52, (0.550000012f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3486>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3492>
 		LightningExplosionParticle_t010F6F6E8624374E0EFB5304B8D50F5B20E87E82* L_53 = L_49;
 		float L_54 = V_6;
 		NullCheck(L_53);
 		L_53->___speed = L_54;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3487>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3493>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_55 = V_3;
 		NullCheck(L_53);
 		L_53->___rb = L_55;
 		Il2CppCodeGenWriteBarrier((void**)(&L_53->___rb), (void*)L_55);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3447>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3453>
 		int32_t L_56 = V_1;
 		V_1 = ((int32_t)il2cpp_codegen_add(L_56, 1));
 	}
 
 IL_017d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3447>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3453>
 		int32_t L_57 = V_1;
 		if ((((int32_t)L_57) < ((int32_t)((int32_t)15))))
 		{
@@ -14969,11 +14969,11 @@ IL_017d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3490>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3496>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_58 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_58, (0.800000012f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3491>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3497>
 		return;
 	}
 }
@@ -15007,11 +15007,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateWindExplosion_m058
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B3_0 = NULL;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B2_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3495>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3501>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral538A05A9E25AB8E11150A938C13403D1C07A68E5, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3496>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3502>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
@@ -15019,17 +15019,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_CreateWindExplosion_m058
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = ___0_position;
 		NullCheck(L_2);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_2, L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3499>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3505>
 		V_1 = 0;
 		goto IL_017d;
 	}
 
 IL_001e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3501>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3507>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
 		L_4 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3502>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3508>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_4;
 		int32_t L_6 = V_1;
 		int32_t L_7 = L_6;
@@ -15038,7 +15038,7 @@ IL_001e:
 		L_9 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral9DC226979AD716168DF4235F9F431BDDCC6298EA, L_8, NULL);
 		NullCheck(L_5);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_5, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3503>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3509>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = L_5;
 		NullCheck(L_10);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11;
@@ -15049,7 +15049,7 @@ IL_001e:
 		L_13 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_12, NULL);
 		NullCheck(L_11);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_11, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3504>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3510>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = L_10;
 		NullCheck(L_14);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15;
@@ -15058,7 +15058,7 @@ IL_001e:
 		L_16 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_15);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_15, L_16, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3505>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3511>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = L_14;
 		NullCheck(L_17);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
@@ -15069,13 +15069,13 @@ IL_001e:
 		L_20 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_19, (0.100000001f), NULL);
 		NullCheck(L_18);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_18, L_20, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3508>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3514>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = L_17;
 		NullCheck(L_21);
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_22;
 		L_22 = GameObject_GetComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_mD342F4F06F3848B43732DD183CDDA00AED3EE0A0(L_21, GameObject_GetComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_mD342F4F06F3848B43732DD183CDDA00AED3EE0A0_RuntimeMethod_var);
 		V_2 = L_22;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3509>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3515>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_23 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_24;
@@ -15088,7 +15088,7 @@ IL_001e:
 		G_B2_0 = L_21;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3511>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3517>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_25 = V_2;
 		NullCheck(L_25);
 		SphereCollider_set_radius_m6119FE18C6739B077AB17334B1B53984911017FF(L_25, (0.0500000007f), NULL);
@@ -15097,64 +15097,64 @@ IL_001e:
 
 IL_0090:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3515>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3521>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_26 = G_B3_0;
 		NullCheck(L_26);
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_27;
 		L_27 = GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093(L_26, GameObject_AddComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m03A761629A3F71B0248F1B26EF612F592B757093_RuntimeMethod_var);
 		V_3 = L_27;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3516>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3522>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_28 = V_3;
 		NullCheck(L_28);
 		Rigidbody_set_mass_mC7F886DEDB57C742A16F8B6B779F69AFE164CA4B(L_28, (0.0299999993f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3517>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3523>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_29 = V_3;
 		NullCheck(L_29);
 		Rigidbody_set_linearDamping_m42BB8ADA5D26250A11256502D08BDC2DAB980242(L_29, (0.600000024f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3518>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3524>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_30 = V_3;
 		NullCheck(L_30);
 		Rigidbody_set_useGravity_m1B1B22E093F9DC92D7BEEBBE6B02642B3B6C4389(L_30, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3519>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3525>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_31 = V_3;
 		NullCheck(L_31);
 		Rigidbody_set_collisionDetectionMode_m70A22E9878027BF6D3D7E851A43A8E32B8E02343(L_31, 1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3522>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3528>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_32 = (PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C*)il2cpp_codegen_object_new(PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C_il2cpp_TypeInfo_var);
 		PhysicsMaterial__ctor_m778D22F87081502CF8820CCC092931512CA1EBE5(L_32, _stringLiteral11AA848CA1E337178CF8747A21E6F80D02F6FDA3, NULL);
 		V_4 = L_32;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3523>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3529>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_33 = V_4;
 		NullCheck(L_33);
 		PhysicsMaterial_set_bounciness_m115EAFCE676550B7AEF1578ADEB6EAC5CEA2F354(L_33, (0.5f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3524>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3530>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_34 = V_4;
 		NullCheck(L_34);
 		PhysicsMaterial_set_dynamicFriction_m59BE25A0D523F1C16E8E5EA3605D5D9C068D6AAE(L_34, (0.400000006f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3525>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3531>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_35 = V_4;
 		NullCheck(L_35);
 		PhysicsMaterial_set_staticFriction_m67DE5F3AD796C8AB92871E3A0B7338862BB27B9B(L_35, (0.400000006f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3526>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3532>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_36 = V_4;
 		NullCheck(L_36);
 		PhysicsMaterial_set_frictionCombine_m5095E28E658737F90616372006D6FA093DA875DF(L_36, 0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3527>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3533>
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_37 = V_4;
 		NullCheck(L_37);
 		PhysicsMaterial_set_bounceCombine_mBB851399A0737AF067F4B51D8EF0F629CB53F9AD(L_37, 0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3528>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3534>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_38 = V_2;
 		PhysicsMaterial_t2949C5AB81E97E3B99B71EAFA5966CB89A9BEB1C* L_39 = V_4;
 		NullCheck(L_38);
 		Collider_set_material_m2E6C7BEE5FE88DD839FD0BBA83DD501E38B85499(L_38, L_39, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3530>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3536>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_40;
 		L_40 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral975A5F46FC6E6D8BC7943A3A38CEA489C122E4F1, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_41 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_41, L_40, NULL);
 		V_5 = L_41;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3531>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3537>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_42 = V_5;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_43;
 		memset((&L_43), 0, sizeof(L_43));
@@ -15163,7 +15163,7 @@ IL_0090:
 		L_44 = Color_op_Multiply_m379B20A820266ACF82A21425B9CAE8DCD773CFBB_inline(L_43, (2.0f), NULL);
 		NullCheck(L_42);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_42, L_44, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3532>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3538>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_45 = L_26;
 		NullCheck(L_45);
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_46;
@@ -15171,38 +15171,38 @@ IL_0090:
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_47 = V_5;
 		NullCheck(L_46);
 		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_46, L_47, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3534>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3540>
 		NullCheck(L_45);
 		WindExplosionParticle_t1F599B0F0C0130409ACEAEF91BC36B33926538E7* L_48;
 		L_48 = GameObject_AddComponent_TisWindExplosionParticle_t1F599B0F0C0130409ACEAEF91BC36B33926538E7_mF960FDEBC66D7DF69DF053010329A0F39D2BAA4B(L_45, GameObject_AddComponent_TisWindExplosionParticle_t1F599B0F0C0130409ACEAEF91BC36B33926538E7_mF960FDEBC66D7DF69DF053010329A0F39D2BAA4B_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3535>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3541>
 		WindExplosionParticle_t1F599B0F0C0130409ACEAEF91BC36B33926538E7* L_49 = L_48;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_50 = ___1_surfaceNormal;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_51;
 		L_51 = SpellProjectile_GetRicochetDirection_m1546DD056EAE10B29CB78637486F85ECDE17FA13(__this, L_50, NULL);
 		NullCheck(L_49);
 		L_49->___direction = L_51;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3537>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3543>
 		float L_52 = __this->___speed;
 		V_6 = ((float)il2cpp_codegen_multiply(L_52, (0.419999987f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3538>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3544>
 		WindExplosionParticle_t1F599B0F0C0130409ACEAEF91BC36B33926538E7* L_53 = L_49;
 		float L_54 = V_6;
 		NullCheck(L_53);
 		L_53->___speed = L_54;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3539>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3545>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_55 = V_3;
 		NullCheck(L_53);
 		L_53->___rb = L_55;
 		Il2CppCodeGenWriteBarrier((void**)(&L_53->___rb), (void*)L_55);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3499>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3505>
 		int32_t L_56 = V_1;
 		V_1 = ((int32_t)il2cpp_codegen_add(L_56, 1));
 	}
 
 IL_017d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3499>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3505>
 		int32_t L_57 = V_1;
 		if ((((int32_t)L_57) < ((int32_t)((int32_t)16))))
 		{
@@ -15210,11 +15210,11 @@ IL_017d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3542>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3548>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_58 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_58, (1.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3543>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3549>
 		return;
 	}
 }
@@ -15222,11 +15222,11 @@ IL_017d:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile__ctor_m76875C0E68080B3EB5D785F56FE8ED9C6501F916 (SpellProjectile_tEDC8AEF604D3C64CCF05AF5FD2F8455F1803115E* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3176>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3182>
 		__this->___speed = (20.0f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3177>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3183>
 		__this->___lifetime = (5.0f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3181>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3187>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0;
 		L_0 = Vector3_get_up_m128AF3FDC820BF59D5DE86D973E7DE3F20C3AEBA_inline(NULL);
 		__this->___hitNormal = L_0;
@@ -15260,19 +15260,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireballAnimation_Update_m87D900C425738F
 	float V_4 = 0.0f;
 	float V_5 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3556>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3562>
 		float L_0 = __this->___time;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___time = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3559>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3565>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_2, _stringLiteralDEE03E0FC47D4FABACBF74549DD167C25212D5BD, NULL);
 		V_0 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3560>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3566>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -15283,12 +15283,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireballAnimation_Update_m87D900C425738F
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3562>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3568>
 		float L_6 = __this->___time;
 		float L_7;
 		L_7 = sinf(((float)il2cpp_codegen_multiply(L_6, (8.0f))));
 		V_1 = ((float)il2cpp_codegen_add((1.0f), ((float)il2cpp_codegen_multiply(L_7, (0.200000003f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3563>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3569>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -15303,14 +15303,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireballAnimation_Update_m87D900C425738F
 
 IL_0065:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3567>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3573>
 		V_2 = 0;
 		goto IL_00da;
 	}
 
 IL_0069:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3569>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3575>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
 		L_13 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_14 = V_2;
@@ -15322,7 +15322,7 @@ IL_0069:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
 		L_18 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_13, L_17, NULL);
 		V_3 = L_18;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3570>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3576>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_19 = V_3;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_20;
@@ -15333,17 +15333,17 @@ IL_0069:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3572>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3578>
 		float L_21 = __this->___time;
 		int32_t L_22 = V_2;
 		V_4 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_21, (5.0f))), ((float)il2cpp_codegen_multiply(((float)L_22), (120.0f))))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3573>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3579>
 		V_5 = (0.150000006f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3574>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3575>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3576>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3577>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3578>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3580>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3581>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3582>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3583>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3584>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_23 = V_3;
 		float L_24 = V_4;
 		float L_25;
@@ -15362,14 +15362,14 @@ IL_0069:
 
 IL_00d6:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3567>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3573>
 		int32_t L_31 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_31, 1));
 	}
 
 IL_00da:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3567>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3573>
 		int32_t L_32 = V_2;
 		if ((((int32_t)L_32) < ((int32_t)3)))
 		{
@@ -15377,7 +15377,7 @@ IL_00da:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3583>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3589>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_33;
 		L_33 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_34;
@@ -15386,7 +15386,7 @@ IL_00da:
 		L_35 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		NullCheck(L_33);
 		Transform_Rotate_m35B44707FE16FF8015D519D8C162C0B4A85D6D1F(L_33, L_34, ((float)il2cpp_codegen_multiply((200.0f), L_35)), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3584>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3590>
 		return;
 	}
 }
@@ -15424,19 +15424,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IceShardAnimation_Update_m2D3E85BB8213B2
 	float V_4 = 0.0f;
 	float V_5 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3593>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3599>
 		float L_0 = __this->___time;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___time = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3596>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3602>
 		V_1 = 0;
 		goto IL_00b5;
 	}
 
 IL_0019:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3598>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3604>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_3 = V_1;
@@ -15448,7 +15448,7 @@ IL_0019:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7;
 		L_7 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_2, L_6, NULL);
 		V_2 = L_7;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3599>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3605>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_9;
@@ -15459,20 +15459,20 @@ IL_0019:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3601>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3607>
 		float L_10 = __this->___time;
 		int32_t L_11 = V_1;
 		V_3 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_10, (4.0f))), ((float)il2cpp_codegen_multiply(((float)L_11), (90.0f))))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3602>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3608>
 		V_4 = (0.100000001f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3603>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3609>
 		int32_t L_12 = V_1;
 		V_5 = ((float)il2cpp_codegen_subtract((-0.300000012f), ((float)il2cpp_codegen_multiply(((float)L_12), (0.100000001f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3604>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3605>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3606>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3607>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3608>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3610>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3611>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3612>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3613>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3614>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13 = V_2;
 		float L_14 = V_3;
 		float L_15;
@@ -15488,7 +15488,7 @@ IL_0019:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_21), ((float)il2cpp_codegen_multiply(L_15, L_16)), ((float)il2cpp_codegen_multiply(L_18, L_19)), L_20, NULL);
 		NullCheck(L_13);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_13, L_21, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3609>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3615>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22 = V_2;
 		float L_23 = __this->___time;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_24;
@@ -15499,14 +15499,14 @@ IL_0019:
 
 IL_00b1:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3596>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3602>
 		int32_t L_25 = V_1;
 		V_1 = ((int32_t)il2cpp_codegen_add(L_25, 1));
 	}
 
 IL_00b5:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3596>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3602>
 		int32_t L_26 = V_1;
 		if ((((int32_t)L_26) < ((int32_t)4)))
 		{
@@ -15514,14 +15514,14 @@ IL_00b5:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3614>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3620>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_27;
 		L_27 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_27);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_28;
 		L_28 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_27, _stringLiteralEAFFA4822277BDEE90D6282177183EC6C543360B, NULL);
 		V_0 = L_28;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3615>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3621>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_29 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_30;
@@ -15532,7 +15532,7 @@ IL_00b5:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3617>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3623>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31 = V_0;
 		float L_32 = __this->___time;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_33;
@@ -15543,7 +15543,7 @@ IL_00b5:
 
 IL_00f7:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3619>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3625>
 		return;
 	}
 }
@@ -15584,19 +15584,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningAnimation_Update_m0A7F2B9F8DCCC
 	float V_6 = 0.0f;
 	float G_B7_0 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3628>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3634>
 		float L_0 = __this->___time;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___time = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3631>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3637>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_2, _stringLiteralE3A1AF688EBCF253337ECD052C044F4ED99F7AF3, NULL);
 		V_0 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3632>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3638>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -15607,12 +15607,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningAnimation_Update_m0A7F2B9F8DCCC
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3634>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3640>
 		float L_6 = __this->___time;
 		float L_7;
 		L_7 = sinf(((float)il2cpp_codegen_multiply(L_6, (15.0f))));
 		V_1 = ((float)il2cpp_codegen_add((1.0f), ((float)il2cpp_codegen_multiply(L_7, (0.300000012f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3635>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3641>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -15627,14 +15627,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningAnimation_Update_m0A7F2B9F8DCCC
 
 IL_0065:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3639>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3645>
 		V_2 = 0;
 		goto IL_0190;
 	}
 
 IL_006c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3641>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3647>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
 		L_13 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_14 = V_2;
@@ -15646,7 +15646,7 @@ IL_006c:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
 		L_18 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_13, L_17, NULL);
 		V_3 = L_18;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3642>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3648>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_19 = V_3;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_20;
@@ -15657,21 +15657,21 @@ IL_006c:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3644>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3650>
 		float L_21 = __this->___time;
 		int32_t L_22 = V_2;
 		V_4 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_21, (8.0f))), ((float)il2cpp_codegen_multiply(((float)L_22), (60.0f))))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3645>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3651>
 		float L_23 = __this->___time;
 		int32_t L_24 = V_2;
 		float L_25;
 		L_25 = Mathf_PerlinNoise_mAB0E53C29FE95469CF303364910AD0D8662A9A6A(((float)il2cpp_codegen_multiply(L_23, (10.0f))), ((float)L_24), NULL);
 		V_5 = ((float)il2cpp_codegen_add((0.150000006f), ((float)il2cpp_codegen_multiply(L_25, (0.100000001f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3646>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3647>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3648>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3649>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3650>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3652>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3653>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3654>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3655>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3656>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_26 = V_3;
 		float L_27 = V_4;
 		float L_28;
@@ -15686,11 +15686,11 @@ IL_006c:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_33), ((float)il2cpp_codegen_multiply(L_28, L_29)), ((float)il2cpp_codegen_multiply(L_31, L_32)), (0.0f), NULL);
 		NullCheck(L_26);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_26, L_33, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3653>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3654>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3655>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3656>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3657>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3659>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3660>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3661>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3662>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3663>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_34 = V_3;
 		float L_35 = __this->___time;
 		int32_t L_36 = V_2;
@@ -15704,7 +15704,7 @@ IL_006c:
 		L_41 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline(((float)il2cpp_codegen_multiply(L_37, (360.0f))), ((float)il2cpp_codegen_multiply(L_40, (360.0f))), (0.0f), NULL);
 		NullCheck(L_34);
 		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(L_34, L_41, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3660>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3666>
 		float L_42 = __this->___time;
 		int32_t L_43 = V_2;
 		float L_44;
@@ -15727,7 +15727,7 @@ IL_015f:
 IL_0164:
 	{
 		V_6 = G_B7_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3661>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3667>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_45 = V_3;
 		NullCheck(L_45);
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_46;
@@ -15745,14 +15745,14 @@ IL_0164:
 
 IL_018c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3639>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3645>
 		int32_t L_50 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_50, 1));
 	}
 
 IL_0190:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3639>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3645>
 		int32_t L_51 = V_2;
 		if ((((int32_t)L_51) < ((int32_t)6)))
 		{
@@ -15760,7 +15760,7 @@ IL_0190:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3664>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3670>
 		return;
 	}
 }
@@ -15806,19 +15806,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindBlastAnimation_Update_m8B1863FF41995
 	float V_11 = 0.0f;
 	float V_12 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3673>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3679>
 		float L_0 = __this->___time;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___time = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3676>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3682>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_2, _stringLiteral1EE2D9047CF34DF78FB2ADAE8B4AE2D73AB49DD4, NULL);
 		V_0 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3677>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3683>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -15829,12 +15829,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindBlastAnimation_Update_m8B1863FF41995
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3679>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3685>
 		float L_6 = __this->___time;
 		float L_7;
 		L_7 = sinf(((float)il2cpp_codegen_multiply(L_6, (10.0f))));
 		V_3 = ((float)il2cpp_codegen_add((1.0f), ((float)il2cpp_codegen_multiply(L_7, (0.150000006f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3680>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3686>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -15849,14 +15849,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindBlastAnimation_Update_m8B1863FF41995
 
 IL_0065:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3684>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3690>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
 		L_13 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_13);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14;
 		L_14 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_13, _stringLiteral1A42E3B8E53D742D17B267623A48841F89FADBDD, NULL);
 		V_1 = L_14;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3685>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3691>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_16;
@@ -15867,12 +15867,12 @@ IL_0065:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3687>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3693>
 		float L_17 = __this->___time;
 		float L_18;
 		L_18 = sinf(((float)il2cpp_codegen_multiply(L_17, (12.0f))));
 		V_4 = ((float)il2cpp_codegen_add((1.0f), ((float)il2cpp_codegen_multiply(L_18, (0.200000003f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3688>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3694>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_19 = V_1;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20;
 		L_20 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -15887,16 +15887,16 @@ IL_0065:
 
 IL_00ba:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3692>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3698>
 		V_2 = ((int32_t)12);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3693>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3699>
 		V_5 = 0;
 		goto IL_01b1;
 	}
 
 IL_00c5:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3695>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3701>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_24;
 		L_24 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_25 = V_5;
@@ -15908,7 +15908,7 @@ IL_00c5:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_29;
 		L_29 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_24, L_28, NULL);
 		V_6 = L_29;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3696>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3702>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_30 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_31;
@@ -15919,29 +15919,29 @@ IL_00c5:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3699>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3705>
 		int32_t L_32 = V_5;
 		V_7 = ((float)il2cpp_codegen_multiply(((float)((int32_t)(L_32%3))), (120.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3700>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3706>
 		float L_33 = __this->___time;
 		int32_t L_34 = V_5;
 		int32_t L_35 = V_2;
 		V_8 = (fmodf(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_33, (3.0f))), ((float)(((float)L_34)/((float)L_35))))), (1.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3701>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3707>
 		float L_36 = V_8;
 		float L_37 = V_7;
 		V_9 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_36, (720.0f))), L_37)), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3702>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3708>
 		float L_38 = V_8;
 		V_10 = ((float)il2cpp_codegen_multiply((0.25f), ((float)il2cpp_codegen_subtract((1.0f), ((float)il2cpp_codegen_multiply(L_38, (0.699999988f)))))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3703>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3709>
 		float L_39 = V_8;
 		V_11 = ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_multiply(L_39, (0.600000024f))), (0.300000012f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3705>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3706>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3707>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3708>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3709>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3711>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3712>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3713>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3714>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3715>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_40 = V_6;
 		float L_41 = V_9;
 		float L_42;
@@ -15957,12 +15957,12 @@ IL_00c5:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_48), ((float)il2cpp_codegen_multiply(L_42, L_43)), ((float)il2cpp_codegen_multiply(L_45, L_46)), L_47, NULL);
 		NullCheck(L_40);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_40, L_48, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3712>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3718>
 		float L_49 = V_8;
 		float L_50;
 		L_50 = sinf(((float)il2cpp_codegen_multiply(L_49, (3.14159274f))));
 		V_12 = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_50, (0.5f))), (0.699999988f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3713>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3719>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_51 = V_6;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_52;
 		L_52 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -15977,14 +15977,14 @@ IL_00c5:
 
 IL_01ab:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3693>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3699>
 		int32_t L_56 = V_5;
 		V_5 = ((int32_t)il2cpp_codegen_add(L_56, 1));
 	}
 
 IL_01b1:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3693>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3699>
 		int32_t L_57 = V_5;
 		int32_t L_58 = V_2;
 		if ((((int32_t)L_57) < ((int32_t)L_58)))
@@ -15993,7 +15993,7 @@ IL_01b1:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3718>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3724>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_59;
 		L_59 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_60;
@@ -16002,7 +16002,7 @@ IL_01b1:
 		L_61 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		NullCheck(L_59);
 		Transform_Rotate_m35B44707FE16FF8015D519D8C162C0B4A85D6D1F(L_59, L_60, ((float)il2cpp_codegen_multiply((180.0f), L_61)), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3719>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3725>
 		return;
 	}
 }
@@ -16051,12 +16051,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MeteorAnimation_Update_m46D840B28D1286DC
 	float V_14 = 0.0f;
 	float G_B7_0 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3731>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3737>
 		float L_0 = __this->___time;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___time = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3734>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3740>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
@@ -16066,14 +16066,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MeteorAnimation_Update_m46D840B28D1286DC
 		L_4 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		NullCheck(L_2);
 		Transform_Rotate_m35B44707FE16FF8015D519D8C162C0B4A85D6D1F(L_2, L_3, ((float)il2cpp_codegen_multiply((120.0f), L_4)), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3737>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3743>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5;
 		L_5 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_5);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6;
 		L_6 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_5, _stringLiteral3734F0BCD2722422CDB5AC036D1A9ACC31DD6989, NULL);
 		V_0 = L_6;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3738>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3744>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_8;
@@ -16084,12 +16084,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MeteorAnimation_Update_m46D840B28D1286DC
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3740>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3746>
 		float L_9 = __this->___time;
 		float L_10;
 		L_10 = sinf(((float)il2cpp_codegen_multiply(L_9, (6.0f))));
 		V_1 = ((float)il2cpp_codegen_add((1.0f), ((float)il2cpp_codegen_multiply(L_10, (0.0799999982f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3741>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3747>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
 		L_12 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -16104,14 +16104,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MeteorAnimation_Update_m46D840B28D1286DC
 
 IL_008f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3745>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3751>
 		V_2 = 0;
 		goto IL_016a;
 	}
 
 IL_0096:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3747>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3753>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16;
 		L_16 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_17 = V_2;
@@ -16123,7 +16123,7 @@ IL_0096:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
 		L_21 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_16, L_20, NULL);
 		V_3 = L_21;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3748>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3754>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22 = V_3;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_23;
@@ -16134,10 +16134,10 @@ IL_0096:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3751>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3757>
 		int32_t L_24 = V_2;
 		V_4 = ((float)il2cpp_codegen_add((2.0f), ((float)il2cpp_codegen_multiply(((float)((int32_t)(L_24%3))), (1.0f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3752>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3758>
 		int32_t L_25 = V_2;
 		if (!((int32_t)(L_25%2)))
 		{
@@ -16157,26 +16157,26 @@ IL_00dc:
 IL_00e1:
 	{
 		V_5 = G_B7_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3753>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3759>
 		float L_26 = __this->___time;
 		float L_27 = V_4;
 		float L_28 = V_5;
 		int32_t L_29 = V_2;
 		V_6 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_26, L_27)), L_28)), ((float)il2cpp_codegen_multiply(((float)L_29), (36.0f))))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3754>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3760>
 		V_7 = (0.449999988f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3755>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3761>
 		float L_30 = __this->___time;
 		float L_31 = V_4;
 		int32_t L_32 = V_2;
 		float L_33;
 		L_33 = sinf(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_30, L_31)), ((float)L_32))));
 		V_8 = ((float)il2cpp_codegen_multiply(L_33, (0.100000001f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3757>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3758>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3759>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3760>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3761>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3763>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3764>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3765>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3766>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3767>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_34 = V_3;
 		float L_35 = V_6;
 		float L_36;
@@ -16192,7 +16192,7 @@ IL_00e1:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_42), ((float)il2cpp_codegen_multiply(L_36, L_37)), L_38, ((float)il2cpp_codegen_multiply(L_40, L_41)), NULL);
 		NullCheck(L_34);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_34, L_42, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3764>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3770>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_43 = V_3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_44;
 		memset((&L_44), 0, sizeof(L_44));
@@ -16205,14 +16205,14 @@ IL_00e1:
 
 IL_0166:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3745>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3751>
 		int32_t L_46 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_46, 1));
 	}
 
 IL_016a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3745>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3751>
 		int32_t L_47 = V_2;
 		if ((((int32_t)L_47) < ((int32_t)((int32_t)10))))
 		{
@@ -16220,14 +16220,14 @@ IL_016a:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3769>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3775>
 		V_9 = 0;
 		goto IL_024f;
 	}
 
 IL_017a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3771>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3777>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_48;
 		L_48 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_49 = V_9;
@@ -16239,7 +16239,7 @@ IL_017a:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_53;
 		L_53 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_48, L_52, NULL);
 		V_10 = L_53;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3772>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3778>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_54 = V_10;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_55;
@@ -16250,24 +16250,24 @@ IL_017a:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3775>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3781>
 		float L_56 = __this->___time;
 		int32_t L_57 = V_9;
 		V_11 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_56, (0.5f))), ((float)il2cpp_codegen_multiply(((float)L_57), (45.0f))))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3776>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3782>
 		float L_58 = __this->___time;
 		V_12 = ((float)il2cpp_codegen_add((0.550000012f), (fmodf(((float)il2cpp_codegen_multiply(L_58, (0.100000001f))), (0.200000003f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3777>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3783>
 		float L_59 = __this->___time;
 		int32_t L_60 = V_9;
 		float L_61;
 		L_61 = sinf(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_59, (0.300000012f))), ((float)L_60))));
 		V_13 = ((float)il2cpp_codegen_multiply(L_61, (0.150000006f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3779>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3780>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3781>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3782>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3783>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3785>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3786>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3787>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3788>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3789>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_62 = V_10;
 		float L_63 = V_11;
 		float L_64;
@@ -16283,10 +16283,10 @@ IL_017a:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_70), ((float)il2cpp_codegen_multiply(L_64, L_65)), L_66, ((float)il2cpp_codegen_multiply(L_68, L_69)), NULL);
 		NullCheck(L_62);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_62, L_70, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3786>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3792>
 		float L_71 = __this->___time;
 		V_14 = ((float)il2cpp_codegen_add((0.0799999982f), (fmodf(((float)il2cpp_codegen_multiply(L_71, (0.0199999996f))), (0.0399999991f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3787>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3793>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_72 = V_10;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_73;
 		L_73 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -16299,14 +16299,14 @@ IL_017a:
 
 IL_0249:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3769>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3775>
 		int32_t L_76 = V_9;
 		V_9 = ((int32_t)il2cpp_codegen_add(L_76, 1));
 	}
 
 IL_024f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3769>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3775>
 		int32_t L_77 = V_9;
 		if ((((int32_t)L_77) < ((int32_t)8)))
 		{
@@ -16314,7 +16314,7 @@ IL_024f:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3790>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3796>
 		return;
 	}
 }
@@ -16362,19 +16362,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FrostBoulderAnimation_Update_m0B18E6BD1F
 	float G_B15_0 = 0.0f;
 	float G_B18_0 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3802>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3808>
 		float L_0 = __this->___time;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___time = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3805>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3811>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_2, _stringLiteral3C3BD462E08FB5D9708954F2888F295FA2766D8F, NULL);
 		V_0 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3806>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3812>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -16385,12 +16385,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FrostBoulderAnimation_Update_m0B18E6BD1F
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3808>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3814>
 		float L_6 = __this->___time;
 		float L_7;
 		L_7 = sinf(((float)il2cpp_codegen_multiply(L_6, (12.0f))));
 		V_1 = ((float)il2cpp_codegen_add((1.0f), ((float)il2cpp_codegen_multiply(L_7, (0.150000006f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3809>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3815>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -16405,7 +16405,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FrostBoulderAnimation_Update_m0B18E6BD1F
 
 IL_0065:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3813>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3819>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
 		L_13 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
@@ -16414,14 +16414,14 @@ IL_0065:
 		L_15 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		NullCheck(L_13);
 		Transform_Rotate_m35B44707FE16FF8015D519D8C162C0B4A85D6D1F(L_13, L_14, ((float)il2cpp_codegen_multiply((60.0f), L_15)), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3816>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3822>
 		V_2 = 0;
 		goto IL_010c;
 	}
 
 IL_0087:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3818>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3824>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16;
 		L_16 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_17 = V_2;
@@ -16433,7 +16433,7 @@ IL_0087:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
 		L_21 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_16, L_20, NULL);
 		V_3 = L_21;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3819>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3825>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22 = V_3;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_23;
@@ -16444,20 +16444,20 @@ IL_0087:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3822>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3828>
 		float L_24 = __this->___time;
 		int32_t L_25 = V_2;
 		float L_26;
 		L_26 = sinf(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_24, (4.0f))), ((float)L_25))));
 		V_4 = ((float)il2cpp_codegen_multiply(L_26, (0.0299999993f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3823>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3829>
 		int32_t L_27 = V_2;
 		V_5 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)L_27), (60.0f))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3824>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3825>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3826>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3827>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3828>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3830>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3831>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3832>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3833>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3834>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_28 = V_3;
 		float L_29 = V_5;
 		float L_30;
@@ -16476,14 +16476,14 @@ IL_0087:
 
 IL_0108:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3816>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3822>
 		int32_t L_36 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_36, 1));
 	}
 
 IL_010c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3816>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3822>
 		int32_t L_37 = V_2;
 		if ((((int32_t)L_37) < ((int32_t)6)))
 		{
@@ -16491,14 +16491,14 @@ IL_010c:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3833>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3839>
 		V_6 = 0;
 		goto IL_01f5;
 	}
 
 IL_011b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3835>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3841>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_38;
 		L_38 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_39 = V_6;
@@ -16510,7 +16510,7 @@ IL_011b:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_43;
 		L_43 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_38, L_42, NULL);
 		V_7 = L_43;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3836>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3842>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_44 = V_7;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_45;
@@ -16521,7 +16521,7 @@ IL_011b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3839>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3845>
 		int32_t L_46 = V_6;
 		if ((((int32_t)L_46) < ((int32_t)6)))
 		{
@@ -16541,12 +16541,12 @@ IL_0152:
 IL_0157:
 	{
 		V_8 = G_B12_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3840>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3846>
 		float L_47 = __this->___time;
 		float L_48 = V_8;
 		int32_t L_49 = V_6;
 		V_9 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_47, L_48)), ((float)il2cpp_codegen_multiply(((float)L_49), (30.0f))))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3841>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3847>
 		int32_t L_50 = V_6;
 		if ((((int32_t)L_50) < ((int32_t)6)))
 		{
@@ -16566,7 +16566,7 @@ IL_0180:
 IL_0185:
 	{
 		V_10 = G_B15_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3842>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3848>
 		int32_t L_51 = V_6;
 		if ((((int32_t)L_51) < ((int32_t)6)))
 		{
@@ -16586,11 +16586,11 @@ IL_0193:
 IL_0198:
 	{
 		V_11 = G_B18_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3844>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3845>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3846>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3847>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3848>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3850>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3851>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3852>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3853>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3854>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_52 = V_7;
 		float L_53 = V_9;
 		float L_54;
@@ -16610,7 +16610,7 @@ IL_0198:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_63), ((float)il2cpp_codegen_multiply(L_54, L_55)), ((float)il2cpp_codegen_add(L_56, ((float)il2cpp_codegen_multiply(L_59, (0.0500000007f))))), ((float)il2cpp_codegen_multiply(L_61, L_62)), NULL);
 		NullCheck(L_52);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_52, L_63, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3851>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3857>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_64 = V_7;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_65;
 		L_65 = Vector3_get_up_m128AF3FDC820BF59D5DE86D973E7DE3F20C3AEBA_inline(NULL);
@@ -16622,14 +16622,14 @@ IL_0198:
 
 IL_01ef:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3833>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3839>
 		int32_t L_67 = V_6;
 		V_6 = ((int32_t)il2cpp_codegen_add(L_67, 1));
 	}
 
 IL_01f5:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3833>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3839>
 		int32_t L_68 = V_6;
 		if ((((int32_t)L_68) < ((int32_t)((int32_t)12))))
 		{
@@ -16637,7 +16637,7 @@ IL_01f5:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3854>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3860>
 		return;
 	}
 }
@@ -16690,19 +16690,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ThunderOrbAnimation_Update_m815BF09174CB
 	float V_15 = 0.0f;
 	float G_B17_0 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3866>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3872>
 		float L_0 = __this->___time;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___time = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3869>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3875>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_2, _stringLiteralE3A1AF688EBCF253337ECD052C044F4ED99F7AF3, NULL);
 		V_0 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3870>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3876>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -16713,12 +16713,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ThunderOrbAnimation_Update_m815BF09174CB
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3872>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3878>
 		float L_6 = __this->___time;
 		float L_7;
 		L_7 = sinf(((float)il2cpp_codegen_multiply(L_6, (20.0f))));
 		V_2 = ((float)il2cpp_codegen_add((1.0f), ((float)il2cpp_codegen_multiply(L_7, (0.300000012f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3873>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3879>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -16733,14 +16733,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ThunderOrbAnimation_Update_m815BF09174CB
 
 IL_0065:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3877>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3883>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
 		L_13 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_13);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14;
 		L_14 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_13, _stringLiteralDCE4BC7B12B740B5DFAD9DABA302E80D2AB12CC8, NULL);
 		V_1 = L_14;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3878>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3884>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_16;
@@ -16751,11 +16751,11 @@ IL_0065:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3880>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3886>
 		float L_17;
 		L_17 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494((-0.100000001f), (0.100000001f), NULL);
 		V_3 = ((float)il2cpp_codegen_add((1.0f), L_17));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3881>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3887>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18 = V_1;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19;
 		L_19 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -16770,17 +16770,17 @@ IL_0065:
 
 IL_00b0:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3885>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3891>
 		V_4 = 0;
 		goto IL_0201;
 	}
 
 IL_00b8:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3887>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3893>
 		int32_t L_23 = V_4;
 		V_5 = ((float)il2cpp_codegen_add((100.0f), ((float)il2cpp_codegen_multiply(((float)L_23), (50.0f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3888>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3894>
 		int32_t L_24 = V_4;
 		if ((!(((uint32_t)L_24) == ((uint32_t)1))))
 		{
@@ -16788,21 +16788,21 @@ IL_00b8:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3888>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3894>
 		float L_25 = V_5;
 		V_5 = ((float)il2cpp_codegen_multiply(L_25, (-1.0f)));
 	}
 
 IL_00d8:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3890>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3896>
 		V_6 = 0;
 		goto IL_01f3;
 	}
 
 IL_00e0:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3892>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3898>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_26;
 		L_26 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_27 = V_4;
@@ -16817,7 +16817,7 @@ IL_00e0:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_34;
 		L_34 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_26, L_33, NULL);
 		V_7 = L_34;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3893>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3899>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_35 = V_7;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_36;
@@ -16828,19 +16828,19 @@ IL_00e0:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3896>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3902>
 		int32_t L_37 = V_6;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3897>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3903>
 		float L_38 = __this->___time;
 		float L_39 = V_5;
 		V_8 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(((float)L_37), (45.0f))), ((float)il2cpp_codegen_multiply(L_38, L_39)))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3898>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3904>
 		V_9 = (0.349999994f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3901>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3907>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_40;
 		L_40 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_10 = L_40;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3902>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3908>
 		int32_t L_41 = V_4;
 		if (L_41)
 		{
@@ -16848,11 +16848,11 @@ IL_00e0:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3905>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3906>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3907>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3908>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3909>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3911>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3912>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3913>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3914>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3915>
 		float L_42 = V_8;
 		float L_43;
 		L_43 = cosf(L_42);
@@ -16867,7 +16867,7 @@ IL_00e0:
 
 IL_0161:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3911>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3917>
 		int32_t L_48 = V_4;
 		if ((!(((uint32_t)L_48) == ((uint32_t)1))))
 		{
@@ -16875,11 +16875,11 @@ IL_0161:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3914>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3915>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3916>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3917>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3918>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3920>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3921>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3922>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3923>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3924>
 		float L_49 = V_8;
 		float L_50;
 		L_50 = cosf(L_49);
@@ -16894,11 +16894,11 @@ IL_0161:
 
 IL_0188:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3923>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3924>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3925>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3926>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3927>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3929>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3930>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3931>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3932>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3933>
 		float L_55 = V_8;
 		float L_56;
 		L_56 = cosf(L_55);
@@ -16912,12 +16912,12 @@ IL_0188:
 
 IL_01a8:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3930>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3936>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_61 = V_7;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_62 = V_10;
 		NullCheck(L_61);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_61, L_62, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3933>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3939>
 		float L_63;
 		L_63 = Random_get_value_m2CEA87FADF5222EF9E13D32695F15E2BA282E24B(NULL);
 		if ((((float)L_63) < ((float)(0.100000001f))))
@@ -16938,7 +16938,7 @@ IL_01c4:
 IL_01c9:
 	{
 		V_11 = G_B17_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3935>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3941>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_64 = V_7;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_65;
 		memset((&L_65), 0, sizeof(L_65));
@@ -16952,14 +16952,14 @@ IL_01c9:
 
 IL_01ed:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3890>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3896>
 		int32_t L_68 = V_6;
 		V_6 = ((int32_t)il2cpp_codegen_add(L_68, 1));
 	}
 
 IL_01f3:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3890>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3896>
 		int32_t L_69 = V_6;
 		if ((((int32_t)L_69) < ((int32_t)8)))
 		{
@@ -16967,14 +16967,14 @@ IL_01f3:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3885>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3891>
 		int32_t L_70 = V_4;
 		V_4 = ((int32_t)il2cpp_codegen_add(L_70, 1));
 	}
 
 IL_0201:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3885>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3891>
 		int32_t L_71 = V_4;
 		if ((((int32_t)L_71) < ((int32_t)3)))
 		{
@@ -16982,14 +16982,14 @@ IL_0201:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3941>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3947>
 		V_12 = 0;
 		goto IL_0284;
 	}
 
 IL_020e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3943>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3949>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_72;
 		L_72 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_73 = V_12;
@@ -17001,7 +17001,7 @@ IL_020e:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_77;
 		L_77 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_72, L_76, NULL);
 		V_13 = L_77;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3944>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3950>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_78 = V_13;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_79;
@@ -17012,22 +17012,22 @@ IL_020e:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3947>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3953>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_80;
 		L_80 = Random_get_insideUnitSphere_mA488D6859560B73565B8D890ED6B39DB4091C54F(NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_81;
 		L_81 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_80, (0.300000012f), NULL);
 		V_14 = L_81;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3948>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3954>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_82 = V_13;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_83 = V_14;
 		NullCheck(L_82);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_82, L_83, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3951>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3957>
 		float L_84;
 		L_84 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494((0.5f), (1.5f), NULL);
 		V_15 = L_84;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3952>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3958>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_85 = V_13;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_86;
 		L_86 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -17042,14 +17042,14 @@ IL_020e:
 
 IL_027e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3941>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3947>
 		int32_t L_90 = V_12;
 		V_12 = ((int32_t)il2cpp_codegen_add(L_90, 1));
 	}
 
 IL_0284:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3941>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3947>
 		int32_t L_91 = V_12;
 		if ((((int32_t)L_91) < ((int32_t)((int32_t)10))))
 		{
@@ -17057,7 +17057,7 @@ IL_0284:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3955>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3961>
 		return;
 	}
 }
@@ -17108,19 +17108,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CycloneAnimation_Update_m8AEAFBB4C6F20C7
 	float V_16 = 0.0f;
 	float V_17 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3967>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3973>
 		float L_0 = __this->___time;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___time = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3970>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3976>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_2, _stringLiteralF99F436E07C7258CCDEA28CC90BDFF5C1334A34B, NULL);
 		V_0 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3971>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3977>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -17131,12 +17131,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CycloneAnimation_Update_m8AEAFBB4C6F20C7
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3973>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3979>
 		float L_6 = __this->___time;
 		float L_7;
 		L_7 = sinf(((float)il2cpp_codegen_multiply(L_6, (15.0f))));
 		V_1 = ((float)il2cpp_codegen_add((1.0f), ((float)il2cpp_codegen_multiply(L_7, (0.200000003f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3974>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3980>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -17151,26 +17151,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CycloneAnimation_Update_m8AEAFBB4C6F20C7
 
 IL_0065:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3978>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3984>
 		V_2 = 0;
 		goto IL_016a;
 	}
 
 IL_006c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3980>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3986>
 		V_3 = ((int32_t)10);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3981>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3987>
 		int32_t L_13 = V_2;
 		V_4 = ((float)il2cpp_codegen_add((3.0f), ((float)il2cpp_codegen_multiply(((float)L_13), (1.5f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3983>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3989>
 		V_5 = 0;
 		goto IL_015e;
 	}
 
 IL_0087:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3985>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3991>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14;
 		L_14 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_15 = V_2;
@@ -17185,7 +17185,7 @@ IL_0087:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22;
 		L_22 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_14, L_21, NULL);
 		V_6 = L_22;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3986>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3992>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_23 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_24;
@@ -17196,27 +17196,27 @@ IL_0087:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3989>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3995>
 		float L_25 = __this->___time;
 		float L_26 = V_4;
 		int32_t L_27 = V_5;
 		int32_t L_28 = V_3;
 		V_7 = (fmodf(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_25, L_26)), ((float)(((float)L_27)/((float)L_28))))), (1.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3990>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3996>
 		float L_29 = V_7;
 		V_8 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_29, (720.0f))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3991>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3997>
 		int32_t L_30 = V_2;
 		float L_31 = V_7;
 		V_9 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add((0.200000003f), ((float)il2cpp_codegen_multiply(((float)L_30), (0.100000001f))))), ((float)il2cpp_codegen_subtract((1.0f), ((float)il2cpp_codegen_multiply(L_31, (0.300000012f)))))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3992>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3998>
 		float L_32 = V_7;
 		V_10 = ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_multiply(L_32, (0.800000012f))), (0.400000006f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3994>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3995>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3996>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3997>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3998>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4000>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4001>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4002>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4003>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4004>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_33 = V_6;
 		float L_34 = V_8;
 		float L_35;
@@ -17232,10 +17232,10 @@ IL_0087:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_41), ((float)il2cpp_codegen_multiply(L_35, L_36)), L_37, ((float)il2cpp_codegen_multiply(L_39, L_40)), NULL);
 		NullCheck(L_33);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_33, L_41, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4001>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4007>
 		float L_42 = V_7;
 		V_11 = ((float)il2cpp_codegen_subtract((1.0f), L_42));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4002>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4008>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_43 = V_6;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_44;
 		L_44 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
@@ -17250,14 +17250,14 @@ IL_0087:
 
 IL_0158:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3983>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3989>
 		int32_t L_48 = V_5;
 		V_5 = ((int32_t)il2cpp_codegen_add(L_48, 1));
 	}
 
 IL_015e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3983>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3989>
 		int32_t L_49 = V_5;
 		int32_t L_50 = V_3;
 		if ((((int32_t)L_49) < ((int32_t)L_50)))
@@ -17266,14 +17266,14 @@ IL_015e:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3978>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3984>
 		int32_t L_51 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_51, 1));
 	}
 
 IL_016a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3978>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:3984>
 		int32_t L_52 = V_2;
 		if ((((int32_t)L_52) < ((int32_t)3)))
 		{
@@ -17281,14 +17281,14 @@ IL_016a:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4008>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4014>
 		V_12 = 0;
 		goto IL_025a;
 	}
 
 IL_0179:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4010>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4016>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_53;
 		L_53 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		int32_t L_54 = V_12;
@@ -17300,7 +17300,7 @@ IL_0179:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_58;
 		L_58 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_53, L_57, NULL);
 		V_13 = L_58;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4011>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4017>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_59 = V_13;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_60;
@@ -17311,31 +17311,31 @@ IL_0179:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4014>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4020>
 		int32_t L_61 = V_12;
 		V_14 = ((float)il2cpp_codegen_add((4.0f), ((float)((int32_t)(L_61%3)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4015>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4021>
 		float L_62 = __this->___time;
 		float L_63 = V_14;
 		int32_t L_64 = V_12;
 		V_15 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_62, L_63)), ((float)il2cpp_codegen_multiply(((float)L_64), (45.0f))))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4016>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4022>
 		float L_65 = __this->___time;
 		int32_t L_66 = V_12;
 		float L_67;
 		L_67 = sinf(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_65, (2.0f))), ((float)L_66))));
 		V_16 = ((float)il2cpp_codegen_add((0.349999994f), ((float)il2cpp_codegen_multiply(L_67, (0.100000001f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4017>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4023>
 		float L_68 = __this->___time;
 		int32_t L_69 = V_12;
 		float L_70;
 		L_70 = cosf(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_68, (3.0f))), ((float)L_69))));
 		V_17 = ((float)il2cpp_codegen_multiply(L_70, (0.25f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4019>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4020>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4021>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4022>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4023>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4025>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4026>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4027>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4028>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4029>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_71 = V_13;
 		float L_72 = V_15;
 		float L_73;
@@ -17351,7 +17351,7 @@ IL_0179:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_79), ((float)il2cpp_codegen_multiply(L_73, L_74)), L_75, ((float)il2cpp_codegen_multiply(L_77, L_78)), NULL);
 		NullCheck(L_71);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_71, L_79, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4026>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4032>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_80 = V_13;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_81;
 		memset((&L_81), 0, sizeof(L_81));
@@ -17364,14 +17364,14 @@ IL_0179:
 
 IL_0254:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4008>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4014>
 		int32_t L_83 = V_12;
 		V_12 = ((int32_t)il2cpp_codegen_add(L_83, 1));
 	}
 
 IL_025a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4008>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4014>
 		int32_t L_84 = V_12;
 		if ((((int32_t)L_84) < ((int32_t)8)))
 		{
@@ -17379,7 +17379,7 @@ IL_025a:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4031>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4037>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_85;
 		L_85 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_86;
@@ -17388,7 +17388,7 @@ IL_025a:
 		L_87 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		NullCheck(L_85);
 		Transform_Rotate_m35B44707FE16FF8015D519D8C162C0B4A85D6D1F(L_85, L_86, ((float)il2cpp_codegen_multiply((200.0f), L_87)), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4032>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4038>
 		return;
 	}
 }
@@ -17422,14 +17422,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ChargePopAnimation_Start_mF75987B4C91466
 	}
 	MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* V_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4048>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4054>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0;
 		L_0 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_0);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
 		L_1 = Transform_get_localScale_m804A002A53A645CDFCD15BB0F37209162720363F(L_0, NULL);
 		__this->___startScale = L_1;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4051>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4057>
 		bool L_2 = __this->___isQuickPop;
 		if (!L_2)
 		{
@@ -17437,28 +17437,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ChargePopAnimation_Start_mF75987B4C91466
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4054>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4060>
 		__this->___lifetime = (0.150000006f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4055>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4061>
 		__this->___targetScale = (0.649999976f);
 		goto IL_0047;
 	}
 
 IL_0031:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4060>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4066>
 		__this->___lifetime = (0.300000012f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4061>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4067>
 		__this->___targetScale = (0.600000024f);
 	}
 
 IL_0047:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4065>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4071>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_3;
 		L_3 = Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB(__this, Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB_RuntimeMethod_var);
 		V_0 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4066>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4072>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_4 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -17469,20 +17469,20 @@ IL_0047:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4068>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4074>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_6 = V_0;
 		NullCheck(L_6);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_7;
 		L_7 = Renderer_get_material_m5BA2A00816C4CC66580D4B2E409CF10718C15656(L_6, NULL);
 		__this->___material = L_7;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___material), (void*)L_7);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4069>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4075>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_8 = __this->___material;
 		NullCheck(L_8);
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_9;
 		L_9 = Material_GetColor_mAC702C70081A597DD2AA2F4627B1A1C65DDF6609(L_8, _stringLiteral51282E2AAC09AC6EDBC2C1C237C0183F97FEE379, NULL);
 		__this->___initialBaseColor = L_9;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4070>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4076>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_10 = __this->___material;
 		NullCheck(L_10);
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_11;
@@ -17492,7 +17492,7 @@ IL_0047:
 
 IL_008f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4072>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4078>
 		return;
 	}
 }
@@ -17516,16 +17516,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ChargePopAnimation_Update_m33CEE4E91B512
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F V_5;
 	memset((&V_5), 0, sizeof(V_5));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4076>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4082>
 		float L_0 = __this->___elapsed;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___elapsed = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4077>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4083>
 		float L_2 = __this->___elapsed;
 		float L_3 = __this->___lifetime;
 		V_0 = ((float)(L_2/L_3));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4080>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4086>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_4 = (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)(&__this->___startScale);
 		float L_5 = L_4->___x;
 		float L_6 = __this->___targetScale;
@@ -17533,7 +17533,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ChargePopAnimation_Update_m33CEE4E91B512
 		float L_8;
 		L_8 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline(L_5, L_6, L_7, NULL);
 		V_1 = L_8;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4081>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4087>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9;
 		L_9 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10;
@@ -17543,7 +17543,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ChargePopAnimation_Update_m33CEE4E91B512
 		L_12 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_10, L_11, NULL);
 		NullCheck(L_9);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_9, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4084>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4090>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_13 = __this->___material;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_14;
@@ -17554,34 +17554,34 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ChargePopAnimation_Update_m33CEE4E91B512
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4087>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4093>
 		float L_15 = V_0;
 		float L_16;
 		L_16 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline((0.800000012f), (0.0f), L_15, NULL);
 		V_2 = L_16;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4088>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4094>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_17 = __this->___initialBaseColor;
 		V_3 = L_17;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4089>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4095>
 		float L_18 = V_2;
 		(&V_3)->___a = L_18;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4090>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4096>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_19 = __this->___material;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_20 = V_3;
 		NullCheck(L_19);
 		Material_SetColor_mFAB32FAA44461E46FD707B34184EC080CBB3539F(L_19, _stringLiteral51282E2AAC09AC6EDBC2C1C237C0183F97FEE379, L_20, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4093>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4099>
 		float L_21 = V_0;
 		float L_22;
 		L_22 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline((1.0f), (0.0f), L_21, NULL);
 		V_4 = L_22;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4094>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4100>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_23 = __this->___initialEmissionColor;
 		float L_24 = V_4;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_25;
 		L_25 = Color_op_Multiply_m379B20A820266ACF82A21425B9CAE8DCD773CFBB_inline(L_23, L_24, NULL);
 		V_5 = L_25;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4095>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4101>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_26 = __this->___material;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_27 = V_5;
 		NullCheck(L_26);
@@ -17590,7 +17590,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ChargePopAnimation_Update_m33CEE4E91B512
 
 IL_00c0:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4099>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4105>
 		float L_28 = __this->___elapsed;
 		float L_29 = __this->___lifetime;
 		if ((!(((float)L_28) >= ((float)L_29))))
@@ -17599,7 +17599,7 @@ IL_00c0:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4101>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4107>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_30;
 		L_30 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
@@ -17608,7 +17608,7 @@ IL_00c0:
 
 IL_00d9:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4103>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4109>
 		return;
 	}
 }
@@ -17638,7 +17638,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireExplosionParticle_Start_mF730C33DDC9
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4121>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4127>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_0 = __this->___rb;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -17649,7 +17649,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireExplosionParticle_Start_mF730C33DDC9
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4123>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4129>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_2 = __this->___rb;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = __this->___direction;
 		float L_4 = __this->___speed;
@@ -17661,7 +17661,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireExplosionParticle_Start_mF730C33DDC9
 
 IL_002a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4125>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4131>
 		return;
 	}
 }
@@ -17680,16 +17680,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireExplosionParticle_Update_mFF981E6934
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F V_2;
 	memset((&V_2), 0, sizeof(V_2));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4129>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4135>
 		float L_0 = __this->___elapsed;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___elapsed = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4135>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4141>
 		float L_2 = __this->___elapsed;
 		float L_3 = __this->___lifetime;
 		V_0 = ((float)il2cpp_codegen_subtract((1.0f), ((float)(L_2/L_3))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4136>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4142>
 		float L_4 = V_0;
 		if ((!(((float)L_4) < ((float)(0.0f)))))
 		{
@@ -17697,17 +17697,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireExplosionParticle_Update_mFF981E6934
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4136>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4142>
 		V_0 = (0.0f);
 	}
 
 IL_0034:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4138>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4144>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_5;
 		L_5 = Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB(__this, Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB_RuntimeMethod_var);
 		V_1 = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4139>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4145>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_6 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_7;
@@ -17731,7 +17731,7 @@ IL_0034:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4141>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4147>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_11 = V_1;
 		NullCheck(L_11);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_12;
@@ -17740,10 +17740,10 @@ IL_0034:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_13;
 		L_13 = Material_get_color_mA4B7D4B96200D9D8B4F36BF19957E9DA81071DBB(L_12, NULL);
 		V_2 = L_13;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4142>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4148>
 		float L_14 = V_0;
 		(&V_2)->___a = L_14;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4143>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4149>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_15 = V_1;
 		NullCheck(L_15);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_16;
@@ -17755,7 +17755,7 @@ IL_0034:
 
 IL_0072:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4146>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4152>
 		float L_18 = __this->___elapsed;
 		float L_19 = __this->___lifetime;
 		if ((!(((float)L_18) >= ((float)L_19))))
@@ -17764,7 +17764,7 @@ IL_0072:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4147>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4153>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_20;
 		L_20 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
@@ -17773,7 +17773,7 @@ IL_0072:
 
 IL_008b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4148>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4154>
 		return;
 	}
 }
@@ -17781,9 +17781,9 @@ IL_008b:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FireExplosionParticle__ctor_m48C65CEB747F61382A9E2671C8DBB254E4706414 (FireExplosionParticle_t3145986BEE4E30484CC4E64B5079F65E3AE41675* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4113>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4119>
 		__this->___speed = (2.0f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4116>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4122>
 		__this->___lifetime = (1.0f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -17807,7 +17807,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IceExplosionParticle_Start_m00C61F1FDBF0
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4162>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4168>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_0 = __this->___rb;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -17818,7 +17818,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IceExplosionParticle_Start_m00C61F1FDBF0
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4164>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4170>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_2 = __this->___rb;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = __this->___direction;
 		float L_4 = __this->___speed;
@@ -17830,7 +17830,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IceExplosionParticle_Start_m00C61F1FDBF0
 
 IL_002a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4166>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4172>
 		return;
 	}
 }
@@ -17849,12 +17849,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IceExplosionParticle_Update_m63DE94C22C1
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F V_2;
 	memset((&V_2), 0, sizeof(V_2));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4170>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4176>
 		float L_0 = __this->___elapsed;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___elapsed = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4176>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4182>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
@@ -17863,11 +17863,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IceExplosionParticle_Update_m63DE94C22C1
 		L_4 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		NullCheck(L_2);
 		Transform_Rotate_m35B44707FE16FF8015D519D8C162C0B4A85D6D1F(L_2, L_3, ((float)il2cpp_codegen_multiply((800.0f), L_4)), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4179>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4185>
 		float L_5 = __this->___elapsed;
 		float L_6 = __this->___lifetime;
 		V_0 = ((float)il2cpp_codegen_subtract((1.0f), ((float)(L_5/L_6))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4180>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4186>
 		float L_7 = V_0;
 		if ((!(((float)L_7) < ((float)(0.0f)))))
 		{
@@ -17875,17 +17875,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IceExplosionParticle_Update_m63DE94C22C1
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4180>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4186>
 		V_0 = (0.0f);
 	}
 
 IL_004f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4182>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4188>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_8;
 		L_8 = Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB(__this, Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB_RuntimeMethod_var);
 		V_1 = L_8;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4183>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4189>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_9 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_10;
@@ -17909,7 +17909,7 @@ IL_004f:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4185>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4191>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_14 = V_1;
 		NullCheck(L_14);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_15;
@@ -17918,10 +17918,10 @@ IL_004f:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_16;
 		L_16 = Material_get_color_mA4B7D4B96200D9D8B4F36BF19957E9DA81071DBB(L_15, NULL);
 		V_2 = L_16;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4186>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4192>
 		float L_17 = V_0;
 		(&V_2)->___a = L_17;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4187>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4193>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_18 = V_1;
 		NullCheck(L_18);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_19;
@@ -17933,7 +17933,7 @@ IL_004f:
 
 IL_008d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4190>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4196>
 		float L_21 = __this->___elapsed;
 		float L_22 = __this->___lifetime;
 		if ((!(((float)L_21) >= ((float)L_22))))
@@ -17942,7 +17942,7 @@ IL_008d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4191>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4197>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_23;
 		L_23 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
@@ -17951,7 +17951,7 @@ IL_008d:
 
 IL_00a6:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4192>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4198>
 		return;
 	}
 }
@@ -17959,9 +17959,9 @@ IL_00a6:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IceExplosionParticle__ctor_m07404D6F82F5FDB6AF894BB1D66CE10A0D2FCBE4 (IceExplosionParticle_t2C549B8EE486DFFD842DEA04D31FBFA47F28AA88* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4154>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4160>
 		__this->___speed = (2.5f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4157>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4163>
 		__this->___lifetime = (1.20000005f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -17985,7 +17985,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningExplosionParticle_Start_m5626C8
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4212>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_0 = __this->___rb;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -17996,7 +17996,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningExplosionParticle_Start_m5626C8
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4208>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4214>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_2 = __this->___rb;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = __this->___direction;
 		float L_4 = __this->___speed;
@@ -18008,7 +18008,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningExplosionParticle_Start_m5626C8
 
 IL_002a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4210>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4216>
 		return;
 	}
 }
@@ -18031,12 +18031,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningExplosionParticle_Update_mD332E
 	memset((&V_4), 0, sizeof(V_4));
 	float G_B5_0 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4214>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4220>
 		float L_0 = __this->___elapsed;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___elapsed = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4218>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4224>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_2 = __this->___rb;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -18047,11 +18047,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningExplosionParticle_Update_mD332E
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4220>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4221>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4222>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4223>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4224>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4226>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4227>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4228>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4229>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4230>
 		float L_4;
 		L_4 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		float L_5 = __this->___elapsed;
@@ -18068,7 +18068,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningExplosionParticle_Update_mD332E
 		float L_12;
 		L_12 = Mathf_PerlinNoise_mAB0E53C29FE95469CF303364910AD0D8662A9A6A(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_10, (10.0f))), (20.0f))), L_11, NULL);
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_3), ((float)il2cpp_codegen_subtract(L_6, (0.5f))), ((float)il2cpp_codegen_subtract(L_9, (0.5f))), ((float)il2cpp_codegen_subtract(L_12, (0.5f))), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4225>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4231>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_13 = __this->___rb;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14 = V_3;
 		float L_15 = __this->___speed;
@@ -18082,7 +18082,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningExplosionParticle_Update_mD332E
 
 IL_00ac:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4229>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4235>
 		float L_18;
 		L_18 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		float L_19 = __this->___elapsed;
@@ -18106,12 +18106,12 @@ IL_00d0:
 IL_00d5:
 	{
 		V_0 = G_B5_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4230>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4236>
 		float L_21 = __this->___elapsed;
 		float L_22 = __this->___lifetime;
 		float L_23 = V_0;
 		V_1 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_subtract((1.0f), ((float)(L_21/L_22)))), L_23));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4231>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4237>
 		float L_24 = V_1;
 		if ((!(((float)L_24) < ((float)(0.0f)))))
 		{
@@ -18119,17 +18119,17 @@ IL_00d5:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4231>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4237>
 		V_1 = (0.0f);
 	}
 
 IL_00fa:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4233>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4239>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_25;
 		L_25 = Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB(__this, Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB_RuntimeMethod_var);
 		V_2 = L_25;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4234>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4240>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_26 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_27;
@@ -18153,7 +18153,7 @@ IL_00fa:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4236>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4242>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_31 = V_2;
 		NullCheck(L_31);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_32;
@@ -18162,10 +18162,10 @@ IL_00fa:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_33;
 		L_33 = Material_get_color_mA4B7D4B96200D9D8B4F36BF19957E9DA81071DBB(L_32, NULL);
 		V_4 = L_33;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4237>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4243>
 		float L_34 = V_1;
 		(&V_4)->___a = L_34;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4238>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4244>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_35 = V_2;
 		NullCheck(L_35);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_36;
@@ -18177,7 +18177,7 @@ IL_00fa:
 
 IL_013a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4241>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4247>
 		float L_38 = __this->___elapsed;
 		float L_39 = __this->___lifetime;
 		if ((!(((float)L_38) >= ((float)L_39))))
@@ -18186,7 +18186,7 @@ IL_013a:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4242>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4248>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_40;
 		L_40 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
@@ -18195,7 +18195,7 @@ IL_013a:
 
 IL_0153:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4243>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4249>
 		return;
 	}
 }
@@ -18203,9 +18203,9 @@ IL_0153:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LightningExplosionParticle__ctor_m3F1D256E6C062B97EB3AC8D31BD7AEEC077A34DF (LightningExplosionParticle_t010F6F6E8624374E0EFB5304B8D50F5B20E87E82* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4198>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4204>
 		__this->___speed = (3.5f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4201>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4207>
 		__this->___lifetime = (0.800000012f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -18229,7 +18229,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindExplosionParticle_Start_m2D5CDCD8970
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4257>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4263>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_0 = __this->___rb;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -18240,7 +18240,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindExplosionParticle_Start_m2D5CDCD8970
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4259>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4265>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_2 = __this->___rb;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = __this->___direction;
 		float L_4 = __this->___speed;
@@ -18252,7 +18252,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindExplosionParticle_Start_m2D5CDCD8970
 
 IL_002a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4261>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4267>
 		return;
 	}
 }
@@ -18275,12 +18275,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindExplosionParticle_Update_mC3704025C8
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F V_4;
 	memset((&V_4), 0, sizeof(V_4));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4265>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4271>
 		float L_0 = __this->___elapsed;
 		float L_1;
 		L_1 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___elapsed = ((float)il2cpp_codegen_add(L_0, L_1));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4269>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4275>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_2 = __this->___rb;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -18291,15 +18291,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindExplosionParticle_Update_mC3704025C8
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4272>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4278>
 		float L_4 = __this->___elapsed;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4273>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4279>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_5 = __this->___rb;
 		NullCheck(L_5);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
 		L_6 = Rigidbody_get_linearVelocity_m367F5415641E5FB968440A91BAE2FCB8CAEA2C8C(L_5, NULL);
 		V_2 = L_6;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4274>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4280>
 		float L_7;
 		L_7 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_8;
@@ -18308,7 +18308,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindExplosionParticle_Update_mC3704025C8
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10;
 		L_10 = Quaternion_op_Multiply_mE1EBA73F9173432B50F8F17CE8190C5A7986FB8C(L_8, L_9, NULL);
 		V_3 = L_10;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4275>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4281>
 		Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* L_11 = __this->___rb;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12 = V_3;
 		NullCheck(L_11);
@@ -18317,11 +18317,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindExplosionParticle_Update_mC3704025C8
 
 IL_0066:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4279>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4285>
 		float L_13 = __this->___elapsed;
 		float L_14 = __this->___lifetime;
 		V_0 = ((float)il2cpp_codegen_subtract((1.0f), ((float)(L_13/L_14))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4280>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4286>
 		float L_15 = V_0;
 		if ((!(((float)L_15) < ((float)(0.0f)))))
 		{
@@ -18329,17 +18329,17 @@ IL_0066:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4280>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4286>
 		V_0 = (0.0f);
 	}
 
 IL_0088:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4282>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4288>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_16;
 		L_16 = Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB(__this, Component_GetComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_m0EDA0079FA3617687C4A28623B79A37D618D9CFB_RuntimeMethod_var);
 		V_1 = L_16;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4283>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4289>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_17 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_18;
@@ -18363,7 +18363,7 @@ IL_0088:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4285>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4291>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_22 = V_1;
 		NullCheck(L_22);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_23;
@@ -18372,10 +18372,10 @@ IL_0088:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_24;
 		L_24 = Material_get_color_mA4B7D4B96200D9D8B4F36BF19957E9DA81071DBB(L_23, NULL);
 		V_4 = L_24;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4286>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4292>
 		float L_25 = V_0;
 		(&V_4)->___a = L_25;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4287>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4293>
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_26 = V_1;
 		NullCheck(L_26);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_27;
@@ -18387,7 +18387,7 @@ IL_0088:
 
 IL_00c8:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4290>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4296>
 		float L_29 = __this->___elapsed;
 		float L_30 = __this->___lifetime;
 		if ((!(((float)L_29) >= ((float)L_30))))
@@ -18396,7 +18396,7 @@ IL_00c8:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4291>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4297>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_31;
 		L_31 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
@@ -18405,7 +18405,7 @@ IL_00c8:
 
 IL_00e1:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4292>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4298>
 		return;
 	}
 }
@@ -18413,9 +18413,9 @@ IL_00e1:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WindExplosionParticle__ctor_mD3177AB605EEA2B6D7F7DF54B3AEC81BC43E2C78 (WindExplosionParticle_t1F599B0F0C0130409ACEAEF91BC36B33926538E7* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4249>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4255>
 		__this->___speed = (2.79999995f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4252>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/SpellCaster.cs:4258>
 		__this->___lifetime = (1.0f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -21202,7 +21202,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* InputActionMap_get_name
 		return L_0;
 	}
 }
-// Method Definition Index: 77211
+// Method Definition Index: 77219
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* XROrigin_get_Camera_m8959027D616F5BD9AEAE3E41ADEE23BBC2CE3629_inline (XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -21211,7 +21211,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Camera_tA92CC927D7439999BC82DBEDC
 		return L_0;
 	}
 }
-// Method Definition Index: 77212
+// Method Definition Index: 77220
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XROrigin_set_Camera_m4C858ED48CE3A20504A55FAA1A24FE05D1CC450B_inline (XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* __this, Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -21410,7 +21410,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void SnapTurnProvider_set_enableT
 		return;
 	}
 }
-// Method Definition Index: 77221
+// Method Definition Index: 77229
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XROrigin_get_RequestedTrackingOriginMode_m8475634D9A0C8ECA371A3F2EC216A55F7D2F2D3C_inline (XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -21657,7 +21657,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_0;
 	}
 }
-// Method Definition Index: 70456
+// Method Definition Index: 70464
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ButtonClickedEvent_t8EA72E90B3BD1392FB3B3EF167D5121C23569E4C* Button_get_onClick_m701712A7F7F000CC80D517C4510697E15722C35C_inline (Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* __this, const RuntimeMethod* method) 
 {
 	{
@@ -21782,7 +21782,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E
 		return L_1;
 	}
 }
-// Method Definition Index: 71515
+// Method Definition Index: 71523
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 Selectable_get_colors_mB53E365D02351D4B64084295C4B2A7AF2DEC4750_inline (Selectable_t3251808068A17B8E92FB33590A4C2FA66D456712* __this, const RuntimeMethod* method) 
 {
 	{
@@ -21791,7 +21791,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ColorBlock_tDD7C62E7AFE442652FC98
 		return L_0;
 	}
 }
-// Method Definition Index: 70497
+// Method Definition Index: 70505
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ColorBlock_set_normalColor_m3EBF594F6FA2C6494ACA9FCB9B458807D85B96F8_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) 
 {
 	{

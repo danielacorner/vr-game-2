@@ -42,6 +42,8 @@ namespace VRDungeonCrawler.AI
         private Vector3 currentMoveDirection;
         private float nextActionTime;
         private bool isPaused = false;
+        private bool isStunned = false;
+        private float stunEndTime;
 
         void Awake()
         {
@@ -65,6 +67,19 @@ namespace VRDungeonCrawler.AI
 
         void Update()
         {
+            // Check if stunned
+            if (isStunned)
+            {
+                if (Time.time >= stunEndTime)
+                {
+                    isStunned = false;
+
+                    if (showDebug)
+                        Debug.Log($"[MonsterAI] {gameObject.name} stun ended, resuming movement");
+                }
+                return; // Don't process normal movement while stunned
+            }
+
             // Check if time to change state
             if (Time.time >= nextActionTime)
             {
@@ -92,6 +107,14 @@ namespace VRDungeonCrawler.AI
 
         void FixedUpdate()
         {
+            // Don't move if stunned
+            if (isStunned)
+            {
+                // Stop horizontal movement when stunned
+                rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
+                return;
+            }
+
             if (!isPaused)
             {
                 // Walk slowly in current direction
@@ -133,6 +156,24 @@ namespace VRDungeonCrawler.AI
                 if (showDebug)
                     Debug.Log($"[MonsterAI] {gameObject.name} out of bounds, returning to spawn");
             }
+        }
+
+        /// <summary>
+        /// Stun the monster for a duration (called by MonsterBase when hit)
+        /// </summary>
+        public void Stun(float duration)
+        {
+            isStunned = true;
+            stunEndTime = Time.time + duration;
+
+            // Stop movement immediately
+            if (rb != null)
+            {
+                rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
+            }
+
+            if (showDebug)
+                Debug.Log($"[MonsterAI] {gameObject.name} stunned for {duration} seconds");
         }
     }
 }

@@ -52,11 +52,11 @@ namespace VRDungeonCrawler.AI
             facePatch.transform.localScale = new Vector3(0.8f, 0.6f, 0.7f);
             ApplyMaterial(facePatch, new Color(0.9f, 0.85f, 0.75f)); // Light tan face
 
-            // === NOSE (pink) ===
+            // === NOSE (pink) - positioned in front of face
             GameObject nose = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
             nose.name = "Nose";
             nose.transform.SetParent(head.transform);
-            nose.transform.localPosition = new Vector3(0f, -0.3f, 0.7f);
+            nose.transform.localPosition = new Vector3(0f, -0.3f, 1.0f); // Moved forward from 0.7f to 1.0f
             nose.transform.localScale = new Vector3(0.2f, 0.15f, 0.2f);
             ApplyMaterial(nose, new Color(1f, 0.75f, 0.8f)); // Pink nose
 

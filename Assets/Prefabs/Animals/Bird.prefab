@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65676535071921436}
-  m_Mesh: {fileID: 4300000, guid: c026ec83455e949d6b26297f226ed17d, type: 2}
+  m_Mesh: {fileID: 0}
 --- !u!23 &7282018497972434038
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316942365282283708}
-  m_Mesh: {fileID: 4300000, guid: c026ec83455e949d6b26297f226ed17d, type: 2}
+  m_Mesh: {fileID: 0}
 --- !u!23 &3535816846984245558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -265,7 +265,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3076052844980431024}
-  m_Mesh: {fileID: 4300000, guid: c026ec83455e949d6b26297f226ed17d, type: 2}
+  m_Mesh: {fileID: 0}
 --- !u!65 &4687104284651888075
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -377,7 +377,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3101691091576497778}
-  m_Mesh: {fileID: 4300000, guid: c026ec83455e949d6b26297f226ed17d, type: 2}
+  m_Mesh: {fileID: 0}
 --- !u!65 &5822488436373460512
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -489,7 +489,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4215382297132921712}
-  m_Mesh: {fileID: 4300000, guid: c026ec83455e949d6b26297f226ed17d, type: 2}
+  m_Mesh: {fileID: 0}
 --- !u!23 &8838422895670178199
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -601,7 +601,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4752830858379264371}
-  m_Mesh: {fileID: 4300000, guid: c026ec83455e949d6b26297f226ed17d, type: 2}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1836482162585190937
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -766,6 +766,10 @@ MonoBehaviour:
   flyingHeight: 2
   birdCanSwoop: 1
   birdSwoopInterval: 8
+  deerGracefulMovement: 1
+  deerAlertDuration: 2
+  foxCanStalk: 1
+  foxStalkSpeedMultiplier: 0.6
   hitFlashColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.2
   bounceForce: 2

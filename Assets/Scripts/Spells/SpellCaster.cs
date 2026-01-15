@@ -489,6 +489,12 @@ namespace VRDungeonCrawler.Spells
                 movement.speed = spell.projectileSpeed;
                 movement.lifetime = 5f;
                 movement.spellData = spell;
+
+                // Add SpellProjectile component for damage detection by monsters
+                var spellProj = projectile.AddComponent<VRDungeonCrawler.Player.SpellProjectile>();
+                spellProj.damage = spell.damage;
+                spellProj.spellColor = spell.spellColor;
+                spellProj.setupOnStart = false; // Visuals already set up by CreateFireball/etc
             }
 
             return projectile;

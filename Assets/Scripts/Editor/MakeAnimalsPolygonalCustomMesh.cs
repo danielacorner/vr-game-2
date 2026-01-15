@@ -133,21 +133,21 @@ namespace VRDungeonCrawler.Editor
                 new Vector3(-0.5f,  0.5f,  0.5f)  // 7
             };
 
-            // Triangles (2 per face, 6 faces)
+            // Triangles (2 per face, 6 faces) - Clockwise winding for correct front-facing
             int[] triangles = new int[]
             {
-                // Front
-                0, 2, 1, 0, 3, 2,
-                // Back
-                5, 7, 4, 5, 6, 7,
-                // Left
-                4, 3, 0, 4, 7, 3,
-                // Right
-                1, 6, 5, 1, 2, 6,
-                // Top
-                3, 6, 2, 3, 7, 6,
-                // Bottom
-                4, 1, 5, 4, 0, 1
+                // Front (clockwise winding)
+                0, 1, 2, 0, 2, 3,
+                // Back (clockwise winding)
+                5, 4, 7, 5, 7, 6,
+                // Left (clockwise winding)
+                4, 0, 3, 4, 3, 7,
+                // Right (clockwise winding)
+                1, 5, 6, 1, 6, 2,
+                // Top (clockwise winding)
+                3, 2, 6, 3, 6, 7,
+                // Bottom (clockwise winding)
+                4, 5, 1, 4, 1, 0
             };
 
             // Normals (flat shaded - one normal per face)

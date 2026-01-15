@@ -29,16 +29,16 @@ namespace VRDungeonCrawler.AI
 
         [Header("Damage Response")]
         [Tooltip("Flash color when hit")]
-        public Color hitFlashColor = Color.red;
+        public Color hitFlashColor = new Color(1f, 0f, 0f, 1f); // Bright red
 
         [Tooltip("Duration of flash effect")]
-        public float flashDuration = 0.2f;
+        public float flashDuration = 0.3f; // Longer flash for visibility
 
         [Tooltip("Number of flash cycles when hit")]
         public int flashCycles = 2;
 
         [Tooltip("Knockback force when hit")]
-        public float knockbackForce = 3f;
+        public float knockbackForce = 6f; // Balanced knockback distance
 
         [Header("Death")]
         [Tooltip("Time before removal after death")]
@@ -181,11 +181,21 @@ namespace VRDungeonCrawler.AI
             // Flash effect (red flash twice)
             StartFlashEffect();
 
-            // Damage taken animation (quick recoil)
+            // Damage taken animation (quick recoil) - VERY OBVIOUS
             StartCoroutine(DamageRecoilAnimation());
+
+            // Also scale up briefly for obvious feedback
+            StartCoroutine(ScaleUpAnimation());
 
             // Knockback
             ApplyKnockback(hitDirection);
+
+            // Stun for 2 seconds
+            MonsterAI monsterAI = GetComponent<MonsterAI>();
+            if (monsterAI != null)
+            {
+                monsterAI.Stun(2f);
+            }
 
             // Check death
             if (currentHP <= 0)
@@ -196,7 +206,16 @@ namespace VRDungeonCrawler.AI
 
         void StartFlashEffect()
         {
-            if (isFlashing) return;
+            if (isFlashing)
+            {
+                if (showDebug)
+                    Debug.Log($"[MonsterBase] {gameObject.name} already flashing, skipping new flash");
+                return;
+            }
+
+            if (showDebug)
+                Debug.Log($"[MonsterBase] ==================== STARTING FLASH EFFECT ====================");
+                Debug.Log($"[MonsterBase] {gameObject.name} starting flash with {meshRenderers.Count} renderers");
 
             isFlashing = true;
             flashTimer = 0f;
@@ -206,24 +225,61 @@ namespace VRDungeonCrawler.AI
 
         void ApplyHitFlash()
         {
+            if (showDebug)
+                Debug.Log($"[MonsterBase] Applying hit flash to {meshRenderers.Count} renderers");
+
+            int rendererCount = 0;
             foreach (MeshRenderer renderer in meshRenderers)
             {
+                if (renderer == null)
+                {
+                    if (showDebug)
+                        Debug.LogWarning($"[MonsterBase] Renderer {rendererCount} is null!");
+                    rendererCount++;
+                    continue;
+                }
+
                 Material[] materials = renderer.materials;
+                if (showDebug)
+                    Debug.Log($"[MonsterBase] Renderer {rendererCount} has {materials.Length} materials");
+
                 for (int i = 0; i < materials.Length; i++)
                 {
+                    if (materials[i] == null)
+                    {
+                        if (showDebug)
+                            Debug.LogWarning($"[MonsterBase] Material {i} on renderer {rendererCount} is null!");
+                        continue;
+                    }
+
+                    Color originalColor = materials[i].color;
                     materials[i].color = hitFlashColor;
+
+                    if (showDebug)
+                        Debug.Log($"[MonsterBase] Changed material {i} color from {originalColor} to {hitFlashColor}");
                 }
                 renderer.materials = materials;
+                rendererCount++;
             }
+
+            if (showDebug)
+                Debug.Log($"[MonsterBase] Applied flash to {rendererCount} renderers");
         }
 
         void RestoreOriginalMaterials()
         {
+            if (showDebug)
+                Debug.Log($"[MonsterBase] Restoring original materials for {meshRenderers.Count} renderers");
+
             foreach (MeshRenderer renderer in meshRenderers)
             {
                 if (originalMaterials.ContainsKey(renderer))
                 {
                     renderer.materials = originalMaterials[renderer];
+                }
+                else if (showDebug)
+                {
+                    Debug.LogWarning($"[MonsterBase] No original materials found for renderer on {renderer.gameObject.name}");
                 }
             }
         }
@@ -464,6 +520,32 @@ namespace VRDungeonCrawler.AI
         }
 
         /// <summary>
+        /// Scale up briefly when hit - VERY OBVIOUS visual feedback
+        /// </summary>
+        IEnumerator ScaleUpAnimation()
+        {
+            Vector3 originalScale = transform.localScale;
+            float duration = 0.5f;
+            float elapsed = 0f;
+
+            // Scale up to 1.3x then back to normal
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float progress = elapsed / duration;
+
+                // Pulse: grow then shrink
+                float scale = 1f + (Mathf.Sin(progress * Mathf.PI) * 0.3f);
+                transform.localScale = originalScale * scale;
+
+                yield return null;
+            }
+
+            // Ensure we return to original scale
+            transform.localScale = originalScale;
+        }
+
+        /// <summary>
         /// Called when hit by a spell (from trigger collision)
         /// </summary>
         void OnTriggerEnter(Collider other)
@@ -487,41 +569,56 @@ namespace VRDungeonCrawler.AI
 
         /// <summary>
         /// Check if hit object is a spell and apply damage
+        /// Searches both the object and its parents for spell components
         /// </summary>
         void HandleSpellHit(GameObject hitObject)
         {
+            if (showDebug)
+                Debug.Log($"[MonsterBase] HandleSpellHit called with {hitObject.name}");
+
             int damage = 0;
             bool hitDetected = false;
+            GameObject spellObject = null;
 
             // Check for PhysicsSpellProjectile (tier 2 thrown spells)
-            var physicsProjectile = hitObject.GetComponent<VRDungeonCrawler.Spells.PhysicsSpellProjectile>();
+            // Search in object and parents (for particle children)
+            var physicsProjectile = hitObject.GetComponentInParent<VRDungeonCrawler.Spells.PhysicsSpellProjectile>();
             if (physicsProjectile != null)
             {
                 damage = physicsProjectile.GetDamage();
                 hitDetected = true;
+                spellObject = physicsProjectile.gameObject;
 
                 if (showDebug)
-                    Debug.Log($"[MonsterBase] Detected PhysicsSpellProjectile, damage={damage}");
+                    Debug.Log($"[MonsterBase] ✓ Detected PhysicsSpellProjectile on {spellObject.name}, damage={damage}");
             }
 
             // Check for SpellProjectile (tier 1 shot spells)
             if (!hitDetected)
             {
-                var spellProjectile = hitObject.GetComponent<VRDungeonCrawler.Player.SpellProjectile>();
+                var spellProjectile = hitObject.GetComponentInParent<VRDungeonCrawler.Player.SpellProjectile>();
                 if (spellProjectile != null)
                 {
                     damage = spellProjectile.GetDamage();
                     hitDetected = true;
+                    spellObject = spellProjectile.gameObject;
 
                     if (showDebug)
-                        Debug.Log($"[MonsterBase] Detected SpellProjectile, damage={damage}");
+                        Debug.Log($"[MonsterBase] ✓ Detected SpellProjectile on {spellObject.name}, damage={damage}");
                 }
             }
 
             if (hitDetected)
             {
-                Vector3 hitDirection = (transform.position - hitObject.transform.position).normalized;
+                if (showDebug)
+                    Debug.Log($"[MonsterBase] ✓ Spell hit confirmed! Calling TakeDamage with {damage} damage");
+
+                Vector3 hitDirection = (transform.position - spellObject.transform.position).normalized;
                 TakeDamage(damage, hitDirection);
+            }
+            else if (showDebug)
+            {
+                Debug.Log($"[MonsterBase] ✗ No spell component found on {hitObject.name} or its parents");
             }
         }
     }
