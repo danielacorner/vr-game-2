@@ -727,6 +727,8 @@ extern void AnimalAI_UpdateRabbitHopping_mD71399540807BF8E573A98F375773CA34F767D
 extern void AnimalAI_HopAnimation_m5C75198B41B082C73A74480D0C52FABD46A2813F (void);
 extern void AnimalAI_UpdateSquirrelErraticMovement_m1893F9661F0CBCF7EC098DEC15D98CF64B914DCD (void);
 extern void AnimalAI_UpdateBirdFlying_m53359BBA78FA32D95F1B6793FF3F92EFB6BBBFEE (void);
+extern void AnimalAI_UpdateDeerGracefulMovement_mD1ED1A88CCE1FB92CB7CC611B9DB443837C2D024 (void);
+extern void AnimalAI_UpdateFoxStalkingBehavior_mAEFCF644FE5FAB227044A3AF7DFD23F688FD9EAA (void);
 extern void AnimalAI_UpdateStateTransitions_mDA55AA0366F74E31F6114693486F01D97EB07C44 (void);
 extern void AnimalAI_ChangeState_m274FF49B98C7A5984EF9ECE3E92116CF4EFB71FC (void);
 extern void AnimalAI_UpdateIdle_mD9C27762CF8718999269FDEDAB0E8876CA68DCA2 (void);
@@ -743,24 +745,24 @@ extern void AnimalAI_ReEnableKinematic_m2175EA26E0BDC916BDB0BBFB5ED01DE2B4A66944
 extern void AnimalAI_OnTriggerEnter_m58A1EDD4F13D2AB027FCE1DCC9C2420AAA140E4B (void);
 extern void AnimalAI_OnDrawGizmosSelected_mE94D123010D794555AB77B1F320E441637FD2730 (void);
 extern void AnimalAI__ctor_mC1C5C029FC391EAFBB27837975A89FDA2F12E090 (void);
-extern void U3CHopAnimationU3Ed__54__ctor_m0A01287FBC45F070EE1F6B7F2A2B63208EFB3103 (void);
-extern void U3CHopAnimationU3Ed__54_System_IDisposable_Dispose_m2BC402AA4F8A2C4C1DB374435D7EBFCFB24EDD5C (void);
-extern void U3CHopAnimationU3Ed__54_MoveNext_mC6C65CAC137843E535B58B1FE339463B9F0778FB (void);
-extern void U3CHopAnimationU3Ed__54_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m4E00516CD8CBB030129DF59E098BFED8508357B3 (void);
-extern void U3CHopAnimationU3Ed__54_System_Collections_IEnumerator_Reset_m5B8F6B13D3A8D8FFE7CEABD58529D6338EA10502 (void);
-extern void U3CHopAnimationU3Ed__54_System_Collections_IEnumerator_get_Current_mCD971F4388BC1D87D5986417DBE75A49DF54E8DF (void);
-extern void U3CReEnableKinematicU3Ed__69__ctor_m04B4C2915732077A196D68A0A4688B1BABECCE82 (void);
-extern void U3CReEnableKinematicU3Ed__69_System_IDisposable_Dispose_mB02B45ADE19204A4B9F22E2691573AA9EFB4DB70 (void);
-extern void U3CReEnableKinematicU3Ed__69_MoveNext_m501EB8CE287DCDCE8E47BAE30C68618B006F2CFF (void);
-extern void U3CReEnableKinematicU3Ed__69_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m780C20084D27E1BB556F167ACFA919407FB80D45 (void);
-extern void U3CReEnableKinematicU3Ed__69_System_Collections_IEnumerator_Reset_mBF71DE6723FE48C700066F577D1777B6D14C6BEE (void);
-extern void U3CReEnableKinematicU3Ed__69_System_Collections_IEnumerator_get_Current_m81415FF9E0BD71514146DA2CBB820FEFF47BA1E1 (void);
-extern void U3CResetFleeSpeedAfterPanicU3Ed__64__ctor_m4DB83449CD755F4E4AA364158ED8AEA847DCD4F3 (void);
-extern void U3CResetFleeSpeedAfterPanicU3Ed__64_System_IDisposable_Dispose_m8900695AF46C3E9571B715E1419FC4A3C86F930E (void);
-extern void U3CResetFleeSpeedAfterPanicU3Ed__64_MoveNext_m05A8634E6CD2F0298B02A6C3C66BF9E2A0E251E6 (void);
-extern void U3CResetFleeSpeedAfterPanicU3Ed__64_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mC50FE74B63271EDBF6A7DD397E2E001BE7EB89B8 (void);
-extern void U3CResetFleeSpeedAfterPanicU3Ed__64_System_Collections_IEnumerator_Reset_m13612CBB9250E33248D28497BEC1BF14DA84D0CD (void);
-extern void U3CResetFleeSpeedAfterPanicU3Ed__64_System_Collections_IEnumerator_get_Current_mEEF295DB6F4F9D41AEB87D56AA0ADFBA2DD5234B (void);
+extern void U3CHopAnimationU3Ed__62__ctor_mEB1F79E24E443C65B8845DE15FAE4511AA41D029 (void);
+extern void U3CHopAnimationU3Ed__62_System_IDisposable_Dispose_mCAA165BE9230BD19DA8A898734090FD0543A3D76 (void);
+extern void U3CHopAnimationU3Ed__62_MoveNext_mA244C4AE2E110245E2E037A23E6FB772C1FF3CD3 (void);
+extern void U3CHopAnimationU3Ed__62_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mBFD64B3DEEFCCA926CF9754FDD31B07DEC52E6AA (void);
+extern void U3CHopAnimationU3Ed__62_System_Collections_IEnumerator_Reset_m73DBE7482954CFE3F1B41C429B34386A0CAEB397 (void);
+extern void U3CHopAnimationU3Ed__62_System_Collections_IEnumerator_get_Current_m4D29BCE390DA79C2552CF254133C9552F6BD7942 (void);
+extern void U3CReEnableKinematicU3Ed__79__ctor_m809AD6236B0E000DE22A7A92C9DBB32D7A6B565D (void);
+extern void U3CReEnableKinematicU3Ed__79_System_IDisposable_Dispose_m55D1E22D35504F13EBEF1514DE0E9A8B381F7394 (void);
+extern void U3CReEnableKinematicU3Ed__79_MoveNext_mF75DD77F2B14BE62B8596B6DD6A8B4E2D353DB0A (void);
+extern void U3CReEnableKinematicU3Ed__79_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m72D2752E4537316A17215A8EC09D12A5A14B3C47 (void);
+extern void U3CReEnableKinematicU3Ed__79_System_Collections_IEnumerator_Reset_m195BA8EC740B1F17D0F67F6FC9E43AF14643323F (void);
+extern void U3CReEnableKinematicU3Ed__79_System_Collections_IEnumerator_get_Current_m867926D71CE771D79A93FDEB4D29C9033AB809F3 (void);
+extern void U3CResetFleeSpeedAfterPanicU3Ed__74__ctor_m40FCD5AFDA1F71EDCFC800FE63B3270D42F17826 (void);
+extern void U3CResetFleeSpeedAfterPanicU3Ed__74_System_IDisposable_Dispose_mA2347A815C74857F677E4CCB362909C1FD288511 (void);
+extern void U3CResetFleeSpeedAfterPanicU3Ed__74_MoveNext_mB568E7281B3AA2BDC19146214DF1BC97610381A8 (void);
+extern void U3CResetFleeSpeedAfterPanicU3Ed__74_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m6F9BAF972D4BDFBF346E732FD83A3C6B92D899BB (void);
+extern void U3CResetFleeSpeedAfterPanicU3Ed__74_System_Collections_IEnumerator_Reset_mCF6D2CA96F8C04A36E5251F799D9AA20DB923303 (void);
+extern void U3CResetFleeSpeedAfterPanicU3Ed__74_System_Collections_IEnumerator_get_Current_m2A38CA19B34B4651AAFACB99EF5EA5208C8A6ABF (void);
 extern void AnimalAnimationController_Awake_mC91A9606BC6545982A177938800DDA62CCF8593E (void);
 extern void AnimalAnimationController_AutoFindBodyParts_m33AF64497A77FF9193B54CF3FEE7E782E602CA34 (void);
 extern void AnimalAnimationController_Update_m03AE1AD91EE915C756858409543ADDD62D710990 (void);
@@ -776,6 +778,12 @@ extern void AnimalBuilder_CreateSquirrel_m3CD750459EFAEFD74793298399D494DB263F42
 extern void AnimalBuilder_CreateSquirrelLeg_m6B45116941ABF62C5096BCB8389C9D41AF46B27F (void);
 extern void AnimalBuilder_CreateBird_m6E44C2BCB0B3510F819F29A470D6855A0438E942 (void);
 extern void AnimalBuilder_CreateBirdLeg_mB75569C35DACB01A3F6B88459D1F78FEA73105DE (void);
+extern void AnimalBuilder_CreateDeer_mCDF44F63B8CFA6DEF02A6F50DEBB2A4FBDFBE0DA (void);
+extern void AnimalBuilder_CreateDeerAntler_mB3986AD76635FD882D8BDC9CC67DDA4C634E1DF3 (void);
+extern void AnimalBuilder_CreateDeerLeg_mA521BD42840600ABE8D14AB6CC7DAE1C73D20719 (void);
+extern void AnimalBuilder_CreateFox_m1C9F51E7DC79EDDA8311C9D71CFE9BCB4793C08F (void);
+extern void AnimalBuilder_CreateFoxLeg_mB3F988C56DD877BB69BAF8BD5B4D201FB5483D22 (void);
+extern void AnimalBuilder_CreateWithMesh_m2521399E08989BDE017EB4A8CFB6DD1745FEA65B (void);
 extern void AnimalBuilder_ApplyMaterial_m93AFE85CDDBBF0C26E01DAE9960BE352198B5FE7 (void);
 extern void AnimalSpawnManager_Start_m0CBB35A2C112044666858003E5F7F7FC8AD45ED7 (void);
 extern void AnimalSpawnManager_SpawnAnimals_m0E640E669F21CF1550B59AD84F7EE4309D6118EA (void);
@@ -789,7 +797,12 @@ extern void AnimalSpawnManager_ValidatePrefabs_m6A4F4A6F1D0C3FDC256F4E9FE07CD9A6
 extern void AnimalSpawnManager_OnDrawGizmosSelected_m49BC9E0EA2B7E4CBEA35A4DB55E3DD32060FDE08 (void);
 extern void AnimalSpawnManager_DrawGizmoCircle_mA633CC7BD0B35957DC3C3E96C185AEAB85FA93F8 (void);
 extern void AnimalSpawnManager__ctor_m771A187FBAD3C27F909B690A029A631A6167EBEE (void);
-static Il2CppMethodPointer s_methodPointers[782] = 
+extern void PolytopiaStyleMeshGenerator_CreateCube_mA62012BFD0F8DB1E154C1ACBB433407CD66BE46B (void);
+extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D916633422DCD51C0 (void);
+extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
+extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
+extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
+static Il2CppMethodPointer s_methodPointers[795] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1511,6 +1524,8 @@ static Il2CppMethodPointer s_methodPointers[782] =
 	AnimalAI_HopAnimation_m5C75198B41B082C73A74480D0C52FABD46A2813F,
 	AnimalAI_UpdateSquirrelErraticMovement_m1893F9661F0CBCF7EC098DEC15D98CF64B914DCD,
 	AnimalAI_UpdateBirdFlying_m53359BBA78FA32D95F1B6793FF3F92EFB6BBBFEE,
+	AnimalAI_UpdateDeerGracefulMovement_mD1ED1A88CCE1FB92CB7CC611B9DB443837C2D024,
+	AnimalAI_UpdateFoxStalkingBehavior_mAEFCF644FE5FAB227044A3AF7DFD23F688FD9EAA,
 	AnimalAI_UpdateStateTransitions_mDA55AA0366F74E31F6114693486F01D97EB07C44,
 	AnimalAI_ChangeState_m274FF49B98C7A5984EF9ECE3E92116CF4EFB71FC,
 	AnimalAI_UpdateIdle_mD9C27762CF8718999269FDEDAB0E8876CA68DCA2,
@@ -1527,24 +1542,24 @@ static Il2CppMethodPointer s_methodPointers[782] =
 	AnimalAI_OnTriggerEnter_m58A1EDD4F13D2AB027FCE1DCC9C2420AAA140E4B,
 	AnimalAI_OnDrawGizmosSelected_mE94D123010D794555AB77B1F320E441637FD2730,
 	AnimalAI__ctor_mC1C5C029FC391EAFBB27837975A89FDA2F12E090,
-	U3CHopAnimationU3Ed__54__ctor_m0A01287FBC45F070EE1F6B7F2A2B63208EFB3103,
-	U3CHopAnimationU3Ed__54_System_IDisposable_Dispose_m2BC402AA4F8A2C4C1DB374435D7EBFCFB24EDD5C,
-	U3CHopAnimationU3Ed__54_MoveNext_mC6C65CAC137843E535B58B1FE339463B9F0778FB,
-	U3CHopAnimationU3Ed__54_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m4E00516CD8CBB030129DF59E098BFED8508357B3,
-	U3CHopAnimationU3Ed__54_System_Collections_IEnumerator_Reset_m5B8F6B13D3A8D8FFE7CEABD58529D6338EA10502,
-	U3CHopAnimationU3Ed__54_System_Collections_IEnumerator_get_Current_mCD971F4388BC1D87D5986417DBE75A49DF54E8DF,
-	U3CReEnableKinematicU3Ed__69__ctor_m04B4C2915732077A196D68A0A4688B1BABECCE82,
-	U3CReEnableKinematicU3Ed__69_System_IDisposable_Dispose_mB02B45ADE19204A4B9F22E2691573AA9EFB4DB70,
-	U3CReEnableKinematicU3Ed__69_MoveNext_m501EB8CE287DCDCE8E47BAE30C68618B006F2CFF,
-	U3CReEnableKinematicU3Ed__69_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m780C20084D27E1BB556F167ACFA919407FB80D45,
-	U3CReEnableKinematicU3Ed__69_System_Collections_IEnumerator_Reset_mBF71DE6723FE48C700066F577D1777B6D14C6BEE,
-	U3CReEnableKinematicU3Ed__69_System_Collections_IEnumerator_get_Current_m81415FF9E0BD71514146DA2CBB820FEFF47BA1E1,
-	U3CResetFleeSpeedAfterPanicU3Ed__64__ctor_m4DB83449CD755F4E4AA364158ED8AEA847DCD4F3,
-	U3CResetFleeSpeedAfterPanicU3Ed__64_System_IDisposable_Dispose_m8900695AF46C3E9571B715E1419FC4A3C86F930E,
-	U3CResetFleeSpeedAfterPanicU3Ed__64_MoveNext_m05A8634E6CD2F0298B02A6C3C66BF9E2A0E251E6,
-	U3CResetFleeSpeedAfterPanicU3Ed__64_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mC50FE74B63271EDBF6A7DD397E2E001BE7EB89B8,
-	U3CResetFleeSpeedAfterPanicU3Ed__64_System_Collections_IEnumerator_Reset_m13612CBB9250E33248D28497BEC1BF14DA84D0CD,
-	U3CResetFleeSpeedAfterPanicU3Ed__64_System_Collections_IEnumerator_get_Current_mEEF295DB6F4F9D41AEB87D56AA0ADFBA2DD5234B,
+	U3CHopAnimationU3Ed__62__ctor_mEB1F79E24E443C65B8845DE15FAE4511AA41D029,
+	U3CHopAnimationU3Ed__62_System_IDisposable_Dispose_mCAA165BE9230BD19DA8A898734090FD0543A3D76,
+	U3CHopAnimationU3Ed__62_MoveNext_mA244C4AE2E110245E2E037A23E6FB772C1FF3CD3,
+	U3CHopAnimationU3Ed__62_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mBFD64B3DEEFCCA926CF9754FDD31B07DEC52E6AA,
+	U3CHopAnimationU3Ed__62_System_Collections_IEnumerator_Reset_m73DBE7482954CFE3F1B41C429B34386A0CAEB397,
+	U3CHopAnimationU3Ed__62_System_Collections_IEnumerator_get_Current_m4D29BCE390DA79C2552CF254133C9552F6BD7942,
+	U3CReEnableKinematicU3Ed__79__ctor_m809AD6236B0E000DE22A7A92C9DBB32D7A6B565D,
+	U3CReEnableKinematicU3Ed__79_System_IDisposable_Dispose_m55D1E22D35504F13EBEF1514DE0E9A8B381F7394,
+	U3CReEnableKinematicU3Ed__79_MoveNext_mF75DD77F2B14BE62B8596B6DD6A8B4E2D353DB0A,
+	U3CReEnableKinematicU3Ed__79_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m72D2752E4537316A17215A8EC09D12A5A14B3C47,
+	U3CReEnableKinematicU3Ed__79_System_Collections_IEnumerator_Reset_m195BA8EC740B1F17D0F67F6FC9E43AF14643323F,
+	U3CReEnableKinematicU3Ed__79_System_Collections_IEnumerator_get_Current_m867926D71CE771D79A93FDEB4D29C9033AB809F3,
+	U3CResetFleeSpeedAfterPanicU3Ed__74__ctor_m40FCD5AFDA1F71EDCFC800FE63B3270D42F17826,
+	U3CResetFleeSpeedAfterPanicU3Ed__74_System_IDisposable_Dispose_mA2347A815C74857F677E4CCB362909C1FD288511,
+	U3CResetFleeSpeedAfterPanicU3Ed__74_MoveNext_mB568E7281B3AA2BDC19146214DF1BC97610381A8,
+	U3CResetFleeSpeedAfterPanicU3Ed__74_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m6F9BAF972D4BDFBF346E732FD83A3C6B92D899BB,
+	U3CResetFleeSpeedAfterPanicU3Ed__74_System_Collections_IEnumerator_Reset_mCF6D2CA96F8C04A36E5251F799D9AA20DB923303,
+	U3CResetFleeSpeedAfterPanicU3Ed__74_System_Collections_IEnumerator_get_Current_m2A38CA19B34B4651AAFACB99EF5EA5208C8A6ABF,
 	AnimalAnimationController_Awake_mC91A9606BC6545982A177938800DDA62CCF8593E,
 	AnimalAnimationController_AutoFindBodyParts_m33AF64497A77FF9193B54CF3FEE7E782E602CA34,
 	AnimalAnimationController_Update_m03AE1AD91EE915C756858409543ADDD62D710990,
@@ -1560,6 +1575,12 @@ static Il2CppMethodPointer s_methodPointers[782] =
 	AnimalBuilder_CreateSquirrelLeg_m6B45116941ABF62C5096BCB8389C9D41AF46B27F,
 	AnimalBuilder_CreateBird_m6E44C2BCB0B3510F819F29A470D6855A0438E942,
 	AnimalBuilder_CreateBirdLeg_mB75569C35DACB01A3F6B88459D1F78FEA73105DE,
+	AnimalBuilder_CreateDeer_mCDF44F63B8CFA6DEF02A6F50DEBB2A4FBDFBE0DA,
+	AnimalBuilder_CreateDeerAntler_mB3986AD76635FD882D8BDC9CC67DDA4C634E1DF3,
+	AnimalBuilder_CreateDeerLeg_mA521BD42840600ABE8D14AB6CC7DAE1C73D20719,
+	AnimalBuilder_CreateFox_m1C9F51E7DC79EDDA8311C9D71CFE9BCB4793C08F,
+	AnimalBuilder_CreateFoxLeg_mB3F988C56DD877BB69BAF8BD5B4D201FB5483D22,
+	AnimalBuilder_CreateWithMesh_m2521399E08989BDE017EB4A8CFB6DD1745FEA65B,
 	AnimalBuilder_ApplyMaterial_m93AFE85CDDBBF0C26E01DAE9960BE352198B5FE7,
 	AnimalSpawnManager_Start_m0CBB35A2C112044666858003E5F7F7FC8AD45ED7,
 	AnimalSpawnManager_SpawnAnimals_m0E640E669F21CF1550B59AD84F7EE4309D6118EA,
@@ -1573,13 +1594,18 @@ static Il2CppMethodPointer s_methodPointers[782] =
 	AnimalSpawnManager_OnDrawGizmosSelected_m49BC9E0EA2B7E4CBEA35A4DB55E3DD32060FDE08,
 	AnimalSpawnManager_DrawGizmoCircle_mA633CC7BD0B35957DC3C3E96C185AEAB85FA93F8,
 	AnimalSpawnManager__ctor_m771A187FBAD3C27F909B690A029A631A6167EBEE,
+	PolytopiaStyleMeshGenerator_CreateCube_mA62012BFD0F8DB1E154C1ACBB433407CD66BE46B,
+	PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D916633422DCD51C0,
+	PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42,
+	PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571,
+	PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7,
 };
 extern void FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] = 
 {
 	{ 0x06000111, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[782] = 
+static const int32_t s_InvokerIndices[795] = 
 {
 	15274,
 	15274,
@@ -1587,7 +1613,7 @@ static const int32_t s_InvokerIndices[782] =
 	15274,
 	15274,
 	15274,
-	26543,
+	26544,
 	15274,
 	15274,
 	15274,
@@ -1640,19 +1666,19 @@ static const int32_t s_InvokerIndices[782] =
 	15062,
 	15274,
 	15062,
-	24801,
+	24802,
 	15921,
 	16113,
 	16114,
 	15692,
-	24803,
-	24510,
-	21497,
-	21511,
+	24804,
+	24511,
+	21498,
+	21512,
 	15806,
-	24841,
-	26404,
-	24510,
+	24842,
+	26405,
+	24511,
 	15274,
 	15274,
 	15274,
@@ -1720,11 +1746,11 @@ static const int32_t s_InvokerIndices[782] =
 	9933,
 	9933,
 	17382,
-	21785,
-	18290,
-	18290,
-	18290,
-	18290,
+	21786,
+	18291,
+	18291,
+	18291,
+	18291,
 	15274,
 	15274,
 	8190,
@@ -1956,14 +1982,14 @@ static const int32_t s_InvokerIndices[782] =
 	15274,
 	15274,
 	15274,
-	26404,
-	25217,
+	26405,
+	25218,
 	15274,
 	11517,
 	11585,
 	15062,
 	15274,
-	26508,
+	26509,
 	15274,
 	8190,
 	15274,
@@ -2254,17 +2280,17 @@ static const int32_t s_InvokerIndices[782] =
 	15274,
 	15274,
 	17998,
-	21487,
-	26404,
-	19157,
-	24835,
-	26404,
-	26404,
-	26404,
-	21527,
-	24803,
-	19113,
-	26508,
+	21488,
+	26405,
+	19158,
+	24836,
+	26405,
+	26405,
+	26405,
+	21528,
+	24804,
+	19114,
+	26509,
 	15274,
 	15274,
 	15274,
@@ -2276,8 +2302,8 @@ static const int32_t s_InvokerIndices[782] =
 	15274,
 	15274,
 	15274,
-	26404,
-	25217,
+	26405,
+	25218,
 	15274,
 	15274,
 	15274,
@@ -2299,6 +2325,8 @@ static const int32_t s_InvokerIndices[782] =
 	15274,
 	15274,
 	15062,
+	15274,
+	15274,
 	15274,
 	15274,
 	15274,
@@ -2344,13 +2372,19 @@ static const int32_t s_InvokerIndices[782] =
 	11680,
 	15274,
 	15274,
-	24818,
+	24819,
 	18261,
-	24818,
-	20042,
-	24818,
-	20042,
-	22390,
+	24819,
+	20043,
+	24819,
+	20043,
+	24819,
+	18262,
+	20043,
+	24819,
+	20043,
+	24819,
+	22391,
 	15274,
 	15274,
 	15274,
@@ -2363,12 +2397,17 @@ static const int32_t s_InvokerIndices[782] =
 	15274,
 	2710,
 	15274,
+	26405,
+	19158,
+	24836,
+	26405,
+	24836,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	782,
+	795,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

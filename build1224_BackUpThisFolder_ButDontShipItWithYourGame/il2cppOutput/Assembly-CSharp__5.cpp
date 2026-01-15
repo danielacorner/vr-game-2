@@ -12,9 +12,11 @@ struct List_1_t558592816DA880773C8A60C1EB777F3B092B68EC;
 struct List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D;
 struct CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB;
 struct GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF;
+struct Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C;
 struct ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918;
 struct QuaternionU5BU5D_t3C088AFB0F3D2763228C9CAB227021C5DC462AF7;
 struct TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24;
+struct Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C;
 struct AnimalAI_tFEC54C26EC27637C6B1CCD98B384FBF7862CB852;
 struct AnimalAnimationController_t2C5D1B3B926836C27ED6F0FEC60FE6E1C3832D9F;
 struct AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C;
@@ -25,6 +27,7 @@ struct CapsuleCollider_t3A1671C74F0836ABEF5D01A7470B5B2BE290A808;
 struct Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76;
 struct Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3;
 struct GameObject_t76FEDD663AB33C991A9C9A23129337651094216F;
+struct Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4;
 struct MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71;
 struct NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F;
 struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C;
@@ -37,20 +40,28 @@ struct Void_t4861ACF8F4594C3437BB48B6E56783494B843915;
 IL2CPP_EXTERN_C RuntimeClass* AnimalType_t59ED275ED058F5B9B280B253BC3B2D5647BFB24A_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Physics_t1244C2983AEAFA149425AFFC3DF53BC91C18ED56_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____49C7F7AEADC8F6E5894E4C0F8418BDEF1D881492A5759AC8634BBBA2B322F97B_FieldInfo_var;
+IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____6A6ACA884DEA3FC67883037C147C94D5D53561AC7A32C7076340EB92C1F60196_FieldInfo_var;
 IL2CPP_EXTERN_C String_t* _stringLiteral0ACD01722156B8516C7B5AED45E29FC23B05A674;
 IL2CPP_EXTERN_C String_t* _stringLiteral1AC6F79629FFF512871B11018D5B4C844B7EBF73;
 IL2CPP_EXTERN_C String_t* _stringLiteral3AD74DFE86C051F874A80EF7AFDA777C82E82EA9;
 IL2CPP_EXTERN_C String_t* _stringLiteral41E207FD588F38FFCDDB7C37923CBF6C73F57EF3;
 IL2CPP_EXTERN_C String_t* _stringLiteral4D96C1C3E12E5AE19CB343789873BFD2920446E4;
 IL2CPP_EXTERN_C String_t* _stringLiteral6F74567D6193FA8F1FC680DD34CF8D47835E751B;
+IL2CPP_EXTERN_C String_t* _stringLiteral916568B9717EE97E87A78D2A2BAB29E4B6751465;
 IL2CPP_EXTERN_C String_t* _stringLiteral985DBBC0C7C4FF36A02D673ACAE845622E44E049;
+IL2CPP_EXTERN_C String_t* _stringLiteralA741718B479FE42FD90710B6160880038911CF11;
 IL2CPP_EXTERN_C String_t* _stringLiteralC78D6EDB88B5E9254389AF11C76A6458140B977B;
 IL2CPP_EXTERN_C String_t* _stringLiteralDEC3D1F13D3E850D294F521BBA0C906542B43EF6;
+IL2CPP_EXTERN_C String_t* _stringLiteralE5089AC8ABC715FC39C677DDEBBB1C87EDDC1B31;
 IL2CPP_EXTERN_C String_t* _stringLiteralFAACDEEDE1F586E39F0CF975AEBB7EED38FDEE0C;
 IL2CPP_EXTERN_C const RuntimeMethod* Enumerator_Dispose_m07D362A07C19B36C2FD1B4DC79DD99903D4DA95D_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Enumerator_MoveNext_m96F4B0BD0A5485C8E8CC57D961DF6F1FA256AF27_RuntimeMethod_var;
@@ -65,7 +76,9 @@ IL2CPP_EXTERN_C const RuntimeMethod* List_1_GetEnumerator_mA843D26C63E5963415DFC
 IL2CPP_EXTERN_C const RuntimeMethod* List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* List_1_get_Count_m4C37ED2D928D63B80F55AF434730C2D64EEB9F22_RuntimeMethod_var;
 
+struct Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C;
 struct ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918;
+struct Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C;
 
 IL2CPP_EXTERN_C_BEGIN
 IL2CPP_EXTERN_C_END
@@ -90,6 +103,9 @@ struct List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D  : public RuntimeObject
 	RuntimeObject* ____syncRoot;
 };
 struct U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA  : public RuntimeObject
+{
+};
+struct PolytopiaStyleMeshGenerator_t05BD6FD6F43DCBCFCC0BB5BD07215A3E7AF0312B  : public RuntimeObject
 {
 };
 struct String_t  : public RuntimeObject
@@ -226,7 +242,7 @@ struct __StaticArrayInitTypeSizeU3D144_t4839144B438E5DCF848D2BCCA695C05728CB3D82
 };
 #pragma pack(pop, tp)
 #pragma pack(push, tp, 1)
-struct __StaticArrayInitTypeSizeU3D3508_t480FA5C5C575608E1211631646854F2446C6F213 
+struct __StaticArrayInitTypeSizeU3D3565_t42D16294FDAC9651331E0715A7AB30846BEFD752 
 {
 	union
 	{
@@ -236,12 +252,12 @@ struct __StaticArrayInitTypeSizeU3D3508_t480FA5C5C575608E1211631646854F2446C6F21
 			{
 			};
 		};
-		uint8_t __StaticArrayInitTypeSizeU3D3508_t480FA5C5C575608E1211631646854F2446C6F213__padding[3508];
+		uint8_t __StaticArrayInitTypeSizeU3D3565_t42D16294FDAC9651331E0715A7AB30846BEFD752__padding[3565];
 	};
 };
 #pragma pack(pop, tp)
 #pragma pack(push, tp, 1)
-struct __StaticArrayInitTypeSizeU3D4576_t2EFA80433E981ED781B09F099B3D5CB3DED78BE2 
+struct __StaticArrayInitTypeSizeU3D4628_t04AC54CEC3920872875F9C30B53A9C89BD50939B 
 {
 	union
 	{
@@ -251,7 +267,7 @@ struct __StaticArrayInitTypeSizeU3D4576_t2EFA80433E981ED781B09F099B3D5CB3DED78BE
 			{
 			};
 		};
-		uint8_t __StaticArrayInitTypeSizeU3D4576_t2EFA80433E981ED781B09F099B3D5CB3DED78BE2__padding[4576];
+		uint8_t __StaticArrayInitTypeSizeU3D4628_t04AC54CEC3920872875F9C30B53A9C89BD50939B__padding[4628];
 	};
 };
 #pragma pack(pop, tp)
@@ -299,10 +315,17 @@ struct RaycastHit_t6F30BD0B38B56401CA833A1B87BD74F2ACD2F2B5
 	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___m_UV;
 	EntityId_t982FBD037EAC5CA077B1602A7EA40E3523AA0FC8 ___m_Collider;
 };
+struct RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 
+{
+	intptr_t ___value;
+};
 struct Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3  : public Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C
 {
 };
 struct GameObject_t76FEDD663AB33C991A9C9A23129337651094216F  : public Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C
+{
+};
+struct Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4  : public Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C
 {
 };
 struct Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA  : public Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3
@@ -344,6 +367,10 @@ struct AnimalAI_tFEC54C26EC27637C6B1CCD98B384FBF7862CB852  : public MonoBehaviou
 	float ___flyingHeight;
 	bool ___birdCanSwoop;
 	float ___birdSwoopInterval;
+	bool ___deerGracefulMovement;
+	float ___deerAlertDuration;
+	bool ___foxCanStalk;
+	float ___foxStalkSpeedMultiplier;
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___hitFlashColor;
 	float ___flashDuration;
 	float ___bounceForce;
@@ -366,6 +393,10 @@ struct AnimalAI_tFEC54C26EC27637C6B1CCD98B384FBF7862CB852  : public MonoBehaviou
 	float ___birdSwoopTimer;
 	bool ___isBirdSwooping;
 	float ___birdSwoopStartHeight;
+	float ___deerAlertTimer;
+	bool ___isDeerAlert;
+	bool ___isFoxStalking;
+	float ___foxStalkTimer;
 	bool ___isFlashing;
 	float ___flashTimer;
 	int32_t ___currentFlashCycle;
@@ -397,6 +428,8 @@ struct AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C  : public Mo
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___rabbitPrefab;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___squirrelPrefab;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___birdPrefab;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___deerPrefab;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___foxPrefab;
 	int32_t ___minAnimals;
 	int32_t ___maxAnimals;
 	float ___spawnRadius;
@@ -405,6 +438,8 @@ struct AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C  : public Mo
 	float ___rabbitWeight;
 	float ___squirrelWeight;
 	float ___birdWeight;
+	float ___deerWeight;
+	float ___foxWeight;
 	bool ___showDebug;
 	List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ___spawnedAnimals;
 };
@@ -419,8 +454,10 @@ struct List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D_StaticFields
 struct U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA_StaticFields
 {
 	__StaticArrayInitTypeSizeU3D144_t4839144B438E5DCF848D2BCCA695C05728CB3D82 ___21045EF6C99062779C1DAA45CEAC0D240742F9FACCD2BAEC90311041B223E8AB;
-	__StaticArrayInitTypeSizeU3D4576_t2EFA80433E981ED781B09F099B3D5CB3DED78BE2 ___37B8D4F16F295E249B111218C4B7CDF8AEC2449B6D7F10E3271326F5BF2DFC66;
-	__StaticArrayInitTypeSizeU3D3508_t480FA5C5C575608E1211631646854F2446C6F213 ___69EEE4607DCC7DA4D145316DB9669196000488D3B0A0035C0D7630DF48BAF8F6;
+	__StaticArrayInitTypeSizeU3D4628_t04AC54CEC3920872875F9C30B53A9C89BD50939B ___3C286E01603D80D8F8BACFAB6C1778CEBAAE71D89605D1DFBF3C43502F631D32;
+	__StaticArrayInitTypeSizeU3D3565_t42D16294FDAC9651331E0715A7AB30846BEFD752 ___3D759F4108B0386BD83B0FD83A41A8E22A2599D44F79034C335DF4A89AA118B5;
+	__StaticArrayInitTypeSizeU3D144_t4839144B438E5DCF848D2BCCA695C05728CB3D82 ___49C7F7AEADC8F6E5894E4C0F8418BDEF1D881492A5759AC8634BBBA2B322F97B;
+	__StaticArrayInitTypeSizeU3D144_t4839144B438E5DCF848D2BCCA695C05728CB3D82 ___6A6ACA884DEA3FC67883037C147C94D5D53561AC7A32C7076340EB92C1F60196;
 	__StaticArrayInitTypeSizeU3D72_t7580F73F43F9E8A0AEF16576EFBED059DF855A74 ___8D697C9E39146684507E613920D02ADDDB068F886A8B9BCF9F9CAC48AFACDFCF;
 	__StaticArrayInitTypeSizeU3D12_t1BDD2193C3F925556BCD5FF35C0AC52DDB0CAB8F ___F2F8DE75638007505D5EE97566EAC64F256FB1ED628A0D17DB07991B7856C327;
 };
@@ -468,6 +505,70 @@ struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_StaticFields
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
+struct Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C  : public RuntimeArray
+{
+	ALIGN_FIELD (8) Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 m_Items[1];
+
+	inline Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 GetAt(il2cpp_array_size_t index) const
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items[index];
+	}
+	inline Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* GetAddressAt(il2cpp_array_size_t index)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items + index;
+	}
+	inline void SetAt(il2cpp_array_size_t index, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 value)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		m_Items[index] = value;
+	}
+	inline Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 GetAtUnchecked(il2cpp_array_size_t index) const
+	{
+		return m_Items[index];
+	}
+	inline Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* GetAddressAtUnchecked(il2cpp_array_size_t index)
+	{
+		return m_Items + index;
+	}
+	inline void SetAtUnchecked(il2cpp_array_size_t index, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 value)
+	{
+		m_Items[index] = value;
+	}
+};
+struct Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C  : public RuntimeArray
+{
+	ALIGN_FIELD (8) int32_t m_Items[1];
+
+	inline int32_t GetAt(il2cpp_array_size_t index) const
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items[index];
+	}
+	inline int32_t* GetAddressAt(il2cpp_array_size_t index)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items + index;
+	}
+	inline void SetAt(il2cpp_array_size_t index, int32_t value)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		m_Items[index] = value;
+	}
+	inline int32_t GetAtUnchecked(il2cpp_array_size_t index) const
+	{
+		return m_Items[index];
+	}
+	inline int32_t* GetAddressAtUnchecked(il2cpp_array_size_t index)
+	{
+		return m_Items + index;
+	}
+	inline void SetAtUnchecked(il2cpp_array_size_t index, int32_t value)
+	{
+		m_Items[index] = value;
+	}
+};
 struct ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918  : public RuntimeArray
 {
 	ALIGN_FIELD (8) RuntimeObject* m_Items[1];
@@ -596,6 +697,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Format_mA0534D6E2AE4D67A6BD8
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* AnimalBuilder_CreateRabbit_m039EBFEC80B6DA49F81976A2E42D98EDF2F6704D (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_parent, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* AnimalBuilder_CreateSquirrel_m3CD750459EFAEFD74793298399D494DB263F4273 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_parent, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* AnimalBuilder_CreateBird_m6E44C2BCB0B3510F819F29A470D6855A0438E942 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_parent, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* AnimalBuilder_CreateDeer_mCDF44F63B8CFA6DEF02A6F50DEBB2A4FBDFBE0DA (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_parent, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* AnimalBuilder_CreateFox_m1C9F51E7DC79EDDA8311C9D71CFE9BCB4793C08F (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_parent, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494 (float ___0_minInclusive, float ___1_maxInclusive, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 Random_get_insideUnitCircle_mB2FE9BAA7DDF7FED2AA53EA4667F864747E20DA2 (const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 Vector2_get_normalized_mF6722883AEFB5027690A778DF8ACC20F0FA65297_inline (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* __this, const RuntimeMethod* method) ;
@@ -619,6 +722,13 @@ inline void List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC (List_1_tB951
 	((  void (*) (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*, const RuntimeMethod*))List_1__ctor_m7F078BB342729BDF11327FD89D7872265328F690_gshared)(__this, method);
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Mesh__ctor_m5A9AECEDDAFFD84811ED8928012BDE97A9CEBD00 (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RuntimeHelpers_InitializeArray_m751372AA3F24FBF6DA9B9D687CBFA2DE436CAB9B (RuntimeArray* ___0_array, RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 ___1_fldHandle, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Mesh_set_vertices_m5BB814D89E9ACA00DBF19F7D8E22CB73AC73FE5C (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* __this, Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Mesh_set_triangles_m124405320579A8D92711BB5A124644963A26F60B (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* __this, Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Mesh_RecalculateNormals_m3AA2788914611444E030CA310E03E3CFE683902B (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Mesh_RecalculateBounds_mA9B293F57C6CD298AE2D2DB19061FC23B05AB90B (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* PolytopiaStyleMeshGenerator_CreateCube_mA62012BFD0F8DB1E154C1ACBB433407CD66BE46B (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 Vector2_Normalize_m52526AC1D25ED668DF8A5DE540769FA7D5671FC7 (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Array_Clear_m50BAA3751899858B097D3FF2ED31F284703FE5CB (RuntimeArray* ___0_array, int32_t ___1_index, int32_t ___2_length, const RuntimeMethod* method) ;
 inline void List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4 (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method)
@@ -630,17 +740,17 @@ inline void List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4 (List
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 68578
+// Method Definition Index: 63969
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_Start_m0CBB35A2C112044666858003E5F7F7FC8AD45ED7 (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:62>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:76>
 		AnimalSpawnManager_SpawnAnimals_m0E640E669F21CF1550B59AD84F7EE4309D6118EA(__this, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:63>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:77>
 		return;
 	}
 }
-// Method Definition Index: 68579
+// Method Definition Index: 63970
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_SpawnAnimals_m0E640E669F21CF1550B59AD84F7EE4309D6118EA (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -656,9 +766,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_SpawnAnimals_m0E640E6
 	int32_t V_0 = 0;
 	int32_t V_1 = 0;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:69>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:83>
 		AnimalSpawnManager_ClearAnimals_mBC52D5D9C7930DE980AF555B71EE7B6D3654D326(__this, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:72>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:86>
 		bool L_0;
 		L_0 = AnimalSpawnManager_ValidatePrefabs_m6A4F4A6F1D0C3FDC256F4E9FE07CD9A6899105E7(__this, NULL);
 		if (L_0)
@@ -667,22 +777,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_SpawnAnimals_m0E640E6
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:74>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:88>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralC78D6EDB88B5E9254389AF11C76A6458140B977B, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:75>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:89>
 		return;
 	}
 
 IL_0019:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:79>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:93>
 		int32_t L_1 = __this->___minAnimals;
 		int32_t L_2 = __this->___maxAnimals;
 		int32_t L_3;
 		L_3 = Random_Range_m6763D9767F033357F88B6637F048F4ACA4123B68(L_1, ((int32_t)il2cpp_codegen_add(L_2, 1)), NULL);
 		V_0 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:81>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:95>
 		bool L_4 = __this->___showDebug;
 		if (!L_4)
 		{
@@ -690,7 +800,7 @@ IL_0019:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:82>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:96>
 		int32_t L_5 = V_0;
 		int32_t L_6 = L_5;
 		RuntimeObject* L_7 = Box(il2cpp_defaults.int32_class, &L_6);
@@ -702,24 +812,24 @@ IL_0019:
 
 IL_004a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:85>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:99>
 		V_1 = 0;
 		goto IL_0059;
 	}
 
 IL_004e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:87>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:101>
 		int32_t L_9 = V_1;
 		AnimalSpawnManager_SpawnRandomAnimal_m9CD908FCCFB092C151DE4D145F53DCE4C2A031B4(__this, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:85>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:99>
 		int32_t L_10 = V_1;
 		V_1 = ((int32_t)il2cpp_codegen_add(L_10, 1));
 	}
 
 IL_0059:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:85>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:99>
 		int32_t L_11 = V_1;
 		int32_t L_12 = V_0;
 		if ((((int32_t)L_11) < ((int32_t)L_12)))
@@ -728,7 +838,7 @@ IL_0059:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:90>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:104>
 		bool L_13 = __this->___showDebug;
 		if (!L_13)
 		{
@@ -736,7 +846,7 @@ IL_0059:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:91>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:105>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_14 = __this->___spawnedAnimals;
 		NullCheck(L_14);
 		int32_t L_15;
@@ -751,11 +861,11 @@ IL_0059:
 
 IL_0084:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:92>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:106>
 		return;
 	}
 }
-// Method Definition Index: 68580
+// Method Definition Index: 63971
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_ClearAnimals_mBC52D5D9C7930DE980AF555B71EE7B6D3654D326 (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -776,7 +886,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_ClearAnimals_mBC52D5D
 	memset((&V_0), 0, sizeof(V_0));
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* V_1 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:97>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:111>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_0 = __this->___spawnedAnimals;
 		NullCheck(L_0);
 		Enumerator_t88BD1282EF117E59AACFC9EC55B89F0B9EDACE60 L_1;
@@ -801,11 +911,11 @@ FINALLY_003f:
 
 IL_000e_1:
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:97>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:111>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2;
 				L_2 = Enumerator_get_Current_m7236EBE1CFCB6533F96E030500D322B13D0CA5A4_inline((&V_0), Enumerator_get_Current_m7236EBE1CFCB6533F96E030500D322B13D0CA5A4_RuntimeMethod_var);
 				V_1 = L_2;
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:99>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:113>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = V_1;
 				il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 				bool L_4;
@@ -816,7 +926,7 @@ IL_000e_1:
 				}
 			}
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:101>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:115>
 				il2cpp_codegen_runtime_class_init_inline(Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var);
 				bool L_5;
 				L_5 = Application_get_isPlaying_m25B0ABDFEF54F5370CD3F263A813540843D00F34(NULL);
@@ -826,7 +936,7 @@ IL_000e_1:
 				}
 			}
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:102>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:116>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = V_1;
 				il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 				Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_6, NULL);
@@ -835,7 +945,7 @@ IL_000e_1:
 
 IL_002e_1:
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:104>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:118>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = V_1;
 				il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 				Object_DestroyImmediate_m6336EBC83591A5DB64EC70C92132824C6E258705(L_7, NULL);
@@ -843,7 +953,7 @@ IL_002e_1:
 
 IL_0034_1:
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:97>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:111>
 				bool L_8;
 				L_8 = Enumerator_MoveNext_m96F4B0BD0A5485C8E8CC57D961DF6F1FA256AF27((&V_0), Enumerator_MoveNext_m96F4B0BD0A5485C8E8CC57D961DF6F1FA256AF27_RuntimeMethod_var);
 				if (L_8)
@@ -863,11 +973,11 @@ IL_0034_1:
 
 IL_004d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:107>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:121>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_9 = __this->___spawnedAnimals;
 		NullCheck(L_9);
 		List_1_Clear_m32D399BDD753B5BD6CE27560249096418F3F0867_inline(L_9, List_1_Clear_m32D399BDD753B5BD6CE27560249096418F3F0867_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:109>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:123>
 		bool L_10 = __this->___showDebug;
 		if (!L_10)
 		{
@@ -875,18 +985,18 @@ IL_004d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:110>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:124>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral985DBBC0C7C4FF36A02D673ACAE845622E44E049, NULL);
 	}
 
 IL_006a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:111>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:125>
 		return;
 	}
 }
-// Method Definition Index: 68581
+// Method Definition Index: 63972
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_SpawnRandomAnimal_m9CD908FCCFB092C151DE4D145F53DCE4C2A031B4 (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, int32_t ___0_index, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -912,15 +1022,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_SpawnRandomAnimal_m9C
 	memset((&V_1), 0, sizeof(V_1));
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* V_2 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:116>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:130>
 		int32_t L_0;
 		L_0 = AnimalSpawnManager_SelectRandomAnimalType_m21FD6AF4D26DDCAC522577D63FE99BA1560ED7AD(__this, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:119>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:133>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
 		L_1 = AnimalSpawnManager_GetRandomSpawnPosition_m49656B4D5891D3F8570693C79009405107889C62(__this, NULL);
 		V_1 = L_1;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:120>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:134>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2 = V_1;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
@@ -932,7 +1042,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_SpawnRandomAnimal_m9C
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:122>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:136>
 		bool L_5 = __this->___showDebug;
 		if (!L_5)
 		{
@@ -940,7 +1050,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_SpawnRandomAnimal_m9C
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:123>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:137>
 		int32_t L_6 = ___0_index;
 		int32_t L_7 = L_6;
 		RuntimeObject* L_8 = Box(il2cpp_defaults.int32_class, &L_7);
@@ -952,18 +1062,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_SpawnRandomAnimal_m9C
 
 IL_0038:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:124>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:138>
 		return;
 	}
 
 IL_0039:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:128>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:142>
 		int32_t L_10 = V_0;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11;
 		L_11 = AnimalSpawnManager_CreateAnimalWithType_mAA09FB8A3A7D5EDA9ACDDB860E66A0F9B8691DCC(__this, L_10, NULL);
 		V_2 = L_11;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:129>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:143>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_13;
@@ -974,7 +1084,7 @@ IL_0039:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:131>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:145>
 		int32_t L_14 = V_0;
 		int32_t L_15 = L_14;
 		RuntimeObject* L_16 = Box(AnimalType_t59ED275ED058F5B9B280B253BC3B2D5647BFB24A_il2cpp_TypeInfo_var, &L_15);
@@ -982,13 +1092,13 @@ IL_0039:
 		L_17 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral3AD74DFE86C051F874A80EF7AFDA777C82E82EA9, L_16, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(L_17, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:132>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:146>
 		return;
 	}
 
 IL_0060:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:135>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:149>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18 = V_2;
 		NullCheck(L_18);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_19;
@@ -996,7 +1106,7 @@ IL_0060:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20 = V_1;
 		NullCheck(L_19);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_19, L_20, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:136>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:150>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = V_2;
 		NullCheck(L_21);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22;
@@ -1005,7 +1115,7 @@ IL_0060:
 		L_23 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
 		NullCheck(L_22);
 		Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D(L_22, L_23, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:137>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:151>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_24 = V_2;
 		NullCheck(L_24);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_25;
@@ -1014,7 +1124,7 @@ IL_0060:
 		L_26 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_25);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_25, L_26, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:138>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:152>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_27 = V_2;
 		int32_t L_28 = V_0;
 		int32_t L_29 = L_28;
@@ -1026,61 +1136,61 @@ IL_0060:
 		L_34 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteral0ACD01722156B8516C7B5AED45E29FC23B05A674, L_30, L_33, NULL);
 		NullCheck(L_27);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_27, L_34, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:141>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:155>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_35 = V_2;
 		NullCheck(L_35);
 		AnimalAI_tFEC54C26EC27637C6B1CCD98B384FBF7862CB852* L_36;
 		L_36 = GameObject_AddComponent_TisAnimalAI_tFEC54C26EC27637C6B1CCD98B384FBF7862CB852_m60C326CDD868E8E116FAADD348CC9D0D58758FAE(L_35, GameObject_AddComponent_TisAnimalAI_tFEC54C26EC27637C6B1CCD98B384FBF7862CB852_m60C326CDD868E8E116FAADD348CC9D0D58758FAE_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:142>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:156>
 		AnimalAI_tFEC54C26EC27637C6B1CCD98B384FBF7862CB852* L_37 = L_36;
 		int32_t L_38 = V_0;
 		NullCheck(L_37);
 		L_37->___animalType = L_38;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:143>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:157>
 		bool L_39 = __this->___showDebug;
 		NullCheck(L_37);
 		L_37->___showDebug = L_39;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:146>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:160>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_40 = V_2;
 		NullCheck(L_40);
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_41;
 		L_41 = GameObject_AddComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_m3D05F19667844A2949840753F7A3287115BE029E(L_40, GameObject_AddComponent_TisSphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275_m3D05F19667844A2949840753F7A3287115BE029E_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:147>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:161>
 		SphereCollider_tBA111C542CE97F6873DE742757213D6265C7D275* L_42 = L_41;
 		NullCheck(L_42);
 		SphereCollider_set_radius_m6119FE18C6739B077AB17334B1B53984911017FF(L_42, (0.300000012f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:148>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:162>
 		NullCheck(L_42);
 		Collider_set_isTrigger_mFCD22F3EB5E28C97863956AB725D53F7F4B7CA78(L_42, (bool)1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:151>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:165>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_43 = V_2;
 		NullCheck(L_43);
 		CapsuleCollider_t3A1671C74F0836ABEF5D01A7470B5B2BE290A808* L_44;
 		L_44 = GameObject_AddComponent_TisCapsuleCollider_t3A1671C74F0836ABEF5D01A7470B5B2BE290A808_mE9815ABBF56D4B7806C63F85A30AE9BBDE927BCF(L_43, GameObject_AddComponent_TisCapsuleCollider_t3A1671C74F0836ABEF5D01A7470B5B2BE290A808_mE9815ABBF56D4B7806C63F85A30AE9BBDE927BCF_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:152>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:166>
 		CapsuleCollider_t3A1671C74F0836ABEF5D01A7470B5B2BE290A808* L_45 = L_44;
 		NullCheck(L_45);
 		CapsuleCollider_set_radius_mB301C0086FE0D251683512184B0F6DDE264BA985(L_45, (0.25f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:153>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:167>
 		CapsuleCollider_t3A1671C74F0836ABEF5D01A7470B5B2BE290A808* L_46 = L_45;
 		NullCheck(L_46);
 		CapsuleCollider_set_height_m5DAE3DC5AD851E30C5A29AC7A22F36BE1E205BBB(L_46, (0.5f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:154>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:168>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_47;
 		L_47 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_46);
 		CapsuleCollider_set_center_m242D92DAEF25887C6A87A0777E4E624C0A431A2E(L_46, L_47, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:157>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:171>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_48 = V_2;
 		NullCheck(L_48);
 		AnimalAnimationController_t2C5D1B3B926836C27ED6F0FEC60FE6E1C3832D9F* L_49;
 		L_49 = GameObject_AddComponent_TisAnimalAnimationController_t2C5D1B3B926836C27ED6F0FEC60FE6E1C3832D9F_m0B60A96A0BC84FD10C6C69080D11472751CB4945(L_48, GameObject_AddComponent_TisAnimalAnimationController_t2C5D1B3B926836C27ED6F0FEC60FE6E1C3832D9F_m0B60A96A0BC84FD10C6C69080D11472751CB4945_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:159>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:173>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_50 = __this->___spawnedAnimals;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_51 = V_2;
 		NullCheck(L_50);
 		List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline(L_50, L_51, List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:161>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:175>
 		bool L_52 = __this->___showDebug;
 		if (!L_52)
 		{
@@ -1088,7 +1198,7 @@ IL_0060:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:162>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:176>
 		int32_t L_53 = V_0;
 		int32_t L_54 = L_53;
 		RuntimeObject* L_55 = Box(AnimalType_t59ED275ED058F5B9B280B253BC3B2D5647BFB24A_il2cpp_TypeInfo_var, &L_54);
@@ -1107,11 +1217,11 @@ IL_0060:
 
 IL_013a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:163>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:177>
 		return;
 	}
 }
-// Method Definition Index: 68582
+// Method Definition Index: 63973
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* AnimalSpawnManager_CreateAnimalWithType_mAA09FB8A3A7D5EDA9ACDDB860E66A0F9B8691DCC (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, int32_t ___0_type, const RuntimeMethod* method) 
 {
 	{
@@ -1120,120 +1230,181 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 		{
 			case 0:
 			{
-				goto IL_0014;
+				goto IL_001c;
 			}
 			case 1:
 			{
-				goto IL_001b;
+				goto IL_0023;
 			}
 			case 2:
 			{
-				goto IL_0022;
+				goto IL_002a;
+			}
+			case 3:
+			{
+				goto IL_0031;
+			}
+			case 4:
+			{
+				goto IL_0038;
 			}
 		}
 	}
 	{
-		goto IL_0029;
+		goto IL_003f;
 	}
 
-IL_0014:
+IL_001c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:170>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:184>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1;
 		L_1 = AnimalBuilder_CreateRabbit_m039EBFEC80B6DA49F81976A2E42D98EDF2F6704D((Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, NULL);
 		return L_1;
 	}
 
-IL_001b:
+IL_0023:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:172>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:186>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2;
 		L_2 = AnimalBuilder_CreateSquirrel_m3CD750459EFAEFD74793298399D494DB263F4273((Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, NULL);
 		return L_2;
 	}
 
-IL_0022:
+IL_002a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:174>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:188>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3;
 		L_3 = AnimalBuilder_CreateBird_m6E44C2BCB0B3510F819F29A470D6855A0438E942((Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, NULL);
 		return L_3;
 	}
 
-IL_0029:
+IL_0031:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:176>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:190>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
-		L_4 = AnimalBuilder_CreateRabbit_m039EBFEC80B6DA49F81976A2E42D98EDF2F6704D((Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, NULL);
+		L_4 = AnimalBuilder_CreateDeer_mCDF44F63B8CFA6DEF02A6F50DEBB2A4FBDFBE0DA((Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, NULL);
 		return L_4;
 	}
+
+IL_0038:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:192>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5;
+		L_5 = AnimalBuilder_CreateFox_m1C9F51E7DC79EDDA8311C9D71CFE9BCB4793C08F((Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, NULL);
+		return L_5;
+	}
+
+IL_003f:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:194>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6;
+		L_6 = AnimalBuilder_CreateRabbit_m039EBFEC80B6DA49F81976A2E42D98EDF2F6704D((Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL, NULL);
+		return L_6;
+	}
 }
-// Method Definition Index: 68583
+// Method Definition Index: 63974
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t AnimalSpawnManager_SelectRandomAnimalType_m21FD6AF4D26DDCAC522577D63FE99BA1560ED7AD (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
 	float V_1 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:183>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:201>
 		float L_0 = __this->___rabbitWeight;
 		float L_1 = __this->___squirrelWeight;
 		float L_2 = __this->___birdWeight;
-		V_0 = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_0, L_1)), L_2));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:184>
-		float L_3 = V_0;
-		if ((!(((float)L_3) == ((float)(0.0f)))))
+		float L_3 = __this->___deerWeight;
+		float L_4 = __this->___foxWeight;
+		V_0 = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_0, L_1)), L_2)), L_3)), L_4));
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:202>
+		float L_5 = V_0;
+		if ((!(((float)L_5) == ((float)(0.0f)))))
 		{
-			goto IL_001f;
+			goto IL_002d;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:186>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:204>
 		return (int32_t)(0);
 	}
 
-IL_001f:
+IL_002d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:190>
-		float L_4 = V_0;
-		float L_5;
-		L_5 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494((0.0f), L_4, NULL);
-		V_1 = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:192>
-		float L_6 = V_1;
-		float L_7 = __this->___rabbitWeight;
-		if ((!(((float)L_6) < ((float)L_7))))
-		{
-			goto IL_0036;
-		}
-	}
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:193>
-		return (int32_t)(0);
-	}
-
-IL_0036:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:194>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:208>
+		float L_6 = V_0;
+		float L_7;
+		L_7 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494((0.0f), L_6, NULL);
+		V_1 = L_7;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:210>
 		float L_8 = V_1;
 		float L_9 = __this->___rabbitWeight;
-		float L_10 = __this->___squirrelWeight;
-		if ((!(((float)L_8) < ((float)((float)il2cpp_codegen_add(L_9, L_10))))))
+		if ((!(((float)L_8) < ((float)L_9))))
 		{
-			goto IL_0048;
+			goto IL_0044;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:195>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:211>
+		return (int32_t)(0);
+	}
+
+IL_0044:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:212>
+		float L_10 = V_1;
+		float L_11 = __this->___rabbitWeight;
+		float L_12 = __this->___squirrelWeight;
+		if ((!(((float)L_10) < ((float)((float)il2cpp_codegen_add(L_11, L_12))))))
+		{
+			goto IL_0056;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:213>
 		return (int32_t)(1);
 	}
 
-IL_0048:
+IL_0056:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:197>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:214>
+		float L_13 = V_1;
+		float L_14 = __this->___rabbitWeight;
+		float L_15 = __this->___squirrelWeight;
+		float L_16 = __this->___birdWeight;
+		if ((!(((float)L_13) < ((float)((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_14, L_15)), L_16))))))
+		{
+			goto IL_006f;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:215>
 		return (int32_t)(2);
 	}
+
+IL_006f:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:216>
+		float L_17 = V_1;
+		float L_18 = __this->___rabbitWeight;
+		float L_19 = __this->___squirrelWeight;
+		float L_20 = __this->___birdWeight;
+		float L_21 = __this->___deerWeight;
+		if ((!(((float)L_17) < ((float)((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_18, L_19)), L_20)), L_21))))))
+		{
+			goto IL_008f;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:217>
+		return (int32_t)(3);
+	}
+
+IL_008f:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:219>
+		return (int32_t)(4);
+	}
 }
-// Method Definition Index: 68584
+// Method Definition Index: 63975
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* AnimalSpawnManager_SelectRandomPrefab_m63BDD093D39B63F6ADB1C0D24F8C182F95E13FBA (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1253,12 +1424,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B14_0 = NULL;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B15_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:203>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:225>
 		float L_0 = __this->___rabbitWeight;
 		float L_1 = __this->___squirrelWeight;
 		float L_2 = __this->___birdWeight;
 		V_0 = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_0, L_1)), L_2));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:204>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:226>
 		float L_3 = V_0;
 		if ((!(((float)L_3) == ((float)(0.0f)))))
 		{
@@ -1266,10 +1437,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:228>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteral41E207FD588F38FFCDDB7C37923CBF6C73F57EF3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:207>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:229>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___rabbitPrefab;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_4;
 		if (L_5)
@@ -1301,12 +1472,12 @@ IL_0041:
 
 IL_0042:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:211>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:233>
 		float L_9 = V_0;
 		float L_10;
 		L_10 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494((0.0f), L_9, NULL);
 		V_1 = L_10;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:213>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:235>
 		float L_11 = V_1;
 		float L_12 = __this->___rabbitWeight;
 		if ((!(((float)L_11) < ((float)L_12))))
@@ -1325,14 +1496,14 @@ IL_0042:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:214>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:236>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_15 = __this->___rabbitPrefab;
 		return L_15;
 	}
 
 IL_006c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:215>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:237>
 		float L_16 = V_1;
 		float L_17 = __this->___rabbitWeight;
 		float L_18 = __this->___squirrelWeight;
@@ -1352,14 +1523,14 @@ IL_006c:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:216>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:238>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = __this->___squirrelPrefab;
 		return L_21;
 	}
 
 IL_0091:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:217>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:239>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22 = __this->___birdPrefab;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_23;
@@ -1370,14 +1541,14 @@ IL_0091:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:218>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:240>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_24 = __this->___birdPrefab;
 		return L_24;
 	}
 
 IL_00a6:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:221>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:243>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_25 = __this->___rabbitPrefab;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_26 = L_25;
 		if (L_26)
@@ -1407,7 +1578,7 @@ IL_00c0:
 		return G_B16_0;
 	}
 }
-// Method Definition Index: 68585
+// Method Definition Index: 63976
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 AnimalSpawnManager_GetRandomSpawnPosition_m49656B4D5891D3F8570693C79009405107889C62 (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1429,17 +1600,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 V_5;
 	memset((&V_5), 0, sizeof(V_5));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:226>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:248>
 		V_0 = ((int32_t)30);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:227>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:249>
 		V_1 = 0;
 		goto IL_00a9;
 	}
 
 IL_000a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:230>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:231>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:252>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:253>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_0;
 		L_0 = Random_get_insideUnitCircle_mB2FE9BAA7DDF7FED2AA53EA4667F864747E20DA2(NULL);
 		V_5 = L_0;
@@ -1452,7 +1623,7 @@ IL_000a:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_5;
 		L_5 = Vector2_op_Multiply_m2D984B613020089BF5165BA4CA10988E2DC771FE_inline(L_1, L_4, NULL);
 		V_2 = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:233>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:255>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6 = __this->___spawnCenter;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_7 = V_2;
 		float L_8 = L_7.___x;
@@ -1464,7 +1635,7 @@ IL_000a:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
 		L_12 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_6, L_11, NULL);
 		V_3 = L_12;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:237>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:259>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13 = V_3;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
 		L_14 = Vector3_get_up_m128AF3FDC820BF59D5DE86D973E7DE3F20C3AEBA_inline(NULL);
@@ -1483,7 +1654,7 @@ IL_000a:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:239>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:261>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19;
 		L_19 = RaycastHit_get_point_m02B764612562AFE0F998CC7CFB2EEDE41BA47F39((&V_4), NULL);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20;
@@ -1497,18 +1668,18 @@ IL_000a:
 
 IL_0095:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:243>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:265>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_23 = (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)(&__this->___spawnCenter);
 		float L_24 = L_23->___y;
 		(&V_3)->___y = L_24;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:244>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:266>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25 = V_3;
 		return L_25;
 	}
 
 IL_00a9:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:227>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:249>
 		int32_t L_26 = V_1;
 		int32_t L_27 = V_0;
 		if ((((int32_t)L_26) < ((int32_t)L_27)))
@@ -1517,16 +1688,16 @@ IL_00a9:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:247>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:269>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(_stringLiteral1AC6F79629FFF512871B11018D5B4C844B7EBF73, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:248>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:270>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28;
 		L_28 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		return L_28;
 	}
 }
-// Method Definition Index: 68586
+// Method Definition Index: 63977
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AnimalSpawnManager_ValidatePrefabs_m6A4F4A6F1D0C3FDC256F4E9FE07CD9A6899105E7 (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1537,9 +1708,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AnimalSpawnManager_ValidatePrefabs_m6A4F
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:253>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:275>
 		V_0 = 0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:254>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:276>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___rabbitPrefab;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -1550,14 +1721,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AnimalSpawnManager_ValidatePrefabs_m6A4F
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:254>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:276>
 		int32_t L_2 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_2, 1));
 	}
 
 IL_0014:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:255>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:277>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = __this->___squirrelPrefab;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_4;
@@ -1568,14 +1739,14 @@ IL_0014:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:255>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:277>
 		int32_t L_5 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_5, 1));
 	}
 
 IL_0026:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:256>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:278>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___birdPrefab;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_7;
@@ -1586,19 +1757,19 @@ IL_0026:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:256>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:278>
 		int32_t L_8 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_8, 1));
 	}
 
 IL_0038:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:258>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:280>
 		int32_t L_9 = V_0;
 		return (bool)((((int32_t)L_9) > ((int32_t)0))? 1 : 0);
 	}
 }
-// Method Definition Index: 68587
+// Method Definition Index: 63978
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_OnDrawGizmosSelected_m49BC9E0EA2B7E4CBEA35A4DB55E3DD32060FDE08 (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1615,29 +1786,29 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_OnDrawGizmosSelected_
 	memset((&V_0), 0, sizeof(V_0));
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* V_1 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:264>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:286>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0;
 		memset((&L_0), 0, sizeof(L_0));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_0), (0.0f), (1.0f), (0.0f), (0.300000012f), NULL);
 		Gizmos_set_color_m53927A2741937484180B20B55F7F20F8F60C5797(L_0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:265>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:287>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = __this->___spawnCenter;
 		float L_2 = __this->___spawnRadius;
 		AnimalSpawnManager_DrawGizmoCircle_mA633CC7BD0B35957DC3C3E96C185AEAB85FA93F8(__this, L_1, L_2, ((int32_t)32), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:268>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:290>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_3;
 		memset((&L_3), 0, sizeof(L_3));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_3), (1.0f), (0.0f), (0.0f), (0.300000012f), NULL);
 		Gizmos_set_color_m53927A2741937484180B20B55F7F20F8F60C5797(L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:269>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:291>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4 = __this->___spawnCenter;
 		float L_5 = __this->___avoidCenterRadius;
 		AnimalSpawnManager_DrawGizmoCircle_mA633CC7BD0B35957DC3C3E96C185AEAB85FA93F8(__this, L_4, L_5, ((int32_t)16), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:272>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:294>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_6;
 		L_6 = Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline(NULL);
 		Gizmos_set_color_m53927A2741937484180B20B55F7F20F8F60C5797(L_6, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:273>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:295>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_7 = __this->___spawnedAnimals;
 		NullCheck(L_7);
 		Enumerator_t88BD1282EF117E59AACFC9EC55B89F0B9EDACE60 L_8;
@@ -1662,11 +1833,11 @@ FINALLY_00ad:
 
 IL_007c_1:
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:273>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:295>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9;
 				L_9 = Enumerator_get_Current_m7236EBE1CFCB6533F96E030500D322B13D0CA5A4_inline((&V_0), Enumerator_get_Current_m7236EBE1CFCB6533F96E030500D322B13D0CA5A4_RuntimeMethod_var);
 				V_1 = L_9;
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:275>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:297>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = V_1;
 				il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 				bool L_11;
@@ -1677,7 +1848,7 @@ IL_007c_1:
 				}
 			}
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:277>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:299>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = V_1;
 				NullCheck(L_12);
 				Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
@@ -1690,7 +1861,7 @@ IL_007c_1:
 
 IL_00a2_1:
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:273>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:295>
 				bool L_15;
 				L_15 = Enumerator_MoveNext_m96F4B0BD0A5485C8E8CC57D961DF6F1FA256AF27((&V_0), Enumerator_MoveNext_m96F4B0BD0A5485C8E8CC57D961DF6F1FA256AF27_RuntimeMethod_var);
 				if (L_15)
@@ -1710,11 +1881,11 @@ IL_00a2_1:
 
 IL_00bb:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:280>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:302>
 		return;
 	}
 }
-// Method Definition Index: 68588
+// Method Definition Index: 63979
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_DrawGizmoCircle_mA633CC7BD0B35957DC3C3E96C185AEAB85FA93F8 (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_center, float ___1_radius, int32_t ___2_segments, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -1725,10 +1896,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_DrawGizmoCircle_mA633
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_4;
 	memset((&V_4), 0, sizeof(V_4));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:284>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:306>
 		int32_t L_0 = ___2_segments;
 		V_0 = ((float)((360.0f)/((float)L_0)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:285>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:307>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = ___0_center;
 		float L_2 = ___1_radius;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
@@ -1737,22 +1908,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager_DrawGizmoCircle_mA633
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		L_4 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_1, L_3, NULL);
 		V_1 = L_4;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:287>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:309>
 		V_2 = 1;
 		goto IL_0060;
 	}
 
 IL_0024:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:289>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:311>
 		float L_5 = V_0;
 		int32_t L_6 = V_2;
 		V_3 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_5, ((float)L_6))), (0.0174532924f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:290>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:291>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:292>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:293>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:294>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:312>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:313>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:314>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:315>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:316>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7 = ___0_center;
 		float L_8 = V_3;
 		float L_9;
@@ -1768,21 +1939,21 @@ IL_0024:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15;
 		L_15 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_7, L_14, NULL);
 		V_4 = L_15;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:296>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:318>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16 = V_1;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17 = V_4;
 		Gizmos_DrawLine_mB139054F55D615637A39A3127AADB16043387F8A(L_16, L_17, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:297>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:319>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18 = V_4;
 		V_1 = L_18;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:287>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:309>
 		int32_t L_19 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_19, 1));
 	}
 
 IL_0060:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:287>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:309>
 		int32_t L_20 = V_2;
 		int32_t L_21 = ___2_segments;
 		if ((((int32_t)L_20) <= ((int32_t)L_21)))
@@ -1791,11 +1962,11 @@ IL_0060:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:299>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:321>
 		return;
 	}
 }
-// Method Definition Index: 68589
+// Method Definition Index: 63980
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager__ctor_m771A187FBAD3C27F909B690A029A631A6167EBEE (AnimalSpawnManager_tBED8A9D84350FCC8F71E37F9E1D0E0A85B4A624C* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1806,33 +1977,726 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimalSpawnManager__ctor_m771A187FBAD3C2
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:26>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:32>
 		__this->___minAnimals = 5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:30>
-		__this->___maxAnimals = 8;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:33>
-		__this->___spawnRadius = (20.0f);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:36>
+		__this->___maxAnimals = 8;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:39>
+		__this->___spawnRadius = (20.0f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:42>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0;
 		L_0 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		__this->___spawnCenter = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:39>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:45>
 		__this->___avoidCenterRadius = (8.0f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:44>
-		__this->___rabbitWeight = (0.400000006f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:48>
-		__this->___squirrelWeight = (0.400000006f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:52>
-		__this->___birdWeight = (0.200000003f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:56>
-		__this->___showDebug = (bool)1;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:50>
+		__this->___rabbitWeight = (0.300000012f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:54>
+		__this->___squirrelWeight = (0.300000012f);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:58>
+		__this->___birdWeight = (0.150000006f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:62>
+		__this->___deerWeight = (0.150000006f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:66>
+		__this->___foxWeight = (0.100000001f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:70>
+		__this->___showDebug = (bool)1;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/AnimalSpawnManager.cs:72>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_1 = (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*)il2cpp_codegen_object_new(List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B_il2cpp_TypeInfo_var);
 		List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC(L_1, List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC_RuntimeMethod_var);
 		__this->___spawnedAnimals = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___spawnedAnimals), (void*)L_1);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 63981
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* PolytopiaStyleMeshGenerator_CreateCube_mA62012BFD0F8DB1E154C1ACBB433407CD66BE46B (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____6A6ACA884DEA3FC67883037C147C94D5D53561AC7A32C7076340EB92C1F60196_FieldInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral916568B9717EE97E87A78D2A2BAB29E4B6751465);
+		s_Il2CppMethodInitialized = true;
+	}
+	Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* V_0 = NULL;
+	Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* V_1 = NULL;
+	Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* V_2 = NULL;
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:17>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_0 = (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4*)il2cpp_codegen_object_new(Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4_il2cpp_TypeInfo_var);
+		Mesh__ctor_m5A9AECEDDAFFD84811ED8928012BDE97A9CEBD00(L_0, NULL);
+		V_0 = L_0;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:18>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_1 = V_0;
+		NullCheck(L_1);
+		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_1, _stringLiteral916568B9717EE97E87A78D2A2BAB29E4B6751465, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:20>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:21>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:22>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:23>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:24>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:25>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:26>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:27>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:28>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:29>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:30>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:31>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:32>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:33>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:34>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:35>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:36>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:37>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:38>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:39>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:40>
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2 = (Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)SZArrayNew(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var, (uint32_t)((int32_t)24));
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_3 = L_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
+		memset((&L_4), 0, sizeof(L_4));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_4), (-0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_3);
+		(L_3)->SetAt(static_cast<il2cpp_array_size_t>(0), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_4);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_5 = L_3;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
+		memset((&L_6), 0, sizeof(L_6));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_6), (0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_5);
+		(L_5)->SetAt(static_cast<il2cpp_array_size_t>(1), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_6);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_7 = L_5;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
+		memset((&L_8), 0, sizeof(L_8));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_8), (0.5f), (0.5f), (0.5f), NULL);
+		NullCheck(L_7);
+		(L_7)->SetAt(static_cast<il2cpp_array_size_t>(2), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_8);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_9 = L_7;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10;
+		memset((&L_10), 0, sizeof(L_10));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_10), (-0.5f), (0.5f), (0.5f), NULL);
+		NullCheck(L_9);
+		(L_9)->SetAt(static_cast<il2cpp_array_size_t>(3), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_10);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_11 = L_9;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
+		memset((&L_12), 0, sizeof(L_12));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_12), (0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_11);
+		(L_11)->SetAt(static_cast<il2cpp_array_size_t>(4), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_12);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_13 = L_11;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
+		memset((&L_14), 0, sizeof(L_14));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_14), (-0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_13);
+		(L_13)->SetAt(static_cast<il2cpp_array_size_t>(5), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_14);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_15 = L_13;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
+		memset((&L_16), 0, sizeof(L_16));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_16), (-0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_15);
+		(L_15)->SetAt(static_cast<il2cpp_array_size_t>(6), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_16);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_17 = L_15;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18;
+		memset((&L_18), 0, sizeof(L_18));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_18), (0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_17);
+		(L_17)->SetAt(static_cast<il2cpp_array_size_t>(7), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_18);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_19 = L_17;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20;
+		memset((&L_20), 0, sizeof(L_20));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_20), (-0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_19);
+		(L_19)->SetAt(static_cast<il2cpp_array_size_t>(8), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_20);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_21 = L_19;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_22;
+		memset((&L_22), 0, sizeof(L_22));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_22), (-0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_21);
+		(L_21)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)9)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_22);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_23 = L_21;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_24;
+		memset((&L_24), 0, sizeof(L_24));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_24), (-0.5f), (0.5f), (0.5f), NULL);
+		NullCheck(L_23);
+		(L_23)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)10)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_24);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_25 = L_23;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_26;
+		memset((&L_26), 0, sizeof(L_26));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_26), (-0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_25);
+		(L_25)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)11)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_26);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_27 = L_25;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28;
+		memset((&L_28), 0, sizeof(L_28));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_28), (0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_27);
+		(L_27)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)12)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_28);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_29 = L_27;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_30;
+		memset((&L_30), 0, sizeof(L_30));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_30), (0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_29);
+		(L_29)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)13)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_30);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_31 = L_29;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_32;
+		memset((&L_32), 0, sizeof(L_32));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_32), (0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_31);
+		(L_31)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)14)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_32);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_33 = L_31;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_34;
+		memset((&L_34), 0, sizeof(L_34));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_34), (0.5f), (0.5f), (0.5f), NULL);
+		NullCheck(L_33);
+		(L_33)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)15)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_34);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_35 = L_33;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_36;
+		memset((&L_36), 0, sizeof(L_36));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_36), (-0.5f), (0.5f), (0.5f), NULL);
+		NullCheck(L_35);
+		(L_35)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)16)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_36);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_37 = L_35;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_38;
+		memset((&L_38), 0, sizeof(L_38));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_38), (0.5f), (0.5f), (0.5f), NULL);
+		NullCheck(L_37);
+		(L_37)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)17)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_38);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_39 = L_37;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_40;
+		memset((&L_40), 0, sizeof(L_40));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_40), (0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_39);
+		(L_39)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)18)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_40);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_41 = L_39;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_42;
+		memset((&L_42), 0, sizeof(L_42));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_42), (-0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_41);
+		(L_41)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)19)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_42);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_43 = L_41;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_44;
+		memset((&L_44), 0, sizeof(L_44));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_44), (-0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_43);
+		(L_43)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)20)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_44);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_45 = L_43;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_46;
+		memset((&L_46), 0, sizeof(L_46));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_46), (0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_45);
+		(L_45)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)21)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_46);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_47 = L_45;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_48;
+		memset((&L_48), 0, sizeof(L_48));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_48), (0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_47);
+		(L_47)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)22)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_48);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_49 = L_47;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_50;
+		memset((&L_50), 0, sizeof(L_50));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_50), (-0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_49);
+		(L_49)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)23)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_50);
+		V_1 = L_49;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:42>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:43>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:44>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:45>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:46>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:47>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:48>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:49>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:50>
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_51 = (Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)SZArrayNew(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var, (uint32_t)((int32_t)36));
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_52 = L_51;
+		RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 L_53 = { reinterpret_cast<intptr_t> (U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____6A6ACA884DEA3FC67883037C147C94D5D53561AC7A32C7076340EB92C1F60196_FieldInfo_var) };
+		RuntimeHelpers_InitializeArray_m751372AA3F24FBF6DA9B9D687CBFA2DE436CAB9B((RuntimeArray*)L_52, L_53, NULL);
+		V_2 = L_52;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:52>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_54 = V_0;
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_55 = V_1;
+		NullCheck(L_54);
+		Mesh_set_vertices_m5BB814D89E9ACA00DBF19F7D8E22CB73AC73FE5C(L_54, L_55, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:53>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_56 = V_0;
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_57 = V_2;
+		NullCheck(L_56);
+		Mesh_set_triangles_m124405320579A8D92711BB5A124644963A26F60B(L_56, L_57, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:54>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_58 = V_0;
+		NullCheck(L_58);
+		Mesh_RecalculateNormals_m3AA2788914611444E030CA310E03E3CFE683902B(L_58, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:55>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_59 = V_0;
+		NullCheck(L_59);
+		Mesh_RecalculateBounds_mA9B293F57C6CD298AE2D2DB19061FC23B05AB90B(L_59, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:57>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_60 = V_0;
+		return L_60;
+	}
+}
+// Method Definition Index: 63982
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D916633422DCD51C0 (float ___0_width, float ___1_height, float ___2_depth, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:66>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_0;
+		L_0 = PolytopiaStyleMeshGenerator_CreateCube_mA62012BFD0F8DB1E154C1ACBB433407CD66BE46B(NULL);
+		return L_0;
+	}
+}
+// Method Definition Index: 63983
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (float ___0_topScale, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____6A6ACA884DEA3FC67883037C147C94D5D53561AC7A32C7076340EB92C1F60196_FieldInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA741718B479FE42FD90710B6160880038911CF11);
+		s_Il2CppMethodInitialized = true;
+	}
+	Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* V_0 = NULL;
+	float V_1 = 0.0f;
+	float V_2 = 0.0f;
+	Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* V_3 = NULL;
+	Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* V_4 = NULL;
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:75>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_0 = (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4*)il2cpp_codegen_object_new(Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4_il2cpp_TypeInfo_var);
+		Mesh__ctor_m5A9AECEDDAFFD84811ED8928012BDE97A9CEBD00(L_0, NULL);
+		V_0 = L_0;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:76>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_1 = V_0;
+		NullCheck(L_1);
+		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_1, _stringLiteralA741718B479FE42FD90710B6160880038911CF11, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:78>
+		float L_2 = ___0_topScale;
+		V_1 = ((float)il2cpp_codegen_multiply(L_2, (0.5f)));
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:79>
+		V_2 = (0.5f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:81>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:82>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:83>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:84>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:85>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:86>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:87>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:88>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:89>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:90>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:91>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:92>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:93>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:94>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:95>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:96>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:97>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:98>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:99>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:100>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:101>
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_3 = (Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)SZArrayNew(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var, (uint32_t)((int32_t)24));
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_4 = L_3;
+		float L_5 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
+		memset((&L_6), 0, sizeof(L_6));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_6), ((-L_5)), (-0.5f), (0.5f), NULL);
+		NullCheck(L_4);
+		(L_4)->SetAt(static_cast<il2cpp_array_size_t>(0), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_6);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_7 = L_4;
+		float L_8 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
+		memset((&L_9), 0, sizeof(L_9));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_9), L_8, (-0.5f), (0.5f), NULL);
+		NullCheck(L_7);
+		(L_7)->SetAt(static_cast<il2cpp_array_size_t>(1), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_9);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_10 = L_7;
+		float L_11 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
+		memset((&L_12), 0, sizeof(L_12));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_12), L_11, (0.5f), (0.5f), NULL);
+		NullCheck(L_10);
+		(L_10)->SetAt(static_cast<il2cpp_array_size_t>(2), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_12);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_13 = L_10;
+		float L_14 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15;
+		memset((&L_15), 0, sizeof(L_15));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_15), ((-L_14)), (0.5f), (0.5f), NULL);
+		NullCheck(L_13);
+		(L_13)->SetAt(static_cast<il2cpp_array_size_t>(3), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_15);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_16 = L_13;
+		float L_17 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18;
+		memset((&L_18), 0, sizeof(L_18));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_18), L_17, (-0.5f), (-0.5f), NULL);
+		NullCheck(L_16);
+		(L_16)->SetAt(static_cast<il2cpp_array_size_t>(4), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_18);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_19 = L_16;
+		float L_20 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_21;
+		memset((&L_21), 0, sizeof(L_21));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_21), ((-L_20)), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_19);
+		(L_19)->SetAt(static_cast<il2cpp_array_size_t>(5), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_21);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_22 = L_19;
+		float L_23 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_24;
+		memset((&L_24), 0, sizeof(L_24));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_24), ((-L_23)), (0.5f), (-0.5f), NULL);
+		NullCheck(L_22);
+		(L_22)->SetAt(static_cast<il2cpp_array_size_t>(6), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_24);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_25 = L_22;
+		float L_26 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_27;
+		memset((&L_27), 0, sizeof(L_27));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_27), L_26, (0.5f), (-0.5f), NULL);
+		NullCheck(L_25);
+		(L_25)->SetAt(static_cast<il2cpp_array_size_t>(7), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_27);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_28 = L_25;
+		float L_29 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_30;
+		memset((&L_30), 0, sizeof(L_30));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_30), ((-L_29)), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_28);
+		(L_28)->SetAt(static_cast<il2cpp_array_size_t>(8), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_30);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_31 = L_28;
+		float L_32 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_33;
+		memset((&L_33), 0, sizeof(L_33));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_33), ((-L_32)), (-0.5f), (0.5f), NULL);
+		NullCheck(L_31);
+		(L_31)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)9)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_33);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_34 = L_31;
+		float L_35 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_36;
+		memset((&L_36), 0, sizeof(L_36));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_36), ((-L_35)), (0.5f), (0.5f), NULL);
+		NullCheck(L_34);
+		(L_34)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)10)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_36);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_37 = L_34;
+		float L_38 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_39;
+		memset((&L_39), 0, sizeof(L_39));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_39), ((-L_38)), (0.5f), (-0.5f), NULL);
+		NullCheck(L_37);
+		(L_37)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)11)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_39);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_40 = L_37;
+		float L_41 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_42;
+		memset((&L_42), 0, sizeof(L_42));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_42), L_41, (-0.5f), (0.5f), NULL);
+		NullCheck(L_40);
+		(L_40)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)12)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_42);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_43 = L_40;
+		float L_44 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_45;
+		memset((&L_45), 0, sizeof(L_45));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_45), L_44, (-0.5f), (-0.5f), NULL);
+		NullCheck(L_43);
+		(L_43)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)13)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_45);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_46 = L_43;
+		float L_47 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_48;
+		memset((&L_48), 0, sizeof(L_48));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_48), L_47, (0.5f), (-0.5f), NULL);
+		NullCheck(L_46);
+		(L_46)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)14)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_48);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_49 = L_46;
+		float L_50 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_51;
+		memset((&L_51), 0, sizeof(L_51));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_51), L_50, (0.5f), (0.5f), NULL);
+		NullCheck(L_49);
+		(L_49)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)15)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_51);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_52 = L_49;
+		float L_53 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_54;
+		memset((&L_54), 0, sizeof(L_54));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_54), ((-L_53)), (0.5f), (0.5f), NULL);
+		NullCheck(L_52);
+		(L_52)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)16)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_54);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_55 = L_52;
+		float L_56 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_57;
+		memset((&L_57), 0, sizeof(L_57));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_57), L_56, (0.5f), (0.5f), NULL);
+		NullCheck(L_55);
+		(L_55)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)17)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_57);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_58 = L_55;
+		float L_59 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_60;
+		memset((&L_60), 0, sizeof(L_60));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_60), L_59, (0.5f), (-0.5f), NULL);
+		NullCheck(L_58);
+		(L_58)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)18)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_60);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_61 = L_58;
+		float L_62 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_63;
+		memset((&L_63), 0, sizeof(L_63));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_63), ((-L_62)), (0.5f), (-0.5f), NULL);
+		NullCheck(L_61);
+		(L_61)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)19)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_63);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_64 = L_61;
+		float L_65 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_66;
+		memset((&L_66), 0, sizeof(L_66));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_66), ((-L_65)), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_64);
+		(L_64)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)20)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_66);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_67 = L_64;
+		float L_68 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_69;
+		memset((&L_69), 0, sizeof(L_69));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_69), L_68, (-0.5f), (-0.5f), NULL);
+		NullCheck(L_67);
+		(L_67)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)21)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_69);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_70 = L_67;
+		float L_71 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_72;
+		memset((&L_72), 0, sizeof(L_72));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_72), L_71, (-0.5f), (0.5f), NULL);
+		NullCheck(L_70);
+		(L_70)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)22)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_72);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_73 = L_70;
+		float L_74 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_75;
+		memset((&L_75), 0, sizeof(L_75));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_75), ((-L_74)), (-0.5f), (0.5f), NULL);
+		NullCheck(L_73);
+		(L_73)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)23)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_75);
+		V_3 = L_73;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:103>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:104>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:105>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:106>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:107>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:108>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:109>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:110>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:111>
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_76 = (Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)SZArrayNew(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var, (uint32_t)((int32_t)36));
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_77 = L_76;
+		RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 L_78 = { reinterpret_cast<intptr_t> (U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____6A6ACA884DEA3FC67883037C147C94D5D53561AC7A32C7076340EB92C1F60196_FieldInfo_var) };
+		RuntimeHelpers_InitializeArray_m751372AA3F24FBF6DA9B9D687CBFA2DE436CAB9B((RuntimeArray*)L_77, L_78, NULL);
+		V_4 = L_77;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:113>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_79 = V_0;
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_80 = V_3;
+		NullCheck(L_79);
+		Mesh_set_vertices_m5BB814D89E9ACA00DBF19F7D8E22CB73AC73FE5C(L_79, L_80, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:114>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_81 = V_0;
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_82 = V_4;
+		NullCheck(L_81);
+		Mesh_set_triangles_m124405320579A8D92711BB5A124644963A26F60B(L_81, L_82, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:115>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_83 = V_0;
+		NullCheck(L_83);
+		Mesh_RecalculateNormals_m3AA2788914611444E030CA310E03E3CFE683902B(L_83, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:116>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_84 = V_0;
+		NullCheck(L_84);
+		Mesh_RecalculateBounds_mA9B293F57C6CD298AE2D2DB19061FC23B05AB90B(L_84, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:118>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_85 = V_0;
+		return L_85;
+	}
+}
+// Method Definition Index: 63984
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____49C7F7AEADC8F6E5894E4C0F8418BDEF1D881492A5759AC8634BBBA2B322F97B_FieldInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE5089AC8ABC715FC39C677DDEBBB1C87EDDC1B31);
+		s_Il2CppMethodInitialized = true;
+	}
+	Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* V_0 = NULL;
+	Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* V_1 = NULL;
+	Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* V_2 = NULL;
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:126>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_0 = (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4*)il2cpp_codegen_object_new(Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4_il2cpp_TypeInfo_var);
+		Mesh__ctor_m5A9AECEDDAFFD84811ED8928012BDE97A9CEBD00(L_0, NULL);
+		V_0 = L_0;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:127>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_1 = V_0;
+		NullCheck(L_1);
+		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_1, _stringLiteralE5089AC8ABC715FC39C677DDEBBB1C87EDDC1B31, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:129>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:130>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:131>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:132>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:133>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:134>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:135>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:136>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:137>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:138>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:139>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:140>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:141>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:142>
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2 = (Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)SZArrayNew(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var, (uint32_t)((int32_t)15));
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_3 = L_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
+		memset((&L_4), 0, sizeof(L_4));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_4), (-0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_3);
+		(L_3)->SetAt(static_cast<il2cpp_array_size_t>(0), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_4);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_5 = L_3;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
+		memset((&L_6), 0, sizeof(L_6));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_6), (0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_5);
+		(L_5)->SetAt(static_cast<il2cpp_array_size_t>(1), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_6);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_7 = L_5;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
+		memset((&L_8), 0, sizeof(L_8));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_8), (0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_7);
+		(L_7)->SetAt(static_cast<il2cpp_array_size_t>(2), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_8);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_9 = L_7;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10;
+		memset((&L_10), 0, sizeof(L_10));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_10), (-0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_9);
+		(L_9)->SetAt(static_cast<il2cpp_array_size_t>(3), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_10);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_11 = L_9;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
+		memset((&L_12), 0, sizeof(L_12));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_12), (-0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_11);
+		(L_11)->SetAt(static_cast<il2cpp_array_size_t>(4), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_12);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_13 = L_11;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
+		memset((&L_14), 0, sizeof(L_14));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_14), (0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_13);
+		(L_13)->SetAt(static_cast<il2cpp_array_size_t>(5), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_14);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_15 = L_13;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
+		memset((&L_16), 0, sizeof(L_16));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_16), (0.0f), (0.0f), (0.5f), NULL);
+		NullCheck(L_15);
+		(L_15)->SetAt(static_cast<il2cpp_array_size_t>(6), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_16);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_17 = L_15;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18;
+		memset((&L_18), 0, sizeof(L_18));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_18), (-0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_17);
+		(L_17)->SetAt(static_cast<il2cpp_array_size_t>(7), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_18);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_19 = L_17;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20;
+		memset((&L_20), 0, sizeof(L_20));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_20), (-0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_19);
+		(L_19)->SetAt(static_cast<il2cpp_array_size_t>(8), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_20);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_21 = L_19;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_22;
+		memset((&L_22), 0, sizeof(L_22));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_22), (-0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_21);
+		(L_21)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)9)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_22);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_23 = L_21;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_24;
+		memset((&L_24), 0, sizeof(L_24));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_24), (0.0f), (0.0f), (0.5f), NULL);
+		NullCheck(L_23);
+		(L_23)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)10)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_24);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_25 = L_23;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_26;
+		memset((&L_26), 0, sizeof(L_26));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_26), (0.5f), (-0.5f), (-0.5f), NULL);
+		NullCheck(L_25);
+		(L_25)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)11)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_26);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_27 = L_25;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28;
+		memset((&L_28), 0, sizeof(L_28));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_28), (0.5f), (0.5f), (-0.5f), NULL);
+		NullCheck(L_27);
+		(L_27)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)12)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_28);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_29 = L_27;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_30;
+		memset((&L_30), 0, sizeof(L_30));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_30), (0.5f), (-0.5f), (0.5f), NULL);
+		NullCheck(L_29);
+		(L_29)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)13)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_30);
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_31 = L_29;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_32;
+		memset((&L_32), 0, sizeof(L_32));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_32), (0.0f), (0.0f), (0.5f), NULL);
+		NullCheck(L_31);
+		(L_31)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)14)), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_32);
+		V_1 = L_31;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:144>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:145>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:146>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:147>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:148>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:149>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:150>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:151>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:152>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:153>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:154>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:155>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:156>
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_33 = (Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)SZArrayNew(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var, (uint32_t)((int32_t)36));
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_34 = L_33;
+		RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 L_35 = { reinterpret_cast<intptr_t> (U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____49C7F7AEADC8F6E5894E4C0F8418BDEF1D881492A5759AC8634BBBA2B322F97B_FieldInfo_var) };
+		RuntimeHelpers_InitializeArray_m751372AA3F24FBF6DA9B9D687CBFA2DE436CAB9B((RuntimeArray*)L_34, L_35, NULL);
+		V_2 = L_34;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:158>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_36 = V_0;
+		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_37 = V_1;
+		NullCheck(L_36);
+		Mesh_set_vertices_m5BB814D89E9ACA00DBF19F7D8E22CB73AC73FE5C(L_36, L_37, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:159>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_38 = V_0;
+		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_39 = V_2;
+		NullCheck(L_38);
+		Mesh_set_triangles_m124405320579A8D92711BB5A124644963A26F60B(L_38, L_39, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:160>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_40 = V_0;
+		NullCheck(L_40);
+		Mesh_RecalculateNormals_m3AA2788914611444E030CA310E03E3CFE683902B(L_40, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:161>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_41 = V_0;
+		NullCheck(L_41);
+		Mesh_RecalculateBounds_mA9B293F57C6CD298AE2D2DB19061FC23B05AB90B(L_41, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:163>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_42 = V_0;
+		return L_42;
+	}
+}
+// Method Definition Index: 63985
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (float ___0_bevel, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/PolytopiaStyleMeshGenerator.cs:174>
+		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_0;
+		L_0 = PolytopiaStyleMeshGenerator_CreateCube_mA62012BFD0F8DB1E154C1ACBB433407CD66BE46B(NULL);
+		return L_0;
 	}
 }
 #ifdef __clang__

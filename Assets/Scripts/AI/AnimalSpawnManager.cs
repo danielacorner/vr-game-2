@@ -5,7 +5,7 @@ namespace VRDungeonCrawler.AI
 {
     /// <summary>
     /// Spawns and manages animal population in home area
-    /// Creates 5-8 animals of various types (rabbit, squirrel, bird)
+    /// Creates 5-8 animals of various types (rabbit, squirrel, bird, deer, fox)
     /// Distributes them naturally across the terrain
     /// </summary>
     public class AnimalSpawnManager : MonoBehaviour
@@ -19,6 +19,12 @@ namespace VRDungeonCrawler.AI
 
         [Tooltip("Bird prefab (flying animal)")]
         public GameObject birdPrefab;
+
+        [Tooltip("Deer prefab (large ground animal)")]
+        public GameObject deerPrefab;
+
+        [Tooltip("Fox prefab (medium ground animal)")]
+        public GameObject foxPrefab;
 
         [Header("Spawn Settings")]
         [Tooltip("Minimum number of animals to spawn")]
@@ -41,15 +47,23 @@ namespace VRDungeonCrawler.AI
         [Header("Type Distribution")]
         [Tooltip("Weight for spawning rabbits (higher = more likely)")]
         [Range(0f, 1f)]
-        public float rabbitWeight = 0.4f;
+        public float rabbitWeight = 0.3f;
 
         [Tooltip("Weight for spawning squirrels")]
         [Range(0f, 1f)]
-        public float squirrelWeight = 0.4f;
+        public float squirrelWeight = 0.3f;
 
         [Tooltip("Weight for spawning birds")]
         [Range(0f, 1f)]
-        public float birdWeight = 0.2f;
+        public float birdWeight = 0.15f;
+
+        [Tooltip("Weight for spawning deer (larger animals)")]
+        [Range(0f, 1f)]
+        public float deerWeight = 0.15f;
+
+        [Tooltip("Weight for spawning foxes")]
+        [Range(0f, 1f)]
+        public float foxWeight = 0.1f;
 
         [Header("Debug")]
         [Tooltip("Show spawn information in console")]
@@ -172,6 +186,10 @@ namespace VRDungeonCrawler.AI
                     return AnimalBuilder.CreateSquirrel();
                 case AnimalType.Bird:
                     return AnimalBuilder.CreateBird();
+                case AnimalType.Deer:
+                    return AnimalBuilder.CreateDeer();
+                case AnimalType.Fox:
+                    return AnimalBuilder.CreateFox();
                 default:
                     return AnimalBuilder.CreateRabbit();
             }
@@ -180,7 +198,7 @@ namespace VRDungeonCrawler.AI
         AnimalType SelectRandomAnimalType()
         {
             // Normalize weights
-            float totalWeight = rabbitWeight + squirrelWeight + birdWeight;
+            float totalWeight = rabbitWeight + squirrelWeight + birdWeight + deerWeight + foxWeight;
             if (totalWeight == 0)
             {
                 return AnimalType.Rabbit;
@@ -193,8 +211,12 @@ namespace VRDungeonCrawler.AI
                 return AnimalType.Rabbit;
             else if (roll < rabbitWeight + squirrelWeight)
                 return AnimalType.Squirrel;
-            else
+            else if (roll < rabbitWeight + squirrelWeight + birdWeight)
                 return AnimalType.Bird;
+            else if (roll < rabbitWeight + squirrelWeight + birdWeight + deerWeight)
+                return AnimalType.Deer;
+            else
+                return AnimalType.Fox;
         }
 
         GameObject SelectRandomPrefab()

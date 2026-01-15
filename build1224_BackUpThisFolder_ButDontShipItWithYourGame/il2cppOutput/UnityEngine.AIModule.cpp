@@ -275,7 +275,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMesh_SamplePosition_Injected_m57BB806
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 81677
+// Method Definition Index: 81690
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMeshAgent_SetDestination_mD5D960933827F1F14B29CF4A3B6F305C064EBF46 (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_target, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -311,7 +311,7 @@ IL_000f:
 		return L_2;
 	}
 }
-// Method Definition Index: 81678
+// Method Definition Index: 81691
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 NavMeshAgent_get_destination_m1BE2C5EEF53F7EB6317449726C99E0D0955C677E (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -349,7 +349,7 @@ IL_000f:
 		return L_2;
 	}
 }
-// Method Definition Index: 81679
+// Method Definition Index: 81692
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 NavMeshAgent_get_velocity_m028219D0E4678D727F00C53AE3DCBCF29AF04DA7 (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -387,7 +387,7 @@ IL_000f:
 		return L_2;
 	}
 }
-// Method Definition Index: 81680
+// Method Definition Index: 81693
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_velocity_m3C061136C7F338D33A5DE734B5C364326F6F4B31 (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -422,7 +422,7 @@ IL_000f:
 		return;
 	}
 }
-// Method Definition Index: 81681
+// Method Definition Index: 81694
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float NavMeshAgent_get_remainingDistance_m051C1B408E2740A95B5A5577C5EC7222311AA73A (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -458,7 +458,7 @@ IL_000f:
 		return L_2;
 	}
 }
-// Method Definition Index: 81682
+// Method Definition Index: 81695
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float NavMeshAgent_get_baseOffset_m4DACBF9B4216DFDC8F1F74DD80C1F2FEED6C5951 (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -494,7 +494,7 @@ IL_000f:
 		return L_2;
 	}
 }
-// Method Definition Index: 81683
+// Method Definition Index: 81696
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_baseOffset_m6BB6CF6115E987B0A6268D708148723119C9B122 (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -530,7 +530,7 @@ IL_000f:
 		return;
 	}
 }
-// Method Definition Index: 81684
+// Method Definition Index: 81697
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMeshAgent_get_hasPath_mE56295431F7774ADC8C39CFD87E13073DDDA178A (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -566,7 +566,7 @@ IL_000f:
 		return L_2;
 	}
 }
-// Method Definition Index: 81685
+// Method Definition Index: 81698
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_isStopped_mF374E697F39845233B84D8C4873DEABC3AA490DF (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -602,7 +602,7 @@ IL_000f:
 		return;
 	}
 }
-// Method Definition Index: 81686
+// Method Definition Index: 81699
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float NavMeshAgent_get_speed_m3E4720882ED0C65A4E19AADD53BB6CFFB5BB1345 (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -638,7 +638,7 @@ IL_000f:
 		return L_2;
 	}
 }
-// Method Definition Index: 81687
+// Method Definition Index: 81700
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_speed_m820E45289B3AE7DEE16F2F4BF163EAC361E64646 (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -674,7 +674,7 @@ IL_000f:
 		return;
 	}
 }
-// Method Definition Index: 81688
+// Method Definition Index: 81701
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_angularSpeed_mD2AE9EE187EF1C45F519576B5FC8581DC6B7D683 (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -710,7 +710,7 @@ IL_000f:
 		return;
 	}
 }
-// Method Definition Index: 81689
+// Method Definition Index: 81702
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_acceleration_mEAA92D7837B8D726891846DBBB6114DB13CD597E (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -746,7 +746,7 @@ IL_000f:
 		return;
 	}
 }
-// Method Definition Index: 81690
+// Method Definition Index: 81703
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent__ctor_m585725EF2A2A569E59283223CFF1BE6FF9A44EED (NavMeshAgent_t5D0CCC0B3B78242F286C9BD8EDD87C3CCBD0A66F* __this, const RuntimeMethod* method) 
 {
 	{
@@ -754,7 +754,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent__ctor_m585725EF2A2A569E5928
 		return;
 	}
 }
-// Method Definition Index: 81691
+// Method Definition Index: 81704
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMeshAgent_SetDestination_Injected_m3A84736B6088B850C60AD1112C2CDF74D70818E2 (intptr_t ___0__unity_self, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___1_target, const RuntimeMethod* method) 
 {
 	typedef bool (*NavMeshAgent_SetDestination_Injected_m3A84736B6088B850C60AD1112C2CDF74D70818E2_ftn) (intptr_t, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*);
@@ -764,7 +764,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMeshAgent_SetDestination_Injected_m3A
 	bool icallRetVal = _il2cpp_icall_func(___0__unity_self, ___1_target);
 	return icallRetVal;
 }
-// Method Definition Index: 81692
+// Method Definition Index: 81705
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_get_destination_Injected_m54DBFF972FE891B79A281C5AD727387FEF6145BA (intptr_t ___0__unity_self, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___1_ret, const RuntimeMethod* method) 
 {
 	typedef void (*NavMeshAgent_get_destination_Injected_m54DBFF972FE891B79A281C5AD727387FEF6145BA_ftn) (intptr_t, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*);
@@ -773,7 +773,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_get_destination_Injected_m5
 	_il2cpp_icall_func = (NavMeshAgent_get_destination_Injected_m54DBFF972FE891B79A281C5AD727387FEF6145BA_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AI.NavMeshAgent::get_destination_Injected(System.IntPtr,UnityEngine.Vector3&)");
 	_il2cpp_icall_func(___0__unity_self, ___1_ret);
 }
-// Method Definition Index: 81693
+// Method Definition Index: 81706
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_get_velocity_Injected_m7D52FA04A541CB8D8FE72D716E0153E3DCA5A77D (intptr_t ___0__unity_self, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___1_ret, const RuntimeMethod* method) 
 {
 	typedef void (*NavMeshAgent_get_velocity_Injected_m7D52FA04A541CB8D8FE72D716E0153E3DCA5A77D_ftn) (intptr_t, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*);
@@ -782,7 +782,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_get_velocity_Injected_m7D52
 	_il2cpp_icall_func = (NavMeshAgent_get_velocity_Injected_m7D52FA04A541CB8D8FE72D716E0153E3DCA5A77D_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AI.NavMeshAgent::get_velocity_Injected(System.IntPtr,UnityEngine.Vector3&)");
 	_il2cpp_icall_func(___0__unity_self, ___1_ret);
 }
-// Method Definition Index: 81694
+// Method Definition Index: 81707
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_velocity_Injected_m6256EBBDE48123B263B2898D28120A7AD0A62178 (intptr_t ___0__unity_self, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___1_value, const RuntimeMethod* method) 
 {
 	typedef void (*NavMeshAgent_set_velocity_Injected_m6256EBBDE48123B263B2898D28120A7AD0A62178_ftn) (intptr_t, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*);
@@ -791,7 +791,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_velocity_Injected_m6256
 	_il2cpp_icall_func = (NavMeshAgent_set_velocity_Injected_m6256EBBDE48123B263B2898D28120A7AD0A62178_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AI.NavMeshAgent::set_velocity_Injected(System.IntPtr,UnityEngine.Vector3&)");
 	_il2cpp_icall_func(___0__unity_self, ___1_value);
 }
-// Method Definition Index: 81695
+// Method Definition Index: 81708
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float NavMeshAgent_get_remainingDistance_Injected_mA615C1DB03FF8B6548739A3F948DE9E13FB0EB34 (intptr_t ___0__unity_self, const RuntimeMethod* method) 
 {
 	typedef float (*NavMeshAgent_get_remainingDistance_Injected_mA615C1DB03FF8B6548739A3F948DE9E13FB0EB34_ftn) (intptr_t);
@@ -801,7 +801,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float NavMeshAgent_get_remainingDistance_Inje
 	float icallRetVal = _il2cpp_icall_func(___0__unity_self);
 	return icallRetVal;
 }
-// Method Definition Index: 81696
+// Method Definition Index: 81709
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float NavMeshAgent_get_baseOffset_Injected_mB19028F56964B087441A27A305C80845E4EE635A (intptr_t ___0__unity_self, const RuntimeMethod* method) 
 {
 	typedef float (*NavMeshAgent_get_baseOffset_Injected_mB19028F56964B087441A27A305C80845E4EE635A_ftn) (intptr_t);
@@ -811,7 +811,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float NavMeshAgent_get_baseOffset_Injected_mB
 	float icallRetVal = _il2cpp_icall_func(___0__unity_self);
 	return icallRetVal;
 }
-// Method Definition Index: 81697
+// Method Definition Index: 81710
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_baseOffset_Injected_m6B74D4D276AE5318C7B84000673449401E074B20 (intptr_t ___0__unity_self, float ___1_value, const RuntimeMethod* method) 
 {
 	typedef void (*NavMeshAgent_set_baseOffset_Injected_m6B74D4D276AE5318C7B84000673449401E074B20_ftn) (intptr_t, float);
@@ -820,7 +820,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_baseOffset_Injected_m6B
 	_il2cpp_icall_func = (NavMeshAgent_set_baseOffset_Injected_m6B74D4D276AE5318C7B84000673449401E074B20_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AI.NavMeshAgent::set_baseOffset_Injected(System.IntPtr,System.Single)");
 	_il2cpp_icall_func(___0__unity_self, ___1_value);
 }
-// Method Definition Index: 81698
+// Method Definition Index: 81711
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMeshAgent_get_hasPath_Injected_m19ED1B4F1CF831FE5B900C04E330347F40EA1EBE (intptr_t ___0__unity_self, const RuntimeMethod* method) 
 {
 	typedef bool (*NavMeshAgent_get_hasPath_Injected_m19ED1B4F1CF831FE5B900C04E330347F40EA1EBE_ftn) (intptr_t);
@@ -830,7 +830,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMeshAgent_get_hasPath_Injected_m19ED1
 	bool icallRetVal = _il2cpp_icall_func(___0__unity_self);
 	return icallRetVal;
 }
-// Method Definition Index: 81699
+// Method Definition Index: 81712
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_isStopped_Injected_m5AD8B6B170801AFAFF96D39AF4AA3C1979090601 (intptr_t ___0__unity_self, bool ___1_value, const RuntimeMethod* method) 
 {
 	typedef void (*NavMeshAgent_set_isStopped_Injected_m5AD8B6B170801AFAFF96D39AF4AA3C1979090601_ftn) (intptr_t, bool);
@@ -839,7 +839,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_isStopped_Injected_m5AD
 	_il2cpp_icall_func = (NavMeshAgent_set_isStopped_Injected_m5AD8B6B170801AFAFF96D39AF4AA3C1979090601_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AI.NavMeshAgent::set_isStopped_Injected(System.IntPtr,System.Boolean)");
 	_il2cpp_icall_func(___0__unity_self, ___1_value);
 }
-// Method Definition Index: 81700
+// Method Definition Index: 81713
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float NavMeshAgent_get_speed_Injected_m41A13DD11ADE65FF986E2918318A4A6351FB7F1C (intptr_t ___0__unity_self, const RuntimeMethod* method) 
 {
 	typedef float (*NavMeshAgent_get_speed_Injected_m41A13DD11ADE65FF986E2918318A4A6351FB7F1C_ftn) (intptr_t);
@@ -849,7 +849,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float NavMeshAgent_get_speed_Injected_m41A13D
 	float icallRetVal = _il2cpp_icall_func(___0__unity_self);
 	return icallRetVal;
 }
-// Method Definition Index: 81701
+// Method Definition Index: 81714
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_speed_Injected_m661BF7EF84BCFD39724EA5682EDA888EB2A47BE7 (intptr_t ___0__unity_self, float ___1_value, const RuntimeMethod* method) 
 {
 	typedef void (*NavMeshAgent_set_speed_Injected_m661BF7EF84BCFD39724EA5682EDA888EB2A47BE7_ftn) (intptr_t, float);
@@ -858,7 +858,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_speed_Injected_m661BF7E
 	_il2cpp_icall_func = (NavMeshAgent_set_speed_Injected_m661BF7EF84BCFD39724EA5682EDA888EB2A47BE7_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AI.NavMeshAgent::set_speed_Injected(System.IntPtr,System.Single)");
 	_il2cpp_icall_func(___0__unity_self, ___1_value);
 }
-// Method Definition Index: 81702
+// Method Definition Index: 81715
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_angularSpeed_Injected_m2C1E506A81BFBBE55C79468C184C775845DAEAAB (intptr_t ___0__unity_self, float ___1_value, const RuntimeMethod* method) 
 {
 	typedef void (*NavMeshAgent_set_angularSpeed_Injected_m2C1E506A81BFBBE55C79468C184C775845DAEAAB_ftn) (intptr_t, float);
@@ -867,7 +867,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_angularSpeed_Injected_m
 	_il2cpp_icall_func = (NavMeshAgent_set_angularSpeed_Injected_m2C1E506A81BFBBE55C79468C184C775845DAEAAB_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AI.NavMeshAgent::set_angularSpeed_Injected(System.IntPtr,System.Single)");
 	_il2cpp_icall_func(___0__unity_self, ___1_value);
 }
-// Method Definition Index: 81703
+// Method Definition Index: 81716
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_acceleration_Injected_m996FA9EFBEC314F9D16F6D601BE37B8A32758BBD (intptr_t ___0__unity_self, float ___1_value, const RuntimeMethod* method) 
 {
 	typedef void (*NavMeshAgent_set_acceleration_Injected_m996FA9EFBEC314F9D16F6D601BE37B8A32758BBD_ftn) (intptr_t, float);
@@ -884,7 +884,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMeshAgent_set_acceleration_Injected_m
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 81704
+// Method Definition Index: 81717
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 NavMeshHit_get_position_m09E8FF6DEF5BFA3F30B3C4BCA4642442FF1BCBF1 (NavMeshHit_t6323FC1F2D00E24FBFFC3E27C2F349A3BAD16F8B* __this, const RuntimeMethod* method) 
 {
 	{
@@ -909,7 +909,7 @@ IL2CPP_EXTERN_C  Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 NavMeshHit_ge
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 81705
+// Method Definition Index: 81718
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMesh_ClearPreUpdateListeners_m42362F7A4E66F8235828DC911C87AAF1C0397666 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -924,7 +924,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMesh_ClearPreUpdateListeners_m42362F7
 		return;
 	}
 }
-// Method Definition Index: 81706
+// Method Definition Index: 81719
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NavMesh_Internal_CallOnNavMeshPreUpdate_m2A62DB32F5E1435F527AD8A59A882B9F2A193177 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -954,7 +954,7 @@ IL_0018:
 		return;
 	}
 }
-// Method Definition Index: 81707
+// Method Definition Index: 81720
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMesh_SamplePosition_mEDAE8240217EED82B4519D4435E670A1655B2109 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_sourcePosition, NavMeshHit_t6323FC1F2D00E24FBFFC3E27C2F349A3BAD16F8B* ___1_hit, float ___2_maxDistance, int32_t ___3_areaMask, const RuntimeMethod* method) 
 {
 	{
@@ -966,7 +966,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMesh_SamplePosition_mEDAE8240217EED82
 		return L_3;
 	}
 }
-// Method Definition Index: 81708
+// Method Definition Index: 81721
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NavMesh_SamplePosition_Injected_m57BB80634365C0545A79CC653FCFECAA1879C6F0 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___0_sourcePosition, NavMeshHit_t6323FC1F2D00E24FBFFC3E27C2F349A3BAD16F8B* ___1_hit, float ___2_maxDistance, int32_t ___3_areaMask, const RuntimeMethod* method) 
 {
 	typedef bool (*NavMesh_SamplePosition_Injected_m57BB80634365C0545A79CC653FCFECAA1879C6F0_ftn) (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*, NavMeshHit_t6323FC1F2D00E24FBFFC3E27C2F349A3BAD16F8B*, float, int32_t);
@@ -1012,7 +1012,7 @@ IL2CPP_EXTERN_C  void DelegatePInvokeWrapper_OnNavMeshPreUpdate_t332BD19DBCB087D
 	il2cppPInvokeFunc();
 
 }
-// Method Definition Index: 81709
+// Method Definition Index: 81722
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OnNavMeshPreUpdate__ctor_m7142A3AA991BE50B637A16D946AB7604C64EF9BA (OnNavMeshPreUpdate_t332BD19DBCB087D7DE3F4F48C1E8F6A4EAB691C7* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) 
 {
 	__this->___method_ptr = (intptr_t)il2cpp_codegen_get_method_pointer((RuntimeMethod*)___1_method);
@@ -1041,7 +1041,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OnNavMeshPreUpdate__ctor_m7142A3AA991BE5
 	}
 	__this->___extra_arg = (intptr_t)&OnNavMeshPreUpdate_Invoke_mFB224B9BBF9C78B7F39AA91A047F175C69897914_Multicast;
 }
-// Method Definition Index: 81710
+// Method Definition Index: 81723
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OnNavMeshPreUpdate_Invoke_mFB224B9BBF9C78B7F39AA91A047F175C69897914 (OnNavMeshPreUpdate_t332BD19DBCB087D7DE3F4F48C1E8F6A4EAB691C7* __this, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, const RuntimeMethod*);
@@ -1050,7 +1050,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OnNavMeshPreUpdate_Invoke_mFB224B9BBF9C7
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
-// Method Definition Index: 81704
+// Method Definition Index: 81717
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 NavMeshHit_get_position_m09E8FF6DEF5BFA3F30B3C4BCA4642442FF1BCBF1_inline (NavMeshHit_t6323FC1F2D00E24FBFFC3E27C2F349A3BAD16F8B* __this, const RuntimeMethod* method) 
 {
 	{
@@ -1058,7 +1058,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_0;
 	}
 }
-// Method Definition Index: 81710
+// Method Definition Index: 81723
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void OnNavMeshPreUpdate_Invoke_mFB224B9BBF9C78B7F39AA91A047F175C69897914_inline (OnNavMeshPreUpdate_t332BD19DBCB087D7DE3F4F48C1E8F6A4EAB691C7* __this, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, const RuntimeMethod*);

@@ -3,14 +3,16 @@ using UnityEngine;
 namespace VRDungeonCrawler.AI
 {
     /// <summary>
-    /// Procedurally builds realistic-looking animals with proper colors
-    /// Creates rabbits, squirrels, and birds with realistic body parts and textures
+    /// Procedurally builds Polytopia-style animals with higher polygon counts
+    /// Creates rabbits, squirrels, birds, deer, and foxes using low-poly but refined meshes
+    /// Animals use icospheres and faceted primitives for a sophisticated low-poly look
     /// Each animal has distinct colors for body, face, ears, nose, etc.
     /// </summary>
     public static class AnimalBuilder
     {
         /// <summary>
-        /// Creates a rabbit with realistic colors (brown/gray fur, pink nose, white tail)
+        /// Creates a rabbit with Polytopia-style angular blocky shapes (brown/gray fur, pink nose, white tail)
+        /// Uses cubes and boxes like true Polytopia style
         /// </summary>
         public static GameObject CreateRabbit(Transform parent = null)
         {
@@ -18,8 +20,8 @@ namespace VRDungeonCrawler.AI
             if (parent != null)
                 rabbit.transform.SetParent(parent);
 
-            // === BODY (realistic brown/tan fur) ===
-            GameObject body = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            // === BODY (realistic brown/tan fur) - Angular cube ===
+            GameObject body = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
             body.name = "Body";
             body.transform.SetParent(rabbit.transform);
             body.transform.localPosition = Vector3.zero;
@@ -27,7 +29,7 @@ namespace VRDungeonCrawler.AI
             ApplyMaterial(body, new Color(0.7f, 0.55f, 0.4f)); // Warm tan-brown fur
 
             // === UNDERBELLY (lighter cream color) ===
-            GameObject belly = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject belly = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
             belly.name = "Belly";
             belly.transform.SetParent(body.transform);
             belly.transform.localPosition = new Vector3(0f, -0.7f, 0.3f);
@@ -35,7 +37,7 @@ namespace VRDungeonCrawler.AI
             ApplyMaterial(belly, new Color(0.95f, 0.9f, 0.85f)); // Cream belly
 
             // === HEAD ===
-            GameObject head = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject head = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
             head.name = "Head";
             head.transform.SetParent(rabbit.transform);
             head.transform.localPosition = new Vector3(0f, 0.1f, 0.25f);
@@ -43,7 +45,7 @@ namespace VRDungeonCrawler.AI
             ApplyMaterial(head, new Color(0.72f, 0.57f, 0.42f)); // Slightly lighter brown
 
             // === FACE PATCH (lighter around face) ===
-            GameObject facePatch = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject facePatch = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
             facePatch.name = "FacePatch";
             facePatch.transform.SetParent(head.transform);
             facePatch.transform.localPosition = new Vector3(0f, -0.2f, 0.5f);
@@ -51,7 +53,7 @@ namespace VRDungeonCrawler.AI
             ApplyMaterial(facePatch, new Color(0.9f, 0.85f, 0.75f)); // Light tan face
 
             // === NOSE (pink) ===
-            GameObject nose = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject nose = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
             nose.name = "Nose";
             nose.transform.SetParent(head.transform);
             nose.transform.localPosition = new Vector3(0f, -0.3f, 0.7f);
@@ -59,7 +61,7 @@ namespace VRDungeonCrawler.AI
             ApplyMaterial(nose, new Color(1f, 0.75f, 0.8f)); // Pink nose
 
             // === LEFT EAR (long rabbit ears) ===
-            GameObject leftEar = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+            GameObject leftEar = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
             leftEar.name = "LeftEar";
             leftEar.transform.SetParent(head.transform);
             leftEar.transform.localPosition = new Vector3(-0.4f, 0.8f, 0f);
@@ -68,7 +70,7 @@ namespace VRDungeonCrawler.AI
             ApplyMaterial(leftEar, new Color(0.6f, 0.5f, 0.4f)); // Same as body
 
             // === RIGHT EAR ===
-            GameObject rightEar = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+            GameObject rightEar = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
             rightEar.name = "RightEar";
             rightEar.transform.SetParent(head.transform);
             rightEar.transform.localPosition = new Vector3(0.4f, 0.8f, 0f);
@@ -77,14 +79,14 @@ namespace VRDungeonCrawler.AI
             ApplyMaterial(rightEar, new Color(0.6f, 0.5f, 0.4f));
 
             // === EYES (black) ===
-            GameObject leftEye = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject leftEye = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
             leftEye.name = "LeftEye";
             leftEye.transform.SetParent(head.transform);
             leftEye.transform.localPosition = new Vector3(-0.35f, 0.15f, 0.6f);
             leftEye.transform.localScale = Vector3.one * 0.15f;
             ApplyMaterial(leftEye, Color.black);
 
-            GameObject rightEye = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject rightEye = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
             rightEye.name = "RightEye";
             rightEye.transform.SetParent(head.transform);
             rightEye.transform.localPosition = new Vector3(0.35f, 0.15f, 0.6f);
@@ -92,7 +94,7 @@ namespace VRDungeonCrawler.AI
             ApplyMaterial(rightEye, Color.black);
 
             // === TAIL (white fluffy) ===
-            GameObject tail = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject tail = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
             tail.name = "Tail";
             tail.transform.SetParent(rabbit.transform);
             tail.transform.localPosition = new Vector3(0f, 0.05f, -0.3f);
@@ -110,7 +112,7 @@ namespace VRDungeonCrawler.AI
 
         static void CreateRabbitLeg(Transform parent, string name, Vector3 position, bool isBackLeg = false)
         {
-            GameObject leg = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+            GameObject leg = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
             leg.name = name;
             leg.transform.SetParent(parent);
             leg.transform.localPosition = position;
@@ -120,7 +122,7 @@ namespace VRDungeonCrawler.AI
             // Foot (wider at bottom for back legs)
             if (isBackLeg)
             {
-                GameObject foot = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                GameObject foot = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
                 foot.name = "Foot";
                 foot.transform.SetParent(leg.transform);
                 foot.transform.localPosition = new Vector3(0f, -0.7f, 0.3f);
@@ -389,6 +391,322 @@ namespace VRDungeonCrawler.AI
             leg.transform.localPosition = position;
             leg.transform.localScale = new Vector3(0.02f, 0.08f, 0.02f);
             ApplyMaterial(leg, new Color(0.8f, 0.6f, 0.3f)); // Orange-brown legs
+        }
+
+        /// <summary>
+        /// Creates a deer with Polytopia-style angular blocky shapes (larger, majestic animal)
+        /// Uses cubes and boxes for true Polytopia geometric style
+        /// </summary>
+        public static GameObject CreateDeer(Transform parent = null)
+        {
+            GameObject deer = new GameObject("Deer");
+            if (parent != null)
+                deer.transform.SetParent(parent);
+
+            // === BODY (larger, elongated) ===
+            GameObject body = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            body.name = "Body";
+            body.transform.SetParent(deer.transform);
+            body.transform.localPosition = Vector3.zero;
+            body.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+            body.transform.localScale = new Vector3(0.4f, 0.5f, 0.4f);
+            ApplyMaterial(body, new Color(0.6f, 0.45f, 0.3f)); // Rich brown
+
+            // === CHEST (lighter) ===
+            GameObject chest = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            chest.name = "Chest";
+            chest.transform.SetParent(body.transform);
+            chest.transform.localPosition = new Vector3(0f, -0.3f, 0.4f);
+            chest.transform.localScale = new Vector3(0.85f, 0.6f, 0.7f);
+            ApplyMaterial(chest, new Color(0.9f, 0.85f, 0.75f)); // Cream chest
+
+            // === NECK ===
+            GameObject neck = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            neck.name = "Neck";
+            neck.transform.SetParent(deer.transform);
+            neck.transform.localPosition = new Vector3(0f, 0.3f, 0.4f);
+            neck.transform.localRotation = Quaternion.Euler(60f, 0f, 0f);
+            neck.transform.localScale = new Vector3(0.18f, 0.25f, 0.18f);
+            ApplyMaterial(neck, new Color(0.62f, 0.47f, 0.32f));
+
+            // === HEAD (refined icosphere) ===
+            GameObject head = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            head.name = "Head";
+            head.transform.SetParent(deer.transform);
+            head.transform.localPosition = new Vector3(0f, 0.5f, 0.6f);
+            head.transform.localScale = new Vector3(0.25f, 0.22f, 0.28f);
+            ApplyMaterial(head, new Color(0.58f, 0.43f, 0.28f));
+
+            // === SNOUT ===
+            GameObject snout = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            snout.name = "Snout";
+            snout.transform.SetParent(head.transform);
+            snout.transform.localPosition = new Vector3(0f, -0.3f, 0.8f);
+            snout.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            snout.transform.localScale = new Vector3(0.6f, 0.5f, 0.6f);
+            ApplyMaterial(snout, new Color(0.65f, 0.5f, 0.35f));
+
+            // === NOSE ===
+            GameObject nose = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            nose.name = "Nose";
+            nose.transform.SetParent(head.transform);
+            nose.transform.localPosition = new Vector3(0f, -0.4f, 1.2f);
+            nose.transform.localScale = new Vector3(0.25f, 0.2f, 0.25f);
+            ApplyMaterial(nose, new Color(0.2f, 0.15f, 0.12f)); // Dark nose
+
+            // === EARS (long, pointed) ===
+            GameObject leftEar = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            leftEar.name = "LeftEar";
+            leftEar.transform.SetParent(head.transform);
+            leftEar.transform.localPosition = new Vector3(-0.5f, 0.7f, 0.2f);
+            leftEar.transform.localRotation = Quaternion.Euler(-20f, -30f, -25f);
+            leftEar.transform.localScale = new Vector3(0.15f, 0.4f, 0.12f);
+            ApplyMaterial(leftEar, new Color(0.55f, 0.4f, 0.25f));
+
+            GameObject rightEar = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            rightEar.name = "RightEar";
+            rightEar.transform.SetParent(head.transform);
+            rightEar.transform.localPosition = new Vector3(0.5f, 0.7f, 0.2f);
+            rightEar.transform.localRotation = Quaternion.Euler(-20f, 30f, 25f);
+            rightEar.transform.localScale = new Vector3(0.15f, 0.4f, 0.12f);
+            ApplyMaterial(rightEar, new Color(0.55f, 0.4f, 0.25f));
+
+            // === EYES ===
+            GameObject leftEye = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            leftEye.name = "LeftEye";
+            leftEye.transform.SetParent(head.transform);
+            leftEye.transform.localPosition = new Vector3(-0.35f, 0.2f, 0.75f);
+            leftEye.transform.localScale = Vector3.one * 0.15f;
+            ApplyMaterial(leftEye, new Color(0.1f, 0.08f, 0.05f)); // Dark brown eyes
+
+            GameObject rightEye = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            rightEye.name = "RightEye";
+            rightEye.transform.SetParent(head.transform);
+            rightEye.transform.localPosition = new Vector3(0.35f, 0.2f, 0.75f);
+            rightEye.transform.localScale = Vector3.one * 0.15f;
+            ApplyMaterial(rightEye, new Color(0.1f, 0.08f, 0.05f));
+
+            // === ANTLERS (majestic) ===
+            CreateDeerAntler(head.transform, "LeftAntler", new Vector3(-0.3f, 0.8f, 0.1f), -1);
+            CreateDeerAntler(head.transform, "RightAntler", new Vector3(0.3f, 0.8f, 0.1f), 1);
+
+            // === TAIL (short) ===
+            GameObject tail = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            tail.name = "Tail";
+            tail.transform.SetParent(deer.transform);
+            tail.transform.localPosition = new Vector3(0f, 0.08f, -0.45f);
+            tail.transform.localRotation = Quaternion.Euler(-45f, 0f, 0f);
+            tail.transform.localScale = new Vector3(0.08f, 0.12f, 0.08f);
+            ApplyMaterial(tail, new Color(0.58f, 0.43f, 0.28f));
+
+            // === LEGS (long, elegant) ===
+            CreateDeerLeg(deer.transform, "FrontLeftLeg", new Vector3(-0.15f, -0.25f, 0.2f));
+            CreateDeerLeg(deer.transform, "FrontRightLeg", new Vector3(0.15f, -0.25f, 0.2f));
+            CreateDeerLeg(deer.transform, "BackLeftLeg", new Vector3(-0.15f, -0.25f, -0.15f));
+            CreateDeerLeg(deer.transform, "BackRightLeg", new Vector3(0.15f, -0.25f, -0.15f));
+
+            return deer;
+        }
+
+        static void CreateDeerAntler(Transform parent, string name, Vector3 position, int side)
+        {
+            GameObject antlerBase = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            antlerBase.name = name;
+            antlerBase.transform.SetParent(parent);
+            antlerBase.transform.localPosition = position;
+            antlerBase.transform.localRotation = Quaternion.Euler(-20f, side * 15f, side * 20f);
+            antlerBase.transform.localScale = new Vector3(0.06f, 0.25f, 0.06f);
+            ApplyMaterial(antlerBase, new Color(0.85f, 0.8f, 0.7f)); // Bone white
+
+            // Antler branches
+            GameObject branch1 = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            branch1.name = "Branch1";
+            branch1.transform.SetParent(antlerBase.transform);
+            branch1.transform.localPosition = new Vector3(side * 0.5f, 0.5f, 0.2f);
+            branch1.transform.localRotation = Quaternion.Euler(0f, side * 30f, side * 40f);
+            branch1.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            ApplyMaterial(branch1, new Color(0.85f, 0.8f, 0.7f));
+
+            GameObject branch2 = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            branch2.name = "Branch2";
+            branch2.transform.SetParent(antlerBase.transform);
+            branch2.transform.localPosition = new Vector3(side * -0.3f, 0.7f, -0.1f);
+            branch2.transform.localRotation = Quaternion.Euler(0f, side * -20f, side * -30f);
+            branch2.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            ApplyMaterial(branch2, new Color(0.85f, 0.8f, 0.7f));
+        }
+
+        static void CreateDeerLeg(Transform parent, string name, Vector3 position)
+        {
+            GameObject leg = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            leg.name = name;
+            leg.transform.SetParent(parent);
+            leg.transform.localPosition = position;
+            leg.transform.localScale = new Vector3(0.08f, 0.3f, 0.08f);
+            ApplyMaterial(leg, new Color(0.55f, 0.42f, 0.28f));
+
+            // Hoof
+            GameObject hoof = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            hoof.name = "Hoof";
+            hoof.transform.SetParent(leg.transform);
+            hoof.transform.localPosition = new Vector3(0f, -0.85f, 0f);
+            hoof.transform.localScale = new Vector3(0.9f, 0.3f, 0.9f);
+            ApplyMaterial(hoof, new Color(0.15f, 0.12f, 0.08f)); // Dark hooves
+        }
+
+        /// <summary>
+        /// Creates a fox with Polytopia-style angular blocky shapes (medium-sized, sleek predator)
+        /// Uses cubes and boxes for true Polytopia geometric style
+        /// </summary>
+        public static GameObject CreateFox(Transform parent = null)
+        {
+            GameObject fox = new GameObject("Fox");
+            if (parent != null)
+                fox.transform.SetParent(parent);
+
+            // === BODY (sleek, elongated) ===
+            GameObject body = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            body.name = "Body";
+            body.transform.SetParent(fox.transform);
+            body.transform.localPosition = Vector3.zero;
+            body.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+            body.transform.localScale = new Vector3(0.25f, 0.35f, 0.25f);
+            ApplyMaterial(body, new Color(0.85f, 0.45f, 0.15f)); // Orange-red fox fur
+
+            // === CHEST (white/cream) ===
+            GameObject chest = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            chest.name = "Chest";
+            chest.transform.SetParent(body.transform);
+            chest.transform.localPosition = new Vector3(0f, -0.4f, 0.5f);
+            chest.transform.localScale = new Vector3(0.75f, 0.5f, 0.6f);
+            ApplyMaterial(chest, new Color(0.98f, 0.95f, 0.9f)); // White chest
+
+            // === HEAD (angular, pointed) ===
+            GameObject head = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            head.name = "Head";
+            head.transform.SetParent(fox.transform);
+            head.transform.localPosition = new Vector3(0f, 0.08f, 0.32f);
+            head.transform.localScale = new Vector3(0.22f, 0.18f, 0.24f);
+            ApplyMaterial(head, new Color(0.83f, 0.43f, 0.13f));
+
+            // === SNOUT (long, pointed) ===
+            GameObject snout = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            snout.name = "Snout";
+            snout.transform.SetParent(head.transform);
+            snout.transform.localPosition = new Vector3(0f, -0.2f, 0.9f);
+            snout.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            snout.transform.localScale = new Vector3(0.55f, 0.6f, 0.55f);
+            ApplyMaterial(snout, new Color(0.95f, 0.9f, 0.85f)); // Light snout
+
+            // === NOSE (black) ===
+            GameObject nose = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            nose.name = "Nose";
+            nose.transform.SetParent(head.transform);
+            nose.transform.localPosition = new Vector3(0f, -0.3f, 1.3f);
+            nose.transform.localScale = new Vector3(0.22f, 0.18f, 0.22f);
+            ApplyMaterial(nose, new Color(0.1f, 0.08f, 0.08f)); // Black nose
+
+            // === EARS (triangular, pointed) ===
+            GameObject leftEar = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox()); // Triangle
+            leftEar.name = "LeftEar";
+            leftEar.transform.SetParent(head.transform);
+            leftEar.transform.localPosition = new Vector3(-0.45f, 0.7f, 0.2f);
+            leftEar.transform.localRotation = Quaternion.Euler(-10f, -20f, -20f);
+            leftEar.transform.localScale = new Vector3(0.3f, 0.35f, 0.25f);
+            ApplyMaterial(leftEar, new Color(0.8f, 0.4f, 0.1f));
+
+            // Ear tip (black)
+            GameObject leftEarTip = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            leftEarTip.name = "LeftEarTip";
+            leftEarTip.transform.SetParent(leftEar.transform);
+            leftEarTip.transform.localPosition = new Vector3(0f, 0.8f, 0f);
+            leftEarTip.transform.localScale = Vector3.one * 0.4f;
+            ApplyMaterial(leftEarTip, new Color(0.15f, 0.1f, 0.08f));
+
+            GameObject rightEar = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            rightEar.name = "RightEar";
+            rightEar.transform.SetParent(head.transform);
+            rightEar.transform.localPosition = new Vector3(0.45f, 0.7f, 0.2f);
+            rightEar.transform.localRotation = Quaternion.Euler(-10f, 20f, 20f);
+            rightEar.transform.localScale = new Vector3(0.3f, 0.35f, 0.25f);
+            ApplyMaterial(rightEar, new Color(0.8f, 0.4f, 0.1f));
+
+            GameObject rightEarTip = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            rightEarTip.name = "RightEarTip";
+            rightEarTip.transform.SetParent(rightEar.transform);
+            rightEarTip.transform.localPosition = new Vector3(0f, 0.8f, 0f);
+            rightEarTip.transform.localScale = Vector3.one * 0.4f;
+            ApplyMaterial(rightEarTip, new Color(0.15f, 0.1f, 0.08f));
+
+            // === EYES (amber/yellow) ===
+            GameObject leftEye = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            leftEye.name = "LeftEye";
+            leftEye.transform.SetParent(head.transform);
+            leftEye.transform.localPosition = new Vector3(-0.32f, 0.15f, 0.7f);
+            leftEye.transform.localScale = Vector3.one * 0.16f;
+            ApplyMaterial(leftEye, new Color(0.9f, 0.75f, 0.2f)); // Amber eyes
+
+            GameObject rightEye = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            rightEye.name = "RightEye";
+            rightEye.transform.SetParent(head.transform);
+            rightEye.transform.localPosition = new Vector3(0.32f, 0.15f, 0.7f);
+            rightEye.transform.localScale = Vector3.one * 0.16f;
+            ApplyMaterial(rightEye, new Color(0.9f, 0.75f, 0.2f));
+
+            // === BUSHY TAIL (large, orange with white tip) ===
+            GameObject tail = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            tail.name = "Tail";
+            tail.transform.SetParent(fox.transform);
+            tail.transform.localPosition = new Vector3(0f, 0.12f, -0.35f);
+            tail.transform.localRotation = Quaternion.Euler(-40f, 0f, 0f);
+            tail.transform.localScale = new Vector3(0.18f, 0.35f, 0.18f);
+            ApplyMaterial(tail, new Color(0.82f, 0.42f, 0.12f));
+
+            // Tail tip (white)
+            GameObject tailTip = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            tailTip.name = "TailTip";
+            tailTip.transform.SetParent(tail.transform);
+            tailTip.transform.localPosition = new Vector3(0f, -0.85f, 0f);
+            tailTip.transform.localScale = new Vector3(1.1f, 0.6f, 1.1f);
+            ApplyMaterial(tailTip, new Color(0.98f, 0.95f, 0.9f)); // White tip
+
+            // === LEGS (slender, agile) ===
+            CreateFoxLeg(fox.transform, "FrontLeftLeg", new Vector3(-0.12f, -0.18f, 0.12f));
+            CreateFoxLeg(fox.transform, "FrontRightLeg", new Vector3(0.12f, -0.18f, 0.12f));
+            CreateFoxLeg(fox.transform, "BackLeftLeg", new Vector3(-0.12f, -0.18f, -0.1f));
+            CreateFoxLeg(fox.transform, "BackRightLeg", new Vector3(0.12f, -0.18f, -0.1f));
+
+            return fox;
+        }
+
+        static void CreateFoxLeg(Transform parent, string name, Vector3 position)
+        {
+            GameObject leg = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateBox());
+            leg.name = name;
+            leg.transform.SetParent(parent);
+            leg.transform.localPosition = position;
+            leg.transform.localScale = new Vector3(0.06f, 0.15f, 0.06f);
+            ApplyMaterial(leg, new Color(0.75f, 0.38f, 0.1f));
+
+            // Paw
+            GameObject paw = CreateWithMesh(PolytopiaStyleMeshGenerator.CreateCube());
+            paw.name = "Paw";
+            paw.transform.SetParent(leg.transform);
+            paw.transform.localPosition = new Vector3(0f, -0.8f, 0f);
+            paw.transform.localScale = Vector3.one * 1.3f;
+            ApplyMaterial(paw, new Color(0.2f, 0.15f, 0.12f)); // Dark paws
+        }
+
+        /// <summary>
+        /// Helper method to create a GameObject with a custom mesh
+        /// </summary>
+        static GameObject CreateWithMesh(Mesh mesh)
+        {
+            GameObject obj = new GameObject();
+            MeshFilter filter = obj.AddComponent<MeshFilter>();
+            filter.mesh = mesh;
+            obj.AddComponent<MeshRenderer>();
+            return obj;
         }
 
         static void ApplyMaterial(GameObject obj, Color color)

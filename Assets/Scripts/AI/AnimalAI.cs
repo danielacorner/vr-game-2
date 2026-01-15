@@ -21,7 +21,9 @@ namespace VRDungeonCrawler.AI
     {
         Rabbit,
         Squirrel,
-        Bird
+        Bird,
+        Deer,
+        Fox
     }
 
     [RequireComponent(typeof(NavMeshAgent))]
@@ -87,6 +89,19 @@ namespace VRDungeonCrawler.AI
         [Tooltip("Time between bird swoops")]
         public float birdSwoopInterval = 8f;
 
+        [Tooltip("Deer graceful movement (slower, calm)")]
+        public bool deerGracefulMovement = true;
+
+        [Tooltip("Deer alert duration (stops and looks around)")]
+        public float deerAlertDuration = 2f;
+
+        [Tooltip("Fox stalking behavior (slower movement, crouches)")]
+        public bool foxCanStalk = true;
+
+        [Tooltip("Fox stalk speed multiplier")]
+        [Range(0.3f, 1f)]
+        public float foxStalkSpeedMultiplier = 0.6f;
+
         [Header("Damage Reaction")]
         [Tooltip("Flash color when hit (Zelda-style)")]
         public Color hitFlashColor = Color.white;
@@ -124,6 +139,14 @@ namespace VRDungeonCrawler.AI
         private float birdSwoopTimer;
         private bool isBirdSwooping = false;
         private float birdSwoopStartHeight;
+
+        // Deer-specific
+        private float deerAlertTimer;
+        private bool isDeerAlert = false;
+
+        // Fox-specific
+        private bool isFoxStalking = false;
+        private float foxStalkTimer;
 
         // Damage reaction
         private bool isFlashing = false;
@@ -239,6 +262,18 @@ namespace VRDungeonCrawler.AI
                     agent.speed = walkSpeed;
                     agent.baseOffset = flyingHeight; // Fly above ground
                     break;
+
+                case AnimalType.Deer:
+                    walkSpeed = 1.8f; // Graceful, measured pace
+                    fleeSpeed = 6.5f; // Fast but elegant when fleeing
+                    agent.speed = walkSpeed;
+                    break;
+
+                case AnimalType.Fox:
+                    walkSpeed = 2.2f; // Quick, agile
+                    fleeSpeed = 5.5f; // Fast and nimble
+                    agent.speed = walkSpeed;
+                    break;
             }
         }
 
@@ -326,6 +361,14 @@ namespace VRDungeonCrawler.AI
 
                 case AnimalType.Bird:
                     UpdateBirdFlying();
+                    break;
+
+                case AnimalType.Deer:
+                    UpdateDeerGracefulMovement();
+                    break;
+
+                case AnimalType.Fox:
+                    UpdateFoxStalkingBehavior();
                     break;
             }
         }
@@ -485,6 +528,95 @@ namespace VRDungeonCrawler.AI
             {
                 float bobAmount = Mathf.Sin(Time.time * 2f) * 0.15f;
                 agent.baseOffset = flyingHeight + bobAmount;
+            }
+        }
+
+        void UpdateDeerGracefulMovement()
+        {
+            // Deer have graceful, measured movement with occasional alert stops
+            if (currentState == AnimalState.Wander && deerGracefulMovement)
+            {
+                deerAlertTimer += Time.deltaTime;
+
+                // Randomly become alert (stop and look around)
+                if (!isDeerAlert && deerAlertTimer >= Random.Range(8f, 15f))
+                {
+                    isDeerAlert = true;
+                    deerAlertTimer = 0f;
+                    agent.isStopped = true;
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {gameObject.name} is alert, looking around");
+                }
+                else if (isDeerAlert && deerAlertTimer >= deerAlertDuration)
+                {
+                    // Resume movement
+                    isDeerAlert = false;
+                    deerAlertTimer = 0f;
+                    agent.isStopped = false;
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {gameObject.name} resuming movement");
+                }
+            }
+            else
+            {
+                isDeerAlert = false;
+            }
+
+            // Smooth, graceful head turning (visual effect)
+            if (isDeerAlert)
+            {
+                // Look around slowly (rotate head GameObject if exists)
+                float lookRotation = Mathf.Sin(Time.time * 1.5f) * 30f;
+                Transform head = transform.Find("Head");
+                if (head != null)
+                {
+                    head.localRotation = Quaternion.Euler(0f, lookRotation, 0f);
+                }
+            }
+        }
+
+        void UpdateFoxStalkingBehavior()
+        {
+            // Fox can stalk (slow movement, crouched) when wandering
+            if (currentState == AnimalState.Wander && foxCanStalk)
+            {
+                foxStalkTimer += Time.deltaTime;
+
+                // Randomly enter stalk mode
+                if (!isFoxStalking && foxStalkTimer >= Random.Range(6f, 12f))
+                {
+                    isFoxStalking = true;
+                    foxStalkTimer = 0f;
+                    agent.speed = walkSpeed * foxStalkSpeedMultiplier;
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {gameObject.name} is stalking (slow, crouched)");
+                }
+                else if (isFoxStalking && foxStalkTimer >= Random.Range(3f, 6f))
+                {
+                    // Resume normal movement
+                    isFoxStalking = false;
+                    foxStalkTimer = 0f;
+                    agent.speed = walkSpeed;
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {gameObject.name} resuming normal fox movement");
+                }
+            }
+            else
+            {
+                isFoxStalking = false;
+            }
+
+            // Lower body when stalking (visual effect)
+            if (isFoxStalking)
+            {
+                // Lower the entire fox slightly (crouch effect)
+                Vector3 targetPos = transform.position;
+                targetPos.y -= 0.05f * Mathf.Sin(Time.time * 3f); // Subtle crouch bob
+                transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * 2f);
             }
         }
 
