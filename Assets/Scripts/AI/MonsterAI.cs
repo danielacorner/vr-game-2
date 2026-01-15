@@ -13,19 +13,19 @@ namespace VRDungeonCrawler.AI
     {
         [Header("Casual Patrol Settings")]
         [Tooltip("Slow walk speed")]
-        public float walkSpeed = 1.2f;
+        public float walkSpeed = 0.6f;
 
         [Tooltip("Minimum time walking before stopping")]
-        public float walkTimeMin = 2f;
+        public float walkTimeMin = 3f;
 
         [Tooltip("Maximum time walking before stopping")]
-        public float walkTimeMax = 5f;
+        public float walkTimeMax = 6f;
 
         [Tooltip("Minimum pause duration")]
-        public float pauseTimeMin = 1f;
+        public float pauseTimeMin = 2f;
 
         [Tooltip("Maximum pause duration")]
-        public float pauseTimeMax = 3f;
+        public float pauseTimeMax = 4f;
 
         [Header("Movement Bounds")]
         [Tooltip("Maximum distance from spawn point")]

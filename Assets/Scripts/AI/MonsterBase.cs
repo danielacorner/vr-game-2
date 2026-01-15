@@ -32,7 +32,7 @@ namespace VRDungeonCrawler.AI
         public Color hitFlashColor = new Color(1f, 0f, 0f, 1f); // Bright red
 
         [Tooltip("Duration of flash effect")]
-        public float flashDuration = 0.3f; // Longer flash for visibility
+        public float flashDuration = 0.1f; // Quick flash for "ouch" effect
 
         [Tooltip("Number of flash cycles when hit")]
         public int flashCycles = 2;
@@ -55,6 +55,7 @@ namespace VRDungeonCrawler.AI
         private int currentFlashCycle;
         private List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
         private Dictionary<MeshRenderer, Material[]> originalMaterials = new Dictionary<MeshRenderer, Material[]>();
+        private Dictionary<Material, Color> originalColors = new Dictionary<Material, Color>();
         private Rigidbody rb;
         private MonsterSpawner spawner;
 
@@ -104,6 +105,14 @@ namespace VRDungeonCrawler.AI
             foreach (MeshRenderer renderer in meshRenderers)
             {
                 originalMaterials[renderer] = renderer.materials;
+                // Store original colors for each material
+                foreach (Material mat in renderer.materials)
+                {
+                    if (!originalColors.ContainsKey(mat))
+                    {
+                        originalColors[mat] = mat.color;
+                    }
+                }
             }
 
             Debug.Log($"[MonsterBase] Found {meshRenderers.Count} mesh renderers");
@@ -176,7 +185,7 @@ namespace VRDungeonCrawler.AI
 
             // Spawn damage number indicator
             Vector3 damageNumberPos = transform.position + Vector3.up * 1.5f;
-            DamageNumber.Create(damage, damageNumberPos, Color.white);
+            DamageNumber.Create(damage, damageNumberPos, Color.red);
 
             // Flash effect (red flash twice)
             StartFlashEffect();
@@ -269,18 +278,21 @@ namespace VRDungeonCrawler.AI
         void RestoreOriginalMaterials()
         {
             if (showDebug)
-                Debug.Log($"[MonsterBase] Restoring original materials for {meshRenderers.Count} renderers");
+                Debug.Log($"[MonsterBase] Restoring original colors for {meshRenderers.Count} renderers");
 
             foreach (MeshRenderer renderer in meshRenderers)
             {
-                if (originalMaterials.ContainsKey(renderer))
+                if (renderer == null) continue;
+
+                Material[] materials = renderer.materials;
+                for (int i = 0; i < materials.Length; i++)
                 {
-                    renderer.materials = originalMaterials[renderer];
+                    if (materials[i] != null && originalColors.ContainsKey(materials[i]))
+                    {
+                        materials[i].color = originalColors[materials[i]];
+                    }
                 }
-                else if (showDebug)
-                {
-                    Debug.LogWarning($"[MonsterBase] No original materials found for renderer on {renderer.gameObject.name}");
-                }
+                renderer.materials = materials;
             }
         }
 

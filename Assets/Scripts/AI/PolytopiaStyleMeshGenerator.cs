@@ -41,12 +41,12 @@ namespace VRDungeonCrawler.AI
 
             int[] triangles = new int[]
             {
-                0, 1, 2, 0, 2, 3,       // Front (reversed winding)
-                4, 5, 6, 4, 6, 7,       // Back (reversed winding)
-                8, 9, 10, 8, 10, 11,    // Left (reversed winding)
-                12, 13, 14, 12, 14, 15, // Right (reversed winding)
-                16, 17, 18, 16, 18, 19, // Top (reversed winding)
-                20, 21, 22, 20, 22, 23  // Bottom (reversed winding)
+                0, 1, 2, 0, 2, 3,       // Front (clockwise - correct for Unity)
+                4, 5, 6, 4, 6, 7,       // Back
+                8, 9, 10, 8, 10, 11,    // Left
+                12, 13, 14, 12, 14, 15, // Right
+                16, 17, 18, 16, 18, 19, // Top
+                20, 21, 22, 20, 22, 23  // Bottom
             };
 
             mesh.vertices = vertices;
@@ -102,12 +102,12 @@ namespace VRDungeonCrawler.AI
 
             int[] triangles = new int[]
             {
-                0, 1, 2, 0, 2, 3,       // Front (reversed winding)
-                4, 5, 6, 4, 6, 7,       // Back (reversed winding)
-                8, 9, 10, 8, 10, 11,    // Left (reversed winding)
-                12, 13, 14, 12, 14, 15, // Right (reversed winding)
-                16, 17, 18, 16, 18, 19, // Top (reversed winding)
-                20, 21, 22, 20, 22, 23  // Bottom (reversed winding)
+                0, 1, 2, 0, 2, 3,       // Front (clockwise - correct for Unity)
+                4, 5, 6, 4, 6, 7,       // Back
+                8, 9, 10, 8, 10, 11,    // Left
+                12, 13, 14, 12, 14, 15, // Right
+                16, 17, 18, 16, 18, 19, // Top
+                20, 21, 22, 20, 22, 23  // Bottom
             };
 
             mesh.vertices = vertices;

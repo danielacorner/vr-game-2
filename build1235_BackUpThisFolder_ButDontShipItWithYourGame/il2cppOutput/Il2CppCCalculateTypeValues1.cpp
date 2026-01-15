@@ -200,6 +200,7 @@ struct Dictionary_2_t6A8DB1A82203EE1CADD418706BFDC84FED020B64;
 struct Dictionary_2_tDBB219D9459E13F073641D0B84B8AB9AF3839287;
 struct Dictionary_2_t12F13A641A24AF6A571723BF49A5A89F9434BDC6;
 struct Dictionary_2_tA56BE02D40F1DBAC22A481335E08C4D99F1639C3;
+struct Dictionary_2_t82E7CC9CA60130823FC90A87A9A8073E00C266BC;
 struct Dictionary_2_t6EB10DF170874D02D43E115B0A1B93479CE3FF80;
 struct Dictionary_2_t52C0D4E3DEA7BE49B8A9EF6F00AFFA8F07B1D0A2;
 struct Dictionary_2_t3B17D8C82C23A98B3019FC454F9155B16132F98A;
@@ -5114,13 +5115,13 @@ struct BindingsMarshaller_tB86B35329C1A614DE2FC290DF0C726D01A9747EF  : public Ru
 struct NativeApi_tC7621BB9FBF7C3B81D30BD55F4F89A3D3D607A59  : public RuntimeObject
 {
 };
-struct U3CPlayDeathAnimationU3Ed__27_t92ABC8091A9D9B7D769FFAAC369795D70CFBC769  : public RuntimeObject
+struct U3CPlayDeathAnimationU3Ed__28_tB9D0891E979F9B05E46ABDE938F87E901AD3F11F  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
 	MonsterBase_t290516D2F876CDDB8D7142E097A44DC822B9A424* ___U3CU3E4__this;
 };
-struct U3CSkeletonDeathAnimationU3Ed__30_t8AC9E0A86547640517E455EF333F3F36A732D6FA  : public RuntimeObject
+struct U3CSkeletonDeathAnimationU3Ed__31_tB3896742AA8E0256124E4EA5D8902611B7062758  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -31522,7 +31523,7 @@ struct ScriptEvent_t98D7BEA7A83AEC5AC0316FCED0B85028D4E75DAD
 {
 	int32_t ___value__;
 };
-struct U3CDamageRecoilAnimationU3Ed__32_t72BCE239BAAB667B42E411469E0555E9BCA1381E  : public RuntimeObject
+struct U3CDamageRecoilAnimationU3Ed__33_t4AC868D89E1BF7B86362D7D2640C182DF610DC65  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -31531,7 +31532,7 @@ struct U3CDamageRecoilAnimationU3Ed__32_t72BCE239BAAB667B42E411469E0555E9BCA1381
 	float ___U3CdurationU3E5__3;
 	float ___U3CelapsedU3E5__4;
 };
-struct U3CFadeOutAndShrinkU3Ed__29_t4EACBA6BDBD15E731349ACDC3656DD874C036D65  : public RuntimeObject
+struct U3CFadeOutAndShrinkU3Ed__30_t6E8CD4C15769A5FEA460ABBC0C35DAECF5444F22  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -31542,7 +31543,7 @@ struct U3CFadeOutAndShrinkU3Ed__29_t4EACBA6BDBD15E731349ACDC3656DD874C036D65  : 
 	MeshRendererU5BU5D_tDF429EF168050A5CE085D0B51909A6AE2067E446* ___U3CrenderersU3E5__5;
 	Dictionary_2_t52C0D4E3DEA7BE49B8A9EF6F00AFFA8F07B1D0A2* ___U3CoriginalColorsU3E5__6;
 };
-struct U3CGoblinDeathAnimationU3Ed__28_tF3326454333AA858C21A6E4879DCF9058BBE7864  : public RuntimeObject
+struct U3CGoblinDeathAnimationU3Ed__29_t228489C8370FA46EC6A465F0A5E0ED36EE5485C4  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -31551,7 +31552,7 @@ struct U3CGoblinDeathAnimationU3Ed__28_tF3326454333AA858C21A6E4879DCF9058BBE7864
 	float ___U3CelapsedU3E5__3;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___U3CstartScaleU3E5__4;
 };
-struct U3CScaleUpAnimationU3Ed__33_t94602F12C7926D515C4DE28128CCF77C3B9BCF10  : public RuntimeObject
+struct U3CScaleUpAnimationU3Ed__34_t99FA3490E1A436CBD6AC3FA8605DA32B11B131AA  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -31560,7 +31561,7 @@ struct U3CScaleUpAnimationU3Ed__33_t94602F12C7926D515C4DE28128CCF77C3B9BCF10  : 
 	float ___U3CdurationU3E5__3;
 	float ___U3CelapsedU3E5__4;
 };
-struct U3CSlimeDeathAnimationU3Ed__31_tD9A70D2FCA332BF63C0B3D06F90EC7ADBCAF8D0E  : public RuntimeObject
+struct U3CSlimeDeathAnimationU3Ed__32_t3C55E9333CB4729899FD2E003148A66DC84B3F4C  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -49087,6 +49088,7 @@ struct MonsterBase_t290516D2F876CDDB8D7142E097A44DC822B9A424  : public MonoBehav
 	int32_t ___currentFlashCycle;
 	List_1_t558592816DA880773C8A60C1EB777F3B092B68EC* ___meshRenderers;
 	Dictionary_2_t3B17D8C82C23A98B3019FC454F9155B16132F98A* ___originalMaterials;
+	Dictionary_2_t82E7CC9CA60130823FC90A87A9A8073E00C266BC* ___originalColors;
 	Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* ___rb;
 	MonsterSpawner_tCCBDFDBAB6EDDB36859B7D0B9016B686245197AB* ___spawner;
 };
@@ -60914,19 +60916,19 @@ const Il2CppTypeDefinitionSizes g_typeDefinitionSize7487 = { sizeof(MonsterAI_tC
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7488;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize7488 = { sizeof(int32_t)+ sizeof(RuntimeObject), sizeof(int32_t), 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7489;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7489 = { sizeof(U3CDamageRecoilAnimationU3Ed__32_t72BCE239BAAB667B42E411469E0555E9BCA1381E), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7489 = { sizeof(U3CDamageRecoilAnimationU3Ed__33_t4AC868D89E1BF7B86362D7D2640C182DF610DC65), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7490;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7490 = { sizeof(U3CFadeOutAndShrinkU3Ed__29_t4EACBA6BDBD15E731349ACDC3656DD874C036D65), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7490 = { sizeof(U3CFadeOutAndShrinkU3Ed__30_t6E8CD4C15769A5FEA460ABBC0C35DAECF5444F22), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7491;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7491 = { sizeof(U3CGoblinDeathAnimationU3Ed__28_tF3326454333AA858C21A6E4879DCF9058BBE7864), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7491 = { sizeof(U3CGoblinDeathAnimationU3Ed__29_t228489C8370FA46EC6A465F0A5E0ED36EE5485C4), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7492;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7492 = { sizeof(U3CPlayDeathAnimationU3Ed__27_t92ABC8091A9D9B7D769FFAAC369795D70CFBC769), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7492 = { sizeof(U3CPlayDeathAnimationU3Ed__28_tB9D0891E979F9B05E46ABDE938F87E901AD3F11F), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7493;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7493 = { sizeof(U3CScaleUpAnimationU3Ed__33_t94602F12C7926D515C4DE28128CCF77C3B9BCF10), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7493 = { sizeof(U3CScaleUpAnimationU3Ed__34_t99FA3490E1A436CBD6AC3FA8605DA32B11B131AA), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7494;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7494 = { sizeof(U3CSkeletonDeathAnimationU3Ed__30_t8AC9E0A86547640517E455EF333F3F36A732D6FA), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7494 = { sizeof(U3CSkeletonDeathAnimationU3Ed__31_tB3896742AA8E0256124E4EA5D8902611B7062758), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7495;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7495 = { sizeof(U3CSlimeDeathAnimationU3Ed__31_tD9A70D2FCA332BF63C0B3D06F90EC7ADBCAF8D0E), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7495 = { sizeof(U3CSlimeDeathAnimationU3Ed__32_t3C55E9333CB4729899FD2E003148A66DC84B3F4C), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7496;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize7496 = { sizeof(MonsterBase_t290516D2F876CDDB8D7142E097A44DC822B9A424), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7497;

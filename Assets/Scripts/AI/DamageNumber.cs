@@ -24,10 +24,10 @@ namespace VRDungeonCrawler.AI
 
         [Header("Visual")]
         [Tooltip("Text color")]
-        public Color textColor = new Color(1f, 1f, 0f, 1f); // Bright yellow
+        public Color textColor = new Color(1f, 0f, 0f, 1f); // Bright red
 
         [Tooltip("Font size")]
-        public int fontSize = 72; // Much larger for VR visibility
+        public int fontSize = 24; // Small readable size for VR
 
         private Canvas canvas;
         private Text text;
@@ -73,13 +73,14 @@ namespace VRDungeonCrawler.AI
             canvas = gameObject.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.WorldSpace;
             canvas.worldCamera = Camera.main;
+            canvas.sortingOrder = 1000; // Render on top of everything
 
             Debug.Log($"[DamageNumber] Canvas created with RenderMode.WorldSpace");
 
-            // Set canvas size and scale for VR - MUCH LARGER
+            // Set canvas size and scale for VR - very small
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-            canvasRect.sizeDelta = new Vector2(400, 200);
-            canvasRect.localScale = Vector3.one * 0.02f; // Larger for visibility
+            canvasRect.sizeDelta = new Vector2(100, 50);
+            canvasRect.localScale = Vector3.one * 0.002f; // Much smaller: 0.2m x 0.1m effective size
 
             Debug.Log($"[DamageNumber] Canvas RectTransform configured: size={canvasRect.sizeDelta}, scale={canvasRect.localScale}");
 
