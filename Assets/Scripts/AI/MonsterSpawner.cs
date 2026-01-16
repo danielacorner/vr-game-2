@@ -258,6 +258,41 @@ namespace VRDungeonCrawler.AI
                     Destroy(debugSphere.GetComponent<Collider>());
                 }
 
+                // Final ground position adjustment using raycast
+                // Find the actual lowest point of the monster's visual mesh in world space
+                float lowestY = float.MaxValue;
+                MeshRenderer[] renderers = monster.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer renderer in renderers)
+                {
+                    // Get world space bounds of this renderer
+                    Bounds worldBounds = renderer.bounds;
+                    float rendererBottom = worldBounds.min.y;
+                    if (rendererBottom < lowestY)
+                    {
+                        lowestY = rendererBottom;
+                    }
+                }
+
+                Debug.Log($"[MonsterSpawner] Actual visual mesh lowest point in world space: Y={lowestY:F2}");
+
+                // Raycast down from monster to find exact ground level
+                RaycastHit groundHit;
+                Vector3 groundRayStart = monster.transform.position + Vector3.up * 1f;
+                if (Physics.Raycast(groundRayStart, Vector3.down, out groundHit, 10f, LayerMask.GetMask("Default")))
+                {
+                    // Calculate how much to adjust: difference between ground and current lowest point
+                    float yAdjustment = groundHit.point.y - lowestY;
+                    Vector3 finalPos = monster.transform.position;
+                    finalPos.y += yAdjustment;
+                    monster.transform.position = finalPos;
+
+                    Debug.Log($"[MonsterSpawner] Ground at Y={groundHit.point.y:F2}, lowest mesh at Y={lowestY:F2}, adjustment={yAdjustment:F2}, final Y={finalPos.y:F2}");
+                }
+                else
+                {
+                    Debug.LogWarning($"[MonsterSpawner] Ground raycast missed! Monster may float.");
+                }
+
                 // Track active monster
                 activeMonsters[type].Add(monster);
 
