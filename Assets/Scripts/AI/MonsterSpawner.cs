@@ -259,26 +259,48 @@ namespace VRDungeonCrawler.AI
                 }
 
                 // Final ground position adjustment using raycast
-                // Find the actual lowest point of the monster's visual mesh in world space
+                // Find ACTUAL lowest vertex in all meshes (not just bounding box)
                 float lowestY = float.MaxValue;
-                MeshRenderer[] renderers = monster.GetComponentsInChildren<MeshRenderer>();
-                foreach (MeshRenderer renderer in renderers)
+                MeshFilter[] meshFilters = monster.GetComponentsInChildren<MeshFilter>();
+
+                foreach (MeshFilter mf in meshFilters)
                 {
-                    // Get world space bounds of this renderer
-                    Bounds worldBounds = renderer.bounds;
-                    float rendererBottom = worldBounds.min.y;
-                    if (rendererBottom < lowestY)
+                    if (mf.mesh == null) continue;
+
+                    Vector3[] vertices = mf.mesh.vertices;
+                    Transform meshTransform = mf.transform;
+
+                    foreach (Vector3 localVert in vertices)
                     {
-                        lowestY = rendererBottom;
+                        // Convert to world space
+                        Vector3 worldVert = meshTransform.TransformPoint(localVert);
+                        if (worldVert.y < lowestY)
+                        {
+                            lowestY = worldVert.y;
+                        }
                     }
                 }
 
-                Debug.Log($"[MonsterSpawner] Actual visual mesh lowest point in world space: Y={lowestY:F2}");
+                Debug.Log($"[MonsterSpawner] {type} actual lowest vertex in world space: Y={lowestY:F2}");
 
                 // Raycast down from monster to find exact ground level
+                // IMPORTANT: Disable monster's colliders first so raycast doesn't hit itself!
+                triggerCollider.enabled = false;
+                physicsCollider.enabled = false;
+
                 RaycastHit groundHit;
-                Vector3 groundRayStart = monster.transform.position + Vector3.up * 1f;
-                if (Physics.Raycast(groundRayStart, Vector3.down, out groundHit, 10f, LayerMask.GetMask("Default")))
+                Vector3 groundRayStart = monster.transform.position + Vector3.up * 2f;
+
+                // Raycast to find actual terrain (monster colliders disabled)
+                bool hitGround = Physics.Raycast(groundRayStart, Vector3.down, out groundHit, 20f);
+
+                Debug.Log($"[MonsterSpawner] Raycast from Y={groundRayStart.y:F2}: {(hitGround ? $"HIT {groundHit.collider.gameObject.name} at Y={groundHit.point.y:F2}" : "MISSED")}");
+
+                // Re-enable colliders
+                triggerCollider.enabled = true;
+                physicsCollider.enabled = true;
+
+                if (hitGround)
                 {
                     // Calculate how much to adjust: difference between ground and current lowest point
                     float yAdjustment = groundHit.point.y - lowestY;
@@ -290,7 +312,7 @@ namespace VRDungeonCrawler.AI
                 }
                 else
                 {
-                    Debug.LogWarning($"[MonsterSpawner] Ground raycast missed! Monster may float.");
+                    Debug.LogError($"[MonsterSpawner] Ground raycast missed from Y={groundRayStart.y:F2}! Monster will float. Check terrain setup.");
                 }
 
                 // Track active monster

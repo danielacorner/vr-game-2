@@ -1675,7 +1675,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_get_magnitude_mF0D6
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 63301
+// Method Definition Index: 63298
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_Start_m20472B965FB34069815F4DCA00B0227BD641C59C (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1711,7 +1711,7 @@ IL_001a:
 		return;
 	}
 }
-// Method Definition Index: 63302
+// Method Definition Index: 63299
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_FindDevice_mB731392F22D741AAEC35248A0DF4C00959FBF2F6 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1820,7 +1820,7 @@ IL_0070:
 		return;
 	}
 }
-// Method Definition Index: 63303
+// Method Definition Index: 63300
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_Update_m59B95AD09C6D3C9BBD5A28AE3AF3EED30709B609 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2014,7 +2014,7 @@ IL_00ba:
 		return;
 	}
 }
-// Method Definition Index: 63304
+// Method Definition Index: 63301
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_StartCharging_m0F6B8EFFD8B5B150DCB76D028197FD7359E6D63B (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2143,7 +2143,7 @@ IL_00d5:
 		return;
 	}
 }
-// Method Definition Index: 63305
+// Method Definition Index: 63302
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_UpdateCharging_m47FED38475054759CB87DEA9A6213699409C27F0 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2405,7 +2405,7 @@ IL_019b:
 		return;
 	}
 }
-// Method Definition Index: 63306
+// Method Definition Index: 63303
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_StopCharging_mFBA801E5B2662A23FBA6B96063BB4B56A658850A (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2477,7 +2477,7 @@ IL_0066:
 		return;
 	}
 }
-// Method Definition Index: 63307
+// Method Definition Index: 63304
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_UpdateFadeOut_m4EAE48DB7E1D03A9FFDC21EAC8619437B214D892 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2750,7 +2750,7 @@ IL_01af:
 		return;
 	}
 }
-// Method Definition Index: 63308
+// Method Definition Index: 63305
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateChargeCompletePopEffect_mE82EB33425524BEC13DCBA6EEF5A40B6E41FF86A (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3157,7 +3157,7 @@ IL_0198:
 		return;
 	}
 }
-// Method Definition Index: 63309
+// Method Definition Index: 63306
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateChargingBubble_mBE7E5373F1F88161F949383E386AC11E1B3DE89A (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3497,7 +3497,7 @@ IL_01ad:
 		return;
 	}
 }
-// Method Definition Index: 63310
+// Method Definition Index: 63307
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_TryCastSpell_mFE755EF5CF48250D57B8C5D85A035E5CE4D86D12 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3581,7 +3581,7 @@ IL_0049:
 		return;
 	}
 }
-// Method Definition Index: 63311
+// Method Definition Index: 63308
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CastSpell_m5B4F183488C64D8328A5B114D28A2442F35113B9 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3636,7 +3636,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CastSpell_m5B4F183488C64D832
 		return;
 	}
 }
-// Method Definition Index: 63312
+// Method Definition Index: 63309
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateProjectile_m72D07DD88026C38C5374A09835C0B5F9436690BE (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_position, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___2_direction, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4229,7 +4229,7 @@ IL_02b4:
 		return L_121;
 	}
 }
-// Method Definition Index: 63313
+// Method Definition Index: 63310
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateChargeEffect_m4D7FC4F9B5BC1758ADD0C465FB620719C3EDEB2D (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4469,7 +4469,7 @@ IL_0149:
 		return;
 	}
 }
-// Method Definition Index: 63314
+// Method Definition Index: 63311
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateFireChargeEffect_m4A2CCD32989314084880C890AE0C36123461460B (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_parent, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4790,7 +4790,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateFireChargeEffect_m4A2C
 		return;
 	}
 }
-// Method Definition Index: 63315
+// Method Definition Index: 63312
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateIceChargeEffect_mD5CA18F6414AAF33E9C4B3B50190FB14997FB192 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_parent, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5094,7 +5094,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateIceChargeEffect_mD5CA1
 		return;
 	}
 }
-// Method Definition Index: 63316
+// Method Definition Index: 63313
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateLightningChargeEffect_m8E8FA936CE902A4E250FAE3AFEC710C501DADB33 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_parent, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5398,7 +5398,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateLightningChargeEffect_
 		return;
 	}
 }
-// Method Definition Index: 63317
+// Method Definition Index: 63314
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateWindChargeEffect_m22D650B5C0402B3CA54E8F3123740D394E89AAD7 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_parent, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5717,7 +5717,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateWindChargeEffect_m22D6
 		return;
 	}
 }
-// Method Definition Index: 63318
+// Method Definition Index: 63315
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateDefaultChargeEffect_m3ED1A1E8311EE0D1E382364198AC9FE7762CFDF5 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_parent, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___1_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5840,7 +5840,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateDefaultChargeEffect_m3
 		return;
 	}
 }
-// Method Definition Index: 63319
+// Method Definition Index: 63316
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* SpellCaster_GetFireParticleTexture_mC69F3492C916F9A57DB8CD30141569936A075FD3 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6054,7 +6054,7 @@ IL_0196:
 		return L_58;
 	}
 }
-// Method Definition Index: 63320
+// Method Definition Index: 63317
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* SpellCaster_GetSoftParticleTexture_m059C3F33FFF51CC2016EC885948BF5D55B2D1F16 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6255,7 +6255,7 @@ IL_0161:
 		return L_52;
 	}
 }
-// Method Definition Index: 63321
+// Method Definition Index: 63318
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateFireball_m23B30B32C4E8A3FCFEB8C1ED97591ADA05DB51BE (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7662,7 +7662,7 @@ IL_02dc:
 		return L_358;
 	}
 }
-// Method Definition Index: 63322
+// Method Definition Index: 63319
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateIceShard_m48A8AEDA64B76132D8ABF491DE71AD2608CD0ABF (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -8722,7 +8722,7 @@ IL_0647:
 		return L_283;
 	}
 }
-// Method Definition Index: 63323
+// Method Definition Index: 63320
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateLightningBolt_m17AAB2C694B9C66D5CF1EA3D0F97E92A765C6B3D (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -10089,7 +10089,7 @@ IL_0599:
 		return L_365;
 	}
 }
-// Method Definition Index: 63324
+// Method Definition Index: 63321
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateWindBlast_mE8BCD9557F1E22800DFE83C5D7F80FBBB6F7B24C (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -11446,7 +11446,7 @@ IL_0652:
 		return L_359;
 	}
 }
-// Method Definition Index: 63325
+// Method Definition Index: 63322
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateDefaultProjectile_mC9A9319A3E6DAE02DAE48F528754C856CF5AB465 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -11568,7 +11568,7 @@ IL_0090:
 		return L_30;
 	}
 }
-// Method Definition Index: 63326
+// Method Definition Index: 63323
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateMeteor_mEFB406A840A0C78B847D7D3B8D3B162B7762EA33 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -12648,7 +12648,7 @@ IL_0575:
 		return L_289;
 	}
 }
-// Method Definition Index: 63327
+// Method Definition Index: 63324
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateFrostBoulder_m62CE8AAB1842460744122D82607ABB551C50E165 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -13697,7 +13697,7 @@ IL_05fe:
 		return L_276;
 	}
 }
-// Method Definition Index: 63328
+// Method Definition Index: 63325
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateThunderOrb_mBD4240C03ADCAF124830C5FFEDCC5A9751EC8871 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -14758,7 +14758,7 @@ IL_0590:
 		return L_285;
 	}
 }
-// Method Definition Index: 63329
+// Method Definition Index: 63326
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateCyclone_m7A67F08F92FF2A833C901C1B266599E72F19F174 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -15838,7 +15838,7 @@ IL_05fb:
 		return L_293;
 	}
 }
-// Method Definition Index: 63330
+// Method Definition Index: 63327
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* SpellCaster_CreateDefaultTier2Projectile_m1FD4D82F4B4C9EA3B313C04A84C7DA017DF1E048 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___0_spell, const RuntimeMethod* method) 
 {
 	{
@@ -15849,7 +15849,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 		return L_1;
 	}
 }
-// Method Definition Index: 63331
+// Method Definition Index: 63328
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateSpellExplosion_m13A9F74E43B56DE0B805639F8C55696D1A059AE3 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_position, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_surfaceNormal, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___2_direction, float ___3_speed, SpellData_tE70107782A5B928B3D5C7C534FD5006C5BBBC45A* ___4_spellData, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -16065,7 +16065,7 @@ IL_00ce:
 		return;
 	}
 }
-// Method Definition Index: 63332
+// Method Definition Index: 63329
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 SpellCaster_GetRicochetDirectionStatic_m3C6C42544781331EDCF8E4A3356D96EA2B1BD137 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_direction, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_surfaceNormal, const RuntimeMethod* method) 
 {
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
@@ -16138,7 +16138,7 @@ IL_006f:
 		return L_20;
 	}
 }
-// Method Definition Index: 63333
+// Method Definition Index: 63330
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateFireExplosionStatic_m80592A961FEAF59AC90E473F93199689C1CFCCE0 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_position, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_surfaceNormal, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___2_direction, float ___3_speed, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -16378,7 +16378,7 @@ IL_017e:
 		return;
 	}
 }
-// Method Definition Index: 63334
+// Method Definition Index: 63331
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateIceExplosionStatic_m7836522CECF474084C53FD96C81C14F8531B20DB (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_position, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_surfaceNormal, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___2_direction, float ___3_speed, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -16627,7 +16627,7 @@ IL_0198:
 		return;
 	}
 }
-// Method Definition Index: 63335
+// Method Definition Index: 63332
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateLightningExplosionStatic_mF405E7FDB6D014372F0243F0DC222682C5584122 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_position, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_surfaceNormal, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___2_direction, float ___3_speed, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -16865,7 +16865,7 @@ IL_0174:
 		return;
 	}
 }
-// Method Definition Index: 63336
+// Method Definition Index: 63333
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster_CreateWindExplosionStatic_mB8559FD0B6711B1DF8685B8F72E6F4BEB214C9C8 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_position, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_surfaceNormal, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___2_direction, float ___3_speed, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -17103,7 +17103,7 @@ IL_0174:
 		return;
 	}
 }
-// Method Definition Index: 63337
+// Method Definition Index: 63334
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster__ctor_mCE1771D5206321EFAAE2EC7D5889DE15909AFBA2 (SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4* __this, const RuntimeMethod* method) 
 {
 	{
@@ -17130,7 +17130,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellCaster__ctor_mCE1771D5206321EFAAE2E
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
-// Method Definition Index: 63568
+// Method Definition Index: 63565
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR SpellManager_t6D83A0653E168281D9644685A4DD600E9C6139FD* SpellManager_get_Instance_mD9178347B54BDFA37CA71D7A7A2B40A23AD68DE3_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;

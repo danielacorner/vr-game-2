@@ -170,8 +170,15 @@ namespace VRDungeonCrawler.AI
                 Vector3 toSpawn = (spawnPosition - transform.position).normalized;
                 currentMoveDirection = new Vector3(toSpawn.x, 0f, toSpawn.z).normalized;
 
+                // Reset action timer to allow normal pause cycle to resume
+                // This prevents the "racing forever" bug
+                if (!isPaused)
+                {
+                    nextActionTime = Time.time + Random.Range(walkTimeMin, walkTimeMax);
+                }
+
                 if (showDebug)
-                    Debug.Log($"[MonsterAI] {gameObject.name} out of bounds, returning to spawn");
+                    Debug.Log($"[MonsterAI] {gameObject.name} out of bounds (distance={distanceFromSpawn:F1}), returning to spawn");
             }
         }
 
