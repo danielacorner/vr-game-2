@@ -130,7 +130,8 @@ namespace VRDungeonCrawler.AI
             Vector3 rayStart = new Vector3(spawnPosition.x, 50f, spawnPosition.z);
             if (Physics.Raycast(rayStart, Vector3.down, out hit, 100f))
             {
-                spawnPosition.y = hit.point.y + 0.5f; // Spawn slightly above ground
+                // Spawn 1.05m above ground (collider bottom is at -1.0, so this puts it at +0.05 above ground)
+                spawnPosition.y = hit.point.y + 1.05f;
 
                 if (showDebug)
                     Debug.Log($"[MonsterSpawner] Ground found at Y={hit.point.y}, spawning at Y={spawnPosition.y}");
@@ -138,10 +139,10 @@ namespace VRDungeonCrawler.AI
             else
             {
                 // Fallback if raycast fails
-                spawnPosition.y = 0.5f;
+                spawnPosition.y = 1.05f;
 
                 if (showDebug)
-                    Debug.LogWarning($"[MonsterSpawner] No ground found, using fallback Y=0.5");
+                    Debug.LogWarning($"[MonsterSpawner] No ground found, using fallback Y=1.05");
             }
 
             // Build monster based on type
@@ -166,6 +167,17 @@ namespace VRDungeonCrawler.AI
 
             if (monster != null)
             {
+                // Calculate mesh bounds to size colliders correctly
+                Bounds meshBounds = CalculateMeshBounds(monster);
+
+                if (showDebug)
+                    Debug.Log($"[MonsterSpawner] Mesh bounds: center={meshBounds.center}, size={meshBounds.size}, min.y={meshBounds.min.y}, max.y={meshBounds.max.y}");
+
+                // Adjust spawn position so the bottom of the mesh touches the ground
+                // meshBounds.min.y is the lowest point in local space
+                float meshBottomOffset = meshBounds.min.y;
+                spawnPosition.y -= meshBottomOffset; // Move up by the amount the mesh extends below origin
+
                 monster.transform.position = spawnPosition;
                 monster.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
 
@@ -195,17 +207,18 @@ namespace VRDungeonCrawler.AI
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
 
-                // Add collider for spell hits (trigger) - reasonable size for hits
+                // Add colliders sized to match mesh bounds exactly
+                // Trigger collider for spell detection - matches mesh size
                 BoxCollider triggerCollider = monster.AddComponent<BoxCollider>();
                 triggerCollider.isTrigger = true;
-                triggerCollider.size = new Vector3(1.2f, 1.5f, 1.2f);
-                triggerCollider.center = Vector3.up * 0.75f;
+                triggerCollider.size = meshBounds.size;
+                triggerCollider.center = meshBounds.center;
 
-                // Add collider for physics (non-trigger) - smaller to prevent collision issues
+                // Physics collider - slightly smaller to prevent getting stuck
                 BoxCollider physicsCollider = monster.AddComponent<BoxCollider>();
                 physicsCollider.isTrigger = false;
-                physicsCollider.size = new Vector3(0.8f, 1.2f, 0.8f);
-                physicsCollider.center = Vector3.up * 0.6f;
+                physicsCollider.size = new Vector3(meshBounds.size.x * 0.9f, meshBounds.size.y, meshBounds.size.z * 0.9f);
+                physicsCollider.center = meshBounds.center;
 
                 // Add visual debug sphere to see collider bounds
                 if (showDebug)
@@ -213,8 +226,8 @@ namespace VRDungeonCrawler.AI
                     GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     debugSphere.name = "DebugColliderVisual";
                     debugSphere.transform.SetParent(monster.transform);
-                    debugSphere.transform.localPosition = Vector3.up * 0.75f;
-                    debugSphere.transform.localScale = new Vector3(1.2f, 1.5f, 1.2f);
+                    debugSphere.transform.localPosition = Vector3.up * 0.2f;
+                    debugSphere.transform.localScale = new Vector3(1.2f, 2.4f, 1.2f);
 
                     // Make it transparent green
                     MeshRenderer debugRenderer = debugSphere.GetComponent<MeshRenderer>();
@@ -272,6 +285,57 @@ namespace VRDungeonCrawler.AI
                 spawnQueue[i] = spawnQueue[j];
                 spawnQueue[j] = temp;
             }
+        }
+
+        /// <summary>
+        /// Calculate the bounds of all mesh renderers in a GameObject
+        /// Returns the combined bounds in local space
+        /// </summary>
+        Bounds CalculateMeshBounds(GameObject obj)
+        {
+            MeshRenderer[] renderers = obj.GetComponentsInChildren<MeshRenderer>();
+
+            if (renderers.Length == 0)
+            {
+                // No meshes found, return default bounds
+                return new Bounds(Vector3.zero, Vector3.one);
+            }
+
+            // Start with first renderer's bounds
+            Bounds bounds = new Bounds(renderers[0].transform.localPosition, Vector3.zero);
+
+            // Expand to include all renderers
+            foreach (MeshRenderer renderer in renderers)
+            {
+                if (renderer.GetComponent<MeshFilter>() != null)
+                {
+                    Mesh mesh = renderer.GetComponent<MeshFilter>().mesh;
+                    if (mesh != null)
+                    {
+                        // Get mesh bounds in local space
+                        Bounds meshBounds = mesh.bounds;
+
+                        // Transform corners to GameObject's local space
+                        Vector3[] corners = new Vector3[8];
+                        corners[0] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(meshBounds.extents.x, meshBounds.extents.y, meshBounds.extents.z));
+                        corners[1] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(-meshBounds.extents.x, meshBounds.extents.y, meshBounds.extents.z));
+                        corners[2] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(meshBounds.extents.x, -meshBounds.extents.y, meshBounds.extents.z));
+                        corners[3] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(-meshBounds.extents.x, -meshBounds.extents.y, meshBounds.extents.z));
+                        corners[4] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(meshBounds.extents.x, meshBounds.extents.y, -meshBounds.extents.z));
+                        corners[5] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(-meshBounds.extents.x, meshBounds.extents.y, -meshBounds.extents.z));
+                        corners[6] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(meshBounds.extents.x, -meshBounds.extents.y, -meshBounds.extents.z));
+                        corners[7] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(-meshBounds.extents.x, -meshBounds.extents.y, -meshBounds.extents.z));
+
+                        // Encapsulate all corners
+                        foreach (Vector3 corner in corners)
+                        {
+                            bounds.Encapsulate(corner);
+                        }
+                    }
+                }
+            }
+
+            return bounds;
         }
 
         /// <summary>

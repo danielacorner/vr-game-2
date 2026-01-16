@@ -151,6 +151,14 @@ namespace VRDungeonCrawler.AI
             animal.transform.SetParent(transform);
             animal.name = $"{animalType}_{index}";
 
+            // Add Rigidbody for physics movement
+            Rigidbody rb = animal.AddComponent<Rigidbody>();
+            rb.mass = 0.5f;
+            rb.linearDamping = 2f;
+            rb.angularDamping = 1f;
+            rb.useGravity = true;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+
             // Add AI component
             AnimalAI ai = animal.AddComponent<AnimalAI>();
             ai.animalType = animalType;

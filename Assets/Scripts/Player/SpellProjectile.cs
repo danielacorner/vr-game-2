@@ -71,6 +71,24 @@ namespace VRDungeonCrawler.Player
             }
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (hasHit) return;
+            hasHit = true;
+
+            Debug.Log($"[Projectile] Hit (trigger) {other.gameObject.name}");
+
+            // Spawn hit effect at collision point
+            if (hitEffect != null)
+            {
+                GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+                Destroy(effect, 2f);
+            }
+
+            // Destroy projectile immediately to prevent multiple hits
+            Destroy(gameObject);
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (hasHit) return;

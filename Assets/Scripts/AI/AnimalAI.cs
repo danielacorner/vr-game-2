@@ -1,22 +1,13 @@
 using UnityEngine;
-using UnityEngine.AI;
-using System.Collections.Generic;
+using System.Collections;
 
 namespace VRDungeonCrawler.AI
 {
     /// <summary>
-    /// Animal behavior AI with flee and wander states
-    /// Uses NavMesh for pathfinding on terrain
-    /// Animals flee when player approaches, otherwise wander naturally
-    /// Reacts to spell damage with flash and bounce effects (Zelda-style)
+    /// Simple AI controller for home area animals
+    /// Each animal type has unique casual movement behavior
+    /// No NavMesh required - uses simple Rigidbody movement
     /// </summary>
-    public enum AnimalState
-    {
-        Idle,
-        Wander,
-        Flee
-    }
-
     public enum AnimalType
     {
         Rabbit,
@@ -26,964 +17,457 @@ namespace VRDungeonCrawler.AI
         Fox
     }
 
-    [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(Rigidbody))]
     public class AnimalAI : MonoBehaviour
     {
         [Header("Animal Type")]
-        [Tooltip("Type of animal for movement style")]
+        [Tooltip("Type of animal - determines movement pattern")]
         public AnimalType animalType = AnimalType.Rabbit;
 
-        [Header("Detection")]
-        [Tooltip("Maximum distance to detect player presence")]
-        public float detectionRadius = 15f;
-
-        [Tooltip("Distance at which animal starts fleeing")]
-        public float fleeDistance = 3f;
-
-        [Tooltip("Layer mask for player detection")]
-        public LayerMask playerLayer = -1; // All layers by default
-
-        [Header("Movement")]
-        [Tooltip("Walking speed during wander")]
-        public float walkSpeed = 1.5f;
-
-        [Tooltip("Running speed during flee")]
-        public float fleeSpeed = 4f;
-
-        [Tooltip("Maximum distance to wander from spawn point")]
-        public float wanderRadius = 10f;
-
-        [Tooltip("Time to stay idle before wandering again")]
-        public float idleTime = 1f;
-
-        [Tooltip("Minimum distance to flee from player")]
-        public float minFleeDistance = 10f;
-
-        [Header("Animal-Specific Movement")]
-        [Tooltip("Hopping force for rabbits (applies to Y axis)")]
-        public float hopForce = 3f;
-
-        [Tooltip("Time between hops for rabbits")]
-        public float hopInterval = 0.5f;
-
-        [Tooltip("Rabbit pause chance after each hop (realistic stop-and-go)")]
-        [Range(0f, 1f)]
-        public float rabbitPauseChance = 0.3f;
-
-        [Tooltip("Erratic movement frequency for squirrels")]
-        public float erraticFrequency = 0.2f;
-
-        [Tooltip("Squirrel dash probability (sudden bursts of speed)")]
-        [Range(0f, 1f)]
-        public float squirrelDashProbability = 0.15f;
-
-        [Tooltip("Squirrel dash speed multiplier")]
-        public float squirrelDashSpeed = 2.5f;
-
-        [Tooltip("Flying height for birds")]
-        public float flyingHeight = 2f;
-
-        [Tooltip("Bird swoop behavior (diving down periodically)")]
-        public bool birdCanSwoop = true;
-
-        [Tooltip("Time between bird swoops")]
-        public float birdSwoopInterval = 8f;
-
-        [Tooltip("Deer graceful movement (slower, calm)")]
-        public bool deerGracefulMovement = true;
-
-        [Tooltip("Deer alert duration (stops and looks around)")]
-        public float deerAlertDuration = 2f;
-
-        [Tooltip("Fox stalking behavior (slower movement, crouches)")]
-        public bool foxCanStalk = true;
-
-        [Tooltip("Fox stalk speed multiplier")]
-        [Range(0.3f, 1f)]
-        public float foxStalkSpeedMultiplier = 0.6f;
-
-        [Header("Damage Reaction")]
-        [Tooltip("Flash color when hit (Zelda-style)")]
-        public Color hitFlashColor = Color.white;
-
-        [Tooltip("Duration of flash effect")]
-        public float flashDuration = 0.2f;
-
-        [Tooltip("Bounce force when hit (should be small, ~2 for 0.5m bounce)")]
-        public float bounceForce = 2f;
-
-        [Tooltip("Number of flash cycles when hit")]
-        public int flashCycles = 3;
-
-        [Header("Animation")]
-        [Tooltip("Optional animator for animal animations")]
-        public Animator animator;
+        [Header("Movement Bounds")]
+        [Tooltip("Maximum distance from spawn point")]
+        public float maxRoamDistance = 12f;
 
         [Header("Debug")]
-        [Tooltip("Show debug information in console")]
+        [Tooltip("Show debug logs")]
         public bool showDebug = false;
 
-        private NavMeshAgent agent;
+        // Common variables
         private Rigidbody rb;
-        private AnimalState currentState = AnimalState.Idle;
-        private Transform player;
-        private float stateTimer;
-        private Vector3 homePosition;
-        private bool isInitialized = false;
-        private float hopTimer;
-        private float erraticTimer;
-        private bool isRabbitPaused = false;
-        private float rabbitPauseTimer;
-        private bool isSquirrelDashing = false;
-        private float squirrelDashTimer;
-        private float birdSwoopTimer;
-        private bool isBirdSwooping = false;
-        private float birdSwoopStartHeight;
+        private Vector3 spawnPosition;
+        private Vector3 currentMoveDirection;
+        private float nextActionTime;
+        private bool isPaused = false;
+
+        // Rabbit-specific
+        private bool isHopping = false;
+        private float hopCooldown = 0f;
+
+        // Squirrel-specific
+        private bool isDashing = false;
+        private float dashEndTime = 0f;
+
+        // Bird-specific
+        private float flyHeight = 2.5f;
+        private bool isSwooping = false;
+        private float swoopStartTime = 0f;
+        private Vector3 swoopStartPosition;
 
         // Deer-specific
-        private float deerAlertTimer;
-        private bool isDeerAlert = false;
+        private bool isGrazing = false;
 
         // Fox-specific
-        private bool isFoxStalking = false;
-        private float foxStalkTimer;
-
-        // Damage reaction
-        private bool isFlashing = false;
-        private float flashTimer;
-        private int currentFlashCycle;
-        private List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
-        private Dictionary<MeshRenderer, Color[]> originalColors = new Dictionary<MeshRenderer, Color[]>();
-        private Dictionary<MeshRenderer, Material[]> originalMaterials = new Dictionary<MeshRenderer, Material[]>();
-
-        // Boundary control
-        private VRDungeonCrawler.Environment.BoundaryController boundaryController;
+        private bool isStalking = false;
 
         void Awake()
         {
-            agent = GetComponent<NavMeshAgent>();
             rb = GetComponent<Rigidbody>();
+            spawnPosition = transform.position;
 
-            // If no rigidbody, add one for physics reactions
-            if (rb == null)
-            {
-                rb = gameObject.AddComponent<Rigidbody>();
-                rb.mass = 0.5f;
-                rb.linearDamping = 2f;
-                rb.angularDamping = 1f;
-                rb.useGravity = true; // IMPORTANT: Enable gravity!
-                rb.constraints = RigidbodyConstraints.FreezeRotation; // Keep upright
-                rb.isKinematic = true; // NavMesh controls movement normally
-            }
-
-            // Ensure gravity is always enabled
+            // Configure rigidbody
             if (rb != null)
             {
-                rb.useGravity = true;
-            }
-
-            homePosition = transform.position;
-
-            // Store all mesh renderers for flash effect
-            meshRenderers.AddRange(GetComponentsInChildren<MeshRenderer>());
-            foreach (MeshRenderer renderer in meshRenderers)
-            {
-                // Store original materials
-                originalMaterials[renderer] = renderer.materials;
-
-                // Store original colors
-                Color[] colors = new Color[renderer.materials.Length];
-                for (int i = 0; i < renderer.materials.Length; i++)
-                {
-                    colors[i] = renderer.materials[i].color;
-                }
-                originalColors[renderer] = colors;
+                rb.linearDamping = 2f;
+                rb.angularDamping = 1f;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
         }
 
         void Start()
         {
-            // Find boundary controller
-            boundaryController = FindObjectOfType<VRDungeonCrawler.Environment.BoundaryController>();
-            if (boundaryController == null && showDebug)
+            // Ensure velocity is zero
+            if (rb != null)
             {
-                Debug.LogWarning("[AnimalAI] No BoundaryController found - animal may fall off edges!");
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
             }
 
-            // Find player (VR camera or XR Origin)
-            FindPlayer();
-
-            // Configure NavMeshAgent based on animal type
-            if (agent != null)
-            {
-                ConfigureMovementForAnimalType();
-                agent.angularSpeed = 120f;
-                agent.acceleration = 8f;
-
-                // Check if NavMesh exists at current position
-                NavMeshHit hit;
-                if (!NavMesh.SamplePosition(transform.position, out hit, 2f, NavMesh.AllAreas))
-                {
-                    Debug.LogWarning($"[AnimalAI] {gameObject.name} is not on NavMesh! Animal won't be able to move. Please bake NavMesh on terrain.");
-                }
-                else if (showDebug)
-                {
-                    Debug.Log($"[AnimalAI] {gameObject.name} is on NavMesh, can navigate");
-                }
-            }
-
-            // Start wandering immediately (no idle time on spawn)
-            ChangeState(AnimalState.Wander);
-            isInitialized = true;
+            // Set initial direction and state based on animal type
+            ChooseRandomDirection();
+            InitializeAnimalBehavior();
 
             if (showDebug)
-                Debug.Log($"[AnimalAI] {animalType} {gameObject.name} initialized at {homePosition}");
-        }
-
-        void ConfigureMovementForAnimalType()
-        {
-            switch (animalType)
-            {
-                case AnimalType.Rabbit:
-                    walkSpeed = 2f;  // Hops are quick
-                    fleeSpeed = 5f;  // Fast hopping when scared
-                    agent.speed = walkSpeed;
-                    break;
-
-                case AnimalType.Squirrel:
-                    walkSpeed = 2.5f; // Quick, erratic movement
-                    fleeSpeed = 6f;   // Very fast when fleeing
-                    agent.speed = walkSpeed;
-                    break;
-
-                case AnimalType.Bird:
-                    walkSpeed = 3f;   // Flying speed
-                    fleeSpeed = 7f;   // Fast flying when scared
-                    agent.speed = walkSpeed;
-                    agent.baseOffset = flyingHeight; // Fly above ground
-                    break;
-
-                case AnimalType.Deer:
-                    walkSpeed = 1.8f; // Graceful, measured pace
-                    fleeSpeed = 6.5f; // Fast but elegant when fleeing
-                    agent.speed = walkSpeed;
-                    break;
-
-                case AnimalType.Fox:
-                    walkSpeed = 2.2f; // Quick, agile
-                    fleeSpeed = 5.5f; // Fast and nimble
-                    agent.speed = walkSpeed;
-                    break;
-            }
-        }
-
-        void FindPlayer()
-        {
-            // Try multiple methods to find player
-            GameObject playerGO = GameObject.FindGameObjectWithTag("MainCamera");
-            if (playerGO == null)
-                playerGO = GameObject.Find("Main Camera");
-            if (playerGO == null)
-            {
-                // Try to find XR Origin
-                GameObject xrOrigin = GameObject.Find("XR Origin (XR Rig)");
-                if (xrOrigin != null)
-                {
-                    Transform cameraOffset = xrOrigin.transform.Find("Camera Offset");
-                    if (cameraOffset != null)
-                    {
-                        Transform mainCam = cameraOffset.Find("Main Camera");
-                        if (mainCam != null)
-                            playerGO = mainCam.gameObject;
-                    }
-                }
-            }
-
-            if (playerGO != null)
-            {
-                player = playerGO.transform;
-                if (showDebug)
-                    Debug.Log($"[AnimalAI] Found player: {player.name}");
-            }
-            else
-            {
-                Debug.LogWarning("[AnimalAI] Could not find player! Animal will only wander.");
-            }
+                Debug.Log($"[AnimalAI] {animalType} {gameObject.name} initialized at {spawnPosition}");
         }
 
         void Update()
         {
-            if (!isInitialized || agent == null) return;
-
-            // Enforce boundary constraints
-            if (boundaryController != null)
+            if (Time.time >= nextActionTime)
             {
-                boundaryController.EnforceBoundary(transform);
+                HandleNextAction();
             }
 
-            // Handle flash effect
-            if (isFlashing)
-            {
-                UpdateFlashEffect();
-            }
-
-            // Update state based on player distance
-            UpdateStateTransitions();
-
-            // Execute current state behavior
-            switch (currentState)
-            {
-                case AnimalState.Idle:
-                    UpdateIdle();
-                    break;
-                case AnimalState.Wander:
-                    UpdateWander();
-                    UpdateAnimalSpecificMovement();
-                    break;
-                case AnimalState.Flee:
-                    UpdateFlee();
-                    UpdateAnimalSpecificMovement();
-                    break;
-            }
+            // Update animal-specific behaviors
+            UpdateAnimalBehavior();
         }
 
-        void UpdateAnimalSpecificMovement()
+        void FixedUpdate()
+        {
+            if (rb == null) return;
+
+            // Move based on current state and animal type
+            MoveAnimal();
+
+            // Keep animal within bounds
+            CheckBounds();
+        }
+
+        void InitializeAnimalBehavior()
         {
             switch (animalType)
             {
                 case AnimalType.Rabbit:
-                    UpdateRabbitHopping();
+                    // Rabbits hop with pauses
+                    isPaused = false;
+                    nextActionTime = Time.time + Random.Range(0.3f, 0.8f); // Quick hop timing
                     break;
 
                 case AnimalType.Squirrel:
-                    UpdateSquirrelErraticMovement();
+                    // Squirrels dart around erratically
+                    isPaused = false;
+                    nextActionTime = Time.time + Random.Range(0.5f, 1.5f);
                     break;
 
                 case AnimalType.Bird:
-                    UpdateBirdFlying();
+                    // Birds fly smoothly at height
+                    isPaused = false;
+                    flyHeight = Random.Range(2f, 3.5f);
+                    nextActionTime = Time.time + Random.Range(3f, 6f); // Swoops occasionally
                     break;
 
                 case AnimalType.Deer:
-                    UpdateDeerGracefulMovement();
+                    // Deer graze and walk calmly
+                    isGrazing = true;
+                    nextActionTime = Time.time + Random.Range(3f, 5f);
                     break;
 
                 case AnimalType.Fox:
-                    UpdateFoxStalkingBehavior();
+                    // Foxes stalk slowly then dash
+                    isStalking = true;
+                    isPaused = false;
+                    nextActionTime = Time.time + Random.Range(2f, 4f);
                     break;
             }
         }
 
-        void UpdateRabbitHopping()
+        void HandleNextAction()
         {
-            // Handle pause state (realistic stop-and-go behavior)
-            if (isRabbitPaused)
+            switch (animalType)
             {
-                rabbitPauseTimer -= Time.deltaTime;
-                if (rabbitPauseTimer <= 0f)
-                {
-                    isRabbitPaused = false;
-                    agent.isStopped = false;
-                }
-                return;
-            }
+                case AnimalType.Rabbit:
+                    HandleRabbitAction();
+                    break;
 
-            hopTimer += Time.deltaTime;
+                case AnimalType.Squirrel:
+                    HandleSquirrelAction();
+                    break;
 
-            // Hop when moving and enough time has passed
-            if (agent.velocity.magnitude > 0.1f && hopTimer >= hopInterval)
-            {
-                // Apply hop force
-                if (rb != null && !rb.isKinematic)
-                {
-                    rb.AddForce(Vector3.up * hopForce, ForceMode.Impulse);
-                }
-                else if (rb != null)
-                {
-                    // Kinematic mode - animate hop
-                    StartCoroutine(HopAnimation());
-                }
+                case AnimalType.Bird:
+                    HandleBirdAction();
+                    break;
 
-                hopTimer = 0f;
+                case AnimalType.Deer:
+                    HandleDeerAction();
+                    break;
 
-                // Chance to pause after hop (not during flee)
-                if (currentState != AnimalState.Flee && Random.value < rabbitPauseChance)
-                {
-                    isRabbitPaused = true;
-                    rabbitPauseTimer = Random.Range(0.5f, 1.5f);
-                    agent.isStopped = true;
-
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} paused to look around");
-                }
+                case AnimalType.Fox:
+                    HandleFoxAction();
+                    break;
             }
         }
 
-        System.Collections.IEnumerator HopAnimation()
+        void HandleRabbitAction()
         {
-            Vector3 startPos = transform.position;
-            float hopHeight = 0.3f;
-            float hopDuration = 0.3f;
-            float elapsed = 0f;
-
-            while (elapsed < hopDuration)
+            if (isPaused)
             {
-                elapsed += Time.deltaTime;
-                float t = elapsed / hopDuration;
+                // Resume hopping
+                isPaused = false;
+                ChooseRandomDirection();
+                nextActionTime = Time.time + Random.Range(0.3f, 0.8f);
 
-                // Parabolic hop arc
-                float heightOffset = Mathf.Sin(t * Mathf.PI) * hopHeight;
-                transform.position = startPos + Vector3.up * heightOffset;
-
-                yield return null;
-            }
-        }
-
-        void UpdateSquirrelErraticMovement()
-        {
-            erraticTimer += Time.deltaTime;
-
-            // Handle dash state (sudden burst of speed)
-            if (isSquirrelDashing)
-            {
-                squirrelDashTimer -= Time.deltaTime;
-                if (squirrelDashTimer <= 0f)
-                {
-                    isSquirrelDashing = false;
-                    agent.speed = currentState == AnimalState.Flee ? fleeSpeed : walkSpeed;
-
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} finished dash");
-                }
-            }
-            else if (erraticTimer >= erraticFrequency && agent.hasPath)
-            {
-                // Add random offset to current path
-                Vector3 randomOffset = new Vector3(
-                    Random.Range(-0.5f, 0.5f),
-                    0f,
-                    Random.Range(-0.5f, 0.5f)
-                );
-
-                Vector3 newDestination = agent.destination + randomOffset;
-                agent.SetDestination(newDestination);
-
-                // Chance to start dashing (sudden burst of speed)
-                if (Random.value < squirrelDashProbability)
-                {
-                    isSquirrelDashing = true;
-                    squirrelDashTimer = Random.Range(0.5f, 1f);
-                    agent.speed *= squirrelDashSpeed;
-
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} started dash!");
-                }
-
-                erraticTimer = 0f;
-            }
-        }
-
-        void UpdateBirdFlying()
-        {
-            birdSwoopTimer += Time.deltaTime;
-
-            // Handle swooping behavior (dive down periodically)
-            if (birdCanSwoop && currentState == AnimalState.Wander)
-            {
-                if (!isBirdSwooping && birdSwoopTimer >= birdSwoopInterval)
-                {
-                    // Start swoop
-                    isBirdSwooping = true;
-                    birdSwoopStartHeight = agent.baseOffset;
-                    birdSwoopTimer = 0f;
-
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} starting swoop!");
-                }
-                else if (isBirdSwooping)
-                {
-                    float swoopDuration = 2f;
-                    float swoopProgress = birdSwoopTimer / swoopDuration;
-
-                    if (swoopProgress < 1f)
-                    {
-                        // Swoop down and back up (parabolic arc)
-                        float swoopHeight = Mathf.Sin(swoopProgress * Mathf.PI) * (flyingHeight * 0.7f);
-                        agent.baseOffset = flyingHeight - swoopHeight;
-                    }
-                    else
-                    {
-                        // End swoop
-                        isBirdSwooping = false;
-                        agent.baseOffset = flyingHeight;
-                        birdSwoopTimer = 0f;
-
-                        if (showDebug)
-                            Debug.Log($"[AnimalAI] {gameObject.name} finished swoop");
-                    }
-                }
-            }
-
-            // Normal bobbing when not swooping
-            if (!isBirdSwooping)
-            {
-                float bobAmount = Mathf.Sin(Time.time * 2f) * 0.15f;
-                agent.baseOffset = flyingHeight + bobAmount;
-            }
-        }
-
-        void UpdateDeerGracefulMovement()
-        {
-            // Deer have graceful, measured movement with occasional alert stops
-            if (currentState == AnimalState.Wander && deerGracefulMovement)
-            {
-                deerAlertTimer += Time.deltaTime;
-
-                // Randomly become alert (stop and look around)
-                if (!isDeerAlert && deerAlertTimer >= Random.Range(8f, 15f))
-                {
-                    isDeerAlert = true;
-                    deerAlertTimer = 0f;
-                    agent.isStopped = true;
-
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} is alert, looking around");
-                }
-                else if (isDeerAlert && deerAlertTimer >= deerAlertDuration)
-                {
-                    // Resume movement
-                    isDeerAlert = false;
-                    deerAlertTimer = 0f;
-                    agent.isStopped = false;
-
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} resuming movement");
-                }
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Rabbit resuming hops");
             }
             else
             {
-                isDeerAlert = false;
-            }
+                // Pause (rabbits frequently stop to look around)
+                isPaused = true;
+                nextActionTime = Time.time + Random.Range(1f, 2f);
 
-            // Smooth, graceful head turning (visual effect)
-            if (isDeerAlert)
-            {
-                // Look around slowly (rotate head GameObject if exists)
-                float lookRotation = Mathf.Sin(Time.time * 1.5f) * 30f;
-                Transform head = transform.Find("Head");
-                if (head != null)
-                {
-                    head.localRotation = Quaternion.Euler(0f, lookRotation, 0f);
-                }
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Rabbit pausing");
             }
         }
 
-        void UpdateFoxStalkingBehavior()
+        void HandleSquirrelAction()
         {
-            // Fox can stalk (slow movement, crouched) when wandering
-            if (currentState == AnimalState.Wander && foxCanStalk)
+            if (isDashing)
             {
-                foxStalkTimer += Time.deltaTime;
+                // Stop dashing
+                isDashing = false;
+                isPaused = true; // Pause briefly after dash
+                nextActionTime = Time.time + Random.Range(0.5f, 1f);
 
-                // Randomly enter stalk mode
-                if (!isFoxStalking && foxStalkTimer >= Random.Range(6f, 12f))
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Squirrel stopping dash");
+            }
+            else if (isPaused)
+            {
+                // Resume moving
+                isPaused = false;
+                ChooseRandomDirection();
+
+                // Random chance to dash
+                if (Random.value < 0.3f)
                 {
-                    isFoxStalking = true;
-                    foxStalkTimer = 0f;
-                    agent.speed = walkSpeed * foxStalkSpeedMultiplier;
-
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} is stalking (slow, crouched)");
+                    isDashing = true;
+                    dashEndTime = Time.time + Random.Range(0.5f, 1f);
                 }
-                else if (isFoxStalking && foxStalkTimer >= Random.Range(3f, 6f))
-                {
-                    // Resume normal movement
-                    isFoxStalking = false;
-                    foxStalkTimer = 0f;
-                    agent.speed = walkSpeed;
 
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} resuming normal fox movement");
-                }
+                nextActionTime = Time.time + Random.Range(1f, 2f);
+
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Squirrel resuming (dash={isDashing})");
             }
             else
             {
-                isFoxStalking = false;
-            }
+                // Pause
+                isPaused = true;
+                nextActionTime = Time.time + Random.Range(0.3f, 0.8f);
 
-            // Lower body when stalking (visual effect)
-            if (isFoxStalking)
-            {
-                // Lower the entire fox slightly (crouch effect)
-                Vector3 targetPos = transform.position;
-                targetPos.y -= 0.05f * Mathf.Sin(Time.time * 3f); // Subtle crouch bob
-                transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * 2f);
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Squirrel pausing");
             }
         }
 
-        void UpdateStateTransitions()
+        void HandleBirdAction()
         {
-            if (player == null) return;
-
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-            // Flee if player too close
-            if (distanceToPlayer < fleeDistance && currentState != AnimalState.Flee)
+            if (isSwooping)
             {
-                ChangeState(AnimalState.Flee);
+                // Stop swooping
+                isSwooping = false;
+                nextActionTime = Time.time + Random.Range(4f, 7f);
+
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Bird ending swoop");
             }
-            // Return to wander if player far enough and currently fleeing
-            else if (currentState == AnimalState.Flee && distanceToPlayer > detectionRadius)
+            else
             {
-                ChangeState(AnimalState.Wander);
-            }
-        }
-
-        void ChangeState(AnimalState newState)
-        {
-            if (currentState == newState) return;
-
-            currentState = newState;
-            stateTimer = 0f;
-
-            switch (newState)
-            {
-                case AnimalState.Idle:
-                    if (agent != null)
-                    {
-                        agent.isStopped = true;
-                        agent.velocity = Vector3.zero;
-                    }
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} -> Idle");
-                    break;
-
-                case AnimalState.Wander:
-                    if (agent != null)
-                    {
-                        agent.speed = walkSpeed;
-                        agent.isStopped = false;
-                    }
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} -> Wander");
-                    break;
-
-                case AnimalState.Flee:
-                    if (agent != null)
-                    {
-                        agent.speed = fleeSpeed;
-                        agent.isStopped = false;
-                    }
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} -> Flee");
-                    break;
-            }
-
-            // Optional: Trigger animator parameters
-            if (animator != null)
-            {
-                animator.SetInteger("State", (int)newState);
-            }
-        }
-
-        void UpdateIdle()
-        {
-            stateTimer += Time.deltaTime;
-
-            if (stateTimer > idleTime)
-            {
-                ChangeState(AnimalState.Wander);
-            }
-        }
-
-        void UpdateWander()
-        {
-            // If no path or reached destination, pick new wander point
-            if (!agent.hasPath || agent.remainingDistance < 0.5f)
-            {
-                Vector3 randomPoint = GetRandomWanderPoint();
-
-                if (randomPoint != Vector3.zero)
+                // Start swoop or change direction
+                if (Random.value < 0.3f)
                 {
-                    agent.SetDestination(randomPoint);
+                    isSwooping = true;
+                    swoopStartTime = Time.time;
+                    swoopStartPosition = transform.position;
+                    nextActionTime = Time.time + Random.Range(1.5f, 2.5f);
 
                     if (showDebug)
-                        Debug.Log($"[AnimalAI] {gameObject.name} wandering to {randomPoint}");
+                        Debug.Log($"[AnimalAI] Bird starting swoop");
                 }
                 else
                 {
-                    // Couldn't find valid point
-                    if (showDebug)
-                        Debug.LogWarning($"[AnimalAI] {gameObject.name} couldn't find wander point, going idle");
-
-                    // Go idle briefly, then try again
-                    ChangeState(AnimalState.Idle);
+                    ChooseRandomDirection();
+                    nextActionTime = Time.time + Random.Range(3f, 5f);
                 }
             }
         }
 
-        void UpdateFlee()
+        void HandleDeerAction()
         {
-            if (player == null)
+            if (isGrazing)
             {
-                ChangeState(AnimalState.Wander);
+                // Stop grazing, start walking
+                isGrazing = false;
+                ChooseRandomDirection();
+                nextActionTime = Time.time + Random.Range(3f, 5f);
+
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Deer walking");
+            }
+            else
+            {
+                // Stop and graze
+                isGrazing = true;
+                nextActionTime = Time.time + Random.Range(2f, 4f);
+
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Deer grazing");
+            }
+        }
+
+        void HandleFoxAction()
+        {
+            if (isStalking)
+            {
+                // Stop stalking and dash
+                isStalking = false;
+                ChooseRandomDirection();
+                nextActionTime = Time.time + Random.Range(1f, 2f);
+
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Fox dashing");
+            }
+            else
+            {
+                // Resume stalking
+                isStalking = true;
+                ChooseRandomDirection();
+                nextActionTime = Time.time + Random.Range(2f, 4f);
+
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] Fox stalking");
+            }
+        }
+
+        void UpdateAnimalBehavior()
+        {
+            switch (animalType)
+            {
+                case AnimalType.Rabbit:
+                    UpdateRabbitBehavior();
+                    break;
+
+                case AnimalType.Squirrel:
+                    UpdateSquirrelBehavior();
+                    break;
+
+                case AnimalType.Bird:
+                    UpdateBirdBehavior();
+                    break;
+            }
+        }
+
+        void UpdateRabbitBehavior()
+        {
+            // Hopping animation effect - small hops
+            if (!isPaused && hopCooldown <= 0f)
+            {
+                // Apply small hop force
+                if (rb != null && !isHopping)
+                {
+                    rb.AddForce(Vector3.up * 2f, ForceMode.Impulse);
+                    isHopping = true;
+                    hopCooldown = 0.4f; // Hop every 0.4 seconds
+                }
+            }
+            else
+            {
+                hopCooldown -= Time.deltaTime;
+                if (hopCooldown <= 0f)
+                {
+                    isHopping = false;
+                }
+            }
+        }
+
+        void UpdateSquirrelBehavior()
+        {
+            // End dash after duration
+            if (isDashing && Time.time >= dashEndTime)
+            {
+                isDashing = false;
+            }
+        }
+
+        void UpdateBirdBehavior()
+        {
+            // Smooth swooping motion
+            if (isSwooping)
+            {
+                float swoopDuration = 2f;
+                float swoopProgress = (Time.time - swoopStartTime) / swoopDuration;
+
+                if (swoopProgress < 1f)
+                {
+                    // Sine wave swoop down and back up
+                    float swoopOffset = Mathf.Sin(swoopProgress * Mathf.PI) * 1.5f;
+                    Vector3 targetPos = transform.position;
+                    targetPos.y = flyHeight - swoopOffset;
+
+                    // Smoothly move toward target height
+                    Vector3 pos = transform.position;
+                    pos.y = Mathf.Lerp(pos.y, targetPos.y, Time.deltaTime * 3f);
+                    transform.position = pos;
+                }
+            }
+            else
+            {
+                // Maintain flying height
+                Vector3 pos = transform.position;
+                float targetHeight = spawnPosition.y + flyHeight;
+                pos.y = Mathf.Lerp(pos.y, targetHeight, Time.deltaTime * 2f);
+                transform.position = pos;
+            }
+        }
+
+        void MoveAnimal()
+        {
+            // Don't move if paused or grazing
+            if (isPaused || isGrazing)
+            {
+                rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
                 return;
             }
 
-            // Run away from player
-            Vector3 fleeDirection = transform.position - player.position;
-            fleeDirection.y = 0;
-            fleeDirection.Normalize();
+            // Calculate movement speed based on animal type and state
+            float moveSpeed = GetCurrentMoveSpeed();
 
-            Vector3 fleeTarget = transform.position + fleeDirection * minFleeDistance;
+            Vector3 movement = currentMoveDirection * moveSpeed;
+            Vector3 newVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
 
-            // Find valid NavMesh position
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(fleeTarget, out hit, minFleeDistance, NavMesh.AllAreas))
+            rb.linearVelocity = newVelocity;
+        }
+
+        float GetCurrentMoveSpeed()
+        {
+            switch (animalType)
             {
-                agent.SetDestination(hit.position);
+                case AnimalType.Rabbit:
+                    return isPaused ? 0f : 2.5f; // Quick hops
+
+                case AnimalType.Squirrel:
+                    return isDashing ? 5f : 2f; // Dash or normal
+
+                case AnimalType.Bird:
+                    return 3f; // Smooth flying speed
+
+                case AnimalType.Deer:
+                    return isGrazing ? 0f : 1.5f; // Slow, graceful
+
+                case AnimalType.Fox:
+                    return isStalking ? 1f : 3.5f; // Stalk slow, dash fast
+
+                default:
+                    return 1.5f;
             }
         }
 
-        Vector3 GetRandomWanderPoint()
+        void ChooseRandomDirection()
         {
-            int maxAttempts = 10;
-            for (int attempt = 0; attempt < maxAttempts; attempt++)
-            {
-                // Pick random point within wander radius from home
-                Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
-                randomDirection += homePosition;
-                randomDirection.y = homePosition.y; // Keep at ground level
-
-                // Check boundary constraints
-                if (boundaryController != null && !boundaryController.IsWithinBoundary(randomDirection))
-                {
-                    continue; // Try again
-                }
-
-                // Find valid NavMesh position
-                NavMeshHit hit;
-                if (NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, NavMesh.AllAreas))
-                {
-                    // Double-check boundary
-                    if (boundaryController != null && !boundaryController.IsWithinBoundary(hit.position))
-                    {
-                        continue;
-                    }
-
-                    return hit.position;
-                }
-            }
-
-            // If all attempts failed, return home position (safe)
-            return homePosition;
-        }
-
-        /// <summary>
-        /// Called when animal is hit by a spell (Zelda-style reaction)
-        /// Flash white and bounce upward, then flee temporarily
-        /// </summary>
-        public void OnSpellHit(Vector3 hitDirection, float hitForce = 0f)
-        {
-            if (showDebug)
-                Debug.Log($"[AnimalAI] {gameObject.name} hit by spell!");
-
-            // Start flash effect
-            StartFlashEffect();
-
-            // Apply bounce force
-            ApplyBounce(hitDirection, hitForce);
-
-            // Flee dramatically from hit direction
-            ChangeState(AnimalState.Flee);
-
-            // Temporarily increase flee speed for panic effect
-            float originalFleeSpeed = fleeSpeed;
-            fleeSpeed *= 1.5f;
-
-            // Reset flee speed after panic period
-            StartCoroutine(ResetFleeSpeedAfterPanic(originalFleeSpeed));
-
-            // Cancel any animal-specific behaviors during panic
-            isRabbitPaused = false;
-            isSquirrelDashing = false;
-            isBirdSwooping = false;
-        }
-
-        System.Collections.IEnumerator ResetFleeSpeedAfterPanic(float originalSpeed)
-        {
-            yield return new WaitForSeconds(3f);
-            fleeSpeed = originalSpeed;
+            // Pick random direction on XZ plane
+            float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+            currentMoveDirection = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)).normalized;
 
             if (showDebug)
-                Debug.Log($"[AnimalAI] {gameObject.name} calmed down from panic");
+                Debug.Log($"[AnimalAI] {animalType} new direction: {currentMoveDirection}");
         }
 
-        void StartFlashEffect()
+        void CheckBounds()
         {
-            if (isFlashing) return; // Already flashing
+            // If animal gets too far from spawn, turn back
+            float distanceFromSpawn = Vector3.Distance(
+                new Vector3(transform.position.x, 0f, transform.position.z),
+                new Vector3(spawnPosition.x, 0f, spawnPosition.z)
+            );
 
-            isFlashing = true;
-            flashTimer = 0f;
-            currentFlashCycle = 0;
-        }
-
-        void UpdateFlashEffect()
-        {
-            flashTimer += Time.deltaTime;
-
-            // Calculate flash state (on/off)
-            float cycleProgress = flashTimer / (flashDuration * flashCycles);
-            bool flashOn = Mathf.FloorToInt(cycleProgress * flashCycles * 2) % 2 == 0;
-
-            // Apply flash to all renderers
-            foreach (MeshRenderer renderer in meshRenderers)
+            if (distanceFromSpawn > maxRoamDistance)
             {
-                if (renderer == null) continue;
+                // Point back toward spawn
+                Vector3 toSpawn = (spawnPosition - transform.position).normalized;
+                currentMoveDirection = new Vector3(toSpawn.x, 0f, toSpawn.z).normalized;
 
-                Material[] materials = renderer.materials;
-                for (int i = 0; i < materials.Length; i++)
-                {
-                    if (flashOn)
-                    {
-                        // Flash color
-                        materials[i].color = hitFlashColor;
-                    }
-                    else
-                    {
-                        // Original color
-                        if (originalColors.ContainsKey(renderer) && i < originalColors[renderer].Length)
-                        {
-                            materials[i].color = originalColors[renderer][i];
-                        }
-                    }
-                }
-                renderer.materials = materials;
-            }
-
-            // End flash effect
-            if (flashTimer >= flashDuration * flashCycles)
-            {
-                isFlashing = false;
-                RestoreOriginalColors();
-            }
-        }
-
-        void RestoreOriginalColors()
-        {
-            foreach (MeshRenderer renderer in meshRenderers)
-            {
-                if (renderer == null) continue;
-
-                Material[] materials = renderer.materials;
-                if (originalColors.ContainsKey(renderer))
-                {
-                    for (int i = 0; i < materials.Length && i < originalColors[renderer].Length; i++)
-                    {
-                        materials[i].color = originalColors[renderer][i];
-                    }
-                    renderer.materials = materials;
-                }
-            }
-        }
-
-        void ApplyBounce(Vector3 hitDirection, float hitForce)
-        {
-            if (rb == null) return;
-
-            // Temporarily disable kinematic for bounce
-            bool wasKinematic = rb.isKinematic;
-            rb.isKinematic = false;
-            rb.useGravity = true; // Ensure gravity is on during bounce
-
-            // Disable NavMeshAgent to prevent interference with physics
-            bool wasAgentEnabled = false;
-            if (agent != null)
-            {
-                wasAgentEnabled = agent.enabled;
-                agent.enabled = false;
-            }
-
-            // Apply small upward bounce force
-            Vector3 bounceDir = (Vector3.up + hitDirection.normalized * 0.2f).normalized;
-            float totalForce = bounceForce + hitForce;
-            rb.AddForce(bounceDir * totalForce, ForceMode.Impulse);
-
-            // Re-enable kinematic after animal lands
-            StartCoroutine(ReEnableKinematic(wasKinematic, wasAgentEnabled));
-        }
-
-        System.Collections.IEnumerator ReEnableKinematic(bool wasKinematic, bool wasAgentEnabled)
-        {
-            // Wait until animal is back on ground
-            yield return new WaitForSeconds(0.5f);
-
-            // Wait until velocity is near zero (landed)
-            if (rb != null)
-            {
-                while (rb.linearVelocity.magnitude > 0.1f)
-                {
-                    yield return new WaitForSeconds(0.05f);
-                }
-            }
-
-            // Re-enable Rigidbody kinematic mode
-            if (rb != null && wasKinematic)
-            {
-                rb.isKinematic = true;
-                rb.linearVelocity = Vector3.zero; // Stop any remaining movement
-            }
-
-            // Re-enable NavMeshAgent
-            if (agent != null && wasAgentEnabled)
-            {
-                agent.enabled = true;
-            }
-        }
-
-        /// <summary>
-        /// Called by spell projectiles when they hit this animal
-        /// </summary>
-        void OnTriggerEnter(Collider other)
-        {
-            // Check if hit by spell projectile
-            if (other.gameObject.layer == LayerMask.NameToLayer("Projectile") ||
-                other.name.Contains("Projectile") ||
-                other.name.Contains("Spell") ||
-                other.name.Contains("Fireball") ||
-                other.name.Contains("Ice") ||
-                other.name.Contains("Lightning") ||
-                other.name.Contains("Wind"))
-            {
-                Vector3 hitDirection = (transform.position - other.transform.position).normalized;
-                OnSpellHit(hitDirection);
-            }
-        }
-
-        void OnDrawGizmosSelected()
-        {
-            // Home position
-            Gizmos.color = Color.green;
-            Vector3 home = Application.isPlaying ? homePosition : transform.position;
-            Gizmos.DrawWireSphere(home, 0.5f);
-
-            // Wander radius
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(home, wanderRadius);
-
-            // Detection radius
-            Gizmos.color = new Color(1f, 1f, 0f, 0.3f);
-            Gizmos.DrawWireSphere(transform.position, detectionRadius);
-
-            // Flee distance
-            Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
-            Gizmos.DrawWireSphere(transform.position, fleeDistance);
-
-            // Current destination
-            if (Application.isPlaying && agent != null && agent.hasPath)
-            {
-                Gizmos.color = Color.cyan;
-                Gizmos.DrawLine(transform.position, agent.destination);
-                Gizmos.DrawWireSphere(agent.destination, 0.3f);
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] {animalType} out of bounds, returning to spawn");
             }
         }
     }

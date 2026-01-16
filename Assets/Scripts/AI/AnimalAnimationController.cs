@@ -52,11 +52,12 @@ namespace VRDungeonCrawler.AI
         private Vector3 initialBodyPosition;
         private Quaternion[] initialLegRotations;
         private AnimalAI animalAI;
-        private AnimalState currentState;
+        private Rigidbody rb;
 
         void Awake()
         {
             animalAI = GetComponent<AnimalAI>();
+            rb = GetComponent<Rigidbody>();
             AutoFindBodyParts();
 
             // Store initial positions/rotations
@@ -125,11 +126,8 @@ namespace VRDungeonCrawler.AI
         {
             if (animalAI == null) return;
 
-            // Get current state from AnimalAI
-            currentState = GetCurrentState();
-
-            // Determine animation speed based on state
-            float speedMultiplier = GetSpeedMultiplier(currentState);
+            // Determine animation speed based on velocity
+            float speedMultiplier = GetSpeedMultiplier();
 
             // Update animation time
             animationTime += Time.deltaTime * animationSpeed * speedMultiplier;
@@ -139,39 +137,22 @@ namespace VRDungeonCrawler.AI
             AnimateLegs(speedMultiplier);
         }
 
-        private AnimalState GetCurrentState()
+        private float GetSpeedMultiplier()
         {
-            // Access the current state from AnimalAI via reflection or make it public
-            // For now, we'll use a simple approach based on velocity
-            if (animalAI != null)
+            // Use Rigidbody velocity to determine animation speed
+            if (rb != null)
             {
-                var agent = animalAI.GetComponent<UnityEngine.AI.NavMeshAgent>();
-                if (agent != null)
-                {
-                    if (agent.velocity.magnitude < 0.1f)
-                        return AnimalState.Idle;
-                    else if (agent.velocity.magnitude > 2.5f)
-                        return AnimalState.Flee;
-                    else
-                        return AnimalState.Wander;
-                }
-            }
-            return AnimalState.Idle;
-        }
+                float speed = rb.linearVelocity.magnitude;
 
-        private float GetSpeedMultiplier(AnimalState state)
-        {
-            switch (state)
-            {
-                case AnimalState.Idle:
+                if (speed < 0.1f)
                     return idleSpeedMultiplier;
-                case AnimalState.Wander:
-                    return walkSpeedMultiplier;
-                case AnimalState.Flee:
+                else if (speed > 2.5f)
                     return fleeSpeedMultiplier;
-                default:
-                    return 1f;
+                else
+                    return walkSpeedMultiplier;
             }
+
+            return idleSpeedMultiplier;
         }
 
         private void AnimateBody(float speedMultiplier)
