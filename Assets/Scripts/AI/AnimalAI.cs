@@ -416,6 +416,14 @@ namespace VRDungeonCrawler.AI
             Vector3 newVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
 
             rb.linearVelocity = newVelocity;
+
+            // Rotate to face movement direction
+            if (currentMoveDirection.sqrMagnitude > 0.01f)
+            {
+                // Smoothly rotate to face the movement direction
+                Quaternion targetRotation = Quaternion.LookRotation(currentMoveDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 8f);
+            }
         }
 
         float GetCurrentMoveSpeed()

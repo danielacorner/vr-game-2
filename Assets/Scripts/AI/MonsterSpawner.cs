@@ -167,19 +167,29 @@ namespace VRDungeonCrawler.AI
 
             if (monster != null)
             {
-                // Calculate mesh bounds to size colliders correctly
+                Debug.Log($"[MonsterSpawner] ========== SPAWNING {type} ==========");
+
+                // Calculate mesh bounds BEFORE scaling (for accurate collider sizing)
                 Bounds meshBounds = CalculateMeshBounds(monster);
 
-                if (showDebug)
-                    Debug.Log($"[MonsterSpawner] Mesh bounds: center={meshBounds.center}, size={meshBounds.size}, min.y={meshBounds.min.y}, max.y={meshBounds.max.y}");
+                Debug.Log($"[MonsterSpawner] Original mesh bounds: center={meshBounds.center}, size={meshBounds.size}");
 
-                // Adjust spawn position so the bottom of the mesh touches the ground
-                // meshBounds.min.y is the lowest point in local space
-                float meshBottomOffset = meshBounds.min.y;
-                spawnPosition.y -= meshBottomOffset; // Move up by the amount the mesh extends below origin
+                // DON'T scale visual meshes - keep monsters at original size for now to debug
+                // ScaleVisualMeshes(monster, 1.5f);
 
+                // Simple approach: spawn at ground level + half monster height
+                // This ensures the monster's bottom is at ground level
+                float monsterHeight = meshBounds.size.y;
+                float monsterBottom = meshBounds.center.y - (monsterHeight / 2f);
+                spawnPosition.y = 0f - monsterBottom; // Ground is at Y=0
+
+                Debug.Log($"[MonsterSpawner] Monster height={monsterHeight:F2}, bottom offset={monsterBottom:F2}, spawn Y={spawnPosition.y:F2}");
+
+                // Set initial position and rotation
                 monster.transform.position = spawnPosition;
                 monster.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+
+                Debug.Log($"[MonsterSpawner] Monster positioned at {monster.transform.position}");
 
                 // Add MonsterBase component and configure
                 MonsterBase monsterBase = monster.AddComponent<MonsterBase>();
@@ -207,8 +217,9 @@ namespace VRDungeonCrawler.AI
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
 
-                // Add colliders sized to match mesh bounds exactly
-                // Trigger collider for spell detection - matches mesh size
+                // Add colliders sized to ORIGINAL (unscaled) mesh bounds
+                // This keeps hitboxes reasonable while visual is larger
+                // Trigger collider for spell detection - matches original mesh size
                 BoxCollider triggerCollider = monster.AddComponent<BoxCollider>();
                 triggerCollider.isTrigger = true;
                 triggerCollider.size = meshBounds.size;
@@ -219,6 +230,11 @@ namespace VRDungeonCrawler.AI
                 physicsCollider.isTrigger = false;
                 physicsCollider.size = new Vector3(meshBounds.size.x * 0.9f, meshBounds.size.y, meshBounds.size.z * 0.9f);
                 physicsCollider.center = meshBounds.center;
+
+                // DISABLED: Add ground alignment component for robust floor positioning
+                // Using simple Y position calculation instead for now
+                // MonsterGroundAlignment groundAlignment = monster.AddComponent<MonsterGroundAlignment>();
+                // groundAlignment.showDebug = showDebug;
 
                 // Add visual debug sphere to see collider bounds
                 if (showDebug)
@@ -284,6 +300,24 @@ namespace VRDungeonCrawler.AI
                 MonsterType temp = spawnQueue[i];
                 spawnQueue[i] = spawnQueue[j];
                 spawnQueue[j] = temp;
+            }
+        }
+
+        /// <summary>
+        /// Scale up visual meshes without affecting colliders
+        /// Only scales the mesh renderer transforms, not the root GameObject
+        /// </summary>
+        void ScaleVisualMeshes(GameObject obj, float scale)
+        {
+            MeshRenderer[] renderers = obj.GetComponentsInChildren<MeshRenderer>();
+
+            foreach (MeshRenderer renderer in renderers)
+            {
+                // Scale the renderer's transform (not the root object)
+                renderer.transform.localScale *= scale;
+
+                if (showDebug)
+                    Debug.Log($"[MonsterSpawner] Scaled {renderer.gameObject.name} by {scale}x");
             }
         }
 
