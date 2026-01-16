@@ -32,7 +32,7 @@ namespace VRDungeonCrawler.AI
         public Color hitFlashColor = new Color(1f, 0f, 0f, 1f); // Bright red
 
         [Tooltip("Duration of flash effect")]
-        public float flashDuration = 0.1f; // Quick flash for "ouch" effect
+        public float flashDuration = 0.2f; // Quick visible flash for "ouch" effect
 
         [Tooltip("Number of flash cycles when hit")]
         public int flashCycles = 2;
@@ -183,8 +183,8 @@ namespace VRDungeonCrawler.AI
             if (showDebug)
                 Debug.Log($"[MonsterBase] {gameObject.name} took {damage} damage. HP: {currentHP}/{maxHP}");
 
-            // Spawn damage number indicator
-            Vector3 damageNumberPos = transform.position + Vector3.up * 1.5f;
+            // Spawn damage number indicator higher to avoid ground intersection
+            Vector3 damageNumberPos = transform.position + Vector3.up * 2.5f;
             DamageNumber.Create(damage, damageNumberPos, Color.red);
 
             // Flash effect (red flash twice)
@@ -323,7 +323,7 @@ namespace VRDungeonCrawler.AI
             // Notify spawner
             if (spawner != null)
             {
-                spawner.OnMonsterDied(monsterType);
+                spawner.OnMonsterDied(monsterType, gameObject);
             }
 
             // Play death animation based on monster type

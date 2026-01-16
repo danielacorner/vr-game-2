@@ -204,7 +204,7 @@ struct Dictionary_2_t82E7CC9CA60130823FC90A87A9A8073E00C266BC;
 struct Dictionary_2_t6EB10DF170874D02D43E115B0A1B93479CE3FF80;
 struct Dictionary_2_t52C0D4E3DEA7BE49B8A9EF6F00AFFA8F07B1D0A2;
 struct Dictionary_2_t3B17D8C82C23A98B3019FC454F9155B16132F98A;
-struct Dictionary_2_tE8BC273286D8C7A45EE073235978CEBE14A86F2F;
+struct Dictionary_2_tE43075C855C698EB40D9B0ECDF51B24A05723F49;
 struct Dictionary_2_t31654189884079503F23B56F8ED949AA30E46A52;
 struct Dictionary_2_t4DFECF621C500453991651A5A026D9FCC484C340;
 struct Dictionary_2_tBCB806C16A2ADAA77600E3249746F7B6CB638FB1;
@@ -5127,7 +5127,7 @@ struct U3CSkeletonDeathAnimationU3Ed__31_tB3896742AA8E0256124E4EA5D8902611B70627
 	RuntimeObject* ___U3CU3E2__current;
 	MonsterBase_t290516D2F876CDDB8D7142E097A44DC822B9A424* ___U3CU3E4__this;
 };
-struct U3CRotateTopCrystalU3Ed__18_tC885911D96EE70702BB7DF8E85759732C268F022  : public RuntimeObject
+struct U3CRotateTopCrystalU3Ed__19_t432815670F6F3133A262036E24577800B6456324  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -31570,7 +31570,7 @@ struct U3CSlimeDeathAnimationU3Ed__32_t3C55E9333CB4729899FD2E003148A66DC84B3F4C 
 	float ___U3CelapsedU3E5__3;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___U3CstartScaleU3E5__4;
 };
-struct U3CPulseGlowU3Ed__19_t93AEA90D8B53DE5E8840A38D14908EF2D2A70CCB  : public RuntimeObject
+struct U3CPulseGlowU3Ed__20_tF0D858CE570701A128F31BFC15141B5D0B63D6C3  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -49096,13 +49096,14 @@ struct MonsterSpawner_tCCBDFDBAB6EDDB36859B7D0B9016B686245197AB  : public MonoBe
 {
 	float ___spawnInterval;
 	float ___spawnRadius;
+	int32_t ___maxMonstersPerType;
 	int32_t ___goblinHP;
 	int32_t ___skeletonHP;
 	int32_t ___slimeHP;
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___evilGlowColor;
 	ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* ___spawnParticles;
 	bool ___showDebug;
-	Dictionary_2_tE8BC273286D8C7A45EE073235978CEBE14A86F2F* ___activeMonsters;
+	Dictionary_2_tE43075C855C698EB40D9B0ECDF51B24A05723F49* ___activeMonsters;
 	float ___nextSpawnTime;
 	List_1_t3FAC08628979DF6E9355D0040524AAAF5942B7DC* ___spawnQueue;
 };
@@ -60934,9 +60935,9 @@ const Il2CppTypeDefinitionSizes g_typeDefinitionSize7496 = { sizeof(MonsterBase_
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7497;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize7497 = { sizeof(MonsterBuilder_t15AE93624F85C841AC64934AEACE280F8A94336C), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7498;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7498 = { sizeof(U3CPulseGlowU3Ed__19_t93AEA90D8B53DE5E8840A38D14908EF2D2A70CCB), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7498 = { sizeof(U3CPulseGlowU3Ed__20_tF0D858CE570701A128F31BFC15141B5D0B63D6C3), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7499;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7499 = { sizeof(U3CRotateTopCrystalU3Ed__18_tC885911D96EE70702BB7DF8E85759732C268F022), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7499 = { sizeof(U3CRotateTopCrystalU3Ed__19_t432815670F6F3133A262036E24577800B6456324), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7500;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize7500 = { sizeof(MonsterSpawner_tCCBDFDBAB6EDDB36859B7D0B9016B686245197AB), -1, 0, 0 };
 IL2CPP_EXTERN_C_CONST Il2CppTypeDefinitionSizes g_typeDefinitionSize7501;

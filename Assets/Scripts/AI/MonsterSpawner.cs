@@ -14,10 +14,13 @@ namespace VRDungeonCrawler.AI
     {
         [Header("Spawning")]
         [Tooltip("Time between spawn attempts")]
-        public float spawnInterval = 5f;
+        public float spawnInterval = 1f;
 
         [Tooltip("Spawn radius around spawner")]
-        public float spawnRadius = 4f;
+        public float spawnRadius = 8f;
+
+        [Tooltip("Maximum monsters of each type")]
+        public int maxMonstersPerType = 5;
 
         [Tooltip("Starting HP for Goblin")]
         public int goblinHP = 6;
@@ -40,7 +43,7 @@ namespace VRDungeonCrawler.AI
         public bool showDebug = true;
 
         // Internal state
-        private Dictionary<MonsterType, GameObject> activeMonsters = new Dictionary<MonsterType, GameObject>();
+        private Dictionary<MonsterType, List<GameObject>> activeMonsters = new Dictionary<MonsterType, List<GameObject>>();
         private float nextSpawnTime;
         private List<MonsterType> spawnQueue = new List<MonsterType>();
 
@@ -52,19 +55,27 @@ namespace VRDungeonCrawler.AI
             // Build spawner visual appearance
             BuildSpawnerModel();
 
-            // Initialize spawn queue with all monster types
-            spawnQueue.Add(MonsterType.Goblin);
-            spawnQueue.Add(MonsterType.Skeleton);
-            spawnQueue.Add(MonsterType.Slime);
+            // Initialize active monsters dictionary
+            activeMonsters[MonsterType.Goblin] = new List<GameObject>();
+            activeMonsters[MonsterType.Skeleton] = new List<GameObject>();
+            activeMonsters[MonsterType.Slime] = new List<GameObject>();
 
-            // Shuffle queue for random initial order
+            // Initialize spawn queue with all monster types (5 of each)
+            for (int i = 0; i < maxMonstersPerType; i++)
+            {
+                spawnQueue.Add(MonsterType.Goblin);
+                spawnQueue.Add(MonsterType.Skeleton);
+                spawnQueue.Add(MonsterType.Slime);
+            }
+
+            // Shuffle queue for random order
             ShuffleSpawnQueue();
 
-            // Schedule first spawn
-            nextSpawnTime = Time.time + spawnInterval;
+            // Schedule first spawn immediately
+            nextSpawnTime = Time.time + 0.1f;
 
             if (showDebug)
-                Debug.Log("[MonsterSpawner] Spawner initialized");
+                Debug.Log($"[MonsterSpawner] Spawner initialized with {spawnQueue.Count} monsters queued");
         }
 
         void Update()
@@ -180,17 +191,21 @@ namespace VRDungeonCrawler.AI
                     rb.constraints = RigidbodyConstraints.FreezeRotation;
                 }
 
-                // Add collider for spell hits (trigger) - LARGE for easy hits
+                // Reset velocity to prevent initial fast movement
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+
+                // Add collider for spell hits (trigger) - reasonable size for hits
                 BoxCollider triggerCollider = monster.AddComponent<BoxCollider>();
                 triggerCollider.isTrigger = true;
-                triggerCollider.size = new Vector3(2f, 2.5f, 2f);
-                triggerCollider.center = Vector3.up * 0.5f;
+                triggerCollider.size = new Vector3(1.2f, 1.5f, 1.2f);
+                triggerCollider.center = Vector3.up * 0.75f;
 
-                // Add collider for physics (non-trigger) - LARGE for easy hits
+                // Add collider for physics (non-trigger) - smaller to prevent collision issues
                 BoxCollider physicsCollider = monster.AddComponent<BoxCollider>();
                 physicsCollider.isTrigger = false;
-                physicsCollider.size = new Vector3(1.8f, 2.3f, 1.8f);
-                physicsCollider.center = Vector3.up * 0.5f;
+                physicsCollider.size = new Vector3(0.8f, 1.2f, 0.8f);
+                physicsCollider.center = Vector3.up * 0.6f;
 
                 // Add visual debug sphere to see collider bounds
                 if (showDebug)
@@ -198,8 +213,8 @@ namespace VRDungeonCrawler.AI
                     GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     debugSphere.name = "DebugColliderVisual";
                     debugSphere.transform.SetParent(monster.transform);
-                    debugSphere.transform.localPosition = Vector3.up * 0.5f;
-                    debugSphere.transform.localScale = new Vector3(2f, 2.5f, 2f);
+                    debugSphere.transform.localPosition = Vector3.up * 0.75f;
+                    debugSphere.transform.localScale = new Vector3(1.2f, 1.5f, 1.2f);
 
                     // Make it transparent green
                     MeshRenderer debugRenderer = debugSphere.GetComponent<MeshRenderer>();
@@ -215,7 +230,7 @@ namespace VRDungeonCrawler.AI
                 }
 
                 // Track active monster
-                activeMonsters[type] = monster;
+                activeMonsters[type].Add(monster);
 
                 // Play spawn particles if available
                 if (spawnParticles != null)
@@ -232,19 +247,16 @@ namespace VRDungeonCrawler.AI
         /// <summary>
         /// Called by MonsterBase when a monster dies
         /// </summary>
-        public void OnMonsterDied(MonsterType type)
+        public void OnMonsterDied(MonsterType type, GameObject monster)
         {
-            // Remove from active monsters
+            // Remove from active monsters list
             if (activeMonsters.ContainsKey(type))
             {
-                activeMonsters.Remove(type);
+                activeMonsters[type].Remove(monster);
             }
 
             // Add back to spawn queue (will respawn after next interval)
-            if (!spawnQueue.Contains(type))
-            {
-                spawnQueue.Add(type);
-            }
+            spawnQueue.Add(type);
 
             if (showDebug)
                 Debug.Log($"[MonsterSpawner] {type} died, added to respawn queue");

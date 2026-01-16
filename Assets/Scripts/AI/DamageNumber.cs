@@ -77,10 +77,10 @@ namespace VRDungeonCrawler.AI
 
             Debug.Log($"[DamageNumber] Canvas created with RenderMode.WorldSpace");
 
-            // Set canvas size and scale for VR - very small
+            // Set canvas size and scale for VR - tiny for readable damage numbers
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
             canvasRect.sizeDelta = new Vector2(100, 50);
-            canvasRect.localScale = Vector3.one * 0.002f; // Much smaller: 0.2m x 0.1m effective size
+            canvasRect.localScale = Vector3.one * 0.0001f; // Tiny: 1cm x 0.5cm effective size
 
             Debug.Log($"[DamageNumber] Canvas RectTransform configured: size={canvasRect.sizeDelta}, scale={canvasRect.localScale}");
 

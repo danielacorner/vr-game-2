@@ -13,7 +13,7 @@ namespace VRDungeonCrawler.AI
     {
         [Header("Casual Patrol Settings")]
         [Tooltip("Slow walk speed")]
-        public float walkSpeed = 0.6f;
+        public float walkSpeed = 1.2f;
 
         [Tooltip("Minimum time walking before stopping")]
         public float walkTimeMin = 3f;
@@ -57,12 +57,19 @@ namespace VRDungeonCrawler.AI
 
         void Start()
         {
+            // Ensure rigidbody velocity is zero before starting patrol
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
             // Start with walking
             isPaused = false;
             nextActionTime = Time.time + Random.Range(walkTimeMin, walkTimeMax);
 
             if (showDebug)
-                Debug.Log($"[MonsterAI] {gameObject.name} started patrol");
+                Debug.Log($"[MonsterAI] {gameObject.name} started patrol at position {transform.position}");
         }
 
         void Update()
@@ -107,6 +114,8 @@ namespace VRDungeonCrawler.AI
 
         void FixedUpdate()
         {
+            if (rb == null) return;
+
             // Don't move if stunned
             if (isStunned)
             {
@@ -119,7 +128,15 @@ namespace VRDungeonCrawler.AI
             {
                 // Walk slowly in current direction
                 Vector3 movement = currentMoveDirection * walkSpeed;
-                rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
+                Vector3 newVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
+
+                // Debug log if velocity is unexpectedly high
+                if (rb.linearVelocity.magnitude > walkSpeed * 2f && showDebug)
+                {
+                    Debug.LogWarning($"[MonsterAI] {gameObject.name} has high velocity {rb.linearVelocity.magnitude:F2}, resetting to walk speed");
+                }
+
+                rb.linearVelocity = newVelocity;
             }
             else
             {
