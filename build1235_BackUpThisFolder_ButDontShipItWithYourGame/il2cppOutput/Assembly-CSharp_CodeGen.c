@@ -476,6 +476,8 @@ extern void AtmosphericPostProcessing_ToggleDepthOfField_m5424D7097AE1CBF4F77123
 extern void AtmosphericPostProcessing_ApplyPerformanceMode_m0E42E10CD4EF148896396FF9B920D473F8A0DB5F (void);
 extern void AtmosphericPostProcessing_ApplyQualityMode_mD5ADA28BD032DB3D355A3504E8FEFD1ACE08F6BF (void);
 extern void AtmosphericPostProcessing__ctor_m89692FFA00DAA7CA135DBB4C0A4635DAFD860190 (void);
+extern void AutoStartParticles_Awake_m9D4B5614ADD855203ABC5BBFB64B9674369C7BFD (void);
+extern void AutoStartParticles__ctor_m0BA457EDDE40A947EDA125E4D0438396D82D5314 (void);
 extern void BoundaryController_Start_m3C2B56141D9818750C2AEDCD0BDACABD3A7410F2 (void);
 extern void BoundaryController_FindPlayer_m8A1D8FA75B67EAED668B98E5247E88F3D2EB38E1 (void);
 extern void BoundaryController_Update_m1F117BED75CE33C0D60229FA15BDD186670059F9 (void);
@@ -659,6 +661,7 @@ extern void StarTwinkle_Update_m11AB2DFB679418D69C28E4EDFC5428187774D69C (void);
 extern void StarTwinkle_OnDestroy_m20CB506991B84558A6B2C28812BDBDF575BB16FB (void);
 extern void StarTwinkle__ctor_m3AEE76E67AB36A1AAD1E9C56DF3A768149C5BB66 (void);
 extern void Portal_Awake_mC9DEC02697D878B038D810DA43798447CD7FB277 (void);
+extern void Portal_Start_mB8C5D803B6BF16E9FAF8919920D29B01B6B93633 (void);
 extern void Portal_Update_m9C63549B508D741BD96F81DA384B78D4BCEA456E (void);
 extern void Portal_OnDrawGizmos_mD3E98EDAB01BBF371E36E523378299B8FF18A0D7 (void);
 extern void Portal_OnTriggerEnter_mE11813F98A6587469FBA5CD4A511E781A139AFDF (void);
@@ -913,7 +916,7 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[906] = 
+static Il2CppMethodPointer s_methodPointers[909] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1384,6 +1387,8 @@ static Il2CppMethodPointer s_methodPointers[906] =
 	AtmosphericPostProcessing_ApplyPerformanceMode_m0E42E10CD4EF148896396FF9B920D473F8A0DB5F,
 	AtmosphericPostProcessing_ApplyQualityMode_mD5ADA28BD032DB3D355A3504E8FEFD1ACE08F6BF,
 	AtmosphericPostProcessing__ctor_m89692FFA00DAA7CA135DBB4C0A4635DAFD860190,
+	AutoStartParticles_Awake_m9D4B5614ADD855203ABC5BBFB64B9674369C7BFD,
+	AutoStartParticles__ctor_m0BA457EDDE40A947EDA125E4D0438396D82D5314,
 	BoundaryController_Start_m3C2B56141D9818750C2AEDCD0BDACABD3A7410F2,
 	BoundaryController_FindPlayer_m8A1D8FA75B67EAED668B98E5247E88F3D2EB38E1,
 	BoundaryController_Update_m1F117BED75CE33C0D60229FA15BDD186670059F9,
@@ -1567,6 +1572,7 @@ static Il2CppMethodPointer s_methodPointers[906] =
 	StarTwinkle_OnDestroy_m20CB506991B84558A6B2C28812BDBDF575BB16FB,
 	StarTwinkle__ctor_m3AEE76E67AB36A1AAD1E9C56DF3A768149C5BB66,
 	Portal_Awake_mC9DEC02697D878B038D810DA43798447CD7FB277,
+	Portal_Start_mB8C5D803B6BF16E9FAF8919920D29B01B6B93633,
 	Portal_Update_m9C63549B508D741BD96F81DA384B78D4BCEA456E,
 	Portal_OnDrawGizmos_mD3E98EDAB01BBF371E36E523378299B8FF18A0D7,
 	Portal_OnTriggerEnter_mE11813F98A6587469FBA5CD4A511E781A139AFDF,
@@ -1827,7 +1833,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x06000113, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[906] = 
+static const int32_t s_InvokerIndices[909] = 
 {
 	15293,
 	15293,
@@ -2301,6 +2307,8 @@ static const int32_t s_InvokerIndices[906] =
 	15293,
 	15293,
 	15293,
+	15293,
+	15293,
 	3761,
 	5884,
 	10302,
@@ -2473,6 +2481,7 @@ static const int32_t s_InvokerIndices[906] =
 	15293,
 	15293,
 	11531,
+	15293,
 	15293,
 	15293,
 	15293,
@@ -2740,7 +2749,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	906,
+	909,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

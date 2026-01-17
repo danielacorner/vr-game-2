@@ -53,6 +53,16 @@ namespace VRDungeonCrawler.Entities
             triggerCollider.radius = triggerRadius;
         }
 
+        private void Start()
+        {
+            // Start particle system
+            if (portalParticles != null && !portalParticles.isPlaying)
+            {
+                portalParticles.Play();
+                Debug.Log("[Portal] Started portal particles");
+            }
+        }
+
         private void Update()
         {
             // Rotate rings
