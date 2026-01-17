@@ -246,11 +246,12 @@ namespace VRDungeonCrawler.Environment
 
         void CreatePortalDecorations()
         {
+            // DISABLED: Rune stones look like "rotating squares/tornado" from distance
             // Create 4 floating rune stones around portal
-            CreateRuneStone("RuneStone_North", new Vector3(0f, 0f, portalSize + 1f));
-            CreateRuneStone("RuneStone_East", new Vector3(portalSize + 1f, 0f, 0f));
-            CreateRuneStone("RuneStone_South", new Vector3(0f, 0f, -(portalSize + 1f)));
-            CreateRuneStone("RuneStone_West", new Vector3(-(portalSize + 1f), 0f, 0f));
+            // CreateRuneStone("RuneStone_North", new Vector3(0f, 0f, portalSize + 1f));
+            // CreateRuneStone("RuneStone_East", new Vector3(portalSize + 1f, 0f, 0f));
+            // CreateRuneStone("RuneStone_South", new Vector3(0f, 0f, -(portalSize + 1f)));
+            // CreateRuneStone("RuneStone_West", new Vector3(-(portalSize + 1f), 0f, 0f));
 
             // Create stone platform
             CreatePlatform();

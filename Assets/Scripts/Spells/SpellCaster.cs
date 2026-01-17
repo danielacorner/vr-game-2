@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using VRDungeonCrawler.Player;
 
@@ -104,25 +105,58 @@ namespace VRDungeonCrawler.Spells
             if (triggerValue && !triggerPressed)
             {
                 // Trigger just pressed - start charging (or resume if fading)
-                triggerPressed = true;
-                StartCharging();
+                // But NOT if pointing at UI
+                if (!IsPointingAtUI())
+                {
+                    triggerPressed = true;
+                    StartCharging();
+                }
             }
             else if (triggerValue && triggerPressed)
             {
                 // Trigger held - update charge state
-                UpdateCharging();
+                // Stop charging if we start pointing at UI
+                if (IsPointingAtUI())
+                {
+                    triggerPressed = false;
+                    StopCharging();
+                }
+                else
+                {
+                    UpdateCharging();
+                }
             }
             else if (!triggerValue && triggerPressed)
             {
                 // Trigger released - capture velocity and fire if fully charged
                 triggerPressed = false;
                 releaseVelocity = currentHandVelocity; // Capture velocity at moment of release
-                if (isFullyCharged)
+                if (isFullyCharged && !IsPointingAtUI())
                 {
                     TryCastSpell();
                 }
                 StopCharging();
             }
+        }
+
+        /// <summary>
+        /// Check if controller is pointing at UI element
+        /// </summary>
+        private bool IsPointingAtUI()
+        {
+            // Raycast from spawn point forward
+            Ray ray = new Ray(spawnPoint.position, spawnPoint.forward);
+            RaycastHit hit;
+
+            // Check if hitting UI layer (layer 5 is default UI layer)
+            int uiLayerMask = 1 << LayerMask.NameToLayer("UI");
+
+            if (Physics.Raycast(ray, out hit, 10f, uiLayerMask))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void StartCharging()
