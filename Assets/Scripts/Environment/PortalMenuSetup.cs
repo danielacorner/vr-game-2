@@ -88,8 +88,9 @@ namespace VRDungeonCrawler.Environment
 
             // Scale canvas appropriately for VR - MUCH LARGER for visibility
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-            canvasRect.sizeDelta = new Vector2(300, 200);  // Larger canvas
-            canvasRect.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 3m x 2m in world space
+            canvasRect.sizeDelta = new Vector2(300, 100);  // 3m x 1m in world space
+            canvasRect.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            canvasRect.pivot = new Vector2(0.5f, 0.5f);  // Pivot at center
 
             // Set up CanvasScaler
             CanvasScaler scaler = canvas.GetComponent<CanvasScaler>();
@@ -97,6 +98,10 @@ namespace VRDungeonCrawler.Environment
             {
                 scaler.dynamicPixelsPerUnit = 100;
             }
+
+            // Add GraphicRaycaster for XR controller interaction
+            UnityEngine.UI.GraphicRaycaster raycaster = canvas.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+            Debug.Log("[PortalMenuSetup] Added GraphicRaycaster for UI interaction");
 
             // Create background panel
             GameObject panel = CreatePanel();
@@ -150,22 +155,22 @@ namespace VRDungeonCrawler.Environment
             RectTransform buttonRect = buttonObj.AddComponent<RectTransform>();
             buttonRect.anchorMin = new Vector2(0.5f, 0.5f);
             buttonRect.anchorMax = new Vector2(0.5f, 0.5f);
-            buttonRect.sizeDelta = new Vector2(280, 180); // Much larger - nearly full canvas
+            buttonRect.sizeDelta = new Vector2(280, 80); // Fit new canvas height
             buttonRect.anchoredPosition = Vector2.zero;
 
             // Button component
             travelButton = buttonObj.AddComponent<Button>();
 
-            // Button image - BRIGHT CYAN for visibility
+            // Button image - Softer gray-blue color
             Image buttonImage = buttonObj.AddComponent<Image>();
-            buttonImage.color = new Color(0f, 1f, 1f, 1f); // Bright cyan
+            buttonImage.color = new Color(0.25f, 0.3f, 0.4f, 0.9f); // Soft gray-blue
 
-            // Button colors
+            // Button colors - softer palette
             ColorBlock colors = travelButton.colors;
-            colors.normalColor = new Color(0.2f, 0.6f, 0.9f, 1f);
-            colors.highlightedColor = new Color(0.3f, 0.7f, 1f, 1f);
-            colors.pressedColor = new Color(0.15f, 0.5f, 0.8f, 1f);
-            colors.selectedColor = new Color(0.25f, 0.65f, 0.95f, 1f);
+            colors.normalColor = new Color(0.25f, 0.3f, 0.4f, 0.9f);
+            colors.highlightedColor = new Color(0.35f, 0.45f, 0.6f, 0.95f);
+            colors.pressedColor = new Color(0.2f, 0.25f, 0.35f, 1f);
+            colors.selectedColor = new Color(0.3f, 0.4f, 0.5f, 0.95f);
             travelButton.colors = colors;
 
             // Button text

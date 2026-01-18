@@ -123,6 +123,7 @@ extern void SpellCaster_IsPointingAtUI_m5A9FC33BEC4A00BCCCAC08F1471E086E56C3BF52
 extern void SpellCaster_StartCharging_m0F6B8EFFD8B5B150DCB76D028197FD7359E6D63B (void);
 extern void SpellCaster_UpdateCharging_m47FED38475054759CB87DEA9A6213699409C27F0 (void);
 extern void SpellCaster_StopCharging_mFBA801E5B2662A23FBA6B96063BB4B56A658850A (void);
+extern void SpellCaster_CancelCharge_m13A125861DAF86F2092B93D6E8849F6A4940BA87 (void);
 extern void SpellCaster_UpdateFadeOut_m4EAE48DB7E1D03A9FFDC21EAC8619437B214D892 (void);
 extern void SpellCaster_CreateChargeCompletePopEffect_mE82EB33425524BEC13DCBA6EEF5A40B6E41FF86A (void);
 extern void SpellCaster_CreateChargingBubble_mBE7E5373F1F88161F949383E386AC11E1B3DE89A (void);
@@ -624,6 +625,9 @@ extern void MoonController_UpdateMoonPosition_m767AB471B1EB80265CDCB70C50BE30C82
 extern void MoonController_UpdateMoonRotation_mDF51B695C9F210B12B587C006C60F9D85E741799 (void);
 extern void MoonController_OnDrawGizmosSelected_mE629AC66FADEE3C56F1044282DB6CFEA7DEC64AD (void);
 extern void MoonController__ctor_mC734416160C77A60F1585AEAEA60B2B99B0A08F2 (void);
+extern void PortalBoundary_Start_mE69963FD6E0129615E4CC38B7342CE6310091979 (void);
+extern void PortalBoundary_Update_m2F305AE2D930F2F903C9FDF0181116E6D00F7FDA (void);
+extern void PortalBoundary__ctor_mF0FF0B8AFD649F26B1E27445031E56B42A99EB4B (void);
 extern void PortalMenu_get_travelButton_m550F073DDDC2E766BF54C675FA24E5CC0F96C9E9 (void);
 extern void PortalMenu_set_travelButton_mA5B2133F48AFB0C7A9C282C858CEFBBFCE9EC7E8 (void);
 extern void PortalMenu_Start_mA3152925F03E832D1993347D1D7E1DB0D21CE9EC (void);
@@ -917,7 +921,7 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[910] = 
+static Il2CppMethodPointer s_methodPointers[914] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1035,6 +1039,7 @@ static Il2CppMethodPointer s_methodPointers[910] =
 	SpellCaster_StartCharging_m0F6B8EFFD8B5B150DCB76D028197FD7359E6D63B,
 	SpellCaster_UpdateCharging_m47FED38475054759CB87DEA9A6213699409C27F0,
 	SpellCaster_StopCharging_mFBA801E5B2662A23FBA6B96063BB4B56A658850A,
+	SpellCaster_CancelCharge_m13A125861DAF86F2092B93D6E8849F6A4940BA87,
 	SpellCaster_UpdateFadeOut_m4EAE48DB7E1D03A9FFDC21EAC8619437B214D892,
 	SpellCaster_CreateChargeCompletePopEffect_mE82EB33425524BEC13DCBA6EEF5A40B6E41FF86A,
 	SpellCaster_CreateChargingBubble_mBE7E5373F1F88161F949383E386AC11E1B3DE89A,
@@ -1536,6 +1541,9 @@ static Il2CppMethodPointer s_methodPointers[910] =
 	MoonController_UpdateMoonRotation_mDF51B695C9F210B12B587C006C60F9D85E741799,
 	MoonController_OnDrawGizmosSelected_mE629AC66FADEE3C56F1044282DB6CFEA7DEC64AD,
 	MoonController__ctor_mC734416160C77A60F1585AEAEA60B2B99B0A08F2,
+	PortalBoundary_Start_mE69963FD6E0129615E4CC38B7342CE6310091979,
+	PortalBoundary_Update_m2F305AE2D930F2F903C9FDF0181116E6D00F7FDA,
+	PortalBoundary__ctor_mF0FF0B8AFD649F26B1E27445031E56B42A99EB4B,
 	PortalMenu_get_travelButton_m550F073DDDC2E766BF54C675FA24E5CC0F96C9E9,
 	PortalMenu_set_travelButton_mA5B2133F48AFB0C7A9C282C858CEFBBFCE9EC7E8,
 	PortalMenu_Start_mA3152925F03E832D1993347D1D7E1DB0D21CE9EC,
@@ -1833,9 +1841,9 @@ static Il2CppMethodPointer s_methodPointers[910] =
 extern void FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] = 
 {
-	{ 0x06000113, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
+	{ 0x06000114, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[910] = 
+static const int32_t s_InvokerIndices[914] = 
 {
 	15293,
 	15293,
@@ -1950,6 +1958,7 @@ static const int32_t s_InvokerIndices[910] =
 	15293,
 	15293,
 	14878,
+	15293,
 	15293,
 	15293,
 	15293,
@@ -2454,6 +2463,9 @@ static const int32_t s_InvokerIndices[910] =
 	15293,
 	15293,
 	15293,
+	15293,
+	15293,
+	15293,
 	15081,
 	11599,
 	15293,
@@ -2752,7 +2764,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	910,
+	914,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

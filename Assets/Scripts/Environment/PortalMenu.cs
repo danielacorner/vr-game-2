@@ -58,7 +58,7 @@ namespace VRDungeonCrawler.Environment
 
         void Start()
         {
-            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v4 - Vertical menu rotation");
+            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v6 - Fixed Y position + UI interaction");
 
             // Find player if not set - use Main Camera for head position
             if (player == null)
@@ -196,16 +196,18 @@ namespace VRDungeonCrawler.Environment
         {
             if (menuCanvas == null || player == null) return;
 
-            // Calculate direction from portal to player (full 3D including Y)
+            // Calculate direction from portal to player (XZ plane only for positioning)
             Vector3 portalToPlayer = player.position - transform.position;
+            portalToPlayer.y = 0f; // Use only horizontal direction
 
             // Only update position if player has moved significantly
             if (portalToPlayer.sqrMagnitude < 0.01f) return;
 
             portalToPlayer.Normalize();
 
-            // Position menu on the edge of portal sphere facing player
+            // Position menu on the edge of portal sphere (XZ) but at player head height (Y)
             Vector3 menuPosition = transform.position + (portalToPlayer * menuOffsetDistance);
+            menuPosition.y = player.position.y; // Always at player head height
 
             menuCanvas.transform.position = menuPosition;
 

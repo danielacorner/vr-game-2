@@ -75,6 +75,17 @@ namespace VRDungeonCrawler.Spells
 
         private void Update()
         {
+            // Don't cast spells when hovering over UI
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            {
+                // Cancel any active charging if pointing at UI
+                if (isCharging || isFullyCharged)
+                {
+                    CancelCharge();
+                }
+                return;
+            }
+
             if (!deviceFound)
             {
                 if (Time.frameCount % 60 == 0)
@@ -276,6 +287,27 @@ namespace VRDungeonCrawler.Spells
                 Destroy(chargeEffect);
                 chargeEffect = null;
                 currentChargeProgress = 0f;
+            }
+        }
+
+        private void CancelCharge()
+        {
+            // Immediately cancel any active charge
+            isCharging = false;
+            isFullyCharged = false;
+            isFadingOut = false;
+            currentChargeProgress = 0f;
+
+            if (chargeEffect != null)
+            {
+                Destroy(chargeEffect);
+                chargeEffect = null;
+            }
+
+            if (chargeBubble != null)
+            {
+                Destroy(chargeBubble);
+                chargeBubble = null;
             }
         }
 
