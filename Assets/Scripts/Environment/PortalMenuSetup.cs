@@ -36,10 +36,10 @@ namespace VRDungeonCrawler.Environment
                 canvasObj.AddComponent<CanvasScaler>();
                 canvasObj.AddComponent<GraphicRaycaster>();
 
-                // Add BoxCollider for spell system to detect UI
-                BoxCollider uiCollider = canvasObj.AddComponent<BoxCollider>();
-                uiCollider.isTrigger = true;
-                uiCollider.size = new Vector3(3f, 2f, 0.1f); // Match canvas size (3m x 2m)
+                // DISABLED: BoxCollider might be causing physics issues
+                // BoxCollider uiCollider = canvasObj.AddComponent<BoxCollider>();
+                // uiCollider.isTrigger = true;
+                // uiCollider.size = new Vector3(3f, 2f, 0.1f); // Match canvas size (3m x 2m)
 
                 // Set layer to UI for XR interaction
                 canvasObj.layer = LayerMask.NameToLayer("UI");

@@ -13,7 +13,7 @@ namespace VRDungeonCrawler.Environment
     {
         [Header("Detection")]
         [Tooltip("Distance at which menu appears")]
-        public float activationDistance = 6f;
+        public float activationDistance = 5f;
 
         [Tooltip("Player transform (XR Origin)")]
         public Transform player;
@@ -44,10 +44,10 @@ namespace VRDungeonCrawler.Environment
 
         [Header("Positioning")]
         [Tooltip("Distance from portal center where menu appears (at portal edge)")]
-        public float menuOffsetDistance = 3.0f;
+        public float menuOffsetDistance = 2.4f;
 
-        [Tooltip("Height above ground for menu")]
-        public float menuHeight = 2f;
+        [Tooltip("Height offset from portal center for menu")]
+        public float menuHeight = 0f;
 
         [Header("Debug")]
         [Tooltip("Show debug logs")]
@@ -58,25 +58,21 @@ namespace VRDungeonCrawler.Environment
 
         void Start()
         {
-            // Find player if not set
+            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v4 - Vertical menu rotation");
+
+            // Find player if not set - use Main Camera for head position
             if (player == null)
             {
-                // Try multiple possible names for XR Origin
-                GameObject xrOrigin = GameObject.Find("XR Origin (XR Rig)");
-                if (xrOrigin == null)
+                Camera mainCam = Camera.main;
+                if (mainCam != null)
                 {
-                    xrOrigin = GameObject.Find("XR Origin");
-                }
-
-                if (xrOrigin != null)
-                {
-                    player = xrOrigin.transform;
+                    player = mainCam.transform;
                     if (showDebug)
-                        Debug.Log($"[PortalMenu] Found player: {xrOrigin.name}");
+                        Debug.Log($"[PortalMenu] Found player camera: {mainCam.name} at position {mainCam.transform.position}");
                 }
                 else
                 {
-                    Debug.LogError("[PortalMenu] Could not find player (XR Origin)! Portal menu will not work.");
+                    Debug.LogError("[PortalMenu] Could not find Main Camera! Portal menu will not work.");
                     enabled = false;
                     return;
                 }
@@ -112,7 +108,16 @@ namespace VRDungeonCrawler.Environment
 
         void Update()
         {
-            if (player == null || menuCanvas == null) return;
+            // SAFETY: Return early if canvas not created yet
+            if (player == null || menuCanvas == null)
+            {
+                if (showDebug && Time.frameCount % 300 == 0)
+                    Debug.Log("[PortalMenu] Waiting for menuCanvas or player to be assigned");
+                return;
+            }
+
+            // Always update menu position to track player
+            PositionMenuRelativeToPlayer();
 
             // Check distance to player
             float distance = Vector3.Distance(transform.position, player.position);
@@ -131,12 +136,6 @@ namespace VRDungeonCrawler.Environment
             else if (!shouldBeActive && isMenuActive)
             {
                 HideMenu();
-            }
-
-            // Update menu position and rotation when active
-            if (isMenuActive)
-            {
-                PositionMenuRelativeToPlayer();
             }
         }
 
@@ -197,25 +196,22 @@ namespace VRDungeonCrawler.Environment
         {
             if (menuCanvas == null || player == null) return;
 
-            // Calculate direction from portal to player (on XZ plane only)
+            // Calculate direction from portal to player (full 3D including Y)
             Vector3 portalToPlayer = player.position - transform.position;
-            portalToPlayer.y = 0f;
 
             // Only update position if player has moved significantly
             if (portalToPlayer.sqrMagnitude < 0.01f) return;
 
             portalToPlayer.Normalize();
 
-            // Position menu on the side of portal facing the player
-            // Menu is offset from portal center by menuOffsetDistance
+            // Position menu on the edge of portal sphere facing player
             Vector3 menuPosition = transform.position + (portalToPlayer * menuOffsetDistance);
-            menuPosition.y = transform.position.y + menuHeight;
 
             menuCanvas.transform.position = menuPosition;
 
-            // Rotate menu to face the player
+            // Rotate menu to face the player (horizontal only - keep vertical like a signpost)
             Vector3 directionToPlayer = player.position - menuCanvas.transform.position;
-            directionToPlayer.y = 0f;
+            directionToPlayer.y = 0f; // Zero out Y to keep menu vertical
 
             if (directionToPlayer.sqrMagnitude > 0.001f)
             {
@@ -225,8 +221,31 @@ namespace VRDungeonCrawler.Environment
 
             if (showDebug && Time.frameCount % 120 == 0) // Log every 120 frames
             {
-                Debug.Log($"[PortalMenu] Menu positioned at {menuPosition}, facing player from direction {portalToPlayer}");
+                Debug.Log($"[PortalMenu] Menu positioned at {menuPosition}, player at {player.position}");
             }
+        }
+
+        /// <summary>
+        /// Returns the closest cardinal direction (N/S/E/W) to the given direction
+        /// </summary>
+        Vector3 GetClosestCardinalDirection(Vector3 direction)
+        {
+            // Normalize the input
+            direction.Normalize();
+
+            // Calculate dot products with each cardinal direction
+            float dotNorth = Vector3.Dot(direction, Vector3.forward);   // +Z
+            float dotSouth = Vector3.Dot(direction, Vector3.back);      // -Z
+            float dotEast = Vector3.Dot(direction, Vector3.right);      // +X
+            float dotWest = Vector3.Dot(direction, Vector3.left);       // -X
+
+            // Find the maximum dot product (closest direction)
+            float maxDot = Mathf.Max(dotNorth, dotSouth, dotEast, dotWest);
+
+            if (maxDot == dotNorth) return Vector3.forward;
+            if (maxDot == dotSouth) return Vector3.back;
+            if (maxDot == dotEast) return Vector3.right;
+            return Vector3.left;
         }
 
         void OnDrawGizmosSelected()
