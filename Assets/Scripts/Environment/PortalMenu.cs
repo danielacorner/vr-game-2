@@ -58,7 +58,7 @@ namespace VRDungeonCrawler.Environment
 
         void Start()
         {
-            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v6 - Fixed Y position + UI interaction");
+            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v10 - Fixed rotation + smaller sign");
 
             // Find player if not set - use Main Camera for head position
             if (player == null)
@@ -212,12 +212,13 @@ namespace VRDungeonCrawler.Environment
             menuCanvas.transform.position = menuPosition;
 
             // Rotate menu to face the player (horizontal only - keep vertical like a signpost)
-            Vector3 directionToPlayer = player.position - menuCanvas.transform.position;
-            directionToPlayer.y = 0f; // Zero out Y to keep menu vertical
+            // Canvas front faces -Z in its local space, so we need to look AWAY from player
+            Vector3 directionFromPlayer = menuCanvas.transform.position - player.position;
+            directionFromPlayer.y = 0f; // Zero out Y to keep menu vertical
 
-            if (directionToPlayer.sqrMagnitude > 0.001f)
+            if (directionFromPlayer.sqrMagnitude > 0.001f)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+                Quaternion targetRotation = Quaternion.LookRotation(directionFromPlayer);
                 menuCanvas.transform.rotation = targetRotation;
             }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.EventSystems;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using System.Collections.Generic;
 using VRDungeonCrawler.Player;
 
@@ -33,6 +34,7 @@ namespace VRDungeonCrawler.Spells
         private bool deviceFound = false;
         private float lastCastTime = 0f;
         private bool triggerPressed = false;
+        private NearFarInteractor nearFarInteractor;
 
         // Charge-up state tracking
         private bool isCharging = false;
@@ -52,6 +54,13 @@ namespace VRDungeonCrawler.Spells
             // Auto-set spawn point if not assigned
             if (spawnPoint == null)
                 spawnPoint = transform;
+
+            // Find the Near-Far Interactor for UI detection
+            nearFarInteractor = GetComponentInChildren<NearFarInteractor>();
+            if (nearFarInteractor == null)
+            {
+                Debug.LogWarning("[SpellCaster] No NearFarInteractor found - UI interaction detection may not work");
+            }
 
             FindDevice();
         }
@@ -75,8 +84,26 @@ namespace VRDungeonCrawler.Spells
 
         private void Update()
         {
-            // Don't cast spells when hovering over UI
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            // Don't cast spells when hovering over UI - check XR interactor state
+            bool isHoveringUI = false;
+            if (nearFarInteractor != null)
+            {
+                // Check if the interactor is hovering over any UI
+                isHoveringUI = nearFarInteractor.hasHover &&
+                               nearFarInteractor.interactablesHovered.Count > 0;
+
+                // Also check if any hovered object is on UI layer (layer 5)
+                foreach (var interactable in nearFarInteractor.interactablesHovered)
+                {
+                    if (interactable != null && interactable.transform.gameObject.layer == 5)
+                    {
+                        isHoveringUI = true;
+                        break;
+                    }
+                }
+            }
+
+            if (isHoveringUI)
             {
                 // Cancel any active charging if pointing at UI
                 if (isCharging || isFullyCharged)

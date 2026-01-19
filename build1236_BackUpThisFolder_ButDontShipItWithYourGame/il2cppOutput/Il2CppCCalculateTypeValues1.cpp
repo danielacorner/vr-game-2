@@ -49500,6 +49500,7 @@ struct SpellCaster_tB39EF69A54344DC9A4A0623A92185EA21D9194A4  : public MonoBehav
 	bool ___deviceFound;
 	float ___lastCastTime;
 	bool ___triggerPressed;
+	NearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C* ___nearFarInteractor;
 	bool ___isCharging;
 	bool ___isFullyCharged;
 	float ___chargeStartTime;

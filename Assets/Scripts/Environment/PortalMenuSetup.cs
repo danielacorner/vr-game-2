@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 
 namespace VRDungeonCrawler.Environment
 {
@@ -86,10 +87,10 @@ namespace VRDungeonCrawler.Environment
                 Debug.LogWarning("[PortalMenuSetup] No camera found! Canvas may not render properly.");
             }
 
-            // Scale canvas appropriately for VR - MUCH LARGER for visibility
+            // Scale canvas appropriately for VR - match portal width
             RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-            canvasRect.sizeDelta = new Vector2(300, 100);  // 3m x 1m in world space
-            canvasRect.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            canvasRect.sizeDelta = new Vector2(150, 40);  // Smaller sign
+            canvasRect.localScale = new Vector3(0.01f, 0.01f, 0.01f);  // 0.01 scale = 1.5m x 0.4m
             canvasRect.pivot = new Vector2(0.5f, 0.5f);  // Pivot at center
 
             // Set up CanvasScaler
@@ -99,9 +100,20 @@ namespace VRDungeonCrawler.Environment
                 scaler.dynamicPixelsPerUnit = 100;
             }
 
-            // Add GraphicRaycaster for XR controller interaction
-            UnityEngine.UI.GraphicRaycaster raycaster = canvas.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
-            Debug.Log("[PortalMenuSetup] Added GraphicRaycaster for UI interaction");
+            // Add TrackedDeviceGraphicRaycaster for XR controller interaction
+            // First remove any existing raycaster
+            var existingRaycaster = canvas.gameObject.GetComponent<UnityEngine.UI.GraphicRaycaster>();
+            if (existingRaycaster != null)
+            {
+                Destroy(existingRaycaster);
+            }
+
+            // Add the XR-specific raycaster
+            var xrRaycaster = canvas.gameObject.AddComponent<UnityEngine.XR.Interaction.Toolkit.UI.TrackedDeviceGraphicRaycaster>();
+
+            // Set canvas and all children to UI layer (5) for XR interaction detection
+            canvas.gameObject.layer = 5; // UI layer
+            Debug.Log("[PortalMenuSetup] Added TrackedDeviceGraphicRaycaster and set to UI layer");
 
             // Create background panel
             GameObject panel = CreatePanel();
@@ -132,6 +144,7 @@ namespace VRDungeonCrawler.Environment
         GameObject CreatePanel()
         {
             GameObject panel = new GameObject("Panel");
+            panel.layer = 5; // UI layer
             panel.transform.SetParent(canvas.transform, false);
 
             RectTransform panelRect = panel.AddComponent<RectTransform>();
@@ -150,12 +163,13 @@ namespace VRDungeonCrawler.Environment
         {
             // Button GameObject
             GameObject buttonObj = new GameObject("TravelButton");
+            buttonObj.layer = 5; // UI layer
             buttonObj.transform.SetParent(parent, false);
 
             RectTransform buttonRect = buttonObj.AddComponent<RectTransform>();
             buttonRect.anchorMin = new Vector2(0.5f, 0.5f);
             buttonRect.anchorMax = new Vector2(0.5f, 0.5f);
-            buttonRect.sizeDelta = new Vector2(280, 80); // Fit new canvas height
+            buttonRect.sizeDelta = new Vector2(140, 35); // Match smaller canvas
             buttonRect.anchoredPosition = Vector2.zero;
 
             // Button component
@@ -175,6 +189,7 @@ namespace VRDungeonCrawler.Environment
 
             // Button text
             GameObject textObj = new GameObject("Text");
+            textObj.layer = 5; // UI layer
             textObj.transform.SetParent(buttonObj.transform, false);
 
             RectTransform textRect = textObj.AddComponent<RectTransform>();
@@ -183,42 +198,30 @@ namespace VRDungeonCrawler.Environment
             textRect.offsetMin = Vector2.zero;
             textRect.offsetMax = Vector2.zero;
 
-            // Try TextMeshPro first, fall back to regular Text
+            // Use legacy Text for guaranteed visibility
+            Text legacyText = textObj.AddComponent<Text>();
+            legacyText.text = "Enter the Dungeon";
+            legacyText.fontSize = 18; // Smaller font for smaller sign
+            legacyText.alignment = TextAnchor.MiddleCenter;
+            legacyText.color = Color.white;
+            legacyText.fontStyle = FontStyle.Bold;
+            legacyText.resizeTextForBestFit = true; // Auto-fit to button
+            legacyText.resizeTextMinSize = 10;
+            legacyText.resizeTextMaxSize = 24;
+
+            // Try to load a built-in font (LegacyRuntime.ttf for newer Unity versions)
             try
             {
-                TextMeshProUGUI tmpText = textObj.AddComponent<TextMeshProUGUI>();
-                tmpText.text = "⚔️ Enter the Dungeon 🚪";
-                tmpText.fontSize = 36;
-                tmpText.alignment = TextAlignmentOptions.Center;
-                tmpText.color = Color.white;
-                tmpText.fontStyle = FontStyles.Bold;
-                tmpText.enableAutoSizing = true;
-                tmpText.fontSizeMin = 18;
-                tmpText.fontSizeMax = 48;
-
-                // Try to load default TMP font
-                TMP_FontAsset defaultFont = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
-                if (defaultFont != null)
-                {
-                    tmpText.font = defaultFont;
-                }
-
-                Debug.Log("[PortalMenuSetup] Created TextMeshPro button text");
+                legacyText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+                Debug.Log($"[PortalMenuSetup] Loaded LegacyRuntime.ttf font");
             }
-            catch (System.Exception e)
+            catch
             {
-                Debug.LogWarning($"[PortalMenuSetup] TextMeshPro not available, using legacy Text: {e.Message}");
-                // Fallback to legacy Text component
-                Text legacyText = textObj.AddComponent<Text>();
-                legacyText.text = "Enter the Dungeon";
-                legacyText.fontSize = 32;
-                legacyText.alignment = TextAnchor.MiddleCenter;
-                legacyText.color = Color.white;
-                legacyText.fontStyle = FontStyle.Bold;
-                legacyText.resizeTextForBestFit = true;
-                legacyText.resizeTextMinSize = 18;
-                legacyText.resizeTextMaxSize = 48;
+                // If that fails, Unity will use its default font
+                Debug.LogWarning($"[PortalMenuSetup] Using Unity's default font");
             }
+
+            Debug.Log($"[PortalMenuSetup] Created legacy Text: text='{legacyText.text}', fontSize={legacyText.fontSize}, color={legacyText.color}, font={legacyText.font?.name}");
 
             // Register button with PortalMenu
             PortalMenu portalMenu = GetComponentInParent<PortalMenu>();
