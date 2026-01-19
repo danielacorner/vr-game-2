@@ -24,6 +24,7 @@ namespace VRDungeonCrawler.Environment
         private Texture2D spellbookIcon;
         private Texture2D torchIcon;
         private Texture2D swordIcon;
+        private Texture2D decorativeBorder;
 
         void Awake()
         {
@@ -72,6 +73,7 @@ namespace VRDungeonCrawler.Environment
             spellbookIcon = GenerateSpellbookIcon(64, 64);
             torchIcon = GenerateTorchIcon(64, 64);
             swordIcon = GenerateSwordIcon(64, 64);
+            decorativeBorder = GenerateDecorativeBorder(256, 256);
         }
 
         Texture2D GenerateFireballIcon(int width, int height)
@@ -309,6 +311,165 @@ namespace VRDungeonCrawler.Environment
             return tex;
         }
 
+        Texture2D GenerateDecorativeBorder(int width, int height)
+        {
+            Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+            Color[] pixels = new Color[width * height];
+
+            // Border colors - bronze/brass medieval style
+            Color borderMain = new Color(0.55f, 0.45f, 0.3f, 1f);
+            Color borderHighlight = new Color(0.7f, 0.6f, 0.4f, 1f);
+            Color borderShadow = new Color(0.35f, 0.3f, 0.2f, 1f);
+            Color borderDark = new Color(0.25f, 0.2f, 0.15f, 1f);
+
+            int borderThickness = 8;
+            int cornerSize = 16;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    Color color = Color.clear;
+
+                    // Distance from edges
+                    int distFromLeft = x;
+                    int distFromRight = width - 1 - x;
+                    int distFromTop = height - 1 - y;
+                    int distFromBottom = y;
+
+                    int minDist = Mathf.Min(distFromLeft, distFromRight, distFromTop, distFromBottom);
+
+                    // Main border area
+                    if (minDist < borderThickness)
+                    {
+                        // Add some texture/noise to the border
+                        float noise = Mathf.PerlinNoise(x * 0.1f, y * 0.1f);
+
+                        // Gradient effect - lighter on outer edge, darker inside
+                        if (minDist < 2)
+                        {
+                            color = Color.Lerp(borderShadow, borderHighlight, noise);
+                        }
+                        else if (minDist < 5)
+                        {
+                            color = Color.Lerp(borderMain, borderHighlight, noise * 0.5f);
+                        }
+                        else
+                        {
+                            color = Color.Lerp(borderDark, borderMain, noise * 0.3f);
+                        }
+                    }
+
+                    // Decorative corners
+                    bool isInCorner = false;
+
+                    // Top-left corner
+                    if (x < cornerSize && y > height - cornerSize)
+                    {
+                        int cornerX = x;
+                        int cornerY = height - 1 - y;
+                        float cornerDist = Mathf.Sqrt(cornerX * cornerX + cornerY * cornerY);
+
+                        if (cornerDist < cornerSize)
+                        {
+                            isInCorner = true;
+                            float t = cornerDist / cornerSize;
+                            color = Color.Lerp(borderHighlight, borderDark, t);
+
+                            // Add decorative lines
+                            if ((int)(cornerDist) % 4 == 0)
+                            {
+                                color = Color.Lerp(color, borderHighlight, 0.3f);
+                            }
+                        }
+                    }
+
+                    // Top-right corner
+                    if (x >= width - cornerSize && y > height - cornerSize)
+                    {
+                        int cornerX = width - 1 - x;
+                        int cornerY = height - 1 - y;
+                        float cornerDist = Mathf.Sqrt(cornerX * cornerX + cornerY * cornerY);
+
+                        if (cornerDist < cornerSize)
+                        {
+                            isInCorner = true;
+                            float t = cornerDist / cornerSize;
+                            color = Color.Lerp(borderHighlight, borderDark, t);
+
+                            if ((int)(cornerDist) % 4 == 0)
+                            {
+                                color = Color.Lerp(color, borderHighlight, 0.3f);
+                            }
+                        }
+                    }
+
+                    // Bottom-left corner
+                    if (x < cornerSize && y < cornerSize)
+                    {
+                        int cornerX = x;
+                        int cornerY = y;
+                        float cornerDist = Mathf.Sqrt(cornerX * cornerX + cornerY * cornerY);
+
+                        if (cornerDist < cornerSize)
+                        {
+                            isInCorner = true;
+                            float t = cornerDist / cornerSize;
+                            color = Color.Lerp(borderHighlight, borderDark, t);
+
+                            if ((int)(cornerDist) % 4 == 0)
+                            {
+                                color = Color.Lerp(color, borderHighlight, 0.3f);
+                            }
+                        }
+                    }
+
+                    // Bottom-right corner
+                    if (x >= width - cornerSize && y < cornerSize)
+                    {
+                        int cornerX = width - 1 - x;
+                        int cornerY = y;
+                        float cornerDist = Mathf.Sqrt(cornerX * cornerX + cornerY * cornerY);
+
+                        if (cornerDist < cornerSize)
+                        {
+                            isInCorner = true;
+                            float t = cornerDist / cornerSize;
+                            color = Color.Lerp(borderHighlight, borderDark, t);
+
+                            if ((int)(cornerDist) % 4 == 0)
+                            {
+                                color = Color.Lerp(color, borderHighlight, 0.3f);
+                            }
+                        }
+                    }
+
+                    pixels[y * width + x] = color;
+                }
+            }
+
+            tex.SetPixels(pixels);
+            tex.Apply();
+            return tex;
+        }
+
+        void AddBorderToElement(GameObject element, Vector2 sizeDelta)
+        {
+            GameObject borderObj = new GameObject("DecorativeBorder");
+            borderObj.layer = 5;
+            borderObj.transform.SetParent(element.transform, false);
+
+            RectTransform borderRect = borderObj.AddComponent<RectTransform>();
+            borderRect.anchorMin = Vector2.zero;
+            borderRect.anchorMax = Vector2.one;
+            borderRect.offsetMin = Vector2.zero;
+            borderRect.offsetMax = Vector2.zero;
+
+            RawImage borderImage = borderObj.AddComponent<RawImage>();
+            borderImage.texture = decorativeBorder;
+            borderImage.raycastTarget = false; // Don't block button clicks
+        }
+
         public void SetupUI()
         {
             // Canvas was already created in Awake(), just verify it exists
@@ -408,6 +569,9 @@ namespace VRDungeonCrawler.Environment
 
             Image panelImage = panel.AddComponent<Image>();
             panelImage.color = new Color(0.15f, 0.12f, 0.1f, 0.95f); // Brown dungeon-like color
+
+            // Add decorative border
+            AddBorderToElement(panel, panelRect.sizeDelta);
 
             return panel;
         }
@@ -576,6 +740,9 @@ namespace VRDungeonCrawler.Environment
             try {
                 nameText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             } catch { }
+
+            // Add decorative border
+            AddBorderToElement(buttonObj, new Vector2(width, height));
         }
 
         void OnClassSelected(string className)
@@ -674,6 +841,9 @@ namespace VRDungeonCrawler.Environment
                 portalMenu.travelButton = travelButton;
                 Debug.Log("[PortalMenuSetup] Registered enter button with PortalMenu");
             }
+
+            // Add decorative border
+            AddBorderToElement(buttonObj, new Vector2(180, 45));
         }
 
         void CreateRecordsPanel()
@@ -718,6 +888,9 @@ namespace VRDungeonCrawler.Environment
             CreateRecordEntry(recordsObj.transform, "Fire", "189 (SP)", -35);
             CreateRecordEntry(recordsObj.transform, "Book", "None", -60);
             CreateRecordEntry(recordsObj.transform, "T", "None", -85);
+
+            // Add decorative border
+            AddBorderToElement(recordsObj, new Vector2(90, 120));
         }
 
         void CreateRecordEntry(Transform parent, string iconText, string scoreText, float yPos)
