@@ -674,14 +674,15 @@ extern void PortalMenuSetup_CreateSubtitle_m7213C007ED0AD3A3006E57BE15B44D673E89
 extern void PortalMenuSetup_CreateClassSelectionButtons_mA5695EFC6E3FF052030A00799E0C7AE954AA1C59 (void);
 extern void PortalMenuSetup_CreateClassButton_m8C1100F86655254ED03058C6FC1B921A705F6869 (void);
 extern void PortalMenuSetup_OnClassSelected_mBAC8AAA917ACB086A8F3A467A56F043F07611BB4 (void);
+extern void PortalMenuSetup_UpdateClassButtonVisuals_mE0EDEA588DBB86000685CCE5A4540E066050A227 (void);
 extern void PortalMenuSetup_CreateReadyText_mD2C083FCEEAE0F15002ECEC8ED98853A3AED8B25 (void);
 extern void PortalMenuSetup_CreateEnterButton_m0EC5BA769DB0D7619B29D29A28AAC213F3D3A81D (void);
 extern void PortalMenuSetup_CreateRecordsPanel_mFBF026E21255512A5D1F7878D8296551B8AA36E5 (void);
 extern void PortalMenuSetup_CreateRecordEntry_mAF1285E2E7DF667B70E91BD1ABEE7CD2DAC99EBA (void);
 extern void PortalMenuSetup_GetTravelButton_m3A4E1C09471A1A9B8373AD7B9A3343CAB0F9B3DF (void);
 extern void PortalMenuSetup__ctor_m91A674093E25FBF1ED0BC8DEA21A6D7D1A918AA9 (void);
-extern void U3CU3Ec__DisplayClass24_0__ctor_m483B3E6F3B757F17D0CF89191F98AE217F2A23AE (void);
-extern void U3CU3Ec__DisplayClass24_0_U3CCreateClassButtonU3Eb__0_m8F666A6C639AD48B9A982DF1A6E728ED5C18C6A8 (void);
+extern void U3CU3Ec__DisplayClass28_0__ctor_m697E2DEA8C96AF99603E225553562752CE50B485 (void);
+extern void U3CU3Ec__DisplayClass28_0_U3CCreateClassButtonU3Eb__0_m8C5EB73A0A4AE1F984617A419650A1E4F4249A36 (void);
 extern void PortalRuneController_Start_m27743E85FC93269ACC6FC7093B5AB2102FAEB1E0 (void);
 extern void PortalRuneController_Update_mCDFB67B15D71C495053F8AAEFB2C8A0DCCE88C39 (void);
 extern void PortalRuneController_UpdateRuneGlow_m4688BB2DA1884DA2AD1952087A4D9D5630797919 (void);
@@ -955,7 +956,7 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[948] = 
+static Il2CppMethodPointer s_methodPointers[949] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1624,14 +1625,15 @@ static Il2CppMethodPointer s_methodPointers[948] =
 	PortalMenuSetup_CreateClassSelectionButtons_mA5695EFC6E3FF052030A00799E0C7AE954AA1C59,
 	PortalMenuSetup_CreateClassButton_m8C1100F86655254ED03058C6FC1B921A705F6869,
 	PortalMenuSetup_OnClassSelected_mBAC8AAA917ACB086A8F3A467A56F043F07611BB4,
+	PortalMenuSetup_UpdateClassButtonVisuals_mE0EDEA588DBB86000685CCE5A4540E066050A227,
 	PortalMenuSetup_CreateReadyText_mD2C083FCEEAE0F15002ECEC8ED98853A3AED8B25,
 	PortalMenuSetup_CreateEnterButton_m0EC5BA769DB0D7619B29D29A28AAC213F3D3A81D,
 	PortalMenuSetup_CreateRecordsPanel_mFBF026E21255512A5D1F7878D8296551B8AA36E5,
 	PortalMenuSetup_CreateRecordEntry_mAF1285E2E7DF667B70E91BD1ABEE7CD2DAC99EBA,
 	PortalMenuSetup_GetTravelButton_m3A4E1C09471A1A9B8373AD7B9A3343CAB0F9B3DF,
 	PortalMenuSetup__ctor_m91A674093E25FBF1ED0BC8DEA21A6D7D1A918AA9,
-	U3CU3Ec__DisplayClass24_0__ctor_m483B3E6F3B757F17D0CF89191F98AE217F2A23AE,
-	U3CU3Ec__DisplayClass24_0_U3CCreateClassButtonU3Eb__0_m8F666A6C639AD48B9A982DF1A6E728ED5C18C6A8,
+	U3CU3Ec__DisplayClass28_0__ctor_m697E2DEA8C96AF99603E225553562752CE50B485,
+	U3CU3Ec__DisplayClass28_0_U3CCreateClassButtonU3Eb__0_m8C5EB73A0A4AE1F984617A419650A1E4F4249A36,
 	PortalRuneController_Start_m27743E85FC93269ACC6FC7093B5AB2102FAEB1E0,
 	PortalRuneController_Update_mCDFB67B15D71C495053F8AAEFB2C8A0DCCE88C39,
 	PortalRuneController_UpdateRuneGlow_m4688BB2DA1884DA2AD1952087A4D9D5630797919,
@@ -1911,7 +1913,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x06000114, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[948] = 
+static const int32_t s_InvokerIndices[949] = 
 {
 	15294,
 	15294,
@@ -2580,6 +2582,7 @@ static const int32_t s_InvokerIndices[948] =
 	5903,
 	228,
 	11600,
+	15294,
 	5903,
 	5903,
 	15294,
@@ -2866,7 +2869,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	948,
+	949,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

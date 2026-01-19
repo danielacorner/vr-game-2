@@ -59,6 +59,10 @@ namespace VRDungeonCrawler.Environment
 
         void Start()
         {
+            // Load saved class selection from PlayerPrefs
+            selectedClass = PlayerPrefs.GetString("SelectedClass", "Sorcerer");
+            Debug.Log($"[PortalMenuSetup] Loaded class selection: {selectedClass}");
+
             // Generate procedural icon textures at runtime
             GenerateIcons();
 
@@ -651,6 +655,10 @@ namespace VRDungeonCrawler.Environment
         }
 
         private string selectedClass = "Sorcerer"; // Default selection
+        private Button sorcererButton;
+        private Button wizardButton;
+        private Image sorcererButtonImage;
+        private Image wizardButtonImage;
 
         void CreateClassSelectionButtons(Transform parent, float yPos)
         {
@@ -668,6 +676,9 @@ namespace VRDungeonCrawler.Environment
 
             // Wizard button (right)
             CreateClassButton(parent, "Wizard", "Book", rightButtonX, yPos, buttonWidth, buttonHeight, false);
+
+            // Update button visuals based on loaded selection
+            UpdateClassButtonVisuals();
         }
 
         void CreateClassButton(Transform parent, string className, string iconText, float xPos, float yPos, float width, float height, bool isDefault)
@@ -685,6 +696,18 @@ namespace VRDungeonCrawler.Environment
             Button button = buttonObj.AddComponent<Button>();
             Image buttonImage = buttonObj.AddComponent<Image>();
             buttonObj.AddComponent<VRDungeonCrawler.Player.XRButtonHighlight>(); // Enable XR hover highlighting
+
+            // Store references to buttons and images
+            if (className == "Sorcerer")
+            {
+                sorcererButton = button;
+                sorcererButtonImage = buttonImage;
+            }
+            else if (className == "Wizard")
+            {
+                wizardButton = button;
+                wizardButtonImage = buttonImage;
+            }
 
             // Set colors based on selection
             Color normalColor = isDefault ? new Color(0.2f, 0.4f, 0.2f, 0.9f) : new Color(0.25f, 0.25f, 0.25f, 0.9f);
@@ -750,8 +773,54 @@ namespace VRDungeonCrawler.Environment
         void OnClassSelected(string className)
         {
             selectedClass = className;
-            Debug.Log($"[PortalMenuSetup] Class selected: {className}");
-            // Would update button visuals here in a more complete implementation
+
+            // Save to PlayerPrefs
+            PlayerPrefs.SetString("SelectedClass", className);
+            PlayerPrefs.Save();
+
+            Debug.Log($"[PortalMenuSetup] Class selected and saved: {className}");
+
+            // Update button visuals
+            UpdateClassButtonVisuals();
+        }
+
+        void UpdateClassButtonVisuals()
+        {
+            if (sorcererButton == null || wizardButton == null) return;
+
+            // Selected colors (brighter green)
+            Color selectedColor = new Color(0.2f, 0.5f, 0.2f, 1f);
+            Color selectedHighlight = new Color(0.3f, 0.6f, 0.3f, 1f);
+
+            // Unselected colors (darker gray)
+            Color unselectedColor = new Color(0.2f, 0.2f, 0.2f, 0.85f);
+            Color unselectedHighlight = new Color(0.3f, 0.3f, 0.3f, 0.9f);
+
+            // Update Sorcerer button
+            bool sorcererSelected = selectedClass == "Sorcerer";
+            if (sorcererButtonImage != null)
+            {
+                sorcererButtonImage.color = sorcererSelected ? selectedColor : unselectedColor;
+            }
+
+            ColorBlock sorcererColors = sorcererButton.colors;
+            sorcererColors.normalColor = sorcererSelected ? selectedColor : unselectedColor;
+            sorcererColors.highlightedColor = sorcererSelected ? selectedHighlight : unselectedHighlight;
+            sorcererButton.colors = sorcererColors;
+
+            // Update Wizard button
+            bool wizardSelected = selectedClass == "Wizard";
+            if (wizardButtonImage != null)
+            {
+                wizardButtonImage.color = wizardSelected ? selectedColor : unselectedColor;
+            }
+
+            ColorBlock wizardColors = wizardButton.colors;
+            wizardColors.normalColor = wizardSelected ? selectedColor : unselectedColor;
+            wizardColors.highlightedColor = wizardSelected ? selectedHighlight : unselectedHighlight;
+            wizardButton.colors = wizardColors;
+
+            Debug.Log($"[PortalMenuSetup] Updated button visuals - Sorcerer selected: {sorcererSelected}, Wizard selected: {wizardSelected}");
         }
 
         void CreateReadyText(Transform parent, float yPos)
