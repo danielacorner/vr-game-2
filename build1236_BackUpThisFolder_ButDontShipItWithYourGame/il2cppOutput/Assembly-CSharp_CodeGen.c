@@ -643,6 +643,10 @@ extern void PortalMenu_OnDrawGizmosSelected_mA08F59E89E2C8C4113940A043E06339CBBB
 extern void PortalMenu__ctor_m17BBBB537914C0D84C60B3018DCAD344710CB3A4 (void);
 extern void PortalMenuSetup_Awake_mF6C327B886FA64C1413E48E417E7457D93C84FF8 (void);
 extern void PortalMenuSetup_Start_m73793045CA673949C228B4424A1DB590DA8BCD0A (void);
+extern void PortalMenuSetup_GenerateIcons_m3939CB275247D013D41BA6543214490EA011A702 (void);
+extern void PortalMenuSetup_GenerateFireballIcon_m94605EC86F0483622E6C4EC70E520DC0F5A51D0F (void);
+extern void PortalMenuSetup_GenerateSpellbookIcon_mFE2D8200BBCA841F3FC7D8AC3BBFC13B527A15FC (void);
+extern void PortalMenuSetup_GenerateTorchIcon_m294FACADEDB950B176DA80C2AA963003DF4A9A4D (void);
 extern void PortalMenuSetup_SetupUI_m4D962D2F781A2D0E722755D79074A05CB0E3DBC3 (void);
 extern void PortalMenuSetup_CreateMainPanel_m295FE02DF48597D9E167EE838F2C64ADA4EB77B0 (void);
 extern void PortalMenuSetup_CreateComplexMenuLayout_m309BF8255C9F6E53FB43A4EC6C452282B705D55E (void);
@@ -656,8 +660,8 @@ extern void PortalMenuSetup_CreateRecordsPanel_mFBF026E21255512A5D1F7878D8296551
 extern void PortalMenuSetup_CreateRecordEntry_mAF1285E2E7DF667B70E91BD1ABEE7CD2DAC99EBA (void);
 extern void PortalMenuSetup_GetTravelButton_m3A4E1C09471A1A9B8373AD7B9A3343CAB0F9B3DF (void);
 extern void PortalMenuSetup__ctor_m91A674093E25FBF1ED0BC8DEA21A6D7D1A918AA9 (void);
-extern void U3CU3Ec__DisplayClass11_0__ctor_mAC1202A508E6F7008DA1CC12B515B6C5C31F5E8F (void);
-extern void U3CU3Ec__DisplayClass11_0_U3CCreateClassButtonU3Eb__0_m4B358992234E1A29FB4D083E132482B454A6A8E2 (void);
+extern void U3CU3Ec__DisplayClass18_0__ctor_m2515E4F36B897CEC3DF9226B96ACDF115198BD93 (void);
+extern void U3CU3Ec__DisplayClass18_0_U3CCreateClassButtonU3Eb__0_m883CBBDD6279D1B9922C9CD8494AC0AD5A5FE582 (void);
 extern void PortalRuneController_Start_m27743E85FC93269ACC6FC7093B5AB2102FAEB1E0 (void);
 extern void PortalRuneController_Update_mCDFB67B15D71C495053F8AAEFB2C8A0DCCE88C39 (void);
 extern void PortalRuneController_UpdateRuneGlow_m4688BB2DA1884DA2AD1952087A4D9D5630797919 (void);
@@ -931,7 +935,7 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[924] = 
+static Il2CppMethodPointer s_methodPointers[928] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1569,6 +1573,10 @@ static Il2CppMethodPointer s_methodPointers[924] =
 	PortalMenu__ctor_m17BBBB537914C0D84C60B3018DCAD344710CB3A4,
 	PortalMenuSetup_Awake_mF6C327B886FA64C1413E48E417E7457D93C84FF8,
 	PortalMenuSetup_Start_m73793045CA673949C228B4424A1DB590DA8BCD0A,
+	PortalMenuSetup_GenerateIcons_m3939CB275247D013D41BA6543214490EA011A702,
+	PortalMenuSetup_GenerateFireballIcon_m94605EC86F0483622E6C4EC70E520DC0F5A51D0F,
+	PortalMenuSetup_GenerateSpellbookIcon_mFE2D8200BBCA841F3FC7D8AC3BBFC13B527A15FC,
+	PortalMenuSetup_GenerateTorchIcon_m294FACADEDB950B176DA80C2AA963003DF4A9A4D,
 	PortalMenuSetup_SetupUI_m4D962D2F781A2D0E722755D79074A05CB0E3DBC3,
 	PortalMenuSetup_CreateMainPanel_m295FE02DF48597D9E167EE838F2C64ADA4EB77B0,
 	PortalMenuSetup_CreateComplexMenuLayout_m309BF8255C9F6E53FB43A4EC6C452282B705D55E,
@@ -1582,8 +1590,8 @@ static Il2CppMethodPointer s_methodPointers[924] =
 	PortalMenuSetup_CreateRecordEntry_mAF1285E2E7DF667B70E91BD1ABEE7CD2DAC99EBA,
 	PortalMenuSetup_GetTravelButton_m3A4E1C09471A1A9B8373AD7B9A3343CAB0F9B3DF,
 	PortalMenuSetup__ctor_m91A674093E25FBF1ED0BC8DEA21A6D7D1A918AA9,
-	U3CU3Ec__DisplayClass11_0__ctor_mAC1202A508E6F7008DA1CC12B515B6C5C31F5E8F,
-	U3CU3Ec__DisplayClass11_0_U3CCreateClassButtonU3Eb__0_m4B358992234E1A29FB4D083E132482B454A6A8E2,
+	U3CU3Ec__DisplayClass18_0__ctor_m2515E4F36B897CEC3DF9226B96ACDF115198BD93,
+	U3CU3Ec__DisplayClass18_0_U3CCreateClassButtonU3Eb__0_m883CBBDD6279D1B9922C9CD8494AC0AD5A5FE582,
 	PortalRuneController_Start_m27743E85FC93269ACC6FC7093B5AB2102FAEB1E0,
 	PortalRuneController_Update_mCDFB67B15D71C495053F8AAEFB2C8A0DCCE88C39,
 	PortalRuneController_UpdateRuneGlow_m4688BB2DA1884DA2AD1952087A4D9D5630797919,
@@ -1863,7 +1871,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x06000114, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[924] = 
+static const int32_t s_InvokerIndices[928] = 
 {
 	15294,
 	15294,
@@ -2502,6 +2510,10 @@ static const int32_t s_InvokerIndices[924] =
 	15294,
 	15294,
 	15294,
+	4396,
+	4396,
+	4396,
+	15294,
 	15082,
 	11600,
 	5903,
@@ -2794,7 +2806,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	924,
+	928,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

@@ -19,6 +19,11 @@ namespace VRDungeonCrawler.Environment
         private Canvas canvas;
         private Button travelButton;
 
+        // Icon textures
+        private Texture2D fireballIcon;
+        private Texture2D spellbookIcon;
+        private Texture2D torchIcon;
+
         void Awake()
         {
             // Create canvas GameObject if it doesn't exist
@@ -51,10 +56,188 @@ namespace VRDungeonCrawler.Environment
 
         void Start()
         {
+            // Generate procedural icon textures at runtime
+            GenerateIcons();
+
             if (autoSetup)
             {
                 SetupUI();
             }
+        }
+
+        void GenerateIcons()
+        {
+            fireballIcon = GenerateFireballIcon(64, 64);
+            spellbookIcon = GenerateSpellbookIcon(64, 64);
+            torchIcon = GenerateTorchIcon(64, 64);
+        }
+
+        Texture2D GenerateFireballIcon(int width, int height)
+        {
+            Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+            Color[] pixels = new Color[width * height];
+
+            int centerX = width / 2;
+            int centerY = height / 2;
+            float maxRadius = Mathf.Min(width, height) / 2f;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    float dx = x - centerX;
+                    float dy = y - centerY;
+                    float distance = Mathf.Sqrt(dx * dx + dy * dy);
+                    float normalizedDist = distance / maxRadius;
+
+                    Color color;
+                    if (normalizedDist < 0.4f)
+                    {
+                        // Yellow center (hot core)
+                        color = Color.Lerp(Color.yellow, new Color(1f, 0.8f, 0f), normalizedDist / 0.4f);
+                    }
+                    else if (normalizedDist < 0.8f)
+                    {
+                        // Orange middle
+                        float t = (normalizedDist - 0.4f) / 0.4f;
+                        color = Color.Lerp(new Color(1f, 0.6f, 0f), new Color(1f, 0.3f, 0f), t);
+                    }
+                    else if (normalizedDist < 1f)
+                    {
+                        // Red edge with falloff
+                        float t = (normalizedDist - 0.8f) / 0.2f;
+                        color = Color.Lerp(new Color(1f, 0.2f, 0f), new Color(0.8f, 0f, 0f, 0f), t);
+                    }
+                    else
+                    {
+                        color = Color.clear;
+                    }
+
+                    pixels[y * width + x] = color;
+                }
+            }
+
+            tex.SetPixels(pixels);
+            tex.Apply();
+            return tex;
+        }
+
+        Texture2D GenerateSpellbookIcon(int width, int height)
+        {
+            Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+            Color[] pixels = new Color[width * height];
+
+            // Brown book background
+            Color bookColor = new Color(0.4f, 0.3f, 0.2f, 1f);
+            Color pageColor = new Color(0.95f, 0.9f, 0.8f, 1f);
+            Color lineColor = new Color(0.3f, 0.25f, 0.2f, 1f);
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    Color color = Color.clear;
+
+                    // Book cover (slightly inset)
+                    if (x >= 8 && x < width - 8 && y >= 5 && y < height - 5)
+                    {
+                        color = bookColor;
+
+                        // Pages showing on right side
+                        if (x >= width / 2 + 2 && x < width - 10 && y >= 8 && y < height - 8)
+                        {
+                            color = pageColor;
+
+                            // Horizontal lines on pages
+                            if ((y - 12) % 6 == 0 && x < width - 14)
+                            {
+                                color = lineColor;
+                            }
+                        }
+
+                        // Book spine in middle
+                        if (x >= width / 2 - 2 && x < width / 2 + 2)
+                        {
+                            color = new Color(0.3f, 0.2f, 0.15f, 1f);
+                        }
+                    }
+
+                    pixels[y * width + x] = color;
+                }
+            }
+
+            tex.SetPixels(pixels);
+            tex.Apply();
+            return tex;
+        }
+
+        Texture2D GenerateTorchIcon(int width, int height)
+        {
+            Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+            Color[] pixels = new Color[width * height];
+
+            Color woodColor = new Color(0.4f, 0.25f, 0.15f, 1f);
+            Color flameOrange = new Color(1f, 0.5f, 0f, 1f);
+            Color flameYellow = new Color(1f, 0.9f, 0.3f, 1f);
+
+            int centerX = width / 2;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    Color color = Color.clear;
+
+                    // Wooden handle (bottom 2/3)
+                    if (y < height * 2 / 3)
+                    {
+                        int handleWidth = width / 4;
+                        if (x >= centerX - handleWidth / 2 && x < centerX + handleWidth / 2)
+                        {
+                            color = woodColor;
+                        }
+                    }
+                    // Flame (top 1/3)
+                    else
+                    {
+                        float flameY = y - (height * 2 / 3);
+                        float flameHeight = height / 3f;
+                        float dx = (x - centerX) / (float)(width / 3f);
+                        float dy = flameY / flameHeight;
+
+                        // Flame shape (teardrop)
+                        float distance = Mathf.Sqrt(dx * dx + dy * dy * 0.5f);
+
+                        if (distance < 0.8f)
+                        {
+                            // Yellow center
+                            if (distance < 0.4f)
+                            {
+                                color = flameYellow;
+                            }
+                            else
+                            {
+                                // Orange outer flame
+                                float t = (distance - 0.4f) / 0.4f;
+                                color = Color.Lerp(flameYellow, flameOrange, t);
+                            }
+
+                            // Add transparency at edges
+                            if (distance > 0.6f)
+                            {
+                                float alpha = 1f - (distance - 0.6f) / 0.2f;
+                                color.a *= alpha;
+                            }
+                        }
+                    }
+
+                    pixels[y * width + x] = color;
+                }
+            }
+
+            tex.SetPixels(pixels);
+            tex.Apply();
+            return tex;
         }
 
         public void SetupUI()
@@ -251,7 +434,7 @@ namespace VRDungeonCrawler.Environment
             // Add click listener
             button.onClick.AddListener(() => OnClassSelected(className));
 
-            // Icon text (placeholder for actual icon)
+            // Icon image
             GameObject iconObj = new GameObject("Icon");
             iconObj.layer = 5;
             iconObj.transform.SetParent(buttonObj.transform, false);
@@ -259,19 +442,19 @@ namespace VRDungeonCrawler.Environment
             RectTransform iconRect = iconObj.AddComponent<RectTransform>();
             iconRect.anchorMin = new Vector2(0.5f, 0.5f);
             iconRect.anchorMax = new Vector2(0.5f, 0.5f);
-            iconRect.sizeDelta = new Vector2(width - 10, 30);
+            iconRect.sizeDelta = new Vector2(40, 40); // Square icon
             iconRect.anchoredPosition = new Vector2(0, 5);
 
-            Text iconTextComp = iconObj.AddComponent<Text>();
-            iconTextComp.text = iconText;
-            iconTextComp.fontSize = 16;
-            iconTextComp.alignment = TextAnchor.MiddleCenter;
-            iconTextComp.color = new Color(1f, 0.8f, 0.3f);
-            iconTextComp.fontStyle = FontStyle.Bold;
-
-            try {
-                iconTextComp.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            } catch { }
+            RawImage iconImage = iconObj.AddComponent<RawImage>();
+            // Set the appropriate texture based on iconText
+            if (iconText == "Fire")
+            {
+                iconImage.texture = fireballIcon;
+            }
+            else if (iconText == "Book")
+            {
+                iconImage.texture = spellbookIcon;
+            }
 
             // Class name text
             GameObject nameObj = new GameObject("ClassName");
@@ -348,7 +531,7 @@ namespace VRDungeonCrawler.Environment
             colors.pressedColor = new Color(0.25f, 0.2f, 0.15f, 1f);
             travelButton.colors = colors;
 
-            // Icon (torch icon placeholder on left)
+            // Icon (torch icon on left)
             GameObject iconObj = new GameObject("Icon");
             iconObj.layer = 5;
             iconObj.transform.SetParent(buttonObj.transform, false);
@@ -356,19 +539,11 @@ namespace VRDungeonCrawler.Environment
             RectTransform iconRect = iconObj.AddComponent<RectTransform>();
             iconRect.anchorMin = new Vector2(0, 0.5f);
             iconRect.anchorMax = new Vector2(0, 0.5f);
-            iconRect.sizeDelta = new Vector2(30, 30);
-            iconRect.anchoredPosition = new Vector2(20, 0);
+            iconRect.sizeDelta = new Vector2(35, 35);
+            iconRect.anchoredPosition = new Vector2(25, 0);
 
-            Text iconText = iconObj.AddComponent<Text>();
-            iconText.text = "T"; // Torch icon placeholder
-            iconText.fontSize = 20;
-            iconText.alignment = TextAnchor.MiddleCenter;
-            iconText.color = new Color(1f, 0.6f, 0.2f); // Orange torch color
-            iconText.fontStyle = FontStyle.Bold;
-
-            try {
-                iconText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            } catch { }
+            RawImage iconImage = iconObj.AddComponent<RawImage>();
+            iconImage.texture = torchIcon;
 
             // Button text
             GameObject textObj = new GameObject("Text");
@@ -465,19 +640,23 @@ namespace VRDungeonCrawler.Environment
             RectTransform iconRect = iconObj.AddComponent<RectTransform>();
             iconRect.anchorMin = new Vector2(0, 0.5f);
             iconRect.anchorMax = new Vector2(0, 0.5f);
-            iconRect.sizeDelta = new Vector2(20, 20);
-            iconRect.anchoredPosition = new Vector2(10, 0);
+            iconRect.sizeDelta = new Vector2(18, 18);
+            iconRect.anchoredPosition = new Vector2(12, 0);
 
-            Text iconTextComp = iconObj.AddComponent<Text>();
-            iconTextComp.text = iconText;
-            iconTextComp.fontSize = 12;
-            iconTextComp.alignment = TextAnchor.MiddleCenter;
-            iconTextComp.color = new Color(1f, 0.8f, 0.3f); // Gold
-            iconTextComp.fontStyle = FontStyle.Bold;
-
-            try {
-                iconTextComp.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            } catch { }
+            RawImage iconImage = iconObj.AddComponent<RawImage>();
+            // Set the appropriate texture based on iconText
+            if (iconText == "Fire")
+            {
+                iconImage.texture = fireballIcon;
+            }
+            else if (iconText == "Book")
+            {
+                iconImage.texture = spellbookIcon;
+            }
+            else if (iconText == "T")
+            {
+                iconImage.texture = torchIcon;
+            }
 
             // Score text
             GameObject scoreObj = new GameObject("Score");

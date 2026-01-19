@@ -3086,7 +3086,7 @@ struct MouseState_tCCE70861DE1EEECF949AFE8E2A922541D4E08A09  : public RuntimeObj
 {
 	List_1_t6D515F3BEDA0E1BF16E735CE960F740AB8ACBDD3* ___m_TrackedButtons;
 };
-struct U3CU3Ec__DisplayClass11_0_t153AE669B2EFEBFFF8DCD94008645C1C025AA2CA  : public RuntimeObject
+struct U3CU3Ec__DisplayClass18_0_tEEC280396C5F2E05111EA2E4F975E4251D94E5E3  : public RuntimeObject
 {
 	PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B* ___U3CU3E4__this;
 	String_t* ___className;
@@ -34588,6 +34588,9 @@ struct PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B  : public MonoB
 	bool ___autoSetup;
 	Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* ___canvas;
 	Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* ___travelButton;
+	Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* ___fireballIcon;
+	Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* ___spellbookIcon;
+	Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* ___torchIcon;
 	String_t* ___selectedClass;
 };
 struct PortalRuneController_tF3395BD209F36A406B4E750D6FB94F1EB06E05D1  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
@@ -44104,10 +44107,10 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7463[10] =
 	static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ___activationDistance)),static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ___player)),static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ___menuCanvas)),static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ____travelButton)),static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ___dungeonSceneName)),static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ___menuOffsetDistance)),static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ___menuHeight)),static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ___showDebug)),static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ___isMenuActive)),static_cast<int32_t>(offsetof(PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3, ___lastPlayerDirection)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7464[2] = 
 {
-	static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass11_0_t153AE669B2EFEBFFF8DCD94008645C1C025AA2CA, ___U3CU3E4__this)),static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass11_0_t153AE669B2EFEBFFF8DCD94008645C1C025AA2CA, ___className)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7465[4] = 
+	static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass18_0_tEEC280396C5F2E05111EA2E4F975E4251D94E5E3, ___U3CU3E4__this)),static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass18_0_tEEC280396C5F2E05111EA2E4F975E4251D94E5E3, ___className)),};
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7465[7] = 
 {
-	static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___autoSetup)),static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___canvas)),static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___travelButton)),static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___selectedClass)),};
+	static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___autoSetup)),static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___canvas)),static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___travelButton)),static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___fireballIcon)),static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___spellbookIcon)),static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___torchIcon)),static_cast<int32_t>(offsetof(PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B, ___selectedClass)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7466[8] = 
 {
 	static_cast<int32_t>(offsetof(PortalRuneController_tF3395BD209F36A406B4E750D6FB94F1EB06E05D1, ___runeMaterial)),static_cast<int32_t>(offsetof(PortalRuneController_tF3395BD209F36A406B4E750D6FB94F1EB06E05D1, ___glowSpeed)),static_cast<int32_t>(offsetof(PortalRuneController_tF3395BD209F36A406B4E750D6FB94F1EB06E05D1, ___minGlow)),static_cast<int32_t>(offsetof(PortalRuneController_tF3395BD209F36A406B4E750D6FB94F1EB06E05D1, ___maxGlow)),static_cast<int32_t>(offsetof(PortalRuneController_tF3395BD209F36A406B4E750D6FB94F1EB06E05D1, ___runeColor)),static_cast<int32_t>(offsetof(PortalRuneController_tF3395BD209F36A406B4E750D6FB94F1EB06E05D1, ___runeRenderers)),static_cast<int32_t>(offsetof(PortalRuneController_tF3395BD209F36A406B4E750D6FB94F1EB06E05D1, ___glowTime)),static_cast<int32_t>(offsetof(PortalRuneController_tF3395BD209F36A406B4E750D6FB94F1EB06E05D1, ___runeMaterialInstances)),};

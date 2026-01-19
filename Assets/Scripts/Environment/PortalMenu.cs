@@ -58,7 +58,7 @@ namespace VRDungeonCrawler.Environment
 
         void Start()
         {
-            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v11 - Ancient Dungeon style menu");
+            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v12 - Procedurally generated icons");
 
             // Find player if not set - use Main Camera for head position
             if (player == null)
