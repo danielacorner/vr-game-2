@@ -14,8 +14,8 @@ namespace VRDungeonCrawler.Player
         [Tooltip("The HandPoseController for this hand")]
         public HandPoseController handPoseController;
 
-        [Tooltip("The XR Ray Interactor (NearFarInteractor or XRRayInteractor)")]
-        private XRRayInteractor rayInteractor;
+        [Tooltip("The NearFarInteractor component")]
+        private UnityEngine.XR.Interaction.Toolkit.Interactors.NearFarInteractor nearFarInteractor;
 
         [Tooltip("The line visual component (optional - will find automatically)")]
         public UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorLineVisual lineVisual;
@@ -32,14 +32,16 @@ namespace VRDungeonCrawler.Player
 
         void Start()
         {
-            // Get the ray interactor
-            rayInteractor = GetComponent<XRRayInteractor>();
-            if (rayInteractor == null)
+            // Get the NearFarInteractor component
+            nearFarInteractor = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.NearFarInteractor>();
+            if (nearFarInteractor == null)
             {
-                Debug.LogError("[UIHandPoseManager] No XRRayInteractor found! This component requires an XRRayInteractor.");
+                Debug.LogError("[UIHandPoseManager] No NearFarInteractor found! This component requires NearFarInteractor.");
                 enabled = false;
                 return;
             }
+
+            Debug.Log($"[UIHandPoseManager] Found interactor: {nearFarInteractor.GetType().Name}");
 
             // Find line visual if not assigned
             if (lineVisual == null)
@@ -74,7 +76,7 @@ namespace VRDungeonCrawler.Player
 
         void Update()
         {
-            if (rayInteractor == null || handPoseController == null)
+            if (nearFarInteractor == null || handPoseController == null)
                 return;
 
             // Check if we're hovering over UI
@@ -107,14 +109,14 @@ namespace VRDungeonCrawler.Player
         /// </summary>
         bool IsHoveringUI()
         {
-            if (rayInteractor == null)
+            if (nearFarInteractor == null)
                 return false;
 
             // Check if interactor has valid hover targets
-            if (rayInteractor.hasHover && rayInteractor.interactablesHovered.Count > 0)
+            if (nearFarInteractor.hasHover && nearFarInteractor.interactablesHovered.Count > 0)
             {
                 // Check if any hovered object is on UI layer
-                foreach (var interactable in rayInteractor.interactablesHovered)
+                foreach (var interactable in nearFarInteractor.interactablesHovered)
                 {
                     if (interactable != null && interactable.transform.gameObject.layer == uiLayer)
                     {

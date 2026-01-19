@@ -42,7 +42,8 @@ namespace VRDungeonCrawler.Environment
 
                 canvas = canvasObj.AddComponent<Canvas>();
                 canvasObj.AddComponent<CanvasScaler>();
-                canvasObj.AddComponent<GraphicRaycaster>();
+                // Use TrackedDeviceGraphicRaycaster for VR UI interaction
+                canvasObj.AddComponent<TrackedDeviceGraphicRaycaster>();
 
                 // DISABLED: BoxCollider might be causing physics issues
                 // BoxCollider uiCollider = canvasObj.AddComponent<BoxCollider>();

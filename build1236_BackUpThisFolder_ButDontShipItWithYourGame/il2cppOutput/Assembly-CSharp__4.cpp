@@ -525,7 +525,6 @@ IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisCanvasScaler_t3B
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisCanvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26_m13C85FD585C0679530F8B35D0B39D965702FD0F5_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisEnhancedCampfire_tD007926D06D86EC9864406C3D7DFC58CFA247D37_m55432986A3091DBCD15D063E2D6CAA9454A907A6_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisEnhancedPortal_t6C6CECF11D85B46E2BF4643370504B0418A507F7_m769B40B204EB4C60A8A9B33A8280880576055FB8_RuntimeMethod_var;
-IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisGraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B_m308DCE149216D4787C3E6147729C0DF79423E1BF_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisGroundFogEffect_t86312AE5ADA1BCFDCD241C7775FEA9EB1AFE92AC_m1A6725811E6F3C4BB76982D8D81D016C0EBB21CB_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisLight_t1E68479B7782AF2050FAA02A5DC612FD034F18F3_m2BD4B9FA79F67E589E15432F374FB3E717987144_RuntimeMethod_var;
@@ -3646,9 +3645,9 @@ inline CanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B* GameObject_AddCom
 {
 	return ((  CanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_AddComponent_TisRuntimeObject_m69B93700FACCF372F5753371C6E8FB780800B824_gshared)(__this, method);
 }
-inline GraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B* GameObject_AddComponent_TisGraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B_m308DCE149216D4787C3E6147729C0DF79423E1BF (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
+inline TrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149* GameObject_AddComponent_TisTrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149_m410B58BFBBF85FF1D66F37D41197B6C620F4BF62 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
 {
-	return ((  GraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_AddComponent_TisRuntimeObject_m69B93700FACCF372F5753371C6E8FB780800B824_gshared)(__this, method);
+	return ((  TrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_AddComponent_TisRuntimeObject_m69B93700FACCF372F5753371C6E8FB780800B824_gshared)(__this, method);
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t LayerMask_NameToLayer_m2764C530EDA9EC3226A36E3FD43E020B413AF139 (String_t* ___0_layerName, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, int32_t ___0_value, const RuntimeMethod* method) ;
@@ -3706,10 +3705,6 @@ inline GraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B* GameObject_Ge
 	return ((  GraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared)(__this, method);
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_obj, const RuntimeMethod* method) ;
-inline TrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149* GameObject_AddComponent_TisTrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149_m410B58BFBBF85FF1D66F37D41197B6C620F4BF62 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
-{
-	return ((  TrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_AddComponent_TisRuntimeObject_m69B93700FACCF372F5753371C6E8FB780800B824_gshared)(__this, method);
-}
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* PortalMenuSetup_CreateMainPanel_m295FE02DF48597D9E167EE838F2C64ADA4EB77B0 (PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateComplexMenuLayout_m309BF8255C9F6E53FB43A4EC6C452282B705D55E (PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_parent, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordsPanel_mFBF026E21255512A5D1F7878D8296551B8AA36E5 (PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B* __this, const RuntimeMethod* method) ;
@@ -8411,7 +8406,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_Awake_mF6C327B886FA64C14
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_AddComponent_TisCanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B_m1D199D3A55BF0356D541CB3048142A8D7E52521A_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_AddComponent_TisCanvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26_m13C85FD585C0679530F8B35D0B39D965702FD0F5_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_AddComponent_TisGraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B_m308DCE149216D4787C3E6147729C0DF79423E1BF_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_AddComponent_TisTrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149_m410B58BFBBF85FF1D66F37D41197B6C620F4BF62_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral6C0CD1E48E20284483E8D385CEBABF72DD0D34EA);
@@ -8475,25 +8470,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_Awake_mF6C327B886FA64C14
 		NullCheck(L_14);
 		CanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B* L_15;
 		L_15 = GameObject_AddComponent_TisCanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B_m1D199D3A55BF0356D541CB3048142A8D7E52521A(L_14, GameObject_AddComponent_TisCanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B_m1D199D3A55BF0356D541CB3048142A8D7E52521A_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:45>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:46>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = V_0;
 		NullCheck(L_16);
-		GraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B* L_17;
-		L_17 = GameObject_AddComponent_TisGraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B_m308DCE149216D4787C3E6147729C0DF79423E1BF(L_16, GameObject_AddComponent_TisGraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B_m308DCE149216D4787C3E6147729C0DF79423E1BF_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:53>
+		TrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149* L_17;
+		L_17 = GameObject_AddComponent_TisTrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149_m410B58BFBBF85FF1D66F37D41197B6C620F4BF62(L_16, GameObject_AddComponent_TisTrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149_m410B58BFBBF85FF1D66F37D41197B6C620F4BF62_RuntimeMethod_var);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:54>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18 = V_0;
 		int32_t L_19;
 		L_19 = LayerMask_NameToLayer_m2764C530EDA9EC3226A36E3FD43E020B413AF139(_stringLiteralB93F5E13E0AD8E8044D7D80E771F9A55F393D87F, NULL);
 		NullCheck(L_18);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_18, L_19, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:55>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:56>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral8E9990F3BAEE35B197FCE2193468F252E9DC884B, NULL);
 	}
 
 IL_007f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:57>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:58>
 		return;
 	}
 }
@@ -8501,9 +8496,9 @@ IL_007f:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_Start_m73793045CA673949C228B4424A1DB590DA8BCD0A (PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:62>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:63>
 		PortalMenuSetup_GenerateIcons_m3939CB275247D013D41BA6543214490EA011A702(__this, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:64>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:65>
 		bool L_0 = __this->___autoSetup;
 		if (!L_0)
 		{
@@ -8511,13 +8506,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_Start_m73793045CA673949C
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:66>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:67>
 		PortalMenuSetup_SetupUI_m4D962D2F781A2D0E722755D79074A05CB0E3DBC3(__this, NULL);
 	}
 
 IL_0014:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:68>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:69>
 		return;
 	}
 }
@@ -8525,32 +8520,32 @@ IL_0014:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_GenerateIcons_m3939CB275247D013D41BA6543214490EA011A702 (PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:72>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:73>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_0;
 		L_0 = PortalMenuSetup_GenerateFireballIcon_m94605EC86F0483622E6C4EC70E520DC0F5A51D0F(__this, ((int32_t)64), ((int32_t)64), NULL);
 		__this->___fireballIcon = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___fireballIcon), (void*)L_0);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:73>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:74>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_1;
 		L_1 = PortalMenuSetup_GenerateSpellbookIcon_mFE2D8200BBCA841F3FC7D8AC3BBFC13B527A15FC(__this, ((int32_t)64), ((int32_t)64), NULL);
 		__this->___spellbookIcon = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___spellbookIcon), (void*)L_1);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:74>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:75>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_2;
 		L_2 = PortalMenuSetup_GenerateTorchIcon_m294FACADEDB950B176DA80C2AA963003DF4A9A4D(__this, ((int32_t)64), ((int32_t)64), NULL);
 		__this->___torchIcon = L_2;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___torchIcon), (void*)L_2);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:75>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:76>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_3;
 		L_3 = PortalMenuSetup_GenerateSwordIcon_m14FC03B3FFA552B8D3082757EB44611518AD2EAC(__this, ((int32_t)64), ((int32_t)64), NULL);
 		__this->___swordIcon = L_3;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___swordIcon), (void*)L_3);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:76>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:77>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_4;
 		L_4 = PortalMenuSetup_GenerateDecorativeBorder_mB5F4FCA3668287D401E7328B25C4CDBAA0D5E397(__this, ((int32_t)256), ((int32_t)256), NULL);
 		__this->___decorativeBorder = L_4;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___decorativeBorder), (void*)L_4);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:77>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:78>
 		return;
 	}
 }
@@ -8578,60 +8573,60 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11
 	float V_10 = 0.0f;
 	float V_11 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:81>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:82>
 		int32_t L_0 = ___0_width;
 		int32_t L_1 = ___1_height;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_2 = (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4*)il2cpp_codegen_object_new(Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
 		Texture2D__ctor_mECF60A9EC0638EC353C02C8E99B6B465D23BE917(L_2, L_0, L_1, 4, (bool)0, NULL);
 		V_0 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:82>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:83>
 		int32_t L_3 = ___0_width;
 		int32_t L_4 = ___1_height;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_5 = (ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)SZArrayNew(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389_il2cpp_TypeInfo_var, (uint32_t)((int32_t)il2cpp_codegen_multiply(L_3, L_4)));
 		V_1 = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:84>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:85>
 		int32_t L_6 = ___0_width;
 		V_2 = ((int32_t)(L_6/2));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:85>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:86>
 		int32_t L_7 = ___1_height;
 		V_3 = ((int32_t)(L_7/2));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:86>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:87>
 		int32_t L_8 = ___0_width;
 		int32_t L_9 = ___1_height;
 		int32_t L_10;
 		L_10 = Mathf_Min_m888083F74FF5655778F0403BB5E9608BEFDEA8CB_inline(L_8, L_9, NULL);
 		V_4 = ((float)(((float)L_10)/(2.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:88>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:89>
 		V_5 = 0;
 		goto IL_0156;
 	}
 
 IL_0033:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:90>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:91>
 		V_6 = 0;
 		goto IL_0148;
 	}
 
 IL_003b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:92>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:93>
 		int32_t L_11 = V_6;
 		int32_t L_12 = V_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:93>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:94>
 		int32_t L_13 = V_5;
 		int32_t L_14 = V_3;
 		V_7 = ((float)((int32_t)il2cpp_codegen_subtract(L_13, L_14)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:94>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:95>
 		float L_15 = ((float)((int32_t)il2cpp_codegen_subtract(L_11, L_12)));
 		float L_16 = V_7;
 		float L_17 = V_7;
 		float L_18;
 		L_18 = sqrtf(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_15, L_15)), ((float)il2cpp_codegen_multiply(L_16, L_17)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:95>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:96>
 		float L_19 = V_4;
 		V_8 = ((float)(L_18/L_19));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:98>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:99>
 		float L_20 = V_8;
 		if ((!(((float)L_20) < ((float)(0.400000006f)))))
 		{
@@ -8639,7 +8634,7 @@ IL_003b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:101>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:102>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_21;
 		L_21 = Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline(NULL);
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_22;
@@ -8654,7 +8649,7 @@ IL_003b:
 
 IL_008f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:103>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:104>
 		float L_25 = V_8;
 		if ((!(((float)L_25) < ((float)(0.800000012f)))))
 		{
@@ -8662,10 +8657,10 @@ IL_008f:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:106>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:107>
 		float L_26 = V_8;
 		V_10 = ((float)(((float)il2cpp_codegen_subtract(L_26, (0.400000006f)))/(0.400000006f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:107>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:108>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_27;
 		memset((&L_27), 0, sizeof(L_27));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_27), (1.0f), (0.600000024f), (0.0f), NULL);
@@ -8681,7 +8676,7 @@ IL_008f:
 
 IL_00db:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:109>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:110>
 		float L_31 = V_8;
 		if ((!(((float)L_31) < ((float)(1.0f)))))
 		{
@@ -8689,10 +8684,10 @@ IL_00db:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:112>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:113>
 		float L_32 = V_8;
 		V_11 = ((float)(((float)il2cpp_codegen_subtract(L_32, (0.800000012f)))/(0.200000003f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:113>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:114>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_33;
 		memset((&L_33), 0, sizeof(L_33));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_33), (1.0f), (0.200000003f), (0.0f), NULL);
@@ -8708,7 +8703,7 @@ IL_00db:
 
 IL_012c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:117>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:118>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_37;
 		L_37 = Color_get_clear_m02E023A7D396B973288B3915F6F24FBF7E0DC81D_inline(NULL);
 		V_9 = L_37;
@@ -8716,7 +8711,7 @@ IL_012c:
 
 IL_0133:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:120>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:121>
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_38 = V_1;
 		int32_t L_39 = V_5;
 		int32_t L_40 = ___0_width;
@@ -8724,14 +8719,14 @@ IL_0133:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_42 = V_9;
 		NullCheck(L_38);
 		(L_38)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_39, L_40)), L_41))), (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F)L_42);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:90>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:91>
 		int32_t L_43 = V_6;
 		V_6 = ((int32_t)il2cpp_codegen_add(L_43, 1));
 	}
 
 IL_0148:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:90>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:91>
 		int32_t L_44 = V_6;
 		int32_t L_45 = ___0_width;
 		if ((((int32_t)L_44) < ((int32_t)L_45)))
@@ -8740,14 +8735,14 @@ IL_0148:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:88>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:89>
 		int32_t L_46 = V_5;
 		V_5 = ((int32_t)il2cpp_codegen_add(L_46, 1));
 	}
 
 IL_0156:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:88>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:89>
 		int32_t L_47 = V_5;
 		int32_t L_48 = ___1_height;
 		if ((((int32_t)L_47) < ((int32_t)L_48)))
@@ -8756,16 +8751,16 @@ IL_0156:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:124>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:125>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_49 = V_0;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_50 = V_1;
 		NullCheck(L_49);
 		Texture2D_SetPixels_mAE0CDFA15FA96F840D7FFADC31405D8AF20D9073(L_49, L_50, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:125>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:126>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_51 = V_0;
 		NullCheck(L_51);
 		Texture2D_Apply_mA014182C9EE0BBF6EEE3B286854F29E50EB972DC(L_51, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:126>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:127>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_52 = V_0;
 		return L_52;
 	}
@@ -8793,42 +8788,42 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F V_7;
 	memset((&V_7), 0, sizeof(V_7));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:131>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:132>
 		int32_t L_0 = ___0_width;
 		int32_t L_1 = ___1_height;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_2 = (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4*)il2cpp_codegen_object_new(Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
 		Texture2D__ctor_mECF60A9EC0638EC353C02C8E99B6B465D23BE917(L_2, L_0, L_1, 4, (bool)0, NULL);
 		V_0 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:132>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:133>
 		int32_t L_3 = ___0_width;
 		int32_t L_4 = ___1_height;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_5 = (ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)SZArrayNew(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389_il2cpp_TypeInfo_var, (uint32_t)((int32_t)il2cpp_codegen_multiply(L_3, L_4)));
 		V_1 = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:135>
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_2), (0.400000006f), (0.300000012f), (0.200000003f), (1.0f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:136>
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_3), (0.949999988f), (0.899999976f), (0.800000012f), (1.0f), NULL);
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_2), (0.400000006f), (0.300000012f), (0.200000003f), (1.0f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:137>
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_3), (0.949999988f), (0.899999976f), (0.800000012f), (1.0f), NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:138>
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_4), (0.300000012f), (0.25f), (0.200000003f), (1.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:139>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:140>
 		V_5 = 0;
 		goto IL_011b;
 	}
 
 IL_006c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:141>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:142>
 		V_6 = 0;
 		goto IL_010d;
 	}
 
 IL_0074:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:143>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:144>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_6;
 		L_6 = Color_get_clear_m02E023A7D396B973288B3915F6F24FBF7E0DC81D_inline(NULL);
 		V_7 = L_6;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:146>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:147>
 		int32_t L_7 = V_6;
 		if ((((int32_t)L_7) < ((int32_t)8)))
 		{
@@ -8859,10 +8854,10 @@ IL_0074:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:148>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:149>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_13 = V_2;
 		V_7 = L_13;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:151>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:152>
 		int32_t L_14 = V_6;
 		int32_t L_15 = ___0_width;
 		if ((((int32_t)L_14) < ((int32_t)((int32_t)il2cpp_codegen_add(((int32_t)(L_15/2)), 2)))))
@@ -8894,10 +8889,10 @@ IL_0074:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:153>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:154>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_21 = V_3;
 		V_7 = L_21;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:156>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:157>
 		int32_t L_22 = V_5;
 		if (((int32_t)(((int32_t)il2cpp_codegen_subtract(L_22, ((int32_t)12)))%6)))
 		{
@@ -8913,14 +8908,14 @@ IL_0074:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:158>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:159>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_25 = V_4;
 		V_7 = L_25;
 	}
 
 IL_00cb:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:163>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:164>
 		int32_t L_26 = V_6;
 		int32_t L_27 = ___0_width;
 		if ((((int32_t)L_26) < ((int32_t)((int32_t)il2cpp_codegen_subtract(((int32_t)(L_27/2)), 2)))))
@@ -8937,13 +8932,13 @@ IL_00cb:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:165>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:166>
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_7), (0.300000012f), (0.200000003f), (0.150000006f), (1.0f), NULL);
 	}
 
 IL_00f8:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:169>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:170>
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_30 = V_1;
 		int32_t L_31 = V_5;
 		int32_t L_32 = ___0_width;
@@ -8951,14 +8946,14 @@ IL_00f8:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_34 = V_7;
 		NullCheck(L_30);
 		(L_30)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_31, L_32)), L_33))), (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F)L_34);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:141>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:142>
 		int32_t L_35 = V_6;
 		V_6 = ((int32_t)il2cpp_codegen_add(L_35, 1));
 	}
 
 IL_010d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:141>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:142>
 		int32_t L_36 = V_6;
 		int32_t L_37 = ___0_width;
 		if ((((int32_t)L_36) < ((int32_t)L_37)))
@@ -8967,14 +8962,14 @@ IL_010d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:139>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:140>
 		int32_t L_38 = V_5;
 		V_5 = ((int32_t)il2cpp_codegen_add(L_38, 1));
 	}
 
 IL_011b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:139>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:140>
 		int32_t L_39 = V_5;
 		int32_t L_40 = ___1_height;
 		if ((((int32_t)L_39) < ((int32_t)L_40)))
@@ -8983,16 +8978,16 @@ IL_011b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:173>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:174>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_41 = V_0;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_42 = V_1;
 		NullCheck(L_41);
 		Texture2D_SetPixels_mAE0CDFA15FA96F840D7FFADC31405D8AF20D9073(L_41, L_42, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:174>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:175>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_43 = V_0;
 		NullCheck(L_43);
 		Texture2D_Apply_mA014182C9EE0BBF6EEE3B286854F29E50EB972DC(L_43, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:175>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:176>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_44 = V_0;
 		return L_44;
 	}
@@ -9028,45 +9023,45 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11
 	float V_14 = 0.0f;
 	float V_15 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:180>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:181>
 		int32_t L_0 = ___0_width;
 		int32_t L_1 = ___1_height;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_2 = (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4*)il2cpp_codegen_object_new(Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
 		Texture2D__ctor_mECF60A9EC0638EC353C02C8E99B6B465D23BE917(L_2, L_0, L_1, 4, (bool)0, NULL);
 		V_0 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:181>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:182>
 		int32_t L_3 = ___0_width;
 		int32_t L_4 = ___1_height;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_5 = (ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)SZArrayNew(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389_il2cpp_TypeInfo_var, (uint32_t)((int32_t)il2cpp_codegen_multiply(L_3, L_4)));
 		V_1 = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:183>
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_2), (0.400000006f), (0.25f), (0.150000006f), (1.0f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:184>
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_3), (1.0f), (0.5f), (0.0f), (1.0f), NULL);
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_2), (0.400000006f), (0.25f), (0.150000006f), (1.0f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:185>
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_3), (1.0f), (0.5f), (0.0f), (1.0f), NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:186>
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_4), (1.0f), (0.899999976f), (0.300000012f), (1.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:187>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:188>
 		int32_t L_6 = ___0_width;
 		V_5 = ((int32_t)(L_6/2));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:189>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:190>
 		V_6 = 0;
 		goto IL_0176;
 	}
 
 IL_0071:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:191>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:192>
 		V_7 = 0;
 		goto IL_0168;
 	}
 
 IL_0079:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:193>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:194>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_7;
 		L_7 = Color_get_clear_m02E023A7D396B973288B3915F6F24FBF7E0DC81D_inline(NULL);
 		V_8 = L_7;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:196>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:197>
 		int32_t L_8 = V_6;
 		int32_t L_9 = ___1_height;
 		if ((((int32_t)L_8) >= ((int32_t)((int32_t)(((int32_t)il2cpp_codegen_multiply(L_9, 2))/3)))))
@@ -9075,10 +9070,10 @@ IL_0079:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:198>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:199>
 		int32_t L_10 = ___0_width;
 		V_9 = ((int32_t)(L_10/4));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:199>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:200>
 		int32_t L_11 = V_7;
 		int32_t L_12 = V_5;
 		int32_t L_13 = V_9;
@@ -9097,7 +9092,7 @@ IL_0079:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:201>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:202>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_17 = V_2;
 		V_8 = L_17;
 		goto IL_0153;
@@ -9105,29 +9100,29 @@ IL_0079:
 
 IL_00b2:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:207>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:208>
 		int32_t L_18 = V_6;
 		int32_t L_19 = ___1_height;
 		V_10 = ((float)((int32_t)il2cpp_codegen_subtract(L_18, ((int32_t)(((int32_t)il2cpp_codegen_multiply(L_19, 2))/3)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:208>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:209>
 		int32_t L_20 = ___1_height;
 		V_11 = ((float)(((float)L_20)/(3.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:209>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:210>
 		int32_t L_21 = V_7;
 		int32_t L_22 = V_5;
 		int32_t L_23 = ___0_width;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:210>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:211>
 		float L_24 = V_10;
 		float L_25 = V_11;
 		V_12 = ((float)(L_24/L_25));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:213>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:214>
 		float L_26 = ((float)(((float)((int32_t)il2cpp_codegen_subtract(L_21, L_22)))/((float)((float)(((float)L_23)/(3.0f))))));
 		float L_27 = V_12;
 		float L_28 = V_12;
 		float L_29;
 		L_29 = sqrtf(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_26, L_26)), ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_27, L_28)), (0.5f))))));
 		V_13 = L_29;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:215>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:216>
 		float L_30 = V_13;
 		if ((!(((float)L_30) < ((float)(0.800000012f)))))
 		{
@@ -9135,7 +9130,7 @@ IL_00b2:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:218>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:219>
 		float L_31 = V_13;
 		if ((!(((float)L_31) < ((float)(0.400000006f)))))
 		{
@@ -9143,7 +9138,7 @@ IL_00b2:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:220>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:221>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_32 = V_4;
 		V_8 = L_32;
 		goto IL_0127;
@@ -9151,10 +9146,10 @@ IL_00b2:
 
 IL_010b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:225>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:226>
 		float L_33 = V_13;
 		V_14 = ((float)(((float)il2cpp_codegen_subtract(L_33, (0.400000006f)))/(0.400000006f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:226>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:227>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_34 = V_4;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_35 = V_3;
 		float L_36 = V_14;
@@ -9165,7 +9160,7 @@ IL_010b:
 
 IL_0127:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:230>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:231>
 		float L_38 = V_13;
 		if ((!(((float)L_38) > ((float)(0.600000024f)))))
 		{
@@ -9173,10 +9168,10 @@ IL_0127:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:232>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:233>
 		float L_39 = V_13;
 		V_15 = ((float)il2cpp_codegen_subtract((1.0f), ((float)(((float)il2cpp_codegen_subtract(L_39, (0.600000024f)))/(0.200000003f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:233>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:234>
 		float* L_40 = (float*)(&(&V_8)->___a);
 		float* L_41 = L_40;
 		float L_42 = *((float*)L_41);
@@ -9186,7 +9181,7 @@ IL_0127:
 
 IL_0153:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:238>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:239>
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_44 = V_1;
 		int32_t L_45 = V_6;
 		int32_t L_46 = ___0_width;
@@ -9194,14 +9189,14 @@ IL_0153:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_48 = V_8;
 		NullCheck(L_44);
 		(L_44)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_45, L_46)), L_47))), (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F)L_48);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:191>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:192>
 		int32_t L_49 = V_7;
 		V_7 = ((int32_t)il2cpp_codegen_add(L_49, 1));
 	}
 
 IL_0168:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:191>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:192>
 		int32_t L_50 = V_7;
 		int32_t L_51 = ___0_width;
 		if ((((int32_t)L_50) < ((int32_t)L_51)))
@@ -9210,14 +9205,14 @@ IL_0168:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:189>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:190>
 		int32_t L_52 = V_6;
 		V_6 = ((int32_t)il2cpp_codegen_add(L_52, 1));
 	}
 
 IL_0176:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:189>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:190>
 		int32_t L_53 = V_6;
 		int32_t L_54 = ___1_height;
 		if ((((int32_t)L_53) < ((int32_t)L_54)))
@@ -9226,16 +9221,16 @@ IL_0176:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:242>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:243>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_55 = V_0;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_56 = V_1;
 		NullCheck(L_55);
 		Texture2D_SetPixels_mAE0CDFA15FA96F840D7FFADC31405D8AF20D9073(L_55, L_56, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:243>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:244>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_57 = V_0;
 		NullCheck(L_57);
 		Texture2D_Apply_mA014182C9EE0BBF6EEE3B286854F29E50EB972DC(L_57, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:244>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:245>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_58 = V_0;
 		return L_58;
 	}
@@ -9269,45 +9264,45 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11
 	float V_12 = 0.0f;
 	int32_t V_13 = 0;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:249>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:250>
 		int32_t L_0 = ___0_width;
 		int32_t L_1 = ___1_height;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_2 = (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4*)il2cpp_codegen_object_new(Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
 		Texture2D__ctor_mECF60A9EC0638EC353C02C8E99B6B465D23BE917(L_2, L_0, L_1, 4, (bool)0, NULL);
 		V_0 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:250>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:251>
 		int32_t L_3 = ___0_width;
 		int32_t L_4 = ___1_height;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_5 = (ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)SZArrayNew(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389_il2cpp_TypeInfo_var, (uint32_t)((int32_t)il2cpp_codegen_multiply(L_3, L_4)));
 		V_1 = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:252>
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_2), (0.699999988f), (0.75f), (0.800000012f), (1.0f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:253>
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_3), (0.400000006f), (0.300000012f), (0.200000003f), (1.0f), NULL);
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_2), (0.699999988f), (0.75f), (0.800000012f), (1.0f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:254>
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_3), (0.400000006f), (0.300000012f), (0.200000003f), (1.0f), NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:255>
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_4), (0.600000024f), (0.5f), (0.300000012f), (1.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:256>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:257>
 		int32_t L_6 = ___0_width;
 		V_5 = ((int32_t)(L_6/2));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:258>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:259>
 		V_6 = 0;
 		goto IL_0186;
 	}
 
 IL_0071:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:260>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:261>
 		V_7 = 0;
 		goto IL_0178;
 	}
 
 IL_0079:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:262>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:263>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_7;
 		L_7 = Color_get_clear_m02E023A7D396B973288B3915F6F24FBF7E0DC81D_inline(NULL);
 		V_8 = L_7;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:265>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:266>
 		int32_t L_8 = V_6;
 		int32_t L_9 = ___1_height;
 		if ((!(((float)((float)L_8)) < ((float)((float)il2cpp_codegen_multiply(((float)L_9), (0.200000003f)))))))
@@ -9316,10 +9311,10 @@ IL_0079:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:267>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:268>
 		int32_t L_10 = ___0_width;
 		V_9 = ((int32_t)(L_10/5));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:268>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:269>
 		int32_t L_11 = V_7;
 		int32_t L_12 = V_5;
 		int32_t L_13 = V_9;
@@ -9338,7 +9333,7 @@ IL_0079:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:270>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:271>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_17 = V_3;
 		V_8 = L_17;
 		goto IL_0163;
@@ -9346,7 +9341,7 @@ IL_0079:
 
 IL_00b6:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:274>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:275>
 		int32_t L_18 = V_6;
 		int32_t L_19 = ___1_height;
 		if ((!(((float)((float)L_18)) >= ((float)((float)il2cpp_codegen_multiply(((float)L_19), (0.200000003f)))))))
@@ -9363,10 +9358,10 @@ IL_00b6:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:276>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:277>
 		int32_t L_22 = ___0_width;
 		V_10 = il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply(((float)L_22), (0.600000024f))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:277>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:278>
 		int32_t L_23 = V_7;
 		int32_t L_24 = V_5;
 		int32_t L_25 = V_10;
@@ -9385,7 +9380,7 @@ IL_00b6:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:279>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:280>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_29 = V_4;
 		V_8 = L_29;
 		goto IL_0163;
@@ -9393,21 +9388,21 @@ IL_00b6:
 
 IL_00f7:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:285>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:286>
 		int32_t L_30 = V_6;
 		int32_t L_31 = ___1_height;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:286>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:287>
 		int32_t L_32 = ___1_height;
 		V_11 = ((float)il2cpp_codegen_multiply(((float)L_32), (0.699999988f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:287>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:288>
 		float L_33 = V_11;
 		V_12 = ((float)(((float)il2cpp_codegen_subtract(((float)L_30), ((float)il2cpp_codegen_multiply(((float)L_31), (0.300000012f)))))/L_33));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:290>
-		int32_t L_34 = ___0_width;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:291>
+		int32_t L_34 = ___0_width;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:292>
 		float L_35 = V_12;
 		V_13 = il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply(((float)((int32_t)(L_34/4))), ((float)il2cpp_codegen_subtract((1.0f), ((float)il2cpp_codegen_multiply(L_35, (0.899999976f))))))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:293>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:294>
 		int32_t L_36 = V_7;
 		int32_t L_37 = V_5;
 		int32_t L_38 = V_13;
@@ -9426,10 +9421,10 @@ IL_00f7:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:295>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:296>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_42 = V_2;
 		V_8 = L_42;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:298>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:299>
 		int32_t L_43 = V_7;
 		int32_t L_44 = V_5;
 		if ((((int32_t)L_43) < ((int32_t)((int32_t)il2cpp_codegen_subtract(L_44, 1)))))
@@ -9446,7 +9441,7 @@ IL_00f7:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:300>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:301>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_47 = V_2;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_48;
 		L_48 = Color_get_white_m068F5AF879B0FCA584E3693F762EA41BB65532C6_inline(NULL);
@@ -9457,7 +9452,7 @@ IL_00f7:
 
 IL_0163:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:305>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:306>
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_50 = V_1;
 		int32_t L_51 = V_6;
 		int32_t L_52 = ___0_width;
@@ -9465,14 +9460,14 @@ IL_0163:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_54 = V_8;
 		NullCheck(L_50);
 		(L_50)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_51, L_52)), L_53))), (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F)L_54);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:260>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:261>
 		int32_t L_55 = V_7;
 		V_7 = ((int32_t)il2cpp_codegen_add(L_55, 1));
 	}
 
 IL_0178:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:260>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:261>
 		int32_t L_56 = V_7;
 		int32_t L_57 = ___0_width;
 		if ((((int32_t)L_56) < ((int32_t)L_57)))
@@ -9481,14 +9476,14 @@ IL_0178:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:258>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:259>
 		int32_t L_58 = V_6;
 		V_6 = ((int32_t)il2cpp_codegen_add(L_58, 1));
 	}
 
 IL_0186:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:258>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:259>
 		int32_t L_59 = V_6;
 		int32_t L_60 = ___1_height;
 		if ((((int32_t)L_59) < ((int32_t)L_60)))
@@ -9497,16 +9492,16 @@ IL_0186:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:309>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:310>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_61 = V_0;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_62 = V_1;
 		NullCheck(L_61);
 		Texture2D_SetPixels_mAE0CDFA15FA96F840D7FFADC31405D8AF20D9073(L_61, L_62, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:310>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:311>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_63 = V_0;
 		NullCheck(L_63);
 		Texture2D_Apply_mA014182C9EE0BBF6EEE3B286854F29E50EB972DC(L_63, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:311>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:312>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_64 = V_0;
 		return L_64;
 	}
@@ -9557,62 +9552,62 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11
 	float V_27 = 0.0f;
 	float V_28 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:316>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:317>
 		int32_t L_0 = ___0_width;
 		int32_t L_1 = ___1_height;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_2 = (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4*)il2cpp_codegen_object_new(Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
 		Texture2D__ctor_mECF60A9EC0638EC353C02C8E99B6B465D23BE917(L_2, L_0, L_1, 4, (bool)0, NULL);
 		V_0 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:317>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:318>
 		int32_t L_3 = ___0_width;
 		int32_t L_4 = ___1_height;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_5 = (ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)SZArrayNew(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389_il2cpp_TypeInfo_var, (uint32_t)((int32_t)il2cpp_codegen_multiply(L_3, L_4)));
 		V_1 = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:320>
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_2), (0.550000012f), (0.449999988f), (0.300000012f), (1.0f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:321>
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_3), (0.699999988f), (0.600000024f), (0.400000006f), (1.0f), NULL);
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_2), (0.550000012f), (0.449999988f), (0.300000012f), (1.0f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:322>
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_4), (0.349999994f), (0.300000012f), (0.200000003f), (1.0f), NULL);
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_3), (0.699999988f), (0.600000024f), (0.400000006f), (1.0f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:323>
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_4), (0.349999994f), (0.300000012f), (0.200000003f), (1.0f), NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:324>
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&V_5), (0.25f), (0.200000003f), (0.150000006f), (1.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:325>
-		V_6 = 8;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:326>
+		V_6 = 8;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:327>
 		V_7 = ((int32_t)16);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:328>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:329>
 		V_8 = 0;
 		goto IL_02b9;
 	}
 
 IL_008e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:330>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:331>
 		V_9 = 0;
 		goto IL_02ab;
 	}
 
 IL_0096:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:332>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:333>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_6;
 		L_6 = Color_get_clear_m02E023A7D396B973288B3915F6F24FBF7E0DC81D_inline(NULL);
 		V_10 = L_6;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:335>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:336>
 		int32_t L_7 = V_9;
 		V_11 = L_7;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:336>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:337>
 		int32_t L_8 = ___0_width;
 		int32_t L_9 = V_9;
 		V_12 = ((int32_t)il2cpp_codegen_subtract(((int32_t)il2cpp_codegen_subtract(L_8, 1)), L_9));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:337>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:338>
 		int32_t L_10 = ___1_height;
 		int32_t L_11 = V_8;
 		V_13 = ((int32_t)il2cpp_codegen_subtract(((int32_t)il2cpp_codegen_subtract(L_10, 1)), L_11));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:338>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:339>
 		int32_t L_12 = V_8;
 		V_14 = L_12;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:340>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:341>
 		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_13 = (Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)SZArrayNew(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var, (uint32_t)4);
 		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_14 = L_13;
 		int32_t L_15 = V_11;
@@ -9633,7 +9628,7 @@ IL_0096:
 		int32_t L_22;
 		L_22 = Mathf_Min_mF826376E833AF6AD3FF99EFE8E0B6DCA0BC09DC9_inline(L_20, NULL);
 		V_15 = L_22;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:343>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:344>
 		int32_t L_23 = V_15;
 		int32_t L_24 = V_6;
 		if ((((int32_t)L_23) >= ((int32_t)L_24)))
@@ -9642,13 +9637,13 @@ IL_0096:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:346>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:347>
 		int32_t L_25 = V_9;
 		int32_t L_26 = V_8;
 		float L_27;
 		L_27 = Mathf_PerlinNoise_mAB0E53C29FE95469CF303364910AD0D8662A9A6A(((float)il2cpp_codegen_multiply(((float)L_25), (0.100000001f))), ((float)il2cpp_codegen_multiply(((float)L_26), (0.100000001f))), NULL);
 		V_16 = L_27;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:349>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:350>
 		int32_t L_28 = V_15;
 		if ((((int32_t)L_28) >= ((int32_t)2)))
 		{
@@ -9656,7 +9651,7 @@ IL_0096:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:351>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:352>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_29 = V_4;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_30 = V_3;
 		float L_31 = V_16;
@@ -9668,7 +9663,7 @@ IL_0096:
 
 IL_0108:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:353>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:354>
 		int32_t L_33 = V_15;
 		if ((((int32_t)L_33) >= ((int32_t)5)))
 		{
@@ -9676,7 +9671,7 @@ IL_0108:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:355>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:356>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_34 = V_2;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_35 = V_3;
 		float L_36 = V_16;
@@ -9688,7 +9683,7 @@ IL_0108:
 
 IL_0120:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:359>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:360>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_38 = V_5;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_39 = V_2;
 		float L_40 = V_16;
@@ -9699,7 +9694,7 @@ IL_0120:
 
 IL_0132:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:367>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:368>
 		int32_t L_42 = V_9;
 		int32_t L_43 = V_7;
 		if ((((int32_t)L_42) >= ((int32_t)L_43)))
@@ -9717,20 +9712,20 @@ IL_0132:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:369>
-		int32_t L_47 = V_9;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:370>
+		int32_t L_47 = V_9;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:371>
 		int32_t L_48 = ___1_height;
 		int32_t L_49 = V_8;
 		V_17 = ((int32_t)il2cpp_codegen_subtract(((int32_t)il2cpp_codegen_subtract(L_48, 1)), L_49));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:371>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:372>
 		int32_t L_50 = L_47;
 		int32_t L_51 = V_17;
 		int32_t L_52 = V_17;
 		float L_53;
 		L_53 = sqrtf(((float)((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_50, L_50)), ((int32_t)il2cpp_codegen_multiply(L_51, L_52))))));
 		V_18 = L_53;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:373>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:374>
 		float L_54 = V_18;
 		int32_t L_55 = V_7;
 		if ((!(((float)L_54) < ((float)((float)L_55)))))
@@ -9739,18 +9734,18 @@ IL_0132:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:376>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:377>
 		float L_56 = V_18;
 		int32_t L_57 = V_7;
 		V_19 = ((float)(L_56/((float)L_57)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:377>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:378>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_58 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_59 = V_5;
 		float L_60 = V_19;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_61;
 		L_61 = Color_Lerp_mE79F87889843ECDC188E4CB5B5E1F1B2256E5EBE_inline(L_58, L_59, L_60, NULL);
 		V_10 = L_61;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:380>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:381>
 		float L_62 = V_18;
 		if (((int32_t)(il2cpp_codegen_cast_double_to_int<int32_t>(L_62)%4)))
 		{
@@ -9758,7 +9753,7 @@ IL_0132:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:382>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:383>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_63 = V_10;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_64 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_65;
@@ -9768,7 +9763,7 @@ IL_0132:
 
 IL_018b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:388>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:389>
 		int32_t L_66 = V_9;
 		int32_t L_67 = ___0_width;
 		int32_t L_68 = V_7;
@@ -9787,21 +9782,21 @@ IL_018b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:390>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:391>
 		int32_t L_72 = ___0_width;
 		int32_t L_73 = V_9;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:391>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:392>
 		int32_t L_74 = ___1_height;
 		int32_t L_75 = V_8;
 		V_20 = ((int32_t)il2cpp_codegen_subtract(((int32_t)il2cpp_codegen_subtract(L_74, 1)), L_75));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:392>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:393>
 		int32_t L_76 = ((int32_t)il2cpp_codegen_subtract(((int32_t)il2cpp_codegen_subtract(L_72, 1)), L_73));
 		int32_t L_77 = V_20;
 		int32_t L_78 = V_20;
 		float L_79;
 		L_79 = sqrtf(((float)((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_76, L_76)), ((int32_t)il2cpp_codegen_multiply(L_77, L_78))))));
 		V_21 = L_79;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:394>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:395>
 		float L_80 = V_21;
 		int32_t L_81 = V_7;
 		if ((!(((float)L_80) < ((float)((float)L_81)))))
@@ -9810,18 +9805,18 @@ IL_018b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:397>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:398>
 		float L_82 = V_21;
 		int32_t L_83 = V_7;
 		V_22 = ((float)(L_82/((float)L_83)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:398>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:399>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_84 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_85 = V_5;
 		float L_86 = V_22;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_87;
 		L_87 = Color_Lerp_mE79F87889843ECDC188E4CB5B5E1F1B2256E5EBE_inline(L_84, L_85, L_86, NULL);
 		V_10 = L_87;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:400>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:401>
 		float L_88 = V_21;
 		if (((int32_t)(il2cpp_codegen_cast_double_to_int<int32_t>(L_88)%4)))
 		{
@@ -9829,7 +9824,7 @@ IL_018b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:402>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:403>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_89 = V_10;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_90 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_91;
@@ -9839,7 +9834,7 @@ IL_018b:
 
 IL_01ea:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:408>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:409>
 		int32_t L_92 = V_9;
 		int32_t L_93 = V_7;
 		if ((((int32_t)L_92) >= ((int32_t)L_93)))
@@ -9856,19 +9851,19 @@ IL_01ea:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:410>
-		int32_t L_96 = V_9;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:411>
+		int32_t L_96 = V_9;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:412>
 		int32_t L_97 = V_8;
 		V_23 = L_97;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:412>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:413>
 		int32_t L_98 = L_96;
 		int32_t L_99 = V_23;
 		int32_t L_100 = V_23;
 		float L_101;
 		L_101 = sqrtf(((float)((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_98, L_98)), ((int32_t)il2cpp_codegen_multiply(L_99, L_100))))));
 		V_24 = L_101;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:414>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:415>
 		float L_102 = V_24;
 		int32_t L_103 = V_7;
 		if ((!(((float)L_102) < ((float)((float)L_103)))))
@@ -9877,18 +9872,18 @@ IL_01ea:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:417>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:418>
 		float L_104 = V_24;
 		int32_t L_105 = V_7;
 		V_25 = ((float)(L_104/((float)L_105)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:418>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:419>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_106 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_107 = V_5;
 		float L_108 = V_25;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_109;
 		L_109 = Color_Lerp_mE79F87889843ECDC188E4CB5B5E1F1B2256E5EBE_inline(L_106, L_107, L_108, NULL);
 		V_10 = L_109;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:420>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:421>
 		float L_110 = V_24;
 		if (((int32_t)(il2cpp_codegen_cast_double_to_int<int32_t>(L_110)%4)))
 		{
@@ -9896,7 +9891,7 @@ IL_01ea:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:422>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:423>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_111 = V_10;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_112 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_113;
@@ -9906,7 +9901,7 @@ IL_01ea:
 
 IL_023d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:428>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:429>
 		int32_t L_114 = V_9;
 		int32_t L_115 = ___0_width;
 		int32_t L_116 = V_7;
@@ -9924,20 +9919,20 @@ IL_023d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:430>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:431>
 		int32_t L_119 = ___0_width;
 		int32_t L_120 = V_9;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:431>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:432>
 		int32_t L_121 = V_8;
 		V_26 = L_121;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:432>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:433>
 		int32_t L_122 = ((int32_t)il2cpp_codegen_subtract(((int32_t)il2cpp_codegen_subtract(L_119, 1)), L_120));
 		int32_t L_123 = V_26;
 		int32_t L_124 = V_26;
 		float L_125;
 		L_125 = sqrtf(((float)((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_122, L_122)), ((int32_t)il2cpp_codegen_multiply(L_123, L_124))))));
 		V_27 = L_125;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:434>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:435>
 		float L_126 = V_27;
 		int32_t L_127 = V_7;
 		if ((!(((float)L_126) < ((float)((float)L_127)))))
@@ -9946,18 +9941,18 @@ IL_023d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:437>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:438>
 		float L_128 = V_27;
 		int32_t L_129 = V_7;
 		V_28 = ((float)(L_128/((float)L_129)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:438>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:439>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_130 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_131 = V_5;
 		float L_132 = V_28;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_133;
 		L_133 = Color_Lerp_mE79F87889843ECDC188E4CB5B5E1F1B2256E5EBE_inline(L_130, L_131, L_132, NULL);
 		V_10 = L_133;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:440>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:441>
 		float L_134 = V_27;
 		if (((int32_t)(il2cpp_codegen_cast_double_to_int<int32_t>(L_134)%4)))
 		{
@@ -9965,7 +9960,7 @@ IL_023d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:442>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:443>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_135 = V_10;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_136 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_137;
@@ -9975,7 +9970,7 @@ IL_023d:
 
 IL_0296:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:447>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:448>
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_138 = V_1;
 		int32_t L_139 = V_8;
 		int32_t L_140 = ___0_width;
@@ -9983,14 +9978,14 @@ IL_0296:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_142 = V_10;
 		NullCheck(L_138);
 		(L_138)->SetAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_139, L_140)), L_141))), (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F)L_142);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:330>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:331>
 		int32_t L_143 = V_9;
 		V_9 = ((int32_t)il2cpp_codegen_add(L_143, 1));
 	}
 
 IL_02ab:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:330>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:331>
 		int32_t L_144 = V_9;
 		int32_t L_145 = ___0_width;
 		if ((((int32_t)L_144) < ((int32_t)L_145)))
@@ -9999,14 +9994,14 @@ IL_02ab:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:328>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:329>
 		int32_t L_146 = V_8;
 		V_8 = ((int32_t)il2cpp_codegen_add(L_146, 1));
 	}
 
 IL_02b9:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:328>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:329>
 		int32_t L_147 = V_8;
 		int32_t L_148 = ___1_height;
 		if ((((int32_t)L_147) < ((int32_t)L_148)))
@@ -10015,16 +10010,16 @@ IL_02b9:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:451>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:452>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_149 = V_0;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_150 = V_1;
 		NullCheck(L_149);
 		Texture2D_SetPixels_mAE0CDFA15FA96F840D7FFADC31405D8AF20D9073(L_149, L_150, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:452>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:453>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_151 = V_0;
 		NullCheck(L_151);
 		Texture2D_Apply_mA014182C9EE0BBF6EEE3B286854F29E50EB972DC(L_151, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:453>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:454>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_152 = V_0;
 		return L_152;
 	}
@@ -10042,14 +10037,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_AddBorderToElement_m4CC1
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:458>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:459>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral59FF90B04ACAFAEF2DAD6F68202227680BD1BC8F, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:459>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:460>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = L_0;
 		NullCheck(L_1);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_1, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:460>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:461>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = L_1;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -10060,47 +10055,47 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_AddBorderToElement_m4CC1
 		L_5 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_4, NULL);
 		NullCheck(L_3);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_3, L_5, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:462>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:463>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = L_2;
 		NullCheck(L_6);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7;
 		L_7 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_6, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:463>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:464>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_8 = L_7;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_9;
 		L_9 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_8);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_8, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:464>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:465>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_10 = L_8;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_11;
 		L_11 = Vector2_get_one_m9097EB8DC23C26118A591AF16702796C3EF51DFB_inline(NULL);
 		NullCheck(L_10);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_10, L_11, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:465>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:466>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_12 = L_10;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_13;
 		L_13 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_12);
 		RectTransform_set_offsetMin_m07F38B4105C7CA9CC9FBDC9ED0DB008602880AB9(L_12, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:466>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:467>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_14;
 		L_14 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_12);
 		RectTransform_set_offsetMax_m5514D09D86516F2C0E25FA6D11A3A4274D3D002D(L_12, L_14, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:468>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:469>
 		NullCheck(L_6);
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_15;
 		L_15 = GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43(L_6, GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:469>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:470>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_16 = L_15;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_17 = __this->___decorativeBorder;
 		NullCheck(L_16);
 		RawImage_set_texture_mC016318C95CC17A826D57DD219DBCB6DFD295C02(L_16, L_17, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:470>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:471>
 		NullCheck(L_16);
 		VirtualActionInvoker1< bool >::Invoke(25, L_16, (bool)0);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:471>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:472>
 		return;
 	}
 }
@@ -10134,7 +10129,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_SetupUI_m4D962D2F781A2D0
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* V_3 = NULL;
 	PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3* V_4 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:476>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:477>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_0 = __this->___canvas;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -10145,28 +10140,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_SetupUI_m4D962D2F781A2D0
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:478>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:479>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralB7D0CAD97452EC59F3B650164BC53C0F7FF99F29, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:479>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:480>
 		return;
 	}
 
 IL_0019:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:483>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:484>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_2 = __this->___canvas;
 		NullCheck(L_2);
 		Canvas_set_renderMode_mD73E953F8A115CF469508448A00D0EDAFAF5AB47(L_2, 2, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:484>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:485>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_3 = __this->___canvas;
 		NullCheck(L_3);
 		Canvas_set_sortingOrder_m70D89DB61A3C0589C0FAB525E613DE9D0C799AAC(L_3, ((int32_t)10), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:488>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:489>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_4;
 		L_4 = Camera_get_main_m52C992F18E05355ABB9EEB64A4BF2215E12762DF(NULL);
 		V_0 = L_4;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:489>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:490>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_5 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_6;
@@ -10177,7 +10172,7 @@ IL_0019:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:491>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:492>
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_7;
 		L_7 = Object_FindObjectOfType_TisCamera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184_m4E58979DCD0CAA6D6A4D74CE42BDD4516AA3987F(Object_FindObjectOfType_TisCamera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184_m4E58979DCD0CAA6D6A4D74CE42BDD4516AA3987F_RuntimeMethod_var);
@@ -10186,7 +10181,7 @@ IL_0019:
 
 IL_0047:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:493>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:494>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_8 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_9;
@@ -10197,12 +10192,12 @@ IL_0047:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:495>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:496>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_10 = __this->___canvas;
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_11 = V_0;
 		NullCheck(L_10);
 		Canvas_set_worldCamera_m007F7DABDB5A3A6BFB043E3500DA82A4D936EDD4(L_10, L_11, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:496>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:497>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_12 = V_0;
 		NullCheck(L_12);
 		String_t* L_13;
@@ -10216,45 +10211,45 @@ IL_0047:
 
 IL_0073:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:500>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:501>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(_stringLiteral9EEEDB7A944E2BF7EAC6E8DA03C857B4E0874CA8, NULL);
 	}
 
 IL_007d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:504>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:505>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_15 = __this->___canvas;
 		NullCheck(L_15);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_16;
 		L_16 = Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4(L_15, Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:505>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:506>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_17 = L_16;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_18;
 		memset((&L_18), 0, sizeof(L_18));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_18), (200.0f), (280.0f), NULL);
 		NullCheck(L_17);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_17, L_18, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:506>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:507>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_19 = L_17;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20;
 		memset((&L_20), 0, sizeof(L_20));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_20), (0.00999999978f), (0.00999999978f), (0.00999999978f), NULL);
 		NullCheck(L_19);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_19, L_20, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:507>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:508>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_21;
 		memset((&L_21), 0, sizeof(L_21));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_21), (0.5f), (0.5f), NULL);
 		NullCheck(L_19);
 		RectTransform_set_pivot_m79D0177D383D432A93C2615F1932B739B1C6E146(L_19, L_21, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:510>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:511>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_22 = __this->___canvas;
 		NullCheck(L_22);
 		CanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B* L_23;
 		L_23 = Component_GetComponent_TisCanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B_m82FD65AA44C2243A4866779598E55571D3576DAE(L_22, Component_GetComponent_TisCanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B_m82FD65AA44C2243A4866779598E55571D3576DAE_RuntimeMethod_var);
 		V_1 = L_23;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:511>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:512>
 		CanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B* L_24 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_25;
@@ -10265,7 +10260,7 @@ IL_007d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:513>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:514>
 		CanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B* L_26 = V_1;
 		NullCheck(L_26);
 		CanvasScaler_set_dynamicPixelsPerUnit_m7A081D5FD963F751140DCF1E5190ED4E51308CA2_inline(L_26, (100.0f), NULL);
@@ -10273,7 +10268,7 @@ IL_007d:
 
 IL_00eb:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:518>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:519>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_27 = __this->___canvas;
 		NullCheck(L_27);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_28;
@@ -10282,7 +10277,7 @@ IL_00eb:
 		GraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B* L_29;
 		L_29 = GameObject_GetComponent_TisGraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B_mF5BD57EC05DD0D0415B4C5BF4846A8F68125BF5D(L_28, GameObject_GetComponent_TisGraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B_mF5BD57EC05DD0D0415B4C5BF4846A8F68125BF5D_RuntimeMethod_var);
 		V_2 = L_29;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:519>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:520>
 		GraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B* L_30 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_31;
@@ -10293,7 +10288,7 @@ IL_00eb:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:521>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:522>
 		GraphicRaycaster_t16FC39434AE5B47D3C2993134CDCF7F4AE6A6D7B* L_32 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_32, NULL);
@@ -10301,7 +10296,7 @@ IL_00eb:
 
 IL_010b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:525>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:526>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_33 = __this->___canvas;
 		NullCheck(L_33);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_34;
@@ -10309,35 +10304,35 @@ IL_010b:
 		NullCheck(L_34);
 		TrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149* L_35;
 		L_35 = GameObject_AddComponent_TisTrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149_m410B58BFBBF85FF1D66F37D41197B6C620F4BF62(L_34, GameObject_AddComponent_TisTrackedDeviceGraphicRaycaster_t10211666BB4A468E839EEFBDFEC7D5AAB4555149_m410B58BFBBF85FF1D66F37D41197B6C620F4BF62_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:528>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:529>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_36 = __this->___canvas;
 		NullCheck(L_36);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_37;
 		L_37 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_36, NULL);
 		NullCheck(L_37);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_37, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:529>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:530>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralC78CA67913522D7C0BBAC1FF29BA00E8E01E4F8B, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:532>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:533>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_38;
 		L_38 = PortalMenuSetup_CreateMainPanel_m295FE02DF48597D9E167EE838F2C64ADA4EB77B0(__this, NULL);
 		V_3 = L_38;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:533>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:534>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_39 = V_3;
 		NullCheck(L_39);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_40;
 		L_40 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_39, NULL);
 		PortalMenuSetup_CreateComplexMenuLayout_m309BF8255C9F6E53FB43A4EC6C452282B705D55E(__this, L_40, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:536>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:537>
 		PortalMenuSetup_CreateRecordsPanel_mFBF026E21255512A5D1F7878D8296551B8AA36E5(__this, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:541>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:542>
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralECAD4761D7FD9584AA1C33E6C0E8219BA2BA498C, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:544>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:545>
 		PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3* L_41;
 		L_41 = Component_GetComponentInParent_TisPortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3_m795B254D959D72D91C39BB35F222F56D7D7033C8(__this, Component_GetComponentInParent_TisPortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3_m795B254D959D72D91C39BB35F222F56D7D7033C8_RuntimeMethod_var);
 		V_4 = L_41;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:545>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:546>
 		PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3* L_42 = V_4;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_43;
@@ -10348,13 +10343,13 @@ IL_010b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:547>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:548>
 		PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3* L_44 = V_4;
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_45 = __this->___canvas;
 		NullCheck(L_44);
 		L_44->___menuCanvas = L_45;
 		Il2CppCodeGenWriteBarrier((void**)(&L_44->___menuCanvas), (void*)L_45);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:548>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:549>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralEB6749F714891E55097660D814C6901C2CD6679E, NULL);
 		goto IL_018f;
@@ -10362,17 +10357,17 @@ IL_010b:
 
 IL_0185:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:552>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:553>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteral0FC548490D4727D1DF5B5E9F30D4ABC6FF9E66BB, NULL);
 	}
 
 IL_018f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:555>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:556>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralEF0E18201B41D56783F5E71485754EB6D25A1546, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:556>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:557>
 		return;
 	}
 }
@@ -10391,15 +10386,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* V_0 = NULL;
 	RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* V_1 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:560>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:561>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral2BC8E605BF3CA94CEA7A28AC19508D015701ABA9, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:561>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:562>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_1, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:562>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:563>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = V_0;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -10410,57 +10405,57 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 		L_5 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_4, NULL);
 		NullCheck(L_3);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_3, L_5, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:564>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:565>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = V_0;
 		NullCheck(L_6);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7;
 		L_7 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_6, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
 		V_1 = L_7;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:565>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:566>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_8 = V_1;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_9;
 		memset((&L_9), 0, sizeof(L_9));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_9), (0.0f), (0.0f), NULL);
 		NullCheck(L_8);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_8, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:566>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:567>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_10 = V_1;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_11;
 		memset((&L_11), 0, sizeof(L_11));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_11), (1.0f), (1.0f), NULL);
 		NullCheck(L_10);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_10, L_11, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:567>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:568>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_12 = V_1;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_13;
 		L_13 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_12);
 		RectTransform_set_offsetMin_m07F38B4105C7CA9CC9FBDC9ED0DB008602880AB9(L_12, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:568>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:569>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_14 = V_1;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_15;
 		L_15 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_14);
 		RectTransform_set_offsetMax_m5514D09D86516F2C0E25FA6D11A3A4274D3D002D(L_14, L_15, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:570>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:571>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = V_0;
 		NullCheck(L_16);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_17;
 		L_17 = GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0(L_16, GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:571>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:572>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_18;
 		memset((&L_18), 0, sizeof(L_18));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_18), (0.150000006f), (0.119999997f), (0.100000001f), (0.949999988f), NULL);
 		NullCheck(L_17);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_17, L_18);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:574>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:575>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19 = V_0;
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_20 = V_1;
 		NullCheck(L_20);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_21;
 		L_21 = RectTransform_get_sizeDelta_m822A8493F2035677384F1540A2E9E5ACE63010BB(L_20, NULL);
 		PortalMenuSetup_AddBorderToElement_m4CC161812C9815E33960FE108A1CB4A35A259D0E(__this, L_19, L_21, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:576>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:577>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22 = V_0;
 		return L_22;
 	}
@@ -10470,41 +10465,41 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateComplexMenuLayout_
 {
 	float V_0 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:582>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:583>
 		V_0 = (110.0f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:585>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:586>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_parent;
 		float L_1 = V_0;
 		PortalMenuSetup_CreateTitle_m9B4776DD87E905516551FFCE5B53CDD16C50EAD5(__this, L_0, L_1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:587>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:588>
 		float L_2 = V_0;
 		V_0 = ((float)il2cpp_codegen_subtract(L_2, (30.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:588>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:589>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = ___0_parent;
 		float L_4 = V_0;
 		PortalMenuSetup_CreateSubtitle_m7213C007ED0AD3A3006E57BE15B44D673E89B1A7(__this, L_3, L_4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:589>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:590>
 		float L_5 = V_0;
 		V_0 = ((float)il2cpp_codegen_subtract(L_5, (50.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:593>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:594>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6 = ___0_parent;
 		float L_7 = V_0;
 		PortalMenuSetup_CreateClassSelectionButtons_mA5695EFC6E3FF052030A00799E0C7AE954AA1C59(__this, L_6, L_7, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:594>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:595>
 		float L_8 = V_0;
 		V_0 = ((float)il2cpp_codegen_subtract(L_8, (70.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:597>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:598>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9 = ___0_parent;
 		float L_10 = V_0;
 		PortalMenuSetup_CreateReadyText_mD2C083FCEEAE0F15002ECEC8ED98853A3AED8B25(__this, L_9, L_10, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:598>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:599>
 		float L_11 = V_0;
 		V_0 = ((float)il2cpp_codegen_subtract(L_11, (40.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:601>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:602>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_12 = ___0_parent;
 		float L_13 = V_0;
 		PortalMenuSetup_CreateEnterButton_m0EC5BA769DB0D7619B29D29A28AAC213F3D3A81D(__this, L_12, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:602>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:603>
 		return;
 	}
 }
@@ -10526,14 +10521,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateTitle_m9B4776DD87E
 	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* V_0 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:606>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:607>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral40E83ACCE0D042A519B971EC5FA530E519DEAD8E, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:607>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:608>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = L_0;
 		NullCheck(L_1);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_1, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:608>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:609>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = L_1;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -10541,77 +10536,77 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateTitle_m9B4776DD87E
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = ___0_parent;
 		NullCheck(L_3);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_3, L_4, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:610>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:611>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_2;
 		NullCheck(L_5);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_6;
 		L_6 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_5, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:611>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:612>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7 = L_6;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_8;
 		memset((&L_8), 0, sizeof(L_8));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_8), (0.5f), (0.5f), NULL);
 		NullCheck(L_7);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_7, L_8, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:612>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:613>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9 = L_7;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_10;
 		memset((&L_10), 0, sizeof(L_10));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_10), (0.5f), (0.5f), NULL);
 		NullCheck(L_9);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_9, L_10, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:613>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:614>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_11 = L_9;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_12;
 		memset((&L_12), 0, sizeof(L_12));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_12), (180.0f), (30.0f), NULL);
 		NullCheck(L_11);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_11, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:614>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:615>
 		float L_13 = ___1_yPos;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_14;
 		memset((&L_14), 0, sizeof(L_14));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_14), (0.0f), L_13, NULL);
 		NullCheck(L_11);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_11, L_14, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:616>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:617>
 		NullCheck(L_5);
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_15;
 		L_15 = GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9(L_5, GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9_RuntimeMethod_var);
 		V_0 = L_15;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:617>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:618>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_16 = V_0;
 		NullCheck(L_16);
 		VirtualActionInvoker1< String_t* >::Invoke(75, L_16, _stringLiteralA2ED28748AEBAA43B29DAC08ABE70D1C8C4A27DD);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:618>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:619>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_17 = V_0;
 		NullCheck(L_17);
 		Text_set_fontSize_m426338B0A2CDA58609028FFD471EF5F2C9F364D4(L_17, ((int32_t)16), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:619>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:620>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_18 = V_0;
 		NullCheck(L_18);
 		Text_set_alignment_m9FAD6C1C270FA28C610AB1E07414FBF96403157A(L_18, 4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:620>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:621>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_19 = V_0;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_20;
 		memset((&L_20), 0, sizeof(L_20));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_20), (1.0f), (0.899999976f), (0.400000006f), NULL);
 		NullCheck(L_19);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_19, L_20);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:621>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:622>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_21 = V_0;
 		NullCheck(L_21);
 		Text_set_fontStyle_m5ABEF66BFC88E7E0A950E2817E4978FF472F6C1D(L_21, 1, NULL);
 	}
 	try
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:624>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:625>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_22 = V_0;
 		Font_tC95270EA3198038970422D78B74A7F2E218A96B6* L_23;
 		L_23 = Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73(_stringLiteral91EABC919E48AAD7331BDBE21DBB8D4C623A4A25, Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73_RuntimeMethod_var);
 		NullCheck(L_22);
 		Text_set_font_mA0D2999281A72029A5BC7294A886C5674F07DC5F(L_22, L_23, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:625>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:626>
 		goto IL_00c9;
 	}
 	catch(Il2CppExceptionWrapper& e)
@@ -10627,15 +10622,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateTitle_m9B4776DD87E
 CATCH_00c6:
 	{
 		RuntimeObject* L_24 = ((RuntimeObject*)IL2CPP_GET_ACTIVE_EXCEPTION(RuntimeObject*));;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:625>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:625>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:626>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:626>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_00c9;
 	}
 
 IL_00c9:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:626>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:627>
 		return;
 	}
 }
@@ -10657,14 +10652,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateSubtitle_m7213C007
 	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* V_0 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:630>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:631>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral40E83ACCE0D042A519B971EC5FA530E519DEAD8E, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:631>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:632>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = L_0;
 		NullCheck(L_1);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_1, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:632>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:633>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = L_1;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -10672,77 +10667,77 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateSubtitle_m7213C007
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = ___0_parent;
 		NullCheck(L_3);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_3, L_4, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:634>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:635>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_2;
 		NullCheck(L_5);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_6;
 		L_6 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_5, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:635>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:636>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7 = L_6;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_8;
 		memset((&L_8), 0, sizeof(L_8));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_8), (0.5f), (0.5f), NULL);
 		NullCheck(L_7);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_7, L_8, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:636>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:637>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9 = L_7;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_10;
 		memset((&L_10), 0, sizeof(L_10));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_10), (0.5f), (0.5f), NULL);
 		NullCheck(L_9);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_9, L_10, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:637>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:638>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_11 = L_9;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_12;
 		memset((&L_12), 0, sizeof(L_12));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_12), (180.0f), (30.0f), NULL);
 		NullCheck(L_11);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_11, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:638>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:639>
 		float L_13 = ___1_yPos;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_14;
 		memset((&L_14), 0, sizeof(L_14));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_14), (0.0f), L_13, NULL);
 		NullCheck(L_11);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_11, L_14, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:640>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:641>
 		NullCheck(L_5);
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_15;
 		L_15 = GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9(L_5, GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9_RuntimeMethod_var);
 		V_0 = L_15;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:641>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:642>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_16 = V_0;
 		NullCheck(L_16);
 		VirtualActionInvoker1< String_t* >::Invoke(75, L_16, _stringLiteral75B57318C56845DA653A77A3A77BC003998993EF);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:642>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:643>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_17 = V_0;
 		NullCheck(L_17);
 		Text_set_fontSize_m426338B0A2CDA58609028FFD471EF5F2C9F364D4(L_17, ((int32_t)12), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:643>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:644>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_18 = V_0;
 		NullCheck(L_18);
 		Text_set_alignment_m9FAD6C1C270FA28C610AB1E07414FBF96403157A(L_18, 4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:644>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:645>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_19 = V_0;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_20;
 		memset((&L_20), 0, sizeof(L_20));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_20), (1.0f), (0.899999976f), (0.400000006f), NULL);
 		NullCheck(L_19);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_19, L_20);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:645>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:646>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_21 = V_0;
 		NullCheck(L_21);
 		Text_set_fontStyle_m5ABEF66BFC88E7E0A950E2817E4978FF472F6C1D(L_21, 1, NULL);
 	}
 	try
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:648>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:649>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_22 = V_0;
 		Font_tC95270EA3198038970422D78B74A7F2E218A96B6* L_23;
 		L_23 = Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73(_stringLiteral91EABC919E48AAD7331BDBE21DBB8D4C623A4A25, Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73_RuntimeMethod_var);
 		NullCheck(L_22);
 		Text_set_font_mA0D2999281A72029A5BC7294A886C5674F07DC5F(L_22, L_23, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:649>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:650>
 		goto IL_00c9;
 	}
 	catch(Il2CppExceptionWrapper& e)
@@ -10758,15 +10753,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateSubtitle_m7213C007
 CATCH_00c6:
 	{
 		RuntimeObject* L_24 = ((RuntimeObject*)IL2CPP_GET_ACTIVE_EXCEPTION(RuntimeObject*));;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:649>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:649>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:650>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:650>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_00c9;
 	}
 
 IL_00c9:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:650>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:651>
 		return;
 	}
 }
@@ -10788,35 +10783,35 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateClassSelectionButt
 	float V_3 = 0.0f;
 	float V_4 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:657>
-		V_0 = (85.0f);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:658>
-		V_1 = (60.0f);
+		V_0 = (85.0f);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:659>
+		V_1 = (60.0f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:660>
 		V_2 = (10.0f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:662>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:663>
 		float L_0 = V_0;
 		float L_1 = V_2;
 		V_3 = ((-((float)il2cpp_codegen_add(((float)(L_0/(2.0f))), ((float)(L_1/(2.0f)))))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:663>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:664>
 		float L_2 = V_0;
 		float L_3 = V_2;
 		V_4 = ((float)il2cpp_codegen_add(((float)(L_2/(2.0f))), ((float)(L_3/(2.0f)))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:666>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:667>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = ___0_parent;
 		float L_5 = V_3;
 		float L_6 = ___1_yPos;
 		float L_7 = V_0;
 		float L_8 = V_1;
 		PortalMenuSetup_CreateClassButton_m8C1100F86655254ED03058C6FC1B921A705F6869(__this, L_4, _stringLiteralFC7E95316E55CCCE8DB637DF7AA6C0CB68FDCC2B, _stringLiteralD5A6D1524A9CAA0C1FE48522BD4B250F6A827CC8, L_5, L_6, L_7, L_8, (bool)1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:669>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:670>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9 = ___0_parent;
 		float L_10 = V_4;
 		float L_11 = ___1_yPos;
 		float L_12 = V_0;
 		float L_13 = V_1;
 		PortalMenuSetup_CreateClassButton_m8C1100F86655254ED03058C6FC1B921A705F6869(__this, L_9, _stringLiteral341872AF21C32D6A74449BC426100C98602C2E63, _stringLiteralAF12339BAFE5071170B1E358779B8AE7C00A38AC, L_10, L_11, L_12, L_13, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:670>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:671>
 		return;
 	}
 }
@@ -10876,7 +10871,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateClassButton_m8C110
 		NullCheck(L_2);
 		L_2->___className = L_3;
 		Il2CppCodeGenWriteBarrier((void**)(&L_2->___className), (void*)L_3);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:674>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:675>
 		U3CU3Ec__DisplayClass24_0_t8B7CFA5EF6410B2195DFFAA265469B020242706D* L_4 = V_0;
 		NullCheck(L_4);
 		String_t* L_5 = L_4->___className;
@@ -10885,11 +10880,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateClassButton_m8C110
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_7, L_6, NULL);
 		V_1 = L_7;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:675>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:676>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8 = V_1;
 		NullCheck(L_8);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_8, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:676>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:677>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = V_1;
 		NullCheck(L_9);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10;
@@ -10897,26 +10892,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateClassButton_m8C110
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11 = ___0_parent;
 		NullCheck(L_10);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_10, L_11, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:678>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:679>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = V_1;
 		NullCheck(L_12);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_13;
 		L_13 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_12, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:679>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:680>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_14 = L_13;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_15;
 		memset((&L_15), 0, sizeof(L_15));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_15), (0.5f), (0.5f), NULL);
 		NullCheck(L_14);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_14, L_15, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:680>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:681>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_16 = L_14;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_17;
 		memset((&L_17), 0, sizeof(L_17));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_17), (0.5f), (0.5f), NULL);
 		NullCheck(L_16);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_16, L_17, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:681>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:682>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_18 = L_16;
 		float L_19 = ___5_width;
 		float L_20 = ___6_height;
@@ -10925,7 +10920,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateClassButton_m8C110
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_21), L_19, L_20, NULL);
 		NullCheck(L_18);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_18, L_21, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:682>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:683>
 		float L_22 = ___3_xPos;
 		float L_23 = ___4_yPos;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_24;
@@ -10933,22 +10928,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateClassButton_m8C110
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_24), L_22, L_23, NULL);
 		NullCheck(L_18);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_18, L_24, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:684>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:685>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_25 = V_1;
 		NullCheck(L_25);
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_26;
 		L_26 = GameObject_AddComponent_TisButton_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098_m60FA17F75591FF93A15D1D1FE5969B8CB9E5FAAC(L_25, GameObject_AddComponent_TisButton_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098_m60FA17F75591FF93A15D1D1FE5969B8CB9E5FAAC_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:685>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:686>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_27 = V_1;
 		NullCheck(L_27);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_28;
 		L_28 = GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0(L_27, GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:686>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:687>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_29 = V_1;
 		NullCheck(L_29);
 		XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588* L_30;
 		L_30 = GameObject_AddComponent_TisXRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588_m615ED55BCA918E6B2EC531F2E71C3963A331016C(L_29, GameObject_AddComponent_TisXRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588_m615ED55BCA918E6B2EC531F2E71C3963A331016C_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:689>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:690>
 		bool L_31 = ___7_isDefault;
 		if (L_31)
 		{
@@ -10982,41 +10977,41 @@ IL_00bd:
 IL_00d6:
 	{
 		V_2 = G_B3_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:690>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:691>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_34 = V_2;
 		NullCheck(G_B3_1);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, G_B3_1, L_34);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:692>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:693>
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_35 = G_B3_2;
 		NullCheck(L_35);
 		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 L_36;
 		L_36 = Selectable_get_colors_mB53E365D02351D4B64084295C4B2A7AF2DEC4750_inline(L_35, NULL);
 		V_3 = L_36;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:693>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:694>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_37 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
 		ColorBlock_set_normalColor_m3EBF594F6FA2C6494ACA9FCB9B458807D85B96F8_inline((&V_3), L_37, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:694>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:695>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_38;
 		memset((&L_38), 0, sizeof(L_38));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_38), (0.300000012f), (0.5f), (0.300000012f), (0.949999988f), NULL);
 		ColorBlock_set_highlightedColor_m04E97DF2CCE7CAC47120D8F486E18BF62F16FF86_inline((&V_3), L_38, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:695>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:696>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_39;
 		memset((&L_39), 0, sizeof(L_39));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_39), (0.150000006f), (0.349999994f), (0.150000006f), (1.0f), NULL);
 		ColorBlock_set_pressedColor_m644C938090857AB07C57B25FE53F6DC2BB0DD5A8_inline((&V_3), L_39, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:696>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:697>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_40;
 		memset((&L_40), 0, sizeof(L_40));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_40), (0.25f), (0.449999988f), (0.25f), (0.949999988f), NULL);
 		ColorBlock_set_selectedColor_m76FEFB1148798B7A356C974CDEA3BA2E2E3C1D21_inline((&V_3), L_40, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:697>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:698>
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_41 = L_35;
 		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 L_42 = V_3;
 		NullCheck(L_41);
 		Selectable_set_colors_m0A49ED3ACD6647B7E5A2DA10B3D417E8FE1BE55A(L_41, L_42, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:700>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:701>
 		NullCheck(L_41);
 		ButtonClickedEvent_t8EA72E90B3BD1392FB3B3EF167D5121C23569E4C* L_43;
 		L_43 = Button_get_onClick_m701712A7F7F000CC80D517C4510697E15722C35C_inline(L_41, NULL);
@@ -11025,14 +11020,14 @@ IL_00d6:
 		UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131(L_45, L_44, (intptr_t)((void*)U3CU3Ec__DisplayClass24_0_U3CCreateClassButtonU3Eb__0_m8F666A6C639AD48B9A982DF1A6E728ED5C18C6A8_RuntimeMethod_var), NULL);
 		NullCheck(L_43);
 		UnityEvent_AddListener_m8AA4287C16628486B41DA41CA5E7A856A706D302(L_43, L_45, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:703>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:704>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_46 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_46, _stringLiteralAA8377C0E73B7693B2561A3D923BAA006D1A5E37, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:704>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:705>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_47 = L_46;
 		NullCheck(L_47);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_47, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:705>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:706>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_48 = L_47;
 		NullCheck(L_48);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_49;
@@ -11043,44 +11038,44 @@ IL_00d6:
 		L_51 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_50, NULL);
 		NullCheck(L_49);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_49, L_51, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:707>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:708>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_52 = L_48;
 		NullCheck(L_52);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_53;
 		L_53 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_52, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:708>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:709>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_54 = L_53;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_55;
 		memset((&L_55), 0, sizeof(L_55));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_55), (0.5f), (0.5f), NULL);
 		NullCheck(L_54);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_54, L_55, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:709>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:710>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_56 = L_54;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_57;
 		memset((&L_57), 0, sizeof(L_57));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_57), (0.5f), (0.5f), NULL);
 		NullCheck(L_56);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_56, L_57, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:710>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:711>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_58 = L_56;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_59;
 		memset((&L_59), 0, sizeof(L_59));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_59), (40.0f), (40.0f), NULL);
 		NullCheck(L_58);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_58, L_59, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:711>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:712>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_60;
 		memset((&L_60), 0, sizeof(L_60));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_60), (0.0f), (5.0f), NULL);
 		NullCheck(L_58);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_58, L_60, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:713>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:714>
 		NullCheck(L_52);
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_61;
 		L_61 = GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43(L_52, GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43_RuntimeMethod_var);
 		V_4 = L_61;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:715>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:716>
 		String_t* L_62 = ___2_iconText;
 		bool L_63;
 		L_63 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_62, _stringLiteralD5A6D1524A9CAA0C1FE48522BD4B250F6A827CC8, NULL);
@@ -11090,7 +11085,7 @@ IL_00d6:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:717>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:718>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_64 = V_4;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_65 = __this->___fireballIcon;
 		NullCheck(L_64);
@@ -11100,7 +11095,7 @@ IL_00d6:
 
 IL_0208:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:719>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:720>
 		String_t* L_66 = ___2_iconText;
 		bool L_67;
 		L_67 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_66, _stringLiteralAF12339BAFE5071170B1E358779B8AE7C00A38AC, NULL);
@@ -11110,7 +11105,7 @@ IL_0208:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:721>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:722>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_68 = V_4;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_69 = __this->___spellbookIcon;
 		NullCheck(L_68);
@@ -11119,14 +11114,14 @@ IL_0208:
 
 IL_0222:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:725>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:726>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_70 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_70, _stringLiteral830C58CBB41F2BF0296E0A93C4AD61DFD004C66A, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:726>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:727>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_71 = L_70;
 		NullCheck(L_71);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_71, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:727>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:728>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_72 = L_71;
 		NullCheck(L_72);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_73;
@@ -11137,26 +11132,26 @@ IL_0222:
 		L_75 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_74, NULL);
 		NullCheck(L_73);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_73, L_75, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:729>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:730>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_76 = L_72;
 		NullCheck(L_76);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_77;
 		L_77 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_76, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:730>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:731>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_78 = L_77;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_79;
 		memset((&L_79), 0, sizeof(L_79));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_79), (0.5f), (0.5f), NULL);
 		NullCheck(L_78);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_78, L_79, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:731>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:732>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_80 = L_78;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_81;
 		memset((&L_81), 0, sizeof(L_81));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_81), (0.5f), (0.5f), NULL);
 		NullCheck(L_80);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_80, L_81, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:732>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:733>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_82 = L_80;
 		float L_83 = ___5_width;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_84;
@@ -11164,33 +11159,33 @@ IL_0222:
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_84), ((float)il2cpp_codegen_subtract(L_83, (10.0f))), (20.0f), NULL);
 		NullCheck(L_82);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_82, L_84, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:733>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:734>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_85;
 		memset((&L_85), 0, sizeof(L_85));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_85), (0.0f), (-15.0f), NULL);
 		NullCheck(L_82);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_82, L_85, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:735>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:736>
 		NullCheck(L_76);
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_86;
 		L_86 = GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9(L_76, GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9_RuntimeMethod_var);
 		V_5 = L_86;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:736>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:737>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_87 = V_5;
 		U3CU3Ec__DisplayClass24_0_t8B7CFA5EF6410B2195DFFAA265469B020242706D* L_88 = V_0;
 		NullCheck(L_88);
 		String_t* L_89 = L_88->___className;
 		NullCheck(L_87);
 		VirtualActionInvoker1< String_t* >::Invoke(75, L_87, L_89);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:737>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:738>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_90 = V_5;
 		NullCheck(L_90);
 		Text_set_fontSize_m426338B0A2CDA58609028FFD471EF5F2C9F364D4(L_90, ((int32_t)14), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:738>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:739>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_91 = V_5;
 		NullCheck(L_91);
 		Text_set_alignment_m9FAD6C1C270FA28C610AB1E07414FBF96403157A(L_91, 4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:739>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:740>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_92 = V_5;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_93;
 		L_93 = Color_get_white_m068F5AF879B0FCA584E3693F762EA41BB65532C6_inline(NULL);
@@ -11199,13 +11194,13 @@ IL_0222:
 	}
 	try
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:742>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:743>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_94 = V_5;
 		Font_tC95270EA3198038970422D78B74A7F2E218A96B6* L_95;
 		L_95 = Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73(_stringLiteral91EABC919E48AAD7331BDBE21DBB8D4C623A4A25, Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73_RuntimeMethod_var);
 		NullCheck(L_94);
 		Text_set_font_mA0D2999281A72029A5BC7294A886C5674F07DC5F(L_94, L_95, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:743>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:744>
 		goto IL_02e8;
 	}
 	catch(Il2CppExceptionWrapper& e)
@@ -11221,15 +11216,15 @@ IL_0222:
 CATCH_02e5:
 	{
 		RuntimeObject* L_96 = ((RuntimeObject*)IL2CPP_GET_ACTIVE_EXCEPTION(RuntimeObject*));;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:743>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:743>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:744>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:744>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_02e8;
 	}
 
 IL_02e8:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:746>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:747>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_97 = V_1;
 		float L_98 = ___5_width;
 		float L_99 = ___6_height;
@@ -11237,7 +11232,7 @@ IL_02e8:
 		memset((&L_100), 0, sizeof(L_100));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_100), L_98, L_99, NULL);
 		PortalMenuSetup_AddBorderToElement_m4CC161812C9815E33960FE108A1CB4A35A259D0E(__this, L_97, L_100, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:747>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:748>
 		return;
 	}
 }
@@ -11252,17 +11247,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_OnClassSelected_mBAC8AAA
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:751>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:752>
 		String_t* L_0 = ___0_className;
 		__this->___selectedClass = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___selectedClass), (void*)L_0);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:752>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:753>
 		String_t* L_1 = ___0_className;
 		String_t* L_2;
 		L_2 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteralD2F2B6A3EEEFDA50725E166B5F981D8CCD23F625, L_1, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_2, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:754>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:755>
 		return;
 	}
 }
@@ -11284,14 +11279,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateReadyText_mD2C083F
 	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* V_0 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:758>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:759>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral7D59EF4799B0F545A7BD2DEB8FEE22A91FFF3113, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:759>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:760>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = L_0;
 		NullCheck(L_1);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_1, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:760>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:761>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = L_1;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -11299,77 +11294,77 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateReadyText_mD2C083F
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = ___0_parent;
 		NullCheck(L_3);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_3, L_4, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:762>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:763>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_2;
 		NullCheck(L_5);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_6;
 		L_6 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_5, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:763>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:764>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7 = L_6;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_8;
 		memset((&L_8), 0, sizeof(L_8));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_8), (0.5f), (0.5f), NULL);
 		NullCheck(L_7);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_7, L_8, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:764>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:765>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9 = L_7;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_10;
 		memset((&L_10), 0, sizeof(L_10));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_10), (0.5f), (0.5f), NULL);
 		NullCheck(L_9);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_9, L_10, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:765>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:766>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_11 = L_9;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_12;
 		memset((&L_12), 0, sizeof(L_12));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_12), (180.0f), (25.0f), NULL);
 		NullCheck(L_11);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_11, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:766>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:767>
 		float L_13 = ___1_yPos;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_14;
 		memset((&L_14), 0, sizeof(L_14));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_14), (0.0f), L_13, NULL);
 		NullCheck(L_11);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_11, L_14, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:768>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:769>
 		NullCheck(L_5);
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_15;
 		L_15 = GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9(L_5, GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9_RuntimeMethod_var);
 		V_0 = L_15;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:769>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:770>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_16 = V_0;
 		NullCheck(L_16);
 		VirtualActionInvoker1< String_t* >::Invoke(75, L_16, _stringLiteral446C27FBE0CF17A5F58F60F528DEA970314774FB);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:770>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:771>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_17 = V_0;
 		NullCheck(L_17);
 		Text_set_fontSize_m426338B0A2CDA58609028FFD471EF5F2C9F364D4(L_17, ((int32_t)10), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:771>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:772>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_18 = V_0;
 		NullCheck(L_18);
 		Text_set_alignment_m9FAD6C1C270FA28C610AB1E07414FBF96403157A(L_18, 4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:772>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:773>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_19 = V_0;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_20;
 		memset((&L_20), 0, sizeof(L_20));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_20), (1.0f), (0.899999976f), (0.400000006f), NULL);
 		NullCheck(L_19);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_19, L_20);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:773>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:774>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_21 = V_0;
 		NullCheck(L_21);
 		Text_set_fontStyle_m5ABEF66BFC88E7E0A950E2817E4978FF472F6C1D(L_21, 1, NULL);
 	}
 	try
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:776>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:777>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_22 = V_0;
 		Font_tC95270EA3198038970422D78B74A7F2E218A96B6* L_23;
 		L_23 = Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73(_stringLiteral91EABC919E48AAD7331BDBE21DBB8D4C623A4A25, Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73_RuntimeMethod_var);
 		NullCheck(L_22);
 		Text_set_font_mA0D2999281A72029A5BC7294A886C5674F07DC5F(L_22, L_23, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:777>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:778>
 		goto IL_00c9;
 	}
 	catch(Il2CppExceptionWrapper& e)
@@ -11385,15 +11380,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateReadyText_mD2C083F
 CATCH_00c6:
 	{
 		RuntimeObject* L_24 = ((RuntimeObject*)IL2CPP_GET_ACTIVE_EXCEPTION(RuntimeObject*));;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:777>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:777>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:778>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:778>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_00c9;
 	}
 
 IL_00c9:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:778>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:779>
 		return;
 	}
 }
@@ -11430,15 +11425,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateEnterButton_m0EC5B
 	PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3* V_3 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:782>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:783>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral5FB22992BA1837776745FD852A0CDED9CD01155F, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:783>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:784>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_1, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:784>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:785>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = V_0;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -11446,97 +11441,97 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateEnterButton_m0EC5B
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = ___0_parent;
 		NullCheck(L_3);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_3, L_4, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:786>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:787>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = V_0;
 		NullCheck(L_5);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_6;
 		L_6 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_5, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:787>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:788>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7 = L_6;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_8;
 		memset((&L_8), 0, sizeof(L_8));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_8), (0.5f), (0.5f), NULL);
 		NullCheck(L_7);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_7, L_8, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:788>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:789>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9 = L_7;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_10;
 		memset((&L_10), 0, sizeof(L_10));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_10), (0.5f), (0.5f), NULL);
 		NullCheck(L_9);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_9, L_10, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:789>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:790>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_11 = L_9;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_12;
 		memset((&L_12), 0, sizeof(L_12));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_12), (180.0f), (45.0f), NULL);
 		NullCheck(L_11);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_11, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:790>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:791>
 		float L_13 = ___1_yPos;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_14;
 		memset((&L_14), 0, sizeof(L_14));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_14), (0.0f), L_13, NULL);
 		NullCheck(L_11);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_11, L_14, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:792>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:793>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_15 = V_0;
 		NullCheck(L_15);
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_16;
 		L_16 = GameObject_AddComponent_TisButton_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098_m60FA17F75591FF93A15D1D1FE5969B8CB9E5FAAC(L_15, GameObject_AddComponent_TisButton_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098_m60FA17F75591FF93A15D1D1FE5969B8CB9E5FAAC_RuntimeMethod_var);
 		__this->___travelButton = L_16;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___travelButton), (void*)L_16);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:793>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:794>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = V_0;
 		NullCheck(L_17);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_18;
 		L_18 = GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0(L_17, GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:794>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:795>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19 = V_0;
 		NullCheck(L_19);
 		XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588* L_20;
 		L_20 = GameObject_AddComponent_TisXRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588_m615ED55BCA918E6B2EC531F2E71C3963A331016C(L_19, GameObject_AddComponent_TisXRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588_m615ED55BCA918E6B2EC531F2E71C3963A331016C_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:795>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:796>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_21;
 		memset((&L_21), 0, sizeof(L_21));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_21), (0.300000012f), (0.25f), (0.200000003f), (0.949999988f), NULL);
 		NullCheck(L_18);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_18, L_21);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:797>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:798>
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_22 = __this->___travelButton;
 		NullCheck(L_22);
 		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 L_23;
 		L_23 = Selectable_get_colors_mB53E365D02351D4B64084295C4B2A7AF2DEC4750_inline(L_22, NULL);
 		V_1 = L_23;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:798>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:799>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_24;
 		memset((&L_24), 0, sizeof(L_24));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_24), (0.300000012f), (0.25f), (0.200000003f), (0.949999988f), NULL);
 		il2cpp_codegen_runtime_class_init_inline(ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
 		ColorBlock_set_normalColor_m3EBF594F6FA2C6494ACA9FCB9B458807D85B96F8_inline((&V_1), L_24, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:799>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:800>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_25;
 		memset((&L_25), 0, sizeof(L_25));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_25), (0.400000006f), (0.349999994f), (0.25f), (0.980000019f), NULL);
 		ColorBlock_set_highlightedColor_m04E97DF2CCE7CAC47120D8F486E18BF62F16FF86_inline((&V_1), L_25, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:800>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:801>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_26;
 		memset((&L_26), 0, sizeof(L_26));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_26), (0.25f), (0.200000003f), (0.150000006f), (1.0f), NULL);
 		ColorBlock_set_pressedColor_m644C938090857AB07C57B25FE53F6DC2BB0DD5A8_inline((&V_1), L_26, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:801>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:802>
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_27 = __this->___travelButton;
 		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 L_28 = V_1;
 		NullCheck(L_27);
 		Selectable_set_colors_m0A49ED3ACD6647B7E5A2DA10B3D417E8FE1BE55A(L_27, L_28, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:804>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:805>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_29 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_29, _stringLiteralAA8377C0E73B7693B2561A3D923BAA006D1A5E37, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:805>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:806>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_30 = L_29;
 		NullCheck(L_30);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_30, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:806>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:807>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_31 = L_30;
 		NullCheck(L_31);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_32;
@@ -11547,54 +11542,54 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateEnterButton_m0EC5B
 		L_34 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_33, NULL);
 		NullCheck(L_32);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_32, L_34, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:808>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:809>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_35 = L_31;
 		NullCheck(L_35);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_36;
 		L_36 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_35, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:809>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:810>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_37 = L_36;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_38;
 		memset((&L_38), 0, sizeof(L_38));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_38), (0.0f), (0.5f), NULL);
 		NullCheck(L_37);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_37, L_38, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:810>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:811>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_39 = L_37;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_40;
 		memset((&L_40), 0, sizeof(L_40));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_40), (0.0f), (0.5f), NULL);
 		NullCheck(L_39);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_39, L_40, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:811>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:812>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_41 = L_39;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_42;
 		memset((&L_42), 0, sizeof(L_42));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_42), (35.0f), (35.0f), NULL);
 		NullCheck(L_41);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_41, L_42, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:812>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:813>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_43;
 		memset((&L_43), 0, sizeof(L_43));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_43), (25.0f), (0.0f), NULL);
 		NullCheck(L_41);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_41, L_43, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:814>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:815>
 		NullCheck(L_35);
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_44;
 		L_44 = GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43(L_35, GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:815>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:816>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_45 = __this->___swordIcon;
 		NullCheck(L_44);
 		RawImage_set_texture_mC016318C95CC17A826D57DD219DBCB6DFD295C02(L_44, L_45, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:818>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:819>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_46 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_46, _stringLiteral1A82671F2C34BEA09C35354DDB899812746CBCF9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:819>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:820>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_47 = L_46;
 		NullCheck(L_47);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_47, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:820>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:821>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_48 = L_47;
 		NullCheck(L_48);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_49;
@@ -11605,73 +11600,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateEnterButton_m0EC5B
 		L_51 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_50, NULL);
 		NullCheck(L_49);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_49, L_51, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:822>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:823>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_52 = L_48;
 		NullCheck(L_52);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_53;
 		L_53 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_52, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:823>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:824>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_54 = L_53;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_55;
 		L_55 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_54);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_54, L_55, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:824>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:825>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_56 = L_54;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_57;
 		L_57 = Vector2_get_one_m9097EB8DC23C26118A591AF16702796C3EF51DFB_inline(NULL);
 		NullCheck(L_56);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_56, L_57, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:825>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:826>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_58 = L_56;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_59;
 		memset((&L_59), 0, sizeof(L_59));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_59), (40.0f), (0.0f), NULL);
 		NullCheck(L_58);
 		RectTransform_set_offsetMin_m07F38B4105C7CA9CC9FBDC9ED0DB008602880AB9(L_58, L_59, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:826>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:827>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_60;
 		L_60 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_58);
 		RectTransform_set_offsetMax_m5514D09D86516F2C0E25FA6D11A3A4274D3D002D(L_58, L_60, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:828>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:829>
 		NullCheck(L_52);
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_61;
 		L_61 = GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9(L_52, GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9_RuntimeMethod_var);
 		V_2 = L_61;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:829>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:830>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_62 = V_2;
 		NullCheck(L_62);
 		VirtualActionInvoker1< String_t* >::Invoke(75, L_62, _stringLiteral164ABF09F75E36779474B6497BD212BD7C1A6A24);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:830>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:831>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_63 = V_2;
 		NullCheck(L_63);
 		Text_set_fontSize_m426338B0A2CDA58609028FFD471EF5F2C9F364D4(L_63, ((int32_t)18), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:831>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:832>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_64 = V_2;
 		NullCheck(L_64);
 		Text_set_alignment_m9FAD6C1C270FA28C610AB1E07414FBF96403157A(L_64, 4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:832>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:833>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_65 = V_2;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_66;
 		memset((&L_66), 0, sizeof(L_66));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_66), (1.0f), (0.899999976f), (0.400000006f), NULL);
 		NullCheck(L_65);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_65, L_66);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:833>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:834>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_67 = V_2;
 		NullCheck(L_67);
 		Text_set_fontStyle_m5ABEF66BFC88E7E0A950E2817E4978FF472F6C1D(L_67, 1, NULL);
 	}
 	try
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:836>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:837>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_68 = V_2;
 		Font_tC95270EA3198038970422D78B74A7F2E218A96B6* L_69;
 		L_69 = Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73(_stringLiteral91EABC919E48AAD7331BDBE21DBB8D4C623A4A25, Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73_RuntimeMethod_var);
 		NullCheck(L_68);
 		Text_set_font_mA0D2999281A72029A5BC7294A886C5674F07DC5F(L_68, L_69, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:837>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:838>
 		goto IL_0263;
 	}
 	catch(Il2CppExceptionWrapper& e)
@@ -11687,19 +11682,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateEnterButton_m0EC5B
 CATCH_0260:
 	{
 		RuntimeObject* L_70 = ((RuntimeObject*)IL2CPP_GET_ACTIVE_EXCEPTION(RuntimeObject*));;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:837>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:837>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:838>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:838>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_0263;
 	}
 
 IL_0263:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:840>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:841>
 		PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3* L_71;
 		L_71 = Component_GetComponentInParent_TisPortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3_m795B254D959D72D91C39BB35F222F56D7D7033C8(__this, Component_GetComponentInParent_TisPortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3_m795B254D959D72D91C39BB35F222F56D7D7033C8_RuntimeMethod_var);
 		V_3 = L_71;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:841>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:842>
 		PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3* L_72 = V_3;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_73;
@@ -11710,25 +11705,25 @@ IL_0263:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:843>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:844>
 		PortalMenu_t02A35BE9CFED8FA06E88F66F3B321C5FCC4F23E3* L_74 = V_3;
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_75 = __this->___travelButton;
 		NullCheck(L_74);
 		PortalMenu_set_travelButton_mA5B2133F48AFB0C7A9C282C858CEFBBFCE9EC7E8(L_74, L_75, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:844>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:845>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral380AD35EBCD8DE2D02533CA502A5E206372A3371, NULL);
 	}
 
 IL_0289:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:848>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:849>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_76 = V_0;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_77;
 		memset((&L_77), 0, sizeof(L_77));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_77), (180.0f), (45.0f), NULL);
 		PortalMenuSetup_AddBorderToElement_m4CC161812C9815E33960FE108A1CB4A35A259D0E(__this, L_76, L_77, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:849>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:850>
 		return;
 	}
 }
@@ -11758,15 +11753,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordsPanel_mFBF0
 	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* V_1 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:853>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:854>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral8D7DA574E835E9205D7976E85982D559C51996F8, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:854>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:855>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_1, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:855>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:856>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = V_0;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -11777,64 +11772,64 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordsPanel_mFBF0
 		L_5 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_4, NULL);
 		NullCheck(L_3);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_3, L_5, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:857>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:858>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = V_0;
 		NullCheck(L_6);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7;
 		L_7 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_6, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:858>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:859>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_8 = L_7;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_9;
 		memset((&L_9), 0, sizeof(L_9));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_9), (0.5f), (0.5f), NULL);
 		NullCheck(L_8);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_8, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:859>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:860>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_10 = L_8;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_11;
 		memset((&L_11), 0, sizeof(L_11));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_11), (0.5f), (0.5f), NULL);
 		NullCheck(L_10);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_10, L_11, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:860>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:861>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_12 = L_10;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_13;
 		memset((&L_13), 0, sizeof(L_13));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_13), (90.0f), (120.0f), NULL);
 		NullCheck(L_12);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_12, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:861>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:862>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_14 = L_12;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_15;
 		memset((&L_15), 0, sizeof(L_15));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_15), (150.0f), (-20.0f), NULL);
 		NullCheck(L_14);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_14, L_15, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:862>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:863>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
 		memset((&L_16), 0, sizeof(L_16));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_16), (0.0f), (30.0f), (0.0f), NULL);
 		NullCheck(L_14);
 		Transform_set_localEulerAngles_m0458551662A1A51FDCA4C0417282B25D391661DF(L_14, L_16, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:864>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:865>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = V_0;
 		NullCheck(L_17);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_18;
 		L_18 = GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0(L_17, GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:865>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:866>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_19;
 		memset((&L_19), 0, sizeof(L_19));
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_19), (0.180000007f), (0.150000006f), (0.119999997f), (0.949999988f), NULL);
 		NullCheck(L_18);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_18, L_19);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:868>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:869>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_20 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_20, _stringLiteral479695D4CA2E9E12316814190171B5BB758F1D01, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:869>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:870>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = L_20;
 		NullCheck(L_21);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_21, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:870>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:871>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22 = L_21;
 		NullCheck(L_22);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_23;
@@ -11845,76 +11840,76 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordsPanel_mFBF0
 		L_25 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_24, NULL);
 		NullCheck(L_23);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_23, L_25, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:872>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:873>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_26 = L_22;
 		NullCheck(L_26);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_27;
 		L_27 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_26, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:873>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:874>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_28 = L_27;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_29;
 		memset((&L_29), 0, sizeof(L_29));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_29), (0.5f), (1.0f), NULL);
 		NullCheck(L_28);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_28, L_29, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:874>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:875>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_30 = L_28;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_31;
 		memset((&L_31), 0, sizeof(L_31));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_31), (0.5f), (1.0f), NULL);
 		NullCheck(L_30);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_30, L_31, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:875>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:876>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_32 = L_30;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_33;
 		memset((&L_33), 0, sizeof(L_33));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_33), (80.0f), (20.0f), NULL);
 		NullCheck(L_32);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_32, L_33, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:876>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:877>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_34;
 		memset((&L_34), 0, sizeof(L_34));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_34), (0.0f), (-15.0f), NULL);
 		NullCheck(L_32);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_32, L_34, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:878>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:879>
 		NullCheck(L_26);
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_35;
 		L_35 = GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9(L_26, GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9_RuntimeMethod_var);
 		V_1 = L_35;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:879>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:880>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_36 = V_1;
 		NullCheck(L_36);
 		VirtualActionInvoker1< String_t* >::Invoke(75, L_36, _stringLiteralF9490EED751287724BE78361B0E48EA1B8E24C62);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:880>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:881>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_37 = V_1;
 		NullCheck(L_37);
 		Text_set_fontSize_m426338B0A2CDA58609028FFD471EF5F2C9F364D4(L_37, ((int32_t)16), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:881>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:882>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_38 = V_1;
 		NullCheck(L_38);
 		Text_set_alignment_m9FAD6C1C270FA28C610AB1E07414FBF96403157A(L_38, 4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:882>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:883>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_39 = V_1;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_40;
 		memset((&L_40), 0, sizeof(L_40));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_40), (1.0f), (0.899999976f), (0.400000006f), NULL);
 		NullCheck(L_39);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_39, L_40);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:883>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:884>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_41 = V_1;
 		NullCheck(L_41);
 		Text_set_fontStyle_m5ABEF66BFC88E7E0A950E2817E4978FF472F6C1D(L_41, 1, NULL);
 	}
 	try
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:886>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:887>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_42 = V_1;
 		Font_tC95270EA3198038970422D78B74A7F2E218A96B6* L_43;
 		L_43 = Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73(_stringLiteral91EABC919E48AAD7331BDBE21DBB8D4C623A4A25, Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73_RuntimeMethod_var);
 		NullCheck(L_42);
 		Text_set_font_mA0D2999281A72029A5BC7294A886C5674F07DC5F(L_42, L_43, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:887>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:888>
 		goto IL_0192;
 	}
 	catch(Il2CppExceptionWrapper& e)
@@ -11930,39 +11925,39 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordsPanel_mFBF0
 CATCH_018f:
 	{
 		RuntimeObject* L_44 = ((RuntimeObject*)IL2CPP_GET_ACTIVE_EXCEPTION(RuntimeObject*));;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:887>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:887>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:888>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:888>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_0192;
 	}
 
 IL_0192:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:890>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:891>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_45 = V_0;
 		NullCheck(L_45);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_46;
 		L_46 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_45, NULL);
 		PortalMenuSetup_CreateRecordEntry_mAF1285E2E7DF667B70E91BD1ABEE7CD2DAC99EBA(__this, L_46, _stringLiteralD5A6D1524A9CAA0C1FE48522BD4B250F6A827CC8, _stringLiteralC9AA05DE73285DA3DA1959E6ED85DF2F7C744BA5, (-35.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:891>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:892>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_47 = V_0;
 		NullCheck(L_47);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_48;
 		L_48 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_47, NULL);
 		PortalMenuSetup_CreateRecordEntry_mAF1285E2E7DF667B70E91BD1ABEE7CD2DAC99EBA(__this, L_48, _stringLiteralAF12339BAFE5071170B1E358779B8AE7C00A38AC, _stringLiteral548D93DDB2AC6B24373148B19D9A625571AB2318, (-60.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:892>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:893>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_49 = V_0;
 		NullCheck(L_49);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_50;
 		L_50 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_49, NULL);
 		PortalMenuSetup_CreateRecordEntry_mAF1285E2E7DF667B70E91BD1ABEE7CD2DAC99EBA(__this, L_50, _stringLiteral7B18F301A198B83778B5E546729B0539A0D4E758, _stringLiteral548D93DDB2AC6B24373148B19D9A625571AB2318, (-85.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:895>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:896>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_51 = V_0;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_52;
 		memset((&L_52), 0, sizeof(L_52));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_52), (90.0f), (120.0f), NULL);
 		PortalMenuSetup_AddBorderToElement_m4CC161812C9815E33960FE108A1CB4A35A259D0E(__this, L_51, L_52, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:896>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:897>
 		return;
 	}
 }
@@ -11991,15 +11986,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordEntry_mAF128
 	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* V_2 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:900>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:901>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteralAAEEF18E9243962ACB26A2F7E085F2F41E32FA7C, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:901>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:902>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_1, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:902>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:903>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = V_0;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -12007,47 +12002,47 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordEntry_mAF128
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = ___0_parent;
 		NullCheck(L_3);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_3, L_4, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:904>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:905>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = V_0;
 		NullCheck(L_5);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_6;
 		L_6 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_5, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:905>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:906>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_7 = L_6;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_8;
 		memset((&L_8), 0, sizeof(L_8));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_8), (0.5f), (1.0f), NULL);
 		NullCheck(L_7);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_7, L_8, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:906>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:907>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9 = L_7;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_10;
 		memset((&L_10), 0, sizeof(L_10));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_10), (0.5f), (1.0f), NULL);
 		NullCheck(L_9);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_9, L_10, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:907>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:908>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_11 = L_9;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_12;
 		memset((&L_12), 0, sizeof(L_12));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_12), (80.0f), (20.0f), NULL);
 		NullCheck(L_11);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_11, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:908>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:909>
 		float L_13 = ___3_yPos;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_14;
 		memset((&L_14), 0, sizeof(L_14));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_14), (0.0f), L_13, NULL);
 		NullCheck(L_11);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_11, L_14, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:911>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:912>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_15 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_15, _stringLiteralAA8377C0E73B7693B2561A3D923BAA006D1A5E37, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:912>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:913>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = L_15;
 		NullCheck(L_16);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_16, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:913>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:914>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = L_16;
 		NullCheck(L_17);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
@@ -12058,44 +12053,44 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordEntry_mAF128
 		L_20 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_19, NULL);
 		NullCheck(L_18);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_18, L_20, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:915>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:916>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = L_17;
 		NullCheck(L_21);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_22;
 		L_22 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_21, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:916>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:917>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_23 = L_22;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_24;
 		memset((&L_24), 0, sizeof(L_24));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_24), (0.0f), (0.5f), NULL);
 		NullCheck(L_23);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_23, L_24, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:917>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:918>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_25 = L_23;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_26;
 		memset((&L_26), 0, sizeof(L_26));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_26), (0.0f), (0.5f), NULL);
 		NullCheck(L_25);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_25, L_26, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:918>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:919>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_27 = L_25;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_28;
 		memset((&L_28), 0, sizeof(L_28));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_28), (18.0f), (18.0f), NULL);
 		NullCheck(L_27);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_27, L_28, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:919>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:920>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_29;
 		memset((&L_29), 0, sizeof(L_29));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_29), (12.0f), (0.0f), NULL);
 		NullCheck(L_27);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_27, L_29, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:921>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:922>
 		NullCheck(L_21);
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_30;
 		L_30 = GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43(L_21, GameObject_AddComponent_TisRawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179_mF832D1CFB763BE172F50826618A3D458EE451B43_RuntimeMethod_var);
 		V_1 = L_30;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:923>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:924>
 		String_t* L_31 = ___1_iconText;
 		bool L_32;
 		L_32 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_31, _stringLiteralD5A6D1524A9CAA0C1FE48522BD4B250F6A827CC8, NULL);
@@ -12105,7 +12100,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordEntry_mAF128
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:925>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:926>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_33 = V_1;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_34 = __this->___fireballIcon;
 		NullCheck(L_33);
@@ -12115,7 +12110,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup_CreateRecordEntry_mAF128
 
 IL_0112:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:927>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:928>
 		String_t* L_35 = ___1_iconText;
 		bool L_36;
 		L_36 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_35, _stringLiteralAF12339BAFE5071170B1E358779B8AE7C00A38AC, NULL);
@@ -12125,7 +12120,7 @@ IL_0112:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:929>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:930>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_37 = V_1;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_38 = __this->___spellbookIcon;
 		NullCheck(L_37);
@@ -12135,7 +12130,7 @@ IL_0112:
 
 IL_012d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:931>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:932>
 		String_t* L_39 = ___1_iconText;
 		bool L_40;
 		L_40 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_39, _stringLiteral7B18F301A198B83778B5E546729B0539A0D4E758, NULL);
@@ -12145,7 +12140,7 @@ IL_012d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:933>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:934>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_41 = V_1;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_42 = __this->___torchIcon;
 		NullCheck(L_41);
@@ -12154,14 +12149,14 @@ IL_012d:
 
 IL_0146:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:937>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:938>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_43 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_43, _stringLiteral336B029D04847DC4F36985E1B89D1A0B11D299A3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:938>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:939>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_44 = L_43;
 		NullCheck(L_44);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_44, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:939>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:940>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_45 = L_44;
 		NullCheck(L_45);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_46;
@@ -12172,77 +12167,77 @@ IL_0146:
 		L_48 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_47, NULL);
 		NullCheck(L_46);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_46, L_48, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:941>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:942>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_49 = L_45;
 		NullCheck(L_49);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_50;
 		L_50 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_49, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:942>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:943>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_51 = L_50;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_52;
 		memset((&L_52), 0, sizeof(L_52));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_52), (0.0f), (0.5f), NULL);
 		NullCheck(L_51);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_51, L_52, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:943>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:944>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_53 = L_51;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_54;
 		memset((&L_54), 0, sizeof(L_54));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_54), (1.0f), (0.5f), NULL);
 		NullCheck(L_53);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_53, L_54, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:944>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:945>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_55 = L_53;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_56;
 		memset((&L_56), 0, sizeof(L_56));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_56), (-30.0f), (20.0f), NULL);
 		NullCheck(L_55);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_55, L_56, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:945>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:946>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_57;
 		memset((&L_57), 0, sizeof(L_57));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_57), (15.0f), (0.0f), NULL);
 		NullCheck(L_55);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_55, L_57, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:947>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:948>
 		NullCheck(L_49);
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_58;
 		L_58 = GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9(L_49, GameObject_AddComponent_TisText_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62_mFECE312B08FC5FD0A081E51ACA01FAEFD6B841A9_RuntimeMethod_var);
 		V_2 = L_58;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:948>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:949>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_59 = V_2;
 		String_t* L_60 = ___2_scoreText;
 		NullCheck(L_59);
 		VirtualActionInvoker1< String_t* >::Invoke(75, L_59, L_60);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:949>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:950>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_61 = V_2;
 		NullCheck(L_61);
 		Text_set_fontSize_m426338B0A2CDA58609028FFD471EF5F2C9F364D4(L_61, ((int32_t)12), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:950>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:951>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_62 = V_2;
 		NullCheck(L_62);
 		Text_set_alignment_m9FAD6C1C270FA28C610AB1E07414FBF96403157A(L_62, 5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:951>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:952>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_63 = V_2;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_64;
 		memset((&L_64), 0, sizeof(L_64));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_64), (1.0f), (0.899999976f), (0.400000006f), NULL);
 		NullCheck(L_63);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_63, L_64);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:952>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:953>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_65 = V_2;
 		NullCheck(L_65);
 		Text_set_fontStyle_m5ABEF66BFC88E7E0A950E2817E4978FF472F6C1D(L_65, 0, NULL);
 	}
 	try
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:955>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:956>
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_66 = V_2;
 		Font_tC95270EA3198038970422D78B74A7F2E218A96B6* L_67;
 		L_67 = Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73(_stringLiteral91EABC919E48AAD7331BDBE21DBB8D4C623A4A25, Resources_GetBuiltinResource_TisFont_tC95270EA3198038970422D78B74A7F2E218A96B6_m3B4545F25A016D36D9AE93723A3449804A127D73_RuntimeMethod_var);
 		NullCheck(L_66);
 		Text_set_font_mA0D2999281A72029A5BC7294A886C5674F07DC5F(L_66, L_67, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:956>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:957>
 		goto IL_0214;
 	}
 	catch(Il2CppExceptionWrapper& e)
@@ -12258,15 +12253,15 @@ IL_0146:
 CATCH_0211:
 	{
 		RuntimeObject* L_68 = ((RuntimeObject*)IL2CPP_GET_ACTIVE_EXCEPTION(RuntimeObject*));;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:956>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:956>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:957>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:957>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_0214;
 	}
 
 IL_0214:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:957>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:958>
 		return;
 	}
 }
@@ -12274,7 +12269,7 @@ IL_0214:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* PortalMenuSetup_GetTravelButton_m3A4E1C09471A1A9B8373AD7B9A3343CAB0F9B3DF (PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:962>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:963>
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_0 = __this->___travelButton;
 		return L_0;
 	}
@@ -12291,7 +12286,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PortalMenuSetup__ctor_m91A674093E25FBF1E
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:17>
 		__this->___autoSetup = (bool)1;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:652>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:653>
 		__this->___selectedClass = _stringLiteralFC7E95316E55CCCE8DB637DF7AA6C0CB68FDCC2B;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___selectedClass), (void*)_stringLiteralFC7E95316E55CCCE8DB637DF7AA6C0CB68FDCC2B);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
@@ -12318,7 +12313,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass24_0__ctor_m483B3E6
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass24_0_U3CCreateClassButtonU3Eb__0_m8F666A6C639AD48B9A982DF1A6E728ED5C18C6A8 (U3CU3Ec__DisplayClass24_0_t8B7CFA5EF6410B2195DFFAA265469B020242706D* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:700>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Environment/PortalMenuSetup.cs:701>
 		PortalMenuSetup_t8B424DA00801905CB3309C0AA28796D6F514F81B* L_0 = __this->___U3CU3E4__this;
 		String_t* L_1 = __this->___className;
 		NullCheck(L_0);

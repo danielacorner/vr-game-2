@@ -24,22 +24,28 @@ namespace VRDungeonCrawler.Player
         public bool showReticle = true;
 
         [Tooltip("Size of the reticle")]
-        public float reticleSize = 0.025f;
+        public float reticleSize = 0.05f; // Increased from 0.025f for better visibility
 
         [Tooltip("Offset reticle toward camera to avoid z-fighting")]
-        public float reticleOffset = 0.005f;
+        public float reticleOffset = 0.01f; // Increased from 0.005f
 
         [Tooltip("Color of the reticle cursor")]
-        public Color reticleColor = Color.white;
+        public Color reticleColor = new Color(1f, 1f, 1f, 1f); // Bright white, fully opaque
+
+        [Header("Debug")]
+        [Tooltip("Show detailed debug logs")]
+        public bool showDebug = true;
 
         private UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorLineVisual lineVisual;
         private LineRenderer lineRenderer;
-        private UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor rayInteractor;
+        private UnityEngine.XR.Interaction.Toolkit.Interactors.NearFarInteractor nearFarInteractor;
+        private int debugFrameCounter = 0;
 
         void Start()
         {
             lineVisual = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorLineVisual>();
-            rayInteractor = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor>();
+            // Get the NearFarInteractor component
+            nearFarInteractor = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.NearFarInteractor>();
 
             if (lineVisual == null)
             {
@@ -47,6 +53,15 @@ namespace VRDungeonCrawler.Player
                 enabled = false;
                 return;
             }
+
+            if (nearFarInteractor == null)
+            {
+                Debug.LogError("[UIRayVisualConfig] No NearFarInteractor found! This component requires NearFarInteractor.");
+                enabled = false;
+                return;
+            }
+
+            Debug.Log($"[UIRayVisualConfig] Found interactor: {nearFarInteractor.GetType().Name}");
 
             ConfigureLineVisual();
         }
@@ -94,6 +109,8 @@ namespace VRDungeonCrawler.Player
             if (reticleTransform != null)
             {
                 reticle = reticleTransform.gameObject;
+                if (showDebug)
+                    Debug.Log("[UIRayVisualConfig] Found existing reticle");
             }
             else
             {
@@ -102,6 +119,9 @@ namespace VRDungeonCrawler.Player
                 reticle.name = "Reticle";
                 reticle.transform.SetParent(lineVisual.transform);
                 reticle.transform.localScale = Vector3.one * reticleSize;
+
+                if (showDebug)
+                    Debug.Log($"[UIRayVisualConfig] Created reticle with size {reticleSize} at parent {lineVisual.transform.name}");
 
                 // Remove collider
                 Destroy(reticle.GetComponent<Collider>());
@@ -115,24 +135,27 @@ namespace VRDungeonCrawler.Player
                     reticleMat.color = reticleColor;
                     renderer.material = reticleMat;
 
+                    if (showDebug)
+                        Debug.Log($"[UIRayVisualConfig] Reticle material: {reticleMat.shader.name}, color: {reticleColor}");
+
                     // Disable shadows
                     renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                     renderer.receiveShadows = false;
                 }
-
-                Debug.Log("[UIRayVisualConfig] Created reticle");
             }
 
             reticle.SetActive(true);
+            if (showDebug)
+                Debug.Log($"[UIRayVisualConfig] Reticle activated at position {reticle.transform.position}");
         }
 
         void Update()
         {
-            if (lineRenderer == null || rayInteractor == null)
+            if (lineRenderer == null || nearFarInteractor == null)
                 return;
 
             // Update line color based on hover state
-            bool isHoveringInteractable = rayInteractor.hasHover && rayInteractor.interactablesHovered.Count > 0;
+            bool isHoveringInteractable = nearFarInteractor.hasHover && nearFarInteractor.interactablesHovered.Count > 0;
 
             Color targetColor = isHoveringInteractable ? hoverColor : lineColor;
 
@@ -148,13 +171,32 @@ namespace VRDungeonCrawler.Player
                 Vector3 hitNormal = Vector3.forward;
 
                 // ONLY check for UI hits - don't show reticle on 3D objects
-                if (rayInteractor.TryGetCurrentUIRaycastResult(out UnityEngine.EventSystems.RaycastResult uiResult))
+                bool hasUIRaycast = nearFarInteractor.TryGetCurrentUIRaycastResult(out UnityEngine.EventSystems.RaycastResult uiResult);
+
+                // Debug every 60 frames (once per second at 60 FPS)
+                debugFrameCounter++;
+                if (showDebug && debugFrameCounter >= 60)
+                {
+                    debugFrameCounter = 0;
+                    Debug.Log($"[UIRayVisualConfig] hasUIRaycast: {hasUIRaycast}");
+                    if (hasUIRaycast)
+                    {
+                        Debug.Log($"[UIRayVisualConfig] UI hit: {uiResult.gameObject?.name}, layer: {uiResult.gameObject?.layer}, worldPos: {uiResult.worldPosition}");
+                    }
+                }
+
+                if (hasUIRaycast)
                 {
                     if (uiResult.gameObject != null && uiResult.gameObject.layer == 5) // UI layer
                     {
                         hitPoint = uiResult.worldPosition;
                         hitNormal = uiResult.worldNormal;
                         showReticle = true;
+
+                        if (showDebug && debugFrameCounter == 0)
+                        {
+                            Debug.Log($"[UIRayVisualConfig] Showing reticle at {hitPoint}, normal: {hitNormal}");
+                        }
                     }
                 }
 
@@ -174,12 +216,26 @@ namespace VRDungeonCrawler.Player
                         }
                     }
 
+                    if (!reticleTransform.gameObject.activeSelf && showDebug)
+                    {
+                        Debug.Log($"[UIRayVisualConfig] Activating reticle at {offsetPosition}");
+                    }
+
                     reticleTransform.gameObject.SetActive(true);
                 }
                 else
                 {
+                    if (reticleTransform.gameObject.activeSelf && showDebug && debugFrameCounter == 0)
+                    {
+                        Debug.Log("[UIRayVisualConfig] Deactivating reticle");
+                    }
+
                     reticleTransform.gameObject.SetActive(false);
                 }
+            }
+            else if (showDebug && debugFrameCounter == 0)
+            {
+                Debug.LogWarning("[UIRayVisualConfig] Reticle transform not found!");
             }
         }
     }
