@@ -350,7 +350,7 @@ namespace VRDungeonCrawler.Environment
 
             // Title: "Enter the Dungeon"
             CreateTitle(parent, yPos);
-            yPos -= 35f;
+            yPos -= 50f; // More space after title
 
             // Class selection buttons (Sorcerer, Wizard)
             CreateClassSelectionButtons(parent, yPos);
@@ -396,13 +396,16 @@ namespace VRDungeonCrawler.Environment
             float buttonWidth = 85f;
             float buttonHeight = 60f;
             float spacing = 10f;
-            float startX = -(buttonWidth + spacing/2);
 
-            // Sorcerer button
-            CreateClassButton(parent, "Sorcerer", "Fire", startX, yPos, buttonWidth, buttonHeight, true);
+            // Center the buttons horizontally
+            float leftButtonX = -(buttonWidth/2 + spacing/2);
+            float rightButtonX = (buttonWidth/2 + spacing/2);
 
-            // Wizard button
-            CreateClassButton(parent, "Wizard", "Book", startX + buttonWidth + spacing, yPos, buttonWidth, buttonHeight, false);
+            // Sorcerer button (left)
+            CreateClassButton(parent, "Sorcerer", "Fire", leftButtonX, yPos, buttonWidth, buttonHeight, true);
+
+            // Wizard button (right)
+            CreateClassButton(parent, "Wizard", "Book", rightButtonX, yPos, buttonWidth, buttonHeight, false);
         }
 
         void CreateClassButton(Transform parent, string className, string iconText, float xPos, float yPos, float width, float height, bool isDefault)

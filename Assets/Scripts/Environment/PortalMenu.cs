@@ -58,7 +58,7 @@ namespace VRDungeonCrawler.Environment
 
         void Start()
         {
-            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v12 - Procedurally generated icons");
+            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v13 - Centered buttons + improved spacing");
 
             // Find player if not set - use Main Camera for head position
             if (player == null)
