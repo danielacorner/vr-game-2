@@ -13,7 +13,7 @@ namespace VRDungeonCrawler.Environment
     {
         [Header("Detection")]
         [Tooltip("Distance at which menu appears")]
-        public float activationDistance = 5f;
+        public float activationDistance = 20f;
 
         [Tooltip("Player transform (XR Origin)")]
         public Transform player;
@@ -58,7 +58,7 @@ namespace VRDungeonCrawler.Environment
 
         void Start()
         {
-            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v10 - Fixed rotation + smaller sign");
+            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v11 - Ancient Dungeon style menu");
 
             // Find player if not set - use Main Camera for head position
             if (player == null)
