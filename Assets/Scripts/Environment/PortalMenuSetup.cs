@@ -350,7 +350,11 @@ namespace VRDungeonCrawler.Environment
 
             // Title: "Enter the Dungeon"
             CreateTitle(parent, yPos);
-            yPos -= 50f; // More space after title
+            // Subtitle: "Enter the Dungeon"
+            yPos -= 30f; // Space after title
+            CreateSubtitle(parent, yPos);
+            yPos -= 50f; // More space after subtitle
+
 
             // Class selection buttons (Sorcerer, Wizard)
             CreateClassSelectionButtons(parent, yPos);
@@ -358,7 +362,7 @@ namespace VRDungeonCrawler.Environment
 
             // "Ready?" text
             CreateReadyText(parent, yPos);
-            yPos -= 30f;
+            yPos -= 40f; // More space before Enter button
 
             // Enter button
             CreateEnterButton(parent, yPos);
@@ -378,7 +382,31 @@ namespace VRDungeonCrawler.Environment
 
             Text titleText = titleObj.AddComponent<Text>();
             titleText.text = "Enter the Dungeon";
-            titleText.fontSize = 24;
+            titleText.fontSize = 16; // Reduced by 50%
+            titleText.alignment = TextAnchor.MiddleCenter;
+            titleText.color = new Color(1f, 0.9f, 0.4f); // Gold color
+            titleText.fontStyle = FontStyle.Bold;
+
+            try {
+                titleText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            } catch { }
+        }
+
+        void CreateSubtitle(Transform parent, float yPos)
+        {
+            GameObject titleObj = new GameObject("Title");
+            titleObj.layer = 5;
+            titleObj.transform.SetParent(parent, false);
+
+            RectTransform titleRect = titleObj.AddComponent<RectTransform>();
+            titleRect.anchorMin = new Vector2(0.5f, 0.5f);
+            titleRect.anchorMax = new Vector2(0.5f, 0.5f);
+            titleRect.sizeDelta = new Vector2(180, 30);
+            titleRect.anchoredPosition = new Vector2(0, yPos);
+
+            Text titleText = titleObj.AddComponent<Text>();
+            titleText.text = "Select Class";
+            titleText.fontSize = 12; // Reduced by 50%
             titleText.alignment = TextAnchor.MiddleCenter;
             titleText.color = new Color(1f, 0.9f, 0.4f); // Gold color
             titleText.fontStyle = FontStyle.Bold;
@@ -502,7 +530,7 @@ namespace VRDungeonCrawler.Environment
 
             Text readyText = readyObj.AddComponent<Text>();
             readyText.text = "Ready?";
-            readyText.fontSize = 20;
+            readyText.fontSize = 10; // Reduced by 50%
             readyText.alignment = TextAnchor.MiddleCenter;
             readyText.color = new Color(1f, 0.9f, 0.4f); // Gold color
             readyText.fontStyle = FontStyle.Bold;

@@ -58,7 +58,7 @@ namespace VRDungeonCrawler.Environment
 
         void Start()
         {
-            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v13 - Centered buttons + improved spacing");
+            Debug.Log("[PortalMenu] VERSION: Build 2026-01-18-v14 - Reduced text sizes + better spacing");
 
             // Find player if not set - use Main Camera for head position
             if (player == null)
