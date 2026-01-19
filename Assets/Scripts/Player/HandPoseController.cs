@@ -13,7 +13,8 @@ namespace VRDungeonCrawler.Player
         Grabbed,        // Gripping an item firmly
         SummonReady,    // Open hand, ready to summon item
         Summoning,      // Hand gesture during summoning animation
-        SpellCasting    // Hand pose for active spell casting
+        SpellCasting,   // Hand pose for active spell casting
+        Pointing        // Finger-pointing pose for UI interaction
     }
 
     /// <summary>
@@ -187,6 +188,16 @@ namespace VRDungeonCrawler.Player
                         middle: 0.1f,      // Extended
                         ring: 0.8f,        // Curled
                         pinky: 0.8f        // Curled
+                    );
+
+                case HandPoseState.Pointing:
+                    // Pointing pose for UI interaction - index extended, others curled
+                    return new FingerPose(
+                        thumb: 0.7f,       // Curled against palm
+                        index: 0f,         // Fully extended (pointing)
+                        middle: 0.85f,     // Curled down
+                        ring: 0.9f,        // Curled down
+                        pinky: 0.85f       // Curled down
                     );
 
                 default:

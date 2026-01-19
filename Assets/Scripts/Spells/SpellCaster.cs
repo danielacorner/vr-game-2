@@ -92,19 +92,30 @@ namespace VRDungeonCrawler.Spells
                 isHoveringUI = nearFarInteractor.hasHover &&
                                nearFarInteractor.interactablesHovered.Count > 0;
 
+                // Debug what we're hovering
+                if (nearFarInteractor.hasHover && nearFarInteractor.interactablesHovered.Count > 0)
+                {
+                    Debug.Log($"[SpellCaster] Hovering {nearFarInteractor.interactablesHovered.Count} interactables");
+                }
+
                 // Also check if any hovered object is on UI layer (layer 5)
                 foreach (var interactable in nearFarInteractor.interactablesHovered)
                 {
-                    if (interactable != null && interactable.transform.gameObject.layer == 5)
+                    if (interactable != null)
                     {
-                        isHoveringUI = true;
-                        break;
+                        Debug.Log($"[SpellCaster] Hovering: {interactable.transform.gameObject.name} on layer {interactable.transform.gameObject.layer}");
+                        if (interactable.transform.gameObject.layer == 5)
+                        {
+                            isHoveringUI = true;
+                            break;
+                        }
                     }
                 }
             }
 
             if (isHoveringUI)
             {
+                Debug.Log("[SpellCaster] UI detected - canceling spell charge");
                 // Cancel any active charging if pointing at UI
                 if (isCharging || isFullyCharged)
                 {

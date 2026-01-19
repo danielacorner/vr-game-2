@@ -683,6 +683,7 @@ namespace VRDungeonCrawler.Environment
 
             Button button = buttonObj.AddComponent<Button>();
             Image buttonImage = buttonObj.AddComponent<Image>();
+            buttonObj.AddComponent<VRDungeonCrawler.Player.XRButtonHighlight>(); // Enable XR hover highlighting
 
             // Set colors based on selection
             Color normalColor = isDefault ? new Color(0.2f, 0.4f, 0.2f, 0.9f) : new Color(0.25f, 0.25f, 0.25f, 0.9f);
@@ -790,6 +791,7 @@ namespace VRDungeonCrawler.Environment
 
             travelButton = buttonObj.AddComponent<Button>();
             Image buttonImage = buttonObj.AddComponent<Image>();
+            buttonObj.AddComponent<VRDungeonCrawler.Player.XRButtonHighlight>(); // Enable XR hover highlighting
             buttonImage.color = new Color(0.3f, 0.25f, 0.2f, 0.95f);
 
             ColorBlock colors = travelButton.colors;
