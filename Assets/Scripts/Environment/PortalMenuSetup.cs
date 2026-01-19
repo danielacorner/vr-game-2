@@ -23,6 +23,7 @@ namespace VRDungeonCrawler.Environment
         private Texture2D fireballIcon;
         private Texture2D spellbookIcon;
         private Texture2D torchIcon;
+        private Texture2D swordIcon;
 
         void Awake()
         {
@@ -70,6 +71,7 @@ namespace VRDungeonCrawler.Environment
             fireballIcon = GenerateFireballIcon(64, 64);
             spellbookIcon = GenerateSpellbookIcon(64, 64);
             torchIcon = GenerateTorchIcon(64, 64);
+            swordIcon = GenerateSwordIcon(64, 64);
         }
 
         Texture2D GenerateFireballIcon(int width, int height)
@@ -240,6 +242,73 @@ namespace VRDungeonCrawler.Environment
             return tex;
         }
 
+        Texture2D GenerateSwordIcon(int width, int height)
+        {
+            Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+            Color[] pixels = new Color[width * height];
+
+            Color bladeColor = new Color(0.7f, 0.75f, 0.8f, 1f); // Silver/steel
+            Color hiltColor = new Color(0.4f, 0.3f, 0.2f, 1f); // Brown leather
+            Color crossguardColor = new Color(0.6f, 0.5f, 0.3f, 1f); // Bronze/brass
+
+            int centerX = width / 2;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    Color color = Color.clear;
+
+                    // Hilt (bottom 20%)
+                    if (y < height * 0.2f)
+                    {
+                        int hiltWidth = width / 5;
+                        if (x >= centerX - hiltWidth / 2 && x < centerX + hiltWidth / 2)
+                        {
+                            color = hiltColor;
+                        }
+                    }
+                    // Crossguard (20-30% height)
+                    else if (y >= height * 0.2f && y < height * 0.3f)
+                    {
+                        int crossguardWidth = (int)(width * 0.6f);
+                        if (x >= centerX - crossguardWidth / 2 && x < centerX + crossguardWidth / 2)
+                        {
+                            color = crossguardColor;
+                        }
+                    }
+                    // Blade (top 70%)
+                    else
+                    {
+                        float bladeY = y - (height * 0.3f);
+                        float bladeHeight = height * 0.7f;
+                        float normalizedY = bladeY / bladeHeight;
+
+                        // Blade tapers from wide at base to point at tip
+                        int bladeWidthAtBase = width / 4;
+                        int bladeWidthAtY = (int)(bladeWidthAtBase * (1f - normalizedY * 0.9f));
+
+                        if (x >= centerX - bladeWidthAtY / 2 && x < centerX + bladeWidthAtY / 2)
+                        {
+                            color = bladeColor;
+
+                            // Add highlight down center of blade
+                            if (x >= centerX - 1 && x < centerX + 1)
+                            {
+                                color = Color.Lerp(bladeColor, Color.white, 0.3f);
+                            }
+                        }
+                    }
+
+                    pixels[y * width + x] = color;
+                }
+            }
+
+            tex.SetPixels(pixels);
+            tex.Apply();
+            return tex;
+        }
+
         public void SetupUI()
         {
             // Canvas was already created in Awake(), just verify it exists
@@ -381,7 +450,7 @@ namespace VRDungeonCrawler.Environment
             titleRect.anchoredPosition = new Vector2(0, yPos);
 
             Text titleText = titleObj.AddComponent<Text>();
-            titleText.text = "Enter the Dungeon";
+            titleText.text = "Run Preparation";
             titleText.fontSize = 16; // Reduced by 50%
             titleText.alignment = TextAnchor.MiddleCenter;
             titleText.color = new Color(1f, 0.9f, 0.4f); // Gold color
@@ -562,7 +631,7 @@ namespace VRDungeonCrawler.Environment
             colors.pressedColor = new Color(0.25f, 0.2f, 0.15f, 1f);
             travelButton.colors = colors;
 
-            // Icon (torch icon on left)
+            // Icon (sword icon on left)
             GameObject iconObj = new GameObject("Icon");
             iconObj.layer = 5;
             iconObj.transform.SetParent(buttonObj.transform, false);
@@ -574,7 +643,7 @@ namespace VRDungeonCrawler.Environment
             iconRect.anchoredPosition = new Vector2(25, 0);
 
             RawImage iconImage = iconObj.AddComponent<RawImage>();
-            iconImage.texture = torchIcon;
+            iconImage.texture = swordIcon;
 
             // Button text
             GameObject textObj = new GameObject("Text");
