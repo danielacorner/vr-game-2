@@ -12,15 +12,20 @@ namespace VRDungeonCrawler.Player
     public class XRButtonHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         private Button button;
-        private ColorBlock originalColors;
+        private Image buttonImage;
+        private ColorBlock colors;
         private bool isHovering = false;
 
         void Start()
         {
             button = GetComponent<Button>();
+            buttonImage = GetComponent<Image>();
+
             if (button != null)
             {
-                originalColors = button.colors;
+                colors = button.colors;
+                // Ensure transition mode is ColorTint
+                button.transition = UnityEngine.UI.Selectable.Transition.ColorTint;
             }
         }
 
@@ -31,10 +36,13 @@ namespace VRDungeonCrawler.Player
 
             isHovering = true;
 
-            // Force the button to highlighted state
-            button.OnPointerEnter(eventData);
+            // Force visual highlight
+            if (buttonImage != null)
+            {
+                buttonImage.color = colors.highlightedColor;
+            }
 
-            Debug.Log($"[XRButtonHighlight] Pointer entered: {gameObject.name}");
+            Debug.Log($"[XRButtonHighlight] Pointer entered: {gameObject.name}, setting color to {colors.highlightedColor}");
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -44,15 +52,22 @@ namespace VRDungeonCrawler.Player
 
             isHovering = false;
 
-            // Force the button back to normal state
-            button.OnPointerExit(eventData);
+            // Reset to normal color
+            if (buttonImage != null)
+            {
+                buttonImage.color = colors.normalColor;
+            }
 
-            Debug.Log($"[XRButtonHighlight] Pointer exited: {gameObject.name}");
+            Debug.Log($"[XRButtonHighlight] Pointer exited: {gameObject.name}, resetting color to {colors.normalColor}");
         }
 
         void OnDisable()
         {
             isHovering = false;
+            if (buttonImage != null)
+            {
+                buttonImage.color = colors.normalColor;
+            }
         }
     }
 }

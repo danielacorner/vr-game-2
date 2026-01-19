@@ -318,6 +318,7 @@ struct LogicalInputState_tC8869ADC07CFDF5E60D09DC140CC05EF0227843A;
 
 IL2CPP_EXTERN_C RuntimeClass* AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Color_tD001788D726C3A7F1379BEED0260B9591F440C1F_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* CommonUsages_t9208F514F1E77BE70AC53EFEC94D57EDDAF3B8E1_il2cpp_TypeInfo_var;
@@ -368,7 +369,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteral1672968618F952578745CDAB429203B02C32D31A
 IL2CPP_EXTERN_C String_t* _stringLiteral16A779FDD448CBC62F1508ECA2A7A669F0578789;
 IL2CPP_EXTERN_C String_t* _stringLiteral18C79CE38C5A4E409AA09FC4BABFADF466FB6E95;
 IL2CPP_EXTERN_C String_t* _stringLiteral19327BA6D58792A3D5C790B965627EE21FD09CC6;
-IL2CPP_EXTERN_C String_t* _stringLiteral1AD29C238B338A09F7B73DBDD62738DE6C997283;
 IL2CPP_EXTERN_C String_t* _stringLiteral1B563F409DD89FBEB2943368D0320F077A380C13;
 IL2CPP_EXTERN_C String_t* _stringLiteral1DCF3E89273790A063D65FBB1C47D7CA3298DD36;
 IL2CPP_EXTERN_C String_t* _stringLiteral206F42AFEFBE50296F2B40B62A4CF2520DE38556;
@@ -411,6 +411,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral580F9601945F8D367D9F530C9E8EFC9CB9D7AE2F
 IL2CPP_EXTERN_C String_t* _stringLiteral5902C8E9898DF06560FF15E88879107063868EE0;
 IL2CPP_EXTERN_C String_t* _stringLiteral5FD3463BD516CC6784A2466E9AAA353C61D0243B;
 IL2CPP_EXTERN_C String_t* _stringLiteral62E61D8D679799528AA15A0C405E901192D543F0;
+IL2CPP_EXTERN_C String_t* _stringLiteral631541E2D056DD6EF9B32BB45781765A3474C6AB;
 IL2CPP_EXTERN_C String_t* _stringLiteral635CC844B95DCF2CF38E17D682588C45D696EBAD;
 IL2CPP_EXTERN_C String_t* _stringLiteral642C6FEA19105A3EF132EA1447635540A9EE21FF;
 IL2CPP_EXTERN_C String_t* _stringLiteral664BCE6D080D9825D196BBC92E8544D583990452;
@@ -468,7 +469,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteralA90C21C3F25CAA326D8C0B7C48F4C513A8761AD0
 IL2CPP_EXTERN_C String_t* _stringLiteralA94E116568A951BCC3DB63A508CD889446333121;
 IL2CPP_EXTERN_C String_t* _stringLiteralA97C990FDF998362AEB395D18B12DCBC3F410C78;
 IL2CPP_EXTERN_C String_t* _stringLiteralABF7FD8C3D4DC056FB45973F4FBC531EE2B2D6E7;
-IL2CPP_EXTERN_C String_t* _stringLiteralAC6CBEE8E66E79C263FA491A2BECA7D27855983F;
 IL2CPP_EXTERN_C String_t* _stringLiteralAE203399E7F40D01E3E90D9FDC0CFCE3C2A7A548;
 IL2CPP_EXTERN_C String_t* _stringLiteralB15D7DD9CE2981D1206BCD198F05E506AB6EE5D6;
 IL2CPP_EXTERN_C String_t* _stringLiteralB25CF1C6B74339FBFCE846454A70688CE58C094C;
@@ -510,12 +510,14 @@ IL2CPP_EXTERN_C String_t* _stringLiteralF96FE1CC8DEA473C3258ACA83855D05B478269CB
 IL2CPP_EXTERN_C String_t* _stringLiteralFB81B21EB6F70DCAD313FBF3D852CEE0CA3EA0D0;
 IL2CPP_EXTERN_C String_t* _stringLiteralFBC1FBDF3F91C0637B6624C6C526B3718C7E46A2;
 IL2CPP_EXTERN_C String_t* _stringLiteralFCE7F29AC7CF92824D1B369109F68128CA1CED58;
+IL2CPP_EXTERN_C String_t* _stringLiteralFDAF7F36C6A2CA1D2F26130E3CB022D832F3D3DB;
 IL2CPP_EXTERN_C String_t* _stringLiteralFF5B293164373F5E2208E903AE70B135F82AAEE0;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponentInChildren_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m1C7B25F09C77FF7717570FD809CF0037D9971C6A_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponentInChildren_TisHandPoseController_t04994F0D91A603C9A79A2685DD3CD10184A3DB02_m9CDC50850F26311A0E0677DADD9FE6D178F75A21_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponentInChildren_TisLight_t1E68479B7782AF2050FAA02A5DC612FD034F18F3_m68853A22B1875F33EC45FD811EB549E514AF3967_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisActionBasedController_tB9D8E7E013191571EA5507EA68057414B6969A68_mEDBB78EACD2B75F6F4F8F67DDB48C086DE383FF2_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisButton_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098_mFF8BA4CA5D7158D1D6249559A3289E7A6DF0A2BB_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mE74EE63C85A63FC34DCFC631BC229207B420BC79_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisLineRenderer_tEFEF960672DB69CB14B6D181FAE6292F0CF8B63D_m4F17B3CA1E7FFB03C7682312A59B9185E0F67C49_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisNearFarInteractor_t43B1C14C2D72CB717E3624B0759E265F5D215E9C_m39606EDE93EC803CBC887C1B3E243F892E5F2E30_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4_mDB29DD32DF46B9659262256BDBD5B4F1BB805023_RuntimeMethod_var;
@@ -2560,7 +2562,8 @@ struct XRBaseInteractor_t4AF6FC9A7611B9417B4A43E11704AFF85B4A0FB4  : public Mono
 struct XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
 	Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* ___button;
-	ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 ___originalColors;
+	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___buttonImage;
+	ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 ___colors;
 	bool ___isHovering;
 };
 struct XRInteractorLineVisual_t5E2AB7AB814E981F6E309FA420D13DDBCF11D12E  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
@@ -3809,8 +3812,15 @@ inline Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* Component_GetComponent_
 {
 	return ((  Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* (*) (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3*, const RuntimeMethod*))Component_GetComponent_TisRuntimeObject_m7181F81CAEC2CF53F5D2BC79B7425C16E1F80D33_gshared)(__this, method);
 }
+inline Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* Component_GetComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mE74EE63C85A63FC34DCFC631BC229207B420BC79 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method)
+{
+	return ((  Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* (*) (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3*, const RuntimeMethod*))Component_GetComponent_TisRuntimeObject_m7181F81CAEC2CF53F5D2BC79B7425C16E1F80D33_gshared)(__this, method);
+}
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 Selectable_get_colors_mB53E365D02351D4B64084295C4B2A7AF2DEC4750_inline (Selectable_t3251808068A17B8E92FB33590A4C2FA66D456712* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Selectable_set_transition_m67F9584736EB6891A314C9804489368C430F0F59 (Selectable_t3251808068A17B8E92FB33590A4C2FA66D456712* __this, int32_t ___0_value, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Selectable_get_interactable_m17DD0484DC62DCB4467109488D7A599BC85EC112_inline (Selectable_t3251808068A17B8E92FB33590A4C2FA66D456712* __this, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ColorBlock_get_highlightedColor_m4D1A3D268CB00B351F56934F7F244DBC68855301_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ColorBlock_get_normalColor_m08A07A74ED743B4B0C1B5A5C35774F2D78F1F20E_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ItemSummoner_FindDevice_m0149B18AB8940D7240B33098DE3EA982269A22AD (ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE* __this, const RuntimeMethod* method) ;
 inline void List_1__ctor_mF7ACC153F11A3260DAACDCA56B0A70A4BFA61EA4 (List_1_tB66D13E0427CA48C600AEA4DBA5B173C3734C6CE* __this, const RuntimeMethod* method)
 {
@@ -8892,37 +8902,47 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRButtonHighlight_Start_mAF150B0FDE85D5A
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Component_GetComponent_TisButton_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098_mFF8BA4CA5D7158D1D6249559A3289E7A6DF0A2BB_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Component_GetComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mE74EE63C85A63FC34DCFC631BC229207B420BC79_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:20>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:21>
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_0;
 		L_0 = Component_GetComponent_TisButton_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098_mFF8BA4CA5D7158D1D6249559A3289E7A6DF0A2BB(__this, Component_GetComponent_TisButton_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098_mFF8BA4CA5D7158D1D6249559A3289E7A6DF0A2BB_RuntimeMethod_var);
 		__this->___button = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___button), (void*)L_0);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:21>
-		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_1 = __this->___button;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:22>
+		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_1;
+		L_1 = Component_GetComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mE74EE63C85A63FC34DCFC631BC229207B420BC79(__this, Component_GetComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mE74EE63C85A63FC34DCFC631BC229207B420BC79_RuntimeMethod_var);
+		__this->___buttonImage = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___buttonImage), (void*)L_1);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:24>
+		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_2 = __this->___button;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_2;
-		L_2 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_1, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (!L_2)
+		bool L_3;
+		L_3 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_2, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_3)
 		{
-			goto IL_002b;
+			goto IL_0043;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:23>
-		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_3 = __this->___button;
-		NullCheck(L_3);
-		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 L_4;
-		L_4 = Selectable_get_colors_mB53E365D02351D4B64084295C4B2A7AF2DEC4750_inline(L_3, NULL);
-		__this->___originalColors = L_4;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:26>
+		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_4 = __this->___button;
+		NullCheck(L_4);
+		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 L_5;
+		L_5 = Selectable_get_colors_mB53E365D02351D4B64084295C4B2A7AF2DEC4750_inline(L_4, NULL);
+		__this->___colors = L_5;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:28>
+		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_6 = __this->___button;
+		NullCheck(L_6);
+		Selectable_set_transition_m67F9584736EB6891A314C9804489368C430F0F59(L_6, 1, NULL);
 	}
 
-IL_002b:
+IL_0043:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:25>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:30>
 		return;
 	}
 }
@@ -8932,13 +8952,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRButtonHighlight_OnPointerEnter_mFD5934
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Color_tD001788D726C3A7F1379BEED0260B9591F440C1F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralAC6CBEE8E66E79C263FA491A2BECA7D27855983F);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral631541E2D056DD6EF9B32BB45781765A3474C6AB);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:29>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:34>
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_0 = __this->___button;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8961,30 +8983,54 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRButtonHighlight_OnPointerEnter_mFD5934
 
 IL_001b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:30>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:35>
 		return;
 	}
 
 IL_001c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:32>
-		__this->___isHovering = (bool)1;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:35>
-		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_4 = __this->___button;
-		PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* L_5 = ___0_eventData;
-		NullCheck(L_4);
-		VirtualActionInvoker1< PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* >::Invoke(34, L_4, L_5);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:37>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6;
-		L_6 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		__this->___isHovering = (bool)1;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:40>
+		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_4 = __this->___buttonImage;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_5;
+		L_5 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_4, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_5)
+		{
+			goto IL_0047;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:42>
+		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_6 = __this->___buttonImage;
+		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* L_7 = (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11*)(&__this->___colors);
+		il2cpp_codegen_runtime_class_init_inline(ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_8;
+		L_8 = ColorBlock_get_highlightedColor_m4D1A3D268CB00B351F56934F7F244DBC68855301_inline(L_7, NULL);
 		NullCheck(L_6);
-		String_t* L_7;
-		L_7 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_6, NULL);
-		String_t* L_8;
-		L_8 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteralAC6CBEE8E66E79C263FA491A2BECA7D27855983F, L_7, NULL);
+		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_6, L_8);
+	}
+
+IL_0047:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:45>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9;
+		L_9 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		NullCheck(L_9);
+		String_t* L_10;
+		L_10 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_9, NULL);
+		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* L_11 = (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11*)(&__this->___colors);
+		il2cpp_codegen_runtime_class_init_inline(ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_12;
+		L_12 = ColorBlock_get_highlightedColor_m4D1A3D268CB00B351F56934F7F244DBC68855301_inline(L_11, NULL);
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_13 = L_12;
+		RuntimeObject* L_14 = Box(Color_tD001788D726C3A7F1379BEED0260B9591F440C1F_il2cpp_TypeInfo_var, &L_13);
+		String_t* L_15;
+		L_15 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteral631541E2D056DD6EF9B32BB45781765A3474C6AB, L_10, L_14, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_8, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:38>
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_15, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:46>
 		return;
 	}
 }
@@ -8994,13 +9040,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRButtonHighlight_OnPointerExit_mEE7AA4F
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Color_tD001788D726C3A7F1379BEED0260B9591F440C1F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral1AD29C238B338A09F7B73DBDD62738DE6C997283);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralFDAF7F36C6A2CA1D2F26130E3CB022D832F3D3DB);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:42>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:50>
 		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_0 = __this->___button;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -9011,40 +9059,94 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRButtonHighlight_OnPointerExit_mEE7AA4F
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:43>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:51>
 		return;
 	}
 
 IL_000f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:45>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:53>
 		__this->___isHovering = (bool)0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:48>
-		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_2 = __this->___button;
-		PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* L_3 = ___0_eventData;
-		NullCheck(L_2);
-		VirtualActionInvoker1< PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* >::Invoke(35, L_2, L_3);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:50>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
-		L_4 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:56>
+		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_2 = __this->___buttonImage;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_3;
+		L_3 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_2, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_3)
+		{
+			goto IL_003a;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:58>
+		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_4 = __this->___buttonImage;
+		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* L_5 = (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11*)(&__this->___colors);
+		il2cpp_codegen_runtime_class_init_inline(ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_6;
+		L_6 = ColorBlock_get_normalColor_m08A07A74ED743B4B0C1B5A5C35774F2D78F1F20E_inline(L_5, NULL);
 		NullCheck(L_4);
-		String_t* L_5;
-		L_5 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_4, NULL);
-		String_t* L_6;
-		L_6 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral1AD29C238B338A09F7B73DBDD62738DE6C997283, L_5, NULL);
+		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_4, L_6);
+	}
+
+IL_003a:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:61>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7;
+		L_7 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		NullCheck(L_7);
+		String_t* L_8;
+		L_8 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_7, NULL);
+		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* L_9 = (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11*)(&__this->___colors);
+		il2cpp_codegen_runtime_class_init_inline(ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_10;
+		L_10 = ColorBlock_get_normalColor_m08A07A74ED743B4B0C1B5A5C35774F2D78F1F20E_inline(L_9, NULL);
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_11 = L_10;
+		RuntimeObject* L_12 = Box(Color_tD001788D726C3A7F1379BEED0260B9591F440C1F_il2cpp_TypeInfo_var, &L_11);
+		String_t* L_13;
+		L_13 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteralFDAF7F36C6A2CA1D2F26130E3CB022D832F3D3DB, L_8, L_12, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_6, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:51>
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_13, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:62>
 		return;
 	}
 }
 // Method Definition Index: 63635
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRButtonHighlight_OnDisable_mC7357D126BBBA4BE3BD30587D057B1C4B189DE1C (XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588* __this, const RuntimeMethod* method) 
 {
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:55>
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:66>
 		__this->___isHovering = (bool)0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:56>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:67>
+		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_0 = __this->___buttonImage;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_1;
+		L_1 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_0, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_1)
+		{
+			goto IL_002b;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:69>
+		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_2 = __this->___buttonImage;
+		ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* L_3 = (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11*)(&__this->___colors);
+		il2cpp_codegen_runtime_class_init_inline(ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11_il2cpp_TypeInfo_var);
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_4;
+		L_4 = ColorBlock_get_normalColor_m08A07A74ED743B4B0C1B5A5C35774F2D78F1F20E_inline(L_3, NULL);
+		NullCheck(L_2);
+		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_2, L_4);
+	}
+
+IL_002b:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/XRButtonHighlight.cs:71>
 		return;
 	}
 }
@@ -21040,6 +21142,24 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Selectable_get_interactable_
 	{
 		//<source_info:./Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/UGUI/UI/Core/Selectable.cs:362>
 		bool L_0 = __this->___m_Interactable;
+		return L_0;
+	}
+}
+// Method Definition Index: 70555
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ColorBlock_get_highlightedColor_m4D1A3D268CB00B351F56934F7F244DBC68855301_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/UGUI/UI/Core/ColorBlock.cs:94>
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0 = __this->___m_HighlightedColor;
+		return L_0;
+	}
+}
+// Method Definition Index: 70553
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ColorBlock_get_normalColor_m08A07A74ED743B4B0C1B5A5C35774F2D78F1F20E_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/UGUI/UI/Core/ColorBlock.cs:66>
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0 = __this->___m_NormalColor;
 		return L_0;
 	}
 }

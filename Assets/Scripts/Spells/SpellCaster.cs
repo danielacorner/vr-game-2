@@ -84,44 +84,28 @@ namespace VRDungeonCrawler.Spells
 
         private void Update()
         {
-            // Don't cast spells when hovering over UI - check XR interactor state
+            // Don't cast spells when hovering over UI - use TryGetCurrentUIRaycastResult
             bool isHoveringUI = false;
             if (nearFarInteractor != null)
             {
-                // Check if the interactor is hovering over any UI
-                isHoveringUI = nearFarInteractor.hasHover &&
-                               nearFarInteractor.interactablesHovered.Count > 0;
+                // Check if the interactor is raycasting UI
+                isHoveringUI = nearFarInteractor.TryGetCurrentUIRaycastResult(out UnityEngine.EventSystems.RaycastResult uiResult);
 
-                // Debug what we're hovering
-                if (nearFarInteractor.hasHover && nearFarInteractor.interactablesHovered.Count > 0)
+                if (isHoveringUI && uiResult.gameObject != null)
                 {
-                    Debug.Log($"[SpellCaster] Hovering {nearFarInteractor.interactablesHovered.Count} interactables");
-                }
-
-                // Also check if any hovered object is on UI layer (layer 5)
-                foreach (var interactable in nearFarInteractor.interactablesHovered)
-                {
-                    if (interactable != null)
-                    {
-                        Debug.Log($"[SpellCaster] Hovering: {interactable.transform.gameObject.name} on layer {interactable.transform.gameObject.layer}");
-                        if (interactable.transform.gameObject.layer == 5)
-                        {
-                            isHoveringUI = true;
-                            break;
-                        }
-                    }
+                    Debug.Log($"[SpellCaster] UI detected: {uiResult.gameObject.name} on layer {uiResult.gameObject.layer}");
                 }
             }
 
             if (isHoveringUI)
             {
-                Debug.Log("[SpellCaster] UI detected - canceling spell charge");
                 // Cancel any active charging if pointing at UI
                 if (isCharging || isFullyCharged)
                 {
+                    Debug.Log("[SpellCaster] Canceling spell charge due to UI hover");
                     CancelCharge();
                 }
-                return;
+                return; // Don't process spell input while hovering UI
             }
 
             if (!deviceFound)

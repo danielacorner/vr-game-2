@@ -35255,7 +35255,8 @@ struct WindSpiralAnimation_t4DC7FC5BB3F639383188257AB94921B5C6A767B3  : public M
 struct XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
 	Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* ___button;
-	ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 ___originalColors;
+	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___buttonImage;
+	ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 ___colors;
 	bool ___isHovering;
 };
 struct XRHandMeshController_t670ADAE830016D758ED74153F39334564CD3D687  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
@@ -44071,9 +44072,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7438[7] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7439[12] = 
 {
 	static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___lineWidth)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___lineColor)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___hoverColor)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___showReticle)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___reticleSize)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___reticleOffset)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___reticleColor)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___showDebug)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___lineVisual)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___lineRenderer)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___nearFarInteractor)),static_cast<int32_t>(offsetof(UIRayVisualConfig_tA3B55E4E5EF13EB74E29103A6DB87FE287D50FB8, ___debugFrameCounter)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7440[3] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7440[4] = 
 {
-	static_cast<int32_t>(offsetof(XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588, ___button)),static_cast<int32_t>(offsetof(XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588, ___originalColors)),static_cast<int32_t>(offsetof(XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588, ___isHovering)),};
+	static_cast<int32_t>(offsetof(XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588, ___button)),static_cast<int32_t>(offsetof(XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588, ___buttonImage)),static_cast<int32_t>(offsetof(XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588, ___colors)),static_cast<int32_t>(offsetof(XRButtonHighlight_tF44A7EED245E53140BB4F34E7ABEDC3660C62588, ___isHovering)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7441[9] = 
 {
 	static_cast<int32_t>(offsetof(ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE, ___isLeftHand)),static_cast<int32_t>(offsetof(ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE, ___useSecondaryButton)),static_cast<int32_t>(offsetof(ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE, ___maxSearchDistance)),static_cast<int32_t>(offsetof(ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE, ___summonTarget)),static_cast<int32_t>(offsetof(ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE, ___handPoseController)),static_cast<int32_t>(offsetof(ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE, ___device)),static_cast<int32_t>(offsetof(ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE, ___deviceFound)),static_cast<int32_t>(offsetof(ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE, ___currentlySummoning)),static_cast<int32_t>(offsetof(ItemSummoner_t3E54E9CED74AB0A7A05618CBC35B6DE0714990BE, ___summonButtonHeld)),};
