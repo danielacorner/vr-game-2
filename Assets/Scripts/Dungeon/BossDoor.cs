@@ -45,11 +45,20 @@ namespace VRDungeonCrawler.Dungeon
         
         private void CheckEnemies()
         {
-            // Find all enemy objects
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            
-            if (enemies.Length == 0)
+            // Check if Enemy tag exists to avoid exceptions
+            try
             {
+                // Find all enemy objects
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+                if (enemies.Length == 0)
+                {
+                    UnlockDoor();
+                }
+            }
+            catch (UnityException)
+            {
+                // Enemy tag doesn't exist - unlock door by default
                 UnlockDoor();
             }
         }

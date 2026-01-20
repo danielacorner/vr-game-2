@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
+using VRDungeonCrawler.Player;
 
 namespace VRDungeonCrawler.Environment
 {
@@ -181,9 +183,28 @@ namespace VRDungeonCrawler.Environment
             // Check if scene exists in build settings
             if (Application.CanStreamedLevelBeLoaded(dungeonSceneName))
             {
-                if (showDebug)
-                    Debug.Log($"[PortalMenu] Loading scene: {dungeonSceneName}");
+                Debug.Log($"[PortalMenu] Loading scene: {dungeonSceneName}");
 
+                // Tell PersistentPlayer to prepare for scene load
+                GameObject xrOrigin = GameObject.Find("XR Origin (XR Rig)");
+                if (xrOrigin != null)
+                {
+                    PersistentPlayer persistentPlayer = xrOrigin.GetComponent<PersistentPlayer>();
+                    if (persistentPlayer != null)
+                    {
+                        persistentPlayer.PrepareForSceneLoad();
+                    }
+                    else
+                    {
+                        Debug.LogError("[PortalMenu] PersistentPlayer component not found on XR Origin!");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("[PortalMenu] XR Origin not found!");
+                }
+
+                // Load the scene - PersistentPlayer will handle positioning
                 SceneManager.LoadScene(dungeonSceneName);
             }
             else
