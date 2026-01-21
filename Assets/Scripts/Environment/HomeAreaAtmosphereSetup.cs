@@ -21,7 +21,7 @@ namespace VRDungeonCrawler.Environment
 
         [Header("Positions")]
         [Tooltip("Campfire position (center of home area)")]
-        public Vector3 campfirePosition = Vector3.zero;
+        public Vector3 campfirePosition = new Vector3(-8f, 0f, -8f);
 
         [Tooltip("Portal position (edge of home area)")]
         public Vector3 portalPosition = new Vector3(20f, 0f, 20f);

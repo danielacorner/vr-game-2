@@ -28,6 +28,19 @@ namespace VRDungeonCrawler.AI
         [Tooltip("Maximum distance from spawn point")]
         public float maxRoamDistance = 12f;
 
+        [Header("Damage Response")]
+        [Tooltip("Flash color when hit")]
+        public Color hitFlashColor = new Color(1f, 0.8f, 0f, 1f); // Yellow flash (friendly)
+
+        [Tooltip("Duration of flash effect")]
+        public float flashDuration = 0.2f;
+
+        [Tooltip("Number of flash cycles when hit")]
+        public int flashCycles = 2;
+
+        [Tooltip("Knockback force when hit")]
+        public float knockbackForce = 4f; // Lighter than monsters
+
         [Header("Debug")]
         [Tooltip("Show debug logs")]
         public bool showDebug = false;
@@ -38,6 +51,16 @@ namespace VRDungeonCrawler.AI
         private Vector3 currentMoveDirection;
         private float nextActionTime;
         private bool isPaused = false;
+
+        // Damage response variables
+        private bool isFlashing = false;
+        private float flashTimer;
+        private int currentFlashCycle;
+        private System.Collections.Generic.List<MeshRenderer> meshRenderers = new System.Collections.Generic.List<MeshRenderer>();
+        private System.Collections.Generic.Dictionary<MeshRenderer, Material[]> originalMaterials = new System.Collections.Generic.Dictionary<MeshRenderer, Material[]>();
+        private System.Collections.Generic.Dictionary<Material, Color> originalColors = new System.Collections.Generic.Dictionary<Material, Color>();
+        private bool isStunned = false;
+        private float stunEndTime = 0f;
 
         // Rabbit-specific
         private bool isHopping = false;
@@ -71,6 +94,36 @@ namespace VRDungeonCrawler.AI
                 rb.angularDamping = 1f;
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
+
+            // Cache mesh renderers and original materials for damage flash effect
+            meshRenderers.Clear();
+            originalMaterials.Clear();
+            originalColors.Clear();
+
+            MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in renderers)
+            {
+                if (renderer != null)
+                {
+                    meshRenderers.Add(renderer);
+
+                    // Store original materials
+                    Material[] materials = renderer.materials;
+                    Material[] materialsCopy = new Material[materials.Length];
+                    for (int i = 0; i < materials.Length; i++)
+                    {
+                        materialsCopy[i] = new Material(materials[i]);
+                        if (materials[i].HasProperty("_Color"))
+                        {
+                            originalColors[materialsCopy[i]] = materials[i].color;
+                        }
+                    }
+                    originalMaterials[renderer] = materialsCopy;
+                }
+            }
+
+            if (showDebug)
+                Debug.Log($"[AnimalAI] Cached {meshRenderers.Count} renderers for damage flash");
         }
 
         void Start()
@@ -99,6 +152,45 @@ namespace VRDungeonCrawler.AI
 
             // Update animal-specific behaviors
             UpdateAnimalBehavior();
+
+            // Update flash effect
+            if (isFlashing)
+            {
+                flashTimer -= Time.deltaTime;
+                if (flashTimer <= 0f)
+                {
+                    // Toggle between flash color and original
+                    currentFlashCycle++;
+                    if (currentFlashCycle >= flashCycles * 2)
+                    {
+                        // Flash complete
+                        RestoreOriginalMaterials();
+                        isFlashing = false;
+                        currentFlashCycle = 0;
+                    }
+                    else
+                    {
+                        // Toggle flash
+                        if (currentFlashCycle % 2 == 0)
+                        {
+                            RestoreOriginalMaterials();
+                        }
+                        else
+                        {
+                            ApplyHitFlash();
+                        }
+                        flashTimer = flashDuration;
+                    }
+                }
+            }
+
+            // Update stun state
+            if (isStunned && Time.time >= stunEndTime)
+            {
+                isStunned = false;
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] {animalType} recovered from stun");
+            }
         }
 
         void FixedUpdate()
@@ -402,8 +494,8 @@ namespace VRDungeonCrawler.AI
 
         void MoveAnimal()
         {
-            // Don't move if paused or grazing
-            if (isPaused || isGrazing)
+            // Don't move if paused, grazing, or stunned
+            if (isPaused || isGrazing || isStunned)
             {
                 rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
                 return;
@@ -476,6 +568,230 @@ namespace VRDungeonCrawler.AI
 
                 if (showDebug)
                     Debug.Log($"[AnimalAI] {animalType} out of bounds, returning to spawn");
+            }
+        }
+
+        // ========================================
+        // DAMAGE SYSTEM
+        // ========================================
+
+        /// <summary>
+        /// Take damage from spells or other sources
+        /// Animals have infinite HP but still react to damage
+        /// </summary>
+        public void TakeDamage(int damage, Vector3 hitDirection)
+        {
+            if (showDebug)
+                Debug.Log($"[AnimalAI] {animalType} {gameObject.name} took {damage} damage from direction {hitDirection}");
+
+            // Spawn damage number (yellow for friendly animals)
+            Vector3 damageNumberPos = transform.position + Vector3.up * 0.5f;
+            DamageNumber.Create(damage, damageNumberPos, hitFlashColor);
+
+            // Apply visual flash effect
+            StartFlashEffect();
+
+            // Apply knockback
+            ApplyKnockback(hitDirection);
+
+            // Apply stun (brief pause)
+            isStunned = true;
+            stunEndTime = Time.time + 0.5f; // 0.5 second stun
+
+            // Start damage animations
+            StartCoroutine(DamageRecoilAnimation());
+            StartCoroutine(ScaleUpAnimation());
+        }
+
+        /// <summary>
+        /// Start the flash effect
+        /// </summary>
+        void StartFlashEffect()
+        {
+            isFlashing = true;
+            flashTimer = flashDuration;
+            currentFlashCycle = 0;
+            ApplyHitFlash();
+        }
+
+        /// <summary>
+        /// Apply hit flash color to all materials
+        /// </summary>
+        void ApplyHitFlash()
+        {
+            foreach (MeshRenderer renderer in meshRenderers)
+            {
+                if (renderer != null)
+                {
+                    Material[] materials = renderer.materials;
+                    for (int i = 0; i < materials.Length; i++)
+                    {
+                        if (materials[i].HasProperty("_Color"))
+                        {
+                            materials[i].color = hitFlashColor;
+                        }
+                    }
+                    renderer.materials = materials;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Restore original material colors
+        /// </summary>
+        void RestoreOriginalMaterials()
+        {
+            foreach (var kvp in originalMaterials)
+            {
+                MeshRenderer renderer = kvp.Key;
+                Material[] originalMats = kvp.Value;
+
+                if (renderer != null)
+                {
+                    Material[] currentMats = renderer.materials;
+                    for (int i = 0; i < currentMats.Length && i < originalMats.Length; i++)
+                    {
+                        if (currentMats[i].HasProperty("_Color") && originalColors.ContainsKey(originalMats[i]))
+                        {
+                            currentMats[i].color = originalColors[originalMats[i]];
+                        }
+                    }
+                    renderer.materials = currentMats;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Apply knockback force when hit
+        /// </summary>
+        void ApplyKnockback(Vector3 direction)
+        {
+            if (rb != null)
+            {
+                // Normalize and apply force
+                Vector3 knockbackDir = direction.normalized;
+
+                // Add slight upward component for more dramatic effect
+                knockbackDir.y = 0.3f;
+                knockbackDir.Normalize();
+
+                rb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse);
+
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] {animalType} knocked back with force {knockbackForce}");
+            }
+        }
+
+        /// <summary>
+        /// Damage recoil animation - squash effect
+        /// </summary>
+        IEnumerator DamageRecoilAnimation()
+        {
+            Vector3 originalScale = transform.localScale;
+            Vector3 squashScale = new Vector3(originalScale.x * 0.85f, originalScale.y * 1.15f, originalScale.z * 0.85f);
+
+            float duration = 0.15f;
+            float elapsed = 0f;
+
+            // Squash
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                transform.localScale = Vector3.Lerp(originalScale, squashScale, t);
+                yield return null;
+            }
+
+            // Return to normal
+            elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                transform.localScale = Vector3.Lerp(squashScale, originalScale, t);
+                yield return null;
+            }
+
+            transform.localScale = originalScale;
+        }
+
+        /// <summary>
+        /// Scale up animation - brief size pulse
+        /// </summary>
+        IEnumerator ScaleUpAnimation()
+        {
+            Vector3 originalScale = transform.localScale;
+            Vector3 largeScale = originalScale * 1.1f;
+
+            float duration = 0.1f;
+            float elapsed = 0f;
+
+            // Scale up
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                transform.localScale = Vector3.Lerp(originalScale, largeScale, t);
+                yield return null;
+            }
+
+            // Scale back down
+            elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                transform.localScale = Vector3.Lerp(largeScale, originalScale, t);
+                yield return null;
+            }
+
+            transform.localScale = originalScale;
+        }
+
+        /// <summary>
+        /// Handle collision with spell projectiles
+        /// </summary>
+        void OnTriggerEnter(Collider other)
+        {
+            HandleSpellHit(other);
+        }
+
+        /// <summary>
+        /// Handle collision with spell projectiles (alternative collision detection)
+        /// </summary>
+        void OnCollisionEnter(Collision collision)
+        {
+            HandleSpellHit(collision.collider);
+        }
+
+        /// <summary>
+        /// Process spell hit and apply damage
+        /// </summary>
+        void HandleSpellHit(Collider other)
+        {
+            // Check if hit by spell projectile
+            if (other.CompareTag("Spell") || other.CompareTag("Projectile"))
+            {
+                // Get spell damage from projectile
+                var spellProjectile = other.GetComponent<VRDungeonCrawler.Player.SpellProjectile>();
+                if (spellProjectile != null)
+                {
+                    int damage = spellProjectile.GetDamage();
+                    Vector3 hitDirection = (transform.position - other.transform.position).normalized;
+                    TakeDamage(damage, hitDirection);
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {animalType} hit by spell projectile, damage: {damage}");
+                }
+                else
+                {
+                    // Default damage if no projectile component
+                    Vector3 hitDirection = (transform.position - other.transform.position).normalized;
+                    TakeDamage(5, hitDirection);
+
+                    if (showDebug)
+                        Debug.Log($"[AnimalAI] {animalType} hit by unknown projectile, default damage: 5");
+                }
             }
         }
     }
