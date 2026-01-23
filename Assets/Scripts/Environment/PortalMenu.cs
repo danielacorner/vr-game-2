@@ -42,7 +42,7 @@ namespace VRDungeonCrawler.Environment
 
         [Header("Scene")]
         [Tooltip("Name of dungeon scene to load")]
-        public string dungeonSceneName = "Dungeon";
+        public string dungeonSceneName = "Dungeon1";
 
         [Header("Positioning")]
         [Tooltip("Distance from portal center where menu appears (at portal edge)")]
@@ -180,37 +180,51 @@ namespace VRDungeonCrawler.Environment
 
         void LoadDungeonScene()
         {
-            // Check if scene exists in build settings
-            if (Application.CanStreamedLevelBeLoaded(dungeonSceneName))
+            Debug.Log("========================================");
+            Debug.Log($"[PortalMenu] LoadDungeonScene() CALLED - Scene: {dungeonSceneName}");
+            Debug.Log("========================================");
+
+            // NEW APPROACH: Use Bootstrap Manager for additive scene loading
+            // This keeps XR Origin persistent without breaking head tracking
+
+            if (VRDungeonCrawler.Core.BootstrapManager.Instance != null)
             {
-                Debug.Log($"[PortalMenu] Loading scene: {dungeonSceneName}");
-
-                // Tell PersistentPlayer to prepare for scene load
-                GameObject xrOrigin = GameObject.Find("XR Origin (XR Rig)");
-                if (xrOrigin != null)
-                {
-                    PersistentPlayer persistentPlayer = xrOrigin.GetComponent<PersistentPlayer>();
-                    if (persistentPlayer != null)
-                    {
-                        persistentPlayer.PrepareForSceneLoad();
-                    }
-                    else
-                    {
-                        Debug.LogError("[PortalMenu] PersistentPlayer component not found on XR Origin!");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("[PortalMenu] XR Origin not found!");
-                }
-
-                // Load the scene - PersistentPlayer will handle positioning
-                SceneManager.LoadScene(dungeonSceneName);
+                Debug.Log($"[PortalMenu] ✓ Using BootstrapManager for scene transition");
+                VRDungeonCrawler.Core.BootstrapManager.Instance.LoadContentScene(dungeonSceneName);
             }
             else
             {
-                Debug.LogError($"[PortalMenu] Scene '{dungeonSceneName}' not found in build settings! Add it to File > Build Settings > Scenes in Build");
+                Debug.LogWarning("[PortalMenu] ⚠ BootstrapManager not found - using async scene load");
+                Debug.LogWarning("[PortalMenu] For proper VR tracking, set up Bootstrap scene (see instructions)");
+
+                // Temporary fallback: Use async loading to avoid freeze
+                StartCoroutine(LoadSceneAsync(dungeonSceneName));
             }
+        }
+
+        private System.Collections.IEnumerator LoadSceneAsync(string sceneName)
+        {
+            Debug.Log($"[PortalMenu] Starting async scene load: {sceneName}");
+
+            // Load scene asynchronously to avoid freeze
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+
+            if (asyncLoad == null)
+            {
+                Debug.LogError($"[PortalMenu] Failed to start loading {sceneName}");
+                yield break;
+            }
+
+            asyncLoad.allowSceneActivation = true;
+
+            // Wait until the scene is fully loaded
+            while (!asyncLoad.isDone)
+            {
+                Debug.Log($"[PortalMenu] Loading progress: {asyncLoad.progress * 100}%");
+                yield return null;
+            }
+
+            Debug.Log($"[PortalMenu] ✓ Scene {sceneName} loaded");
         }
 
         void PositionMenuRelativeToPlayer()

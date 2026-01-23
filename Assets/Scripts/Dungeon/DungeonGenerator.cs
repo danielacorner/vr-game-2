@@ -189,7 +189,7 @@ namespace VRDungeonCrawler.Dungeon
         private DungeonRoom CreateRoom(Vector2Int gridPos, RoomType type)
         {
             GameObject prefab = null;
-            
+
             switch (type)
             {
                 case RoomType.Start:
@@ -205,11 +205,25 @@ namespace VRDungeonCrawler.Dungeon
                     prefab = bossRoomPrefab;
                     break;
             }
-            
+
+            // Fallback to NormalRoom if specific prefab is missing
+            if (prefab == null && roomPrefabs.Length > 0)
+            {
+                prefab = roomPrefabs[0];
+                Debug.LogWarning($"[DungeonGenerator] {type}Room prefab missing, using NormalRoom fallback");
+            }
+
             Vector3 worldPos = new Vector3(gridPos.x * roomSize, 0, gridPos.y * roomSize);
-            GameObject roomObj = prefab != null ? Instantiate(prefab, worldPos, Quaternion.identity, transform) : new GameObject($"Room_{type}");
+
+            // FORCE empty GameObject - don't use prefabs (they have geometry that breaks head tracking debugging)
+            GameObject roomObj = new GameObject($"Room_{type}");
+            roomObj.transform.position = worldPos;
+            roomObj.transform.SetParent(transform);
             roomObj.name = $"{type}Room_{gridPos}";
-            
+
+            // TEMPORARY: Add debug markers to room (invisible floor + light only)
+            AddDebugMarkers(roomObj);
+
             DungeonRoom room = new DungeonRoom
             {
                 gridPosition = gridPos,
@@ -217,10 +231,10 @@ namespace VRDungeonCrawler.Dungeon
                 roomType = type,
                 roomObject = roomObj
             };
-            
+
             generatedRooms.Add(room);
             occupiedCells.Add(gridPos);
-            
+
             return room;
         }
         
@@ -383,7 +397,50 @@ namespace VRDungeonCrawler.Dungeon
             // Add boss door component
             var bossDoor = door.AddComponent<BossDoor>();
         }
-        
+
+        private void AddDebugMarkers(GameObject roomObj)
+        {
+            // DESTROY EVERYTHING - completely empty space
+            foreach (Transform child in roomObj.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            // Disable room renderer
+            Renderer roomRenderer = roomObj.GetComponent<Renderer>();
+            if (roomRenderer != null)
+            {
+                roomRenderer.enabled = false;
+            }
+
+            // Create SOLID VISIBLE floor using CUBE (easier to debug than invisible plane)
+            GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            floor.name = "FLOOR_SOLID";
+            floor.transform.SetParent(roomObj.transform);
+            floor.transform.localPosition = new Vector3(0, -0.5f, 0); // Slightly below origin
+            floor.transform.localScale = new Vector3(20f, 1f, 20f); // Large flat floor
+
+            // Make floor VISIBLE for debugging (green color)
+            Renderer floorRenderer = floor.GetComponent<Renderer>();
+            if (floorRenderer != null && floorRenderer.material != null)
+            {
+                floorRenderer.material.color = Color.green;
+            }
+
+            // ONLY add ONE bright light - nothing else
+            GameObject lightObj = new GameObject("MAIN_LIGHT");
+            lightObj.transform.SetParent(roomObj.transform);
+            lightObj.transform.localPosition = new Vector3(0, 10f, 0);
+
+            Light light = lightObj.AddComponent<Light>();
+            light.type = LightType.Point;
+            light.intensity = 20f; // VERY bright
+            light.range = 50f;
+            light.color = Color.white;
+
+            Debug.Log($"[DungeonGenerator] Created VISIBLE GREEN FLOOR at Y=-0.5 + bright light");
+        }
+
         private void OnDrawGizmos()
         {
             if (generatedRooms.Count == 0) return;
