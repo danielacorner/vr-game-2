@@ -67,6 +67,7 @@ namespace VRDungeonCrawler.Dungeon
             // Create LARGE, OBVIOUS floor for debugging - BRIGHT BLUE
             GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Cube);
             floor.name = "EntranceFloor";
+            floor.layer = LayerMask.NameToLayer("Default"); // Ensure teleportation works
             floor.transform.SetParent(transform);
             floor.transform.localPosition = new Vector3(0, -0.5f, 0);
             floor.transform.localScale = new Vector3(roomWidth, 1f, roomLength);
