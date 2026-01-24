@@ -1,503 +1,697 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VRDungeonCrawler.Dungeon
 {
     /// <summary>
-    /// Procedurally generates dungeon layout similar to Ancient Dungeon VR
-    /// Creates rooms, corridors, and populates with chests, enemies, shop, and boss door
+    /// Production-ready procedural dungeon generation with diverse room types
+    /// Creates fully-featured rooms starting from the entrance room's north wall
+    /// Includes combat rooms, treasure rooms, shop room, and boss room with door
     /// </summary>
     public class DungeonGenerator : MonoBehaviour
     {
         [Header("Dungeon Settings")]
-        [Tooltip("Number of rooms to generate")]
-        public int roomCount = 8;
-        
-        [Tooltip("Grid size for room placement")]
-        public int gridSize = 10;
-        
-        [Tooltip("Size of each room (meters)")]
-        public float roomSize = 10f;
-        
-        [Header("Room Prefabs")]
-        [Tooltip("Starting room prefab")]
-        public GameObject startRoomPrefab;
-        
-        [Tooltip("Normal room prefabs")]
-        public GameObject[] roomPrefabs;
-        
-        [Tooltip("Shop room prefab")]
-        public GameObject shopRoomPrefab;
-        
-        [Tooltip("Boss room prefab")]
-        public GameObject bossRoomPrefab;
-        
-        [Tooltip("Corridor prefab")]
-        public GameObject corridorPrefab;
-        
-        [Header("Spawnable Objects")]
-        [Tooltip("Chest prefab")]
-        public GameObject chestPrefab;
-        
-        [Tooltip("Enemy prefabs")]
-        public GameObject[] enemyPrefabs;
-        
+        [Tooltip("Total number of rooms to generate (including special rooms)")]
+        [Range(5, 20)]
+        public int totalRoomCount = 12;
+
+        [Tooltip("Room size in grid units (2m per grid)")]
+        [Range(3, 8)]
+        public int roomSizeInGrids = 5;
+
         [Header("Generation Settings")]
         [Tooltip("Random seed (0 = random)")]
         public int seed = 0;
-        
-        [Tooltip("Min enemies per room")]
-        public int minEnemiesPerRoom = 1;
-        
-        [Tooltip("Max enemies per room")]
-        public int maxEnemiesPerRoom = 3;
-        
-        [Tooltip("Chance to spawn chest (0-1)")]
-        public float chestSpawnChance = 0.3f;
-        
-        private List<DungeonRoom> generatedRooms = new List<DungeonRoom>();
+
+        [Tooltip("Chance for room to branch (0-1)")]
+        [Range(0f, 1f)]
+        public float branchChance = 0.3f;
+
+        [Tooltip("Max attempts to place a room")]
+        public int maxPlacementAttempts = 20;
+
+        [Header("Room Content")]
+        [Tooltip("Min/max pillars per room")]
+        public Vector2Int pillarCount = new Vector2Int(2, 6);
+
+        [Tooltip("Torches per room")]
+        [Range(2, 8)]
+        public int torchesPerRoom = 4;
+
+        [Header("Debug")]
+        [Tooltip("Show debug information")]
+        public bool showDebug = true;
+
+        // Internal state
+        private List<DungeonRoom> allRooms = new List<DungeonRoom>();
         private HashSet<Vector2Int> occupiedCells = new HashSet<Vector2Int>();
-        private DungeonRoom startRoom;
         private DungeonRoom shopRoom;
         private DungeonRoom bossRoom;
-        
-        private void Start()
+        private System.Random rng;
+
+        void Start()
         {
-            LoadPrefabsFromResources();
             GenerateDungeon();
         }
 
-        /// <summary>
-        /// Loads prefabs from Resources folder to populate arrays at runtime
-        /// </summary>
-        private void LoadPrefabsFromResources()
-        {
-            Debug.Log("[DungeonGenerator] Loading prefabs from Resources...");
-
-            // Load room prefabs
-            if (roomPrefabs == null || roomPrefabs.Length == 0)
-            {
-                GameObject normalRoom = Resources.Load<GameObject>("Dungeon/NormalRoom");
-                if (normalRoom != null)
-                {
-                    roomPrefabs = new GameObject[] { normalRoom };
-                    Debug.Log("[DungeonGenerator] Loaded NormalRoom from Resources");
-                }
-                else
-                {
-                    Debug.LogError("[DungeonGenerator] Failed to load NormalRoom from Resources/Dungeon/");
-                }
-            }
-
-            // Load enemy prefabs
-            if (enemyPrefabs == null || enemyPrefabs.Length == 0)
-            {
-                GameObject enemyBasic = Resources.Load<GameObject>("Dungeon/Enemy_Basic");
-                GameObject enemyTough = Resources.Load<GameObject>("Dungeon/Enemy_Tough");
-
-                if (enemyBasic != null && enemyTough != null)
-                {
-                    enemyPrefabs = new GameObject[] { enemyBasic, enemyTough };
-                    Debug.Log("[DungeonGenerator] Loaded 2 enemy prefabs from Resources");
-                }
-                else
-                {
-                    Debug.LogError("[DungeonGenerator] Failed to load enemy prefabs from Resources/Dungeon/");
-                }
-            }
-
-            Debug.Log($"[DungeonGenerator] Prefab loading complete. RoomPrefabs: {roomPrefabs?.Length ?? 0}, EnemyPrefabs: {enemyPrefabs?.Length ?? 0}");
-        }
-        
         public void GenerateDungeon()
         {
-            Debug.Log("[DungeonGenerator] ========================================");
-            Debug.Log("[DungeonGenerator] Starting dungeon generation...");
-            Debug.Log($"[DungeonGenerator] Generator position: {transform.position}");
-            Debug.Log("[DungeonGenerator] ========================================");
+            if (showDebug)
+            {
+                Debug.Log("========================================");
+                Debug.Log("[DungeonGenerator] Starting dungeon generation...");
+                Debug.Log($"[DungeonGenerator] Target room count: {totalRoomCount}");
+                Debug.Log("========================================");
+            }
 
-            // Set random seed
-            if (seed != 0)
-                Random.InitState(seed);
-            else
-                Random.InitState(System.DateTime.Now.Millisecond);
+            // Initialize random number generator
+            rng = seed != 0 ? new System.Random(seed) : new System.Random();
 
             // Clear previous dungeon
             ClearDungeon();
 
-            // NOTE: Entrance room is static in the scene (not generated here)
-            // Generate procedural dungeon starting from entrance exit
-
-            // Generate layout starting from entrance exit
+            // Generate room layout using branching algorithm
             GenerateRoomLayout();
+
+            // Build actual room geometry
+            BuildRoomGeometry();
 
             // Connect rooms with corridors
             ConnectRooms();
 
-            // Populate rooms
-            PopulateRooms();
+            // Add decorations and features
+            DecorateRooms();
 
-            Debug.Log("[DungeonGenerator] ========================================");
-            Debug.Log($"[DungeonGenerator] ✓ Generated {generatedRooms.Count} procedural rooms");
-            Debug.Log("[DungeonGenerator] ========================================");
+            if (showDebug)
+            {
+                Debug.Log("========================================");
+                Debug.Log($"[DungeonGenerator] ✓ Generated {allRooms.Count} rooms successfully");
+                Debug.Log($"[DungeonGenerator] Shop room at: {shopRoom?.gridPosition}");
+                Debug.Log($"[DungeonGenerator] Boss room at: {bossRoom?.gridPosition}");
+                Debug.Log("========================================");
+            }
         }
-        
+
         private void ClearDungeon()
         {
-            foreach (var room in generatedRooms)
+            foreach (var room in allRooms)
             {
                 if (room.roomObject != null)
                     Destroy(room.roomObject);
             }
 
-            generatedRooms.Clear();
+            allRooms.Clear();
             occupiedCells.Clear();
         }
 
         private void GenerateRoomLayout()
         {
-            // Start procedural generation from in front of entrance (Z+2 grid cells forward)
-            Vector2Int entranceExitCell = new Vector2Int(0, 2);
-            startRoom = CreateRoom(entranceExitCell, RoomType.Start);
+            // Start from entrance room's north wall (0, 0) in grid space
+            // Entrance room is at origin, first procedural room is north (Z+)
+            Vector2Int startCell = new Vector2Int(0, roomSizeInGrids);
 
-            // Generate normal rooms using random walk from entrance exit
-            Vector2Int currentCell = entranceExitCell;
-            int roomsGenerated = 1;
-            
-            while (roomsGenerated < roomCount - 2) // -2 for shop and boss
+            // Create starting room connected to entrance
+            CreateRoom(startCell, RoomType.Start);
+
+            // Queue for breadth-first generation
+            Queue<DungeonRoom> roomQueue = new Queue<DungeonRoom>();
+            roomQueue.Enqueue(allRooms[0]);
+
+            int roomsToGenerate = totalRoomCount - 3; // Reserve slots for start, shop, boss
+            int normalRoomsCreated = 0;
+
+            while (roomQueue.Count > 0 && normalRoomsCreated < roomsToGenerate)
             {
-                // Pick random direction
-                Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
-                Vector2Int direction = directions[Random.Range(0, directions.Length)];
-                Vector2Int nextCell = currentCell + direction;
-                
-                // Check if cell is free and within bounds
-                if (!occupiedCells.Contains(nextCell) && 
-                    Mathf.Abs(nextCell.x) < gridSize && 
-                    Mathf.Abs(nextCell.y) < gridSize)
+                DungeonRoom currentRoom = roomQueue.Dequeue();
+
+                // Try to branch from this room
+                Vector2Int[] directions = GetRandomDirections();
+
+                foreach (var dir in directions)
                 {
-                    CreateRoom(nextCell, RoomType.Normal);
-                    currentCell = nextCell;
-                    roomsGenerated++;
+                    if (normalRoomsCreated >= roomsToGenerate)
+                        break;
+
+                    // Decide whether to branch
+                    bool shouldBranch = (float)rng.NextDouble() < branchChance || roomQueue.Count == 0;
+
+                    if (shouldBranch)
+                    {
+                        Vector2Int newCell = currentRoom.gridPosition + dir * roomSizeInGrids;
+
+                        if (CanPlaceRoom(newCell))
+                        {
+                            RoomType type = DetermineRoomType(normalRoomsCreated, roomsToGenerate);
+                            DungeonRoom newRoom = CreateRoom(newCell, type);
+                            newRoom.connectedFrom = currentRoom;
+                            roomQueue.Enqueue(newRoom);
+                            normalRoomsCreated++;
+                        }
+                    }
                 }
             }
-            
-            // Add shop room (branching from a random normal room)
-            DungeonRoom randomRoom = generatedRooms[Random.Range(1, generatedRooms.Count)];
-            Vector2Int shopCell = FindEmptyNeighbor(randomRoom.gridPosition);
-            if (shopCell != Vector2Int.zero || !occupiedCells.Contains(shopCell))
-            {
-                shopRoom = CreateRoom(shopCell, RoomType.Shop);
-            }
-            
-            // Add boss room at the furthest point from start
-            Vector2Int bossCell = FindFurthestCell();
-            bossRoom = CreateRoom(bossCell, RoomType.Boss);
+
+            // Place shop room branching from a random room
+            PlaceSpecialRoom(RoomType.Shop);
+
+            // Place boss room at furthest point from start
+            PlaceBossRoom();
         }
-        
+
+        private RoomType DetermineRoomType(int index, int total)
+        {
+            float progress = (float)index / total;
+
+            // More challenging rooms as you progress
+            if (progress < 0.3f)
+                return RoomType.Combat;
+            else if (progress < 0.6f)
+                return (float)rng.NextDouble() < 0.7f ? RoomType.Combat : RoomType.Treasure;
+            else
+                return (float)rng.NextDouble() < 0.5f ? RoomType.Combat : RoomType.Puzzle;
+        }
+
         private DungeonRoom CreateRoom(Vector2Int gridPos, RoomType type)
         {
-            GameObject prefab = null;
-
-            switch (type)
+            // Mark grid cells as occupied
+            for (int x = 0; x < roomSizeInGrids; x++)
             {
-                case RoomType.Start:
-                    prefab = startRoomPrefab;
-                    break;
-                case RoomType.Normal:
-                    prefab = roomPrefabs.Length > 0 ? roomPrefabs[Random.Range(0, roomPrefabs.Length)] : null;
-                    break;
-                case RoomType.Shop:
-                    prefab = shopRoomPrefab;
-                    break;
-                case RoomType.Boss:
-                    prefab = bossRoomPrefab;
-                    break;
-            }
-
-            // Fallback to NormalRoom if specific prefab is missing
-            if (prefab == null && roomPrefabs.Length > 0)
-            {
-                prefab = roomPrefabs[0];
-                Debug.LogWarning($"[DungeonGenerator] {type}Room prefab missing, using NormalRoom fallback");
-            }
-
-            Vector3 worldPos = new Vector3(gridPos.x * roomSize, 0, gridPos.y * roomSize);
-
-            // FORCE empty GameObject - don't use prefabs (they have geometry that breaks head tracking debugging)
-            GameObject roomObj = new GameObject($"Room_{type}");
-            roomObj.transform.position = worldPos;
-            roomObj.transform.SetParent(transform);
-            roomObj.name = $"{type}Room_{gridPos}";
-
-            // Add simple colored cube marker at room position for debugging
-            GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            marker.name = "RoomMarker";
-            marker.transform.SetParent(roomObj.transform);
-            marker.transform.localPosition = new Vector3(0, 1.5f, 0); // Floating marker
-            marker.transform.localScale = new Vector3(2f, 2f, 2f);
-
-            // Color code by room type
-            Renderer markerRenderer = marker.GetComponent<Renderer>();
-            if (markerRenderer != null)
-            {
-                switch (type)
+                for (int y = 0; y < roomSizeInGrids; y++)
                 {
-                    case RoomType.Start:
-                        markerRenderer.material.color = Color.green;
-                        break;
-                    case RoomType.Normal:
-                        markerRenderer.material.color = Color.white;
-                        break;
-                    case RoomType.Shop:
-                        markerRenderer.material.color = Color.yellow;
-                        break;
-                    case RoomType.Boss:
-                        markerRenderer.material.color = Color.red;
-                        break;
+                    occupiedCells.Add(new Vector2Int(gridPos.x + x, gridPos.y + y));
                 }
             }
 
-            Debug.Log($"[DungeonGenerator] Created {type} room at {worldPos} with {markerRenderer.material.color} marker");
+            Vector3 worldPos = new Vector3(
+                gridPos.x * DungeonRoomBuilder.GRID_SIZE,
+                0,
+                gridPos.y * DungeonRoomBuilder.GRID_SIZE
+            );
 
             DungeonRoom room = new DungeonRoom
             {
                 gridPosition = gridPos,
                 worldPosition = worldPos,
                 roomType = type,
-                roomObject = roomObj
+                sizeInGrids = roomSizeInGrids
             };
 
-            generatedRooms.Add(room);
-            occupiedCells.Add(gridPos);
+            allRooms.Add(room);
+
+            if (type == RoomType.Shop)
+                shopRoom = room;
+            else if (type == RoomType.Boss)
+                bossRoom = room;
 
             return room;
         }
-        
-        private Vector2Int FindEmptyNeighbor(Vector2Int cell)
+
+        private bool CanPlaceRoom(Vector2Int gridPos)
         {
-            Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
-            
+            // Check if all cells for this room are free
+            for (int x = 0; x < roomSizeInGrids; x++)
+            {
+                for (int y = 0; y < roomSizeInGrids; y++)
+                {
+                    Vector2Int cell = new Vector2Int(gridPos.x + x, gridPos.y + y);
+                    if (occupiedCells.Contains(cell))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        private Vector2Int[] GetRandomDirections()
+        {
+            Vector2Int[] directions = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+
+            // Shuffle directions
+            for (int i = 0; i < directions.Length; i++)
+            {
+                int randomIndex = rng.Next(i, directions.Length);
+                Vector2Int temp = directions[i];
+                directions[i] = directions[randomIndex];
+                directions[randomIndex] = temp;
+            }
+
+            return directions;
+        }
+
+        private void PlaceSpecialRoom(RoomType type)
+        {
+            // Find a random non-special room to branch from
+            List<DungeonRoom> candidateRooms = allRooms
+                .Where(r => r.roomType != RoomType.Shop && r.roomType != RoomType.Boss)
+                .ToList();
+
+            if (candidateRooms.Count == 0)
+                return;
+
+            DungeonRoom branchFrom = candidateRooms[rng.Next(candidateRooms.Count)];
+
+            // Try directions until we find a valid placement
+            Vector2Int[] directions = GetRandomDirections();
             foreach (var dir in directions)
             {
-                Vector2Int neighbor = cell + dir;
-                if (!occupiedCells.Contains(neighbor) && 
-                    Mathf.Abs(neighbor.x) < gridSize && 
-                    Mathf.Abs(neighbor.y) < gridSize)
+                Vector2Int newCell = branchFrom.gridPosition + dir * roomSizeInGrids;
+
+                if (CanPlaceRoom(newCell))
                 {
-                    return neighbor;
+                    DungeonRoom specialRoom = CreateRoom(newCell, type);
+                    specialRoom.connectedFrom = branchFrom;
+                    return;
                 }
             }
-            
-            return cell;
         }
-        
-        private Vector2Int FindFurthestCell()
+
+        private void PlaceBossRoom()
         {
-            Vector2Int furthest = Vector2Int.zero;
+            // Find furthest room from start
+            DungeonRoom furthestRoom = allRooms[0];
             float maxDist = 0;
-            
-            for (int x = -gridSize; x < gridSize; x++)
+
+            foreach (var room in allRooms)
             {
-                for (int y = -gridSize; y < gridSize; y++)
+                float dist = Vector2Int.Distance(Vector2Int.zero, room.gridPosition);
+                if (dist > maxDist)
                 {
-                    Vector2Int cell = new Vector2Int(x, y);
-                    if (!occupiedCells.Contains(cell))
-                    {
-                        float dist = Vector2Int.Distance(Vector2Int.zero, cell);
-                        if (dist > maxDist)
-                        {
-                            maxDist = dist;
-                            furthest = cell;
-                        }
-                    }
+                    maxDist = dist;
+                    furthestRoom = room;
                 }
             }
-            
-            return furthest;
+
+            // Try to place boss room adjacent to furthest room
+            Vector2Int[] directions = GetRandomDirections();
+            foreach (var dir in directions)
+            {
+                Vector2Int newCell = furthestRoom.gridPosition + dir * roomSizeInGrids;
+
+                if (CanPlaceRoom(newCell))
+                {
+                    DungeonRoom boss = CreateRoom(newCell, RoomType.Boss);
+                    boss.connectedFrom = furthestRoom;
+                    return;
+                }
+            }
         }
-        
+
+        private void BuildRoomGeometry()
+        {
+            foreach (var room in allRooms)
+            {
+                GameObject roomObj = DungeonRoomBuilder.CreateRoom(
+                    $"{room.roomType}Room_{room.gridPosition}",
+                    room.sizeInGrids,
+                    room.sizeInGrids,
+                    transform
+                );
+
+                roomObj.transform.position = room.worldPosition;
+                room.roomObject = roomObj;
+
+                // Add TeleportationArea to floor
+                AddTeleportationToFloor(roomObj);
+
+                // Add ceiling
+                GameObject ceiling = DungeonRoomBuilder.CreateCeiling(room.sizeInGrids, room.sizeInGrids);
+                ceiling.transform.SetParent(roomObj.transform);
+
+                if (showDebug)
+                    Debug.Log($"[DungeonGenerator] Built {room.roomType} room at {room.worldPosition}");
+            }
+        }
+
+        private void AddTeleportationToFloor(GameObject roomObj)
+        {
+            // Find all floor tiles and add TeleportationArea
+            Transform floorParent = roomObj.transform.Find("Floor");
+            if (floorParent != null)
+            {
+                foreach (Transform floorTile in floorParent)
+                {
+                    var teleportArea = floorTile.gameObject.AddComponent<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationArea>();
+                    teleportArea.interactionLayers = UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask.GetMask("Teleport");
+                }
+            }
+        }
+
         private void ConnectRooms()
         {
-            // Simple corridor connection - connect each room to nearest unconnected room
-            foreach (var room in generatedRooms)
+            // Create doorways where rooms connect
+            foreach (var room in allRooms)
             {
-                DungeonRoom nearest = FindNearestRoom(room);
-                if (nearest != null && corridorPrefab != null)
+                if (room.connectedFrom != null)
                 {
-                    CreateCorridor(room.worldPosition, nearest.worldPosition);
+                    CreateDoorwayBetweenRooms(room.connectedFrom, room);
                 }
             }
         }
-        
-        private DungeonRoom FindNearestRoom(DungeonRoom fromRoom)
+
+        private void CreateDoorwayBetweenRooms(DungeonRoom roomA, DungeonRoom roomB)
         {
-            DungeonRoom nearest = null;
-            float minDist = float.MaxValue;
-            
-            foreach (var room in generatedRooms)
+            // Determine which walls face each other
+            Vector3 direction = (roomB.worldPosition - roomA.worldPosition).normalized;
+
+            // Create doorway in roomA's wall facing roomB
+            GameObject doorway = DungeonRoomBuilder.CreateDoorway();
+            doorway.transform.SetParent(roomA.roomObject.transform);
+
+            float halfSize = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE / 2f;
+
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.z))
             {
-                if (room == fromRoom) continue;
-                
-                float dist = Vector3.Distance(fromRoom.worldPosition, room.worldPosition);
-                if (dist < minDist)
+                // East-West corridor
+                doorway.transform.localPosition = new Vector3(
+                    direction.x > 0 ? halfSize : -halfSize,
+                    0,
+                    0
+                );
+                doorway.transform.localRotation = Quaternion.Euler(0, direction.x > 0 ? 90 : -90, 0);
+            }
+            else
+            {
+                // North-South corridor
+                doorway.transform.localPosition = new Vector3(
+                    0,
+                    0,
+                    direction.z > 0 ? halfSize : -halfSize
+                );
+                doorway.transform.localRotation = Quaternion.Euler(0, direction.z > 0 ? 0 : 180, 0);
+            }
+
+            // Remove wall section where doorway is
+            RemoveWallSection(roomA.roomObject, doorway.transform.position, direction);
+        }
+
+        private void RemoveWallSection(GameObject roomObj, Vector3 doorwayPos, Vector3 direction)
+        {
+            Transform walls = roomObj.transform.Find("Walls");
+            if (walls == null) return;
+
+            // Find and destroy the wall segment at the doorway position
+            string wallName = GetWallName(direction);
+            Transform wall = walls.Find(wallName);
+
+            if (wall != null)
+            {
+                // Create gap in wall by destroying it
+                // In production, you'd split the wall into segments
+                Destroy(wall.gameObject);
+            }
+        }
+
+        private string GetWallName(Vector3 direction)
+        {
+            if (direction.z > 0.5f) return "NorthWall";
+            if (direction.z < -0.5f) return "SouthWall";
+            if (direction.x > 0.5f) return "EastWall";
+            if (direction.x < -0.5f) return "WestWall";
+            return "";
+        }
+
+        private void DecorateRooms()
+        {
+            foreach (var room in allRooms)
+            {
+                switch (room.roomType)
                 {
-                    minDist = dist;
-                    nearest = room;
+                    case RoomType.Start:
+                    case RoomType.Combat:
+                        DecorateCombatRoom(room);
+                        break;
+                    case RoomType.Treasure:
+                        DecorateTreasureRoom(room);
+                        break;
+                    case RoomType.Puzzle:
+                        DecoratePuzzleRoom(room);
+                        break;
+                    case RoomType.Shop:
+                        DecorateShopRoom(room);
+                        break;
+                    case RoomType.Boss:
+                        DecorateBossRoom(room);
+                        break;
                 }
             }
-            
-            return nearest;
-        }
-        
-        private void CreateCorridor(Vector3 from, Vector3 to)
-        {
-            Vector3 direction = (to - from).normalized;
-            float distance = Vector3.Distance(from, to);
-            Vector3 midpoint = (from + to) / 2f;
-            
-            GameObject corridor = Instantiate(corridorPrefab, midpoint, Quaternion.LookRotation(direction), transform);
-            corridor.transform.localScale = new Vector3(2f, 3f, distance);
-        }
-        
-        private void PopulateRooms()
-        {
-            foreach (var room in generatedRooms)
-            {
-                if (room.roomType == RoomType.Normal)
-                {
-                    // Spawn enemies
-                    int enemyCount = Random.Range(minEnemiesPerRoom, maxEnemiesPerRoom + 1);
-                    for (int i = 0; i < enemyCount; i++)
-                    {
-                        SpawnEnemy(room);
-                    }
-                    
-                    // Chance to spawn chest
-                    if (Random.value < chestSpawnChance)
-                    {
-                        SpawnChest(room);
-                    }
-                }
-                else if (room.roomType == RoomType.Boss)
-                {
-                    // Spawn boss door
-                    SpawnBossDoor(room);
-                }
-            }
-        }
-        
-        private void SpawnEnemy(DungeonRoom room)
-        {
-            if (enemyPrefabs.Length == 0) return;
-            
-            Vector3 spawnPos = room.worldPosition + new Vector3(
-                Random.Range(-roomSize * 0.3f, roomSize * 0.3f),
-                0.5f,
-                Random.Range(-roomSize * 0.3f, roomSize * 0.3f)
-            );
-            
-            GameObject enemy = Instantiate(
-                enemyPrefabs[Random.Range(0, enemyPrefabs.Length)],
-                spawnPos,
-                Quaternion.identity,
-                room.roomObject.transform
-            );
-        }
-        
-        private void SpawnChest(DungeonRoom room)
-        {
-            if (chestPrefab == null) return;
-            
-            Vector3 spawnPos = room.worldPosition + new Vector3(
-                Random.Range(-roomSize * 0.3f, roomSize * 0.3f),
-                0f,
-                Random.Range(-roomSize * 0.3f, roomSize * 0.3f)
-            );
-            
-            Instantiate(chestPrefab, spawnPos, Quaternion.identity, room.roomObject.transform);
-        }
-        
-        private void SpawnBossDoor(DungeonRoom room)
-        {
-            // Boss door spawned at room entrance
-            Vector3 doorPos = room.worldPosition + new Vector3(0, 0, -roomSize * 0.4f);
-            
-            // Create simple door placeholder for now
-            GameObject door = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            door.name = "BossDoor";
-            door.transform.position = doorPos;
-            door.transform.localScale = new Vector3(3f, 4f, 0.5f);
-            door.transform.parent = room.roomObject.transform;
-            
-            // Add boss door component
-            var bossDoor = door.AddComponent<BossDoor>();
         }
 
-        private void AddDebugMarkers(GameObject roomObj)
+        private void DecorateCombatRoom(DungeonRoom room)
         {
-            // DESTROY EVERYTHING - completely empty space
-            foreach (Transform child in roomObj.transform)
+            // Add pillars for cover
+            int pillarCount = rng.Next(this.pillarCount.x, this.pillarCount.y + 1);
+            float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.35f;
+
+            for (int i = 0; i < pillarCount; i++)
             {
-                Destroy(child.gameObject);
+                Vector3 localPos = GetRandomPositionInRoom(roomRadius);
+                GameObject pillar = DungeonRoomBuilder.CreatePillar();
+                pillar.transform.SetParent(room.roomObject.transform);
+                pillar.transform.localPosition = localPos;
             }
 
-            // Disable room renderer
-            Renderer roomRenderer = roomObj.GetComponent<Renderer>();
-            if (roomRenderer != null)
+            // Add wall torches
+            AddWallTorches(room);
+        }
+
+        private void DecorateTreasureRoom(DungeonRoom room)
+        {
+            // Central pedestal with chest
+            GameObject pedestal = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            pedestal.name = "Pedestal";
+            pedestal.transform.SetParent(room.roomObject.transform);
+            pedestal.transform.localPosition = Vector3.zero;
+            pedestal.transform.localScale = new Vector3(1.5f, 0.8f, 1.5f);
+            pedestal.GetComponent<Renderer>().material = DungeonRoomBuilder.CreatePolytopiaStone(DungeonRoomBuilder.STONE_ACCENT);
+
+            // Chest placeholder (would be actual chest prefab in production)
+            GameObject chest = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            chest.name = "TreasureChest";
+            chest.transform.SetParent(room.roomObject.transform);
+            chest.transform.localPosition = new Vector3(0, 1.2f, 0);
+            chest.transform.localScale = new Vector3(1f, 0.8f, 1f);
+
+            Material chestMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            chestMat.color = new Color(0.6f, 0.4f, 0.2f); // Brown wood
+            chest.GetComponent<Renderer>().material = chestMat;
+
+            // Corner pillars
+            float cornerOffset = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.4f;
+            Vector3[] corners = {
+                new Vector3(-cornerOffset, 0, -cornerOffset),
+                new Vector3(cornerOffset, 0, -cornerOffset),
+                new Vector3(-cornerOffset, 0, cornerOffset),
+                new Vector3(cornerOffset, 0, cornerOffset)
+            };
+
+            foreach (var corner in corners)
             {
-                roomRenderer.enabled = false;
+                GameObject pillar = DungeonRoomBuilder.CreatePillar();
+                pillar.transform.SetParent(room.roomObject.transform);
+                pillar.transform.localPosition = corner;
             }
 
-            // Create SOLID VISIBLE floor using CUBE (easier to debug than invisible plane)
-            GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            floor.name = "FLOOR_SOLID";
-            floor.transform.SetParent(roomObj.transform);
-            floor.transform.localPosition = new Vector3(0, -0.5f, 0); // Slightly below origin
-            floor.transform.localScale = new Vector3(20f, 1f, 20f); // Large flat floor
+            AddWallTorches(room);
+        }
 
-            // Make floor VISIBLE for debugging (green color)
-            Renderer floorRenderer = floor.GetComponent<Renderer>();
-            if (floorRenderer != null && floorRenderer.material != null)
+        private void DecoratePuzzleRoom(DungeonRoom room)
+        {
+            // Create pressure plate puzzle elements
+            int plateCount = rng.Next(3, 6);
+            float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.3f;
+
+            for (int i = 0; i < plateCount; i++)
             {
-                floorRenderer.material.color = Color.green;
+                Vector3 localPos = GetRandomPositionInRoom(roomRadius);
+                localPos.y = 0.05f;
+
+                GameObject plate = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                plate.name = $"PressurePlate_{i}";
+                plate.transform.SetParent(room.roomObject.transform);
+                plate.transform.localPosition = localPos;
+                plate.transform.localScale = new Vector3(1f, 0.1f, 1f);
+
+                Material plateMat = DungeonRoomBuilder.CreatePolytopiaStone(new Color(0.5f, 0.5f, 0.6f));
+                plate.GetComponent<Renderer>().material = plateMat;
             }
 
-            // ONLY add ONE bright light - nothing else
-            GameObject lightObj = new GameObject("MAIN_LIGHT");
-            lightObj.transform.SetParent(roomObj.transform);
-            lightObj.transform.localPosition = new Vector3(0, 10f, 0);
+            // Add some pillars as obstacles
+            AddWallTorches(room);
+        }
 
-            Light light = lightObj.AddComponent<Light>();
+        private void DecorateShopRoom(DungeonRoom room)
+        {
+            // Central shop counter
+            GameObject counter = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            counter.name = "ShopCounter";
+            counter.transform.SetParent(room.roomObject.transform);
+            counter.transform.localPosition = Vector3.zero;
+            counter.transform.localScale = new Vector3(3f, 1.2f, 1.5f);
+
+            Material counterMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            counterMat.color = new Color(0.4f, 0.3f, 0.2f);
+            counter.GetComponent<Renderer>().material = counterMat;
+
+            // Shop items on counter (placeholder cubes)
+            for (int i = 0; i < 3; i++)
+            {
+                GameObject item = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                item.name = $"ShopItem_{i}";
+                item.transform.SetParent(room.roomObject.transform);
+                item.transform.localPosition = new Vector3((i - 1) * 1.2f, 1.5f, 0);
+                item.transform.localScale = Vector3.one * 0.4f;
+
+                // Random colored items
+                Material itemMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                itemMat.color = new Color((float)rng.NextDouble(), (float)rng.NextDouble(), (float)rng.NextDouble());
+                itemMat.EnableKeyword("_EMISSION");
+                itemMat.SetColor("_EmissionColor", itemMat.color);
+                item.GetComponent<Renderer>().material = itemMat;
+            }
+
+            // Extra bright lighting for shop
+            GameObject shopLight = new GameObject("ShopLight");
+            shopLight.transform.SetParent(room.roomObject.transform);
+            shopLight.transform.localPosition = new Vector3(0, DungeonRoomBuilder.WALL_HEIGHT * 0.8f, 0);
+
+            Light light = shopLight.AddComponent<Light>();
             light.type = LightType.Point;
-            light.intensity = 20f; // VERY bright
-            light.range = 50f;
             light.color = Color.white;
+            light.intensity = 5f;
+            light.range = 15f;
 
-            Debug.Log($"[DungeonGenerator] Created VISIBLE GREEN FLOOR at Y=-0.5 + bright light");
+            AddWallTorches(room);
+        }
+
+        private void DecorateBossRoom(DungeonRoom room)
+        {
+            // Boss room should be more dramatic
+            // Add columns around perimeter
+            float columnRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.4f;
+            int columnCount = 8;
+
+            for (int i = 0; i < columnCount; i++)
+            {
+                float angle = (float)i / columnCount * Mathf.PI * 2f;
+                Vector3 pos = new Vector3(
+                    Mathf.Cos(angle) * columnRadius,
+                    0,
+                    Mathf.Sin(angle) * columnRadius
+                );
+
+                GameObject pillar = DungeonRoomBuilder.CreatePillar(DungeonRoomBuilder.WALL_HEIGHT * 1.2f);
+                pillar.transform.SetParent(room.roomObject.transform);
+                pillar.transform.localPosition = pos;
+            }
+
+            // Boss door at entrance
+            if (room.connectedFrom != null)
+            {
+                Vector3 doorDirection = (room.connectedFrom.worldPosition - room.worldPosition).normalized;
+                float halfSize = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE / 2f;
+
+                Vector3 doorPos = new Vector3(
+                    doorDirection.x * halfSize,
+                    0,
+                    doorDirection.z * halfSize
+                );
+
+                GameObject bossDoorObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                bossDoorObj.name = "BossDoor";
+                bossDoorObj.transform.SetParent(room.roomObject.transform);
+                bossDoorObj.transform.localPosition = doorPos;
+                bossDoorObj.transform.localScale = new Vector3(3f, 4f, 0.5f);
+
+                // Red glowing locked door material
+                Material doorMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                doorMat.color = new Color(0.8f, 0.2f, 0.2f);
+                doorMat.EnableKeyword("_EMISSION");
+                doorMat.SetColor("_EmissionColor", Color.red * 0.5f);
+                bossDoorObj.GetComponent<Renderer>().material = doorMat;
+
+                // Add BossDoor component
+                bossDoorObj.AddComponent<BossDoor>();
+            }
+
+            AddWallTorches(room, torchesPerRoom * 2); // Extra bright boss room
+        }
+
+        private void AddWallTorches(DungeonRoom room, int count = -1)
+        {
+            if (count == -1)
+                count = torchesPerRoom;
+
+            float wallDistance = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.48f;
+
+            for (int i = 0; i < count; i++)
+            {
+                float angle = (float)i / count * Mathf.PI * 2f;
+                Vector3 pos = new Vector3(
+                    Mathf.Cos(angle) * wallDistance,
+                    2.5f,
+                    Mathf.Sin(angle) * wallDistance
+                );
+
+                GameObject torch = DungeonRoomBuilder.CreateWallTorch();
+                torch.transform.SetParent(room.roomObject.transform);
+                torch.transform.localPosition = pos;
+                torch.transform.localRotation = Quaternion.LookRotation(-pos.normalized);
+            }
+        }
+
+        private Vector3 GetRandomPositionInRoom(float radius)
+        {
+            float angle = (float)rng.NextDouble() * Mathf.PI * 2f;
+            float distance = (float)rng.NextDouble() * radius;
+
+            return new Vector3(
+                Mathf.Cos(angle) * distance,
+                0,
+                Mathf.Sin(angle) * distance
+            );
         }
 
         private void OnDrawGizmos()
         {
-            if (generatedRooms.Count == 0) return;
-            
-            foreach (var room in generatedRooms)
+            if (!showDebug || allRooms.Count == 0)
+                return;
+
+            foreach (var room in allRooms)
             {
-                Color color = Color.white;
-                switch (room.roomType)
-                {
-                    case RoomType.Start: color = Color.green; break;
-                    case RoomType.Normal: color = Color.white; break;
-                    case RoomType.Shop: color = Color.yellow; break;
-                    case RoomType.Boss: color = Color.red; break;
-                }
-                
+                Color color = GetRoomTypeColor(room.roomType);
                 Gizmos.color = color;
-                Gizmos.DrawWireCube(room.worldPosition, Vector3.one * roomSize);
+
+                float size = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE;
+                Gizmos.DrawWireCube(room.worldPosition + new Vector3(size / 2f, 1f, size / 2f), new Vector3(size, 2f, size));
+
+                // Draw connections
+                if (room.connectedFrom != null)
+                {
+                    Gizmos.color = Color.cyan;
+                    Gizmos.DrawLine(
+                        room.worldPosition + Vector3.up,
+                        room.connectedFrom.worldPosition + Vector3.up
+                    );
+                }
+            }
+        }
+
+        private Color GetRoomTypeColor(RoomType type)
+        {
+            switch (type)
+            {
+                case RoomType.Start: return Color.green;
+                case RoomType.Combat: return Color.white;
+                case RoomType.Treasure: return Color.yellow;
+                case RoomType.Puzzle: return Color.cyan;
+                case RoomType.Shop: return new Color(1f, 0.5f, 0f); // Orange
+                case RoomType.Boss: return Color.red;
+                default: return Color.gray;
             }
         }
     }
-    
+
     [System.Serializable]
     public class DungeonRoom
     {
@@ -505,13 +699,17 @@ namespace VRDungeonCrawler.Dungeon
         public Vector3 worldPosition;
         public RoomType roomType;
         public GameObject roomObject;
+        public int sizeInGrids;
+        public DungeonRoom connectedFrom;
     }
-    
+
     public enum RoomType
     {
-        Start,
-        Normal,
-        Shop,
-        Boss
+        Start,      // First room after entrance
+        Combat,     // Standard combat room with pillars
+        Treasure,   // Contains treasure chest on pedestal
+        Puzzle,     // Pressure plates or puzzle elements
+        Shop,       // Shop with counter and items
+        Boss        // Boss room with dramatic columns and boss door
     }
 }
