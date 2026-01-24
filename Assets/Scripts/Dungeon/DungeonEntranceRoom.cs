@@ -84,7 +84,12 @@ namespace VRDungeonCrawler.Dungeon
 
             // Add TeleportationArea component for valid teleportation
             var teleportArea = floor.AddComponent<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationArea>();
-            Debug.Log("[DungeonEntranceRoom] Added TeleportationArea to floor");
+
+            // Set interaction layer to match teleport interactors (bit 31 = Teleport layer)
+            // This is required for XRRayInteractor to recognize this as a valid teleport target
+            teleportArea.interactionLayers = UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask.GetMask("Teleport");
+
+            Debug.Log($"[DungeonEntranceRoom] Added TeleportationArea to floor with interaction layers: {teleportArea.interactionLayers}");
 
             // Create walls (4 sides)
             CreateWall(new Vector3(0, 2f, roomLength/2), new Vector3(roomWidth, 4f, 1f)); // North
