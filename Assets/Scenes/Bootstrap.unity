@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af891aefdcaa442281e51b8a4701a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VRDungeonCrawler.Player.AnimatedTeleportation
-  animationDuration: 0.3
+  animationDuration: 0.15
   animationCurve:
     serializedVersion: 2
     m_Curve:
