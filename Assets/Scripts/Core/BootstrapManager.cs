@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Management;
 using System.Collections;
 
 namespace VRDungeonCrawler.Core
@@ -96,6 +97,9 @@ namespace VRDungeonCrawler.Core
 
                 // Move XR Origin to spawn point in new scene
                 MovePlayerToSpawnPoint(newScene);
+
+                // CRITICAL: Wait for XR subsystems and re-enable head tracking
+                yield return EnsureXRHeadTracking();
             }
 
             // Unload previous content scene
@@ -144,6 +148,14 @@ namespace VRDungeonCrawler.Core
 
             if (spawnPoint != null)
             {
+                Debug.Log("========================================");
+                Debug.Log($"[BootstrapManager] SPAWN POINT FOUND: {spawnPoint.name}");
+                Debug.Log($"[BootstrapManager] Spawn point world position: {spawnPoint.position}");
+                Debug.Log($"[BootstrapManager] Spawn point local position: {spawnPoint.localPosition}");
+                Debug.Log($"[BootstrapManager] Spawn point parent: {(spawnPoint.parent != null ? spawnPoint.parent.name : "null")}");
+                Debug.Log($"[BootstrapManager] XR Origin current position: {xrOriginObj.transform.position}");
+                Debug.Log("========================================");
+
                 // Disable CharacterController during teleport
                 CharacterController cc = xrOriginObj.GetComponent<CharacterController>();
                 if (cc != null)
@@ -155,13 +167,28 @@ namespace VRDungeonCrawler.Core
                 xrOriginObj.transform.position = spawnPoint.position;
                 xrOriginObj.transform.rotation = spawnPoint.rotation;
 
+                // CRITICAL: Sync physics transforms to prevent tracking desync
+                Physics.SyncTransforms();
+
                 // Re-enable CharacterController
                 if (cc != null)
                 {
                     cc.enabled = true;
                 }
 
-                Debug.Log($"[BootstrapManager] ✓ Moved player to spawn point: {spawnPoint.name} at {spawnPoint.position}");
+                Debug.Log("========================================");
+                Debug.Log($"[BootstrapManager] ✓ MOVED PLAYER TO SPAWN POINT");
+                Debug.Log($"[BootstrapManager] XR Origin new position: {xrOriginObj.transform.position}");
+                Debug.Log($"[BootstrapManager] XR Origin new rotation: {xrOriginObj.transform.rotation.eulerAngles}");
+
+                // Find camera for additional debugging
+                Camera mainCam = Camera.main;
+                if (mainCam != null)
+                {
+                    Debug.Log($"[BootstrapManager] Main Camera position: {mainCam.transform.position}");
+                    Debug.Log($"[BootstrapManager] Main Camera forward: {mainCam.transform.forward}");
+                }
+                Debug.Log("========================================");
             }
             else
             {
@@ -190,6 +217,60 @@ namespace VRDungeonCrawler.Core
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Ensures XR subsystems are running and head tracking is enabled after scene transition
+        /// Fixes head tracking loss during scene loads
+        /// </summary>
+        private IEnumerator EnsureXRHeadTracking()
+        {
+            Debug.Log("[BootstrapManager] ========================================");
+            Debug.Log("[BootstrapManager] Ensuring XR head tracking after scene load...");
+
+            // Wait a frame for XR subsystems to stabilize
+            yield return null;
+
+            // Check if XR is running
+            if (XRGeneralSettings.Instance != null && XRGeneralSettings.Instance.Manager != null)
+            {
+                var xrManager = XRGeneralSettings.Instance.Manager;
+                if (xrManager.activeLoader == null)
+                {
+                    Debug.LogWarning("[BootstrapManager] XR loader not active, attempting to initialize...");
+                    yield return xrManager.InitializeLoader();
+
+                    if (xrManager.activeLoader == null)
+                    {
+                        Debug.LogError("[BootstrapManager] Failed to initialize XR loader!");
+                        yield break;
+                    }
+
+                    Debug.Log("[BootstrapManager] ✓ XR loader initialized");
+                }
+                else
+                {
+                    Debug.Log("[BootstrapManager] ✓ XR loader already active");
+                }
+            }
+
+            // Wait another frame for tracking to stabilize
+            yield return new WaitForSeconds(0.1f);
+
+            // Find ForceEnableHeadTracking component and trigger it
+            var forceEnableHT = FindObjectOfType<VR.ForceEnableHeadTracking>();
+            if (forceEnableHT != null)
+            {
+                Debug.Log("[BootstrapManager] Found ForceEnableHeadTracking, forcing re-enable...");
+                forceEnableHT.ForceEnableNow();
+            }
+            else
+            {
+                Debug.LogWarning("[BootstrapManager] ForceEnableHeadTracking component not found!");
+            }
+
+            Debug.Log("[BootstrapManager] ✓ XR head tracking check complete");
+            Debug.Log("[BootstrapManager] ========================================");
         }
     }
 }

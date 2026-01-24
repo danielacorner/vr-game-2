@@ -15,7 +15,7 @@ namespace VRDungeonCrawler.Player
             Debug.Log($"[PersistentPlayer] XR Origin initialized in Bootstrap scene");
             Debug.Log($"[PersistentPlayer] Position: {transform.position}");
             Debug.Log("[PersistentPlayer] ========================================");
-
+            DontDestroyOnLoad(gameObject);
             // XR Origin stays in Bootstrap scene - no DontDestroyOnLoad needed
             // Content scenes (HomeArea, Dungeon1) load additively
             // This prevents head tracking issues from scene transitions

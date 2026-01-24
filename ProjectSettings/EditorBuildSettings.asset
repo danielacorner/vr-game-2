@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dungeon1.unity
     guid: 2e98f3d16dbe240369c49cb17076b45e
+  - enabled: 1
+    path: Assets/Scenes/TestMinimal.unity
+    guid: 00000000000000000000000000000000
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0f2fa041b97f041a5bdbb39fa3290700, type: 2}
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}

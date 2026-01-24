@@ -111,27 +111,35 @@ namespace VRDungeonCrawler.Dungeon
         
         public void GenerateDungeon()
         {
+            Debug.Log("[DungeonGenerator] ========================================");
             Debug.Log("[DungeonGenerator] Starting dungeon generation...");
-            
+            Debug.Log($"[DungeonGenerator] Generator position: {transform.position}");
+            Debug.Log("[DungeonGenerator] ========================================");
+
             // Set random seed
             if (seed != 0)
                 Random.InitState(seed);
             else
                 Random.InitState(System.DateTime.Now.Millisecond);
-            
+
             // Clear previous dungeon
             ClearDungeon();
-            
-            // Generate layout
+
+            // NOTE: Entrance room is static in the scene (not generated here)
+            // Generate procedural dungeon starting from entrance exit
+
+            // Generate layout starting from entrance exit
             GenerateRoomLayout();
-            
+
             // Connect rooms with corridors
             ConnectRooms();
-            
+
             // Populate rooms
             PopulateRooms();
-            
-            Debug.Log($"[DungeonGenerator] Generated {generatedRooms.Count} rooms");
+
+            Debug.Log("[DungeonGenerator] ========================================");
+            Debug.Log($"[DungeonGenerator] ✓ Generated {generatedRooms.Count} procedural rooms");
+            Debug.Log("[DungeonGenerator] ========================================");
         }
         
         private void ClearDungeon()
@@ -141,18 +149,19 @@ namespace VRDungeonCrawler.Dungeon
                 if (room.roomObject != null)
                     Destroy(room.roomObject);
             }
-            
+
             generatedRooms.Clear();
             occupiedCells.Clear();
         }
-        
+
         private void GenerateRoomLayout()
         {
-            // Create start room at origin
-            startRoom = CreateRoom(Vector2Int.zero, RoomType.Start);
-            
-            // Generate normal rooms using random walk
-            Vector2Int currentCell = Vector2Int.zero;
+            // Start procedural generation from in front of entrance (Z+2 grid cells forward)
+            Vector2Int entranceExitCell = new Vector2Int(0, 2);
+            startRoom = CreateRoom(entranceExitCell, RoomType.Start);
+
+            // Generate normal rooms using random walk from entrance exit
+            Vector2Int currentCell = entranceExitCell;
             int roomsGenerated = 1;
             
             while (roomsGenerated < roomCount - 2) // -2 for shop and boss
@@ -221,8 +230,35 @@ namespace VRDungeonCrawler.Dungeon
             roomObj.transform.SetParent(transform);
             roomObj.name = $"{type}Room_{gridPos}";
 
-            // TEMPORARY: Add debug markers to room (invisible floor + light only)
-            AddDebugMarkers(roomObj);
+            // Add simple colored cube marker at room position for debugging
+            GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            marker.name = "RoomMarker";
+            marker.transform.SetParent(roomObj.transform);
+            marker.transform.localPosition = new Vector3(0, 1.5f, 0); // Floating marker
+            marker.transform.localScale = new Vector3(2f, 2f, 2f);
+
+            // Color code by room type
+            Renderer markerRenderer = marker.GetComponent<Renderer>();
+            if (markerRenderer != null)
+            {
+                switch (type)
+                {
+                    case RoomType.Start:
+                        markerRenderer.material.color = Color.green;
+                        break;
+                    case RoomType.Normal:
+                        markerRenderer.material.color = Color.white;
+                        break;
+                    case RoomType.Shop:
+                        markerRenderer.material.color = Color.yellow;
+                        break;
+                    case RoomType.Boss:
+                        markerRenderer.material.color = Color.red;
+                        break;
+                }
+            }
+
+            Debug.Log($"[DungeonGenerator] Created {type} room at {worldPos} with {markerRenderer.material.color} marker");
 
             DungeonRoom room = new DungeonRoom
             {

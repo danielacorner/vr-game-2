@@ -49,7 +49,22 @@ namespace VRDungeonCrawler.VR
 
         private void Start()
         {
+            Debug.LogError("========================================");
+            Debug.LogError("[ForceEnableHeadTracking] START() CALLED!");
+            Debug.LogError($"[ForceEnableHeadTracking] Component enabled: {enabled}");
+            Debug.LogError($"[ForceEnableHeadTracking] GameObject active: {gameObject.activeInHierarchy}");
+            Debug.LogError("========================================");
             StartCoroutine(EnableActionsDelayed());
+        }
+
+        private void OnEnable()
+        {
+            Debug.LogError($"[ForceEnableHeadTracking] OnEnable() called at frame {Time.frameCount}");
+        }
+
+        private void OnDisable()
+        {
+            Debug.LogError($"[ForceEnableHeadTracking] OnDisable() called at frame {Time.frameCount}");
         }
 
         private IEnumerator EnableActionsDelayed()
@@ -140,6 +155,49 @@ namespace VRDungeonCrawler.VR
                 Debug.LogError("[ForceEnableHeadTracking] Enabled Rotation action");
             }
 
+            // CRITICAL FIX: Also enable the TrackedPoseDriver's input actions directly
+            if (trackedPoseDriver != null)
+            {
+                Debug.LogError("[ForceEnableHeadTracking] Enabling TrackedPoseDriver input actions...");
+
+                // The TrackedPoseDriver has references to InputActionProperty
+                // We need to enable those actions too
+                var positionInputField = trackedPoseDriver.GetType().GetField("m_PositionInput",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                var rotationInputField = trackedPoseDriver.GetType().GetField("m_RotationInput",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                if (positionInputField != null)
+                {
+                    var posInput = positionInputField.GetValue(trackedPoseDriver);
+                    var actionProp = posInput.GetType().GetProperty("action");
+                    if (actionProp != null)
+                    {
+                        InputAction action = actionProp.GetValue(posInput) as InputAction;
+                        if (action != null && !action.enabled)
+                        {
+                            action.Enable();
+                            Debug.LogError("[ForceEnableHeadTracking] ✓ Enabled TrackedPoseDriver Position action");
+                        }
+                    }
+                }
+
+                if (rotationInputField != null)
+                {
+                    var rotInput = rotationInputField.GetValue(trackedPoseDriver);
+                    var actionProp = rotInput.GetType().GetProperty("action");
+                    if (actionProp != null)
+                    {
+                        InputAction action = actionProp.GetValue(rotInput) as InputAction;
+                        if (action != null && !action.enabled)
+                        {
+                            action.Enable();
+                            Debug.LogError("[ForceEnableHeadTracking] ✓ Enabled TrackedPoseDriver Rotation action");
+                        }
+                    }
+                }
+            }
+
             // Verify they're enabled
             bool posEnabled = positionAction.enabled;
             bool rotEnabled = rotationAction.enabled;
@@ -176,6 +234,45 @@ namespace VRDungeonCrawler.VR
                         {
                             Debug.LogWarning("[ForceEnableHeadTracking] Rotation action was disabled! Re-enabling...");
                             rotationAction.Enable();
+                        }
+                    }
+                }
+
+                // CRITICAL: Also check TrackedPoseDriver's specific input actions
+                if (trackedPoseDriver != null)
+                {
+                    var positionInputField = trackedPoseDriver.GetType().GetField("m_PositionInput",
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    var rotationInputField = trackedPoseDriver.GetType().GetField("m_RotationInput",
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                    if (positionInputField != null)
+                    {
+                        var posInput = positionInputField.GetValue(trackedPoseDriver);
+                        var actionProp = posInput.GetType().GetProperty("action");
+                        if (actionProp != null)
+                        {
+                            InputAction action = actionProp.GetValue(posInput) as InputAction;
+                            if (action != null && !action.enabled)
+                            {
+                                action.Enable();
+                                Debug.LogWarning("[ForceEnableHeadTracking] TrackedPoseDriver Position action was disabled! Re-enabled.");
+                            }
+                        }
+                    }
+
+                    if (rotationInputField != null)
+                    {
+                        var rotInput = rotationInputField.GetValue(trackedPoseDriver);
+                        var actionProp = rotInput.GetType().GetProperty("action");
+                        if (actionProp != null)
+                        {
+                            InputAction action = actionProp.GetValue(rotInput) as InputAction;
+                            if (action != null && !action.enabled)
+                            {
+                                action.Enable();
+                                Debug.LogWarning("[ForceEnableHeadTracking] TrackedPoseDriver Rotation action was disabled! Re-enabled.");
+                            }
                         }
                     }
                 }

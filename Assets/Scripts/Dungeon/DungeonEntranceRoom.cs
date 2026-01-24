@@ -3,235 +3,198 @@ using UnityEngine;
 namespace VRDungeonCrawler.Dungeon
 {
     /// <summary>
-    /// Creates the entrance room for Dungeon1
-    /// Medium-sized room with Polytopia-style low-poly aesthetic
-    /// Zelda-inspired classic dungeon layout
+    /// Creates a static entrance room where player spawns before entering procedural dungeon
+    /// This is attached to a GameObject in the scene, not created at runtime
     /// </summary>
     public class DungeonEntranceRoom : MonoBehaviour
     {
         [Header("Room Dimensions")]
-        [Tooltip("Width in 2m grid units")]
-        public int roomWidth = 8;
+        [Tooltip("Width of entrance room (X axis)")]
+        public float roomWidth = 30f;
 
-        [Tooltip("Length in 2m grid units")]
-        public int roomLength = 8;
+        [Tooltip("Length of entrance room (Z axis)")]
+        public float roomLength = 20f;
 
         [Header("Features")]
-        [Tooltip("Add pillars in corners and middle")]
+        [Tooltip("Add decorative pillars")]
         public bool addPillars = true;
 
-        [Tooltip("Add wall torches")]
+        [Tooltip("Add torches for lighting")]
         public bool addTorches = true;
 
-        [Tooltip("Add entrance/exit doorways")]
+        [Tooltip("Add doorways")]
         public bool addDoorways = true;
 
         [Tooltip("Add ceiling")]
         public bool addCeiling = true;
 
-        [Header("Lighting")]
         [Tooltip("Add ambient light")]
         public bool addAmbientLight = true;
 
         [Tooltip("Ambient light intensity")]
-        [Range(0f, 1f)]
         public float ambientIntensity = 0.3f;
 
         [Header("Debug")]
+        [Tooltip("Show debug logs")]
         public bool showDebug = true;
+
+        void Start()
+        {
+            BuildRoom();
+        }
 
         public void BuildRoom()
         {
-            // Clear existing children
+            Debug.Log("========================================");
+            Debug.Log("[DungeonEntranceRoom] Building entrance room...");
+            Debug.Log($"[DungeonEntranceRoom] Transform position: {transform.position}");
+            Debug.Log($"[DungeonEntranceRoom] Room size: {roomWidth}m x {roomLength}m");
+            Debug.Log("========================================");
+
+            // Clear any existing children EXCEPT PlayerSpawnPoint
             foreach (Transform child in transform)
             {
-                if (Application.isPlaying)
-                    Destroy(child.gameObject);
-                else
-                    DestroyImmediate(child.gameObject);
-            }
-
-            if (showDebug)
-                Debug.Log("[DungeonEntranceRoom] Building entrance room...");
-
-            // Create base room
-            GameObject room = DungeonRoomBuilder.CreateRoom("EntranceRoom", roomWidth, roomLength, transform);
-
-            // Add pillars
-            if (addPillars)
-            {
-                CreatePillars(room.transform);
-            }
-
-            // Add torches
-            if (addTorches)
-            {
-                CreateTorches(room.transform);
-            }
-
-            // Add doorways
-            if (addDoorways)
-            {
-                CreateDoorways(room.transform);
-            }
-
-            // Add ceiling
-            if (addCeiling)
-            {
-                GameObject ceiling = DungeonRoomBuilder.CreateCeiling(roomWidth, roomLength);
-                ceiling.transform.SetParent(room.transform);
-            }
-
-            // Add ambient lighting
-            if (addAmbientLight)
-            {
-                CreateAmbientLight(room.transform);
-            }
-
-            if (showDebug)
-                Debug.Log("[DungeonEntranceRoom] ✓ Entrance room built successfully!");
-        }
-
-        void CreatePillars(Transform parent)
-        {
-            GameObject pillarsParent = new GameObject("Pillars");
-            pillarsParent.transform.SetParent(parent);
-
-            float halfWidth = roomWidth * DungeonRoomBuilder.GRID_SIZE / 2f;
-            float halfLength = roomLength * DungeonRoomBuilder.GRID_SIZE / 2f;
-            float inset = DungeonRoomBuilder.GRID_SIZE * 1.5f;
-
-            // Corner pillars
-            Vector3[] cornerPositions = new Vector3[]
-            {
-                new Vector3(-halfWidth + inset, 0f, -halfLength + inset), // SW
-                new Vector3(halfWidth - inset, 0f, -halfLength + inset),  // SE
-                new Vector3(-halfWidth + inset, 0f, halfLength - inset),  // NW
-                new Vector3(halfWidth - inset, 0f, halfLength - inset)    // NE
-            };
-
-            for (int i = 0; i < cornerPositions.Length; i++)
-            {
-                GameObject pillar = DungeonRoomBuilder.CreatePillar();
-                pillar.transform.SetParent(pillarsParent.transform);
-                pillar.transform.localPosition = cornerPositions[i];
-                pillar.name = $"CornerPillar_{i}";
-            }
-
-            // Center pillars (for larger rooms)
-            if (roomWidth >= 6 && roomLength >= 6)
-            {
-                Vector3[] centerPositions = new Vector3[]
+                // Preserve spawn points and important objects
+                if (child.name.Contains("Spawn") || child.name.Contains("spawn"))
                 {
-                    new Vector3(-DungeonRoomBuilder.GRID_SIZE, 0f, 0f),
-                    new Vector3(DungeonRoomBuilder.GRID_SIZE, 0f, 0f)
-                };
-
-                for (int i = 0; i < centerPositions.Length; i++)
-                {
-                    GameObject pillar = DungeonRoomBuilder.CreatePillar();
-                    pillar.transform.SetParent(pillarsParent.transform);
-                    pillar.transform.localPosition = centerPositions[i];
-                    pillar.name = $"CenterPillar_{i}";
+                    Debug.Log($"[DungeonEntranceRoom] Preserving: {child.name} at {child.position}");
+                    continue;
                 }
+                Debug.Log($"[DungeonEntranceRoom] Destroying: {child.name}");
+                Destroy(child.gameObject);
             }
 
-            if (showDebug)
-                Debug.Log($"[DungeonEntranceRoom] Created {cornerPositions.Length} corner pillars");
-        }
+            // Create LARGE, OBVIOUS floor for debugging - BRIGHT BLUE
+            GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            floor.name = "EntranceFloor";
+            floor.transform.SetParent(transform);
+            floor.transform.localPosition = new Vector3(0, -0.5f, 0);
+            floor.transform.localScale = new Vector3(roomWidth, 1f, roomLength);
 
-        void CreateTorches(Transform parent)
-        {
-            GameObject torchesParent = new GameObject("Torches");
-            torchesParent.transform.SetParent(parent);
-
-            float halfWidth = roomWidth * DungeonRoomBuilder.GRID_SIZE / 2f;
-            float halfLength = roomLength * DungeonRoomBuilder.GRID_SIZE / 2f;
-            float torchHeight = 2.5f;
-
-            // North wall torches
-            CreateWallTorchPair(torchesParent.transform,
-                new Vector3(0f, torchHeight, halfLength - DungeonRoomBuilder.WALL_THICKNESS / 2f),
-                180f, "North");
-
-            // South wall torches
-            CreateWallTorchPair(torchesParent.transform,
-                new Vector3(0f, torchHeight, -halfLength + DungeonRoomBuilder.WALL_THICKNESS / 2f),
-                0f, "South");
-
-            // East wall torches
-            CreateWallTorchPair(torchesParent.transform,
-                new Vector3(halfWidth - DungeonRoomBuilder.WALL_THICKNESS / 2f, torchHeight, 0f),
-                270f, "East");
-
-            // West wall torches
-            CreateWallTorchPair(torchesParent.transform,
-                new Vector3(-halfWidth + DungeonRoomBuilder.WALL_THICKNESS / 2f, torchHeight, 0f),
-                90f, "West");
-
-            if (showDebug)
-                Debug.Log("[DungeonEntranceRoom] Created wall torches");
-        }
-
-        void CreateWallTorchPair(Transform parent, Vector3 centerPos, float rotation, string wallName)
-        {
-            float spacing = DungeonRoomBuilder.GRID_SIZE * 2f;
-
-            for (int i = -1; i <= 1; i += 2)
+            Renderer floorRenderer = floor.GetComponent<Renderer>();
+            if (floorRenderer != null)
             {
-                GameObject torch = DungeonRoomBuilder.CreateWallTorch();
-                torch.transform.SetParent(parent);
-
-                Vector3 offset = (rotation == 0f || rotation == 180f)
-                    ? new Vector3(i * spacing, 0f, 0f)
-                    : new Vector3(0f, 0f, i * spacing);
-
-                torch.transform.localPosition = centerPos + offset;
-                torch.transform.localRotation = Quaternion.Euler(0f, rotation, 0f);
-                torch.name = $"{wallName}Torch_{(i > 0 ? "Right" : "Left")}";
+                // BRIGHT BLUE for debugging - impossible to miss
+                floorRenderer.material.color = Color.cyan;
+                Debug.Log("[DungeonEntranceRoom] Created CYAN floor for easy identification");
             }
-        }
 
-        void CreateDoorways(Transform parent)
-        {
-            GameObject doorwaysParent = new GameObject("Doorways");
-            doorwaysParent.transform.SetParent(parent);
+            // TEMPORARILY DISABLED: No walls or ceiling for debugging
+            // Just create open floor space so player can see clearly
+            Debug.Log("[DungeonEntranceRoom] Skipping walls/ceiling for debugging");
 
-            float halfLength = roomLength * DungeonRoomBuilder.GRID_SIZE / 2f;
+            // TEMPORARILY DISABLED: No torches or pillars for debugging
+            Debug.Log("[DungeonEntranceRoom] Skipping torches and pillars for debugging");
 
-            // South entrance (coming in)
-            GameObject entranceDoorway = DungeonRoomBuilder.CreateDoorway();
-            entranceDoorway.transform.SetParent(doorwaysParent.transform);
-            entranceDoorway.transform.localPosition = new Vector3(0f, 0f, -halfLength);
-            entranceDoorway.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            entranceDoorway.name = "EntranceDoorway_South";
-
-            // North exit (going deeper)
-            GameObject exitDoorway = DungeonRoomBuilder.CreateDoorway();
-            exitDoorway.transform.SetParent(doorwaysParent.transform);
-            exitDoorway.transform.localPosition = new Vector3(0f, 0f, halfLength);
-            exitDoorway.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
-            exitDoorway.name = "ExitDoorway_North";
-
-            if (showDebug)
-                Debug.Log("[DungeonEntranceRoom] Created entrance and exit doorways");
-        }
-
-        void CreateAmbientLight(Transform parent)
-        {
-            GameObject lightObj = new GameObject("AmbientLight");
-            lightObj.transform.SetParent(parent);
-            lightObj.transform.localPosition = new Vector3(0f, DungeonRoomBuilder.WALL_HEIGHT / 2f, 0f);
-
-            Light light = lightObj.AddComponent<Light>();
+            // Always add a VERY BRIGHT light so we can see
+            GameObject ambientLight = new GameObject("AmbientLight");
+            ambientLight.transform.SetParent(transform);
+            ambientLight.transform.localPosition = new Vector3(0, 5f, 0);
+            Light light = ambientLight.AddComponent<Light>();
             light.type = LightType.Point;
-            light.color = new Color(0.6f, 0.65f, 0.75f); // Cool dungeon ambient
-            light.intensity = ambientIntensity;
-            light.range = roomWidth * DungeonRoomBuilder.GRID_SIZE;
-            light.shadows = LightShadows.None;
+            light.intensity = 50f; // VERY BRIGHT
+            light.range = 100f; // VERY LARGE RANGE
+            light.color = Color.white;
+            Debug.Log("[DungeonEntranceRoom] Created VERY BRIGHT light for debugging");
 
-            if (showDebug)
-                Debug.Log("[DungeonEntranceRoom] Created ambient light");
+            // Add a YELLOW sphere at spawn point for visual debugging
+            Transform spawnPoint = transform.Find("PlayerSpawnPoint");
+            if (spawnPoint != null)
+            {
+                GameObject spawnMarker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                spawnMarker.name = "SpawnMarker_DEBUG";
+                spawnMarker.transform.SetParent(spawnPoint);
+                spawnMarker.transform.localPosition = Vector3.zero;
+                spawnMarker.transform.localScale = Vector3.one * 0.5f;
+
+                Renderer markerRenderer = spawnMarker.GetComponent<Renderer>();
+                if (markerRenderer != null)
+                {
+                    markerRenderer.material.color = Color.yellow;
+                    markerRenderer.material.EnableKeyword("_EMISSION");
+                    markerRenderer.material.SetColor("_EmissionColor", Color.yellow * 2f);
+                }
+
+                // Remove collider
+                Collider markerCollider = spawnMarker.GetComponent<Collider>();
+                if (markerCollider != null)
+                    Destroy(markerCollider);
+
+                Debug.Log($"[DungeonEntranceRoom] Created YELLOW spawn marker at {spawnPoint.position}");
+            }
+
+            Debug.Log("========================================");
+            Debug.Log($"[DungeonEntranceRoom] ✓ Built SIMPLE DEBUG entrance room");
+            Debug.Log($"[DungeonEntranceRoom] Position: {transform.position}, Size: {roomWidth}x{roomLength}");
+            Debug.Log("[DungeonEntranceRoom] Look for: CYAN floor + YELLOW spawn marker");
+            Debug.Log("========================================");
+        }
+
+        void PlaceTorch(Vector3 localPosition)
+        {
+            GameObject torch = new GameObject($"Torch");
+            torch.transform.SetParent(transform);
+            torch.transform.localPosition = localPosition;
+
+            // Holder
+            GameObject holder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            holder.name = "Holder";
+            holder.transform.SetParent(torch.transform);
+            holder.transform.localPosition = Vector3.zero;
+            holder.transform.localScale = new Vector3(0.15f, 0.5f, 0.15f);
+            Renderer holderRenderer = holder.GetComponent<Renderer>();
+            if (holderRenderer != null)
+            {
+                holderRenderer.material.color = new Color(0.1f, 0.1f, 0.1f);
+            }
+
+            // Flame
+            GameObject flame = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            flame.name = "Flame";
+            flame.transform.SetParent(torch.transform);
+            flame.transform.localPosition = new Vector3(0, 0.6f, 0);
+            flame.transform.localScale = new Vector3(0.3f, 0.4f, 0.3f);
+            Renderer flameRenderer = flame.GetComponent<Renderer>();
+            if (flameRenderer != null)
+            {
+                flameRenderer.material.color = new Color(1f, 0.6f, 0.2f);
+                flameRenderer.material.EnableKeyword("_EMISSION");
+                flameRenderer.material.SetColor("_EmissionColor", new Color(1f, 0.5f, 0.1f) * 2f);
+            }
+
+            // Light
+            Light torchLight = torch.AddComponent<Light>();
+            torchLight.type = LightType.Point;
+            torchLight.intensity = 8f;
+            torchLight.range = 12f;
+            torchLight.color = new Color(1f, 0.7f, 0.4f);
+        }
+
+        void CreatePillar(Vector3 localPosition)
+        {
+            GameObject pillar = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            pillar.name = "Pillar";
+            pillar.transform.SetParent(transform);
+            pillar.transform.localPosition = localPosition + new Vector3(0, 2f, 0);
+            pillar.transform.localScale = new Vector3(0.8f, 4f, 0.8f);
+
+            Renderer pillarRenderer = pillar.GetComponent<Renderer>();
+            if (pillarRenderer != null)
+            {
+                pillarRenderer.material.color = new Color(0.4f, 0.4f, 0.45f);
+            }
+
+            // Cap
+            GameObject cap = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cap.name = "Cap";
+            cap.transform.SetParent(pillar.transform);
+            cap.transform.localPosition = new Vector3(0, 0.5f, 0);
+            cap.transform.localScale = new Vector3(1.3f, 0.15f, 1.3f);
+            Renderer capRenderer = cap.GetComponent<Renderer>();
+            if (capRenderer != null)
+            {
+                capRenderer.material.color = new Color(0.35f, 0.35f, 0.4f);
+            }
         }
     }
 }

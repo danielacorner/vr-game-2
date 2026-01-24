@@ -42,7 +42,7 @@ namespace VRDungeonCrawler.Environment
 
         [Header("Scene")]
         [Tooltip("Name of dungeon scene to load")]
-        public string dungeonSceneName = "Dungeon1";
+        public string dungeonSceneName = "TestMinimal";
 
         [Header("Positioning")]
         [Tooltip("Distance from portal center where menu appears (at portal edge)")]
