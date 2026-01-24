@@ -74,30 +74,67 @@ namespace VRDungeonCrawler.Dungeon
             Renderer floorRenderer = floor.GetComponent<Renderer>();
             if (floorRenderer != null)
             {
-                // Create URP-compatible material
+                // Create URP-compatible material - dark stone floor
                 Material floorMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-                floorMat.color = Color.cyan;
+                floorMat.color = new Color(0.3f, 0.25f, 0.2f); // Dark brown stone
                 floorRenderer.material = floorMat;
-                Debug.Log("[DungeonEntranceRoom] Created CYAN floor with URP/Lit shader");
+                Debug.Log("[DungeonEntranceRoom] Created stone floor");
             }
 
-            // TEMPORARILY DISABLED: No walls or ceiling for debugging
-            // Just create open floor space so player can see clearly
-            Debug.Log("[DungeonEntranceRoom] Skipping walls/ceiling for debugging");
+            // Create walls (4 sides)
+            CreateWall(new Vector3(0, 2f, roomLength/2), new Vector3(roomWidth, 4f, 1f)); // North
+            CreateWall(new Vector3(0, 2f, -roomLength/2), new Vector3(roomWidth, 4f, 1f)); // South
+            CreateWall(new Vector3(-roomWidth/2, 2f, 0), new Vector3(1f, 4f, roomLength)); // West
+            CreateWall(new Vector3(roomWidth/2, 2f, 0), new Vector3(1f, 4f, roomLength)); // East
 
-            // TEMPORARILY DISABLED: No torches or pillars for debugging
-            Debug.Log("[DungeonEntranceRoom] Skipping torches and pillars for debugging");
+            // Create ceiling if requested
+            if (addCeiling)
+            {
+                GameObject ceiling = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                ceiling.name = "Ceiling";
+                ceiling.transform.SetParent(transform);
+                ceiling.transform.localPosition = new Vector3(0, 4.5f, 0);
+                ceiling.transform.localScale = new Vector3(roomWidth, 1f, roomLength);
 
-            // Always add a VERY BRIGHT light so we can see
-            GameObject ambientLight = new GameObject("AmbientLight");
-            ambientLight.transform.SetParent(transform);
-            ambientLight.transform.localPosition = new Vector3(0, 5f, 0);
-            Light light = ambientLight.AddComponent<Light>();
-            light.type = LightType.Point;
-            light.intensity = 50f; // VERY BRIGHT
-            light.range = 100f; // VERY LARGE RANGE
-            light.color = Color.white;
-            Debug.Log("[DungeonEntranceRoom] Created VERY BRIGHT light for debugging");
+                Renderer ceilingRenderer = ceiling.GetComponent<Renderer>();
+                if (ceilingRenderer != null)
+                {
+                    Material ceilingMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    ceilingMat.color = new Color(0.2f, 0.2f, 0.25f); // Dark blue-gray
+                    ceilingRenderer.material = ceilingMat;
+                }
+            }
+
+            // Add torches for lighting
+            if (addTorches)
+            {
+                PlaceTorch(new Vector3(-roomWidth/2 + 2, 2.5f, roomLength/2 - 2));
+                PlaceTorch(new Vector3(roomWidth/2 - 2, 2.5f, roomLength/2 - 2));
+                PlaceTorch(new Vector3(-roomWidth/2 + 2, 2.5f, -roomLength/2 + 2));
+                PlaceTorch(new Vector3(roomWidth/2 - 2, 2.5f, -roomLength/2 + 2));
+            }
+
+            // Add pillars if requested
+            if (addPillars)
+            {
+                CreatePillar(new Vector3(-roomWidth/2 + 5, 0, roomLength/2 - 5));
+                CreatePillar(new Vector3(roomWidth/2 - 5, 0, roomLength/2 - 5));
+                CreatePillar(new Vector3(-roomWidth/2 + 5, 0, -roomLength/2 + 5));
+                CreatePillar(new Vector3(roomWidth/2 - 5, 0, -roomLength/2 + 5));
+            }
+
+            // Add ambient light
+            if (addAmbientLight)
+            {
+                GameObject ambientLight = new GameObject("AmbientLight");
+                ambientLight.transform.SetParent(transform);
+                ambientLight.transform.localPosition = new Vector3(0, 3f, 0);
+                Light light = ambientLight.AddComponent<Light>();
+                light.type = LightType.Point;
+                light.intensity = ambientIntensity * 10f;
+                light.range = 30f;
+                light.color = new Color(1f, 0.9f, 0.7f); // Warm light
+            }
 
             // Add a YELLOW sphere at spawn point for visual debugging
             Transform spawnPoint = transform.Find("PlayerSpawnPoint");
@@ -135,6 +172,23 @@ namespace VRDungeonCrawler.Dungeon
             Debug.Log("========================================");
         }
 
+        void CreateWall(Vector3 localPosition, Vector3 localScale)
+        {
+            GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wall.name = "Wall";
+            wall.transform.SetParent(transform);
+            wall.transform.localPosition = localPosition;
+            wall.transform.localScale = localScale;
+
+            Renderer wallRenderer = wall.GetComponent<Renderer>();
+            if (wallRenderer != null)
+            {
+                Material wallMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                wallMat.color = new Color(0.35f, 0.35f, 0.4f); // Dark gray stone
+                wallRenderer.material = wallMat;
+            }
+        }
+
         void PlaceTorch(Vector3 localPosition)
         {
             GameObject torch = new GameObject($"Torch");
@@ -150,7 +204,9 @@ namespace VRDungeonCrawler.Dungeon
             Renderer holderRenderer = holder.GetComponent<Renderer>();
             if (holderRenderer != null)
             {
-                holderRenderer.material.color = new Color(0.1f, 0.1f, 0.1f);
+                Material holderMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                holderMat.color = new Color(0.1f, 0.1f, 0.1f);
+                holderRenderer.material = holderMat;
             }
 
             // Flame
@@ -162,9 +218,11 @@ namespace VRDungeonCrawler.Dungeon
             Renderer flameRenderer = flame.GetComponent<Renderer>();
             if (flameRenderer != null)
             {
-                flameRenderer.material.color = new Color(1f, 0.6f, 0.2f);
-                flameRenderer.material.EnableKeyword("_EMISSION");
-                flameRenderer.material.SetColor("_EmissionColor", new Color(1f, 0.5f, 0.1f) * 2f);
+                Material flameMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                flameMat.color = new Color(1f, 0.6f, 0.2f);
+                flameMat.EnableKeyword("_EMISSION");
+                flameMat.SetColor("_EmissionColor", new Color(1f, 0.5f, 0.1f) * 2f);
+                flameRenderer.material = flameMat;
             }
 
             // Light
@@ -186,7 +244,9 @@ namespace VRDungeonCrawler.Dungeon
             Renderer pillarRenderer = pillar.GetComponent<Renderer>();
             if (pillarRenderer != null)
             {
-                pillarRenderer.material.color = new Color(0.4f, 0.4f, 0.45f);
+                Material pillarMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                pillarMat.color = new Color(0.4f, 0.4f, 0.45f);
+                pillarRenderer.material = pillarMat;
             }
 
             // Cap
@@ -198,7 +258,9 @@ namespace VRDungeonCrawler.Dungeon
             Renderer capRenderer = cap.GetComponent<Renderer>();
             if (capRenderer != null)
             {
-                capRenderer.material.color = new Color(0.35f, 0.35f, 0.4f);
+                Material capMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                capMat.color = new Color(0.35f, 0.35f, 0.4f);
+                capRenderer.material = capMat;
             }
         }
     }

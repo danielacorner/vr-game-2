@@ -766,6 +766,7 @@ extern void BossDoor_OnTriggerEnter_m0928F714FE52CEBF003FE45BBDCB8426A932E7C0 (v
 extern void BossDoor__ctor_m75E7EF7461A21DE6B7EF0BE072A94E8B18EFFFEE (void);
 extern void DungeonEntranceRoom_Start_m645BB4DFF5CF1DF59A3F7CECBD6CDCD72EAC1872 (void);
 extern void DungeonEntranceRoom_BuildRoom_m0208E2AC7801077A03D92959023D18FAE5DEC893 (void);
+extern void DungeonEntranceRoom_CreateWall_mB76795450B8EA1BEC12D698D41C7BB4F37CA2C0C (void);
 extern void DungeonEntranceRoom_PlaceTorch_m6B6DD5156AD168F8AC24848CF2D6C384C7F15316 (void);
 extern void DungeonEntranceRoom_CreatePillar_m888B5B4C6E6F90985B4DAF9393E9F537BA273FB6 (void);
 extern void DungeonEntranceRoom__ctor_m7782EE81FC3CA6697D2C1C7E509EC9D46B6BA8C5 (void);
@@ -1048,7 +1049,7 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[1041] = 
+static Il2CppMethodPointer s_methodPointers[1042] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1809,6 +1810,7 @@ static Il2CppMethodPointer s_methodPointers[1041] =
 	BossDoor__ctor_m75E7EF7461A21DE6B7EF0BE072A94E8B18EFFFEE,
 	DungeonEntranceRoom_Start_m645BB4DFF5CF1DF59A3F7CECBD6CDCD72EAC1872,
 	DungeonEntranceRoom_BuildRoom_m0208E2AC7801077A03D92959023D18FAE5DEC893,
+	DungeonEntranceRoom_CreateWall_mB76795450B8EA1BEC12D698D41C7BB4F37CA2C0C,
 	DungeonEntranceRoom_PlaceTorch_m6B6DD5156AD168F8AC24848CF2D6C384C7F15316,
 	DungeonEntranceRoom_CreatePillar_m888B5B4C6E6F90985B4DAF9393E9F537BA273FB6,
 	DungeonEntranceRoom__ctor_m7782EE81FC3CA6697D2C1C7E509EC9D46B6BA8C5,
@@ -2097,7 +2099,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x06000123, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1041] = 
+static const int32_t s_InvokerIndices[1042] = 
 {
 	15294,
 	15294,
@@ -2858,6 +2860,7 @@ static const int32_t s_InvokerIndices[1041] =
 	15294,
 	15294,
 	15294,
+	6070,
 	11788,
 	11788,
 	15294,
@@ -3145,7 +3148,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1041,
+	1042,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,
