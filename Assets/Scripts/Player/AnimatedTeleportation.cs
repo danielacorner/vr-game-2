@@ -34,12 +34,33 @@ namespace VRDungeonCrawler.Player
 
         private void OnEnable()
         {
+            // Subscribe to existing areas
+            SubscribeToAllTeleportationAreas();
+
+            // Start coroutine to periodically check for new areas (created at runtime)
+            StartCoroutine(CheckForNewTeleportationAreas());
+        }
+
+        private void SubscribeToAllTeleportationAreas()
+        {
             // Find all TeleportationAreas in the scene
             TeleportationArea[] teleportAreas = FindObjectsByType<TeleportationArea>(FindObjectsSortMode.None);
 
             foreach (var area in teleportAreas)
             {
+                // Remove first to avoid duplicates, then add
+                area.selectExited.RemoveListener(OnTeleportRequested);
                 area.selectExited.AddListener(OnTeleportRequested);
+            }
+        }
+
+        private IEnumerator CheckForNewTeleportationAreas()
+        {
+            // Check every 0.5 seconds for new TeleportationAreas
+            while (true)
+            {
+                yield return new WaitForSeconds(0.5f);
+                SubscribeToAllTeleportationAreas();
             }
         }
 

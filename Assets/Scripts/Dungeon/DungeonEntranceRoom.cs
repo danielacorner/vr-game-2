@@ -82,6 +82,10 @@ namespace VRDungeonCrawler.Dungeon
                 Debug.Log("[DungeonEntranceRoom] Created stone floor");
             }
 
+            // Add TeleportationArea component for valid teleportation
+            var teleportArea = floor.AddComponent<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationArea>();
+            Debug.Log("[DungeonEntranceRoom] Added TeleportationArea to floor");
+
             // Create walls (4 sides)
             CreateWall(new Vector3(0, 2f, roomLength/2), new Vector3(roomWidth, 4f, 1f)); // North
             CreateWall(new Vector3(0, 2f, -roomLength/2), new Vector3(roomWidth, 4f, 1f)); // South
