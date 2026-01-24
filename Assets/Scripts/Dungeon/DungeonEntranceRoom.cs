@@ -74,9 +74,11 @@ namespace VRDungeonCrawler.Dungeon
             Renderer floorRenderer = floor.GetComponent<Renderer>();
             if (floorRenderer != null)
             {
-                // BRIGHT BLUE for debugging - impossible to miss
-                floorRenderer.material.color = Color.cyan;
-                Debug.Log("[DungeonEntranceRoom] Created CYAN floor for easy identification");
+                // Create URP-compatible material
+                Material floorMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                floorMat.color = Color.cyan;
+                floorRenderer.material = floorMat;
+                Debug.Log("[DungeonEntranceRoom] Created CYAN floor with URP/Lit shader");
             }
 
             // TEMPORARILY DISABLED: No walls or ceiling for debugging
@@ -110,9 +112,12 @@ namespace VRDungeonCrawler.Dungeon
                 Renderer markerRenderer = spawnMarker.GetComponent<Renderer>();
                 if (markerRenderer != null)
                 {
-                    markerRenderer.material.color = Color.yellow;
-                    markerRenderer.material.EnableKeyword("_EMISSION");
-                    markerRenderer.material.SetColor("_EmissionColor", Color.yellow * 2f);
+                    // Create URP-compatible material with emission
+                    Material markerMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    markerMat.color = Color.yellow;
+                    markerMat.EnableKeyword("_EMISSION");
+                    markerMat.SetColor("_EmissionColor", Color.yellow * 2f);
+                    markerRenderer.material = markerMat;
                 }
 
                 // Remove collider
