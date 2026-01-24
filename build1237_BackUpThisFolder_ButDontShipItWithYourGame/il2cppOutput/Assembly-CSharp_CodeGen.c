@@ -800,6 +800,11 @@ extern void DungeonRoomBuilder_CreateDoorway_m7F187265E89A4EF078A56FAA230B3371D1
 extern void DungeonRoomBuilder_CreatePolytopiaStone_m77BB12130A6406B5E3C8E9F28AAF16DF77734D1D (void);
 extern void DungeonRoomBuilder_CreateCeiling_m24B7B4A55BAC34115316F32A12EA6D77E15F1AC6 (void);
 extern void DungeonRoomBuilder__cctor_mCD8B71D87B953DFE52B44552F96BFCA9725485FE (void);
+extern void DebugDungeonTeleport_Start_m1F34844848FC179C6DE0A1B1CBF9F91646E1DB92 (void);
+extern void DebugDungeonTeleport_OnButtonClick_m5384EBF802B2E7321F8EDC4E1676A292691A9456 (void);
+extern void DebugDungeonTeleport_LoadDungeonScene_m0655B3237099CC37AEAD145B66A9694FB64645BB (void);
+extern void DebugDungeonTeleport_OnDestroy_m05E35E62F89D7FE4753198872E09BFB8E4704DD9 (void);
+extern void DebugDungeonTeleport__ctor_mAEC7E12798A4FCC34C752BB09D000EB1147C4E96 (void);
 extern void SimpleTestScript_Awake_mD1A34A96E407FA00B2BD18A10D44488DD4A5C458 (void);
 extern void SimpleTestScript_Start_mAD6382084B1C605DA89D9BF9252F1DADAA687744 (void);
 extern void SimpleTestScript__ctor_mD790157C3251F1B07AE51E5EE0B2F17227AE4C84 (void);
@@ -1043,7 +1048,7 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[1036] = 
+static Il2CppMethodPointer s_methodPointers[1041] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1838,6 +1843,11 @@ static Il2CppMethodPointer s_methodPointers[1036] =
 	DungeonRoomBuilder_CreatePolytopiaStone_m77BB12130A6406B5E3C8E9F28AAF16DF77734D1D,
 	DungeonRoomBuilder_CreateCeiling_m24B7B4A55BAC34115316F32A12EA6D77E15F1AC6,
 	DungeonRoomBuilder__cctor_mCD8B71D87B953DFE52B44552F96BFCA9725485FE,
+	DebugDungeonTeleport_Start_m1F34844848FC179C6DE0A1B1CBF9F91646E1DB92,
+	DebugDungeonTeleport_OnButtonClick_m5384EBF802B2E7321F8EDC4E1676A292691A9456,
+	DebugDungeonTeleport_LoadDungeonScene_m0655B3237099CC37AEAD145B66A9694FB64645BB,
+	DebugDungeonTeleport_OnDestroy_m05E35E62F89D7FE4753198872E09BFB8E4704DD9,
+	DebugDungeonTeleport__ctor_mAEC7E12798A4FCC34C752BB09D000EB1147C4E96,
 	SimpleTestScript_Awake_mD1A34A96E407FA00B2BD18A10D44488DD4A5C458,
 	SimpleTestScript_Start_mAD6382084B1C605DA89D9BF9252F1DADAA687744,
 	SimpleTestScript__ctor_mD790157C3251F1B07AE51E5EE0B2F17227AE4C84,
@@ -2087,7 +2097,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x06000123, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1036] = 
+static const int32_t s_InvokerIndices[1041] = 
 {
 	15294,
 	15294,
@@ -2887,6 +2897,11 @@ static const int32_t s_InvokerIndices[1036] =
 	15294,
 	15294,
 	15294,
+	15294,
+	15294,
+	15294,
+	15294,
+	15294,
 	2601,
 	15294,
 	15294,
@@ -3130,7 +3145,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1036,
+	1041,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

@@ -335,7 +335,8 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Dungeon1.unity",
+              "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -345,7 +346,8 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Dungeon1.unity",
+              "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -355,7 +357,8 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Dungeon1.unity",
+              "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -365,7 +368,8 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Dungeon1.unity",
+              "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -381,7 +385,8 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Dungeon1.unity",
+              "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 1,
             "icon": null
@@ -432,7 +437,8 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Dungeon1.unity",
+              "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1076,7 +1082,8 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Dungeon1.unity",
+              "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1511,8 +1518,7 @@
           {
             "name": "Terrain",
             "scenes": [
-              "Assets/HomeArea.unity",
-              "Assets/Scenes/TestMinimal.unity"
+              "Assets/HomeArea.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1547,8 +1553,7 @@
           {
             "name": "TerrainCollider",
             "scenes": [
-              "Assets/HomeArea.unity",
-              "Assets/Scenes/TestMinimal.unity"
+              "Assets/HomeArea.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1641,7 +1646,8 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Dungeon1.unity",
+              "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1657,7 +1663,8 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Dungeon1.unity",
+              "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
             "icon": null
