@@ -347,6 +347,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral360CDF19D5FC69813425CD704E69A63925E2F7FA
 IL2CPP_EXTERN_C String_t* _stringLiteral36DEE2ED6CD88ED43D39DE1649EB660DCD75FBA8;
 IL2CPP_EXTERN_C String_t* _stringLiteral3708CDBCC9F390AB99D52FE7DEE4724401B69B9F;
 IL2CPP_EXTERN_C String_t* _stringLiteral380AD35EBCD8DE2D02533CA502A5E206372A3371;
+IL2CPP_EXTERN_C String_t* _stringLiteral3857B7441BD50E0764FE14FC90E670838E34E30A;
 IL2CPP_EXTERN_C String_t* _stringLiteral392F3554E96E272D015C14CEAE01E760F659B469;
 IL2CPP_EXTERN_C String_t* _stringLiteral3A0CAB3B58AF113715ACCAE3CB0FA8ED6A567E3A;
 IL2CPP_EXTERN_C String_t* _stringLiteral3A691A23A3DACB6EB49CE7668AB4859C0C9286BB;
@@ -366,6 +367,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral479695D4CA2E9E12316814190171B5BB758F1D01
 IL2CPP_EXTERN_C String_t* _stringLiteral4823B4BD3B2F9A53E90610751D7DE1F78A3D0E70;
 IL2CPP_EXTERN_C String_t* _stringLiteral49425CF51EF67FBFD8AA098A16B840096305BF92;
 IL2CPP_EXTERN_C String_t* _stringLiteral4BB249E21790540E83502D58289CD4C5DDB2C41D;
+IL2CPP_EXTERN_C String_t* _stringLiteral4C8D562EF4084E1D9B7EA5E865733B56E3F4C9DB;
 IL2CPP_EXTERN_C String_t* _stringLiteral4D8546BA63AC53CC078C0874BE3F0C7689E8F245;
 IL2CPP_EXTERN_C String_t* _stringLiteral51282E2AAC09AC6EDBC2C1C237C0183F97FEE379;
 IL2CPP_EXTERN_C String_t* _stringLiteral525932DF7B4D7205D2575BA5ED9E1C3C0B39A508;
@@ -414,6 +416,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral83B534F2BADA8EDC6CE1741AB854ADB98EC4911F
 IL2CPP_EXTERN_C String_t* _stringLiteral83F309203E223B11A51FB0CD3DB4A5C19ED0B335;
 IL2CPP_EXTERN_C String_t* _stringLiteral888EBA24DAD9D2FED610F4BD28C4495C54CB031A;
 IL2CPP_EXTERN_C String_t* _stringLiteral88A477090251868D48C67976BF65B04E7E1749E6;
+IL2CPP_EXTERN_C String_t* _stringLiteral88AA8B01368BFA7C6B10978DC4ADBA504AB58239;
 IL2CPP_EXTERN_C String_t* _stringLiteral8924580857196702833DC0E63BFAD4333FCDBE89;
 IL2CPP_EXTERN_C String_t* _stringLiteral892814848A850C62C7366532DA132EA7D978C773;
 IL2CPP_EXTERN_C String_t* _stringLiteral899CA24F831A8140565776F5F054B11719813A0E;
@@ -421,11 +424,13 @@ IL2CPP_EXTERN_C String_t* _stringLiteral8B6CB5E2E752AB07655E6954DB0845F276D9CC2A
 IL2CPP_EXTERN_C String_t* _stringLiteral8CAE05DCE31F28F0FE0D6E95D009402588843248;
 IL2CPP_EXTERN_C String_t* _stringLiteral8D7DA574E835E9205D7976E85982D559C51996F8;
 IL2CPP_EXTERN_C String_t* _stringLiteral8E9990F3BAEE35B197FCE2193468F252E9DC884B;
+IL2CPP_EXTERN_C String_t* _stringLiteral8ECA105E386FBD98288D3C2B6BE89052A425EDEB;
 IL2CPP_EXTERN_C String_t* _stringLiteral8F8990F5D7AB039E98C2DBC243675AB6384E1338;
 IL2CPP_EXTERN_C String_t* _stringLiteral8FA763DE8469A44A0C0021664A820BF9FD531D89;
 IL2CPP_EXTERN_C String_t* _stringLiteral900EA2277053D72D73CEE6A588716BCD9CE954BA;
 IL2CPP_EXTERN_C String_t* _stringLiteral91EABC919E48AAD7331BDBE21DBB8D4C623A4A25;
 IL2CPP_EXTERN_C String_t* _stringLiteral927C7D94431263B4ED65E459E8BF96BC2813658E;
+IL2CPP_EXTERN_C String_t* _stringLiteral937055BB7C257894131D85407D3C2EE0BAEA540E;
 IL2CPP_EXTERN_C String_t* _stringLiteral93F1BB309AC86886D6B07A6303E1126583EF2EE5;
 IL2CPP_EXTERN_C String_t* _stringLiteral9426D11E39316F629721BBD5BD71B18778C74B11;
 IL2CPP_EXTERN_C String_t* _stringLiteral970DBD957E951CBB2A0CADFAE721EDA0478353B9;
@@ -502,6 +507,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteralE3BA9D194386F0ADAA251A456AF4EA9A41659148
 IL2CPP_EXTERN_C String_t* _stringLiteralE3BD423B498DBF0E2648903781E7B88EA870F5CD;
 IL2CPP_EXTERN_C String_t* _stringLiteralE43C06B6C14EF9AF15CAB7C5AFE1072B18A2648A;
 IL2CPP_EXTERN_C String_t* _stringLiteralE5163E394342C516E49692565CA75636D338FCB7;
+IL2CPP_EXTERN_C String_t* _stringLiteralE821EC0280E9C954CFC649C00203B55BBCFAC529;
 IL2CPP_EXTERN_C String_t* _stringLiteralEB3C59A78D002781CA0ABA61A4238592E36E9A04;
 IL2CPP_EXTERN_C String_t* _stringLiteralEB6749F714891E55097660D814C6901C2CD6679E;
 IL2CPP_EXTERN_C String_t* _stringLiteralECAD4761D7FD9584AA1C33E6C0E8219BA2BA498C;
@@ -3187,6 +3193,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t InteractionLayerMask_GetMask_m3694DFC
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR InteractionLayerMask_t3B3480A4A5E1E0C43314C0D2CEB3BB39175E1FD4 InteractionLayerMask_op_Implicit_m6FF8E1165F1A46181E485809C17FF45A3B0C00BA (int32_t ___0_intVal, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRBaseInteractable_set_interactionLayers_m3B201035F6EDF8D1B8F5A2415EFCDBFB93CFAE34_inline (XRBaseInteractable_t76185BD6DF3BC86B3CDD82E6368C3C7157E39AE4* __this, InteractionLayerMask_t3B3480A4A5E1E0C43314C0D2CEB3BB39175E1FD4 ___0_value, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR InteractionLayerMask_t3B3480A4A5E1E0C43314C0D2CEB3BB39175E1FD4 XRBaseInteractable_get_interactionLayers_m2874556CCF0840588595935EE2D44FB6425C9D9C_inline (XRBaseInteractable_t76185BD6DF3BC86B3CDD82E6368C3C7157E39AE4* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreateWallWithDoorway_m3BD68D4A9542FCF72D7D96E519A72AB5350D926B (DungeonEntranceRoom_tE1924C1E12A1DBA3D74D88894DD4D2F8BC4F5787* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_localPosition, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_localScale, bool ___2_isNorthWall, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreateWall_mB76795450B8EA1BEC12D698D41C7BB4F37CA2C0C (DungeonEntranceRoom_tE1924C1E12A1DBA3D74D88894DD4D2F8BC4F5787* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_localPosition, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_localScale, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD5156AD168F8AC24848CF2D6C384C7F15316 (DungeonEntranceRoom_tE1924C1E12A1DBA3D74D88894DD4D2F8BC4F5787* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_localPosition, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreatePillar_m888B5B4C6E6F90985B4DAF9393E9F537BA273FB6 (DungeonEntranceRoom_tE1924C1E12A1DBA3D74D88894DD4D2F8BC4F5787* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_localPosition, const RuntimeMethod* method) ;
@@ -17286,7 +17293,7 @@ IL_01ca:
 		L_74 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral415C5BFE0FB59D37629E8FDBE5FAC59406F70045, L_73, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_74, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:95>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:96>
 		float L_75 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_76;
 		memset((&L_76), 0, sizeof(L_76));
@@ -17295,8 +17302,8 @@ IL_01ca:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_78;
 		memset((&L_78), 0, sizeof(L_78));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_78), L_77, (4.0f), (1.0f), NULL);
-		DungeonEntranceRoom_CreateWall_mB76795450B8EA1BEC12D698D41C7BB4F37CA2C0C(__this, L_76, L_78, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:96>
+		DungeonEntranceRoom_CreateWallWithDoorway_m3BD68D4A9542FCF72D7D96E519A72AB5350D926B(__this, L_76, L_78, (bool)1, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:97>
 		float L_79 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_80;
 		memset((&L_80), 0, sizeof(L_80));
@@ -17306,7 +17313,7 @@ IL_01ca:
 		memset((&L_82), 0, sizeof(L_82));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_82), L_81, (4.0f), (1.0f), NULL);
 		DungeonEntranceRoom_CreateWall_mB76795450B8EA1BEC12D698D41C7BB4F37CA2C0C(__this, L_80, L_82, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:97>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:98>
 		float L_83 = __this->___roomWidth;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_84;
 		memset((&L_84), 0, sizeof(L_84));
@@ -17316,7 +17323,7 @@ IL_01ca:
 		memset((&L_86), 0, sizeof(L_86));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_86), (1.0f), (4.0f), L_85, NULL);
 		DungeonEntranceRoom_CreateWall_mB76795450B8EA1BEC12D698D41C7BB4F37CA2C0C(__this, L_84, L_86, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:98>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:99>
 		float L_87 = __this->___roomWidth;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_88;
 		memset((&L_88), 0, sizeof(L_88));
@@ -17326,22 +17333,22 @@ IL_01ca:
 		memset((&L_90), 0, sizeof(L_90));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_90), (1.0f), (4.0f), L_89, NULL);
 		DungeonEntranceRoom_CreateWall_mB76795450B8EA1BEC12D698D41C7BB4F37CA2C0C(__this, L_88, L_90, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:101>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:102>
 		bool L_91 = __this->___addCeiling;
 		if (!L_91)
 		{
-			goto IL_0395;
+			goto IL_0396;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:103>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:104>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_92;
 		L_92 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:104>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:105>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_93 = L_92;
 		NullCheck(L_93);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_93, _stringLiteral01DABAEA1038CE94C68EC1934C99F3FAE1140A8B, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:105>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:106>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_94 = L_93;
 		NullCheck(L_94);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_95;
@@ -17350,7 +17357,7 @@ IL_01ca:
 		L_96 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_95);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_95, L_96, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:106>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:107>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_97 = L_94;
 		NullCheck(L_97);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_98;
@@ -17360,7 +17367,7 @@ IL_01ca:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_99), (0.0f), (4.5f), (0.0f), NULL);
 		NullCheck(L_98);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_98, L_99, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:107>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:108>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_100 = L_97;
 		NullCheck(L_100);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_101;
@@ -17372,74 +17379,74 @@ IL_01ca:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_104), L_102, (1.0f), L_103, NULL);
 		NullCheck(L_101);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_101, L_104, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:109>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:110>
 		NullCheck(L_100);
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_105;
 		L_105 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_100, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
 		V_7 = L_105;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:110>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:111>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_106 = V_7;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_107;
 		L_107 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_106, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
 		if (!L_107)
 		{
-			goto IL_0395;
+			goto IL_0396;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:112>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:113>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_108;
 		L_108 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_109 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_109, L_108, NULL);
 		V_8 = L_109;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:113>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:114>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_110 = V_8;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_111;
 		memset((&L_111), 0, sizeof(L_111));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_111), (0.200000003f), (0.200000003f), (0.25f), NULL);
 		NullCheck(L_110);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_110, L_111, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:114>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:115>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_112 = V_7;
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_113 = V_8;
 		NullCheck(L_112);
 		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_112, L_113, NULL);
 	}
 
-IL_0395:
+IL_0396:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:119>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:120>
 		bool L_114 = __this->___addTorches;
 		if (!L_114)
 		{
-			goto IL_0474;
+			goto IL_0475;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:121>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:122>
 		float L_115 = __this->___roomWidth;
 		float L_116 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_117;
 		memset((&L_117), 0, sizeof(L_117));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_117), ((float)il2cpp_codegen_add(((float)(((-L_115))/(2.0f))), (2.0f))), (2.5f), ((float)il2cpp_codegen_subtract(((float)(L_116/(2.0f))), (2.0f))), NULL);
 		DungeonEntranceRoom_PlaceTorch_m6B6DD5156AD168F8AC24848CF2D6C384C7F15316(__this, L_117, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:122>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:123>
 		float L_118 = __this->___roomWidth;
 		float L_119 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_120;
 		memset((&L_120), 0, sizeof(L_120));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_120), ((float)il2cpp_codegen_subtract(((float)(L_118/(2.0f))), (2.0f))), (2.5f), ((float)il2cpp_codegen_subtract(((float)(L_119/(2.0f))), (2.0f))), NULL);
 		DungeonEntranceRoom_PlaceTorch_m6B6DD5156AD168F8AC24848CF2D6C384C7F15316(__this, L_120, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:123>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:124>
 		float L_121 = __this->___roomWidth;
 		float L_122 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_123;
 		memset((&L_123), 0, sizeof(L_123));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_123), ((float)il2cpp_codegen_add(((float)(((-L_121))/(2.0f))), (2.0f))), (2.5f), ((float)il2cpp_codegen_add(((float)(((-L_122))/(2.0f))), (2.0f))), NULL);
 		DungeonEntranceRoom_PlaceTorch_m6B6DD5156AD168F8AC24848CF2D6C384C7F15316(__this, L_123, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:124>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:125>
 		float L_124 = __this->___roomWidth;
 		float L_125 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_126;
@@ -17448,38 +17455,38 @@ IL_0395:
 		DungeonEntranceRoom_PlaceTorch_m6B6DD5156AD168F8AC24848CF2D6C384C7F15316(__this, L_126, NULL);
 	}
 
-IL_0474:
+IL_0475:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:128>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:129>
 		bool L_127 = __this->___addPillars;
 		if (!L_127)
 		{
-			goto IL_0553;
+			goto IL_0554;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:130>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:131>
 		float L_128 = __this->___roomWidth;
 		float L_129 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_130;
 		memset((&L_130), 0, sizeof(L_130));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_130), ((float)il2cpp_codegen_add(((float)(((-L_128))/(2.0f))), (5.0f))), (0.0f), ((float)il2cpp_codegen_subtract(((float)(L_129/(2.0f))), (5.0f))), NULL);
 		DungeonEntranceRoom_CreatePillar_m888B5B4C6E6F90985B4DAF9393E9F537BA273FB6(__this, L_130, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:131>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:132>
 		float L_131 = __this->___roomWidth;
 		float L_132 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_133;
 		memset((&L_133), 0, sizeof(L_133));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_133), ((float)il2cpp_codegen_subtract(((float)(L_131/(2.0f))), (5.0f))), (0.0f), ((float)il2cpp_codegen_subtract(((float)(L_132/(2.0f))), (5.0f))), NULL);
 		DungeonEntranceRoom_CreatePillar_m888B5B4C6E6F90985B4DAF9393E9F537BA273FB6(__this, L_133, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:132>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:133>
 		float L_134 = __this->___roomWidth;
 		float L_135 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_136;
 		memset((&L_136), 0, sizeof(L_136));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_136), ((float)il2cpp_codegen_add(((float)(((-L_134))/(2.0f))), (5.0f))), (0.0f), ((float)il2cpp_codegen_add(((float)(((-L_135))/(2.0f))), (5.0f))), NULL);
 		DungeonEntranceRoom_CreatePillar_m888B5B4C6E6F90985B4DAF9393E9F537BA273FB6(__this, L_136, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:133>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:134>
 		float L_137 = __this->___roomWidth;
 		float L_138 = __this->___roomLength;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_139;
@@ -17488,20 +17495,20 @@ IL_0474:
 		DungeonEntranceRoom_CreatePillar_m888B5B4C6E6F90985B4DAF9393E9F537BA273FB6(__this, L_139, NULL);
 	}
 
-IL_0553:
+IL_0554:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:137>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:138>
 		bool L_140 = __this->___addAmbientLight;
 		if (!L_140)
 		{
-			goto IL_05d7;
+			goto IL_05d8;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:139>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:140>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_141 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_141, _stringLiteral927C7D94431263B4ED65E459E8BF96BC2813658E, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:140>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:141>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_142 = L_141;
 		NullCheck(L_142);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_143;
@@ -17510,7 +17517,7 @@ IL_0553:
 		L_144 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_143);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_143, L_144, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:141>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:142>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_145 = L_142;
 		NullCheck(L_145);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_146;
@@ -17520,24 +17527,24 @@ IL_0553:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_147), (0.0f), (3.0f), (0.0f), NULL);
 		NullCheck(L_146);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_146, L_147, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:142>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:143>
 		NullCheck(L_145);
 		Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* L_148;
 		L_148 = GameObject_AddComponent_TisLight_t1E68479B7782AF2050FAA02A5DC612FD034F18F3_m2BD4B9FA79F67E589E15432F374FB3E717987144(L_145, GameObject_AddComponent_TisLight_t1E68479B7782AF2050FAA02A5DC612FD034F18F3_m2BD4B9FA79F67E589E15432F374FB3E717987144_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:143>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:144>
 		Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* L_149 = L_148;
 		NullCheck(L_149);
 		Light_set_type_m9DF0E6AC528391B1D35FA06583B9A72EAB686C43(L_149, 2, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:144>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:145>
 		Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* L_150 = L_149;
 		float L_151 = __this->___ambientIntensity;
 		NullCheck(L_150);
 		Light_set_intensity_mE4820C7F39F490B92ED5EA0C3AADA7C0775BE854(L_150, ((float)il2cpp_codegen_multiply(L_151, (10.0f))), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:145>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:146>
 		Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* L_152 = L_150;
 		NullCheck(L_152);
 		Light_set_range_mBAF8E5380ECAD89A2BF43B7DA9C2DE8FA0C2FDEF(L_152, (30.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:146>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:147>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_153;
 		memset((&L_153), 0, sizeof(L_153));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_153), (1.0f), (0.899999976f), (0.699999988f), NULL);
@@ -17545,34 +17552,34 @@ IL_0553:
 		Light_set_color_m242F09E22904E0A20D5B032A0749678B0796A87C(L_152, L_153, NULL);
 	}
 
-IL_05d7:
+IL_05d8:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:150>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:151>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_154;
 		L_154 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_154);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_155;
 		L_155 = Transform_Find_m3087032B0E1C5B96A2D2C27020BAEAE2DA08F932(L_154, _stringLiteral0AACD1D71988010B6814C0A86D51FCE1FC5F7A6B, NULL);
 		V_2 = L_155;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:151>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:152>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_156 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_157;
 		L_157 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_156, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
 		if (!L_157)
 		{
-			goto IL_06cc;
+			goto IL_06cd;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:153>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:154>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_158;
 		L_158 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:154>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:155>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_159 = L_158;
 		NullCheck(L_159);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_159, _stringLiteral53CA7DC111319A9AA41FE77BEC45F028829B2C44, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:155>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:156>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_160 = L_159;
 		NullCheck(L_160);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_161;
@@ -17580,7 +17587,7 @@ IL_05d7:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_162 = V_2;
 		NullCheck(L_161);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_161, L_162, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:156>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:157>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_163 = L_160;
 		NullCheck(L_163);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_164;
@@ -17589,7 +17596,7 @@ IL_05d7:
 		L_165 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_164);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_164, L_165, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:157>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:158>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_166 = L_163;
 		NullCheck(L_166);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_167;
@@ -17600,13 +17607,13 @@ IL_05d7:
 		L_169 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_168, (0.5f), NULL);
 		NullCheck(L_167);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_167, L_169, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:159>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:160>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_170 = L_166;
 		NullCheck(L_170);
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_171;
 		L_171 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_170, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
 		V_9 = L_171;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:160>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:161>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_172 = V_9;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_173;
@@ -17614,28 +17621,28 @@ IL_05d7:
 		if (!L_173)
 		{
 			G_B25_0 = L_170;
-			goto IL_069a;
+			goto IL_069b;
 		}
 		G_B24_0 = L_170;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:163>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:164>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_174;
 		L_174 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_175 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_175, L_174, NULL);
 		V_11 = L_175;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:164>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:165>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_176 = V_11;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_177;
 		L_177 = Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline(NULL);
 		NullCheck(L_176);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_176, L_177, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:165>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:166>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_178 = V_11;
 		NullCheck(L_178);
 		Material_EnableKeyword_mE8523EF6CF694284DF976D47ADEDE9363A1174AC(L_178, _stringLiteral72D498F039FD562896966E064E8315EA0BCE68C5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:166>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:167>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_179 = V_11;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_180;
 		L_180 = Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline(NULL);
@@ -17643,7 +17650,7 @@ IL_05d7:
 		L_181 = Color_op_Multiply_m379B20A820266ACF82A21425B9CAE8DCD773CFBB_inline(L_180, (2.0f), NULL);
 		NullCheck(L_179);
 		Material_SetColor_mFAB32FAA44461E46FD707B34184EC080CBB3539F(L_179, _stringLiteralB92EF51E45166C91E2762DB6C9F27C8BD6EBE466, L_181, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:167>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:168>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_182 = V_9;
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_183 = V_11;
 		NullCheck(L_182);
@@ -17651,33 +17658,33 @@ IL_05d7:
 		G_B25_0 = G_B24_0;
 	}
 
-IL_069a:
+IL_069b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:171>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:172>
 		NullCheck(G_B25_0);
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_184;
 		L_184 = GameObject_GetComponent_TisCollider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76_m4CB0FC4E59CE6C91F1106739EF364208A63E2597(G_B25_0, GameObject_GetComponent_TisCollider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76_m4CB0FC4E59CE6C91F1106739EF364208A63E2597_RuntimeMethod_var);
 		V_10 = L_184;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:172>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:173>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_185 = V_10;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_186;
 		L_186 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_185, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
 		if (!L_186)
 		{
-			goto IL_06b2;
+			goto IL_06b3;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:173>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:174>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_187 = V_10;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_187, NULL);
 	}
 
-IL_06b2:
+IL_06b3:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:175>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:176>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_188 = V_2;
 		NullCheck(L_188);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_189;
@@ -17690,14 +17697,14 @@ IL_06b2:
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_192, NULL);
 	}
 
-IL_06cc:
+IL_06cd:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:178>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:179>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral7628F6EEA7981BCE51D321D5908F9806D51879DC, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:179>
-		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral358B0388259C1FCFFD7BA4AF6A9B59D02C0F8C39, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:180>
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral358B0388259C1FCFFD7BA4AF6A9B59D02C0F8C39, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:181>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_193;
 		L_193 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_193);
@@ -17714,11 +17721,11 @@ IL_06cc:
 		String_t* L_203;
 		L_203 = String_Format_mA0534D6E2AE4D67A6BD8D45B3321323930EB930C(_stringLiteralE43C06B6C14EF9AF15CAB7C5AFE1072B18A2648A, L_196, L_199, L_202, NULL);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_203, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:181>
-		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral6B5C913EA19FDCD066274F40BF492FECA770429B, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:182>
-		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral7628F6EEA7981BCE51D321D5908F9806D51879DC, NULL);
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral6B5C913EA19FDCD066274F40BF492FECA770429B, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:183>
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral7628F6EEA7981BCE51D321D5908F9806D51879DC, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:184>
 		return;
 	}
 }
@@ -17738,14 +17745,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreateWall_mB7679545
 	Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* V_0 = NULL;
 	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_1 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:187>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:188>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
 		L_0 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:188>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:189>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = L_0;
 		NullCheck(L_1);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_1, _stringLiteral7649AEE062EE200D5810926162F39A75BCEE5287, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:189>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:190>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = L_1;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -17754,7 +17761,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreateWall_mB7679545
 		L_4 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_3);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_3, L_4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:190>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:191>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_2;
 		NullCheck(L_5);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6;
@@ -17762,7 +17769,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreateWall_mB7679545
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7 = ___0_localPosition;
 		NullCheck(L_6);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_6, L_7, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:191>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:192>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8 = L_5;
 		NullCheck(L_8);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9;
@@ -17770,12 +17777,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreateWall_mB7679545
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10 = ___1_localScale;
 		NullCheck(L_9);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_9, L_10, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:193>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:194>
 		NullCheck(L_8);
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_11;
 		L_11 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_8, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
 		V_0 = L_11;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:194>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:195>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_12 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_13;
@@ -17786,20 +17793,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreateWall_mB7679545
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:196>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:197>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_14;
 		L_14 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_15 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_15, L_14, NULL);
 		V_1 = L_15;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:197>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:198>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_16 = V_1;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_17;
 		memset((&L_17), 0, sizeof(L_17));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_17), (0.349999994f), (0.349999994f), (0.400000006f), NULL);
 		NullCheck(L_16);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_16, L_17, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:198>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:199>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_18 = V_0;
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_19 = V_1;
 		NullCheck(L_18);
@@ -17808,11 +17815,482 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreateWall_mB7679545
 
 IL_007a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:200>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:201>
 		return;
 	}
 }
 // Method Definition Index: 63999
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreateWallWithDoorway_m3BD68D4A9542FCF72D7D96E519A72AB5350D926B (DungeonEntranceRoom_tE1924C1E12A1DBA3D74D88894DD4D2F8BC4F5787* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_localPosition, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_localScale, bool ___2_isNorthWall, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral3857B7441BD50E0764FE14FC90E670838E34E30A);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4C8D562EF4084E1D9B7EA5E865733B56E3F4C9DB);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral88AA8B01368BFA7C6B10978DC4ADBA504AB58239);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral8ECA105E386FBD98288D3C2B6BE89052A425EDEB);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral937055BB7C257894131D85407D3C2EE0BAEA540E);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE821EC0280E9C954CFC649C00203B55BBCFAC529);
+		s_Il2CppMethodInitialized = true;
+	}
+	float V_0 = 0.0f;
+	float V_1 = 0.0f;
+	float V_2 = 0.0f;
+	Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* V_3 = NULL;
+	Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* V_4 = NULL;
+	Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* V_5 = NULL;
+	Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* V_6 = NULL;
+	Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* V_7 = NULL;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_8 = NULL;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_9 = NULL;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_10 = NULL;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_11 = NULL;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_12 = NULL;
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:206>
+		V_0 = (4.0f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:207>
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ___1_localScale;
+		float L_1 = L_0.___x;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:208>
+		float L_2 = V_0;
+		V_1 = ((float)(((float)il2cpp_codegen_subtract(L_1, L_2))/(2.0f)));
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:210>
+		float L_3 = V_1;
+		if ((!(((float)L_3) > ((float)(0.5f)))))
+		{
+			goto IL_0189;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:213>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
+		L_4 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(3, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:214>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = L_4;
+		NullCheck(L_5);
+		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_5, _stringLiteral3857B7441BD50E0764FE14FC90E670838E34E30A, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:215>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = L_5;
+		NullCheck(L_6);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7;
+		L_7 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_6, NULL);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8;
+		L_8 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_7);
+		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_7, L_8, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:216>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = L_6;
+		NullCheck(L_9);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10;
+		L_10 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_9, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11 = ___0_localPosition;
+		float L_12 = V_0;
+		float L_13 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
+		memset((&L_14), 0, sizeof(L_14));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_14), ((float)il2cpp_codegen_subtract(((float)(((-L_12))/(2.0f))), ((float)(L_13/(2.0f))))), (0.0f), (0.0f), NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15;
+		L_15 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_11, L_14, NULL);
+		NullCheck(L_10);
+		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_10, L_15, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:217>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = L_9;
+		NullCheck(L_16);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17;
+		L_17 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_16, NULL);
+		float L_18 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19 = ___1_localScale;
+		float L_20 = L_19.___y;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_21 = ___1_localScale;
+		float L_22 = L_21.___z;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23;
+		memset((&L_23), 0, sizeof(L_23));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_23), L_18, L_20, L_22, NULL);
+		NullCheck(L_17);
+		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_17, L_23, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:219>
+		NullCheck(L_16);
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_24;
+		L_24 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_16, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
+		V_6 = L_24;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:220>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_25 = V_6;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_26;
+		L_26 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_25, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_26)
+		{
+			goto IL_00d5;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:222>
+		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_27;
+		L_27 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_28 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
+		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_28, L_27, NULL);
+		V_8 = L_28;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:223>
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_29 = V_8;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_30;
+		memset((&L_30), 0, sizeof(L_30));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_30), (0.349999994f), (0.349999994f), (0.400000006f), NULL);
+		NullCheck(L_29);
+		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_29, L_30, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:224>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_31 = V_6;
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_32 = V_8;
+		NullCheck(L_31);
+		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_31, L_32, NULL);
+	}
+
+IL_00d5:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:228>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_33;
+		L_33 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(3, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:229>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_34 = L_33;
+		NullCheck(L_34);
+		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_34, _stringLiteral937055BB7C257894131D85407D3C2EE0BAEA540E, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:230>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_35 = L_34;
+		NullCheck(L_35);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_36;
+		L_36 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_35, NULL);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_37;
+		L_37 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_36);
+		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_36, L_37, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:231>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_38 = L_35;
+		NullCheck(L_38);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_39;
+		L_39 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_38, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_40 = ___0_localPosition;
+		float L_41 = V_0;
+		float L_42 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_43;
+		memset((&L_43), 0, sizeof(L_43));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_43), ((float)il2cpp_codegen_add(((float)(L_41/(2.0f))), ((float)(L_42/(2.0f))))), (0.0f), (0.0f), NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_44;
+		L_44 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_40, L_43, NULL);
+		NullCheck(L_39);
+		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_39, L_44, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:232>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_45 = L_38;
+		NullCheck(L_45);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_46;
+		L_46 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_45, NULL);
+		float L_47 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_48 = ___1_localScale;
+		float L_49 = L_48.___y;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_50 = ___1_localScale;
+		float L_51 = L_50.___z;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_52;
+		memset((&L_52), 0, sizeof(L_52));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_52), L_47, L_49, L_51, NULL);
+		NullCheck(L_46);
+		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_46, L_52, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:234>
+		NullCheck(L_45);
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_53;
+		L_53 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_45, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
+		V_7 = L_53;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:235>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_54 = V_7;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_55;
+		L_55 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_54, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_55)
+		{
+			goto IL_0189;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:237>
+		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_56;
+		L_56 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_57 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
+		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_57, L_56, NULL);
+		V_9 = L_57;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:238>
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_58 = V_9;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_59;
+		memset((&L_59), 0, sizeof(L_59));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_59), (0.349999994f), (0.349999994f), (0.400000006f), NULL);
+		NullCheck(L_58);
+		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_58, L_59, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:239>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_60 = V_7;
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_61 = V_9;
+		NullCheck(L_60);
+		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_60, L_61, NULL);
+	}
+
+IL_0189:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:244>
+		V_2 = (3.5f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:247>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_62;
+		L_62 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(3, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:248>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_63 = L_62;
+		NullCheck(L_63);
+		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_63, _stringLiteral4C8D562EF4084E1D9B7EA5E865733B56E3F4C9DB, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:249>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_64 = L_63;
+		NullCheck(L_64);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_65;
+		L_65 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_64, NULL);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_66;
+		L_66 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_65);
+		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_65, L_66, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:250>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_67 = L_64;
+		NullCheck(L_67);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_68;
+		L_68 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_67, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_69 = ___0_localPosition;
+		float L_70 = V_0;
+		float L_71 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_72;
+		memset((&L_72), 0, sizeof(L_72));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_72), ((float)(((-L_70))/(2.0f))), ((float)il2cpp_codegen_subtract(((float)(L_71/(2.0f))), (0.5f))), (0.0f), NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_73;
+		L_73 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_69, L_72, NULL);
+		NullCheck(L_68);
+		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_68, L_73, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:251>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_74 = L_67;
+		NullCheck(L_74);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_75;
+		L_75 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_74, NULL);
+		float L_76 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_77;
+		memset((&L_77), 0, sizeof(L_77));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_77), (0.400000006f), L_76, (0.400000006f), NULL);
+		NullCheck(L_75);
+		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_75, L_77, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:253>
+		NullCheck(L_74);
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_78;
+		L_78 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_74, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
+		V_3 = L_78;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:254>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_79 = V_3;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_80;
+		L_80 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_79, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_80)
+		{
+			goto IL_023f;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:256>
+		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_81;
+		L_81 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_82 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
+		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_82, L_81, NULL);
+		V_10 = L_82;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:257>
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_83 = V_10;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_84;
+		memset((&L_84), 0, sizeof(L_84));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_84), (0.5f), (0.479999989f), (0.519999981f), NULL);
+		NullCheck(L_83);
+		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_83, L_84, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:258>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_85 = V_3;
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_86 = V_10;
+		NullCheck(L_85);
+		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_85, L_86, NULL);
+	}
+
+IL_023f:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:262>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_87;
+		L_87 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(3, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:263>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_88 = L_87;
+		NullCheck(L_88);
+		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_88, _stringLiteralE821EC0280E9C954CFC649C00203B55BBCFAC529, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:264>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_89 = L_88;
+		NullCheck(L_89);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_90;
+		L_90 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_89, NULL);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_91;
+		L_91 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_90);
+		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_90, L_91, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:265>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_92 = L_89;
+		NullCheck(L_92);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_93;
+		L_93 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_92, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_94 = ___0_localPosition;
+		float L_95 = V_0;
+		float L_96 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_97;
+		memset((&L_97), 0, sizeof(L_97));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_97), ((float)(L_95/(2.0f))), ((float)il2cpp_codegen_subtract(((float)(L_96/(2.0f))), (0.5f))), (0.0f), NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_98;
+		L_98 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_94, L_97, NULL);
+		NullCheck(L_93);
+		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_93, L_98, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:266>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_99 = L_92;
+		NullCheck(L_99);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_100;
+		L_100 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_99, NULL);
+		float L_101 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_102;
+		memset((&L_102), 0, sizeof(L_102));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_102), (0.400000006f), L_101, (0.400000006f), NULL);
+		NullCheck(L_100);
+		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_100, L_102, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:268>
+		NullCheck(L_99);
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_103;
+		L_103 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_99, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
+		V_4 = L_103;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:269>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_104 = V_4;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_105;
+		L_105 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_104, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_105)
+		{
+			goto IL_02f1;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:271>
+		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_106;
+		L_106 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_107 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
+		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_107, L_106, NULL);
+		V_11 = L_107;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:272>
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_108 = V_11;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_109;
+		memset((&L_109), 0, sizeof(L_109));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_109), (0.5f), (0.479999989f), (0.519999981f), NULL);
+		NullCheck(L_108);
+		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_108, L_109, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:273>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_110 = V_4;
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_111 = V_11;
+		NullCheck(L_110);
+		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_110, L_111, NULL);
+	}
+
+IL_02f1:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:277>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_112;
+		L_112 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(3, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:278>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_113 = L_112;
+		NullCheck(L_113);
+		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_113, _stringLiteral8ECA105E386FBD98288D3C2B6BE89052A425EDEB, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:279>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_114 = L_113;
+		NullCheck(L_114);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_115;
+		L_115 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_114, NULL);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_116;
+		L_116 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_115);
+		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_115, L_116, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:280>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_117 = L_114;
+		NullCheck(L_117);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_118;
+		L_118 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_117, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_119 = ___0_localPosition;
+		float L_120 = V_2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_121;
+		memset((&L_121), 0, sizeof(L_121));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_121), (0.0f), ((float)il2cpp_codegen_subtract(L_120, (0.5f))), (0.0f), NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_122;
+		L_122 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_119, L_121, NULL);
+		NullCheck(L_118);
+		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_118, L_122, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:281>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_123 = L_117;
+		NullCheck(L_123);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_124;
+		L_124 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_123, NULL);
+		float L_125 = V_0;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_126;
+		memset((&L_126), 0, sizeof(L_126));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_126), ((float)il2cpp_codegen_add(L_125, (0.800000012f))), (0.400000006f), (0.400000006f), NULL);
+		NullCheck(L_124);
+		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_124, L_126, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:283>
+		NullCheck(L_123);
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_127;
+		L_127 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_123, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
+		V_5 = L_127;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:284>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_128 = V_5;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_129;
+		L_129 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_128, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_129)
+		{
+			goto IL_03a1;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:286>
+		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_130;
+		L_130 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_131 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
+		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_131, L_130, NULL);
+		V_12 = L_131;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:287>
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_132 = V_12;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_133;
+		memset((&L_133), 0, sizeof(L_133));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_133), (0.5f), (0.479999989f), (0.519999981f), NULL);
+		NullCheck(L_132);
+		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_132, L_133, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:288>
+		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_134 = V_5;
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_135 = V_12;
+		NullCheck(L_134);
+		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_134, L_135, NULL);
+	}
+
+IL_03a1:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:291>
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_136 = ___0_localPosition;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_137 = L_136;
+		RuntimeObject* L_138 = Box(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var, &L_137);
+		String_t* L_139;
+		L_139 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteral88AA8B01368BFA7C6B10978DC4ADBA504AB58239, L_138, NULL);
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_139, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:292>
+		return;
+	}
+}
+// Method Definition Index: 64000
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD5156AD168F8AC24848CF2D6C384C7F15316 (DungeonEntranceRoom_tE1924C1E12A1DBA3D74D88894DD4D2F8BC4F5787* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_localPosition, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -17837,11 +18315,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD515
 	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_3 = NULL;
 	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_4 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:204>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:296>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral7D6076FFB6E809E1919539CED1F6B6964E60239C, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:205>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:297>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
@@ -17850,7 +18328,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD515
 		L_3 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_2, L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:298>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = V_0;
 		NullCheck(L_4);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5;
@@ -17858,14 +18336,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD515
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6 = ___0_localPosition;
 		NullCheck(L_5);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_5, L_6, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:209>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:301>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7;
 		L_7 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(2, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:210>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:302>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8 = L_7;
 		NullCheck(L_8);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_8, _stringLiteral73C6B931B33B082C1818FB04ADA74D6639872D4B, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:211>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:303>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = L_8;
 		NullCheck(L_9);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10;
@@ -17876,7 +18354,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD515
 		L_12 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_11, NULL);
 		NullCheck(L_10);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_10, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:212>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:304>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13 = L_9;
 		NullCheck(L_13);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14;
@@ -17885,7 +18363,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD515
 		L_15 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_14);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_14, L_15, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:213>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:305>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = L_13;
 		NullCheck(L_16);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17;
@@ -17895,12 +18373,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD515
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_18), (0.150000006f), (0.5f), (0.150000006f), NULL);
 		NullCheck(L_17);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_17, L_18, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:214>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:306>
 		NullCheck(L_16);
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_19;
 		L_19 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_16, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
 		V_1 = L_19;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:215>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:307>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_20 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_21;
@@ -17911,20 +18389,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD515
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:217>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:309>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_22;
 		L_22 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_23 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_23, L_22, NULL);
 		V_3 = L_23;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:218>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:310>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_24 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_25;
 		memset((&L_25), 0, sizeof(L_25));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_25), (0.100000001f), (0.100000001f), (0.100000001f), NULL);
 		NullCheck(L_24);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_24, L_25, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:219>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:311>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_26 = V_1;
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_27 = V_3;
 		NullCheck(L_26);
@@ -17933,14 +18411,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_PlaceTorch_m6B6DD515
 
 IL_00b9:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:223>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:315>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_28;
 		L_28 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:224>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:316>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_29 = L_28;
 		NullCheck(L_29);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_29, _stringLiteral3305500F7BE37DB1C3BF4FD169A51AFB539CAC9F, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:225>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:317>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_30 = L_29;
 		NullCheck(L_30);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31;
@@ -17951,7 +18429,7 @@ IL_00b9:
 		L_33 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_32, NULL);
 		NullCheck(L_31);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_31, L_33, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:226>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:318>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_34 = L_30;
 		NullCheck(L_34);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_35;
@@ -17961,7 +18439,7 @@ IL_00b9:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_36), (0.0f), (0.600000024f), (0.0f), NULL);
 		NullCheck(L_35);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_35, L_36, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:227>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:319>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_37 = L_34;
 		NullCheck(L_37);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_38;
@@ -17971,12 +18449,12 @@ IL_00b9:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_39), (0.300000012f), (0.400000006f), (0.300000012f), NULL);
 		NullCheck(L_38);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_38, L_39, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:228>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:320>
 		NullCheck(L_37);
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_40;
 		L_40 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_37, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
 		V_2 = L_40;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:229>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:321>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_41 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_42;
@@ -17987,24 +18465,24 @@ IL_00b9:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:231>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:323>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_43;
 		L_43 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_44 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_44, L_43, NULL);
 		V_4 = L_44;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:232>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:324>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_45 = V_4;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_46;
 		memset((&L_46), 0, sizeof(L_46));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_46), (1.0f), (0.600000024f), (0.200000003f), NULL);
 		NullCheck(L_45);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_45, L_46, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:233>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:325>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_47 = V_4;
 		NullCheck(L_47);
 		Material_EnableKeyword_mE8523EF6CF694284DF976D47ADEDE9363A1174AC(L_47, _stringLiteral72D498F039FD562896966E064E8315EA0BCE68C5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:234>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:326>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_48 = V_4;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_49;
 		memset((&L_49), 0, sizeof(L_49));
@@ -18013,7 +18491,7 @@ IL_00b9:
 		L_50 = Color_op_Multiply_m379B20A820266ACF82A21425B9CAE8DCD773CFBB_inline(L_49, (2.0f), NULL);
 		NullCheck(L_48);
 		Material_SetColor_mFAB32FAA44461E46FD707B34184EC080CBB3539F(L_48, _stringLiteralB92EF51E45166C91E2762DB6C9F27C8BD6EBE466, L_50, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:235>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:327>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_51 = V_2;
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_52 = V_4;
 		NullCheck(L_51);
@@ -18022,34 +18500,34 @@ IL_00b9:
 
 IL_0192:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:239>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:331>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_53 = V_0;
 		NullCheck(L_53);
 		Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* L_54;
 		L_54 = GameObject_AddComponent_TisLight_t1E68479B7782AF2050FAA02A5DC612FD034F18F3_m2BD4B9FA79F67E589E15432F374FB3E717987144(L_53, GameObject_AddComponent_TisLight_t1E68479B7782AF2050FAA02A5DC612FD034F18F3_m2BD4B9FA79F67E589E15432F374FB3E717987144_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:240>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:332>
 		Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* L_55 = L_54;
 		NullCheck(L_55);
 		Light_set_type_m9DF0E6AC528391B1D35FA06583B9A72EAB686C43(L_55, 2, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:241>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:333>
 		Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* L_56 = L_55;
 		NullCheck(L_56);
 		Light_set_intensity_mE4820C7F39F490B92ED5EA0C3AADA7C0775BE854(L_56, (8.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:242>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:334>
 		Light_t1E68479B7782AF2050FAA02A5DC612FD034F18F3* L_57 = L_56;
 		NullCheck(L_57);
 		Light_set_range_mBAF8E5380ECAD89A2BF43B7DA9C2DE8FA0C2FDEF(L_57, (12.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:243>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:335>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_58;
 		memset((&L_58), 0, sizeof(L_58));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_58), (1.0f), (0.699999988f), (0.400000006f), NULL);
 		NullCheck(L_57);
 		Light_set_color_m242F09E22904E0A20D5B032A0749678B0796A87C(L_57, L_58, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:244>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:336>
 		return;
 	}
 }
-// Method Definition Index: 64000
+// Method Definition Index: 64001
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreatePillar_m888B5B4C6E6F90985B4DAF9393E9F537BA273FB6 (DungeonEntranceRoom_tE1924C1E12A1DBA3D74D88894DD4D2F8BC4F5787* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_localPosition, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -18069,15 +18547,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreatePillar_m888B5B
 	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_3 = NULL;
 	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* V_4 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:248>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:340>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
 		L_0 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(2, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:249>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:341>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = V_0;
 		NullCheck(L_1);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_1, _stringLiteral086E01D411D1B0D64555A35214D7E2601DE7D971, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:250>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:342>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = V_0;
 		NullCheck(L_2);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
@@ -18086,7 +18564,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreatePillar_m888B5B
 		L_4 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_3);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_3, L_4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:251>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:343>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = V_0;
 		NullCheck(L_5);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6;
@@ -18099,7 +18577,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreatePillar_m888B5B
 		L_9 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_7, L_8, NULL);
 		NullCheck(L_6);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_6, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:252>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:344>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = V_0;
 		NullCheck(L_10);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11;
@@ -18109,13 +18587,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreatePillar_m888B5B
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_12), (0.800000012f), (4.0f), (0.800000012f), NULL);
 		NullCheck(L_11);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_11, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:254>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:346>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13 = V_0;
 		NullCheck(L_13);
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_14;
 		L_14 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_13, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
 		V_1 = L_14;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:255>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:347>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_15 = V_1;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_16;
@@ -18126,20 +18604,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreatePillar_m888B5B
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:257>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:349>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_17;
 		L_17 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_18 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_18, L_17, NULL);
 		V_3 = L_18;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:258>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:350>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_19 = V_3;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_20;
 		memset((&L_20), 0, sizeof(L_20));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_20), (0.400000006f), (0.400000006f), (0.449999988f), NULL);
 		NullCheck(L_19);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_19, L_20, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:259>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:351>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_21 = V_1;
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_22 = V_3;
 		NullCheck(L_21);
@@ -18148,14 +18626,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom_CreatePillar_m888B5B
 
 IL_00a8:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:263>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:355>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_23;
 		L_23 = GameObject_CreatePrimitive_m13C0A691E679A83DD595913200A1DD9A906EB47B(3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:264>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:356>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_24 = L_23;
 		NullCheck(L_24);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_24, _stringLiteralF60C135EA11EAB50802A16786D385C5DDBAAA74D, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:265>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:357>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_25 = L_24;
 		NullCheck(L_25);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_26;
@@ -18166,7 +18644,7 @@ IL_00a8:
 		L_28 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_27, NULL);
 		NullCheck(L_26);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_26, L_28, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:266>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:358>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_29 = L_25;
 		NullCheck(L_29);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_30;
@@ -18176,7 +18654,7 @@ IL_00a8:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_31), (0.0f), (0.5f), (0.0f), NULL);
 		NullCheck(L_30);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_30, L_31, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:267>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:359>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_32 = L_29;
 		NullCheck(L_32);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_33;
@@ -18186,12 +18664,12 @@ IL_00a8:
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_34), (1.29999995f), (0.150000006f), (1.29999995f), NULL);
 		NullCheck(L_33);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_33, L_34, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:268>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:360>
 		NullCheck(L_32);
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_35;
 		L_35 = GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A(L_32, GameObject_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_m026EB44DB6238F13E2AFBECF1FBBE924CB1B040A_RuntimeMethod_var);
 		V_2 = L_35;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:269>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:361>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_36 = V_2;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_37;
@@ -18202,20 +18680,20 @@ IL_00a8:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:271>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:363>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_38;
 		L_38 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_39 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_39, L_38, NULL);
 		V_4 = L_39;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:272>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:364>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_40 = V_4;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_41;
 		memset((&L_41), 0, sizeof(L_41));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_41), (0.349999994f), (0.349999994f), (0.400000006f), NULL);
 		NullCheck(L_40);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_40, L_41, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:273>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:365>
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_42 = V_2;
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_43 = V_4;
 		NullCheck(L_42);
@@ -18224,11 +18702,11 @@ IL_00a8:
 
 IL_014b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:275>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonEntranceRoom.cs:367>
 		return;
 	}
 }
-// Method Definition Index: 64001
+// Method Definition Index: 64002
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom__ctor_m7782EE81FC3CA6697D2C1C7E509EC9D46B6BA8C5 (DungeonEntranceRoom_tE1924C1E12A1DBA3D74D88894DD4D2F8BC4F5787* __this, const RuntimeMethod* method) 
 {
 	{
@@ -18262,7 +18740,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonEntranceRoom__ctor_m7782EE81FC3CA
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 64002
+// Method Definition Index: 64003
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_Start_m27EEE87F5BD0D17DF461A8A33E5E0BB403741A59 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	{
@@ -18272,7 +18750,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_Start_m27EEE87F5BD0D17D
 		return;
 	}
 }
-// Method Definition Index: 64003
+// Method Definition Index: 64004
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_GenerateDungeon_m7054CA8D09F077B4C7F64098C462891259A6E1AC (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -18488,7 +18966,7 @@ IL_0122:
 		return;
 	}
 }
-// Method Definition Index: 64004
+// Method Definition Index: 64005
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_ClearDungeon_m335E173A8FE3D30C696ED2E4F5347F1FF0A45DD4 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -18591,7 +19069,7 @@ IL_0048:
 		return;
 	}
 }
-// Method Definition Index: 64005
+// Method Definition Index: 64006
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_GenerateRoomLayout_m4861A0B0BDDE9B661A95F27CACAB30E0C7B2F9BD (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -18815,7 +19293,7 @@ IL_00fc:
 		return;
 	}
 }
-// Method Definition Index: 64006
+// Method Definition Index: 64007
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t DungeonGenerator_DetermineRoomType_mBE1A4FC11682A6DEBF71D9C7B1F202BCB539FA4C (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, int32_t ___0_index, int32_t ___1_total, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -18886,7 +19364,7 @@ IL_0044:
 		return (int32_t)(1);
 	}
 }
-// Method Definition Index: 64007
+// Method Definition Index: 64008
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* DungeonGenerator_CreateRoom_mE73DA2F308F602D9F346C20B55EC7E298E0ED697 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A ___0_gridPos, int32_t ___1_type, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -19042,7 +19520,7 @@ IL_00b8:
 		return L_30;
 	}
 }
-// Method Definition Index: 64008
+// Method Definition Index: 64009
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool DungeonGenerator_CanPlaceRoom_mA7E0A5FFBBE1B741E1AA51B3D395FCF73EB8A765 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A ___0_gridPos, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -19132,7 +19610,7 @@ IL_0042:
 		return (bool)1;
 	}
 }
-// Method Definition Index: 64009
+// Method Definition Index: 64010
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector2IntU5BU5D_tF9E2BDAC11B246DF7EEB9137B826A0CBEBD59534* DungeonGenerator_GetRandomDirections_mC1A0E2DB2B0A5346A0F6E71FFE253423CBCA54E2 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -19231,7 +19709,7 @@ IL_006d:
 		return L_29;
 	}
 }
-// Method Definition Index: 64010
+// Method Definition Index: 64011
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_PlaceSpecialRoom_mA04ED8E7C73F112EC8B3876E46EABEFAA39453F5 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, int32_t ___0_type, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -19400,7 +19878,7 @@ IL_009d:
 		return;
 	}
 }
-// Method Definition Index: 64011
+// Method Definition Index: 64012
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_PlaceBossRoom_m212C5B8B49894EA3A56F506A19F8947F6E725A5F (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -19585,7 +20063,7 @@ IL_00b0:
 		return;
 	}
 }
-// Method Definition Index: 64012
+// Method Definition Index: 64013
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_BuildRoomGeometry_mF4B1BFC293B91AECB209CA445DD54471B68F8271 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -19757,7 +20235,7 @@ IL_00df:
 		return;
 	}
 }
-// Method Definition Index: 64013
+// Method Definition Index: 64014
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_AddTeleportationToFloor_mC0CDAA47715A3C79E8B21A17F77168361EF8D8A5 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_roomObj, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -19892,7 +20370,7 @@ IL_0070:
 		return;
 	}
 }
-// Method Definition Index: 64014
+// Method Definition Index: 64015
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_ConnectRooms_m1B817686A23A346ECE36AC968C5B30E62476062D (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -19981,7 +20459,7 @@ IL_0044:
 		return;
 	}
 }
-// Method Definition Index: 64015
+// Method Definition Index: 64016
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_CreateDoorwayBetweenRooms_m65CD592BDA282C4E091504012B33DFA32D95AF25 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* ___0_roomA, DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* ___1_roomB, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -20258,7 +20736,7 @@ IL_0124:
 		return;
 	}
 }
-// Method Definition Index: 64016
+// Method Definition Index: 64017
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_RemoveWallSection_m935D790F6E3744E25CE2686839E29FB370C25D08 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_roomObj, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_doorwayPos, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___2_direction, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -20336,7 +20814,7 @@ IL_003f:
 		return;
 	}
 }
-// Method Definition Index: 64017
+// Method Definition Index: 64018
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* DungeonGenerator_GetWallName_m1D948CC9FF666EE4EA673C737E6957052B9D7667 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_direction, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -20414,7 +20892,7 @@ IL_004c:
 		return _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709;
 	}
 }
-// Method Definition Index: 64018
+// Method Definition Index: 64019
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_DecorateRooms_m24E1AB8F1132414DBE0F101BF45941E939E2E103 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -20567,7 +21045,7 @@ IL_0081:
 		return;
 	}
 }
-// Method Definition Index: 64019
+// Method Definition Index: 64020
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_DecorateCombatRoom_m6EA67DE21071BEA7C4ABC980AB77E7BF788395FA (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* ___0_room, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -20656,7 +21134,7 @@ IL_0073:
 		return;
 	}
 }
-// Method Definition Index: 64020
+// Method Definition Index: 64021
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_DecorateTreasureRoom_m22ED7EEFC9EF69C68B206F0CEDD7EBD0F9CD1F34 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* ___0_room, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -20891,7 +21369,7 @@ IL_01ac:
 		return;
 	}
 }
-// Method Definition Index: 64021
+// Method Definition Index: 64022
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_DecoratePuzzleRoom_mD65D05E5D7BCB5B8932A4DF91CA5F01657B522FC (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* ___0_room, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -21013,7 +21491,7 @@ IL_00c5:
 		return;
 	}
 }
-// Method Definition Index: 64022
+// Method Definition Index: 64023
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_DecorateShopRoom_m0DC7720DD99E7C3022650CC845D4B9192A4D6CED (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* ___0_room, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -21261,7 +21739,7 @@ IL_016c:
 		return;
 	}
 }
-// Method Definition Index: 64023
+// Method Definition Index: 64024
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_DecorateBossRoom_m018298B05BF5B1806D11BCAF072DF3B1B51451C9 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* ___0_room, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -21489,7 +21967,7 @@ IL_0196:
 		return;
 	}
 }
-// Method Definition Index: 64024
+// Method Definition Index: 64025
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_AddWallTorches_m7BE0E0400F6D564D28B3494A76D83AAFF5569DFE (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* ___0_room, int32_t ___1_count, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -21604,7 +22082,7 @@ IL_0098:
 		return;
 	}
 }
-// Method Definition Index: 64025
+// Method Definition Index: 64026
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 DungeonGenerator_GetRandomPositionInRoom_m5ACD94C161D247B4252FB39F2D8D411C38E02FF8 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, float ___0_radius, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -21642,7 +22120,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		return L_11;
 	}
 }
-// Method Definition Index: 64026
+// Method Definition Index: 64027
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator_OnDrawGizmos_m4B666DF34EB1C0A6441D49755C7DF0C745D039F2 (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -21806,7 +22284,7 @@ IL_00da:
 		return;
 	}
 }
-// Method Definition Index: 64027
+// Method Definition Index: 64028
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F DungeonGenerator_GetRoomTypeColor_m2070DCEB4C13D6E6FFCB8F12165F33E9BE2E3BBF (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, int32_t ___0_type, const RuntimeMethod* method) 
 {
 	{
@@ -21900,7 +22378,7 @@ IL_0053:
 		return L_7;
 	}
 }
-// Method Definition Index: 64028
+// Method Definition Index: 64029
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DungeonGenerator__ctor_m395C12174A7F8ECEA198CA5294055B83B173286E (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -22491,7 +22969,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2D
 		return L_8;
 	}
 }
-// Method Definition Index: 70661
+// Method Definition Index: 70662
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ButtonClickedEvent_t8EA72E90B3BD1392FB3B3EF167D5121C23569E4C* Button_get_onClick_m701712A7F7F000CC80D517C4510697E15722C35C_inline (Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* __this, const RuntimeMethod* method) 
 {
 	{
@@ -22500,7 +22978,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ButtonClickedEvent_t8EA72E90B3BD1
 		return L_0;
 	}
 }
-// Method Definition Index: 64061
+// Method Definition Index: 64062
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR BootstrapManager_t22E488F20540B22B65822EC9A28927F02182C1D9* BootstrapManager_get_Instance_mB1CAD5073AAA2ADCDBAC0A313AC8E93F02005947_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -22931,7 +23409,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2D
 		return L_0;
 	}
 }
-// Method Definition Index: 71273
+// Method Definition Index: 71274
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void CanvasScaler_set_dynamicPixelsPerUnit_m7A081D5FD963F751140DCF1E5190ED4E51308CA2_inline (CanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -22942,7 +23420,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void CanvasScaler_set_dynamicPixe
 		return;
 	}
 }
-// Method Definition Index: 71720
+// Method Definition Index: 71721
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 Selectable_get_colors_mB53E365D02351D4B64084295C4B2A7AF2DEC4750_inline (Selectable_t3251808068A17B8E92FB33590A4C2FA66D456712* __this, const RuntimeMethod* method) 
 {
 	{
@@ -22951,7 +23429,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ColorBlock_tDD7C62E7AFE442652FC98
 		return L_0;
 	}
 }
-// Method Definition Index: 70702
+// Method Definition Index: 70703
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ColorBlock_set_normalColor_m3EBF594F6FA2C6494ACA9FCB9B458807D85B96F8_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -22962,7 +23440,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ColorBlock_set_normalColor_m
 		return;
 	}
 }
-// Method Definition Index: 70704
+// Method Definition Index: 70705
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ColorBlock_set_highlightedColor_m04E97DF2CCE7CAC47120D8F486E18BF62F16FF86_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -22973,7 +23451,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ColorBlock_set_highlightedCo
 		return;
 	}
 }
-// Method Definition Index: 70706
+// Method Definition Index: 70707
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ColorBlock_set_pressedColor_m644C938090857AB07C57B25FE53F6DC2BB0DD5A8_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -22984,7 +23462,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ColorBlock_set_pressedColor_
 		return;
 	}
 }
-// Method Definition Index: 70708
+// Method Definition Index: 70709
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ColorBlock_set_selectedColor_m76FEFB1148798B7A356C974CDEA3BA2E2E3C1D21_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -23025,7 +23503,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED02
 		return L_0;
 	}
 }
-// Method Definition Index: 64083
+// Method Definition Index: 64084
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GameManager_t6832A1C80D7A2CDB7E4E2D600CB0CED2A6C9B2B5* GameManager_get_Instance_mBB3386F4669F90A4E51FD071A0C8DA3730EB2D31_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;

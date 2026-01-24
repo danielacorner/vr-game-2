@@ -91,8 +91,9 @@ namespace VRDungeonCrawler.Dungeon
 
             Debug.Log($"[DungeonEntranceRoom] Added TeleportationArea to floor with interaction layers: {teleportArea.interactionLayers}");
 
-            // Create walls (4 sides)
-            CreateWall(new Vector3(0, 2f, roomLength/2), new Vector3(roomWidth, 4f, 1f)); // North
+            // Create walls (3 sides + north doorway)
+            // North wall has opening for dungeon entrance
+            CreateWallWithDoorway(new Vector3(0, 2f, roomLength/2), new Vector3(roomWidth, 4f, 1f), true); // North (with doorway)
             CreateWall(new Vector3(0, 2f, -roomLength/2), new Vector3(roomWidth, 4f, 1f)); // South
             CreateWall(new Vector3(-roomWidth/2, 2f, 0), new Vector3(1f, 4f, roomLength)); // West
             CreateWall(new Vector3(roomWidth/2, 2f, 0), new Vector3(1f, 4f, roomLength)); // East
@@ -197,6 +198,97 @@ namespace VRDungeonCrawler.Dungeon
                 wallMat.color = new Color(0.35f, 0.35f, 0.4f); // Dark gray stone
                 wallRenderer.material = wallMat;
             }
+        }
+
+        void CreateWallWithDoorway(Vector3 localPosition, Vector3 localScale, bool isNorthWall)
+        {
+            // Create wall segments on either side of doorway opening
+            float doorwayWidth = 4f; // Width of doorway opening
+            float wallWidth = localScale.x;
+            float segmentWidth = (wallWidth - doorwayWidth) / 2f;
+
+            if (segmentWidth > 0.5f)
+            {
+                // Left wall segment
+                GameObject leftWall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                leftWall.name = "WallLeft";
+                leftWall.transform.SetParent(transform);
+                leftWall.transform.localPosition = localPosition + new Vector3(-doorwayWidth/2f - segmentWidth/2f, 0, 0);
+                leftWall.transform.localScale = new Vector3(segmentWidth, localScale.y, localScale.z);
+
+                Renderer leftRenderer = leftWall.GetComponent<Renderer>();
+                if (leftRenderer != null)
+                {
+                    Material wallMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    wallMat.color = new Color(0.35f, 0.35f, 0.4f);
+                    leftRenderer.material = wallMat;
+                }
+
+                // Right wall segment
+                GameObject rightWall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                rightWall.name = "WallRight";
+                rightWall.transform.SetParent(transform);
+                rightWall.transform.localPosition = localPosition + new Vector3(doorwayWidth/2f + segmentWidth/2f, 0, 0);
+                rightWall.transform.localScale = new Vector3(segmentWidth, localScale.y, localScale.z);
+
+                Renderer rightRenderer = rightWall.GetComponent<Renderer>();
+                if (rightRenderer != null)
+                {
+                    Material wallMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    wallMat.color = new Color(0.35f, 0.35f, 0.4f);
+                    rightRenderer.material = wallMat;
+                }
+            }
+
+            // Add doorway frame pillars
+            float doorwayHeight = 3.5f;
+
+            // Left pillar
+            GameObject leftPillar = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            leftPillar.name = "DoorwayPillarLeft";
+            leftPillar.transform.SetParent(transform);
+            leftPillar.transform.localPosition = localPosition + new Vector3(-doorwayWidth/2f, doorwayHeight/2f - 0.5f, 0);
+            leftPillar.transform.localScale = new Vector3(0.4f, doorwayHeight, 0.4f);
+
+            Renderer leftPillarRenderer = leftPillar.GetComponent<Renderer>();
+            if (leftPillarRenderer != null)
+            {
+                Material pillarMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                pillarMat.color = new Color(0.5f, 0.48f, 0.52f); // Lighter stone for accent
+                leftPillarRenderer.material = pillarMat;
+            }
+
+            // Right pillar
+            GameObject rightPillar = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            rightPillar.name = "DoorwayPillarRight";
+            rightPillar.transform.SetParent(transform);
+            rightPillar.transform.localPosition = localPosition + new Vector3(doorwayWidth/2f, doorwayHeight/2f - 0.5f, 0);
+            rightPillar.transform.localScale = new Vector3(0.4f, doorwayHeight, 0.4f);
+
+            Renderer rightPillarRenderer = rightPillar.GetComponent<Renderer>();
+            if (rightPillarRenderer != null)
+            {
+                Material pillarMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                pillarMat.color = new Color(0.5f, 0.48f, 0.52f);
+                rightPillarRenderer.material = pillarMat;
+            }
+
+            // Lintel (top piece)
+            GameObject lintel = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            lintel.name = "DoorwayLintel";
+            lintel.transform.SetParent(transform);
+            lintel.transform.localPosition = localPosition + new Vector3(0, doorwayHeight - 0.5f, 0);
+            lintel.transform.localScale = new Vector3(doorwayWidth + 0.8f, 0.4f, 0.4f);
+
+            Renderer lintelRenderer = lintel.GetComponent<Renderer>();
+            if (lintelRenderer != null)
+            {
+                Material lintelMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                lintelMat.color = new Color(0.5f, 0.48f, 0.52f);
+                lintelRenderer.material = lintelMat;
+            }
+
+            Debug.Log($"[DungeonEntranceRoom] Created doorway opening at {localPosition}");
         }
 
         void PlaceTorch(Vector3 localPosition)
