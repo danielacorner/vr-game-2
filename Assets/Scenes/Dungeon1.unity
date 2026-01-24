@@ -1498,6 +1498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 67856914}
+  - component: {fileID: 67856915}
   m_Layer: 0
   m_Name: EntranceRoom
   m_TagString: Untagged
@@ -1527,6 +1528,27 @@ Transform:
   - {fileID: 1034969372}
   m_Father: {fileID: 247370769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &67856915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67856913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e73602e59e264f3b9414039f54def80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRDungeonCrawler.Dungeon.DungeonEntranceRoom
+  roomWidth: 30
+  roomLength: 20
+  addPillars: 1
+  addTorches: 1
+  addDoorways: 1
+  addCeiling: 1
+  addAmbientLight: 1
+  ambientIntensity: 0.3
+  showDebug: 1
 --- !u!21 &78233116
 Material:
   serializedVersion: 8
@@ -18934,37 +18956,6 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!1 &938840918
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 938840919}
-  m_Layer: 0
-  m_Name: PlayerSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &938840919
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938840918}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &941249142
 GameObject:
   m_ObjectHideFlags: 0
@@ -28540,7 +28531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1500409174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40514,4 +40505,3 @@ SceneRoots:
   - {fileID: 247370769}
   - {fileID: 926862939}
   - {fileID: 1500409175}
-  - {fileID: 938840919}
