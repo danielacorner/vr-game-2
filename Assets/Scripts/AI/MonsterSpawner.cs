@@ -201,6 +201,16 @@ namespace VRDungeonCrawler.AI
                 // Add MonsterAI component
                 MonsterAI monsterAI = monster.AddComponent<MonsterAI>();
 
+                // Add SkeletonAnimator for skeleton monsters
+                if (type == MonsterType.Skeleton)
+                {
+                    SkeletonAnimator animator = monster.AddComponent<SkeletonAnimator>();
+                    animator.walkCycleSpeed = 4f;
+                    animator.legSwingAngle = 30f;
+                    animator.armSwingAngle = 20f;
+                    animator.showDebug = false;
+                }
+
                 // Add Rigidbody if not present
                 Rigidbody rb = monster.GetComponent<Rigidbody>();
                 if (rb == null)

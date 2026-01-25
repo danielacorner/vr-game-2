@@ -70,6 +70,17 @@ namespace VRDungeonCrawler.Spells
             SphereCollider col = GetComponent<SphereCollider>();
             col.material = bounceMat;
 
+            // Ignore collisions with player (XR Origin) immediately
+            GameObject xrOrigin = GameObject.Find("XR Origin");
+            if (xrOrigin != null)
+            {
+                Collider[] playerColliders = xrOrigin.GetComponentsInChildren<Collider>();
+                foreach (Collider playerCollider in playerColliders)
+                {
+                    Physics.IgnoreCollision(col, playerCollider);
+                }
+            }
+
             // Configure rigidbody
             rb.useGravity = useGravity;
             rb.linearDamping = 0.1f; // Slight air resistance

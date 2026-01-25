@@ -1098,7 +1098,14 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[1091] = 
+extern void SkeletonAnimator_Start_m35B83C55523C0413CCF8C1DC5AA5569CA0A8065D (void);
+extern void SkeletonAnimator_FindBones_m0D70781BE37261AC85AB58E2FBD0C2B32373C228 (void);
+extern void SkeletonAnimator_StoreOriginalRotations_mBF53BDE82F448A5F502D7F71657EB9C4477BCCAA (void);
+extern void SkeletonAnimator_Update_mEFDFC0A7103EDC0A3C68A57F8C3D8E624E771C5B (void);
+extern void SkeletonAnimator_AnimateWalking_m4E009CD9C980710253F4C6A40065095C07261035 (void);
+extern void SkeletonAnimator_AnimateIdle_mA6B34E486045F501CB724775F63CEF9ECB351F43 (void);
+extern void SkeletonAnimator__ctor_mE6704D8225B0D44693457DAA8DA1DB8D660738E9 (void);
+static Il2CppMethodPointer s_methodPointers[1098] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -2191,13 +2198,20 @@ static Il2CppMethodPointer s_methodPointers[1091] =
 	PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42,
 	PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571,
 	PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7,
+	SkeletonAnimator_Start_m35B83C55523C0413CCF8C1DC5AA5569CA0A8065D,
+	SkeletonAnimator_FindBones_m0D70781BE37261AC85AB58E2FBD0C2B32373C228,
+	SkeletonAnimator_StoreOriginalRotations_mBF53BDE82F448A5F502D7F71657EB9C4477BCCAA,
+	SkeletonAnimator_Update_mEFDFC0A7103EDC0A3C68A57F8C3D8E624E771C5B,
+	SkeletonAnimator_AnimateWalking_m4E009CD9C980710253F4C6A40065095C07261035,
+	SkeletonAnimator_AnimateIdle_mA6B34E486045F501CB724775F63CEF9ECB351F43,
+	SkeletonAnimator__ctor_mE6704D8225B0D44693457DAA8DA1DB8D660738E9,
 };
 extern void FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] = 
 {
 	{ 0x0600012B, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1091] = 
+static const int32_t s_InvokerIndices[1098] = 
 {
 	15296,
 	15296,
@@ -3290,12 +3304,19 @@ static const int32_t s_InvokerIndices[1091] =
 	24865,
 	26435,
 	24865,
+	15296,
+	15296,
+	15296,
+	15296,
+	15296,
+	15296,
+	15296,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1091,
+	1098,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

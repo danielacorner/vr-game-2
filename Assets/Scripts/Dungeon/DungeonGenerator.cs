@@ -1237,6 +1237,13 @@ namespace VRDungeonCrawler.Dungeon
                 monsterAI.maxRoamDistance = 8f;
                 monsterAI.showDebug = false;
 
+                // Add SkeletonAnimator for procedural animation
+                AI.SkeletonAnimator animator = skeleton.AddComponent<AI.SkeletonAnimator>();
+                animator.walkCycleSpeed = 4f;
+                animator.legSwingAngle = 30f;
+                animator.armSwingAngle = 20f;
+                animator.showDebug = true; // Enable debug to verify bones found
+
                 // Add Rigidbody
                 Rigidbody rb = skeleton.GetComponent<Rigidbody>();
                 if (rb == null)

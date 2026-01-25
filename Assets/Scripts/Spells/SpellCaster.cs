@@ -567,6 +567,17 @@ namespace VRDungeonCrawler.Spells
                 collider.radius = 0.3f;
                 collider.isTrigger = true;
 
+                // Ignore collisions with player (XR Origin) immediately
+                GameObject xrOrigin = GameObject.Find("XR Origin");
+                if (xrOrigin != null)
+                {
+                    Collider[] playerColliders = xrOrigin.GetComponentsInChildren<Collider>();
+                    foreach (Collider playerCollider in playerColliders)
+                    {
+                        Physics.IgnoreCollision(collider, playerCollider);
+                    }
+                }
+
                 Rigidbody rb = projectile.AddComponent<Rigidbody>();
                 rb.isKinematic = true;
                 rb.useGravity = false;
