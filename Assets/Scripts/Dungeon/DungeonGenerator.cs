@@ -1160,7 +1160,10 @@ namespace VRDungeonCrawler.Dungeon
             for (int i = 0; i < count; i++)
             {
                 Vector3 localPos = GetRandomPositionInRoom(roomRadius);
-                localPos.y = 0f; // Start at floor level
+
+                // Floor tiles are 0.1 units tall, centered at Y=0, so top surface is at Y=0.05
+                const float FLOOR_TOP = 0.05f;
+                localPos.y = FLOOR_TOP;
 
                 // Use MonsterBuilder to create skeleton (same as HomeArea spawner)
                 GameObject skeleton = AI.MonsterBuilder.CreateSkeleton();
@@ -1168,8 +1171,9 @@ namespace VRDungeonCrawler.Dungeon
                 skeleton.transform.localPosition = localPos;
                 skeleton.transform.localRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
 
-                // Find ACTUAL lowest vertex in room's local space
+                // Find ACTUAL lowest vertex in both room space and skeleton local space
                 float lowestRoomY = float.MaxValue;
+                float lowestSkeletonLocalY = float.MaxValue;
                 MeshFilter[] meshFilters = skeleton.GetComponentsInChildren<MeshFilter>();
 
                 foreach (MeshFilter mf in meshFilters)
@@ -1181,27 +1185,41 @@ namespace VRDungeonCrawler.Dungeon
 
                         foreach (Vector3 localVert in vertices)
                         {
-                            // Transform vertex to world space, then to room's local space
+                            // Transform vertex to world space
                             Vector3 worldVert = meshTransform.TransformPoint(localVert);
-                            Vector3 roomLocalVert = room.roomObject.transform.InverseTransformPoint(worldVert);
 
+                            // Then to room's local space
+                            Vector3 roomLocalVert = room.roomObject.transform.InverseTransformPoint(worldVert);
                             if (roomLocalVert.y < lowestRoomY)
                             {
                                 lowestRoomY = roomLocalVert.y;
+                            }
+
+                            // And to skeleton's local space for collider
+                            Vector3 skeletonLocalVert = skeleton.transform.InverseTransformPoint(worldVert);
+                            if (skeletonLocalVert.y < lowestSkeletonLocalY)
+                            {
+                                lowestSkeletonLocalY = skeletonLocalVert.y;
                             }
                         }
                     }
                 }
 
-                // If lowest point is below floor (Y=0 in room space), lift skeleton
-                if (lowestRoomY < 0f)
+                // Adjust Y so lowest vertex sits on floor top (Y=FLOOR_TOP in room space)
+                if (lowestRoomY < FLOOR_TOP)
                 {
-                    localPos.y = -lowestRoomY;
+                    localPos.y += (FLOOR_TOP - lowestRoomY);
                     skeleton.transform.localPosition = localPos;
                 }
 
                 // Calculate mesh bounds for collider sizing (after positioning)
                 Bounds meshBounds = CalculateMonsterBounds(skeleton);
+
+                // Adjust collider to ensure it reaches the ground
+                // The physics collider should extend from the lowest vertex to the top
+                float colliderHeight = meshBounds.size.y;
+                float colliderCenterY = lowestSkeletonLocalY + (colliderHeight / 2f);
+                Vector3 colliderCenter = new Vector3(meshBounds.center.x, colliderCenterY, meshBounds.center.z);
 
                 // Add MonsterBase component
                 AI.MonsterBase monsterBase = skeleton.AddComponent<AI.MonsterBase>();
@@ -1228,6 +1246,7 @@ namespace VRDungeonCrawler.Dungeon
                     rb.linearDamping = 2f;
                     rb.angularDamping = 1f;
                     rb.useGravity = true;
+                    rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
                     rb.constraints = RigidbodyConstraints.FreezeRotation;
                 }
 
@@ -1236,13 +1255,13 @@ namespace VRDungeonCrawler.Dungeon
                 BoxCollider triggerCollider = skeleton.AddComponent<BoxCollider>();
                 triggerCollider.isTrigger = true;
                 triggerCollider.size = meshBounds.size;
-                triggerCollider.center = meshBounds.center;
+                triggerCollider.center = colliderCenter;
 
-                // Physics collider - slightly smaller
+                // Physics collider - slightly smaller horizontally, reaches ground
                 BoxCollider physicsCollider = skeleton.AddComponent<BoxCollider>();
                 physicsCollider.isTrigger = false;
                 physicsCollider.size = new Vector3(meshBounds.size.x * 0.9f, meshBounds.size.y, meshBounds.size.z * 0.9f);
-                physicsCollider.center = meshBounds.center;
+                physicsCollider.center = colliderCenter;
             }
 
             if (showDebug)
