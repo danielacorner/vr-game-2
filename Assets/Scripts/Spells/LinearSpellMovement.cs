@@ -108,29 +108,33 @@ namespace VRDungeonCrawler.Spells
 
         private bool IsPlayerObject(GameObject obj)
         {
-            string name = obj.name.ToLower();
+            if (obj == null) return false;
 
-            // Check for common player/VR object names
-            if (name.Contains("controller")) return true;
-            if (name.Contains("hand")) return true;
-            if (name.Contains("camera")) return true;
-            if (name.Contains("main camera")) return true;
-            if (name.Contains("xr")) return true;
-            if (name.Contains("player")) return true;
-            if (name.Contains("origin")) return true;
-            if (name.Contains("offset")) return true;
-
-            // Check parent hierarchy
+            // Check entire hierarchy, not just parents
             Transform current = obj.transform;
-            while (current.parent != null)
+            while (current != null)
             {
-                string parentName = current.parent.name.ToLower();
-                if (parentName.Contains("xr") ||
-                    parentName.Contains("player") ||
-                    parentName.Contains("origin"))
+                // Check for XR Origin or Player tag
+                if (current.name == "XR Origin" || current.CompareTag("Player"))
                 {
                     return true;
                 }
+
+                string name = current.name.ToLower();
+                // Check for common player/VR object names
+                if (name.Contains("xr origin") ||
+                    name.Contains("player") ||
+                    name.Contains("camera") ||
+                    name.Contains("headset") ||
+                    name.Contains("hmd") ||
+                    name.Contains("main camera") ||
+                    name.Contains("controller") ||
+                    name.Contains("hand") ||
+                    name.Contains("offset"))
+                {
+                    return true;
+                }
+
                 current = current.parent;
             }
 

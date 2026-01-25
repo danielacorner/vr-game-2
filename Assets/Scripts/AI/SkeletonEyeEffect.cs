@@ -102,11 +102,18 @@ namespace VRDungeonCrawler.AI
 
             var main = ps.main;
             main.startLifetime = 0.3f;
-            main.startSpeed = 0.5f;
-            main.startSize = 0.03f;
+            main.startSpeed = 0.05f; // Much slower
+            main.startSize = 0.003f; // 10x smaller
             main.startColor = new Color(1f, 0.3f, 0f, 0.8f); // Orange-red fire
-            main.gravityModifier = -0.2f; // Slight upward drift
+            main.gravityModifier = -0.1f; // Slight upward drift
             main.maxParticles = fireParticleCount;
+
+            // Use unlit material to ensure proper color rendering
+            ParticleSystemRenderer renderer = ps.GetComponent<ParticleSystemRenderer>();
+            renderer.material = new Material(Shader.Find("Particles/Standard Unlit"));
+            renderer.material.SetColor("_Color", new Color(1f, 0.3f, 0f, 0.8f));
+            renderer.material.SetFloat("_Mode", 2); // Fade mode
+            renderer.renderMode = ParticleSystemRenderMode.Billboard;
 
             var emission = ps.emission;
             emission.rateOverTime = fireParticleCount * 2;

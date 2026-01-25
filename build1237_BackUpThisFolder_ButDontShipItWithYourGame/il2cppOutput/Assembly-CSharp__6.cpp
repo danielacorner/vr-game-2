@@ -5849,7 +5849,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonsterAI__ctor_mADAF8706E9EA328B5BF3FC8
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/MonsterAI.cs:28>
 		__this->___pauseTimeMax = (4.0f);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/MonsterAI.cs:32>
-		__this->___aggroRange = (6.0f);
+		__this->___aggroRange = (2.0f);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/MonsterAI.cs:35>
 		__this->___chaseSpeed = (3.5f);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/MonsterAI.cs:38>

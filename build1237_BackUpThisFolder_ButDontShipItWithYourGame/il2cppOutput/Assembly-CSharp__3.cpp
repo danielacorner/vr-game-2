@@ -434,6 +434,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral000A1C4FF694BBD869C2585DB8FB5C1530386940
 IL2CPP_EXTERN_C String_t* _stringLiteral00386759454C5D8BBA2F6717E63429A55F528AB8;
 IL2CPP_EXTERN_C String_t* _stringLiteral0061C5D2B6D61A2B31B722191E50CC4E2666AC80;
 IL2CPP_EXTERN_C String_t* _stringLiteral00B28FF06B788B9B67C6B259800F404F9F3761FD;
+IL2CPP_EXTERN_C String_t* _stringLiteral015AAEE242123CA16F98B0D063ABA422CE1596B7;
 IL2CPP_EXTERN_C String_t* _stringLiteral0532A7B2F94DDB2671E5B85EEC02DCFD45327C77;
 IL2CPP_EXTERN_C String_t* _stringLiteral06474EC13B60FCC72124F9FAD0649BFDAEC9954C;
 IL2CPP_EXTERN_C String_t* _stringLiteral06527A80A36B74F9159283DDCDB981784DCD802A;
@@ -463,6 +464,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral1BD12C7D0296B360AF5109BA21DCBBFF5E7B4BC2
 IL2CPP_EXTERN_C String_t* _stringLiteral1DCF3E89273790A063D65FBB1C47D7CA3298DD36;
 IL2CPP_EXTERN_C String_t* _stringLiteral21B8FA72A2B6ECA0C54B6A7A465FD870A2ADB840;
 IL2CPP_EXTERN_C String_t* _stringLiteral235D3D7E72AE98A74B964C34A141E3DE40803133;
+IL2CPP_EXTERN_C String_t* _stringLiteral25E6D9037D86B200FC2A517BAD7594539EF58699;
 IL2CPP_EXTERN_C String_t* _stringLiteral2627DBD0029FBB850B65134FB248BC0390A2EB2F;
 IL2CPP_EXTERN_C String_t* _stringLiteral26602431236EE8B9CBC56DEBCEEC735115727ECC;
 IL2CPP_EXTERN_C String_t* _stringLiteral275CD452410352E6E4AFB42D0ABE6ECEA0D79760;
@@ -497,6 +499,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral51282E2AAC09AC6EDBC2C1C237C0183F97FEE379
 IL2CPP_EXTERN_C String_t* _stringLiteral5230F5FD1E0998B73530AA850D3A5872D61228EC;
 IL2CPP_EXTERN_C String_t* _stringLiteral52F36719794BBD31DF46E1EDED7D55EE753B5306;
 IL2CPP_EXTERN_C String_t* _stringLiteral532104A0301BE744DB3D417104B8670E4EF307E6;
+IL2CPP_EXTERN_C String_t* _stringLiteral544DC80A2A82A08B6321F56F8987CB7E5DEED1C4;
 IL2CPP_EXTERN_C String_t* _stringLiteral54793173F06E05A98118E03861AB4236C72C9D52;
 IL2CPP_EXTERN_C String_t* _stringLiteral549DA1D6EB706C656212670D0E184B6C018D3008;
 IL2CPP_EXTERN_C String_t* _stringLiteral55BF3C49F52EF5A63F8554DD703761F5759D6F89;
@@ -577,6 +580,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteralA4DC135FE77CD291AB19BF86A02F24CF5ECE8324
 IL2CPP_EXTERN_C String_t* _stringLiteralA589674BA000FDDE78E72A06D6CA80B32F4466D3;
 IL2CPP_EXTERN_C String_t* _stringLiteralA5D7959CD15F43FDCDC0E692443EDE2664826280;
 IL2CPP_EXTERN_C String_t* _stringLiteralA794D11EB862135A3E128034F9D26040414F693B;
+IL2CPP_EXTERN_C String_t* _stringLiteralA7F00519435FC33A7E48F0FCF6CB6D9B257C0DAA;
 IL2CPP_EXTERN_C String_t* _stringLiteralA90C21C3F25CAA326D8C0B7C48F4C513A8761AD0;
 IL2CPP_EXTERN_C String_t* _stringLiteralA94E116568A951BCC3DB63A508CD889446333121;
 IL2CPP_EXTERN_C String_t* _stringLiteralA97C990FDF998362AEB395D18B12DCBC3F410C78;
@@ -613,18 +617,20 @@ IL2CPP_EXTERN_C String_t* _stringLiteralC34BE050A79DF7C4AA414B7747C87072DB176156
 IL2CPP_EXTERN_C String_t* _stringLiteralC60D74DE559AC281B6FFBBC70C022CB4FFC71BC6;
 IL2CPP_EXTERN_C String_t* _stringLiteralCAF8804297181FF007CA835529DD4477CFD94A70;
 IL2CPP_EXTERN_C String_t* _stringLiteralCB019CFC74530FA5D2FA7933A4761CEEEB4ACF9A;
+IL2CPP_EXTERN_C String_t* _stringLiteralCE4D2C65F687DCA79AE1234954E0BCB0B50A6E8D;
 IL2CPP_EXTERN_C String_t* _stringLiteralD16A97F7074857B933921AD8422BB4680A671C3C;
 IL2CPP_EXTERN_C String_t* _stringLiteralD4FEBB167F74FF599ABDAEB163E630654BC631C6;
+IL2CPP_EXTERN_C String_t* _stringLiteralD8431B5D5BBDD13458B95AC3252777089DFF7F0A;
 IL2CPP_EXTERN_C String_t* _stringLiteralD9D2A44ED5D8FC2914ED7F456CEF0781555C6C8E;
 IL2CPP_EXTERN_C String_t* _stringLiteralDD9D960DDC6220E5B723DEB164620601B804A75C;
 IL2CPP_EXTERN_C String_t* _stringLiteralDE6271F4CB1AE7C3D16110E0B6DADE6F2301FCE0;
 IL2CPP_EXTERN_C String_t* _stringLiteralDE846E36873F2695EF45076F84E113BCDC3BD1E7;
 IL2CPP_EXTERN_C String_t* _stringLiteralE1E82F709720C06C1C8BFB7E72A332BA74379BF5;
 IL2CPP_EXTERN_C String_t* _stringLiteralE302AA9BECF9F1CB69CF2A3E5B33E0716BEA97F6;
+IL2CPP_EXTERN_C String_t* _stringLiteralE4066C7F3321130A6A3427AE36FBD654A1FC6130;
 IL2CPP_EXTERN_C String_t* _stringLiteralE580E84022E58B9A1C47DC627B13BA5C2C0D5723;
 IL2CPP_EXTERN_C String_t* _stringLiteralE7094430547E03C78278153540CA2EF9B26CA54C;
 IL2CPP_EXTERN_C String_t* _stringLiteralE81E50579BD7489E97C68DD1A4C5D13BE5292870;
-IL2CPP_EXTERN_C String_t* _stringLiteralE8BBBC091523FF3FB0D9A08069F58E1E51E1B7E1;
 IL2CPP_EXTERN_C String_t* _stringLiteralE9139689A4A95D1DB4F521FCE5F55EB7B17F7838;
 IL2CPP_EXTERN_C String_t* _stringLiteralEE5E88741264725626B6CCF8209F3498F764E57D;
 IL2CPP_EXTERN_C String_t* _stringLiteralEEAFF4EA4BDCF3E59399FCE8A6B2965DE0964BA8;
@@ -6470,7 +6476,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_OnTriggerEnter_m0DB2DFFA
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral0B1CBDBF79FE702DFE2D6B79DFC10FB620B471FF);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE8BBBC091523FF3FB0D9A08069F58E1E51E1B7E1);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
@@ -6494,11 +6499,19 @@ IL_0009:
 		L_2 = SpellProjectile_IsPlayerCollider_mCB10E889A7B3874C12073CC2CF4247C17FC07E8C(__this, L_1, NULL);
 		if (!L_2)
 		{
-			goto IL_002d;
+			goto IL_0013;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:96>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:97>
+		return;
+	}
+
+IL_0013:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:100>
+		__this->___hasHit = (bool)1;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:102>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_3 = ___0_other;
 		NullCheck(L_3);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
@@ -6507,63 +6520,43 @@ IL_0009:
 		String_t* L_5;
 		L_5 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_4, NULL);
 		String_t* L_6;
-		L_6 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteralE8BBBC091523FF3FB0D9A08069F58E1E51E1B7E1, L_5, NULL);
+		L_6 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral0B1CBDBF79FE702DFE2D6B79DFC10FB620B471FF, L_5, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_6, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:97>
-		return;
-	}
-
-IL_002d:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:100>
-		__this->___hasHit = (bool)1;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:102>
-		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_7 = ___0_other;
-		NullCheck(L_7);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8;
-		L_8 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_7, NULL);
-		NullCheck(L_8);
-		String_t* L_9;
-		L_9 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_8, NULL);
-		String_t* L_10;
-		L_10 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral0B1CBDBF79FE702DFE2D6B79DFC10FB620B471FF, L_9, NULL);
-		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_10, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:105>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = __this->___hitEffect;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = __this->___hitEffect;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_12;
-		L_12 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_11, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (!L_12)
+		bool L_8;
+		L_8 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_7, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_8)
 		{
-			goto IL_0081;
+			goto IL_0067;
 		}
 	}
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:107>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13 = __this->___hitEffect;
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14;
-		L_14 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
-		NullCheck(L_14);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15;
-		L_15 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_14, NULL);
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_16;
-		L_16 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->___hitEffect;
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10;
+		L_10 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_10);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
+		L_11 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_10, NULL);
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_12;
+		L_12 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17;
-		L_17 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4(L_13, L_15, L_16, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4_RuntimeMethod_var);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13;
+		L_13 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4(L_9, L_11, L_12, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4_RuntimeMethod_var);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:108>
-		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_17, (2.0f), NULL);
+		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_13, (2.0f), NULL);
 	}
 
-IL_0081:
+IL_0067:
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:112>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18;
-		L_18 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14;
+		L_14 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_18, NULL);
+		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_14, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:113>
 		return;
 	}
@@ -6578,7 +6571,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_OnCollisionEnter_mB562BB
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralB9F0A5450C8C6B37422141ACFEA3FBB19448EE77);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE8BBBC091523FF3FB0D9A08069F58E1E51E1B7E1);
 		s_Il2CppMethodInitialized = true;
 	}
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
@@ -6609,11 +6601,19 @@ IL_0009:
 		L_3 = SpellProjectile_IsPlayerCollider_mCB10E889A7B3874C12073CC2CF4247C17FC07E8C(__this, L_2, NULL);
 		if (!L_3)
 		{
-			goto IL_0032;
+			goto IL_0018;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:122>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:123>
+		return;
+	}
+
+IL_0018:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:126>
+		__this->___hasHit = (bool)1;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:128>
 		Collision_tBCC6AEBD9A63E6DA2E50660DAC03CDCB1FF7A9B0* L_4 = ___0_collision;
 		NullCheck(L_4);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5;
@@ -6622,100 +6622,80 @@ IL_0009:
 		String_t* L_6;
 		L_6 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_5, NULL);
 		String_t* L_7;
-		L_7 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteralE8BBBC091523FF3FB0D9A08069F58E1E51E1B7E1, L_6, NULL);
+		L_7 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteralB9F0A5450C8C6B37422141ACFEA3FBB19448EE77, L_6, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_7, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:123>
-		return;
-	}
-
-IL_0032:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:126>
-		__this->___hasHit = (bool)1;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:128>
-		Collision_tBCC6AEBD9A63E6DA2E50660DAC03CDCB1FF7A9B0* L_8 = ___0_collision;
-		NullCheck(L_8);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9;
-		L_9 = Collision_get_gameObject_m846FADBCA43E1849D3FE4D5EA44C02D055A70B3E(L_8, NULL);
-		NullCheck(L_9);
-		String_t* L_10;
-		L_10 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_9, NULL);
-		String_t* L_11;
-		L_11 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteralB9F0A5450C8C6B37422141ACFEA3FBB19448EE77, L_10, NULL);
-		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_11, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:131>
-		Collision_tBCC6AEBD9A63E6DA2E50660DAC03CDCB1FF7A9B0* L_12 = ___0_collision;
-		SpellProjectile_ApplyDamage_mA173AFE920DCC0D6F454861D1381232B8F9E0C56(__this, L_12, NULL);
+		Collision_tBCC6AEBD9A63E6DA2E50660DAC03CDCB1FF7A9B0* L_8 = ___0_collision;
+		SpellProjectile_ApplyDamage_mA173AFE920DCC0D6F454861D1381232B8F9E0C56(__this, L_8, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:134>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13 = __this->___hitEffect;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->___hitEffect;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_14;
-		L_14 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_13, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (!L_14)
+		bool L_10;
+		L_10 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_9, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_10)
 		{
-			goto IL_00ab;
+			goto IL_0091;
 		}
 	}
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:136>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:137>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:138>
+		Collision_tBCC6AEBD9A63E6DA2E50660DAC03CDCB1FF7A9B0* L_11 = ___0_collision;
+		NullCheck(L_11);
+		ContactPointU5BU5D_t3570603E8D0685B71B3D8BA07031674B00C5E411* L_12;
+		L_12 = Collision_get_contacts_m2E8E27E0399230DFA4303A4F4D81C1BD55CBC473(L_11, NULL);
+		NullCheck(L_12);
+		if ((((RuntimeArray*)L_12)->max_length))
+		{
+			goto IL_0064;
+		}
+	}
+	{
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
+		L_13 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_13);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
+		L_14 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_13, NULL);
+		G_B8_0 = L_14;
+		goto IL_0075;
+	}
+
+IL_0064:
+	{
 		Collision_tBCC6AEBD9A63E6DA2E50660DAC03CDCB1FF7A9B0* L_15 = ___0_collision;
 		NullCheck(L_15);
 		ContactPointU5BU5D_t3570603E8D0685B71B3D8BA07031674B00C5E411* L_16;
 		L_16 = Collision_get_contacts_m2E8E27E0399230DFA4303A4F4D81C1BD55CBC473(L_15, NULL);
 		NullCheck(L_16);
-		if ((((RuntimeArray*)L_16)->max_length))
-		{
-			goto IL_007e;
-		}
-	}
-	{
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17;
-		L_17 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
-		NullCheck(L_17);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18;
-		L_18 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_17, NULL);
-		G_B8_0 = L_18;
-		goto IL_008f;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17;
+		L_17 = ContactPoint_get_point_mCCDFDACC5D8DB469898060A56A3CC45132911208(((L_16)->GetAddressAt(static_cast<il2cpp_array_size_t>(0))), NULL);
+		G_B8_0 = L_17;
 	}
 
-IL_007e:
-	{
-		Collision_tBCC6AEBD9A63E6DA2E50660DAC03CDCB1FF7A9B0* L_19 = ___0_collision;
-		NullCheck(L_19);
-		ContactPointU5BU5D_t3570603E8D0685B71B3D8BA07031674B00C5E411* L_20;
-		L_20 = Collision_get_contacts_m2E8E27E0399230DFA4303A4F4D81C1BD55CBC473(L_19, NULL);
-		NullCheck(L_20);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_21;
-		L_21 = ContactPoint_get_point_mCCDFDACC5D8DB469898060A56A3CC45132911208(((L_20)->GetAddressAt(static_cast<il2cpp_array_size_t>(0))), NULL);
-		G_B8_0 = L_21;
-	}
-
-IL_008f:
+IL_0075:
 	{
 		V_0 = G_B8_0;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:140>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22 = __this->___hitEffect;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23 = V_0;
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_24;
-		L_24 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18 = __this->___hitEffect;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19 = V_0;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_20;
+		L_20 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_25;
-		L_25 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4(L_22, L_23, L_24, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4_RuntimeMethod_var);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21;
+		L_21 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4(L_18, L_19, L_20, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4_RuntimeMethod_var);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:141>
-		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_25, (2.0f), NULL);
+		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_21, (2.0f), NULL);
 	}
 
-IL_00ab:
+IL_0091:
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:145>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_26;
-		L_26 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22;
+		L_22 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_26, NULL);
+		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_22, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:146>
 		return;
 	}
@@ -6875,11 +6855,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SpellProjectile_IsPlayerCollider_mCB10E8
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral015AAEE242123CA16F98B0D063ABA422CE1596B7);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral18E4C5DB8069025D974094A057F857AC864487AD);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral25E6D9037D86B200FC2A517BAD7594539EF58699);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral544DC80A2A82A08B6321F56F8987CB7E5DEED1C4);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral769EFBBF1B8BC01AC3A8E54AA622B0439BFBA03C);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral9D307E008D016DBD79B5F3FDB6E77C2F586E1090);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA7F00519435FC33A7E48F0FCF6CB6D9B257C0DAA);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCAF8804297181FF007CA835529DD4477CFD94A70);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCE4D2C65F687DCA79AE1234954E0BCB0B50A6E8D);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralD8431B5D5BBDD13458B95AC3252777089DFF7F0A);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE4066C7F3321130A6A3427AE36FBD654A1FC6130);
 		s_Il2CppMethodInitialized = true;
 	}
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_0 = NULL;
+	String_t* V_1 = NULL;
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:184>
 		Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* L_0 = ___0_collider;
@@ -6904,64 +6894,180 @@ IL_000b:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
 		L_3 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_2, NULL);
 		V_0 = L_3;
-		goto IL_003c;
+		goto IL_00c2;
 	}
 
-IL_0014:
+IL_0017:
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:190>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = V_0;
 		NullCheck(L_4);
 		String_t* L_5;
 		L_5 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_4, NULL);
-		bool L_6;
-		L_6 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_5, _stringLiteral9D307E008D016DBD79B5F3FDB6E77C2F586E1090, NULL);
-		if (L_6)
+		NullCheck(L_5);
+		String_t* L_6;
+		L_6 = String_ToLower_m6191ABA3DC514ED47C10BDA23FD0DDCEAE7ACFBD(L_5, NULL);
+		V_1 = L_6;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:193>
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = V_0;
+		NullCheck(L_7);
+		String_t* L_8;
+		L_8 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_7, NULL);
+		bool L_9;
+		L_9 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_8, _stringLiteral9D307E008D016DBD79B5F3FDB6E77C2F586E1090, NULL);
+		if (L_9)
 		{
-			goto IL_0033;
+			goto IL_0042;
 		}
 	}
 	{
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = V_0;
-		NullCheck(L_7);
-		bool L_8;
-		L_8 = Component_CompareTag_mE6F8897E84F12DF12D302FFC4D58204D51096FC5(L_7, _stringLiteralCAF8804297181FF007CA835529DD4477CFD94A70, NULL);
-		if (!L_8)
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10 = V_0;
+		NullCheck(L_10);
+		bool L_11;
+		L_11 = Component_CompareTag_mE6F8897E84F12DF12D302FFC4D58204D51096FC5(L_10, _stringLiteralCAF8804297181FF007CA835529DD4477CFD94A70, NULL);
+		if (!L_11)
 		{
-			goto IL_0035;
+			goto IL_0044;
 		}
 	}
 
-IL_0033:
+IL_0042:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:192>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:195>
 		return (bool)1;
 	}
 
-IL_0035:
+IL_0044:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:194>
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9 = V_0;
-		NullCheck(L_9);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10;
-		L_10 = Transform_get_parent_m65354E28A4C94EC00EBCF03532F7B0718380791E(L_9, NULL);
-		V_0 = L_10;
-	}
-
-IL_003c:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:188>
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11 = V_0;
-		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_12;
-		L_12 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_11, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (L_12)
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:199>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:200>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:201>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:202>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:203>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:204>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:205>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:207>
+		String_t* L_12 = V_1;
+		NullCheck(L_12);
+		bool L_13;
+		L_13 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_12, _stringLiteral015AAEE242123CA16F98B0D063ABA422CE1596B7, NULL);
+		if (L_13)
 		{
-			goto IL_0014;
+			goto IL_00b9;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:197>
+		String_t* L_14 = V_1;
+		NullCheck(L_14);
+		bool L_15;
+		L_15 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_14, _stringLiteralD8431B5D5BBDD13458B95AC3252777089DFF7F0A, NULL);
+		if (L_15)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_16 = V_1;
+		NullCheck(L_16);
+		bool L_17;
+		L_17 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_16, _stringLiteralA7F00519435FC33A7E48F0FCF6CB6D9B257C0DAA, NULL);
+		if (L_17)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_18 = V_1;
+		NullCheck(L_18);
+		bool L_19;
+		L_19 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_18, _stringLiteral25E6D9037D86B200FC2A517BAD7594539EF58699, NULL);
+		if (L_19)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_20 = V_1;
+		NullCheck(L_20);
+		bool L_21;
+		L_21 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_20, _stringLiteralCE4D2C65F687DCA79AE1234954E0BCB0B50A6E8D, NULL);
+		if (L_21)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_22 = V_1;
+		NullCheck(L_22);
+		bool L_23;
+		L_23 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_22, _stringLiteralE4066C7F3321130A6A3427AE36FBD654A1FC6130, NULL);
+		if (L_23)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_24 = V_1;
+		NullCheck(L_24);
+		bool L_25;
+		L_25 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_24, _stringLiteral769EFBBF1B8BC01AC3A8E54AA622B0439BFBA03C, NULL);
+		if (L_25)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_26 = V_1;
+		NullCheck(L_26);
+		bool L_27;
+		L_27 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_26, _stringLiteral18E4C5DB8069025D974094A057F857AC864487AD, NULL);
+		if (L_27)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_28 = V_1;
+		NullCheck(L_28);
+		bool L_29;
+		L_29 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_28, _stringLiteral544DC80A2A82A08B6321F56F8987CB7E5DEED1C4, NULL);
+		if (!L_29)
+		{
+			goto IL_00bb;
+		}
+	}
+
+IL_00b9:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:209>
+		return (bool)1;
+	}
+
+IL_00bb:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:212>
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_30 = V_0;
+		NullCheck(L_30);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31;
+		L_31 = Transform_get_parent_m65354E28A4C94EC00EBCF03532F7B0718380791E(L_30, NULL);
+		V_0 = L_31;
+	}
+
+IL_00c2:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:188>
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_32 = V_0;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_33;
+		L_33 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_32, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (L_33)
+		{
+			goto IL_0017;
+		}
+	}
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:215>
 		return (bool)0;
 	}
 }
@@ -6969,12 +7075,12 @@ IL_003c:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_SetColor_mB6C406241CB63BE88DC8C01F0765C1CD82D4A8BC (SpellProjectile_t02AFBCCAB056DD94FD5269BB79555443D64AAFD2* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_color, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:205>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:223>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_0 = ___0_color;
 		__this->___spellColor = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:224>
 		SpellProjectile_SetupVisuals_mEE1806DDD9AAF72AE8B7BC5E33348AD2F700C432(__this, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:207>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:225>
 		return;
 	}
 }
@@ -6982,7 +7088,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpellProjectile_SetColor_mB6C406241CB63B
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t SpellProjectile_GetDamage_mAF96087490BE8C1DD48FC2D685D49D63F45FDDC6 (SpellProjectile_t02AFBCCAB056DD94FD5269BB79555443D64AAFD2* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:219>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:237>
 		float L_0 = __this->___damage;
 		if ((!(((float)L_0) >= ((float)(40.0f)))))
 		{
@@ -6990,13 +7096,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t SpellProjectile_GetDamage_mAF96087490
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:220>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:238>
 		return 5;
 	}
 
 IL_000f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:222>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SpellProjectile.cs:240>
 		return 2;
 	}
 }

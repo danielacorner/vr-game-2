@@ -307,6 +307,7 @@ IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5
 IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____C8990D568014FDE74CF2273EA9E5A28F704EB3887F7BF1AE99A685D330E36B11_FieldInfo_var;
 IL2CPP_EXTERN_C String_t* _stringLiteral004BAE25226F47D16AE46576ABC6E91C19E8AB41;
 IL2CPP_EXTERN_C String_t* _stringLiteral01004A0186B058378635A30BC83BBA488167ECFB;
+IL2CPP_EXTERN_C String_t* _stringLiteral015AAEE242123CA16F98B0D063ABA422CE1596B7;
 IL2CPP_EXTERN_C String_t* _stringLiteral01F544DBBB0AD40FA966F91C4B86814EBDB0FE4C;
 IL2CPP_EXTERN_C String_t* _stringLiteral07CA4EF2ADC94F3FE534D43205EAC5907A77E4E3;
 IL2CPP_EXTERN_C String_t* _stringLiteral093B1A1B86437C0BCB1DB93A96433D88930ABAF7;
@@ -3739,6 +3740,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t MainModule_get_simulationSpace_m03E20
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 MainModule_get_startLifetime_m09FB4B0E4B44A5B76E2DB11F177F770682BEA654 (MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float MinMaxCurve_get_constantMax_mBC9884017B40BDF911C768F521950370A6B41463 (MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436 (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_obj, float ___1_t, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Component_CompareTag_mE6F8897E84F12DF12D302FFC4D58204D51096FC5 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, String_t* ___0_tag, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_ToLower_m6191ABA3DC514ED47C10BDA23FD0DDCEAE7ACFBD (String_t* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3 (String_t* __this, String_t* ___0_value, const RuntimeMethod* method) ;
 inline Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* Component_GetComponent_TisRigidbody_t268697F5A994213ED97393309870968BC1C7393C_m4B5CAD64B52D153BEA96432633CA9A45FA523DD8 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method)
@@ -3825,7 +3827,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GradientAlphaKey__ctor_m62D622565E6C8BF9
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Gradient_SetKeys_mE03CE269C19C4F08F1ED57F7151082304DDBB5D8 (Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* __this, GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* ___0_colorKeys, GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* ___1_alphaKeys, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MinMaxGradient_tFF31B8EC2855D0074AB86E8B37BEA6609070AC69 MinMaxGradient_op_Implicit_m8568E0D8DD06940C6A710801B3FC41BB5307298B (Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* ___0_gradient, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ColorOverLifetimeModule_set_color_m054950B589DA58FFD5BDBC10A70304BF89E3C86B (ColorOverLifetimeModule_t758EC8315B6C19D78C418D942CD1F94FE7EEE9D9* __this, MinMaxGradient_tFF31B8EC2855D0074AB86E8B37BEA6609070AC69 ___0_value, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Component_CompareTag_mE6F8897E84F12DF12D302FFC4D58204D51096FC5 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, String_t* ___0_tag, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F* __this, float ___0_r, float ___1_g, float ___2_b, float ___3_a, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Gizmos_set_color_m53927A2741937484180B20B55F7F20F8F60C5797 (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Gizmos_DrawWireSphere_m12C01EC9334C32425074A214C5B876271B3DDBA1 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_center, float ___1_radius, const RuntimeMethod* method) ;
@@ -12078,254 +12079,219 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool LinearSpellMovement_IsPlayerObject_mF091
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral015AAEE242123CA16F98B0D063ABA422CE1596B7);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral18E4C5DB8069025D974094A057F857AC864487AD);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral25E6D9037D86B200FC2A517BAD7594539EF58699);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral544DC80A2A82A08B6321F56F8987CB7E5DEED1C4);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral64938F156095B4941BE03EFEF10F99D8997FBFF1);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral74CC3B7E957B3E7555158404BFDECEF3E64B046B);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral769EFBBF1B8BC01AC3A8E54AA622B0439BFBA03C);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral9D307E008D016DBD79B5F3FDB6E77C2F586E1090);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA7F00519435FC33A7E48F0FCF6CB6D9B257C0DAA);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCAF8804297181FF007CA835529DD4477CFD94A70);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCE4D2C65F687DCA79AE1234954E0BCB0B50A6E8D);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralD8431B5D5BBDD13458B95AC3252777089DFF7F0A);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE4066C7F3321130A6A3427AE36FBD654A1FC6130);
 		s_Il2CppMethodInitialized = true;
 	}
-	String_t* V_0 = NULL;
-	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_1 = NULL;
-	String_t* V_2 = NULL;
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_0 = NULL;
+	String_t* V_1 = NULL;
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:111>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_obj;
-		NullCheck(L_0);
-		String_t* L_1;
-		L_1 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_0, NULL);
-		NullCheck(L_1);
-		String_t* L_2;
-		L_2 = String_ToLower_m6191ABA3DC514ED47C10BDA23FD0DDCEAE7ACFBD(L_1, NULL);
-		V_0 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:114>
-		String_t* L_3 = V_0;
-		NullCheck(L_3);
-		bool L_4;
-		L_4 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_3, _stringLiteral769EFBBF1B8BC01AC3A8E54AA622B0439BFBA03C, NULL);
-		if (!L_4)
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_1;
+		L_1 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605(L_0, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_1)
 		{
-			goto IL_001b;
+			goto IL_000b;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:114>
-		return (bool)1;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:111>
+		return (bool)0;
 	}
 
-IL_001b:
+IL_000b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:115>
-		String_t* L_5 = V_0;
-		NullCheck(L_5);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:114>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = ___0_obj;
+		NullCheck(L_2);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3;
+		L_3 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_2, NULL);
+		V_0 = L_3;
+		goto IL_00c2;
+	}
+
+IL_0017:
+	{
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:118>
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = V_0;
+		NullCheck(L_4);
+		String_t* L_5;
+		L_5 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_4, NULL);
 		bool L_6;
-		L_6 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_5, _stringLiteral18E4C5DB8069025D974094A057F857AC864487AD, NULL);
-		if (!L_6)
+		L_6 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_5, _stringLiteral9D307E008D016DBD79B5F3FDB6E77C2F586E1090, NULL);
+		if (L_6)
 		{
-			goto IL_002a;
+			goto IL_0036;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:115>
-		return (bool)1;
-	}
-
-IL_002a:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:116>
-		String_t* L_7 = V_0;
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = V_0;
 		NullCheck(L_7);
 		bool L_8;
-		L_8 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_7, _stringLiteralA7F00519435FC33A7E48F0FCF6CB6D9B257C0DAA, NULL);
+		L_8 = Component_CompareTag_mE6F8897E84F12DF12D302FFC4D58204D51096FC5(L_7, _stringLiteralCAF8804297181FF007CA835529DD4477CFD94A70, NULL);
 		if (!L_8)
 		{
-			goto IL_0039;
+			goto IL_0038;
 		}
 	}
+
+IL_0036:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:116>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:120>
 		return (bool)1;
 	}
 
-IL_0039:
+IL_0038:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:117>
-		String_t* L_9 = V_0;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:123>
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9 = V_0;
 		NullCheck(L_9);
-		bool L_10;
-		L_10 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_9, _stringLiteralE4066C7F3321130A6A3427AE36FBD654A1FC6130, NULL);
-		if (!L_10)
-		{
-			goto IL_0048;
-		}
-	}
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:117>
-		return (bool)1;
-	}
-
-IL_0048:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:118>
-		String_t* L_11 = V_0;
-		NullCheck(L_11);
-		bool L_12;
-		L_12 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_11, _stringLiteral64938F156095B4941BE03EFEF10F99D8997FBFF1, NULL);
-		if (!L_12)
-		{
-			goto IL_0057;
-		}
-	}
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:118>
-		return (bool)1;
-	}
-
-IL_0057:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:119>
-		String_t* L_13 = V_0;
-		NullCheck(L_13);
-		bool L_14;
-		L_14 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_13, _stringLiteralD8431B5D5BBDD13458B95AC3252777089DFF7F0A, NULL);
-		if (!L_14)
-		{
-			goto IL_0066;
-		}
-	}
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:119>
-		return (bool)1;
-	}
-
-IL_0066:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:120>
-		String_t* L_15 = V_0;
-		NullCheck(L_15);
-		bool L_16;
-		L_16 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_15, _stringLiteral74CC3B7E957B3E7555158404BFDECEF3E64B046B, NULL);
-		if (!L_16)
-		{
-			goto IL_0075;
-		}
-	}
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:120>
-		return (bool)1;
-	}
-
-IL_0075:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:121>
-		String_t* L_17 = V_0;
-		NullCheck(L_17);
-		bool L_18;
-		L_18 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_17, _stringLiteral544DC80A2A82A08B6321F56F8987CB7E5DEED1C4, NULL);
-		if (!L_18)
-		{
-			goto IL_0084;
-		}
-	}
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:121>
-		return (bool)1;
-	}
-
-IL_0084:
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:124>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19 = ___0_obj;
-		NullCheck(L_19);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_20;
-		L_20 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_19, NULL);
-		V_1 = L_20;
-		goto IL_00ce;
-	}
-
-IL_008d:
-	{
+		String_t* L_10;
+		L_10 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_9, NULL);
+		NullCheck(L_10);
+		String_t* L_11;
+		L_11 = String_ToLower_m6191ABA3DC514ED47C10BDA23FD0DDCEAE7ACFBD(L_10, NULL);
+		V_1 = L_11;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:125>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:126>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:127>
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21 = V_1;
-		NullCheck(L_21);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22;
-		L_22 = Transform_get_parent_m65354E28A4C94EC00EBCF03532F7B0718380791E(L_21, NULL);
-		NullCheck(L_22);
-		String_t* L_23;
-		L_23 = Object_get_name_mAC2F6B897CF1303BA4249B4CB55271AFACBB6392(L_22, NULL);
-		NullCheck(L_23);
-		String_t* L_24;
-		L_24 = String_ToLower_m6191ABA3DC514ED47C10BDA23FD0DDCEAE7ACFBD(L_23, NULL);
-		V_2 = L_24;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:128>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:129>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:130>
-		String_t* L_25 = V_2;
-		NullCheck(L_25);
-		bool L_26;
-		L_26 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_25, _stringLiteral64938F156095B4941BE03EFEF10F99D8997FBFF1, NULL);
-		if (L_26)
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:131>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:132>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:133>
+		String_t* L_12 = V_1;
+		NullCheck(L_12);
+		bool L_13;
+		L_13 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_12, _stringLiteral015AAEE242123CA16F98B0D063ABA422CE1596B7, NULL);
+		if (L_13)
 		{
-			goto IL_00c5;
+			goto IL_00b9;
 		}
 	}
 	{
-		String_t* L_27 = V_2;
-		NullCheck(L_27);
-		bool L_28;
-		L_28 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_27, _stringLiteralD8431B5D5BBDD13458B95AC3252777089DFF7F0A, NULL);
-		if (L_28)
+		String_t* L_14 = V_1;
+		NullCheck(L_14);
+		bool L_15;
+		L_15 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_14, _stringLiteralD8431B5D5BBDD13458B95AC3252777089DFF7F0A, NULL);
+		if (L_15)
 		{
-			goto IL_00c5;
+			goto IL_00b9;
 		}
 	}
 	{
-		String_t* L_29 = V_2;
-		NullCheck(L_29);
-		bool L_30;
-		L_30 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_29, _stringLiteral74CC3B7E957B3E7555158404BFDECEF3E64B046B, NULL);
-		if (!L_30)
+		String_t* L_16 = V_1;
+		NullCheck(L_16);
+		bool L_17;
+		L_17 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_16, _stringLiteralA7F00519435FC33A7E48F0FCF6CB6D9B257C0DAA, NULL);
+		if (L_17)
 		{
-			goto IL_00c7;
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_18 = V_1;
+		NullCheck(L_18);
+		bool L_19;
+		L_19 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_18, _stringLiteral25E6D9037D86B200FC2A517BAD7594539EF58699, NULL);
+		if (L_19)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_20 = V_1;
+		NullCheck(L_20);
+		bool L_21;
+		L_21 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_20, _stringLiteralCE4D2C65F687DCA79AE1234954E0BCB0B50A6E8D, NULL);
+		if (L_21)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_22 = V_1;
+		NullCheck(L_22);
+		bool L_23;
+		L_23 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_22, _stringLiteralE4066C7F3321130A6A3427AE36FBD654A1FC6130, NULL);
+		if (L_23)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_24 = V_1;
+		NullCheck(L_24);
+		bool L_25;
+		L_25 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_24, _stringLiteral769EFBBF1B8BC01AC3A8E54AA622B0439BFBA03C, NULL);
+		if (L_25)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_26 = V_1;
+		NullCheck(L_26);
+		bool L_27;
+		L_27 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_26, _stringLiteral18E4C5DB8069025D974094A057F857AC864487AD, NULL);
+		if (L_27)
+		{
+			goto IL_00b9;
+		}
+	}
+	{
+		String_t* L_28 = V_1;
+		NullCheck(L_28);
+		bool L_29;
+		L_29 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_28, _stringLiteral544DC80A2A82A08B6321F56F8987CB7E5DEED1C4, NULL);
+		if (!L_29)
+		{
+			goto IL_00bb;
 		}
 	}
 
-IL_00c5:
+IL_00b9:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:132>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:135>
 		return (bool)1;
 	}
 
-IL_00c7:
+IL_00bb:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:134>
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31 = V_1;
-		NullCheck(L_31);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_32;
-		L_32 = Transform_get_parent_m65354E28A4C94EC00EBCF03532F7B0718380791E(L_31, NULL);
-		V_1 = L_32;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:138>
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_30 = V_0;
+		NullCheck(L_30);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31;
+		L_31 = Transform_get_parent_m65354E28A4C94EC00EBCF03532F7B0718380791E(L_30, NULL);
+		V_0 = L_31;
 	}
 
-IL_00ce:
+IL_00c2:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:125>
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_33 = V_1;
-		NullCheck(L_33);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_34;
-		L_34 = Transform_get_parent_m65354E28A4C94EC00EBCF03532F7B0718380791E(L_33, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:115>
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_32 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_35;
-		L_35 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_34, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (L_35)
+		bool L_33;
+		L_33 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_32, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (L_33)
 		{
-			goto IL_008d;
+			goto IL_0017;
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:137>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Spells/LinearSpellMovement.cs:141>
 		return (bool)0;
 	}
 }

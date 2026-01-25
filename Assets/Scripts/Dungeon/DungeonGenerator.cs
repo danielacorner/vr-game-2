@@ -1233,7 +1233,7 @@ namespace VRDungeonCrawler.Dungeon
                 AI.MonsterAI monsterAI = skeleton.AddComponent<AI.MonsterAI>();
                 monsterAI.walkSpeed = 1.2f;
                 monsterAI.chaseSpeed = 3.5f;
-                monsterAI.aggroRange = 6f;
+                monsterAI.aggroRange = 2f; // Detect player within 2m
                 monsterAI.maxRoamDistance = 8f;
                 monsterAI.showDebug = false;
 

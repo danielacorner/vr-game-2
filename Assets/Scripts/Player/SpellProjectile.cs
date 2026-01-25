@@ -93,7 +93,7 @@ namespace VRDungeonCrawler.Player
             // Ignore collision with player (XR Origin and all its children including headset)
             if (IsPlayerCollider(other))
             {
-                Debug.Log($"[Projectile] Ignoring player collision with {other.gameObject.name}");
+                // Don't log, just ignore silently
                 return;
             }
 
@@ -119,7 +119,7 @@ namespace VRDungeonCrawler.Player
             // Ignore collision with player (XR Origin and all its children including headset)
             if (IsPlayerCollider(collision.collider))
             {
-                Debug.Log($"[Projectile] Ignoring player collision with {collision.gameObject.name}");
+                // Don't log, just ignore silently
                 return;
             }
 
@@ -187,10 +187,28 @@ namespace VRDungeonCrawler.Player
             Transform current = collider.transform;
             while (current != null)
             {
+                string name = current.name.ToLower();
+
+                // Check for XR Origin or Player tag
                 if (current.name == "XR Origin" || current.CompareTag("Player"))
                 {
                     return true;
                 }
+
+                // Check for common VR rig names
+                if (name.Contains("xr origin") ||
+                    name.Contains("player") ||
+                    name.Contains("camera") ||
+                    name.Contains("headset") ||
+                    name.Contains("hmd") ||
+                    name.Contains("main camera") ||
+                    name.Contains("controller") ||
+                    name.Contains("hand") ||
+                    name.Contains("offset"))
+                {
+                    return true;
+                }
+
                 current = current.parent;
             }
 

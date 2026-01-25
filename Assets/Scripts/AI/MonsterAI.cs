@@ -29,7 +29,7 @@ namespace VRDungeonCrawler.AI
 
         [Header("Aggro/Chase Settings")]
         [Tooltip("Distance at which monster detects and chases player")]
-        public float aggroRange = 6f;
+        public float aggroRange = 2f;
 
         [Tooltip("Speed when chasing player (faster than patrol)")]
         public float chaseSpeed = 3.5f;

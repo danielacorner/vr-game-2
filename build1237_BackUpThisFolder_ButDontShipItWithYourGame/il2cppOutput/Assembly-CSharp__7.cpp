@@ -46,9 +46,11 @@ struct MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9;
 struct MonsterBase_t290516D2F876CDDB8D7142E097A44DC822B9A424;
 struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C;
 struct ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1;
+struct ParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4;
 struct PlayerHealth_t25B48349C184C91E5CB0DD7078534E1864302E56;
 struct Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF;
 struct Rigidbody_t268697F5A994213ED97393309870968BC1C7393C;
+struct Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692;
 struct SkeletonAttack_t4E0728B41E3A049618159882F9F12087515B4025;
 struct SkeletonEyeEffect_t17B9B0D038D3A158C11A3842A36C6A0FDC35DEEA;
 struct String_t;
@@ -63,6 +65,7 @@ IL2CPP_EXTERN_C RuntimeClass* GameObject_t76FEDD663AB33C991A9C9A2312933765109421
 IL2CPP_EXTERN_C RuntimeClass* GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974_il2cpp_TypeInfo_var;
@@ -73,8 +76,10 @@ IL2CPP_EXTERN_C String_t* _stringLiteral14CFCC7EF2DE2B86674586BA1E2865ED2D81C4B2
 IL2CPP_EXTERN_C String_t* _stringLiteral154AC6698FB2F5206EC0F90DA76FCFA8E1660083;
 IL2CPP_EXTERN_C String_t* _stringLiteral3A5FF9425C0A1DF434A7413CA7C1D05D06C93286;
 IL2CPP_EXTERN_C String_t* _stringLiteral43B21AFA07D5A25F80B97184DBFDE68977553382;
+IL2CPP_EXTERN_C String_t* _stringLiteral47A3FAF17D89549FD0F0ECA7370B81F7C80DFCDE;
 IL2CPP_EXTERN_C String_t* _stringLiteral66796E245D9D33473DBC59FCE4E8E60674AAE7B6;
 IL2CPP_EXTERN_C String_t* _stringLiteral7B4CC3F42DC6287ED10F0D294802D32616EC1FC6;
+IL2CPP_EXTERN_C String_t* _stringLiteral7D61FA9D9BE7581D7E2EE28C775ABE0D4B8C3D69;
 IL2CPP_EXTERN_C String_t* _stringLiteral8329A556DF8647206575439E48CF6F8978F945D7;
 IL2CPP_EXTERN_C String_t* _stringLiteral8DD8D6FCBA1E38E53530F55F7B9061E65C123321;
 IL2CPP_EXTERN_C String_t* _stringLiteral9D307E008D016DBD79B5F3FDB6E77C2F586E1090;
@@ -82,7 +87,9 @@ IL2CPP_EXTERN_C String_t* _stringLiteralB752BA13FC537018B8778DDC8113EC90769B2C8D
 IL2CPP_EXTERN_C String_t* _stringLiteralB92EF51E45166C91E2762DB6C9F27C8BD6EBE466;
 IL2CPP_EXTERN_C String_t* _stringLiteralC3CBAF61639183761683A29579C4E74EE6A863AB;
 IL2CPP_EXTERN_C String_t* _stringLiteralCD728E2CE1C89F3F7A3CF5C36A9650B715CD18C3;
+IL2CPP_EXTERN_C String_t* _stringLiteralF85263F579BDEEADCEC89CFCDB0C3F6C51D186BF;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisMonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9_m390ED2CA5889970C75C9D9DE466D803796BA68B7_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4_mDB29DD32DF46B9659262256BDBD5B4F1BB805023_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_mB314D473090ABA262973402E33A61D8017704EA8_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeType* MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9_0_0_0_var;
@@ -381,6 +388,10 @@ struct ParticleSystemGradientMode_t5525A27D816AC28297038E5A98856B29095C4C1A
 {
 	int32_t ___value__;
 };
+struct ParticleSystemRenderMode_tD7B2EC732ED8FF53C74A71D5FD7122C15B2DB314 
+{
+	int32_t ___value__;
+};
 struct ParticleSystemShapeType_tADE62D07EDA71578326A03B50871391EE01F73BB 
 {
 	int32_t ___value__;
@@ -396,6 +407,9 @@ struct GameObject_t76FEDD663AB33C991A9C9A23129337651094216F  : public Object_tC1
 {
 };
 struct Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3  : public Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C
+{
+};
+struct Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692  : public Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C
 {
 };
 struct Type_t  : public MemberInfo_t
@@ -468,6 +482,9 @@ struct Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1  : public Component_t
 struct MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71  : public Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA
 {
 	CancellationTokenSource_tAAE1E0033BCFC233801F8CB4CED5C852B350CB7B* ___m_CancellationTokenSource;
+};
+struct ParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4  : public Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF
+{
 };
 struct MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
@@ -721,6 +738,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MinMaxGradient_tFF31B8EC2855D0074AB86E8B37BEA
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainModule_set_startColor_m504911284CAC53A7C1B97B5D01BBDD2FA67D0E7A (MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9* __this, MinMaxGradient_tFF31B8EC2855D0074AB86E8B37BEA6609070AC69 ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainModule_set_gravityModifier_m398D2C7F10E389C0EA365640A54D2C0C151A42A7 (MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9* __this, MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainModule_set_maxParticles_mF9E7A56D7E1A528904BE1A8C0E14F15C3AF0F748 (MainModule_tC7ECD8330C14B0808478A748048988A6085CE2A9* __this, int32_t ___0_value, const RuntimeMethod* method) ;
+inline ParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4* Component_GetComponent_TisParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4_mDB29DD32DF46B9659262256BDBD5B4F1BB805023 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method)
+{
+	return ((  ParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4* (*) (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3*, const RuntimeMethod*))Component_GetComponent_TisRuntimeObject_m7181F81CAEC2CF53F5D2BC79B7425C16E1F80D33_gshared)(__this, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5 (String_t* ___0_name, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* __this, Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* ___0_shader, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A (Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* __this, Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Material_SetColor_mFAB32FAA44461E46FD707B34184EC080CBB3539F (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* __this, String_t* ___0_name, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___1_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836 (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* __this, String_t* ___0_name, float ___1_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ParticleSystemRenderer_set_renderMode_mB2FE8134522E19C9C0C2E8DE371303BCE834016F (ParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4* __this, int32_t ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR EmissionModule_t0F469FA4A08003F6D9C610D2F716A9DFDB9A3678 ParticleSystem_get_emission_mD9402CE632A3607DA0B0486F9F58F7FB2B44CF08 (ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EmissionModule_set_rateOverTime_m71BF3C0A80EA572CD87EFF5944E8FA680F51DC20 (EmissionModule_t0F469FA4A08003F6D9C610D2F716A9DFDB9A3678* __this, MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ShapeModule_tAA38A0C5305DF2F9D96F89D4B8F762E2D034D8B2 ParticleSystem_get_shape_mD7F072CC18587858138AA7B3A882995493AA7C80 (ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* __this, const RuntimeMethod* method) ;
@@ -746,7 +773,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ParticleSystem_Play_mD943E601BFE16CB9BB5
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F Color_op_Multiply_m379B20A820266ACF82A21425B9CAE8DCD773CFBB_inline (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_a, float ___1_b, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Material_HasProperty_mC09A83B44E368A217F606DD4954FA080CC03EC6C (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* __this, String_t* ___0_name, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Material_SetColor_mFAB32FAA44461E46FD707B34184EC080CBB3539F (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* __this, String_t* ___0_name, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___1_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_obj, const RuntimeMethod* method) ;
 #ifdef __clang__
 #pragma clang diagnostic push
@@ -1360,12 +1386,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ParticleSystem_tB19986EE308BD63D36FB6025EEEAF
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Component_GetComponent_TisParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4_mDB29DD32DF46B9659262256BDBD5B4F1BB805023_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_AddComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_mB314D473090ABA262973402E33A61D8017704EA8_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral14CFCC7EF2DE2B86674586BA1E2865ED2D81C4B2);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral47A3FAF17D89549FD0F0ECA7370B81F7C80DFCDE);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral7D61FA9D9BE7581D7E2EE28C775ABE0D4B8C3D69);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF85263F579BDEEADCEC89CFCDB0C3F6C51D186BF);
 		s_Il2CppMethodInitialized = true;
 	}
 	ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* V_0 = NULL;
@@ -1434,11 +1465,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ParticleSystem_tB19986EE308BD63D36FB6025EEEAF
 		MainModule_set_startLifetime_mDFC2433853CB12C0C93C8BF16FEDB4EA2E0B3514((&V_1), L_16, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:105>
 		MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 L_17;
-		L_17 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086((0.5f), NULL);
+		L_17 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086((0.0500000007f), NULL);
 		MainModule_set_startSpeed_mE6041E4BA54F01117AF6B81B1E53C5C9C669AC75((&V_1), L_17, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:106>
 		MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 L_18;
-		L_18 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086((0.0299999993f), NULL);
+		L_18 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086((0.00300000003f), NULL);
 		MainModule_set_startSize_m44C3A39EAF1AE9A526A126D93160128223BE827B((&V_1), L_18, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:107>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_19;
@@ -1449,142 +1480,175 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ParticleSystem_tB19986EE308BD63D36FB6025EEEAF
 		MainModule_set_startColor_m504911284CAC53A7C1B97B5D01BBDD2FA67D0E7A((&V_1), L_20, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:108>
 		MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 L_21;
-		L_21 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086((-0.200000003f), NULL);
+		L_21 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086((-0.100000001f), NULL);
 		MainModule_set_gravityModifier_m398D2C7F10E389C0EA365640A54D2C0C151A42A7((&V_1), L_21, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:109>
 		int32_t L_22 = __this->___fireParticleCount;
 		MainModule_set_maxParticles_mF9E7A56D7E1A528904BE1A8C0E14F15C3AF0F748((&V_1), L_22, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:111>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:112>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_23 = V_0;
 		NullCheck(L_23);
-		EmissionModule_t0F469FA4A08003F6D9C610D2F716A9DFDB9A3678 L_24;
-		L_24 = ParticleSystem_get_emission_mD9402CE632A3607DA0B0486F9F58F7FB2B44CF08(L_23, NULL);
-		V_2 = L_24;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:112>
-		int32_t L_25 = __this->___fireParticleCount;
-		MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 L_26;
-		L_26 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086(((float)((int32_t)il2cpp_codegen_multiply(L_25, 2))), NULL);
-		EmissionModule_set_rateOverTime_m71BF3C0A80EA572CD87EFF5944E8FA680F51DC20((&V_2), L_26, NULL);
+		ParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4* L_24;
+		L_24 = Component_GetComponent_TisParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4_mDB29DD32DF46B9659262256BDBD5B4F1BB805023(L_23, Component_GetComponent_TisParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4_mDB29DD32DF46B9659262256BDBD5B4F1BB805023_RuntimeMethod_var);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:113>
+		ParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4* L_25 = L_24;
+		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_26;
+		L_26 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteralF85263F579BDEEADCEC89CFCDB0C3F6C51D186BF, NULL);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_27 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
+		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_27, L_26, NULL);
+		NullCheck(L_25);
+		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_25, L_27, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:114>
-		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_27 = V_0;
-		NullCheck(L_27);
-		ShapeModule_tAA38A0C5305DF2F9D96F89D4B8F762E2D034D8B2 L_28;
-		L_28 = ParticleSystem_get_shape_mD7F072CC18587858138AA7B3A882995493AA7C80(L_27, NULL);
-		V_3 = L_28;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:115>
-		ShapeModule_set_shapeType_m4B5D1EA91037AD7065FE1D23652D919FED4D6D7F((&V_3), 0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:116>
-		ShapeModule_set_radius_m37F79E13EB60FA39EAE36B49DAC4AC880416E89C((&V_3), (0.0199999996f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:119>
-		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_29 = V_0;
+		ParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4* L_28 = L_25;
+		NullCheck(L_28);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_29;
+		L_29 = Renderer_get_material_m5BA2A00816C4CC66580D4B2E409CF10718C15656(L_28, NULL);
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_30;
+		memset((&L_30), 0, sizeof(L_30));
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_30), (1.0f), (0.300000012f), (0.0f), (0.800000012f), NULL);
 		NullCheck(L_29);
-		ColorOverLifetimeModule_t758EC8315B6C19D78C418D942CD1F94FE7EEE9D9 L_30;
-		L_30 = ParticleSystem_get_colorOverLifetime_mD8C72661EFE9BB063126752E744544EE2FF5814C(L_29, NULL);
-		V_4 = L_30;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:120>
-		ColorOverLifetimeModule_set_enabled_m356D3ABCE0A5B979105F546C2EAA54702297059C((&V_4), (bool)1, NULL);
+		Material_SetColor_mFAB32FAA44461E46FD707B34184EC080CBB3539F(L_29, _stringLiteral47A3FAF17D89549FD0F0ECA7370B81F7C80DFCDE, L_30, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:115>
+		ParticleSystemRenderer_t576C271A363A738A6C576D4C6AEFB3B5B23E46C4* L_31 = L_28;
+		NullCheck(L_31);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_32;
+		L_32 = Renderer_get_material_m5BA2A00816C4CC66580D4B2E409CF10718C15656(L_31, NULL);
+		NullCheck(L_32);
+		Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836(L_32, _stringLiteral7D61FA9D9BE7581D7E2EE28C775ABE0D4B8C3D69, (2.0f), NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:116>
+		NullCheck(L_31);
+		ParticleSystemRenderer_set_renderMode_mB2FE8134522E19C9C0C2E8DE371303BCE834016F(L_31, 0, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:118>
+		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_33 = V_0;
+		NullCheck(L_33);
+		EmissionModule_t0F469FA4A08003F6D9C610D2F716A9DFDB9A3678 L_34;
+		L_34 = ParticleSystem_get_emission_mD9402CE632A3607DA0B0486F9F58F7FB2B44CF08(L_33, NULL);
+		V_2 = L_34;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:119>
+		int32_t L_35 = __this->___fireParticleCount;
+		MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 L_36;
+		L_36 = MinMaxCurve_op_Implicit_m133028E91CF2F823F5E20F6B19A3332A02404086(((float)((int32_t)il2cpp_codegen_multiply(L_35, 2))), NULL);
+		EmissionModule_set_rateOverTime_m71BF3C0A80EA572CD87EFF5944E8FA680F51DC20((&V_2), L_36, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:121>
-		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_31 = (Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E*)il2cpp_codegen_object_new(Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E_il2cpp_TypeInfo_var);
-		Gradient__ctor_m5EC470BB063D4831774C7CDA5D471EBEB5CE7B54(L_31, NULL);
-		V_5 = L_31;
+		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_37 = V_0;
+		NullCheck(L_37);
+		ShapeModule_tAA38A0C5305DF2F9D96F89D4B8F762E2D034D8B2 L_38;
+		L_38 = ParticleSystem_get_shape_mD7F072CC18587858138AA7B3A882995493AA7C80(L_37, NULL);
+		V_3 = L_38;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:122>
+		ShapeModule_set_shapeType_m4B5D1EA91037AD7065FE1D23652D919FED4D6D7F((&V_3), 0, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:123>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:124>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:125>
+		ShapeModule_set_radius_m37F79E13EB60FA39EAE36B49DAC4AC880416E89C((&V_3), (0.0199999996f), NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:126>
+		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_39 = V_0;
+		NullCheck(L_39);
+		ColorOverLifetimeModule_t758EC8315B6C19D78C418D942CD1F94FE7EEE9D9 L_40;
+		L_40 = ParticleSystem_get_colorOverLifetime_mD8C72661EFE9BB063126752E744544EE2FF5814C(L_39, NULL);
+		V_4 = L_40;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:127>
+		ColorOverLifetimeModule_set_enabled_m356D3ABCE0A5B979105F546C2EAA54702297059C((&V_4), (bool)1, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:128>
+		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_41 = (Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E*)il2cpp_codegen_object_new(Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E_il2cpp_TypeInfo_var);
+		Gradient__ctor_m5EC470BB063D4831774C7CDA5D471EBEB5CE7B54(L_41, NULL);
+		V_5 = L_41;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:129>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:130>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:131>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:132>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:133>
-		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_32 = V_5;
-		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_33 = (GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18*)(GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18*)SZArrayNew(GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18_il2cpp_TypeInfo_var, (uint32_t)3);
-		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_34 = L_33;
-		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_35;
-		memset((&L_35), 0, sizeof(L_35));
-		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_35), (1.0f), (0.200000003f), (0.0f), NULL);
-		GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A L_36;
-		memset((&L_36), 0, sizeof(L_36));
-		GradientColorKey__ctor_mE26D7B8DA1283FDC3ADF628A3AC3E1B7246CD8A1((&L_36), L_35, (0.0f), NULL);
-		NullCheck(L_34);
-		(L_34)->SetAt(static_cast<il2cpp_array_size_t>(0), (GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A)L_36);
-		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_37 = L_34;
-		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_38;
-		memset((&L_38), 0, sizeof(L_38));
-		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_38), (1.0f), (0.600000024f), (0.0f), NULL);
-		GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A L_39;
-		memset((&L_39), 0, sizeof(L_39));
-		GradientColorKey__ctor_mE26D7B8DA1283FDC3ADF628A3AC3E1B7246CD8A1((&L_39), L_38, (0.5f), NULL);
-		NullCheck(L_37);
-		(L_37)->SetAt(static_cast<il2cpp_array_size_t>(1), (GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A)L_39);
-		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_40 = L_37;
-		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_41;
-		memset((&L_41), 0, sizeof(L_41));
-		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_41), (1.0f), (1.0f), (0.5f), NULL);
-		GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A L_42;
-		memset((&L_42), 0, sizeof(L_42));
-		GradientColorKey__ctor_mE26D7B8DA1283FDC3ADF628A3AC3E1B7246CD8A1((&L_42), L_41, (1.0f), NULL);
-		NullCheck(L_40);
-		(L_40)->SetAt(static_cast<il2cpp_array_size_t>(2), (GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A)L_42);
-		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_43 = (GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E*)(GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E*)SZArrayNew(GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E_il2cpp_TypeInfo_var, (uint32_t)3);
-		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_44 = L_43;
-		GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0 L_45;
-		memset((&L_45), 0, sizeof(L_45));
-		GradientAlphaKey__ctor_m62D622565E6C8BF94E6E90A4CA6C866A5BC3B41B((&L_45), (0.800000012f), (0.0f), NULL);
-		NullCheck(L_44);
-		(L_44)->SetAt(static_cast<il2cpp_array_size_t>(0), (GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0)L_45);
-		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_46 = L_44;
-		GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0 L_47;
-		memset((&L_47), 0, sizeof(L_47));
-		GradientAlphaKey__ctor_m62D622565E6C8BF94E6E90A4CA6C866A5BC3B41B((&L_47), (0.5f), (0.5f), NULL);
-		NullCheck(L_46);
-		(L_46)->SetAt(static_cast<il2cpp_array_size_t>(1), (GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0)L_47);
-		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_48 = L_46;
-		GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0 L_49;
-		memset((&L_49), 0, sizeof(L_49));
-		GradientAlphaKey__ctor_m62D622565E6C8BF94E6E90A4CA6C866A5BC3B41B((&L_49), (0.0f), (1.0f), NULL);
-		NullCheck(L_48);
-		(L_48)->SetAt(static_cast<il2cpp_array_size_t>(2), (GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0)L_49);
-		NullCheck(L_32);
-		Gradient_SetKeys_mE03CE269C19C4F08F1ED57F7151082304DDBB5D8(L_32, L_40, L_48, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:134>
-		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_50 = V_5;
-		MinMaxGradient_tFF31B8EC2855D0074AB86E8B37BEA6609070AC69 L_51;
-		L_51 = MinMaxGradient_op_Implicit_m8568E0D8DD06940C6A710801B3FC41BB5307298B(L_50, NULL);
-		ColorOverLifetimeModule_set_color_m054950B589DA58FFD5BDBC10A70304BF89E3C86B((&V_4), L_51, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:135>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:136>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:137>
-		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_52 = V_0;
-		NullCheck(L_52);
-		SizeOverLifetimeModule_t6711CE9659123CAA5BFBFDFA9F53174CD979AC0C L_53;
-		L_53 = ParticleSystem_get_sizeOverLifetime_m9142CFF6D940A4EB07D07495CC09C2C0AA38549F(L_52, NULL);
-		V_6 = L_53;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:138>
-		SizeOverLifetimeModule_set_enabled_mC45334E7AC31CCBE1CFA531D28D29E1BD38D5D6F((&V_6), (bool)1, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:139>
-		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_54 = (AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354*)il2cpp_codegen_object_new(AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354_il2cpp_TypeInfo_var);
-		AnimationCurve__ctor_m0D976567166F92383307DC8EB8D7082CD34E226F(L_54, NULL);
-		V_7 = L_54;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:140>
-		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_55 = V_7;
-		NullCheck(L_55);
-		int32_t L_56;
-		L_56 = AnimationCurve_AddKey_mCA9B224D2D4721FB676505CEC6AA4FDCCC58C15B(L_55, (0.0f), (1.0f), NULL);
+		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_42 = V_5;
+		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_43 = (GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18*)(GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18*)SZArrayNew(GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18_il2cpp_TypeInfo_var, (uint32_t)3);
+		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_44 = L_43;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_45;
+		memset((&L_45), 0, sizeof(L_45));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_45), (1.0f), (0.200000003f), (0.0f), NULL);
+		GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A L_46;
+		memset((&L_46), 0, sizeof(L_46));
+		GradientColorKey__ctor_mE26D7B8DA1283FDC3ADF628A3AC3E1B7246CD8A1((&L_46), L_45, (0.0f), NULL);
+		NullCheck(L_44);
+		(L_44)->SetAt(static_cast<il2cpp_array_size_t>(0), (GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A)L_46);
+		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_47 = L_44;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_48;
+		memset((&L_48), 0, sizeof(L_48));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_48), (1.0f), (0.600000024f), (0.0f), NULL);
+		GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A L_49;
+		memset((&L_49), 0, sizeof(L_49));
+		GradientColorKey__ctor_mE26D7B8DA1283FDC3ADF628A3AC3E1B7246CD8A1((&L_49), L_48, (0.5f), NULL);
+		NullCheck(L_47);
+		(L_47)->SetAt(static_cast<il2cpp_array_size_t>(1), (GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A)L_49);
+		GradientColorKeyU5BU5D_tB8929E6EE130CA1F3C1664B300BE83A95A642C18* L_50 = L_47;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_51;
+		memset((&L_51), 0, sizeof(L_51));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_51), (1.0f), (1.0f), (0.5f), NULL);
+		GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A L_52;
+		memset((&L_52), 0, sizeof(L_52));
+		GradientColorKey__ctor_mE26D7B8DA1283FDC3ADF628A3AC3E1B7246CD8A1((&L_52), L_51, (1.0f), NULL);
+		NullCheck(L_50);
+		(L_50)->SetAt(static_cast<il2cpp_array_size_t>(2), (GradientColorKey_tBD03A613338639E3774A10265CC5F3619C13421A)L_52);
+		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_53 = (GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E*)(GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E*)SZArrayNew(GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E_il2cpp_TypeInfo_var, (uint32_t)3);
+		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_54 = L_53;
+		GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0 L_55;
+		memset((&L_55), 0, sizeof(L_55));
+		GradientAlphaKey__ctor_m62D622565E6C8BF94E6E90A4CA6C866A5BC3B41B((&L_55), (0.800000012f), (0.0f), NULL);
+		NullCheck(L_54);
+		(L_54)->SetAt(static_cast<il2cpp_array_size_t>(0), (GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0)L_55);
+		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_56 = L_54;
+		GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0 L_57;
+		memset((&L_57), 0, sizeof(L_57));
+		GradientAlphaKey__ctor_m62D622565E6C8BF94E6E90A4CA6C866A5BC3B41B((&L_57), (0.5f), (0.5f), NULL);
+		NullCheck(L_56);
+		(L_56)->SetAt(static_cast<il2cpp_array_size_t>(1), (GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0)L_57);
+		GradientAlphaKeyU5BU5D_tA5D7ED787780B5C01635C8C59B15B2BC01AEC50E* L_58 = L_56;
+		GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0 L_59;
+		memset((&L_59), 0, sizeof(L_59));
+		GradientAlphaKey__ctor_m62D622565E6C8BF94E6E90A4CA6C866A5BC3B41B((&L_59), (0.0f), (1.0f), NULL);
+		NullCheck(L_58);
+		(L_58)->SetAt(static_cast<il2cpp_array_size_t>(2), (GradientAlphaKey_tF469955E4BBAF1044320D956CD8D990F1A26EAA0)L_59);
+		NullCheck(L_42);
+		Gradient_SetKeys_mE03CE269C19C4F08F1ED57F7151082304DDBB5D8(L_42, L_50, L_58, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:141>
-		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_57 = V_7;
-		NullCheck(L_57);
-		int32_t L_58;
-		L_58 = AnimationCurve_AddKey_mCA9B224D2D4721FB676505CEC6AA4FDCCC58C15B(L_57, (1.0f), (0.200000003f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:142>
-		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_59 = V_7;
-		MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 L_60;
-		memset((&L_60), 0, sizeof(L_60));
-		MinMaxCurve__ctor_m4860D25A16881C1EDA5E4B9EC04430E272AFE531((&L_60), (1.0f), L_59, NULL);
-		SizeOverLifetimeModule_set_size_m1D5987F4FB9E948DEAA5E3D8FB21D1AFEE15EBE5((&V_6), L_60, NULL);
+		Gradient_tA7FEBE2FDB4929FFF6C997134841046F713DAC1E* L_60 = V_5;
+		MinMaxGradient_tFF31B8EC2855D0074AB86E8B37BEA6609070AC69 L_61;
+		L_61 = MinMaxGradient_op_Implicit_m8568E0D8DD06940C6A710801B3FC41BB5307298B(L_60, NULL);
+		ColorOverLifetimeModule_set_color_m054950B589DA58FFD5BDBC10A70304BF89E3C86B((&V_4), L_61, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:144>
-		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_61 = V_0;
-		return L_61;
+		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_62 = V_0;
+		NullCheck(L_62);
+		SizeOverLifetimeModule_t6711CE9659123CAA5BFBFDFA9F53174CD979AC0C L_63;
+		L_63 = ParticleSystem_get_sizeOverLifetime_m9142CFF6D940A4EB07D07495CC09C2C0AA38549F(L_62, NULL);
+		V_6 = L_63;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:145>
+		SizeOverLifetimeModule_set_enabled_mC45334E7AC31CCBE1CFA531D28D29E1BD38D5D6F((&V_6), (bool)1, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:146>
+		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_64 = (AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354*)il2cpp_codegen_object_new(AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354_il2cpp_TypeInfo_var);
+		AnimationCurve__ctor_m0D976567166F92383307DC8EB8D7082CD34E226F(L_64, NULL);
+		V_7 = L_64;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:147>
+		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_65 = V_7;
+		NullCheck(L_65);
+		int32_t L_66;
+		L_66 = AnimationCurve_AddKey_mCA9B224D2D4721FB676505CEC6AA4FDCCC58C15B(L_65, (0.0f), (1.0f), NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:148>
+		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_67 = V_7;
+		NullCheck(L_67);
+		int32_t L_68;
+		L_68 = AnimationCurve_AddKey_mCA9B224D2D4721FB676505CEC6AA4FDCCC58C15B(L_67, (1.0f), (0.200000003f), NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:149>
+		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_69 = V_7;
+		MinMaxCurve_t812D571297EED6498776CC58949A42B172E60E23 L_70;
+		memset((&L_70), 0, sizeof(L_70));
+		MinMaxCurve__ctor_m4860D25A16881C1EDA5E4B9EC04430E272AFE531((&L_70), (1.0f), L_69, NULL);
+		SizeOverLifetimeModule_set_size_m1D5987F4FB9E948DEAA5E3D8FB21D1AFEE15EBE5((&V_6), L_70, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:151>
+		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_71 = V_0;
+		return L_71;
 	}
 }
 // Method Definition Index: 62549
@@ -1606,7 +1670,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_Update_m703C2A3167D8BF
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F V_2;
 	memset((&V_2), 0, sizeof(V_2));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:150>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:157>
 		MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9* L_0 = __this->___monsterAI;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -1617,7 +1681,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_Update_m703C2A3167D8BF
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:152>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:159>
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_2 = { reinterpret_cast<intptr_t> (MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9_0_0_0_var) };
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.systemtype_class);
 		Type_t* L_3;
@@ -1626,7 +1690,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_Update_m703C2A3167D8BF
 		FieldInfo_t* L_4;
 		L_4 = VirtualFuncInvoker2< FieldInfo_t*, String_t*, int32_t >::Invoke(83, L_3, _stringLiteral7B4CC3F42DC6287ED10F0D294802D32616EC1FC6, ((int32_t)36));
 		V_0 = L_4;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:153>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:160>
 		FieldInfo_t* L_5 = V_0;
 		bool L_6;
 		L_6 = FieldInfo_op_Inequality_m95789A98E646494987E66A9E4188DCA86185066B(L_5, (FieldInfo_t*)NULL, NULL);
@@ -1636,7 +1700,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_Update_m703C2A3167D8BF
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:155>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:162>
 		FieldInfo_t* L_7 = V_0;
 		MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9* L_8 = __this->___monsterAI;
 		NullCheck(L_7);
@@ -1647,7 +1711,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_Update_m703C2A3167D8BF
 
 IL_0045:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:160>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:167>
 		bool L_10 = __this->___isAggro;
 		bool L_11 = __this->___wasAggro;
 		if ((((int32_t)L_10) == ((int32_t)L_11)))
@@ -1656,7 +1720,7 @@ IL_0045:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:163>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:170>
 		bool L_12 = __this->___isAggro;
 		if (!L_12)
 		{
@@ -1664,10 +1728,10 @@ IL_0045:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:166>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:173>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_13 = __this->___aggroEyeColor;
 		SkeletonEyeEffect_SetEyeColor_m1B0FB124EB3A1CB1F8B4DC22AC0B0BD8A5A461CA(__this, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:167>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:174>
 		bool L_14 = __this->___enableFireParticles;
 		if (!L_14)
 		{
@@ -1675,7 +1739,7 @@ IL_0045:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:169>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:176>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_15 = __this->___leftEyeFire;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_16;
@@ -1686,7 +1750,7 @@ IL_0045:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:169>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:176>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_17 = __this->___leftEyeFire;
 		NullCheck(L_17);
 		ParticleSystem_Play_mD943E601BFE16CB9BB5D1F5E6AED5C36F5F11EF5(L_17, NULL);
@@ -1694,7 +1758,7 @@ IL_0045:
 
 IL_008b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:170>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:177>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_18 = __this->___rightEyeFire;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_19;
@@ -1705,7 +1769,7 @@ IL_008b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:170>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:177>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_20 = __this->___rightEyeFire;
 		NullCheck(L_20);
 		ParticleSystem_Play_mD943E601BFE16CB9BB5D1F5E6AED5C36F5F11EF5(L_20, NULL);
@@ -1713,7 +1777,7 @@ IL_008b:
 
 IL_00a4:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:173>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:180>
 		bool L_21 = __this->___showDebug;
 		if (!L_21)
 		{
@@ -1721,7 +1785,7 @@ IL_00a4:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:174>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:181>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral43B21AFA07D5A25F80B97184DBFDE68977553382, NULL);
 		goto IL_0110;
@@ -1729,10 +1793,10 @@ IL_00a4:
 
 IL_00b8:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:179>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:186>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_22 = __this->___normalEyeColor;
 		SkeletonEyeEffect_SetEyeColor_m1B0FB124EB3A1CB1F8B4DC22AC0B0BD8A5A461CA(__this, L_22, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:180>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:187>
 		bool L_23 = __this->___enableFireParticles;
 		if (!L_23)
 		{
@@ -1740,7 +1804,7 @@ IL_00b8:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:182>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:189>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_24 = __this->___leftEyeFire;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_25;
@@ -1751,7 +1815,7 @@ IL_00b8:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:182>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:189>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_26 = __this->___leftEyeFire;
 		NullCheck(L_26);
 		ParticleSystem_Stop_m2D8D4967496EF0F5BFEF679C49A9E65A9646C423(L_26, NULL);
@@ -1759,7 +1823,7 @@ IL_00b8:
 
 IL_00e5:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:183>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:190>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_27 = __this->___rightEyeFire;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_28;
@@ -1770,7 +1834,7 @@ IL_00e5:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:183>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:190>
 		ParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1* L_29 = __this->___rightEyeFire;
 		NullCheck(L_29);
 		ParticleSystem_Stop_m2D8D4967496EF0F5BFEF679C49A9E65A9646C423(L_29, NULL);
@@ -1778,7 +1842,7 @@ IL_00e5:
 
 IL_00fe:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:186>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:193>
 		bool L_30 = __this->___showDebug;
 		if (!L_30)
 		{
@@ -1786,21 +1850,21 @@ IL_00fe:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:187>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:194>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralB752BA13FC537018B8778DDC8113EC90769B2C8D, NULL);
 	}
 
 IL_0110:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:190>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:197>
 		bool L_31 = __this->___isAggro;
 		__this->___wasAggro = L_31;
 	}
 
 IL_011c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:194>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:201>
 		bool L_32 = __this->___isAggro;
 		if (!L_32)
 		{
@@ -1808,26 +1872,26 @@ IL_011c:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:196>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:203>
 		float L_33;
 		L_33 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		float L_34;
 		L_34 = sinf(((float)il2cpp_codegen_multiply(L_33, (8.0f))));
 		V_1 = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_34, (0.200000003f))), (0.800000012f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:197>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:204>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_35 = __this->___aggroEyeColor;
 		float L_36 = V_1;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_37;
 		L_37 = Color_op_Multiply_m379B20A820266ACF82A21425B9CAE8DCD773CFBB_inline(L_35, L_36, NULL);
 		V_2 = L_37;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:198>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:205>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_38 = V_2;
 		SkeletonEyeEffect_SetEyeColor_m1B0FB124EB3A1CB1F8B4DC22AC0B0BD8A5A461CA(__this, L_38, NULL);
 	}
 
 IL_0155:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:200>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:207>
 		return;
 	}
 }
@@ -1842,7 +1906,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_SetEyeColor_m1B0FB124E
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:204>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:211>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_0 = __this->___leftEyeMaterial;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -1853,12 +1917,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_SetEyeColor_m1B0FB124E
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:213>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_2 = __this->___leftEyeMaterial;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_3 = ___0_color;
 		NullCheck(L_2);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_2, L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:207>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:214>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_4 = __this->___leftEyeMaterial;
 		NullCheck(L_4);
 		bool L_5;
@@ -1869,7 +1933,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_SetEyeColor_m1B0FB124E
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:209>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:216>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_6 = __this->___leftEyeMaterial;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_7 = ___0_color;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_8;
@@ -1880,7 +1944,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_SetEyeColor_m1B0FB124E
 
 IL_0047:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:213>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:220>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_9 = __this->___rightEyeMaterial;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_10;
@@ -1891,12 +1955,12 @@ IL_0047:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:215>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:222>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_11 = __this->___rightEyeMaterial;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_12 = ___0_color;
 		NullCheck(L_11);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_11, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:216>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:223>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_13 = __this->___rightEyeMaterial;
 		NullCheck(L_13);
 		bool L_14;
@@ -1907,7 +1971,7 @@ IL_0047:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:218>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:225>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_15 = __this->___rightEyeMaterial;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_16 = ___0_color;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_17;
@@ -1918,7 +1982,7 @@ IL_0047:
 
 IL_008e:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:221>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:228>
 		return;
 	}
 }
@@ -1932,7 +1996,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_OnDestroy_m957178D57C1
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:226>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:233>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_0 = __this->___leftEyeMaterial;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -1943,7 +2007,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_OnDestroy_m957178D57C1
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:227>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:234>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_2 = __this->___leftEyeMaterial;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_2, NULL);
@@ -1951,7 +2015,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SkeletonEyeEffect_OnDestroy_m957178D57C1
 
 IL_0019:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:228>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:235>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_3 = __this->___rightEyeMaterial;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_4;
@@ -1962,7 +2026,7 @@ IL_0019:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:229>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:236>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_5 = __this->___rightEyeMaterial;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_5, NULL);
@@ -1970,7 +2034,7 @@ IL_0019:
 
 IL_0032:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:230>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/AI/SkeletonEyeEffect.cs:237>
 		return;
 	}
 }

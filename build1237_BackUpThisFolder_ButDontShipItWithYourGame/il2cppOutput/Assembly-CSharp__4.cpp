@@ -25687,7 +25687,7 @@ IL_0185:
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonGenerator.cs:1236>
 		MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9* L_93 = L_92;
 		NullCheck(L_93);
-		L_93->___aggroRange = (6.0f);
+		L_93->___aggroRange = (2.0f);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Dungeon/DungeonGenerator.cs:1237>
 		MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9* L_94 = L_93;
 		NullCheck(L_94);
