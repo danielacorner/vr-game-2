@@ -29,6 +29,9 @@ namespace VRDungeonCrawler.AI
         [Range(1f, 10f)]
         public float bobSpeed = 5f;
 
+        [Tooltip("Disable body bobbing for flying animals to prevent conflicts with flight movement")]
+        public bool disableBodyBobForFlying = true;
+
         [Header("Leg Animation")]
         [Tooltip("How far legs swing")]
         [Range(0f, 45f)]
@@ -161,11 +164,19 @@ namespace VRDungeonCrawler.AI
         {
             if (bodyTransform == null) return;
 
+            // Check if this is a flying bird - skip body bob to avoid conflict with flight movement
+            if (disableBodyBobForFlying && animalAI != null && animalAI.animalType == AnimalType.Bird)
+            {
+                // Keep body at initial position, no bobbing
+                bodyTransform.localPosition = initialBodyPosition;
+                return;
+            }
+
             // Bob up and down - calculate target position
             float bobOffset = Mathf.Sin(animationTime * bobSpeed) * bobAmount * speedMultiplier;
             Vector3 targetPosition = initialBodyPosition + new Vector3(0f, bobOffset, 0f);
 
-            // Smoothly interpolate to target position to prevent jitter (especially for flying birds)
+            // Smoothly interpolate to target position to prevent jitter
             // Use higher lerp factor for smoother movement
             smoothedBodyPosition = Vector3.Lerp(smoothedBodyPosition, targetPosition, Time.deltaTime * 20f);
             bodyTransform.localPosition = smoothedBodyPosition;

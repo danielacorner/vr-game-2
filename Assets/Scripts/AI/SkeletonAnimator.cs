@@ -221,31 +221,38 @@ namespace VRDungeonCrawler.AI
             // Reset walk cycle
             walkCycle = 0f;
 
-            // Subtle swaying motion
-            float sway = Mathf.Sin(idleCycle) * idleSwayAmount;
+            // Breathing motion - subtle up/down
+            float breathCycle = Mathf.Sin(idleCycle * 0.8f) * idleSwayAmount * 0.5f;
 
-            // Body sway
+            // Body sway and breathing
             if (body != null)
             {
-                body.localRotation = bodyOriginal * Quaternion.Euler(0, 0, sway);
+                // Combine side-to-side sway with forward-back breathing motion
+                float sway = Mathf.Sin(idleCycle) * idleSwayAmount;
+                body.localRotation = bodyOriginal * Quaternion.Euler(breathCycle, 0, sway);
             }
 
-            // Head slight tilt
+            // Head looking around - more pronounced
             if (head != null)
             {
-                float headTilt = Mathf.Sin(idleCycle * 0.7f) * (idleSwayAmount * 0.5f);
-                head.localRotation = headOriginal * Quaternion.Euler(0, headTilt, 0);
+                // Slow head turn left-right (looking around)
+                float headYaw = Mathf.Sin(idleCycle * 0.4f) * (idleSwayAmount * 2f); // 2x more pronounced
+                // Occasional head tilt
+                float headTilt = Mathf.Sin(idleCycle * 0.7f) * (idleSwayAmount * 0.8f);
+                // Slight pitch (up/down)
+                float headPitch = Mathf.Sin(idleCycle * 0.3f) * (idleSwayAmount * 0.6f);
+                head.localRotation = headOriginal * Quaternion.Euler(headPitch, headYaw, headTilt);
             }
 
-            // Arms hang naturally
+            // Arms hang naturally with slight sway
             if (leftUpperArm != null)
             {
-                float armSway = Mathf.Sin(idleCycle * 0.5f) * (idleSwayAmount * 0.3f);
+                float armSway = Mathf.Sin(idleCycle * 0.5f) * (idleSwayAmount * 0.4f);
                 leftUpperArm.localRotation = leftUpperArmOriginal * Quaternion.Euler(armSway, 0, 0);
             }
             if (rightUpperArm != null)
             {
-                float armSway = Mathf.Sin(idleCycle * 0.5f + Mathf.PI) * (idleSwayAmount * 0.3f);
+                float armSway = Mathf.Sin(idleCycle * 0.5f + Mathf.PI) * (idleSwayAmount * 0.4f);
                 rightUpperArm.localRotation = rightUpperArmOriginal * Quaternion.Euler(armSway, 0, 0);
             }
 

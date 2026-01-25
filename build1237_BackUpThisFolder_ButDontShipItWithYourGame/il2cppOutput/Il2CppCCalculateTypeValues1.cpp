@@ -48006,6 +48006,7 @@ struct AnimalAnimationController_t2C5D1B3B926836C27ED6F0FEC60FE6E1C3832D9F  : pu
 	TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24* ___legTransforms;
 	float ___bobAmount;
 	float ___bobSpeed;
+	bool ___disableBodyBobForFlying;
 	float ___legSwingAngle;
 	float ___legSwingSpeed;
 	float ___idleSpeedMultiplier;

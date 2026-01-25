@@ -156,7 +156,8 @@ namespace VRDungeonCrawler.AI
             rb.mass = 0.5f;
             rb.linearDamping = 2f;
             rb.angularDamping = 1f;
-            rb.useGravity = true;
+            // Disable gravity for birds - they control their own Y position to prevent twitching
+            rb.useGravity = (animalType != AnimalType.Bird);
             rb.constraints = RigidbodyConstraints.FreezeRotation;
 
             // Add AI component

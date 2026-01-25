@@ -203,6 +203,13 @@ namespace VRDungeonCrawler.AI
                 Vector3 toPlayer = (playerTarget.position - transform.position).normalized;
                 Vector3 chaseDirection = new Vector3(toPlayer.x, 0f, toPlayer.z).normalized;
 
+                // Rotate to face player
+                if (chaseDirection.magnitude > 0.01f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(chaseDirection);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
+                }
+
                 // Move aggressively toward player
                 Vector3 movement = chaseDirection * chaseSpeed;
                 Vector3 newVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
@@ -220,6 +227,13 @@ namespace VRDungeonCrawler.AI
             // Normal patrol behavior
             if (!isPaused)
             {
+                // Rotate to face movement direction
+                if (currentMoveDirection.magnitude > 0.01f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(currentMoveDirection);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 5f);
+                }
+
                 // Walk slowly in current direction
                 Vector3 movement = currentMoveDirection * walkSpeed;
                 Vector3 newVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);

@@ -473,21 +473,20 @@ namespace VRDungeonCrawler.AI
                 {
                     // Sine wave swoop down and back up
                     float swoopOffset = Mathf.Sin(swoopProgress * Mathf.PI) * 1.5f;
-                    Vector3 targetPos = transform.position;
-                    targetPos.y = flyHeight - swoopOffset;
+                    float targetY = flyHeight - swoopOffset;
 
-                    // Smoothly move toward target height
+                    // Smoothly move toward target height with higher lerp speed
                     Vector3 pos = transform.position;
-                    pos.y = Mathf.Lerp(pos.y, targetPos.y, Time.deltaTime * 3f);
+                    pos.y = Mathf.Lerp(pos.y, targetY, Time.deltaTime * 8f); // Increased from 3f
                     transform.position = pos;
                 }
             }
             else
             {
-                // Maintain flying height
+                // Maintain flying height with smooth interpolation
                 Vector3 pos = transform.position;
                 float targetHeight = spawnPosition.y + flyHeight;
-                pos.y = Mathf.Lerp(pos.y, targetHeight, Time.deltaTime * 2f);
+                pos.y = Mathf.Lerp(pos.y, targetHeight, Time.deltaTime * 6f); // Increased from 2f
                 transform.position = pos;
             }
         }
