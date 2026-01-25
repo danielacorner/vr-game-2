@@ -457,6 +457,12 @@ extern void SpellRadialMenuUI_UpdateVisuals_mB7A5278F791FE34089A3033919E36D01ED4
 extern void SpellRadialMenuUI_SelectHoveredSpell_mC2586B3AAB089088D1BA99745A908B2CE89AEE59 (void);
 extern void SpellRadialMenuUI_UpdateSpellIcons_m51DBCA657BAC8A456271A4EB4D6A6B8D2EAD4DF7 (void);
 extern void SpellRadialMenuUI__ctor_m2FAC0193E7C4602EC82702B515CFF7EE84A31D55 (void);
+extern void TeleportReticleController_Awake_mA1616EF1FBAC5CED803F28887E64318D46A73BD0 (void);
+extern void TeleportReticleController_Start_mDFF164EBCECD58DFFC71B5EE591873F6B51CE561 (void);
+extern void TeleportReticleController_CreateReticle_mDB671DFE3EFFACCFD87AE6E195F4C9D7B8562406 (void);
+extern void TeleportReticleController_Update_m83A2FA566AC8A48926667D902D2BC56180E7B362 (void);
+extern void TeleportReticleController_OnDestroy_mA8F131DCB333C77FCB639C43EAD76C25F4BEDD7D (void);
+extern void TeleportReticleController__ctor_mDD5D71869FB386C84E71E843C2C3207FFC71C015 (void);
 extern void TrackingStatusDisplay_Start_m6A622EE3E49B99D7FDD92D32895ADD847729376E (void);
 extern void TrackingStatusDisplay_Update_m54391B14D96D7FE8738DBAAE225B0D99138EE953 (void);
 extern void TrackingStatusDisplay__ctor_m55849E83B9DAA1797BC257550BE21C228C256778 (void);
@@ -1092,7 +1098,7 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[1085] = 
+static Il2CppMethodPointer s_methodPointers[1091] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1544,6 +1550,12 @@ static Il2CppMethodPointer s_methodPointers[1085] =
 	SpellRadialMenuUI_SelectHoveredSpell_mC2586B3AAB089088D1BA99745A908B2CE89AEE59,
 	SpellRadialMenuUI_UpdateSpellIcons_m51DBCA657BAC8A456271A4EB4D6A6B8D2EAD4DF7,
 	SpellRadialMenuUI__ctor_m2FAC0193E7C4602EC82702B515CFF7EE84A31D55,
+	TeleportReticleController_Awake_mA1616EF1FBAC5CED803F28887E64318D46A73BD0,
+	TeleportReticleController_Start_mDFF164EBCECD58DFFC71B5EE591873F6B51CE561,
+	TeleportReticleController_CreateReticle_mDB671DFE3EFFACCFD87AE6E195F4C9D7B8562406,
+	TeleportReticleController_Update_m83A2FA566AC8A48926667D902D2BC56180E7B362,
+	TeleportReticleController_OnDestroy_mA8F131DCB333C77FCB639C43EAD76C25F4BEDD7D,
+	TeleportReticleController__ctor_mDD5D71869FB386C84E71E843C2C3207FFC71C015,
 	TrackingStatusDisplay_Start_m6A622EE3E49B99D7FDD92D32895ADD847729376E,
 	TrackingStatusDisplay_Update_m54391B14D96D7FE8738DBAAE225B0D99138EE953,
 	TrackingStatusDisplay__ctor_m55849E83B9DAA1797BC257550BE21C228C256778,
@@ -2185,7 +2197,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x0600012B, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1085] = 
+static const int32_t s_InvokerIndices[1091] = 
 {
 	15296,
 	15296,
@@ -2629,6 +2641,12 @@ static const int32_t s_InvokerIndices[1085] =
 	15296,
 	14881,
 	15283,
+	15296,
+	15296,
+	15296,
+	15296,
+	15296,
+	15296,
 	15296,
 	15296,
 	15296,
@@ -3277,7 +3295,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1085,
+	1091,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

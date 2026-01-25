@@ -1251,17 +1251,20 @@ namespace VRDungeonCrawler.Dungeon
                 }
 
                 // Add colliders (similar to MonsterSpawner approach)
-                // Trigger collider for spell detection
+                // Trigger collider for spell detection - full body size
                 BoxCollider triggerCollider = skeleton.AddComponent<BoxCollider>();
                 triggerCollider.isTrigger = true;
                 triggerCollider.size = meshBounds.size;
                 triggerCollider.center = colliderCenter;
 
-                // Physics collider - slightly smaller horizontally, reaches ground
+                // Physics collider - small footprint only to block teleportation directly under skeleton
+                // This prevents player from teleporting into the skeleton but allows close teleportation nearby
                 BoxCollider physicsCollider = skeleton.AddComponent<BoxCollider>();
                 physicsCollider.isTrigger = false;
-                physicsCollider.size = new Vector3(meshBounds.size.x * 0.9f, meshBounds.size.y, meshBounds.size.z * 0.9f);
-                physicsCollider.center = colliderCenter;
+                // Small footprint: width=0.3, height=0.3 (just feet area), depth=0.3
+                physicsCollider.size = new Vector3(0.3f, 0.3f, 0.3f);
+                // Position at the bottom (ground level in skeleton local space)
+                physicsCollider.center = new Vector3(0f, lowestSkeletonLocalY + 0.15f, 0f);
             }
 
             if (showDebug)

@@ -34,6 +34,21 @@ namespace VRDungeonCrawler.Player
             {
                 SetupVisuals();
             }
+
+            // Ignore collisions with player (XR Origin and all children including headset)
+            GameObject xrOrigin = GameObject.Find("XR Origin");
+            if (xrOrigin != null)
+            {
+                Collider projectileCollider = GetComponent<Collider>();
+                if (projectileCollider != null)
+                {
+                    Collider[] playerColliders = xrOrigin.GetComponentsInChildren<Collider>();
+                    foreach (Collider playerCollider in playerColliders)
+                    {
+                        Physics.IgnoreCollision(projectileCollider, playerCollider);
+                    }
+                }
+            }
         }
 
         private void SetupVisuals()
