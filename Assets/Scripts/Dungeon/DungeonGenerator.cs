@@ -1147,95 +1147,7 @@ namespace VRDungeonCrawler.Dungeon
         // ==================== SKELETON MONSTER SPAWNING ====================
 
         /// <summary>
-        /// Creates a skeleton monster programmatically
-        /// </summary>
-        private GameObject CreateSkeleton()
-        {
-            // Create main body (torso)
-            GameObject skeleton = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            skeleton.name = "Skeleton";
-            skeleton.transform.localScale = new Vector3(0.6f, 1.2f, 0.4f);
-
-            // Create bone-white material
-            Material boneMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-            boneMat.color = new Color(0.9f, 0.85f, 0.7f); // Bone white
-            skeleton.GetComponent<Renderer>().material = boneMat;
-
-            // Add head (skull)
-            GameObject head = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            head.name = "Skull";
-            head.transform.SetParent(skeleton.transform);
-            head.transform.localPosition = new Vector3(0, 0.8f, 0);
-            head.transform.localScale = new Vector3(0.4f, 0.5f, 0.4f);
-            head.GetComponent<Renderer>().material = boneMat;
-            // Remove head collider (only body collider matters)
-            DestroyImmediate(head.GetComponent<Collider>());
-
-            // Add arms (simple bone sticks)
-            for (int i = 0; i < 2; i++)
-            {
-                GameObject arm = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                arm.name = i == 0 ? "LeftArm" : "RightArm";
-                arm.transform.SetParent(skeleton.transform);
-                arm.transform.localPosition = new Vector3(i == 0 ? -0.4f : 0.4f, 0.2f, 0);
-                arm.transform.localRotation = Quaternion.Euler(0, 0, i == 0 ? 45f : -45f);
-                arm.transform.localScale = new Vector3(0.15f, 0.5f, 0.15f);
-                arm.GetComponent<Renderer>().material = boneMat;
-                // Remove arm collider
-                DestroyImmediate(arm.GetComponent<Collider>());
-            }
-
-            // Add legs
-            for (int i = 0; i < 2; i++)
-            {
-                GameObject leg = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                leg.name = i == 0 ? "LeftLeg" : "RightLeg";
-                leg.transform.SetParent(skeleton.transform);
-                leg.transform.localPosition = new Vector3(i == 0 ? -0.15f : 0.15f, -0.9f, 0);
-                leg.transform.localScale = new Vector3(0.15f, 0.6f, 0.15f);
-                leg.GetComponent<Renderer>().material = boneMat;
-                // Remove leg collider
-                DestroyImmediate(leg.GetComponent<Collider>());
-            }
-
-            // Adjust body collider to be smaller (no arms/legs)
-            BoxCollider bodyCollider = skeleton.GetComponent<BoxCollider>();
-            bodyCollider.size = new Vector3(0.8f, 1.8f, 0.6f);
-            bodyCollider.center = new Vector3(0, 0.3f, 0);
-
-            // Add MonsterBase component
-            var monsterBase = skeleton.AddComponent<AI.MonsterBase>();
-            monsterBase.monsterType = AI.MonsterType.Skeleton;
-            monsterBase.maxHP = 15;
-            monsterBase.currentHP = 15;
-            monsterBase.knockbackForce = 8f;
-            monsterBase.showDebug = false;
-
-            // Add MonsterAI component
-            var monsterAI = skeleton.AddComponent<AI.MonsterAI>();
-            monsterAI.walkSpeed = 1.2f;
-            monsterAI.chaseSpeed = 3.5f;
-            monsterAI.aggroRange = 6f;
-            monsterAI.maxRoamDistance = 8f;
-            monsterAI.showDebug = false;
-
-            // Ensure Rigidbody is added (MonsterBase adds it in Awake)
-            Rigidbody rb = skeleton.GetComponent<Rigidbody>();
-            if (rb == null)
-            {
-                rb = skeleton.AddComponent<Rigidbody>();
-                rb.mass = 1f;
-                rb.linearDamping = 2f;
-                rb.angularDamping = 1f;
-                rb.useGravity = true;
-                rb.constraints = RigidbodyConstraints.FreezeRotation;
-            }
-
-            return skeleton;
-        }
-
-        /// <summary>
-        /// Spawns skeleton monsters in a room
+        /// Spawns skeleton monsters in a room using MonsterBuilder
         /// </summary>
         /// <param name="room">Room to spawn in</param>
         /// <param name="count">Number of skeletons to spawn</param>
@@ -1250,16 +1162,107 @@ namespace VRDungeonCrawler.Dungeon
                 Vector3 localPos = GetRandomPositionInRoom(roomRadius);
                 localPos.y = 0.5f; // Spawn at ground level
 
-                GameObject skeleton = CreateSkeleton();
+                // Use MonsterBuilder to create skeleton (same as HomeArea spawner)
+                GameObject skeleton = AI.MonsterBuilder.CreateSkeleton();
                 skeleton.transform.SetParent(room.roomObject.transform);
                 skeleton.transform.localPosition = localPos;
 
                 // Random rotation
                 skeleton.transform.localRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+
+                // Add MonsterBase component
+                AI.MonsterBase monsterBase = skeleton.AddComponent<AI.MonsterBase>();
+                monsterBase.monsterType = AI.MonsterType.Skeleton;
+                monsterBase.maxHP = 15;
+                monsterBase.currentHP = 15;
+                monsterBase.knockbackForce = 8f;
+                monsterBase.showDebug = false;
+
+                // Add MonsterAI component with aggro behavior
+                AI.MonsterAI monsterAI = skeleton.AddComponent<AI.MonsterAI>();
+                monsterAI.walkSpeed = 1.2f;
+                monsterAI.chaseSpeed = 3.5f;
+                monsterAI.aggroRange = 6f;
+                monsterAI.maxRoamDistance = 8f;
+                monsterAI.showDebug = false;
+
+                // Add Rigidbody
+                Rigidbody rb = skeleton.GetComponent<Rigidbody>();
+                if (rb == null)
+                {
+                    rb = skeleton.AddComponent<Rigidbody>();
+                    rb.mass = 1f;
+                    rb.linearDamping = 2f;
+                    rb.angularDamping = 1f;
+                    rb.useGravity = true;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                }
+
+                // Add colliders (similar to MonsterSpawner approach)
+                // Calculate mesh bounds for proper collider sizing
+                Bounds meshBounds = CalculateMonsterBounds(skeleton);
+
+                // Trigger collider for spell detection
+                BoxCollider triggerCollider = skeleton.AddComponent<BoxCollider>();
+                triggerCollider.isTrigger = true;
+                triggerCollider.size = meshBounds.size;
+                triggerCollider.center = meshBounds.center;
+
+                // Physics collider - slightly smaller
+                BoxCollider physicsCollider = skeleton.AddComponent<BoxCollider>();
+                physicsCollider.isTrigger = false;
+                physicsCollider.size = new Vector3(meshBounds.size.x * 0.9f, meshBounds.size.y, meshBounds.size.z * 0.9f);
+                physicsCollider.center = meshBounds.center;
             }
 
             if (showDebug)
                 Debug.Log($"[DungeonGenerator] Spawned {count} skeletons in {room.roomType} room at {room.gridPosition}");
+        }
+
+        /// <summary>
+        /// Calculate the bounds of all mesh renderers in a monster
+        /// Returns the combined bounds in local space
+        /// </summary>
+        private Bounds CalculateMonsterBounds(GameObject obj)
+        {
+            MeshRenderer[] renderers = obj.GetComponentsInChildren<MeshRenderer>();
+
+            if (renderers.Length == 0)
+            {
+                return new Bounds(Vector3.zero, Vector3.one);
+            }
+
+            // Start with first renderer's bounds
+            Bounds bounds = new Bounds(renderers[0].transform.localPosition, Vector3.zero);
+
+            // Expand to include all renderers
+            foreach (MeshRenderer renderer in renderers)
+            {
+                if (renderer.GetComponent<MeshFilter>() != null)
+                {
+                    Mesh mesh = renderer.GetComponent<MeshFilter>().mesh;
+                    if (mesh != null)
+                    {
+                        Bounds meshBounds = mesh.bounds;
+                        Vector3[] corners = new Vector3[8];
+                        corners[0] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(meshBounds.extents.x, meshBounds.extents.y, meshBounds.extents.z));
+                        corners[1] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(-meshBounds.extents.x, meshBounds.extents.y, meshBounds.extents.z));
+                        corners[2] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(meshBounds.extents.x, -meshBounds.extents.y, meshBounds.extents.z));
+                        corners[3] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(-meshBounds.extents.x, -meshBounds.extents.y, meshBounds.extents.z));
+                        corners[4] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(meshBounds.extents.x, meshBounds.extents.y, -meshBounds.extents.z));
+                        corners[5] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(-meshBounds.extents.x, meshBounds.extents.y, -meshBounds.extents.z));
+                        corners[6] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(meshBounds.extents.x, -meshBounds.extents.y, -meshBounds.extents.z));
+                        corners[7] = renderer.transform.localPosition + renderer.transform.localRotation * (meshBounds.center + new Vector3(-meshBounds.extents.x, -meshBounds.extents.y, -meshBounds.extents.z));
+
+                        foreach (Vector3 corner in corners)
+                        {
+                            bounds.Encapsulate(corner);
+                        }
+                    }
+                }
+            }
+
+            return bounds;
         }
     }
 
