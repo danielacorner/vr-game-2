@@ -733,8 +733,8 @@ namespace VRDungeonCrawler.Dungeon
             // Add wall torches
             AddWallTorches(room);
 
-            // Spawn skeleton monsters (3-6 for combat rooms)
-            int skeletonCount = rng.Next(3, 7);
+            // Spawn skeleton monsters (2-3 for combat rooms)
+            int skeletonCount = rng.Next(2, 4);
             SpawnSkeletons(room, skeletonCount);
         }
 
@@ -780,8 +780,8 @@ namespace VRDungeonCrawler.Dungeon
 
             AddWallTorches(room);
 
-            // Spawn skeleton guards (2-3 guarding the treasure)
-            int skeletonCount = rng.Next(2, 4);
+            // Spawn skeleton guards (1-2 guarding the treasure)
+            int skeletonCount = rng.Next(1, 3);
             SpawnSkeletons(room, skeletonCount);
         }
 
@@ -822,8 +822,8 @@ namespace VRDungeonCrawler.Dungeon
 
             AddWallTorches(room);
 
-            // Spawn skeleton wanderers (1-2 for puzzle rooms - light defense)
-            int skeletonCount = rng.Next(1, 3);
+            // Spawn skeleton wanderers (0-1 for puzzle rooms - light defense)
+            int skeletonCount = rng.Next(0, 2);
             SpawnSkeletons(room, skeletonCount);
         }
 
@@ -931,8 +931,8 @@ namespace VRDungeonCrawler.Dungeon
 
             AddWallTorches(room, torchesPerRoom * 2); // Extra bright boss room
 
-            // Spawn skeleton horde for boss room (4-8 skeletons - intense combat)
-            int skeletonCount = rng.Next(4, 9);
+            // Spawn skeleton horde for boss room (2-4 skeletons - intense combat)
+            int skeletonCount = rng.Next(2, 5);
             SpawnSkeletons(room, skeletonCount);
         }
 
@@ -1160,15 +1160,48 @@ namespace VRDungeonCrawler.Dungeon
             for (int i = 0; i < count; i++)
             {
                 Vector3 localPos = GetRandomPositionInRoom(roomRadius);
-                localPos.y = 0.5f; // Spawn at ground level
+                localPos.y = 0f; // Start at floor level
 
                 // Use MonsterBuilder to create skeleton (same as HomeArea spawner)
                 GameObject skeleton = AI.MonsterBuilder.CreateSkeleton();
                 skeleton.transform.SetParent(room.roomObject.transform);
                 skeleton.transform.localPosition = localPos;
-
-                // Random rotation
                 skeleton.transform.localRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+
+                // Find ACTUAL lowest vertex in room's local space
+                float lowestRoomY = float.MaxValue;
+                MeshFilter[] meshFilters = skeleton.GetComponentsInChildren<MeshFilter>();
+
+                foreach (MeshFilter mf in meshFilters)
+                {
+                    if (mf.mesh != null)
+                    {
+                        Vector3[] vertices = mf.mesh.vertices;
+                        Transform meshTransform = mf.transform;
+
+                        foreach (Vector3 localVert in vertices)
+                        {
+                            // Transform vertex to world space, then to room's local space
+                            Vector3 worldVert = meshTransform.TransformPoint(localVert);
+                            Vector3 roomLocalVert = room.roomObject.transform.InverseTransformPoint(worldVert);
+
+                            if (roomLocalVert.y < lowestRoomY)
+                            {
+                                lowestRoomY = roomLocalVert.y;
+                            }
+                        }
+                    }
+                }
+
+                // If lowest point is below floor (Y=0 in room space), lift skeleton
+                if (lowestRoomY < 0f)
+                {
+                    localPos.y = -lowestRoomY;
+                    skeleton.transform.localPosition = localPos;
+                }
+
+                // Calculate mesh bounds for collider sizing (after positioning)
+                Bounds meshBounds = CalculateMonsterBounds(skeleton);
 
                 // Add MonsterBase component
                 AI.MonsterBase monsterBase = skeleton.AddComponent<AI.MonsterBase>();
@@ -1199,9 +1232,6 @@ namespace VRDungeonCrawler.Dungeon
                 }
 
                 // Add colliders (similar to MonsterSpawner approach)
-                // Calculate mesh bounds for proper collider sizing
-                Bounds meshBounds = CalculateMonsterBounds(skeleton);
-
                 // Trigger collider for spell detection
                 BoxCollider triggerCollider = skeleton.AddComponent<BoxCollider>();
                 triggerCollider.isTrigger = true;
