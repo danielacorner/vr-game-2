@@ -158,6 +158,14 @@ namespace VRDungeonCrawler.Dungeon
                         if (showDebug)
                             Debug.Log($"[DungeonGenerator] Attempting to place room at {newCell} from {currentRoom.gridPosition} in direction {dir}");
 
+                        // CRITICAL: Prevent rooms from going into entrance room area (gridPos.y must be >= roomSizeInGrids)
+                        if (newCell.y < roomSizeInGrids)
+                        {
+                            if (showDebug)
+                                Debug.Log($"[DungeonGenerator] ✗ BLOCKED: Room at {newCell} would overlap entrance area (Y={newCell.y} < {roomSizeInGrids})");
+                            continue; // Skip this direction
+                        }
+
                         if (CanPlaceRoom(newCell))
                         {
                             RoomType type = DetermineRoomType(normalRoomsCreated, roomsToGenerate);
@@ -255,6 +263,16 @@ namespace VRDungeonCrawler.Dungeon
 
         private bool CanPlaceRoom(Vector2Int gridPos)
         {
+            // CRITICAL: Prevent rooms from overlapping with entrance room area
+            // Entrance room occupies Z=-5 to Z=+5 (grid Y < 5)
+            // Start room is at grid Y=5, so all dungeon rooms must be at Y >= 5
+            if (gridPos.y < roomSizeInGrids)
+            {
+                if (showDebug)
+                    Debug.Log($"[DungeonGenerator] Room at {gridPos} is INVALID - too close to entrance (gridPos.y={gridPos.y} < {roomSizeInGrids})");
+                return false;
+            }
+
             // Check if all cells for this room are free
             for (int x = 0; x < roomSizeInGrids; x++)
             {
