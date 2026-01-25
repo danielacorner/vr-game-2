@@ -53,6 +53,7 @@ namespace VRDungeonCrawler.AI
         private Quaternion[] initialLegRotations;
         private AnimalAI animalAI;
         private Rigidbody rb;
+        private Vector3 smoothedBodyPosition; // Smoothed position to prevent jitter
 
         void Awake()
         {
@@ -64,6 +65,7 @@ namespace VRDungeonCrawler.AI
             if (bodyTransform != null)
             {
                 initialBodyPosition = bodyTransform.localPosition;
+                smoothedBodyPosition = initialBodyPosition;
             }
 
             if (legTransforms != null && legTransforms.Length > 0)
@@ -159,9 +161,14 @@ namespace VRDungeonCrawler.AI
         {
             if (bodyTransform == null) return;
 
-            // Bob up and down
+            // Bob up and down - calculate target position
             float bobOffset = Mathf.Sin(animationTime * bobSpeed) * bobAmount * speedMultiplier;
-            bodyTransform.localPosition = initialBodyPosition + new Vector3(0f, bobOffset, 0f);
+            Vector3 targetPosition = initialBodyPosition + new Vector3(0f, bobOffset, 0f);
+
+            // Smoothly interpolate to target position to prevent jitter (especially for flying birds)
+            // Use higher lerp factor for smoother movement
+            smoothedBodyPosition = Vector3.Lerp(smoothedBodyPosition, targetPosition, Time.deltaTime * 20f);
+            bodyTransform.localPosition = smoothedBodyPosition;
         }
 
         private void AnimateLegs(float speedMultiplier)

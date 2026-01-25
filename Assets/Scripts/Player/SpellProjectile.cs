@@ -89,6 +89,14 @@ namespace VRDungeonCrawler.Player
         private void OnTriggerEnter(Collider other)
         {
             if (hasHit) return;
+
+            // Ignore collision with player (XR Origin and all its children including headset)
+            if (IsPlayerCollider(other))
+            {
+                Debug.Log($"[Projectile] Ignoring player collision with {other.gameObject.name}");
+                return;
+            }
+
             hasHit = true;
 
             Debug.Log($"[Projectile] Hit (trigger) {other.gameObject.name}");
@@ -107,6 +115,14 @@ namespace VRDungeonCrawler.Player
         private void OnCollisionEnter(Collision collision)
         {
             if (hasHit) return;
+
+            // Ignore collision with player (XR Origin and all its children including headset)
+            if (IsPlayerCollider(collision.collider))
+            {
+                Debug.Log($"[Projectile] Ignoring player collision with {collision.gameObject.name}");
+                return;
+            }
+
             hasHit = true;
 
             Debug.Log($"[Projectile] Hit {collision.gameObject.name}");
@@ -158,6 +174,27 @@ namespace VRDungeonCrawler.Player
 
                 // TODO: Apply damage to health component
             }
+        }
+
+        /// <summary>
+        /// Check if a collider belongs to the player (XR Origin or its children)
+        /// </summary>
+        private bool IsPlayerCollider(Collider collider)
+        {
+            if (collider == null) return false;
+
+            // Check if this collider is part of XR Origin hierarchy
+            Transform current = collider.transform;
+            while (current != null)
+            {
+                if (current.name == "XR Origin" || current.CompareTag("Player"))
+                {
+                    return true;
+                }
+                current = current.parent;
+            }
+
+            return false;
         }
 
         /// <summary>

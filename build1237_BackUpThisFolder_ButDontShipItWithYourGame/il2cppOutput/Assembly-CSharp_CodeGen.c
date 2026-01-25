@@ -427,6 +427,7 @@ extern void SpellProjectile_OnTriggerEnter_m0DB2DFFAC4B458556D4244411B32FBD8A3AC
 extern void SpellProjectile_OnCollisionEnter_mB562BB16DC24C8549B1A82866648104BD44899DF (void);
 extern void SpellProjectile_ApplyDamage_mA173AFE920DCC0D6F454861D1381232B8F9E0C56 (void);
 extern void SpellProjectile_ApplySplashDamage_mA02E1A26651CB2D5DCA091B392EB8B3F4C5AAD4B (void);
+extern void SpellProjectile_IsPlayerCollider_mCB10E889A7B3874C12073CC2CF4247C17FC07E8C (void);
 extern void SpellProjectile_SetColor_mB6C406241CB63BE88DC8C01F0765C1CD82D4A8BC (void);
 extern void SpellProjectile_GetDamage_mAF96087490BE8C1DD48FC2D685D49D63F45FDDC6 (void);
 extern void SpellProjectile__ctor_mB9021FE43BE93CC8E1DA2ADBCB68926EFE2BB6AD (void);
@@ -1105,7 +1106,7 @@ extern void SkeletonAnimator_Update_mEFDFC0A7103EDC0A3C68A57F8C3D8E624E771C5B (v
 extern void SkeletonAnimator_AnimateWalking_m4E009CD9C980710253F4C6A40065095C07261035 (void);
 extern void SkeletonAnimator_AnimateIdle_mA6B34E486045F501CB724775F63CEF9ECB351F43 (void);
 extern void SkeletonAnimator__ctor_mE6704D8225B0D44693457DAA8DA1DB8D660738E9 (void);
-static Il2CppMethodPointer s_methodPointers[1098] = 
+static Il2CppMethodPointer s_methodPointers[1099] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1527,6 +1528,7 @@ static Il2CppMethodPointer s_methodPointers[1098] =
 	SpellProjectile_OnCollisionEnter_mB562BB16DC24C8549B1A82866648104BD44899DF,
 	SpellProjectile_ApplyDamage_mA173AFE920DCC0D6F454861D1381232B8F9E0C56,
 	SpellProjectile_ApplySplashDamage_mA02E1A26651CB2D5DCA091B392EB8B3F4C5AAD4B,
+	SpellProjectile_IsPlayerCollider_mCB10E889A7B3874C12073CC2CF4247C17FC07E8C,
 	SpellProjectile_SetColor_mB6C406241CB63BE88DC8C01F0765C1CD82D4A8BC,
 	SpellProjectile_GetDamage_mAF96087490BE8C1DD48FC2D685D49D63F45FDDC6,
 	SpellProjectile__ctor_mB9021FE43BE93CC8E1DA2ADBCB68926EFE2BB6AD,
@@ -2211,7 +2213,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x0600012B, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1098] = 
+static const int32_t s_InvokerIndices[1099] = 
 {
 	15296,
 	15296,
@@ -2633,6 +2635,7 @@ static const int32_t s_InvokerIndices[1098] =
 	11602,
 	11602,
 	11790,
+	8203,
 	11406,
 	15014,
 	15296,
@@ -3316,7 +3319,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1098,
+	1099,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,
