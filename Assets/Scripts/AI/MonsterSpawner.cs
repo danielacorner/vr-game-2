@@ -209,6 +209,19 @@ namespace VRDungeonCrawler.AI
                     animator.legSwingAngle = 30f;
                     animator.armSwingAngle = 20f;
                     animator.showDebug = false;
+
+                    // Add SkeletonAttack for melee combat
+                    SkeletonAttack attack = monster.AddComponent<SkeletonAttack>();
+                    attack.attackRange = 1.5f;
+                    attack.attackDamage = 1;
+                    attack.attackCooldown = 2f;
+                    attack.showDebug = false;
+
+                    // Add SkeletonEyeEffect for fiery red eyes when aggro
+                    SkeletonEyeEffect eyeEffect = monster.AddComponent<SkeletonEyeEffect>();
+                    eyeEffect.enableFireParticles = true;
+                    eyeEffect.fireParticleCount = 10;
+                    eyeEffect.showDebug = false;
                 }
 
                 // Add Rigidbody if not present

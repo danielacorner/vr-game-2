@@ -24,6 +24,13 @@ namespace VRDungeonCrawler.AI
         [Tooltip("Idle sway speed")]
         public float idleSwaySpeed = 1.5f;
 
+        [Header("Aggro Animation")]
+        [Tooltip("Arm angle when in zombie pose (aggro)")]
+        public float zombieArmAngle = 80f;
+
+        [Tooltip("Attack swing speed")]
+        public float attackSpeed = 5f;
+
         [Header("Debug")]
         public bool showDebug = false;
 
@@ -42,9 +49,14 @@ namespace VRDungeonCrawler.AI
         // Animation state
         private float walkCycle = 0f;
         private float idleCycle = 0f;
+        private float attackCycle = 0f;
         private bool isWalking = false;
+        private bool isAggro = false;
+        private bool isAttacking = false;
         private Vector3 lastPosition;
         private MonsterAI monsterAI;
+        private MonsterBase monsterBase;
+        private Transform playerTarget;
 
         // Store original local rotations
         private Quaternion leftUpperLegOriginal;
@@ -68,6 +80,14 @@ namespace VRDungeonCrawler.AI
 
             lastPosition = transform.position;
             monsterAI = GetComponent<MonsterAI>();
+            monsterBase = GetComponent<MonsterBase>();
+
+            // Find player
+            GameObject xrOrigin = GameObject.Find("XR Origin");
+            if (xrOrigin != null)
+            {
+                playerTarget = xrOrigin.transform;
+            }
 
             if (showDebug)
                 Debug.Log($"[SkeletonAnimator] Initialized on {gameObject.name}");
@@ -139,13 +159,57 @@ namespace VRDungeonCrawler.AI
             // Consider walking if moving faster than 0.1 units/sec
             isWalking = movementSpeed > 0.1f;
 
-            if (isWalking)
+            // Check aggro state from MonsterAI (uses reflection to access private field)
+            if (monsterAI != null)
+            {
+                var field = typeof(MonsterAI).GetField("isAggro", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (field != null)
+                {
+                    isAggro = (bool)field.GetValue(monsterAI);
+                }
+            }
+
+            // Check if attacking (will be set by SkeletonAttack component)
+            isAttacking = monsterBase != null && monsterBase.GetComponent<SkeletonAttack>() != null &&
+                          monsterBase.GetComponent<SkeletonAttack>().isAttacking;
+
+            // Head tracking - always look at player when aggro
+            if (isAggro && playerTarget != null && head != null)
+            {
+                TrackPlayer();
+            }
+
+            // Choose animation based on state
+            if (isAttacking)
+            {
+                AnimateAttacking();
+            }
+            else if (isAggro && isWalking)
+            {
+                AnimateAggroWalking();
+            }
+            else if (isWalking)
             {
                 AnimateWalking();
             }
             else
             {
                 AnimateIdle();
+            }
+        }
+
+        void TrackPlayer()
+        {
+            // Make head look at player
+            Vector3 directionToPlayer = playerTarget.position - head.position;
+            directionToPlayer.y = 0; // Keep head level, no up/down tilt
+
+            if (directionToPlayer.magnitude > 0.1f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+                // Convert to local rotation relative to skeleton root
+                Quaternion localTargetRotation = Quaternion.Inverse(transform.rotation) * targetRotation;
+                head.localRotation = Quaternion.Slerp(head.localRotation, localTargetRotation, Time.deltaTime * 5f);
             }
         }
 
@@ -269,6 +333,116 @@ namespace VRDungeonCrawler.AI
                 leftLowerArm.localRotation = leftLowerArmOriginal;
             if (rightLowerArm != null)
                 rightLowerArm.localRotation = rightLowerArmOriginal;
+        }
+
+        void AnimateAggroWalking()
+        {
+            // Advance walk cycle
+            walkCycle += Time.deltaTime * walkCycleSpeed * 1.5f; // Faster when aggro
+
+            // Reset idle cycle
+            idleCycle = 0f;
+
+            // Leg animation (same as normal walking)
+            float leftLegAngle = Mathf.Sin(walkCycle) * legSwingAngle;
+            float rightLegAngle = Mathf.Sin(walkCycle + Mathf.PI) * legSwingAngle;
+
+            if (leftUpperLeg != null)
+            {
+                leftUpperLeg.localRotation = leftUpperLegOriginal * Quaternion.Euler(leftLegAngle, 0, 0);
+            }
+            if (rightUpperLeg != null)
+            {
+                rightUpperLeg.localRotation = rightUpperLegOriginal * Quaternion.Euler(rightLegAngle, 0, 0);
+            }
+
+            // Lower leg bends
+            if (leftLowerLeg != null)
+            {
+                float leftLowerBend = Mathf.Max(0, -leftLegAngle * 0.5f);
+                leftLowerLeg.localRotation = leftLowerLegOriginal * Quaternion.Euler(leftLowerBend, 0, 0);
+            }
+            if (rightLowerLeg != null)
+            {
+                float rightLowerBend = Mathf.Max(0, -rightLegAngle * 0.5f);
+                rightLowerLeg.localRotation = rightLowerLegOriginal * Quaternion.Euler(rightLowerBend, 0, 0);
+            }
+
+            // ZOMBIE ARMS - held out straight toward player
+            if (leftUpperArm != null)
+            {
+                leftUpperArm.localRotation = leftUpperArmOriginal * Quaternion.Euler(-zombieArmAngle, 0, 0);
+            }
+            if (rightUpperArm != null)
+            {
+                rightUpperArm.localRotation = rightUpperArmOriginal * Quaternion.Euler(-zombieArmAngle, 0, 0);
+            }
+
+            // Lower arms also extended
+            if (leftLowerArm != null)
+            {
+                leftLowerArm.localRotation = leftLowerArmOriginal * Quaternion.Euler(0, 0, 0);
+            }
+            if (rightLowerArm != null)
+            {
+                rightLowerArm.localRotation = rightLowerArmOriginal * Quaternion.Euler(0, 0, 0);
+            }
+
+            // Body slight forward lean (menacing)
+            if (body != null)
+            {
+                body.localRotation = bodyOriginal * Quaternion.Euler(10f, 0, 0);
+            }
+        }
+
+        void AnimateAttacking()
+        {
+            // Attack animation - arms swing down in alternating pattern
+            attackCycle += Time.deltaTime * attackSpeed;
+
+            // Reset other cycles
+            walkCycle = 0f;
+            idleCycle = 0f;
+
+            // Legs stay mostly still during attack
+            if (leftUpperLeg != null)
+                leftUpperLeg.localRotation = leftUpperLegOriginal;
+            if (leftLowerLeg != null)
+                leftLowerLeg.localRotation = leftLowerLegOriginal;
+            if (rightUpperLeg != null)
+                rightUpperLeg.localRotation = rightUpperLegOriginal;
+            if (rightLowerLeg != null)
+                rightLowerLeg.localRotation = rightLowerLegOriginal;
+
+            // Arms swing down hard (alternating)
+            float leftAttackAngle = Mathf.Sin(attackCycle) * 60f - zombieArmAngle; // Swing from zombie pose down
+            float rightAttackAngle = Mathf.Sin(attackCycle + Mathf.PI) * 60f - zombieArmAngle;
+
+            if (leftUpperArm != null)
+            {
+                leftUpperArm.localRotation = leftUpperArmOriginal * Quaternion.Euler(leftAttackAngle, 0, 0);
+            }
+            if (rightUpperArm != null)
+            {
+                rightUpperArm.localRotation = rightUpperArmOriginal * Quaternion.Euler(rightAttackAngle, 0, 0);
+            }
+
+            // Lower arms stay extended
+            if (leftLowerArm != null)
+            {
+                leftLowerArm.localRotation = leftLowerArmOriginal;
+            }
+            if (rightLowerArm != null)
+            {
+                rightLowerArm.localRotation = rightLowerArmOriginal;
+            }
+
+            // Body leans forward more during attack
+            if (body != null)
+            {
+                float bodyLean = 10f + Mathf.Sin(attackCycle) * 5f;
+                body.localRotation = bodyOriginal * Quaternion.Euler(bodyLean, 0, 0);
+            }
         }
     }
 }
