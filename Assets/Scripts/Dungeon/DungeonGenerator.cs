@@ -45,7 +45,7 @@ namespace VRDungeonCrawler.Dungeon
 
         [Header("Debug")]
         [Tooltip("Show debug information")]
-        public bool showDebug = true;
+        public bool showDebug = false;
 
         // Internal state
         private List<DungeonRoom> allRooms = new List<DungeonRoom>();
@@ -460,6 +460,8 @@ namespace VRDungeonCrawler.Dungeon
 
         private void ConnectRooms()
         {
+            Debug.Log($"[ConnectRooms] CALLED! Total rooms: {allRooms.Count}");
+
             // Create doorway in Start room's south wall to connect to entrance room
             if (showDebug)
                 Debug.Log($"[DungeonGenerator] ConnectRooms: Looking for Start room among {allRooms.Count} rooms");
@@ -467,6 +469,7 @@ namespace VRDungeonCrawler.Dungeon
             DungeonRoom startRoom = allRooms.Find(r => r.roomType == RoomType.Start);
             if (startRoom != null)
             {
+                Debug.Log($"[ConnectRooms] Found Start room, calling CreateEntranceDoorway...");
                 if (showDebug)
                     Debug.Log($"[DungeonGenerator] Found Start room at {startRoom.gridPosition}, creating entrance doorway...");
                 CreateEntranceDoorway(startRoom);
@@ -475,24 +478,29 @@ namespace VRDungeonCrawler.Dungeon
             }
             else
             {
+                Debug.LogWarning($"[ConnectRooms] NO Start room found!");
                 if (showDebug)
                     Debug.LogWarning($"[DungeonGenerator] WARNING: Could not find Start room! allRooms.Count = {allRooms.Count}");
             }
 
             // Create doorways where rooms connect
+            int doorwayCount = 0;
             foreach (var room in allRooms)
             {
                 if (room.connectedFrom != null)
                 {
+                    doorwayCount++;
                     CreateDoorwayBetweenRooms(room.connectedFrom, room);
 
                     if (showDebug)
                         Debug.Log($"[DungeonGenerator] Connected {room.roomType} at {room.gridPosition} to {room.connectedFrom.roomType} at {room.connectedFrom.gridPosition}");
                 }
             }
+            Debug.Log($"[ConnectRooms] Created {doorwayCount} doorways between rooms");
 
             // Also connect adjacent rooms that aren't parent-child (create loops)
             CreateAdditionalConnections();
+            Debug.Log($"[ConnectRooms] Finished");
             // Force recompile
         }
 
@@ -539,6 +547,8 @@ namespace VRDungeonCrawler.Dungeon
 
         private void CreateEntranceDoorway(DungeonRoom startRoom)
         {
+            Debug.Log($"[CreateEntranceDoorway] Creating entrance doorway for {startRoom.roomObject.name}");
+
             // Create doorway in south wall of Start room to connect to entrance room
             GameObject doorway = DungeonRoomBuilder.CreateDoorway();
             doorway.transform.SetParent(startRoom.roomObject.transform);
@@ -551,7 +561,9 @@ namespace VRDungeonCrawler.Dungeon
 
             // Remove south wall section where doorway is
             Vector3 southDirection = new Vector3(0, 0, -1);
+            Debug.Log($"[CreateEntranceDoorway] Calling RemoveWallSection for south wall...");
             RemoveWallSection(startRoom.roomObject, doorway.transform.position, southDirection);
+            Debug.Log($"[CreateEntranceDoorway] Finished");
         }
 
         private void CreateDoorwayBetweenRooms(DungeonRoom roomA, DungeonRoom roomB)
@@ -593,17 +605,67 @@ namespace VRDungeonCrawler.Dungeon
         private void RemoveWallSection(GameObject roomObj, Vector3 doorwayPos, Vector3 direction)
         {
             Transform walls = roomObj.transform.Find("Walls");
-            if (walls == null) return;
+            if (walls == null)
+            {
+                Debug.LogWarning($"[RemoveWallSection] No Walls object found in {roomObj.name}");
+                return;
+            }
 
-            // Find and destroy the wall segment at the doorway position
+            // Find the wall at the doorway position
             string wallName = GetWallName(direction);
             Transform wall = walls.Find(wallName);
 
+            Debug.Log($"[RemoveWallSection] Room: {roomObj.name}, Wall: {wallName}, Found: {wall != null}");
+
             if (wall != null)
             {
-                // Create gap in wall by destroying it
-                // In production, you'd split the wall into segments
-                Destroy(wall.gameObject);
+                // Get wall dimensions before destroying
+                Vector3 wallScale = wall.localScale;
+                Vector3 wallPosition = wall.localPosition;
+                Quaternion wallRotation = wall.localRotation;
+
+                Debug.Log($"[RemoveWallSection] Replacing {wallName} (size {wallScale}) with segmented wall at {wallPosition}");
+
+                // Destroy the old solid wall
+                DestroyImmediate(wall.gameObject);
+
+                // Determine width and thickness based on wall orientation
+                // North/South walls: width is X-axis, thickness is Z-axis
+                // East/West walls: width is Z-axis, thickness is X-axis
+                float wallWidth, wallThickness;
+                if (wallName == "NorthWall" || wallName == "SouthWall")
+                {
+                    wallWidth = wallScale.x;
+                    wallThickness = wallScale.z;
+                }
+                else // EastWall or WestWall
+                {
+                    wallWidth = wallScale.z;
+                    wallThickness = wallScale.x;
+                }
+
+                Debug.Log($"[RemoveWallSection] Wall dimensions: width={wallWidth}, height={wallScale.y}, thickness={wallThickness}");
+
+                // Create new segmented wall with doorway opening
+                GameObject segmentedWall = DungeonRoomBuilder.CreateWallWithDoorway(
+                    wallWidth,   // width (correct for wall orientation)
+                    wallScale.y, // height
+                    wallThickness, // thickness (correct for wall orientation)
+                    2f,          // doorway width
+                    3f,          // doorway height
+                    wallName     // wall name
+                );
+
+                // Position the new segmented wall where the old wall was
+                segmentedWall.transform.SetParent(walls);
+                segmentedWall.transform.localPosition = wallPosition;
+                segmentedWall.transform.localRotation = wallRotation;
+
+                Debug.Log($"[RemoveWallSection] Created segmented {wallName} with {segmentedWall.transform.childCount} segments");
+            }
+            else
+            {
+                Debug.LogWarning($"[RemoveWallSection] Wall {wallName} not found in {roomObj.name}");
             }
         }
 

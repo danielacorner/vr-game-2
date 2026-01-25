@@ -139,6 +139,71 @@ namespace VRDungeonCrawler.Dungeon
         }
 
         /// <summary>
+        /// Creates a wall with a doorway opening cut into it
+        /// </summary>
+        public static GameObject CreateWallWithDoorway(float wallWidth, float wallHeight, float wallThickness,
+            float doorwayWidth = 2f, float doorwayHeight = 3f, string wallName = "Wall")
+        {
+            GameObject wallParent = new GameObject(wallName);
+
+            // Calculate doorway bounds (centered on wall)
+            float doorwayLeft = -doorwayWidth / 2f;
+            float doorwayRight = doorwayWidth / 2f;
+            float wallLeft = -wallWidth / 2f;
+            float wallRight = wallWidth / 2f;
+
+            // Left wall segment (from wall left edge to doorway left edge)
+            float leftSegmentWidth = doorwayLeft - wallLeft;
+            if (leftSegmentWidth > 0.5f) // Only create if there's enough space
+            {
+                GameObject leftSegment = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                leftSegment.name = "LeftSegment";
+                leftSegment.transform.SetParent(wallParent.transform);
+                leftSegment.transform.localPosition = new Vector3(
+                    (wallLeft + doorwayLeft) / 2f,  // Midpoint
+                    wallHeight / 2f,
+                    0f
+                );
+                leftSegment.transform.localScale = new Vector3(leftSegmentWidth, wallHeight, wallThickness);
+                leftSegment.GetComponent<Renderer>().material = CreatePolytopiaStone(STONE_WALL);
+            }
+
+            // Right wall segment (from doorway right edge to wall right edge)
+            float rightSegmentWidth = wallRight - doorwayRight;
+            if (rightSegmentWidth > 0.5f) // Only create if there's enough space
+            {
+                GameObject rightSegment = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                rightSegment.name = "RightSegment";
+                rightSegment.transform.SetParent(wallParent.transform);
+                rightSegment.transform.localPosition = new Vector3(
+                    (doorwayRight + wallRight) / 2f,  // Midpoint
+                    wallHeight / 2f,
+                    0f
+                );
+                rightSegment.transform.localScale = new Vector3(rightSegmentWidth, wallHeight, wallThickness);
+                rightSegment.GetComponent<Renderer>().material = CreatePolytopiaStone(STONE_WALL);
+            }
+
+            // Top segment above doorway (lintel area)
+            if (doorwayHeight < wallHeight - 0.5f) // Only create if doorway doesn't reach ceiling
+            {
+                float topSegmentHeight = wallHeight - doorwayHeight;
+                GameObject topSegment = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                topSegment.name = "TopSegment";
+                topSegment.transform.SetParent(wallParent.transform);
+                topSegment.transform.localPosition = new Vector3(
+                    0f,
+                    doorwayHeight + topSegmentHeight / 2f,
+                    0f
+                );
+                topSegment.transform.localScale = new Vector3(doorwayWidth, topSegmentHeight, wallThickness);
+                topSegment.GetComponent<Renderer>().material = CreatePolytopiaStone(STONE_WALL);
+            }
+
+            return wallParent;
+        }
+
+        /// <summary>
         /// Creates a Zelda-style stone pillar
         /// </summary>
         public static GameObject CreatePillar(float height = WALL_HEIGHT)
@@ -332,6 +397,8 @@ namespace VRDungeonCrawler.Dungeon
             leftPillar.transform.localPosition = new Vector3(-width / 2f, height / 2f, 0f);
             leftPillar.transform.localScale = new Vector3(WALL_THICKNESS, height, WALL_THICKNESS);
             leftPillar.GetComponent<Renderer>().material = CreatePolytopiaStone(STONE_ACCENT);
+            // CRITICAL: Remove BoxCollider to allow passage through doorway
+            Object.DestroyImmediate(leftPillar.GetComponent<BoxCollider>());
 
             // Right pillar
             GameObject rightPillar = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -340,6 +407,8 @@ namespace VRDungeonCrawler.Dungeon
             rightPillar.transform.localPosition = new Vector3(width / 2f, height / 2f, 0f);
             rightPillar.transform.localScale = new Vector3(WALL_THICKNESS, height, WALL_THICKNESS);
             rightPillar.GetComponent<Renderer>().material = CreatePolytopiaStone(STONE_ACCENT);
+            // CRITICAL: Remove BoxCollider to allow passage through doorway
+            Object.DestroyImmediate(rightPillar.GetComponent<BoxCollider>());
 
             // Lintel (top piece)
             GameObject lintel = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -348,6 +417,8 @@ namespace VRDungeonCrawler.Dungeon
             lintel.transform.localPosition = new Vector3(0f, height, 0f);
             lintel.transform.localScale = new Vector3(width + WALL_THICKNESS * 2f, 0.4f, WALL_THICKNESS);
             lintel.GetComponent<Renderer>().material = CreatePolytopiaStone(STONE_ACCENT);
+            // CRITICAL: Remove BoxCollider to allow passage through doorway
+            Object.DestroyImmediate(lintel.GetComponent<BoxCollider>());
 
             return doorway;
         }
