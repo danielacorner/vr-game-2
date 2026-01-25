@@ -107,7 +107,7 @@ namespace VRDungeonCrawler.Dungeon
         public static GameObject CreateFloorTile()
         {
             GameObject tile = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            tile.transform.localScale = new Vector3(GRID_SIZE * 0.95f, 0.1f, GRID_SIZE * 0.95f);
+            tile.transform.localScale = new Vector3(GRID_SIZE, 0.1f, GRID_SIZE);
 
             // Apply stone floor material
             Material mat = CreatePolytopiaStone(STONE_FLOOR);
