@@ -335,7 +335,6 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity",
               "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
@@ -346,7 +345,6 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity",
               "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
@@ -357,7 +355,6 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity",
               "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
@@ -1082,7 +1079,6 @@
             "scenes": [
               "Assets/HomeArea.unity",
               "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity",
               "Assets/Scenes/TestMinimal.unity"
             ],
             "dependencyType": 0,
@@ -1092,8 +1088,7 @@
             "name": "CapsuleCollider",
             "scenes": [
               "Assets/HomeArea.unity",
-              "Assets/Scenes/Bootstrap.unity",
-              "Assets/Scenes/Dungeon1.unity"
+              "Assets/Scenes/Bootstrap.unity"
             ],
             "dependencyType": 0,
             "icon": null

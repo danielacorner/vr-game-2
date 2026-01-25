@@ -12,8 +12,8 @@ namespace VRDungeonCrawler.Dungeon
         [Tooltip("Width of entrance room (X axis)")]
         public float roomWidth = 30f;
 
-        [Tooltip("Length of entrance room (Z axis)")]
-        public float roomLength = 20f;
+        [Tooltip("Length of entrance room (Z axis) - aligned with Start room at Z=5")]
+        public float roomLength = 10f;
 
         [Header("Features")]
         [Tooltip("Add decorative pillars")]
@@ -91,30 +91,31 @@ namespace VRDungeonCrawler.Dungeon
 
             Debug.Log($"[DungeonEntranceRoom] Added TeleportationArea to floor with interaction layers: {teleportArea.interactionLayers}");
 
-            // Create walls (3 sides + north doorway)
-            // North wall has opening for dungeon entrance
-            CreateWallWithDoorway(new Vector3(0, 2f, roomLength/2), new Vector3(roomWidth, 4f, 1f), true); // North (with doorway)
-            CreateWall(new Vector3(0, 2f, -roomLength/2), new Vector3(roomWidth, 4f, 1f)); // South
-            CreateWall(new Vector3(-roomWidth/2, 2f, 0), new Vector3(1f, 4f, roomLength)); // West
-            CreateWall(new Vector3(roomWidth/2, 2f, 0), new Vector3(1f, 4f, roomLength)); // East
+            // WALLS AND CEILING REMOVED FOR DEBUGGING
+            // Create walls (3 sides only - north side completely open for dungeon entrance)
+            // North side has NO WALL to allow passage into Start room at Z=5
+            // CreateWallWithDoorway(new Vector3(0, 2f, roomLength/2), new Vector3(roomWidth, 4f, 1f), true); // North - REMOVED
+            // CreateWall(new Vector3(0, 2f, -roomLength/2), new Vector3(roomWidth, 4f, 1f)); // South - REMOVED
+            // CreateWall(new Vector3(-roomWidth/2, 2f, 0), new Vector3(1f, 4f, roomLength)); // West - REMOVED
+            // CreateWall(new Vector3(roomWidth/2, 2f, 0), new Vector3(1f, 4f, roomLength)); // East - REMOVED
 
-            // Create ceiling if requested
-            if (addCeiling)
-            {
-                GameObject ceiling = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                ceiling.name = "Ceiling";
-                ceiling.transform.SetParent(transform);
-                ceiling.transform.localPosition = new Vector3(0, 4.5f, 0);
-                ceiling.transform.localScale = new Vector3(roomWidth, 1f, roomLength);
-
-                Renderer ceilingRenderer = ceiling.GetComponent<Renderer>();
-                if (ceilingRenderer != null)
-                {
-                    Material ceilingMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-                    ceilingMat.color = new Color(0.2f, 0.2f, 0.25f); // Dark blue-gray
-                    ceilingRenderer.material = ceilingMat;
-                }
-            }
+            // Create ceiling if requested - REMOVED FOR DEBUGGING
+            // if (addCeiling)
+            // {
+            //     GameObject ceiling = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            //     ceiling.name = "Ceiling";
+            //     ceiling.transform.SetParent(transform);
+            //     ceiling.transform.localPosition = new Vector3(0, 4.5f, 0);
+            //     ceiling.transform.localScale = new Vector3(roomWidth, 1f, roomLength);
+            //
+            //     Renderer ceilingRenderer = ceiling.GetComponent<Renderer>();
+            //     if (ceilingRenderer != null)
+            //     {
+            //         Material ceilingMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            //         ceilingMat.color = new Color(0.2f, 0.2f, 0.25f); // Dark blue-gray
+            //         ceilingRenderer.material = ceilingMat;
+            //     }
+            // }
 
             // Add torches for lighting
             if (addTorches)
@@ -177,9 +178,10 @@ namespace VRDungeonCrawler.Dungeon
             }
 
             Debug.Log("========================================");
-            Debug.Log($"[DungeonEntranceRoom] ✓ Built SIMPLE DEBUG entrance room");
+            Debug.Log($"[DungeonEntranceRoom] ✓ Built entrance room");
             Debug.Log($"[DungeonEntranceRoom] Position: {transform.position}, Size: {roomWidth}x{roomLength}");
-            Debug.Log("[DungeonEntranceRoom] Look for: CYAN floor + YELLOW spawn marker");
+            Debug.Log($"[DungeonEntranceRoom] North side OPEN (no wall) at Z={transform.position.z + roomLength/2f}");
+            Debug.Log($"[DungeonEntranceRoom] Connects to Start room south wall at Z=5");
             Debug.Log("========================================");
         }
 
@@ -203,7 +205,8 @@ namespace VRDungeonCrawler.Dungeon
         void CreateWallWithDoorway(Vector3 localPosition, Vector3 localScale, bool isNorthWall)
         {
             // Create wall segments on either side of doorway opening
-            float doorwayWidth = 4f; // Width of doorway opening
+            // Doorway width = 12m to fit Start room (X=-4 to X=+6, spans 10m but needs 2m margin)
+            float doorwayWidth = 12f; // Width of doorway opening
             float wallWidth = localScale.x;
             float segmentWidth = (wallWidth - doorwayWidth) / 2f;
 

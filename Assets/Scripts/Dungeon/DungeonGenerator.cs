@@ -13,8 +13,8 @@ namespace VRDungeonCrawler.Dungeon
     {
         [Header("Dungeon Settings")]
         [Tooltip("Total number of rooms to generate (including special rooms)")]
-        [Range(5, 20)]
-        public int totalRoomCount = 12;
+        [Range(5, 40)]
+        public int totalRoomCount = 25;
 
         [Tooltip("Room size in grid units (2m per grid)")]
         [Range(3, 8)]
@@ -26,7 +26,11 @@ namespace VRDungeonCrawler.Dungeon
 
         [Tooltip("Chance for room to branch (0-1)")]
         [Range(0f, 1f)]
-        public float branchChance = 0.3f;
+        public float branchChance = 0.6f;
+
+        [Tooltip("Minimum branches per room")]
+        [Range(1, 3)]
+        public int minBranchesPerRoom = 1;
 
         [Tooltip("Max attempts to place a room")]
         public int maxPlacementAttempts = 20;
@@ -107,9 +111,16 @@ namespace VRDungeonCrawler.Dungeon
 
         private void GenerateRoomLayout()
         {
-            // Start from entrance room's north wall (0, 0) in grid space
-            // Entrance room is at origin, first procedural room is north (Z+)
-            Vector2Int startCell = new Vector2Int(0, roomSizeInGrids);
+            // Start from entrance room's north wall
+            // Center the first room with the entrance room doorway (entrance is 30m wide, centered at X=0)
+            // Room is 10m wide (5 grids * 2m), so place corner at X=-4m (-2 grids) to better align with doorway
+            Vector2Int startCell = new Vector2Int(-2, roomSizeInGrids);
+
+            if (showDebug)
+            {
+                Debug.Log($"[DungeonGenerator] Starting generation with startCell: {startCell}");
+                Debug.Log($"[DungeonGenerator] RoomSizeInGrids: {roomSizeInGrids}, GRID_SIZE: {DungeonRoomBuilder.GRID_SIZE}");
+            }
 
             // Create starting room connected to entrance
             CreateRoom(startCell, RoomType.Start);
@@ -125,20 +136,27 @@ namespace VRDungeonCrawler.Dungeon
             {
                 DungeonRoom currentRoom = roomQueue.Dequeue();
 
-                // Try to branch from this room
+                // Try to branch from this room - create multiple branches for complexity
                 Vector2Int[] directions = GetRandomDirections();
+                int branchesCreated = 0;
+                int maxBranches = rng.Next(minBranchesPerRoom, 4); // 1-3 branches per room
 
                 foreach (var dir in directions)
                 {
                     if (normalRoomsCreated >= roomsToGenerate)
                         break;
 
-                    // Decide whether to branch
-                    bool shouldBranch = (float)rng.NextDouble() < branchChance || roomQueue.Count == 0;
+                    // Decide whether to branch - more likely if we haven't created min branches yet
+                    bool shouldBranch = branchesCreated < minBranchesPerRoom ||
+                                       (branchesCreated < maxBranches && (float)rng.NextDouble() < branchChance) ||
+                                       roomQueue.Count == 0;
 
                     if (shouldBranch)
                     {
                         Vector2Int newCell = currentRoom.gridPosition + dir * roomSizeInGrids;
+
+                        if (showDebug)
+                            Debug.Log($"[DungeonGenerator] Attempting to place room at {newCell} from {currentRoom.gridPosition} in direction {dir}");
 
                         if (CanPlaceRoom(newCell))
                         {
@@ -147,9 +165,24 @@ namespace VRDungeonCrawler.Dungeon
                             newRoom.connectedFrom = currentRoom;
                             roomQueue.Enqueue(newRoom);
                             normalRoomsCreated++;
+                            branchesCreated++;
+
+                            if (showDebug)
+                                Debug.Log($"[DungeonGenerator] ✓ SUCCESS: Created room {normalRoomsCreated}/{roomsToGenerate} of type {type} at {newCell}");
+                        }
+                        else if (showDebug)
+                        {
+                            Debug.Log($"[DungeonGenerator] ✗ FAILED: Cannot place room at {newCell} - position occupied");
                         }
                     }
+                    else if (showDebug)
+                    {
+                        Debug.Log($"[DungeonGenerator] Skipped branching in direction {dir} (shouldBranch=false, branchesCreated={branchesCreated})");
+                    }
                 }
+
+                if (showDebug)
+                    Debug.Log($"[DungeonGenerator] Room at {currentRoom.gridPosition} created {branchesCreated} branches");
             }
 
             // Place shop room branching from a random room
@@ -174,12 +207,19 @@ namespace VRDungeonCrawler.Dungeon
 
         private DungeonRoom CreateRoom(Vector2Int gridPos, RoomType type)
         {
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] CreateRoom called: type={type}, gridPos={gridPos}");
+
             // Mark grid cells as occupied
             for (int x = 0; x < roomSizeInGrids; x++)
             {
                 for (int y = 0; y < roomSizeInGrids; y++)
                 {
-                    occupiedCells.Add(new Vector2Int(gridPos.x + x, gridPos.y + y));
+                    Vector2Int cell = new Vector2Int(gridPos.x + x, gridPos.y + y);
+                    occupiedCells.Add(cell);
+
+                    if (showDebug && x == 0 && y == 0)
+                        Debug.Log($"[DungeonGenerator] Marking cells {gridPos} through {new Vector2Int(gridPos.x + roomSizeInGrids - 1, gridPos.y + roomSizeInGrids - 1)} as occupied");
                 }
             }
 
@@ -188,6 +228,9 @@ namespace VRDungeonCrawler.Dungeon
                 0,
                 gridPos.y * DungeonRoomBuilder.GRID_SIZE
             );
+
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] Room worldPos: {worldPos}");
 
             DungeonRoom room = new DungeonRoom
             {
@@ -204,6 +247,9 @@ namespace VRDungeonCrawler.Dungeon
             else if (type == RoomType.Boss)
                 bossRoom = room;
 
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] Room created successfully. Total rooms: {allRooms.Count}");
+
             return room;
         }
 
@@ -216,9 +262,16 @@ namespace VRDungeonCrawler.Dungeon
                 {
                     Vector2Int cell = new Vector2Int(gridPos.x + x, gridPos.y + y);
                     if (occupiedCells.Contains(cell))
+                    {
+                        if (showDebug)
+                            Debug.Log($"[DungeonGenerator] Cell {cell} is occupied (checking room at {gridPos})");
                         return false;
+                    }
                 }
             }
+
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] Room at {gridPos} is VALID (all {roomSizeInGrids}x{roomSizeInGrids} cells free)");
 
             return true;
         }
@@ -247,54 +300,85 @@ namespace VRDungeonCrawler.Dungeon
                 .ToList();
 
             if (candidateRooms.Count == 0)
-                return;
-
-            DungeonRoom branchFrom = candidateRooms[rng.Next(candidateRooms.Count)];
-
-            // Try directions until we find a valid placement
-            Vector2Int[] directions = GetRandomDirections();
-            foreach (var dir in directions)
             {
-                Vector2Int newCell = branchFrom.gridPosition + dir * roomSizeInGrids;
+                if (showDebug)
+                    Debug.LogWarning($"[DungeonGenerator] No candidate rooms to place {type}!");
+                return;
+            }
 
-                if (CanPlaceRoom(newCell))
+            // Shuffle candidates to try multiple rooms
+            for (int i = 0; i < candidateRooms.Count; i++)
+            {
+                int randomIndex = rng.Next(i, candidateRooms.Count);
+                var temp = candidateRooms[i];
+                candidateRooms[i] = candidateRooms[randomIndex];
+                candidateRooms[randomIndex] = temp;
+            }
+
+            // Try multiple candidate rooms until we find valid placement
+            foreach (var branchFrom in candidateRooms)
+            {
+                // Try all directions from this room
+                Vector2Int[] directions = GetRandomDirections();
+                foreach (var dir in directions)
                 {
-                    DungeonRoom specialRoom = CreateRoom(newCell, type);
-                    specialRoom.connectedFrom = branchFrom;
-                    return;
+                    Vector2Int newCell = branchFrom.gridPosition + dir * roomSizeInGrids;
+
+                    if (CanPlaceRoom(newCell))
+                    {
+                        DungeonRoom specialRoom = CreateRoom(newCell, type);
+                        specialRoom.connectedFrom = branchFrom;
+
+                        if (showDebug)
+                            Debug.Log($"[DungeonGenerator] ✓ Placed {type} room at {newCell} connected to {branchFrom.roomType} at {branchFrom.gridPosition}");
+                        return;
+                    }
                 }
             }
+
+            // Failed to place after trying all candidates
+            if (showDebug)
+                Debug.LogWarning($"[DungeonGenerator] ✗ Failed to place {type} room - no valid positions found!");
         }
 
         private void PlaceBossRoom()
         {
-            // Find furthest room from start
-            DungeonRoom furthestRoom = allRooms[0];
-            float maxDist = 0;
+            // Sort rooms by distance from start, furthest first
+            List<DungeonRoom> candidateRooms = allRooms
+                .Where(r => r.roomType != RoomType.Shop && r.roomType != RoomType.Boss)
+                .OrderByDescending(r => Vector2Int.Distance(Vector2Int.zero, r.gridPosition))
+                .ToList();
 
-            foreach (var room in allRooms)
+            if (candidateRooms.Count == 0)
             {
-                float dist = Vector2Int.Distance(Vector2Int.zero, room.gridPosition);
-                if (dist > maxDist)
+                if (showDebug)
+                    Debug.LogWarning($"[DungeonGenerator] No candidate rooms to place Boss!");
+                return;
+            }
+
+            // Try furthest rooms first
+            foreach (var branchFrom in candidateRooms.Take(10)) // Try up to 10 furthest rooms
+            {
+                Vector2Int[] directions = GetRandomDirections();
+                foreach (var dir in directions)
                 {
-                    maxDist = dist;
-                    furthestRoom = room;
+                    Vector2Int newCell = branchFrom.gridPosition + dir * roomSizeInGrids;
+
+                    if (CanPlaceRoom(newCell))
+                    {
+                        DungeonRoom boss = CreateRoom(newCell, RoomType.Boss);
+                        boss.connectedFrom = branchFrom;
+
+                        if (showDebug)
+                            Debug.Log($"[DungeonGenerator] ✓ Placed Boss room at {newCell} connected to {branchFrom.roomType} at {branchFrom.gridPosition}");
+                        return;
+                    }
                 }
             }
 
-            // Try to place boss room adjacent to furthest room
-            Vector2Int[] directions = GetRandomDirections();
-            foreach (var dir in directions)
-            {
-                Vector2Int newCell = furthestRoom.gridPosition + dir * roomSizeInGrids;
-
-                if (CanPlaceRoom(newCell))
-                {
-                    DungeonRoom boss = CreateRoom(newCell, RoomType.Boss);
-                    boss.connectedFrom = furthestRoom;
-                    return;
-                }
-            }
+            // Failed to place boss room
+            if (showDebug)
+                Debug.LogWarning($"[DungeonGenerator] ✗ Failed to place Boss room - no valid positions found!");
         }
 
         private void BuildRoomGeometry()
@@ -310,6 +394,25 @@ namespace VRDungeonCrawler.Dungeon
 
                 roomObj.transform.position = room.worldPosition;
                 room.roomObject = roomObj;
+
+                // Add LARGE DEBUG MARKER above each room
+                if (showDebug)
+                {
+                    GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    marker.name = "DEBUG_MARKER";
+                    marker.transform.SetParent(roomObj.transform);
+                    marker.transform.localPosition = new Vector3(roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE / 2f, 10f, roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE / 2f);
+                    marker.transform.localScale = Vector3.one * 3f;
+
+                    Material markerMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    markerMat.color = GetRoomTypeColor(room.roomType);
+                    markerMat.EnableKeyword("_EMISSION");
+                    markerMat.SetColor("_EmissionColor", GetRoomTypeColor(room.roomType) * 2f);
+                    marker.GetComponent<Renderer>().material = markerMat;
+
+                    // Remove collider
+                    Destroy(marker.GetComponent<Collider>());
+                }
 
                 // Add TeleportationArea to floor
                 AddTeleportationToFloor(roomObj);
@@ -339,14 +442,98 @@ namespace VRDungeonCrawler.Dungeon
 
         private void ConnectRooms()
         {
+            // Create doorway in Start room's south wall to connect to entrance room
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] ConnectRooms: Looking for Start room among {allRooms.Count} rooms");
+
+            DungeonRoom startRoom = allRooms.Find(r => r.roomType == RoomType.Start);
+            if (startRoom != null)
+            {
+                if (showDebug)
+                    Debug.Log($"[DungeonGenerator] Found Start room at {startRoom.gridPosition}, creating entrance doorway...");
+                CreateEntranceDoorway(startRoom);
+                if (showDebug)
+                    Debug.Log($"[DungeonGenerator] Created entrance doorway in Start room at {startRoom.gridPosition}");
+            }
+            else
+            {
+                if (showDebug)
+                    Debug.LogWarning($"[DungeonGenerator] WARNING: Could not find Start room! allRooms.Count = {allRooms.Count}");
+            }
+
             // Create doorways where rooms connect
             foreach (var room in allRooms)
             {
                 if (room.connectedFrom != null)
                 {
                     CreateDoorwayBetweenRooms(room.connectedFrom, room);
+
+                    if (showDebug)
+                        Debug.Log($"[DungeonGenerator] Connected {room.roomType} at {room.gridPosition} to {room.connectedFrom.roomType} at {room.connectedFrom.gridPosition}");
                 }
             }
+
+            // Also connect adjacent rooms that aren't parent-child (create loops)
+            CreateAdditionalConnections();
+            // Force recompile
+        }
+
+        private void CreateAdditionalConnections()
+        {
+            // Find adjacent rooms and connect some of them to create loops
+            int connectionsAdded = 0;
+            int maxAdditionalConnections = allRooms.Count / 3; // Add connections to ~33% of rooms
+
+            for (int i = 0; i < allRooms.Count && connectionsAdded < maxAdditionalConnections; i++)
+            {
+                var roomA = allRooms[i];
+
+                // Check all four directions
+                Vector2Int[] directions = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+
+                foreach (var dir in directions)
+                {
+                    Vector2Int adjacentCell = roomA.gridPosition + dir * roomSizeInGrids;
+
+                    // Find if there's a room at this adjacent cell
+                    var roomB = allRooms.Find(r => r.gridPosition == adjacentCell);
+
+                    if (roomB != null && roomB != roomA.connectedFrom && roomA != roomB.connectedFrom)
+                    {
+                        // These rooms are adjacent but not directly connected - maybe add a connection
+                        if ((float)rng.NextDouble() < 0.3f) // 30% chance to add extra connection
+                        {
+                            CreateDoorwayBetweenRooms(roomA, roomB);
+                            connectionsAdded++;
+
+                            if (showDebug)
+                                Debug.Log($"[DungeonGenerator] Added loop connection between {roomA.gridPosition} and {roomB.gridPosition}");
+
+                            break; // Only add one extra connection per room
+                        }
+                    }
+                }
+            }
+
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] Added {connectionsAdded} additional connections to create loops");
+        }
+
+        private void CreateEntranceDoorway(DungeonRoom startRoom)
+        {
+            // Create doorway in south wall of Start room to connect to entrance room
+            GameObject doorway = DungeonRoomBuilder.CreateDoorway();
+            doorway.transform.SetParent(startRoom.roomObject.transform);
+
+            float halfSize = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE / 2f;
+
+            // Place doorway in center of south wall (facing entrance room at -Z)
+            doorway.transform.localPosition = new Vector3(0, 0, -halfSize);
+            doorway.transform.localRotation = Quaternion.Euler(0, 180, 0); // Face south
+
+            // Remove south wall section where doorway is
+            Vector3 southDirection = new Vector3(0, 0, -1);
+            RemoveWallSection(startRoom.roomObject, doorway.transform.position, southDirection);
         }
 
         private void CreateDoorwayBetweenRooms(DungeonRoom roomA, DungeonRoom roomB)
