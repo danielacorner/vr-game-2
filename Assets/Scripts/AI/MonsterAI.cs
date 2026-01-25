@@ -79,32 +79,86 @@ namespace VRDungeonCrawler.AI
                 rb.angularVelocity = Vector3.zero;
             }
 
-            // Find player (XR Origin)
-            GameObject xrOrigin = GameObject.Find("XR Origin");
-            if (xrOrigin != null)
+            // Find player - try multiple methods
+            FindPlayer();
+
+            // If player not found, keep trying
+            if (playerTarget == null)
             {
-                playerTarget = xrOrigin.transform;
-            }
-            else
-            {
-                // Fallback: try to find by tag
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                if (player != null)
-                {
-                    playerTarget = player.transform;
-                }
-                else
-                {
-                    Debug.LogWarning($"[MonsterAI] {gameObject.name} could not find player target");
-                }
+                StartCoroutine(FindPlayerCoroutine());
             }
 
             // Start with walking
             isPaused = false;
             nextActionTime = Time.time + Random.Range(walkTimeMin, walkTimeMax);
 
-            if (showDebug)
-                Debug.Log($"[MonsterAI] {gameObject.name} started patrol at position {transform.position}");
+            Debug.Log($"[MonsterAI] {gameObject.name} started patrol at position {transform.position}, aggroRange={aggroRange}");
+        }
+
+        void FindPlayer()
+        {
+            // Try multiple methods to find the player
+
+            // Method 1: Find by exact name "XR Origin"
+            GameObject xrOrigin = GameObject.Find("XR Origin");
+            if (xrOrigin != null)
+            {
+                playerTarget = xrOrigin.transform;
+                Debug.Log($"[MonsterAI] {gameObject.name} found player 'XR Origin' at position {playerTarget.position}");
+                return;
+            }
+
+            // Method 2: Find by tag "Player"
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerTarget = player.transform;
+                Debug.Log($"[MonsterAI] {gameObject.name} found player by tag at position {playerTarget.position}");
+                return;
+            }
+
+            // Method 3: Search all objects for XR-related names
+            GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+            foreach (GameObject obj in allObjects)
+            {
+                string name = obj.name.ToLower();
+                if (name.Contains("xr") && name.Contains("origin"))
+                {
+                    playerTarget = obj.transform;
+                    Debug.Log($"[MonsterAI] {gameObject.name} found player via search: '{obj.name}' at position {playerTarget.position}");
+                    return;
+                }
+            }
+
+            // Method 4: Find Camera (main camera is usually the player's head)
+            Camera mainCam = Camera.main;
+            if (mainCam != null)
+            {
+                // Get the root transform (likely XR Origin)
+                Transform root = mainCam.transform.root;
+                playerTarget = root;
+                Debug.Log($"[MonsterAI] {gameObject.name} found player via Camera (root: '{root.name}') at position {playerTarget.position}");
+                return;
+            }
+
+            Debug.LogError($"[MonsterAI] {gameObject.name} could not find player target with any method!");
+        }
+
+        IEnumerator FindPlayerCoroutine()
+        {
+            int attempts = 0;
+            while (playerTarget == null && attempts < 20)
+            {
+                yield return new WaitForSeconds(0.5f);
+                attempts++;
+                Debug.LogWarning($"[MonsterAI] {gameObject.name} retry finding player (attempt {attempts}/20)");
+                FindPlayer();
+            }
+
+            if (playerTarget == null)
+            {
+                Debug.LogError($"[MonsterAI] {gameObject.name} gave up finding player after 20 attempts!");
+            }
         }
 
         void Update()
@@ -127,11 +181,22 @@ namespace VRDungeonCrawler.AI
             {
                 float distanceToPlayer = Vector3.Distance(transform.position, playerTarget.position);
 
+                // DEBUG: Draw detection range and line to player
+                Debug.DrawRay(transform.position, Vector3.up * 2f, Color.yellow);
+                Debug.DrawLine(transform.position, playerTarget.position, distanceToPlayer <= aggroRange ? Color.red : Color.green);
+
+                // DEBUG: Log distance check periodically
+                if (Time.frameCount % 60 == 0) // Every ~1 second at 60fps
+                {
+                    Debug.Log($"[MonsterAI] {gameObject.name} distance to player: {distanceToPlayer:F2}m (aggroRange={aggroRange}m, isAggro={isAggro})");
+                }
+
                 // Trigger aggro if player is within range
                 if (distanceToPlayer <= aggroRange)
                 {
                     if (!isAggro)
                     {
+                        Debug.Log($"[MonsterAI] {gameObject.name} TRIGGERING AGGRO - player within {distanceToPlayer:F2}m");
                         TriggerAggro();
                     }
                     lastAggroTime = Time.time;
@@ -146,9 +211,16 @@ namespace VRDungeonCrawler.AI
                         ChooseRandomDirection();
                         nextActionTime = Time.time + Random.Range(walkTimeMin, walkTimeMax);
 
-                        if (showDebug)
-                            Debug.Log($"[MonsterAI] {gameObject.name} lost aggro, returning to patrol");
+                        Debug.Log($"[MonsterAI] {gameObject.name} lost aggro, returning to patrol");
                     }
+                }
+            }
+            else
+            {
+                // DEBUG: Log if player target is null
+                if (Time.frameCount % 120 == 0) // Every ~2 seconds
+                {
+                    Debug.LogWarning($"[MonsterAI] {gameObject.name} playerTarget is NULL!");
                 }
             }
 
@@ -203,6 +275,14 @@ namespace VRDungeonCrawler.AI
                 Vector3 toPlayer = (playerTarget.position - transform.position).normalized;
                 Vector3 chaseDirection = new Vector3(toPlayer.x, 0f, toPlayer.z).normalized;
 
+                float distanceToPlayer = Vector3.Distance(transform.position, playerTarget.position);
+
+                // DEBUG: Draw chase direction
+                Debug.DrawRay(transform.position + Vector3.up * 0.5f, chaseDirection * 2f, Color.magenta);
+
+                // DEBUG: Log chase state
+                Debug.Log($"[MonsterAI] {gameObject.name} CHASING: distance={distanceToPlayer:F2}m, chaseDirection={chaseDirection}, velocity={rb.linearVelocity.magnitude:F2}");
+
                 // Rotate to face player
                 if (chaseDirection.magnitude > 0.01f)
                 {
@@ -214,12 +294,6 @@ namespace VRDungeonCrawler.AI
                 Vector3 movement = chaseDirection * chaseSpeed;
                 Vector3 newVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
                 rb.linearVelocity = newVelocity;
-
-                if (showDebug)
-                {
-                    float distanceToPlayer = Vector3.Distance(transform.position, playerTarget.position);
-                    Debug.Log($"[MonsterAI] {gameObject.name} chasing player (distance={distanceToPlayer:F1})");
-                }
 
                 return;
             }
@@ -327,8 +401,21 @@ namespace VRDungeonCrawler.AI
             isPaused = false; // Stop pausing
             lastAggroTime = Time.time;
 
-            if (showDebug)
-                Debug.Log($"[MonsterAI] {gameObject.name} triggered aggro - now chasing player!");
+            Debug.Log($"[MonsterAI] {gameObject.name} triggered aggro - now chasing player!");
+        }
+
+        void OnDrawGizmos()
+        {
+            // Draw aggro range sphere
+            Gizmos.color = isAggro ? Color.red : Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, aggroRange);
+
+            // Draw line to player if found
+            if (playerTarget != null)
+            {
+                Gizmos.color = isAggro ? Color.red : Color.green;
+                Gizmos.DrawLine(transform.position, playerTarget.position);
+            }
         }
     }
 }

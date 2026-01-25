@@ -54,14 +54,21 @@ namespace VRDungeonCrawler.AI
         {
             // Eyes are in hierarchy: Head -> LeftSocket/RightSocket -> LeftEye/RightEye
             Transform head = transform.Find("Head");
+            Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - Looking for eyes. Head found: {head != null}");
+
             if (head != null)
             {
                 Transform leftSocket = head.Find("LeftSocket");
+                Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - LeftSocket found: {leftSocket != null}");
+
                 if (leftSocket != null)
                 {
                     leftEye = leftSocket.Find("LeftEye");
+                    Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - LeftEye found: {leftEye != null}");
+
                     if (leftEye != null)
                     {
+                        Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - LeftEye position: {leftEye.position}");
                         Renderer renderer = leftEye.GetComponent<Renderer>();
                         if (renderer != null)
                         {
@@ -71,11 +78,16 @@ namespace VRDungeonCrawler.AI
                 }
 
                 Transform rightSocket = head.Find("RightSocket");
+                Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - RightSocket found: {rightSocket != null}");
+
                 if (rightSocket != null)
                 {
                     rightEye = rightSocket.Find("RightEye");
+                    Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - RightEye found: {rightEye != null}");
+
                     if (rightEye != null)
                     {
+                        Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - RightEye position: {rightEye.position}");
                         Renderer renderer = rightEye.GetComponent<Renderer>();
                         if (renderer != null)
                         {
@@ -85,18 +97,19 @@ namespace VRDungeonCrawler.AI
                 }
             }
 
-            if (showDebug)
-            {
-                Debug.Log($"[SkeletonEyeEffect] Found eyes - Left: {leftEye != null}, Right: {rightEye != null}");
-            }
+            Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - Final result - Left: {leftEye != null}, Right: {rightEye != null}");
         }
 
         ParticleSystem CreateEyeFireEffect(Transform eyeTransform)
         {
+            Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - Creating fire effect for {eyeTransform.name} at world position {eyeTransform.position}");
+
             GameObject fireObj = new GameObject($"{eyeTransform.name}_Fire");
             fireObj.transform.SetParent(eyeTransform);
             fireObj.transform.localPosition = Vector3.zero;
             fireObj.transform.localRotation = Quaternion.identity;
+
+            Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - Fire GameObject created at world position {fireObj.transform.position}");
 
             ParticleSystem ps = fireObj.AddComponent<ParticleSystem>();
 
@@ -173,12 +186,19 @@ namespace VRDungeonCrawler.AI
                     SetEyeColor(aggroEyeColor);
                     if (enableFireParticles)
                     {
-                        if (leftEyeFire != null) leftEyeFire.Play();
-                        if (rightEyeFire != null) rightEyeFire.Play();
+                        if (leftEyeFire != null)
+                        {
+                            leftEyeFire.Play();
+                            Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - Playing LEFT fire at position {leftEyeFire.transform.position}");
+                        }
+                        if (rightEyeFire != null)
+                        {
+                            rightEyeFire.Play();
+                            Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - Playing RIGHT fire at position {rightEyeFire.transform.position}");
+                        }
                     }
 
-                    if (showDebug)
-                        Debug.Log("[SkeletonEyeEffect] Eyes turned fiery red - aggro!");
+                    Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - Eyes turned fiery red - aggro! (leftEye={leftEye?.position}, rightEye={rightEye?.position})");
                 }
                 else
                 {
@@ -190,8 +210,7 @@ namespace VRDungeonCrawler.AI
                         if (rightEyeFire != null) rightEyeFire.Stop();
                     }
 
-                    if (showDebug)
-                        Debug.Log("[SkeletonEyeEffect] Eyes returned to normal green");
+                    Debug.Log($"[SkeletonEyeEffect] {gameObject.name} - Eyes returned to normal green");
                 }
 
                 wasAggro = isAggro;

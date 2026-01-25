@@ -1235,27 +1235,27 @@ namespace VRDungeonCrawler.Dungeon
                 monsterAI.chaseSpeed = 3.5f;
                 monsterAI.aggroRange = 2f; // Detect player within 2m
                 monsterAI.maxRoamDistance = 8f;
-                monsterAI.showDebug = false;
+                monsterAI.showDebug = true; // ENABLE DEBUG
 
                 // Add SkeletonAnimator for procedural animation
                 AI.SkeletonAnimator animator = skeleton.AddComponent<AI.SkeletonAnimator>();
                 animator.walkCycleSpeed = 4f;
                 animator.legSwingAngle = 30f;
                 animator.armSwingAngle = 20f;
-                animator.showDebug = false;
+                animator.showDebug = true; // ENABLE DEBUG
 
                 // Add SkeletonAttack for melee combat
                 AI.SkeletonAttack attack = skeleton.AddComponent<AI.SkeletonAttack>();
                 attack.attackRange = 1.5f;
                 attack.attackDamage = 1;
                 attack.attackCooldown = 2f;
-                attack.showDebug = false;
+                attack.showDebug = true; // ENABLE DEBUG
 
                 // Add SkeletonEyeEffect for fiery red eyes when aggro
                 AI.SkeletonEyeEffect eyeEffect = skeleton.AddComponent<AI.SkeletonEyeEffect>();
                 eyeEffect.enableFireParticles = true;
                 eyeEffect.fireParticleCount = 10;
-                eyeEffect.showDebug = false;
+                eyeEffect.showDebug = true; // ENABLE DEBUG
 
                 // Add Rigidbody
                 Rigidbody rb = skeleton.GetComponent<Rigidbody>();

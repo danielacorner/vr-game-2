@@ -200,6 +200,8 @@ namespace VRDungeonCrawler.AI
 
                 // Add MonsterAI component
                 MonsterAI monsterAI = monster.AddComponent<MonsterAI>();
+                monsterAI.aggroRange = 2f; // Detect player within 2m
+                monsterAI.showDebug = true; // ENABLE DEBUG
 
                 // Add SkeletonAnimator for skeleton monsters
                 if (type == MonsterType.Skeleton)
@@ -208,20 +210,20 @@ namespace VRDungeonCrawler.AI
                     animator.walkCycleSpeed = 4f;
                     animator.legSwingAngle = 30f;
                     animator.armSwingAngle = 20f;
-                    animator.showDebug = false;
+                    animator.showDebug = true; // ENABLE DEBUG
 
                     // Add SkeletonAttack for melee combat
                     SkeletonAttack attack = monster.AddComponent<SkeletonAttack>();
                     attack.attackRange = 1.5f;
                     attack.attackDamage = 1;
                     attack.attackCooldown = 2f;
-                    attack.showDebug = false;
+                    attack.showDebug = true; // ENABLE DEBUG
 
                     // Add SkeletonEyeEffect for fiery red eyes when aggro
                     SkeletonEyeEffect eyeEffect = monster.AddComponent<SkeletonEyeEffect>();
                     eyeEffect.enableFireParticles = true;
                     eyeEffect.fireParticleCount = 10;
-                    eyeEffect.showDebug = false;
+                    eyeEffect.showDebug = true; // ENABLE DEBUG
                 }
 
                 // Add Rigidbody if not present
