@@ -49100,6 +49100,9 @@ struct MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9  : public MonoBehavio
 	float ___walkTimeMax;
 	float ___pauseTimeMin;
 	float ___pauseTimeMax;
+	float ___aggroRange;
+	float ___chaseSpeed;
+	float ___aggroCooldownTime;
 	float ___maxRoamDistance;
 	bool ___showDebug;
 	MonsterBase_t290516D2F876CDDB8D7142E097A44DC822B9A424* ___monsterBase;
@@ -49110,6 +49113,9 @@ struct MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9  : public MonoBehavio
 	bool ___isPaused;
 	bool ___isStunned;
 	float ___stunEndTime;
+	bool ___isAggro;
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___playerTarget;
+	float ___lastAggroTime;
 };
 struct MonsterBase_t290516D2F876CDDB8D7142E097A44DC822B9A424  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {

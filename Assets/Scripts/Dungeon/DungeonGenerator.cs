@@ -710,20 +710,32 @@ namespace VRDungeonCrawler.Dungeon
 
         private void DecorateCombatRoom(DungeonRoom room)
         {
-            // Add pillars for cover
+            // Add pillars for cover - mix of intact and broken
             int pillarCount = rng.Next(this.pillarCount.x, this.pillarCount.y + 1);
             float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.35f;
 
             for (int i = 0; i < pillarCount; i++)
             {
                 Vector3 localPos = GetRandomPositionInRoom(roomRadius);
-                GameObject pillar = DungeonRoomBuilder.CreatePillar();
+
+                // 30% chance for broken pillar
+                GameObject pillar = (float)rng.NextDouble() < 0.3f
+                    ? DungeonRoomBuilder.CreateBrokenPillar()
+                    : DungeonRoomBuilder.CreatePillar();
+
                 pillar.transform.SetParent(room.roomObject.transform);
                 pillar.transform.localPosition = localPos;
             }
 
+            // Add ancient dungeon decorations
+            AddAncientDecorations(room, density: 0.7f);
+
             // Add wall torches
             AddWallTorches(room);
+
+            // Spawn skeleton monsters (3-6 for combat rooms)
+            int skeletonCount = rng.Next(3, 7);
+            SpawnSkeletons(room, skeletonCount);
         }
 
         private void DecorateTreasureRoom(DungeonRoom room)
@@ -763,7 +775,14 @@ namespace VRDungeonCrawler.Dungeon
                 pillar.transform.localPosition = corner;
             }
 
+            // Add ancient decorations
+            AddAncientDecorations(room, density: 0.5f);
+
             AddWallTorches(room);
+
+            // Spawn skeleton guards (2-3 guarding the treasure)
+            int skeletonCount = rng.Next(2, 4);
+            SpawnSkeletons(room, skeletonCount);
         }
 
         private void DecoratePuzzleRoom(DungeonRoom room)
@@ -788,7 +807,24 @@ namespace VRDungeonCrawler.Dungeon
             }
 
             // Add some pillars as obstacles
+            int pillarCount = rng.Next(2, 4);
+            float pillarRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.35f;
+            for (int i = 0; i < pillarCount; i++)
+            {
+                Vector3 localPos = GetRandomPositionInRoom(pillarRadius);
+                GameObject pillar = DungeonRoomBuilder.CreatePillar();
+                pillar.transform.SetParent(room.roomObject.transform);
+                pillar.transform.localPosition = localPos;
+            }
+
+            // Add ancient decorations
+            AddAncientDecorations(room, density: 0.6f);
+
             AddWallTorches(room);
+
+            // Spawn skeleton wanderers (1-2 for puzzle rooms - light defense)
+            int skeletonCount = rng.Next(1, 3);
+            SpawnSkeletons(room, skeletonCount);
         }
 
         private void DecorateShopRoom(DungeonRoom room)
@@ -832,7 +868,12 @@ namespace VRDungeonCrawler.Dungeon
             light.intensity = 5f;
             light.range = 15f;
 
+            // Add light ancient decorations (shop should look more maintained)
+            AddAncientDecorations(room, density: 0.3f);
+
             AddWallTorches(room);
+
+            // Shop is a safe zone - no skeletons spawned
         }
 
         private void DecorateBossRoom(DungeonRoom room)
@@ -885,7 +926,148 @@ namespace VRDungeonCrawler.Dungeon
                 bossDoorObj.AddComponent<BossDoor>();
             }
 
+            // Add dramatic ancient decorations for boss atmosphere
+            AddAncientDecorations(room, density: 0.8f);
+
             AddWallTorches(room, torchesPerRoom * 2); // Extra bright boss room
+
+            // Spawn skeleton horde for boss room (4-8 skeletons - intense combat)
+            int skeletonCount = rng.Next(4, 9);
+            SpawnSkeletons(room, skeletonCount);
+        }
+
+        /// <summary>
+        /// Adds ancient dungeon decorations - rubble, moss, cracks, bones, etc.
+        /// </summary>
+        private void AddAncientDecorations(DungeonRoom room, float density = 1f)
+        {
+            float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.4f;
+            int decorationCount = (int)(10 * density);
+
+            for (int i = 0; i < decorationCount; i++)
+            {
+                Vector3 localPos = GetRandomPositionInRoom(roomRadius);
+                float roll = (float)rng.NextDouble();
+
+                GameObject decoration = null;
+
+                if (roll < 0.25f)
+                {
+                    // Rubble pile
+                    decoration = DungeonRoomBuilder.CreateRubblePile(Random.Range(0.8f, 1.5f));
+                    decoration.transform.localPosition = localPos;
+                }
+                else if (roll < 0.45f)
+                {
+                    // Moss patch
+                    decoration = DungeonRoomBuilder.CreateMossPatch(Random.Range(0.4f, 0.8f));
+                    decoration.transform.localPosition = localPos + new Vector3(0, 0.01f, 0);
+                }
+                else if (roll < 0.55f)
+                {
+                    // Floor cracks
+                    decoration = DungeonRoomBuilder.CreateCrack(Random.Range(0.8f, 1.5f));
+                    decoration.transform.localPosition = localPos + new Vector3(0, 0.01f, 0);
+                }
+                else if (roll < 0.65f)
+                {
+                    // Fallen column
+                    decoration = DungeonRoomBuilder.CreateFallenColumn(Random.Range(1.5f, 2.5f));
+                    decoration.transform.localPosition = localPos + new Vector3(0, 0.2f, 0);
+                    decoration.transform.localRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+                }
+                else if (roll < 0.75f)
+                {
+                    // Scattered bones
+                    decoration = DungeonRoomBuilder.CreateBones();
+                    decoration.transform.localPosition = localPos;
+                }
+
+                if (decoration != null)
+                {
+                    decoration.transform.SetParent(room.roomObject.transform);
+                }
+            }
+
+            // Add wall decorations
+            AddWallDecorations(room, (int)(6 * density));
+
+            // Add ceiling decorations (vines)
+            if ((float)rng.NextDouble() < 0.5f)
+            {
+                AddCeilingVines(room, (int)(3 * density));
+            }
+        }
+
+        /// <summary>
+        /// Adds cracks and damage to walls
+        /// </summary>
+        private void AddWallDecorations(DungeonRoom room, int count)
+        {
+            Transform walls = room.roomObject.transform.Find("Walls");
+            if (walls == null) return;
+
+            string[] wallNames = { "NorthWall", "SouthWall", "EastWall", "WestWall" };
+
+            for (int i = 0; i < count; i++)
+            {
+                // Pick a random wall
+                string wallName = wallNames[rng.Next(wallNames.Length)];
+                Transform wall = walls.Find(wallName);
+
+                if (wall != null)
+                {
+                    float roll = (float)rng.NextDouble();
+                    GameObject decoration = null;
+
+                    if (roll < 0.6f)
+                    {
+                        // Wall crack
+                        decoration = DungeonRoomBuilder.CreateCrack(Random.Range(0.5f, 1.2f));
+                    }
+                    else if (roll < 0.85f)
+                    {
+                        // Moss patch on wall
+                        decoration = DungeonRoomBuilder.CreateMossPatch(Random.Range(0.3f, 0.6f));
+                    }
+                    else
+                    {
+                        // Wall damage
+                        decoration = DungeonRoomBuilder.CreateWallDamage(Random.Range(0.4f, 0.8f));
+                    }
+
+                    if (decoration != null)
+                    {
+                        decoration.transform.SetParent(wall);
+                        decoration.transform.localPosition = new Vector3(
+                            Random.Range(-3f, 3f),
+                            Random.Range(0.5f, 3f),
+                            wallName.Contains("East") || wallName.Contains("West") ? 0.21f : 0.21f
+                        );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds hanging vines from ceiling
+        /// </summary>
+        private void AddCeilingVines(DungeonRoom room, int count)
+        {
+            Transform ceiling = room.roomObject.transform.Find("Ceiling");
+            if (ceiling == null) return;
+
+            float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.3f;
+
+            for (int i = 0; i < count; i++)
+            {
+                Vector3 localPos = GetRandomPositionInRoom(roomRadius);
+                localPos.y = DungeonRoomBuilder.WALL_HEIGHT;
+
+                GameObject vines = DungeonRoomBuilder.CreateHangingVines(Random.Range(1f, 2f));
+                vines.transform.SetParent(room.roomObject.transform);
+                vines.transform.localPosition = localPos;
+            }
         }
 
         private void AddWallTorches(DungeonRoom room, int count = -1)
@@ -960,6 +1142,124 @@ namespace VRDungeonCrawler.Dungeon
                 case RoomType.Boss: return Color.red;
                 default: return Color.gray;
             }
+        }
+
+        // ==================== SKELETON MONSTER SPAWNING ====================
+
+        /// <summary>
+        /// Creates a skeleton monster programmatically
+        /// </summary>
+        private GameObject CreateSkeleton()
+        {
+            // Create main body (torso)
+            GameObject skeleton = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            skeleton.name = "Skeleton";
+            skeleton.transform.localScale = new Vector3(0.6f, 1.2f, 0.4f);
+
+            // Create bone-white material
+            Material boneMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            boneMat.color = new Color(0.9f, 0.85f, 0.7f); // Bone white
+            skeleton.GetComponent<Renderer>().material = boneMat;
+
+            // Add head (skull)
+            GameObject head = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            head.name = "Skull";
+            head.transform.SetParent(skeleton.transform);
+            head.transform.localPosition = new Vector3(0, 0.8f, 0);
+            head.transform.localScale = new Vector3(0.4f, 0.5f, 0.4f);
+            head.GetComponent<Renderer>().material = boneMat;
+            // Remove head collider (only body collider matters)
+            DestroyImmediate(head.GetComponent<Collider>());
+
+            // Add arms (simple bone sticks)
+            for (int i = 0; i < 2; i++)
+            {
+                GameObject arm = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                arm.name = i == 0 ? "LeftArm" : "RightArm";
+                arm.transform.SetParent(skeleton.transform);
+                arm.transform.localPosition = new Vector3(i == 0 ? -0.4f : 0.4f, 0.2f, 0);
+                arm.transform.localRotation = Quaternion.Euler(0, 0, i == 0 ? 45f : -45f);
+                arm.transform.localScale = new Vector3(0.15f, 0.5f, 0.15f);
+                arm.GetComponent<Renderer>().material = boneMat;
+                // Remove arm collider
+                DestroyImmediate(arm.GetComponent<Collider>());
+            }
+
+            // Add legs
+            for (int i = 0; i < 2; i++)
+            {
+                GameObject leg = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                leg.name = i == 0 ? "LeftLeg" : "RightLeg";
+                leg.transform.SetParent(skeleton.transform);
+                leg.transform.localPosition = new Vector3(i == 0 ? -0.15f : 0.15f, -0.9f, 0);
+                leg.transform.localScale = new Vector3(0.15f, 0.6f, 0.15f);
+                leg.GetComponent<Renderer>().material = boneMat;
+                // Remove leg collider
+                DestroyImmediate(leg.GetComponent<Collider>());
+            }
+
+            // Adjust body collider to be smaller (no arms/legs)
+            BoxCollider bodyCollider = skeleton.GetComponent<BoxCollider>();
+            bodyCollider.size = new Vector3(0.8f, 1.8f, 0.6f);
+            bodyCollider.center = new Vector3(0, 0.3f, 0);
+
+            // Add MonsterBase component
+            var monsterBase = skeleton.AddComponent<AI.MonsterBase>();
+            monsterBase.monsterType = AI.MonsterType.Skeleton;
+            monsterBase.maxHP = 15;
+            monsterBase.currentHP = 15;
+            monsterBase.knockbackForce = 8f;
+            monsterBase.showDebug = false;
+
+            // Add MonsterAI component
+            var monsterAI = skeleton.AddComponent<AI.MonsterAI>();
+            monsterAI.walkSpeed = 1.2f;
+            monsterAI.chaseSpeed = 3.5f;
+            monsterAI.aggroRange = 6f;
+            monsterAI.maxRoamDistance = 8f;
+            monsterAI.showDebug = false;
+
+            // Ensure Rigidbody is added (MonsterBase adds it in Awake)
+            Rigidbody rb = skeleton.GetComponent<Rigidbody>();
+            if (rb == null)
+            {
+                rb = skeleton.AddComponent<Rigidbody>();
+                rb.mass = 1f;
+                rb.linearDamping = 2f;
+                rb.angularDamping = 1f;
+                rb.useGravity = true;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+            }
+
+            return skeleton;
+        }
+
+        /// <summary>
+        /// Spawns skeleton monsters in a room
+        /// </summary>
+        /// <param name="room">Room to spawn in</param>
+        /// <param name="count">Number of skeletons to spawn</param>
+        private void SpawnSkeletons(DungeonRoom room, int count)
+        {
+            if (count <= 0) return;
+
+            float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.35f;
+
+            for (int i = 0; i < count; i++)
+            {
+                Vector3 localPos = GetRandomPositionInRoom(roomRadius);
+                localPos.y = 0.5f; // Spawn at ground level
+
+                GameObject skeleton = CreateSkeleton();
+                skeleton.transform.SetParent(room.roomObject.transform);
+                skeleton.transform.localPosition = localPos;
+
+                // Random rotation
+                skeleton.transform.localRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+            }
+
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] Spawned {count} skeletons in {room.roomType} room at {room.gridPosition}");
         }
     }
 

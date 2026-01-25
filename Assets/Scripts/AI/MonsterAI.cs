@@ -5,7 +5,7 @@ namespace VRDungeonCrawler.AI
 {
     /// <summary>
     /// AI controller for dungeon monsters
-    /// All monsters use casual patrol pattern: move slowly, stop occasionally, change direction
+    /// Monsters use casual patrol pattern by default, but become aggressive when player is nearby or when damaged
     /// </summary>
     [RequireComponent(typeof(MonsterBase))]
     [RequireComponent(typeof(Rigidbody))]
@@ -27,6 +27,16 @@ namespace VRDungeonCrawler.AI
         [Tooltip("Maximum pause duration")]
         public float pauseTimeMax = 4f;
 
+        [Header("Aggro/Chase Settings")]
+        [Tooltip("Distance at which monster detects and chases player")]
+        public float aggroRange = 6f;
+
+        [Tooltip("Speed when chasing player (faster than patrol)")]
+        public float chaseSpeed = 3.5f;
+
+        [Tooltip("How long to chase player after losing sight")]
+        public float aggroCooldownTime = 5f;
+
         [Header("Movement Bounds")]
         [Tooltip("Maximum distance from spawn point")]
         public float maxRoamDistance = 8f;
@@ -45,6 +55,11 @@ namespace VRDungeonCrawler.AI
         private bool isStunned = false;
         private float stunEndTime;
 
+        // Aggro state
+        private bool isAggro = false;
+        private Transform playerTarget = null;
+        private float lastAggroTime = 0f;
+
         void Awake()
         {
             monsterBase = GetComponent<MonsterBase>();
@@ -62,6 +77,26 @@ namespace VRDungeonCrawler.AI
             {
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
+            }
+
+            // Find player (XR Origin)
+            GameObject xrOrigin = GameObject.Find("XR Origin");
+            if (xrOrigin != null)
+            {
+                playerTarget = xrOrigin.transform;
+            }
+            else
+            {
+                // Fallback: try to find by tag
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    playerTarget = player.transform;
+                }
+                else
+                {
+                    Debug.LogWarning($"[MonsterAI] {gameObject.name} could not find player target");
+                }
             }
 
             // Start with walking
@@ -87,6 +122,43 @@ namespace VRDungeonCrawler.AI
                 return; // Don't process normal movement while stunned
             }
 
+            // Check for player proximity to trigger aggro
+            if (playerTarget != null)
+            {
+                float distanceToPlayer = Vector3.Distance(transform.position, playerTarget.position);
+
+                // Trigger aggro if player is within range
+                if (distanceToPlayer <= aggroRange)
+                {
+                    if (!isAggro)
+                    {
+                        TriggerAggro();
+                    }
+                    lastAggroTime = Time.time;
+                }
+                else if (isAggro)
+                {
+                    // Check if aggro should cooldown (player out of range for too long)
+                    if (Time.time - lastAggroTime > aggroCooldownTime)
+                    {
+                        isAggro = false;
+                        isPaused = false;
+                        ChooseRandomDirection();
+                        nextActionTime = Time.time + Random.Range(walkTimeMin, walkTimeMax);
+
+                        if (showDebug)
+                            Debug.Log($"[MonsterAI] {gameObject.name} lost aggro, returning to patrol");
+                    }
+                }
+            }
+
+            // If in aggro mode, skip patrol logic
+            if (isAggro)
+            {
+                return;
+            }
+
+            // Normal patrol logic
             // Check if time to change state
             if (Time.time >= nextActionTime)
             {
@@ -124,6 +196,28 @@ namespace VRDungeonCrawler.AI
                 return;
             }
 
+            // Aggro/Chase behavior
+            if (isAggro && playerTarget != null)
+            {
+                // Calculate direction to player
+                Vector3 toPlayer = (playerTarget.position - transform.position).normalized;
+                Vector3 chaseDirection = new Vector3(toPlayer.x, 0f, toPlayer.z).normalized;
+
+                // Move aggressively toward player
+                Vector3 movement = chaseDirection * chaseSpeed;
+                Vector3 newVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
+                rb.linearVelocity = newVelocity;
+
+                if (showDebug)
+                {
+                    float distanceToPlayer = Vector3.Distance(transform.position, playerTarget.position);
+                    Debug.Log($"[MonsterAI] {gameObject.name} chasing player (distance={distanceToPlayer:F1})");
+                }
+
+                return;
+            }
+
+            // Normal patrol behavior
             if (!isPaused)
             {
                 // Walk slowly in current direction
@@ -144,8 +238,11 @@ namespace VRDungeonCrawler.AI
                 rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
             }
 
-            // Keep monster within bounds
-            CheckBounds();
+            // Keep monster within bounds (only during patrol, not during chase)
+            if (!isAggro)
+            {
+                CheckBounds();
+            }
         }
 
         void ChooseRandomDirection()
@@ -184,6 +281,7 @@ namespace VRDungeonCrawler.AI
 
         /// <summary>
         /// Stun the monster for a duration (called by MonsterBase when hit)
+        /// Also triggers aggro toward player
         /// </summary>
         public void Stun(float duration)
         {
@@ -196,8 +294,27 @@ namespace VRDungeonCrawler.AI
                 rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
             }
 
+            // Getting hit triggers aggro
+            TriggerAggro();
+
             if (showDebug)
-                Debug.Log($"[MonsterAI] {gameObject.name} stunned for {duration} seconds");
+                Debug.Log($"[MonsterAI] {gameObject.name} stunned for {duration} seconds and now aggro");
+        }
+
+        /// <summary>
+        /// Triggers aggressive behavior toward player
+        /// Called when player gets close or when monster is damaged
+        /// </summary>
+        public void TriggerAggro()
+        {
+            if (isAggro) return; // Already aggro
+
+            isAggro = true;
+            isPaused = false; // Stop pausing
+            lastAggroTime = Time.time;
+
+            if (showDebug)
+                Debug.Log($"[MonsterAI] {gameObject.name} triggered aggro - now chasing player!");
         }
     }
 }

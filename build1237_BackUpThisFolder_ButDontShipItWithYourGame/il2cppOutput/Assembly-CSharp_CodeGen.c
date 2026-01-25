@@ -803,10 +803,15 @@ extern void DungeonGenerator_DecorateTreasureRoom_m22ED7EEFC9EF69C68B206F0CEDD7E
 extern void DungeonGenerator_DecoratePuzzleRoom_mD65D05E5D7BCB5B8932A4DF91CA5F01657B522FC (void);
 extern void DungeonGenerator_DecorateShopRoom_m0DC7720DD99E7C3022650CC845D4B9192A4D6CED (void);
 extern void DungeonGenerator_DecorateBossRoom_m018298B05BF5B1806D11BCAF072DF3B1B51451C9 (void);
+extern void DungeonGenerator_AddAncientDecorations_m3B505AEF48C5EFDE06FD2A91CC965F0DB25A44F1 (void);
+extern void DungeonGenerator_AddWallDecorations_m84EC8A00217AB84E03A9C8F3456F60D29D832A98 (void);
+extern void DungeonGenerator_AddCeilingVines_m705D43559412DAF56B911DC84F084A79BC1B2D78 (void);
 extern void DungeonGenerator_AddWallTorches_m7BE0E0400F6D564D28B3494A76D83AAFF5569DFE (void);
 extern void DungeonGenerator_GetRandomPositionInRoom_m5ACD94C161D247B4252FB39F2D8D411C38E02FF8 (void);
 extern void DungeonGenerator_OnDrawGizmos_m4B666DF34EB1C0A6441D49755C7DF0C745D039F2 (void);
 extern void DungeonGenerator_GetRoomTypeColor_m2070DCEB4C13D6E6FFCB8F12165F33E9BE2E3BBF (void);
+extern void DungeonGenerator_CreateSkeleton_mE0CBD47BDEF590B641D1D378F58D8D52FC21D216 (void);
+extern void DungeonGenerator_SpawnSkeletons_m5F2A398096C464F61C6165150309E21C8D0D74F2 (void);
 extern void DungeonGenerator__ctor_m395C12174A7F8ECEA198CA5294055B83B173286E (void);
 extern void U3CU3Ec__cctor_m612412108693B31C0AFE331D21E76CA711D04C10 (void);
 extern void U3CU3Ec__ctor_mB6CA461A2303E4630940D92ACC257F9EF8E1A9A2 (void);
@@ -829,6 +834,14 @@ extern void DungeonRoomBuilder_CreatePyramid_m777EFACAAD2B48FD1BF074DE60B82D5F8A
 extern void DungeonRoomBuilder_CreateDoorway_m7F187265E89A4EF078A56FAA230B3371D1808F37 (void);
 extern void DungeonRoomBuilder_CreatePolytopiaStone_m77BB12130A6406B5E3C8E9F28AAF16DF77734D1D (void);
 extern void DungeonRoomBuilder_CreateCeiling_m24B7B4A55BAC34115316F32A12EA6D77E15F1AC6 (void);
+extern void DungeonRoomBuilder_CreateRubblePile_m674382B40F2B20F9623DBA1A107DBCAD59E258B5 (void);
+extern void DungeonRoomBuilder_CreateMossPatch_m8F36C4F6170C75815EE955CAFFEA5362F92F3FDF (void);
+extern void DungeonRoomBuilder_CreateCrack_mF5D71752DC4CBFBB6BBA22F85B385FEBA0028228 (void);
+extern void DungeonRoomBuilder_CreateBrokenPillar_mF20ABD94997A6DBC5CCF1CDBF3B0FEDC9E021A31 (void);
+extern void DungeonRoomBuilder_CreateFallenColumn_m7DDC73BB15ACA398B5962092B59FE4319C3EA375 (void);
+extern void DungeonRoomBuilder_CreateBones_m31BC86893E78090DB2605FF1A9E0D5CEEF66E5FC (void);
+extern void DungeonRoomBuilder_CreateHangingVines_m31CDA5BDA99E5579E401ADA12993A7269D1CD3EB (void);
+extern void DungeonRoomBuilder_CreateWallDamage_m482BBDBE47765CAD3CE6AFB732FC6BBE8A4C513B (void);
 extern void DungeonRoomBuilder__cctor_mCD8B71D87B953DFE52B44552F96BFCA9725485FE (void);
 extern void DebugDungeonTeleport_Start_m1F34844848FC179C6DE0A1B1CBF9F91646E1DB92 (void);
 extern void DebugDungeonTeleport_OnButtonClick_m5384EBF802B2E7321F8EDC4E1676A292691A9456 (void);
@@ -969,6 +982,7 @@ extern void MonsterAI_FixedUpdate_m126FA85D5264E265CC9F3AD6EDBFD9033566D935 (voi
 extern void MonsterAI_ChooseRandomDirection_m3F87F5A2504F2D5869EA81A98FEE4D88F4E23B69 (void);
 extern void MonsterAI_CheckBounds_mD8BACFDFE0F69D4B96B99FC85C0A3208741AF620 (void);
 extern void MonsterAI_Stun_m4B7FAAE9E348B23B603175D9217B92DFB6CE3C02 (void);
+extern void MonsterAI_TriggerAggro_mB50F1C7BED0C98D0A7229D9FF531525F3E45AB38 (void);
 extern void MonsterAI__ctor_mADAF8706E9EA328B5BF3FC84C7494A8F948214D3 (void);
 extern void MonsterBase_Awake_m23A08B466467DE7AF4E8094C11D8C483166D4128 (void);
 extern void MonsterBase_OnDrawGizmosSelected_m7D1F5B0577B68239178BA2463248C165E2CA4982 (void);
@@ -1078,7 +1092,7 @@ extern void PolytopiaStyleMeshGenerator_CreateBox_m5E4DB7F11F3F6C4C98AE9D7D91663
 extern void PolytopiaStyleMeshGenerator_CreateTrapezoid_mF4E6FC820C421AF40417256CB626FE1B7573CA42 (void);
 extern void PolytopiaStyleMeshGenerator_CreateWedge_mF1FBC326718B52670397F95F558048B61AE37571 (void);
 extern void PolytopiaStyleMeshGenerator_CreateBeveledCube_m606748C418C2959F3AEACB4CF968FEF009972EB7 (void);
-static Il2CppMethodPointer s_methodPointers[1071] = 
+static Il2CppMethodPointer s_methodPointers[1085] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1876,10 +1890,15 @@ static Il2CppMethodPointer s_methodPointers[1071] =
 	DungeonGenerator_DecoratePuzzleRoom_mD65D05E5D7BCB5B8932A4DF91CA5F01657B522FC,
 	DungeonGenerator_DecorateShopRoom_m0DC7720DD99E7C3022650CC845D4B9192A4D6CED,
 	DungeonGenerator_DecorateBossRoom_m018298B05BF5B1806D11BCAF072DF3B1B51451C9,
+	DungeonGenerator_AddAncientDecorations_m3B505AEF48C5EFDE06FD2A91CC965F0DB25A44F1,
+	DungeonGenerator_AddWallDecorations_m84EC8A00217AB84E03A9C8F3456F60D29D832A98,
+	DungeonGenerator_AddCeilingVines_m705D43559412DAF56B911DC84F084A79BC1B2D78,
 	DungeonGenerator_AddWallTorches_m7BE0E0400F6D564D28B3494A76D83AAFF5569DFE,
 	DungeonGenerator_GetRandomPositionInRoom_m5ACD94C161D247B4252FB39F2D8D411C38E02FF8,
 	DungeonGenerator_OnDrawGizmos_m4B666DF34EB1C0A6441D49755C7DF0C745D039F2,
 	DungeonGenerator_GetRoomTypeColor_m2070DCEB4C13D6E6FFCB8F12165F33E9BE2E3BBF,
+	DungeonGenerator_CreateSkeleton_mE0CBD47BDEF590B641D1D378F58D8D52FC21D216,
+	DungeonGenerator_SpawnSkeletons_m5F2A398096C464F61C6165150309E21C8D0D74F2,
 	DungeonGenerator__ctor_m395C12174A7F8ECEA198CA5294055B83B173286E,
 	U3CU3Ec__cctor_m612412108693B31C0AFE331D21E76CA711D04C10,
 	U3CU3Ec__ctor_mB6CA461A2303E4630940D92ACC257F9EF8E1A9A2,
@@ -1902,6 +1921,14 @@ static Il2CppMethodPointer s_methodPointers[1071] =
 	DungeonRoomBuilder_CreateDoorway_m7F187265E89A4EF078A56FAA230B3371D1808F37,
 	DungeonRoomBuilder_CreatePolytopiaStone_m77BB12130A6406B5E3C8E9F28AAF16DF77734D1D,
 	DungeonRoomBuilder_CreateCeiling_m24B7B4A55BAC34115316F32A12EA6D77E15F1AC6,
+	DungeonRoomBuilder_CreateRubblePile_m674382B40F2B20F9623DBA1A107DBCAD59E258B5,
+	DungeonRoomBuilder_CreateMossPatch_m8F36C4F6170C75815EE955CAFFEA5362F92F3FDF,
+	DungeonRoomBuilder_CreateCrack_mF5D71752DC4CBFBB6BBA22F85B385FEBA0028228,
+	DungeonRoomBuilder_CreateBrokenPillar_mF20ABD94997A6DBC5CCF1CDBF3B0FEDC9E021A31,
+	DungeonRoomBuilder_CreateFallenColumn_m7DDC73BB15ACA398B5962092B59FE4319C3EA375,
+	DungeonRoomBuilder_CreateBones_m31BC86893E78090DB2605FF1A9E0D5CEEF66E5FC,
+	DungeonRoomBuilder_CreateHangingVines_m31CDA5BDA99E5579E401ADA12993A7269D1CD3EB,
+	DungeonRoomBuilder_CreateWallDamage_m482BBDBE47765CAD3CE6AFB732FC6BBE8A4C513B,
 	DungeonRoomBuilder__cctor_mCD8B71D87B953DFE52B44552F96BFCA9725485FE,
 	DebugDungeonTeleport_Start_m1F34844848FC179C6DE0A1B1CBF9F91646E1DB92,
 	DebugDungeonTeleport_OnButtonClick_m5384EBF802B2E7321F8EDC4E1676A292691A9456,
@@ -2042,6 +2069,7 @@ static Il2CppMethodPointer s_methodPointers[1071] =
 	MonsterAI_ChooseRandomDirection_m3F87F5A2504F2D5869EA81A98FEE4D88F4E23B69,
 	MonsterAI_CheckBounds_mD8BACFDFE0F69D4B96B99FC85C0A3208741AF620,
 	MonsterAI_Stun_m4B7FAAE9E348B23B603175D9217B92DFB6CE3C02,
+	MonsterAI_TriggerAggro_mB50F1C7BED0C98D0A7229D9FF531525F3E45AB38,
 	MonsterAI__ctor_mADAF8706E9EA328B5BF3FC84C7494A8F948214D3,
 	MonsterBase_Awake_m23A08B466467DE7AF4E8094C11D8C483166D4128,
 	MonsterBase_OnDrawGizmosSelected_m7D1F5B0577B68239178BA2463248C165E2CA4982,
@@ -2157,7 +2185,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x0600012B, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1071] = 
+static const int32_t s_InvokerIndices[1085] = 
 {
 	15296,
 	15296,
@@ -2955,10 +2983,15 @@ static const int32_t s_InvokerIndices[1071] =
 	11602,
 	11602,
 	11602,
+	5905,
+	5876,
+	5876,
 	5876,
 	10303,
 	15296,
 	8694,
+	15084,
+	5876,
 	15296,
 	26539,
 	15296,
@@ -2981,6 +3014,14 @@ static const int32_t s_InvokerIndices[1071] =
 	21554,
 	24833,
 	19137,
+	24865,
+	24865,
+	24865,
+	24865,
+	24865,
+	26435,
+	24865,
+	24865,
 	26539,
 	15296,
 	15296,
@@ -3124,6 +3165,7 @@ static const int32_t s_InvokerIndices[1071] =
 	15296,
 	15296,
 	15296,
+	15296,
 	11602,
 	15296,
 	5566,
@@ -3235,7 +3277,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1071,
+	1085,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

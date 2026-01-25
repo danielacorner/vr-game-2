@@ -34388,6 +34388,9 @@ struct MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9  : public MonoBehavio
 	float ___walkTimeMax;
 	float ___pauseTimeMin;
 	float ___pauseTimeMax;
+	float ___aggroRange;
+	float ___chaseSpeed;
+	float ___aggroCooldownTime;
 	float ___maxRoamDistance;
 	bool ___showDebug;
 	MonsterBase_t290516D2F876CDDB8D7142E097A44DC822B9A424* ___monsterBase;
@@ -34398,6 +34401,9 @@ struct MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9  : public MonoBehavio
 	bool ___isPaused;
 	bool ___isStunned;
 	float ___stunEndTime;
+	bool ___isAggro;
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___playerTarget;
+	float ___lastAggroTime;
 };
 struct MonsterBase_t290516D2F876CDDB8D7142E097A44DC822B9A424  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
@@ -44343,9 +44349,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7511[17] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7512[12] = 
 {
 	static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___lifetime)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___floatSpeed)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___sidewaysDrift)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___scaleCurve)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___textColor)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___fontSize)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___canvas)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___text)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___canvasGroup)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___spawnTime)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___floatDirection)),static_cast<int32_t>(offsetof(DamageNumber_t957AF64E5706CD350368EA003ECEB7246FCC7678, ___startScale)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7513[15] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7513[21] = 
 {
-	static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___walkSpeed)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___walkTimeMin)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___walkTimeMax)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___pauseTimeMin)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___pauseTimeMax)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___maxRoamDistance)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___showDebug)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___monsterBase)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___rb)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___spawnPosition)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___currentMoveDirection)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___nextActionTime)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___isPaused)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___isStunned)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___stunEndTime)),};
+	static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___walkSpeed)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___walkTimeMin)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___walkTimeMax)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___pauseTimeMin)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___pauseTimeMax)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___aggroRange)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___chaseSpeed)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___aggroCooldownTime)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___maxRoamDistance)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___showDebug)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___monsterBase)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___rb)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___spawnPosition)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___currentMoveDirection)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___nextActionTime)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___isPaused)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___isStunned)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___stunEndTime)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___isAggro)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___playerTarget)),static_cast<int32_t>(offsetof(MonsterAI_tC24B619C05ED160C30DE6944D3B1C5EB89FEBCD9, ___lastAggroTime)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7514[4] = 
 {
 	static_cast<int32_t>(sizeof(RuntimeObject)),0,0,0,};

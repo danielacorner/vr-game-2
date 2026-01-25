@@ -455,5 +455,312 @@ namespace VRDungeonCrawler.Dungeon
 
             return ceiling;
         }
+
+        // ==================== ANCIENT DUNGEON DECORATIONS ====================
+
+        /// <summary>
+        /// Creates a rubble pile for floor decoration
+        /// </summary>
+        public static GameObject CreateRubblePile(float scale = 1f)
+        {
+            GameObject rubble = new GameObject("RubblePile");
+
+            // Create 3-5 random rock pieces
+            int rockCount = Random.Range(3, 6);
+            for (int i = 0; i < rockCount; i++)
+            {
+                GameObject rock = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                rock.name = $"Rock_{i}";
+                rock.transform.SetParent(rubble.transform);
+
+                // Random position within pile
+                rock.transform.localPosition = new Vector3(
+                    Random.Range(-0.3f, 0.3f) * scale,
+                    Random.Range(0.05f, 0.2f) * scale,
+                    Random.Range(-0.3f, 0.3f) * scale
+                );
+
+                // Random rotation
+                rock.transform.localRotation = Quaternion.Euler(
+                    Random.Range(0f, 45f),
+                    Random.Range(0f, 360f),
+                    Random.Range(0f, 45f)
+                );
+
+                // Random scale
+                float rockScale = Random.Range(0.15f, 0.35f) * scale;
+                rock.transform.localScale = Vector3.one * rockScale;
+
+                // Weathered stone color
+                Color rubbleColor = new Color(
+                    Random.Range(0.35f, 0.45f),
+                    Random.Range(0.35f, 0.45f),
+                    Random.Range(0.38f, 0.48f)
+                );
+                rock.GetComponent<Renderer>().material = CreatePolytopiaStone(rubbleColor);
+            }
+
+            return rubble;
+        }
+
+        /// <summary>
+        /// Creates a moss patch decoration
+        /// </summary>
+        public static GameObject CreateMossPatch(float size = 0.5f)
+        {
+            GameObject moss = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            moss.name = "MossPatch";
+
+            // Flat, slightly raised
+            moss.transform.localScale = new Vector3(size, 0.02f, size * Random.Range(0.7f, 1.3f));
+
+            // Green-brown moss color
+            Material mossMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            mossMat.color = new Color(
+                Random.Range(0.2f, 0.3f),  // Low red
+                Random.Range(0.35f, 0.5f), // Medium green
+                Random.Range(0.25f, 0.35f) // Low blue
+            );
+            mossMat.SetFloat("_Smoothness", 0.0f);
+            moss.GetComponent<Renderer>().material = mossMat;
+
+            return moss;
+        }
+
+        /// <summary>
+        /// Creates a crack decoration for walls/floors
+        /// </summary>
+        public static GameObject CreateCrack(float length = 1f)
+        {
+            GameObject crack = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            crack.name = "Crack";
+
+            // Thin, long line
+            crack.transform.localScale = new Vector3(length, 0.01f, Random.Range(0.05f, 0.1f));
+            crack.transform.localRotation = Quaternion.Euler(0, Random.Range(0f, 180f), 0);
+
+            // Dark crack color
+            Material crackMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            crackMat.color = new Color(0.15f, 0.15f, 0.18f);
+            crack.GetComponent<Renderer>().material = crackMat;
+
+            // Remove collider
+            Object.DestroyImmediate(crack.GetComponent<BoxCollider>());
+
+            return crack;
+        }
+
+        /// <summary>
+        /// Creates a damaged/broken pillar section
+        /// </summary>
+        public static GameObject CreateBrokenPillar(float height = WALL_HEIGHT)
+        {
+            GameObject pillar = CreatePillar(height);
+            pillar.name = "BrokenPillar";
+
+            // Tilt it slightly
+            pillar.transform.localRotation = Quaternion.Euler(
+                Random.Range(-5f, 5f),
+                Random.Range(0f, 360f),
+                Random.Range(-5f, 5f)
+            );
+
+            // Find capital and damage it
+            Transform capital = pillar.transform.Find("Capital");
+            if (capital != null)
+            {
+                // Chip away part of the capital
+                capital.localScale = new Vector3(
+                    capital.localScale.x * Random.Range(0.6f, 0.9f),
+                    capital.localScale.y * Random.Range(0.7f, 1f),
+                    capital.localScale.z * Random.Range(0.6f, 0.9f)
+                );
+            }
+
+            // Add cracks to shaft segments
+            for (int i = 0; i < 3; i++)
+            {
+                Transform shaft = pillar.transform.Find($"Shaft_{i}");
+                if (shaft != null && Random.value < 0.5f)
+                {
+                    GameObject crack = CreateCrack(0.3f);
+                    crack.transform.SetParent(shaft);
+                    crack.transform.localPosition = new Vector3(
+                        Random.Range(-0.2f, 0.2f),
+                        Random.Range(-0.3f, 0.3f),
+                        0.25f
+                    );
+                    crack.transform.localRotation = Quaternion.Euler(
+                        Random.Range(-45f, 45f),
+                        90f,
+                        0f
+                    );
+                }
+            }
+
+            return pillar;
+        }
+
+        /// <summary>
+        /// Creates a fallen column piece
+        /// </summary>
+        public static GameObject CreateFallenColumn(float length = 2f)
+        {
+            GameObject column = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            column.name = "FallenColumn";
+
+            // Lay it horizontally
+            column.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+            column.transform.localScale = new Vector3(0.4f, length / 2f, 0.4f);
+
+            // Weathered stone
+            Material mat = CreatePolytopiaStone(new Color(
+                Random.Range(0.4f, 0.5f),
+                Random.Range(0.4f, 0.5f),
+                Random.Range(0.43f, 0.53f)
+            ));
+            column.GetComponent<Renderer>().material = mat;
+
+            // Add some broken chunks around it
+            GameObject debris = new GameObject("ColumnDebris");
+            debris.transform.SetParent(column.transform);
+
+            for (int i = 0; i < 3; i++)
+            {
+                GameObject chunk = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                chunk.name = $"Chunk_{i}";
+                chunk.transform.SetParent(debris.transform);
+                chunk.transform.localPosition = new Vector3(
+                    Random.Range(-1f, 1f),
+                    Random.Range(-0.2f, 0.2f),
+                    Random.Range(-0.5f, 0.5f)
+                );
+                chunk.transform.localRotation = Quaternion.Euler(
+                    Random.Range(0f, 90f),
+                    Random.Range(0f, 90f),
+                    Random.Range(0f, 90f)
+                );
+                chunk.transform.localScale = Vector3.one * Random.Range(0.15f, 0.25f);
+                chunk.GetComponent<Renderer>().material = mat;
+            }
+
+            return column;
+        }
+
+        /// <summary>
+        /// Creates scattered bones decoration
+        /// </summary>
+        public static GameObject CreateBones()
+        {
+            GameObject bones = new GameObject("Bones");
+
+            // Long bone
+            GameObject longBone = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            longBone.name = "LongBone";
+            longBone.transform.SetParent(bones.transform);
+            longBone.transform.localRotation = Quaternion.Euler(0f, Random.Range(0f, 180f), 90f);
+            longBone.transform.localScale = new Vector3(0.04f, 0.3f, 0.04f);
+            longBone.transform.localPosition = new Vector3(0f, 0.02f, 0f);
+
+            // Skull (simplified as sphere)
+            GameObject skull = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            skull.name = "Skull";
+            skull.transform.SetParent(bones.transform);
+            skull.transform.localPosition = new Vector3(Random.Range(-0.3f, -0.2f), 0.06f, Random.Range(-0.1f, 0.1f));
+            skull.transform.localScale = Vector3.one * 0.12f;
+
+            // Aged bone color
+            Color boneColor = new Color(0.85f, 0.8f, 0.7f);
+            Material boneMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            boneMat.color = boneColor;
+            boneMat.SetFloat("_Smoothness", 0.15f);
+
+            longBone.GetComponent<Renderer>().material = boneMat;
+            skull.GetComponent<Renderer>().material = boneMat;
+
+            return bones;
+        }
+
+        /// <summary>
+        /// Creates hanging vines from ceiling
+        /// </summary>
+        public static GameObject CreateHangingVines(float length = 1.5f)
+        {
+            GameObject vines = new GameObject("HangingVines");
+
+            // Create 2-3 vine strands
+            int vineCount = Random.Range(2, 4);
+            for (int i = 0; i < vineCount; i++)
+            {
+                GameObject vine = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                vine.name = $"Vine_{i}";
+                vine.transform.SetParent(vines.transform);
+                vine.transform.localPosition = new Vector3(
+                    Random.Range(-0.2f, 0.2f),
+                    -length / 2f,
+                    Random.Range(-0.2f, 0.2f)
+                );
+                vine.transform.localScale = new Vector3(
+                    0.02f,
+                    length / 2f,
+                    0.02f
+                );
+
+                // Dark green vine color
+                Material vineMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                vineMat.color = new Color(
+                    Random.Range(0.1f, 0.2f),
+                    Random.Range(0.25f, 0.35f),
+                    Random.Range(0.1f, 0.2f)
+                );
+                vine.GetComponent<Renderer>().material = vineMat;
+
+                // Remove collider
+                Object.DestroyImmediate(vine.GetComponent<BoxCollider>());
+            }
+
+            return vines;
+        }
+
+        /// <summary>
+        /// Creates a wall damage/hole decoration
+        /// </summary>
+        public static GameObject CreateWallDamage(float size = 0.5f)
+        {
+            GameObject damage = new GameObject("WallDamage");
+
+            // Create jagged hole effect with multiple cubes
+            int pieceCount = Random.Range(3, 6);
+            for (int i = 0; i < pieceCount; i++)
+            {
+                GameObject piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                piece.name = $"DamagePiece_{i}";
+                piece.transform.SetParent(damage.transform);
+                piece.transform.localPosition = new Vector3(
+                    Random.Range(-size/2f, size/2f),
+                    Random.Range(-size/2f, size/2f),
+                    Random.Range(-0.1f, 0.1f)
+                );
+                piece.transform.localRotation = Quaternion.Euler(
+                    Random.Range(-30f, 30f),
+                    Random.Range(-30f, 30f),
+                    Random.Range(-30f, 30f)
+                );
+                piece.transform.localScale = Vector3.one * Random.Range(0.1f, 0.2f) * size;
+
+                // Dark damaged stone
+                Material damageMat = CreatePolytopiaStone(new Color(
+                    Random.Range(0.25f, 0.35f),
+                    Random.Range(0.25f, 0.35f),
+                    Random.Range(0.28f, 0.38f)
+                ));
+                piece.GetComponent<Renderer>().material = damageMat;
+
+                // Remove collider
+                Object.DestroyImmediate(piece.GetComponent<BoxCollider>());
+            }
+
+            return damage;
+        }
     }
 }
