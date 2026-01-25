@@ -598,8 +598,12 @@ namespace VRDungeonCrawler.Dungeon
                 doorway.transform.localRotation = Quaternion.Euler(0, direction.z > 0 ? 0 : 180, 0);
             }
 
-            // Remove wall section where doorway is
+            // Remove wall section where doorway is in BOTH rooms
             RemoveWallSection(roomA.roomObject, doorway.transform.position, direction);
+            // Also remove the opposite wall in roomB (opposite direction)
+            RemoveWallSection(roomB.roomObject, doorway.transform.position, -direction);
+
+            Debug.Log($"[CreateDoorwayBetweenRooms] Created doorway between {roomA.roomType} at {roomA.gridPosition} and {roomB.roomType} at {roomB.gridPosition}");
         }
 
         private void RemoveWallSection(GameObject roomObj, Vector3 doorwayPos, Vector3 direction)
