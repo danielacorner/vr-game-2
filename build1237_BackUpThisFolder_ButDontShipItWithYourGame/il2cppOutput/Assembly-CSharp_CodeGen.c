@@ -705,6 +705,14 @@ extern void U3CAnimateFireflyU3Ed__15_MoveNext_mD7872661E434639A52C65D2CC60E34C1
 extern void U3CAnimateFireflyU3Ed__15_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mD1878FCD5C3A20A35B25794A13C52BE6018CCD68 (void);
 extern void U3CAnimateFireflyU3Ed__15_System_Collections_IEnumerator_Reset_m0D2DA17CC02BC032DF9D41F4B4B0AD0705C626E4 (void);
 extern void U3CAnimateFireflyU3Ed__15_System_Collections_IEnumerator_get_Current_m9F88823A70DB7436CD089CFD33BADAC88030A7E2 (void);
+extern void MonsterPitSetup_Start_mB5F257CDD35574E33B9ABF8BF08AF6AE43439A95 (void);
+extern void MonsterPitSetup_CreateTerrainPit_m30779B0DD5FA804E6A1B631E4517F9A263701788 (void);
+extern void MonsterPitSetup_CreateMeshPit_m9C2B657478025541CBCB2C2CF1A07033E1AFDA37 (void);
+extern void MonsterPitSetup_CreatePitRim_mB4551F6DA5932AE3CE5BBED517459AF0D626FBAF (void);
+extern void MonsterPitSetup_CreateDebugMarker_m710BECE26666E601D71D4C39E8B214CBE11B689C (void);
+extern void MonsterPitSetup_OnDrawGizmosSelected_m736EC6FF43C3B4F5694A8845460D4711200DDCDF (void);
+extern void MonsterPitSetup_DrawCircle_mFCF272D241AB6652145035672A18DAC1B7DA459F (void);
+extern void MonsterPitSetup__ctor_m5F8128523E0A041B836185CCD8BE8B126595C751 (void);
 extern void MoonController_Start_m3ADE41D50BFA7E3F6C7AA6A2D91D83480CF0E8E9 (void);
 extern void MoonController_Update_mF1A4AB39BD289B5CA75ED61CBA33F9493CC59AE0 (void);
 extern void MoonController_UpdateMoonPosition_m767AB471B1EB80265CDCB70C50BE30C8241B2384 (void);
@@ -1176,7 +1184,7 @@ extern void SkeletonEyeEffect_Update_m703C2A3167D8BF59C8332E0F80799C2798050D7A (
 extern void SkeletonEyeEffect_SetEyeColor_m1B0FB124EB3A1CB1F8B4DC22AC0B0BD8A5A461CA (void);
 extern void SkeletonEyeEffect_OnDestroy_m957178D57C1BD68CBCF5FF79581712C5BBA010DF (void);
 extern void SkeletonEyeEffect__ctor_m3E2EB3DEA51272C31EFE544A0DD49E802168F7C6 (void);
-static Il2CppMethodPointer s_methodPointers[1169] = 
+static Il2CppMethodPointer s_methodPointers[1177] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1876,6 +1884,14 @@ static Il2CppMethodPointer s_methodPointers[1169] =
 	U3CAnimateFireflyU3Ed__15_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mD1878FCD5C3A20A35B25794A13C52BE6018CCD68,
 	U3CAnimateFireflyU3Ed__15_System_Collections_IEnumerator_Reset_m0D2DA17CC02BC032DF9D41F4B4B0AD0705C626E4,
 	U3CAnimateFireflyU3Ed__15_System_Collections_IEnumerator_get_Current_m9F88823A70DB7436CD089CFD33BADAC88030A7E2,
+	MonsterPitSetup_Start_mB5F257CDD35574E33B9ABF8BF08AF6AE43439A95,
+	MonsterPitSetup_CreateTerrainPit_m30779B0DD5FA804E6A1B631E4517F9A263701788,
+	MonsterPitSetup_CreateMeshPit_m9C2B657478025541CBCB2C2CF1A07033E1AFDA37,
+	MonsterPitSetup_CreatePitRim_mB4551F6DA5932AE3CE5BBED517459AF0D626FBAF,
+	MonsterPitSetup_CreateDebugMarker_m710BECE26666E601D71D4C39E8B214CBE11B689C,
+	MonsterPitSetup_OnDrawGizmosSelected_m736EC6FF43C3B4F5694A8845460D4711200DDCDF,
+	MonsterPitSetup_DrawCircle_mFCF272D241AB6652145035672A18DAC1B7DA459F,
+	MonsterPitSetup__ctor_m5F8128523E0A041B836185CCD8BE8B126595C751,
 	MoonController_Start_m3ADE41D50BFA7E3F6C7AA6A2D91D83480CF0E8E9,
 	MoonController_Update_mF1A4AB39BD289B5CA75ED61CBA33F9493CC59AE0,
 	MoonController_UpdateMoonPosition_m767AB471B1EB80265CDCB70C50BE30C8241B2384,
@@ -2353,7 +2369,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x0600012F, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1169] = 
+static const int32_t s_InvokerIndices[1177] = 
 {
 	15299,
 	15299,
@@ -3054,6 +3070,14 @@ static const int32_t s_InvokerIndices[1169] =
 	15299,
 	15087,
 	15299,
+	5948,
+	11793,
+	11793,
+	11793,
+	15299,
+	6074,
+	15299,
+	15299,
 	15299,
 	15299,
 	15299,
@@ -3529,7 +3553,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1169,
+	1177,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,
