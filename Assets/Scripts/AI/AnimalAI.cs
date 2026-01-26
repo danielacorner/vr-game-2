@@ -765,32 +765,56 @@ namespace VRDungeonCrawler.AI
 
         /// <summary>
         /// Process spell hit and apply damage
+        /// Uses same robust detection as MonsterBase
         /// </summary>
         void HandleSpellHit(Collider other)
         {
-            // Check if hit by spell projectile
-            if (other.CompareTag("Spell") || other.CompareTag("Projectile"))
+            if (showDebug)
+                Debug.Log($"[AnimalAI] {animalType} HandleSpellHit called with {other.gameObject.name}");
+
+            int damage = 0;
+            bool hitDetected = false;
+            GameObject spellObject = null;
+
+            // Check for PhysicsSpellProjectile (tier 2 thrown spells)
+            // Search in object and parents (for particle children)
+            var physicsProjectile = other.GetComponentInParent<VRDungeonCrawler.Spells.PhysicsSpellProjectile>();
+            if (physicsProjectile != null)
             {
-                // Get spell damage from projectile
-                var spellProjectile = other.GetComponent<VRDungeonCrawler.Player.SpellProjectile>();
+                damage = physicsProjectile.GetDamage();
+                hitDetected = true;
+                spellObject = physicsProjectile.gameObject;
+
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] {animalType} detected PhysicsSpellProjectile, damage={damage}");
+            }
+
+            // Check for SpellProjectile (tier 1 shot spells)
+            if (!hitDetected)
+            {
+                var spellProjectile = other.GetComponentInParent<VRDungeonCrawler.Player.SpellProjectile>();
                 if (spellProjectile != null)
                 {
-                    int damage = spellProjectile.GetDamage();
-                    Vector3 hitDirection = (transform.position - other.transform.position).normalized;
-                    TakeDamage(damage, hitDirection);
+                    damage = spellProjectile.GetDamage();
+                    hitDetected = true;
+                    spellObject = spellProjectile.gameObject;
 
                     if (showDebug)
-                        Debug.Log($"[AnimalAI] {animalType} hit by spell projectile, damage: {damage}");
+                        Debug.Log($"[AnimalAI] {animalType} detected SpellProjectile, damage={damage}");
                 }
-                else
-                {
-                    // Default damage if no projectile component
-                    Vector3 hitDirection = (transform.position - other.transform.position).normalized;
-                    TakeDamage(5, hitDirection);
+            }
 
-                    if (showDebug)
-                        Debug.Log($"[AnimalAI] {animalType} hit by unknown projectile, default damage: 5");
-                }
+            if (hitDetected && spellObject != null)
+            {
+                Vector3 hitDirection = (transform.position - spellObject.transform.position).normalized;
+                TakeDamage(damage, hitDirection);
+
+                if (showDebug)
+                    Debug.Log($"[AnimalAI] {animalType} taking {damage} damage from spell");
+            }
+            else if (showDebug)
+            {
+                Debug.Log($"[AnimalAI] {animalType} no spell component found on {other.gameObject.name}");
             }
         }
     }
