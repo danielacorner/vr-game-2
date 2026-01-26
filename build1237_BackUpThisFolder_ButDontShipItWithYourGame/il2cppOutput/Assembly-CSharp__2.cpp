@@ -5636,7 +5636,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CAnimateTeleportU3Ed__14_MoveNext_m835
 		int32_t L_3 = V_0;
 		if ((((int32_t)L_3) == ((int32_t)1)))
 		{
-			goto IL_00c5;
+			goto IL_00af;
 		}
 	}
 	{
@@ -5661,54 +5661,49 @@ IL_001a:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_8;
 		L_8 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_7, NULL);
 		__this->___U3CstartPositionU3E5__2 = L_8;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:113>
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_9 = (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)(&__this->___targetPosition);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_10 = (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)(&__this->___U3CstartPositionU3E5__2);
-		float L_11 = L_10->___y;
-		L_9->___y = L_11;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:115>
 		__this->___U3CelapsedTimeU3E5__3 = (0.0f);
-		goto IL_00cc;
+		goto IL_00b6;
 	}
 
-IL_0061:
+IL_004b:
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:119>
-		float L_12 = __this->___U3CelapsedTimeU3E5__3;
-		float L_13;
-		L_13 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
-		__this->___U3CelapsedTimeU3E5__3 = ((float)il2cpp_codegen_add(L_12, L_13));
+		float L_9 = __this->___U3CelapsedTimeU3E5__3;
+		float L_10;
+		L_10 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
+		__this->___U3CelapsedTimeU3E5__3 = ((float)il2cpp_codegen_add(L_9, L_10));
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:120>
-		float L_14 = __this->___U3CelapsedTimeU3E5__3;
+		float L_11 = __this->___U3CelapsedTimeU3E5__3;
+		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_12 = V_1;
+		NullCheck(L_12);
+		float L_13 = L_12->___animationDuration;
+		float L_14;
+		L_14 = Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline(((float)(L_11/L_13)), NULL);
+		V_2 = L_14;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:121>
 		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_15 = V_1;
 		NullCheck(L_15);
-		float L_16 = L_15->___animationDuration;
-		float L_17;
-		L_17 = Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline(((float)(L_14/L_16)), NULL);
-		V_2 = L_17;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:121>
-		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_18 = V_1;
-		NullCheck(L_18);
-		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_19 = L_18->___animationCurve;
-		float L_20 = V_2;
-		NullCheck(L_19);
-		float L_21;
-		L_21 = AnimationCurve_Evaluate_m50B857043DE251A186032ADBCBB4CEF817F4EE3C(L_19, L_20, NULL);
-		V_3 = L_21;
+		AnimationCurve_tCBFFAAD05CEBB35EF8D8631BD99914BE1A6BB354* L_16 = L_15->___animationCurve;
+		float L_17 = V_2;
+		NullCheck(L_16);
+		float L_18;
+		L_18 = AnimationCurve_Evaluate_m50B857043DE251A186032ADBCBB4CEF817F4EE3C(L_16, L_17, NULL);
+		V_3 = L_18;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:124>
-		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_22 = V_1;
-		NullCheck(L_22);
-		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_23 = L_22->___xrOrigin;
-		NullCheck(L_23);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_24;
-		L_24 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_23, NULL);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25 = __this->___U3CstartPositionU3E5__2;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_26 = __this->___targetPosition;
-		float L_27 = V_3;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28;
-		L_28 = Vector3_Lerp_m3A906D0530A94FAABB94F0F905E84D99BE85C3F8_inline(L_25, L_26, L_27, NULL);
-		NullCheck(L_24);
-		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_24, L_28, NULL);
+		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_19 = V_1;
+		NullCheck(L_19);
+		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_20 = L_19->___xrOrigin;
+		NullCheck(L_20);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
+		L_21 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_20, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_22 = __this->___U3CstartPositionU3E5__2;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23 = __this->___targetPosition;
+		float L_24 = V_3;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25;
+		L_25 = Vector3_Lerp_m3A906D0530A94FAABB94F0F905E84D99BE85C3F8_inline(L_22, L_23, L_24, NULL);
+		NullCheck(L_21);
+		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_21, L_25, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:126>
 		__this->___U3CU3E2__current = NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)NULL);
@@ -5716,38 +5711,38 @@ IL_0061:
 		return (bool)1;
 	}
 
-IL_00c5:
+IL_00af:
 	{
 		__this->___U3CU3E1__state = (-1);
 	}
 
-IL_00cc:
+IL_00b6:
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:117>
-		float L_29 = __this->___U3CelapsedTimeU3E5__3;
-		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_30 = V_1;
-		NullCheck(L_30);
-		float L_31 = L_30->___animationDuration;
-		if ((((float)L_29) < ((float)L_31)))
+		float L_26 = __this->___U3CelapsedTimeU3E5__3;
+		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_27 = V_1;
+		NullCheck(L_27);
+		float L_28 = L_27->___animationDuration;
+		if ((((float)L_26) < ((float)L_28)))
 		{
-			goto IL_0061;
+			goto IL_004b;
 		}
 	}
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:130>
-		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_32 = V_1;
-		NullCheck(L_32);
-		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_33 = L_32->___xrOrigin;
-		NullCheck(L_33);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_34;
-		L_34 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_33, NULL);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_35 = __this->___targetPosition;
-		NullCheck(L_34);
-		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_34, L_35, NULL);
+		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_29 = V_1;
+		NullCheck(L_29);
+		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_30 = L_29->___xrOrigin;
+		NullCheck(L_30);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31;
+		L_31 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_30, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_32 = __this->___targetPosition;
+		NullCheck(L_31);
+		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_31, L_32, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:132>
-		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_36 = V_1;
-		NullCheck(L_36);
-		L_36->___isTeleporting = (bool)0;
+		AnimatedTeleportation_t3BDEFBAA637D4BB5638324B390D168294BD85C5F* L_33 = V_1;
+		NullCheck(L_33);
+		L_33->___isTeleporting = (bool)0;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/AnimatedTeleportation.cs:133>
 		return (bool)0;
 	}

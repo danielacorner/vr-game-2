@@ -109,8 +109,8 @@ namespace VRDungeonCrawler.Player
 
             Vector3 startPosition = xrOrigin.transform.position;
 
-            // Keep the same Y as current position to avoid height changes
-            targetPosition.y = startPosition.y;
+            // Use the actual hit point Y to allow teleporting to different heights
+            // (targetPosition already has correct Y from hit.point in line 90)
 
             float elapsedTime = 0f;
 
