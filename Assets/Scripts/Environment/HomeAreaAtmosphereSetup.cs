@@ -18,6 +18,7 @@ namespace VRDungeonCrawler.Environment
         public bool createGroundFog = true;
         public bool createAmbientParticles = true;
         public bool createPortal = true;
+        public bool createTerrainPit = true;
 
         [Header("Positions")]
         [Tooltip("Campfire position (center of home area)")]
@@ -25,6 +26,9 @@ namespace VRDungeonCrawler.Environment
 
         [Tooltip("Portal position (edge of home area)")]
         public Vector3 portalPosition = new Vector3(20f, 0f, 20f);
+
+        [Tooltip("Monster spawner position (will be in center of pit)")]
+        public Vector3 monsterSpawnerPosition = new Vector3(8f, 0f, 8f);
 
         [Header("Debug")]
         public bool showDebug = true;
@@ -42,6 +46,9 @@ namespace VRDungeonCrawler.Environment
         {
             if (showDebug)
                 Debug.Log("[HomeAreaAtmosphereSetup] Setting up atmospheric elements...");
+
+            if (createTerrainPit)
+                SetupTerrainPit();
 
             if (createSkybox)
                 SetupSkybox();
@@ -149,6 +156,54 @@ namespace VRDungeonCrawler.Environment
                 Debug.Log($"[HomeAreaAtmosphereSetup] ✓ Portal created at {portalPosition}");
         }
 
+        void SetupTerrainPit()
+        {
+            // Find or create monster spawner first
+            GameObject spawnerObj = GameObject.Find("MonsterSpawner");
+
+            if (spawnerObj == null)
+            {
+                // Create monster spawner
+                spawnerObj = new GameObject("MonsterSpawner");
+                spawnerObj.transform.SetParent(transform);
+                spawnerObj.transform.position = monsterSpawnerPosition;
+
+                AI.MonsterSpawner spawner = spawnerObj.AddComponent<AI.MonsterSpawner>();
+                spawner.spawnInterval = 1f;
+                spawner.spawnRadius = 8f;
+                spawner.maxMonstersPerType = 5;
+                spawner.showDebug = showDebug;
+
+                if (showDebug)
+                    Debug.Log($"[HomeAreaAtmosphereSetup] ✓ Monster spawner created at {monsterSpawnerPosition}");
+            }
+
+            // Create terrain pit
+            GameObject pitCreatorObj = new GameObject("TerrainPitCreator");
+            pitCreatorObj.transform.SetParent(transform);
+            pitCreatorObj.transform.position = Vector3.zero;
+
+            TerrainPitCreator pitCreator = pitCreatorObj.AddComponent<TerrainPitCreator>();
+            pitCreator.pitDiameter = 12f; // 3x spawner width
+            pitCreator.pitDepth = 1.2f; // Double-jump height
+            pitCreator.edgeSmoothness = 3f;
+            pitCreator.monsterSpawner = spawnerObj;
+            pitCreator.showDebug = showDebug;
+
+            // Find terrain
+            Terrain terrain = FindFirstObjectByType<Terrain>();
+            if (terrain != null)
+            {
+                pitCreator.terrain = terrain;
+                if (showDebug)
+                    Debug.Log($"[HomeAreaAtmosphereSetup] ✓ Terrain pit creator added - pit will be created at {monsterSpawnerPosition}");
+            }
+            else
+            {
+                Debug.LogWarning("[HomeAreaAtmosphereSetup] No terrain found! Pit cannot be created.");
+            }
+        }
+
         void OnDrawGizmosSelected()
         {
             // Draw campfire position
@@ -160,6 +215,33 @@ namespace VRDungeonCrawler.Environment
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(portalPosition, 2f);
             Gizmos.DrawLine(portalPosition, portalPosition + Vector3.up * 3f);
+
+            // Draw monster spawner position and pit
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(monsterSpawnerPosition, 1f);
+            Gizmos.DrawLine(monsterSpawnerPosition, monsterSpawnerPosition + Vector3.up * 2f);
+
+            // Draw pit outline
+            Gizmos.color = Color.yellow;
+            DrawCircle(monsterSpawnerPosition, 6f); // 12m diameter = 6m radius
+            DrawCircle(monsterSpawnerPosition - Vector3.up * 1.2f, 6f); // Bottom of pit
+        }
+
+        void DrawCircle(Vector3 center, float radius)
+        {
+            int segments = 32;
+            float angleStep = 360f / segments;
+
+            for (int i = 0; i < segments; i++)
+            {
+                float angle1 = i * angleStep * Mathf.Deg2Rad;
+                float angle2 = ((i + 1) % segments) * angleStep * Mathf.Deg2Rad;
+
+                Vector3 point1 = center + new Vector3(Mathf.Cos(angle1) * radius, 0f, Mathf.Sin(angle1) * radius);
+                Vector3 point2 = center + new Vector3(Mathf.Cos(angle2) * radius, 0f, Mathf.Sin(angle2) * radius);
+
+                Gizmos.DrawLine(point1, point2);
+            }
         }
     }
 }

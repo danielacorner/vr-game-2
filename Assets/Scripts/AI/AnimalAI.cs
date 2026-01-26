@@ -583,8 +583,13 @@ namespace VRDungeonCrawler.AI
             if (showDebug)
                 Debug.Log($"[AnimalAI] {animalType} {gameObject.name} took {damage} damage from direction {hitDirection}");
 
-            // Spawn damage number (yellow for friendly animals)
-            Vector3 damageNumberPos = transform.position + Vector3.up * 0.5f;
+            // Find the exact highest point on the animal's mesh (head position)
+            Vector3 damageNumberPos = FindHighestPoint();
+
+            if (showDebug)
+                Debug.Log($"[AnimalAI] {animalType} highest point: {damageNumberPos}");
+
+            // Spawn damage number at head position (fixed 0.2m size)
             DamageNumber.Create(damage, damageNumberPos, hitFlashColor);
 
             // Apply visual flash effect
@@ -600,6 +605,49 @@ namespace VRDungeonCrawler.AI
             // Start damage animations
             StartCoroutine(DamageRecoilAnimation());
             StartCoroutine(ScaleUpAnimation());
+        }
+
+        /// <summary>
+        /// Find the highest point on the animal's mesh (typically the top of the head)
+        /// </summary>
+        Vector3 FindHighestPoint()
+        {
+            MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
+
+            if (meshFilters.Length == 0)
+            {
+                // Fallback: use transform position + 0.5m up
+                return transform.position + Vector3.up * 0.5f;
+            }
+
+            float highestY = float.MinValue;
+            Vector3 highestPoint = transform.position;
+
+            // Check all vertices in all meshes to find the absolute highest point
+            foreach (MeshFilter mf in meshFilters)
+            {
+                if (mf.mesh == null) continue;
+
+                Vector3[] vertices = mf.mesh.vertices;
+                Transform meshTransform = mf.transform;
+
+                foreach (Vector3 localVert in vertices)
+                {
+                    // Convert to world space
+                    Vector3 worldVert = meshTransform.TransformPoint(localVert);
+
+                    if (worldVert.y > highestY)
+                    {
+                        highestY = worldVert.y;
+                        highestPoint = worldVert;
+                    }
+                }
+            }
+
+            // Add small offset above the highest point
+            highestPoint.y += 0.05f;
+
+            return highestPoint;
         }
 
         /// <summary>

@@ -183,8 +183,13 @@ namespace VRDungeonCrawler.AI
             if (showDebug)
                 Debug.Log($"[MonsterBase] {gameObject.name} took {damage} damage. HP: {currentHP}/{maxHP}");
 
-            // Spawn damage number indicator higher to avoid ground intersection
-            Vector3 damageNumberPos = transform.position + Vector3.up * 2.5f;
+            // Find the exact highest point on the monster's mesh (head position)
+            Vector3 damageNumberPos = FindHighestPoint();
+
+            if (showDebug)
+                Debug.Log($"[MonsterBase] {gameObject.name} highest point: {damageNumberPos}");
+
+            // Spawn damage number at head position (fixed 0.2m size)
             DamageNumber.Create(damage, damageNumberPos, Color.red);
 
             // Flash effect (red flash twice)
@@ -211,6 +216,49 @@ namespace VRDungeonCrawler.AI
             {
                 Die();
             }
+        }
+
+        /// <summary>
+        /// Find the highest point on the monster's mesh (typically the top of the head)
+        /// </summary>
+        Vector3 FindHighestPoint()
+        {
+            MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
+
+            if (meshFilters.Length == 0)
+            {
+                // Fallback: use transform position + 2m up (monsters are taller)
+                return transform.position + Vector3.up * 2f;
+            }
+
+            float highestY = float.MinValue;
+            Vector3 highestPoint = transform.position;
+
+            // Check all vertices in all meshes to find the absolute highest point
+            foreach (MeshFilter mf in meshFilters)
+            {
+                if (mf.mesh == null) continue;
+
+                Vector3[] vertices = mf.mesh.vertices;
+                Transform meshTransform = mf.transform;
+
+                foreach (Vector3 localVert in vertices)
+                {
+                    // Convert to world space
+                    Vector3 worldVert = meshTransform.TransformPoint(localVert);
+
+                    if (worldVert.y > highestY)
+                    {
+                        highestY = worldVert.y;
+                        highestPoint = worldVert;
+                    }
+                }
+            }
+
+            // Add small offset above the highest point
+            highestPoint.y += 0.1f;
+
+            return highestPoint;
         }
 
         void StartFlashEffect()

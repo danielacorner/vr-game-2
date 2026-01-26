@@ -34,11 +34,6 @@ namespace VRDungeonCrawler.Environment
             if (terrain == null)
             {
                 terrain = FindFirstObjectByType<Terrain>();
-                if (terrain == null)
-                {
-                    Debug.LogError("[TerrainPitCreator] No terrain found in scene!");
-                    return;
-                }
             }
 
             // Auto-find monster spawner if not assigned
@@ -61,7 +56,15 @@ namespace VRDungeonCrawler.Environment
                 }
             }
 
-            CreatePit();
+            if (terrain != null)
+            {
+                CreatePit();
+            }
+            else
+            {
+                Debug.LogWarning("[TerrainPitCreator] No Unity Terrain found - creating visual pit mesh instead");
+                CreateMeshPit();
+            }
         }
 
         void CreatePit()
@@ -160,6 +163,134 @@ namespace VRDungeonCrawler.Environment
                 Debug.Log($"[TerrainPitCreator] Pit radius: {pitRadiusWorld}m ({pitRadiusX}x{pitRadiusZ} pixels)");
                 Debug.Log($"[TerrainPitCreator] ========================================");
             }
+        }
+
+        /// <summary>
+        /// Creates a mesh-based pit when no Unity Terrain is available
+        /// Creates a cylindrical depression in the ground
+        /// </summary>
+        void CreateMeshPit()
+        {
+            Vector3 spawnerWorldPos = monsterSpawner != null ? monsterSpawner.transform.position : Vector3.zero;
+
+            if (showDebug)
+                Debug.Log($"[TerrainPitCreator] Creating mesh pit at {spawnerWorldPos}");
+
+            // Create a ring mesh for the pit walls
+            GameObject pitWallsObj = new GameObject("PitWalls");
+            pitWallsObj.transform.position = spawnerWorldPos;
+
+            MeshFilter meshFilter = pitWallsObj.AddComponent<MeshFilter>();
+            MeshRenderer meshRenderer = pitWallsObj.AddComponent<MeshRenderer>();
+
+            // Create cylinder mesh for pit walls
+            Mesh pitMesh = CreateCylinderMesh(pitDiameter / 2f, pitDepth, 32);
+            meshFilter.mesh = pitMesh;
+
+            // Create dark brown/dirt material
+            Material pitMaterial = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            pitMaterial.color = new Color(0.3f, 0.2f, 0.1f); // Dark brown
+            pitMaterial.SetFloat("_Smoothness", 0.1f);
+            pitMaterial.SetFloat("_Metallic", 0f);
+            meshRenderer.material = pitMaterial;
+
+            // Add collider to the pit bottom
+            GameObject pitFloorObj = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            pitFloorObj.name = "PitFloor";
+            pitFloorObj.transform.SetParent(pitWallsObj.transform);
+            pitFloorObj.transform.localPosition = new Vector3(0f, -pitDepth, 0f);
+            pitFloorObj.transform.localScale = new Vector3(pitDiameter, 0.1f, pitDiameter);
+
+            // Make pit floor darker
+            MeshRenderer floorRenderer = pitFloorObj.GetComponent<MeshRenderer>();
+            Material floorMaterial = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            floorMaterial.color = new Color(0.2f, 0.15f, 0.08f); // Darker brown
+            floorMaterial.SetFloat("_Smoothness", 0.2f);
+            floorRenderer.material = floorMaterial;
+
+            // Lower the spawner into the pit
+            if (monsterSpawner != null)
+            {
+                Vector3 spawnerPos = monsterSpawner.transform.position;
+                spawnerPos.y -= pitDepth * 0.5f; // Halfway down into pit
+                monsterSpawner.transform.position = spawnerPos;
+            }
+
+            if (showDebug)
+                Debug.Log($"[TerrainPitCreator] ✓ Mesh pit created with diameter {pitDiameter}m and depth {pitDepth}m");
+        }
+
+        /// <summary>
+        /// Creates a hollow cylinder mesh for pit walls
+        /// </summary>
+        Mesh CreateCylinderMesh(float radius, float height, int segments)
+        {
+            Mesh mesh = new Mesh();
+            mesh.name = "PitCylinder";
+
+            // Create vertices (inner ring at top, outer ring at top, inner at bottom, outer at bottom)
+            Vector3[] vertices = new Vector3[segments * 4];
+            Vector2[] uvs = new Vector2[segments * 4];
+            int[] triangles = new int[segments * 6 * 2]; // Outer wall + inner wall
+
+            float angleStep = 360f / segments;
+            float innerRadius = radius * 0.95f; // Slight inner ring for thickness
+
+            for (int i = 0; i < segments; i++)
+            {
+                float angle = i * angleStep * Mathf.Deg2Rad;
+                float x = Mathf.Cos(angle);
+                float z = Mathf.Sin(angle);
+
+                // Top outer
+                vertices[i] = new Vector3(x * radius, 0f, z * radius);
+                uvs[i] = new Vector2((float)i / segments, 1f);
+
+                // Top inner
+                vertices[i + segments] = new Vector3(x * innerRadius, 0f, z * innerRadius);
+                uvs[i + segments] = new Vector2((float)i / segments, 0.9f);
+
+                // Bottom outer
+                vertices[i + segments * 2] = new Vector3(x * radius, -height, z * radius);
+                uvs[i + segments * 2] = new Vector2((float)i / segments, 0f);
+
+                // Bottom inner
+                vertices[i + segments * 3] = new Vector3(x * innerRadius, -height, z * innerRadius);
+                uvs[i + segments * 3] = new Vector2((float)i / segments, 0.1f);
+            }
+
+            // Build triangles for outer wall
+            int triIndex = 0;
+            for (int i = 0; i < segments; i++)
+            {
+                int next = (i + 1) % segments;
+
+                // Outer wall quad (2 triangles)
+                triangles[triIndex++] = i;
+                triangles[triIndex++] = i + segments * 2;
+                triangles[triIndex++] = next;
+
+                triangles[triIndex++] = next;
+                triangles[triIndex++] = i + segments * 2;
+                triangles[triIndex++] = next + segments * 2;
+
+                // Inner wall quad (2 triangles, reversed winding)
+                triangles[triIndex++] = i + segments;
+                triangles[triIndex++] = next + segments;
+                triangles[triIndex++] = i + segments * 3;
+
+                triangles[triIndex++] = next + segments;
+                triangles[triIndex++] = next + segments * 3;
+                triangles[triIndex++] = i + segments * 3;
+            }
+
+            mesh.vertices = vertices;
+            mesh.uv = uvs;
+            mesh.triangles = triangles;
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
+
+            return mesh;
         }
 
         void OnDrawGizmosSelected()
