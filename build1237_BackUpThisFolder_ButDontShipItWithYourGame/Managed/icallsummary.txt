@@ -1864,6 +1864,7 @@ UnityEngine.TextGenerator::GetLinesInternal_Injected
 UnityEngine.TextGenerator::GetVerticesInternal_Injected
 UnityEngine.TextGenerator::Internal_Destroy
 UnityEngine.TextGenerator::get_rectExtents_Injected
+UnityEngine.TextMesh::get_font_Injected
 UnityEngine.TextMesh::get_text_Injected
 UnityEngine.TextMesh::set_alignment_Injected
 UnityEngine.TextMesh::set_anchor_Injected
@@ -1871,6 +1872,7 @@ UnityEngine.TextMesh::set_characterSize_Injected
 UnityEngine.TextMesh::set_color_Injected
 UnityEngine.TextMesh::set_fontSize_Injected
 UnityEngine.TextMesh::set_fontStyle_Injected
+UnityEngine.TextMesh::set_font_Injected
 UnityEngine.TextMesh::set_text_Injected
 UnityEngine.Texture::get_isReadable_Injected
 UnityEngine.Texture::get_streamingTextureDiscardUnusedMips

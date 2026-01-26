@@ -62,28 +62,55 @@ namespace VRDungeonCrawler.AI
             textMesh.text = damage.ToString();
             textMesh.characterSize = characterSize; // 0.1m = 10cm per character
             textMesh.fontSize = 64; // High resolution for clarity
-            textMesh.color = textColor;
             textMesh.anchor = TextAnchor.MiddleCenter;
             textMesh.alignment = TextAlignment.Center;
             textMesh.fontStyle = FontStyle.Bold;
 
-            // Get MeshRenderer
+            // Set font - try Arial first, fallback to built-in
+            Font arialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+            if (arialFont != null)
+            {
+                textMesh.font = arialFont;
+                if (showDebug)
+                    Debug.Log($"[DamageNumber] Using Arial font");
+            }
+            else
+            {
+                if (showDebug)
+                    Debug.LogWarning($"[DamageNumber] Arial font not found, using default");
+            }
+
+            // Get MeshRenderer and configure material
             textRenderer = GetComponent<MeshRenderer>();
             if (textRenderer != null)
             {
-                // Use Unlit shader for consistent brightness
-                textRenderer.material.shader = Shader.Find("Unlit/Color");
-                textRenderer.material.color = textColor;
+                // Create material with font texture
+                if (textMesh.font != null && textMesh.font.material != null)
+                {
+                    // Clone the font's material
+                    textRenderer.material = new Material(textMesh.font.material);
+                    textRenderer.material.color = textColor;
+                }
+                else
+                {
+                    // Fallback: use standard font shader
+                    textRenderer.material = new Material(Shader.Find("GUI/Text Shader"));
+                    textRenderer.material.color = textColor;
+                }
 
-                // Enable sorting to render on top
+                // Render on top
                 textRenderer.sortingOrder = 100;
+
+                if (showDebug)
+                    Debug.Log($"[DamageNumber] Material set: shader={textRenderer.material.shader.name}, color={textRenderer.material.color}");
             }
 
+            textMesh.color = textColor;
             startColor = textColor;
             startScale = transform.localScale;
 
             if (showDebug)
-                Debug.Log($"[DamageNumber] TextMesh created: text='{textMesh.text}', charSize={characterSize}, position={transform.position}");
+                Debug.Log($"[DamageNumber] TextMesh created: text='{textMesh.text}', charSize={characterSize}, font={textMesh.font?.name}, position={transform.position}");
         }
 
         void Update()
