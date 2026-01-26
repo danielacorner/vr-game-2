@@ -77,8 +77,11 @@ namespace VRDungeonCrawler.Editor
             // Create visual markers
             CreatePitMarkers(spawnerPos);
 
-            // Lower spawner
-            spawner.transform.position = new Vector3(spawnerPos.x, spawnerPos.y - 1.2f, spawnerPos.z);
+            // Create pit floor indicators (red cubes to show depth)
+            CreatePitFloorIndicators(spawnerPos, 3f);
+
+            // Lower spawner deep into pit
+            spawner.transform.position = new Vector3(spawnerPos.x, spawnerPos.y - 2.4f, spawnerPos.z);
 
             // Mark scene dirty
             EditorSceneManager.MarkSceneDirty(homeArea);
@@ -102,8 +105,8 @@ namespace VRDungeonCrawler.Editor
         static void CreateTerrainPit(Terrain terrain, Vector3 centerPos)
         {
             float pitDiameter = 12f;
-            float pitDepth = 1.5f;
-            float edgeSmoothness = 2f;
+            float pitDepth = 3f; // Much deeper - 3 meters!
+            float edgeSmoothness = 1.5f; // Steeper edges
 
             TerrainData terrainData = terrain.terrainData;
             Vector3 terrainPos = terrain.transform.position;
@@ -244,6 +247,40 @@ namespace VRDungeonCrawler.Editor
             }
 
             Debug.Log($"[CreateMonsterPit] ✓ Created stone rim with {segments} segments");
+        }
+
+        static void CreatePitFloorIndicators(Vector3 centerPos, float pitDepth)
+        {
+            // Create several red cubes on the pit floor to clearly show the depth
+            GameObject floorMarkers = new GameObject("PitFloorIndicators_RED");
+            floorMarkers.transform.position = centerPos - Vector3.up * pitDepth;
+
+            // Create a grid of red cubes on the floor
+            for (int i = -2; i <= 2; i++)
+            {
+                for (int j = -2; j <= 2; j++)
+                {
+                    if (i == 0 && j == 0) continue; // Skip center (where spawner is)
+
+                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    cube.name = $"FloorMarker_{i}_{j}";
+                    cube.transform.SetParent(floorMarkers.transform);
+                    cube.transform.localPosition = new Vector3(i * 1.5f, 0f, j * 1.5f);
+                    cube.transform.localScale = Vector3.one * 0.3f;
+
+                    // Bright red material
+                    MeshRenderer renderer = cube.GetComponent<MeshRenderer>();
+                    Material redMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    redMat.color = Color.red;
+                    redMat.EnableKeyword("_EMISSION");
+                    redMat.SetColor("_EmissionColor", Color.red * 2f);
+                    renderer.material = redMat;
+
+                    Object.DestroyImmediate(cube.GetComponent<Collider>());
+                }
+            }
+
+            Debug.Log($"[CreateMonsterPit] ✓ Created red floor indicators at depth {pitDepth}m");
         }
     }
 }
