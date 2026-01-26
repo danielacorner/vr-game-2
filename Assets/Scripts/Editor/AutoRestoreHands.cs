@@ -173,5 +173,15 @@ namespace VRDungeonCrawler.Editor
             EditorPrefs.DeleteKey(PREF_KEY);
             Debug.Log("[AutoRestoreHands] Flag reset - will auto-restore on next script compile");
         }
+
+        [MenuItem("Tools/VR Dungeon Crawler/Restore Hands Now (Fix Materials)", priority = 41)]
+        public static void RestoreHandsNow()
+        {
+            Debug.Log("========================================");
+            Debug.Log("[AutoRestoreHands] MANUALLY RESTORING HANDS...");
+            Debug.Log("========================================");
+
+            DoRestore();
+        }
     }
 }

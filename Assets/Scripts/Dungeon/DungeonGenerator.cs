@@ -1270,11 +1270,15 @@ namespace VRDungeonCrawler.Dungeon
                     rb.constraints = RigidbodyConstraints.FreezeRotation;
                 }
 
-                // Add colliders (similar to MonsterSpawner approach)
-                // Trigger collider for spell detection - full body size
+                // Add colliders - make trigger collider tighter to match visible model
+                // Trigger collider for spell detection - reduced to 60% of mesh bounds for tighter hitbox
                 BoxCollider triggerCollider = skeleton.AddComponent<BoxCollider>();
                 triggerCollider.isTrigger = true;
-                triggerCollider.size = meshBounds.size;
+                triggerCollider.size = new Vector3(
+                    meshBounds.size.x * 0.6f,  // Narrower width
+                    meshBounds.size.y * 0.9f,  // Slightly shorter height
+                    meshBounds.size.z * 0.6f   // Narrower depth
+                );
                 triggerCollider.center = colliderCenter;
 
                 // Physics collider - small footprint only to block teleportation directly under skeleton

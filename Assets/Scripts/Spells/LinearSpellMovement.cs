@@ -46,8 +46,15 @@ namespace VRDungeonCrawler.Spells
             // Ignore triggers
             if (other.isTrigger) return;
 
+            // Debug what we hit
+            Debug.Log($"[LinearSpellMovement] Checking collision with: {other.gameObject.name} (tag: {other.gameObject.tag})");
+
             // Ignore player/VR objects
-            if (IsPlayerObject(other.gameObject)) return;
+            if (IsPlayerObject(other.gameObject))
+            {
+                Debug.Log($"[LinearSpellMovement] IGNORING player object: {other.gameObject.name}");
+                return;
+            }
 
             // Only explode once
             if (hasExploded) return;
@@ -110,19 +117,37 @@ namespace VRDungeonCrawler.Spells
         {
             if (obj == null) return false;
 
-            // Check entire hierarchy, not just parents
-            Transform current = obj.transform;
-            while (current != null)
+            // First, check the object itself and its tag
+            if (obj.CompareTag("Player"))
             {
+                Debug.Log($"[LinearSpellMovement] {obj.name} has Player tag - IGNORING");
+                return true;
+            }
+
+            string objName = obj.name.ToLower();
+            if (objName.Contains("camera") || objName.Contains("headset") || objName.Contains("hmd"))
+            {
+                Debug.Log($"[LinearSpellMovement] {obj.name} is camera/headset - IGNORING");
+                return true;
+            }
+
+            // Check entire hierarchy up to root
+            Transform current = obj.transform;
+            int depth = 0;
+            while (current != null && depth < 20) // Safety limit
+            {
+                depth++;
+
                 // Check for XR Origin or Player tag
                 if (current.name == "XR Origin" || current.CompareTag("Player"))
                 {
+                    Debug.Log($"[LinearSpellMovement] Found '{current.name}' in hierarchy at depth {depth} - IGNORING");
                     return true;
                 }
 
                 string name = current.name.ToLower();
                 // Check for common player/VR object names
-                if (name.Contains("xr origin") ||
+                if (name.Contains("xr") && (name.Contains("origin") || name.Contains("rig")) ||
                     name.Contains("player") ||
                     name.Contains("camera") ||
                     name.Contains("headset") ||
@@ -130,8 +155,10 @@ namespace VRDungeonCrawler.Spells
                     name.Contains("main camera") ||
                     name.Contains("controller") ||
                     name.Contains("hand") ||
-                    name.Contains("offset"))
+                    name.Contains("offset") ||
+                    name.Contains("tracking"))
                 {
+                    Debug.Log($"[LinearSpellMovement] Found player-related object '{current.name}' in hierarchy at depth {depth} - IGNORING");
                     return true;
                 }
 

@@ -283,19 +283,70 @@ namespace VRDungeonCrawler.AI
                 // DEBUG: Log chase state
                 Debug.Log($"[MonsterAI] {gameObject.name} CHASING: distance={distanceToPlayer:F2}m, chaseDirection={chaseDirection}, velocity={rb.linearVelocity.magnitude:F2}");
 
-                // Rotate to face player
-                if (chaseDirection.magnitude > 0.01f)
+                // Obstacle avoidance - raycast forward to detect walls/pillars
+                Vector3 avoidanceDirection = chaseDirection;
+                RaycastHit hit;
+                float checkDistance = 1.5f;
+
+                // Check if there's an obstacle directly ahead
+                if (Physics.Raycast(transform.position + Vector3.up * 0.5f, chaseDirection, out hit, checkDistance))
                 {
-                    Quaternion targetRotation = Quaternion.LookRotation(chaseDirection);
+                    // Ignore if we hit the player
+                    if (!IsPlayerCollider(hit.collider))
+                    {
+                        Debug.Log($"[MonsterAI] {gameObject.name} detected obstacle: {hit.collider.gameObject.name}, steering around");
+
+                        // Try to steer around the obstacle
+                        Vector3 rightDir = new Vector3(chaseDirection.z, 0f, -chaseDirection.x).normalized;
+                        Vector3 leftDir = new Vector3(-chaseDirection.z, 0f, chaseDirection.x).normalized;
+
+                        // Check which side is clearer
+                        bool rightClear = !Physics.Raycast(transform.position + Vector3.up * 0.5f, rightDir, checkDistance);
+                        bool leftClear = !Physics.Raycast(transform.position + Vector3.up * 0.5f, leftDir, checkDistance);
+
+                        if (rightClear && !leftClear)
+                        {
+                            avoidanceDirection = (chaseDirection + rightDir * 0.7f).normalized;
+                        }
+                        else if (leftClear && !rightClear)
+                        {
+                            avoidanceDirection = (chaseDirection + leftDir * 0.7f).normalized;
+                        }
+                        else if (rightClear && leftClear)
+                        {
+                            // Both clear, pick one randomly
+                            avoidanceDirection = (chaseDirection + (Random.value > 0.5f ? rightDir : leftDir) * 0.5f).normalized;
+                        }
+                        // If neither clear, keep pushing forward
+                    }
+                }
+
+                // Rotate to face movement direction
+                if (avoidanceDirection.magnitude > 0.01f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(avoidanceDirection);
                     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
                 }
 
-                // Move aggressively toward player
-                Vector3 movement = chaseDirection * chaseSpeed;
+                // Move aggressively toward player (or around obstacles)
+                Vector3 movement = avoidanceDirection * chaseSpeed;
                 Vector3 newVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
                 rb.linearVelocity = newVelocity;
 
                 return;
+            }
+
+            bool IsPlayerCollider(Collider collider)
+            {
+                if (collider == null) return false;
+                Transform current = collider.transform;
+                while (current != null)
+                {
+                    if (current == playerTarget || current.name == "XR Origin" || current.CompareTag("Player"))
+                        return true;
+                    current = current.parent;
+                }
+                return false;
             }
 
             // Normal patrol behavior

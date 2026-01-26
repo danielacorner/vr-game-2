@@ -268,6 +268,10 @@ extern void EmergencyVRSetup_Start_mFF4A2884F12AB12827EE570301374412EBF13687 (vo
 extern void EmergencyVRSetup_CreateMarker_mE7C47CB971BB99F37E4BA07EB66AC63F495DA0AE (void);
 extern void EmergencyVRSetup_MonitorTracking_m706DA02512ED3EEC39DF8AB7DDC6D38AA309C88A (void);
 extern void EmergencyVRSetup__ctor_m5C28B8695ADE3F3EC8AD2A8E60F62B4DCA31D3EC (void);
+extern void FixHandMaterials_Awake_mAA9200EA42581B10F3C40A4496A24617906FB6F1 (void);
+extern void FixHandMaterials__ctor_mC19829A7C37A19B8F7E2C6A7A837AB96F71E127B (void);
+extern void ForceHandsVisible_Start_m0EB25FAD09E564171CDA50FC624D8B83DC302087 (void);
+extern void ForceHandsVisible__ctor_m729B6CC0F4EACB4D6F9C2D6F4E248DC032E64BEC (void);
 extern void ForceHeadTracking_Start_m3D39C72A70F4E7E60720B6501E14D0FA5038039C (void);
 extern void ForceHeadTracking_Update_m90AE6044C9B1CC4955CC6A95C043AD92DB4D09E2 (void);
 extern void ForceHeadTracking_FindAndConfigureTracking_mF642E5CFE70672A0F6C2ABEB55CDC0771697B2D7 (void);
@@ -869,6 +873,17 @@ extern void DungeonRoomBuilder_CreateBones_m31BC86893E78090DB2605FF1A9E0D5CEEF66
 extern void DungeonRoomBuilder_CreateHangingVines_m31CDA5BDA99E5579E401ADA12993A7269D1CD3EB (void);
 extern void DungeonRoomBuilder_CreateWallDamage_m482BBDBE47765CAD3CE6AFB732FC6BBE8A4C513B (void);
 extern void DungeonRoomBuilder__cctor_mCD8B71D87B953DFE52B44552F96BFCA9725485FE (void);
+extern void HandVisibilityDebugger_Start_mF8A807A8F408118D7C9DAD6286A4153018210605 (void);
+extern void HandVisibilityDebugger_Update_mC2F880DC44F6CB15AD61128953C13661BEA1E43F (void);
+extern void HandVisibilityDebugger_FindHands_m43E5BF961601A839D8DC5BB803AFA1C5D6F7B6B9 (void);
+extern void HandVisibilityDebugger_RunDiagnostics_m443E16693A14E2EB733E1175338C9A6173C2B4F0 (void);
+extern void HandVisibilityDebugger_DiagnoseHand_m469A474C3D29911259F99618CA58BCEAA246F93A (void);
+extern void HandVisibilityDebugger_GetGameObjectPath_m2851CB62374C39F979A5EAAA0870E32769D70CA8 (void);
+extern void HandVisibilityDebugger_OnDrawGizmos_mE770B657BA9DF28DBF434BE09A234F8405B5878E (void);
+extern void HandVisibilityDebugger__ctor_m35243A69B8E11A3B9FC1F2E7328708232BCD5D66 (void);
+extern void SimpleHandDiagnostic_Start_mF447AD0BDBD424E51524A0F07F5DE512C19D97B0 (void);
+extern void SimpleHandDiagnostic_DiagnoseHand_mB8D5AE95DADDDA20DD855F770EEB623F8C69080E (void);
+extern void SimpleHandDiagnostic__ctor_m4BA202624D3B1D82F445CAFB4AFBF22F12A983F8 (void);
 extern void DebugDungeonTeleport_Start_m1F34844848FC179C6DE0A1B1CBF9F91646E1DB92 (void);
 extern void DebugDungeonTeleport_OnButtonClick_m5384EBF802B2E7321F8EDC4E1676A292691A9456 (void);
 extern void DebugDungeonTeleport_LoadDungeonScene_m0655B3237099CC37AEAD145B66A9694FB64645BB (void);
@@ -1013,6 +1028,7 @@ extern void MonsterAI_Stun_m4B7FAAE9E348B23B603175D9217B92DFB6CE3C02 (void);
 extern void MonsterAI_TriggerAggro_mB50F1C7BED0C98D0A7229D9FF531525F3E45AB38 (void);
 extern void MonsterAI_OnDrawGizmos_mFEF6E9D753CC3BB05A4A0674FC624EE5B93BFFC7 (void);
 extern void MonsterAI__ctor_mADAF8706E9EA328B5BF3FC84C7494A8F948214D3 (void);
+extern void MonsterAI_U3CFixedUpdateU3Eg__IsPlayerColliderU7C26_0_mA17E0003C50E008092D68FE99657544455FBF28A (void);
 extern void U3CFindPlayerCoroutineU3Ed__24__ctor_m1F76E31A9DD3A5A6831C41107F5AEE60F1623B9E (void);
 extern void U3CFindPlayerCoroutineU3Ed__24_System_IDisposable_Dispose_mF7F8FBF0D5C80E7F058422C927AA1B21FF5020AD (void);
 extern void U3CFindPlayerCoroutineU3Ed__24_MoveNext_m669343B50BBE6A694BE33D862D7B436F853176B6 (void);
@@ -1149,7 +1165,7 @@ extern void SkeletonEyeEffect_Update_m703C2A3167D8BF59C8332E0F80799C2798050D7A (
 extern void SkeletonEyeEffect_SetEyeColor_m1B0FB124EB3A1CB1F8B4DC22AC0B0BD8A5A461CA (void);
 extern void SkeletonEyeEffect_OnDestroy_m957178D57C1BD68CBCF5FF79581712C5BBA010DF (void);
 extern void SkeletonEyeEffect__ctor_m3E2EB3DEA51272C31EFE544A0DD49E802168F7C6 (void);
-static Il2CppMethodPointer s_methodPointers[1142] = 
+static Il2CppMethodPointer s_methodPointers[1158] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1412,6 +1428,10 @@ static Il2CppMethodPointer s_methodPointers[1142] =
 	EmergencyVRSetup_CreateMarker_mE7C47CB971BB99F37E4BA07EB66AC63F495DA0AE,
 	EmergencyVRSetup_MonitorTracking_m706DA02512ED3EEC39DF8AB7DDC6D38AA309C88A,
 	EmergencyVRSetup__ctor_m5C28B8695ADE3F3EC8AD2A8E60F62B4DCA31D3EC,
+	FixHandMaterials_Awake_mAA9200EA42581B10F3C40A4496A24617906FB6F1,
+	FixHandMaterials__ctor_mC19829A7C37A19B8F7E2C6A7A837AB96F71E127B,
+	ForceHandsVisible_Start_m0EB25FAD09E564171CDA50FC624D8B83DC302087,
+	ForceHandsVisible__ctor_m729B6CC0F4EACB4D6F9C2D6F4E248DC032E64BEC,
 	ForceHeadTracking_Start_m3D39C72A70F4E7E60720B6501E14D0FA5038039C,
 	ForceHeadTracking_Update_m90AE6044C9B1CC4955CC6A95C043AD92DB4D09E2,
 	ForceHeadTracking_FindAndConfigureTracking_mF642E5CFE70672A0F6C2ABEB55CDC0771697B2D7,
@@ -2013,6 +2033,17 @@ static Il2CppMethodPointer s_methodPointers[1142] =
 	DungeonRoomBuilder_CreateHangingVines_m31CDA5BDA99E5579E401ADA12993A7269D1CD3EB,
 	DungeonRoomBuilder_CreateWallDamage_m482BBDBE47765CAD3CE6AFB732FC6BBE8A4C513B,
 	DungeonRoomBuilder__cctor_mCD8B71D87B953DFE52B44552F96BFCA9725485FE,
+	HandVisibilityDebugger_Start_mF8A807A8F408118D7C9DAD6286A4153018210605,
+	HandVisibilityDebugger_Update_mC2F880DC44F6CB15AD61128953C13661BEA1E43F,
+	HandVisibilityDebugger_FindHands_m43E5BF961601A839D8DC5BB803AFA1C5D6F7B6B9,
+	HandVisibilityDebugger_RunDiagnostics_m443E16693A14E2EB733E1175338C9A6173C2B4F0,
+	HandVisibilityDebugger_DiagnoseHand_m469A474C3D29911259F99618CA58BCEAA246F93A,
+	HandVisibilityDebugger_GetGameObjectPath_m2851CB62374C39F979A5EAAA0870E32769D70CA8,
+	HandVisibilityDebugger_OnDrawGizmos_mE770B657BA9DF28DBF434BE09A234F8405B5878E,
+	HandVisibilityDebugger__ctor_m35243A69B8E11A3B9FC1F2E7328708232BCD5D66,
+	SimpleHandDiagnostic_Start_mF447AD0BDBD424E51524A0F07F5DE512C19D97B0,
+	SimpleHandDiagnostic_DiagnoseHand_mB8D5AE95DADDDA20DD855F770EEB623F8C69080E,
+	SimpleHandDiagnostic__ctor_m4BA202624D3B1D82F445CAFB4AFBF22F12A983F8,
 	DebugDungeonTeleport_Start_m1F34844848FC179C6DE0A1B1CBF9F91646E1DB92,
 	DebugDungeonTeleport_OnButtonClick_m5384EBF802B2E7321F8EDC4E1676A292691A9456,
 	DebugDungeonTeleport_LoadDungeonScene_m0655B3237099CC37AEAD145B66A9694FB64645BB,
@@ -2157,6 +2188,7 @@ static Il2CppMethodPointer s_methodPointers[1142] =
 	MonsterAI_TriggerAggro_mB50F1C7BED0C98D0A7229D9FF531525F3E45AB38,
 	MonsterAI_OnDrawGizmos_mFEF6E9D753CC3BB05A4A0674FC624EE5B93BFFC7,
 	MonsterAI__ctor_mADAF8706E9EA328B5BF3FC84C7494A8F948214D3,
+	MonsterAI_U3CFixedUpdateU3Eg__IsPlayerColliderU7C26_0_mA17E0003C50E008092D68FE99657544455FBF28A,
 	U3CFindPlayerCoroutineU3Ed__24__ctor_m1F76E31A9DD3A5A6831C41107F5AEE60F1623B9E,
 	U3CFindPlayerCoroutineU3Ed__24_System_IDisposable_Dispose_mF7F8FBF0D5C80E7F058422C927AA1B21FF5020AD,
 	U3CFindPlayerCoroutineU3Ed__24_MoveNext_m669343B50BBE6A694BE33D862D7B436F853176B6,
@@ -2297,9 +2329,9 @@ static Il2CppMethodPointer s_methodPointers[1142] =
 extern void FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] = 
 {
-	{ 0x0600012B, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
+	{ 0x0600012F, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1142] = 
+static const int32_t s_InvokerIndices[1158] = 
 {
 	15296,
 	15296,
@@ -2307,7 +2339,7 @@ static const int32_t s_InvokerIndices[1142] =
 	15296,
 	15296,
 	15296,
-	26575,
+	26576,
 	15296,
 	15296,
 	15296,
@@ -2362,19 +2394,19 @@ static const int32_t s_InvokerIndices[1142] =
 	15084,
 	15296,
 	15084,
-	24832,
+	24833,
 	15943,
 	16136,
 	16137,
 	15714,
-	24834,
-	24540,
+	24835,
+	24541,
 	21524,
 	21539,
 	15828,
-	24872,
-	26436,
-	24540,
+	24873,
+	26437,
+	24541,
 	15296,
 	15296,
 	15296,
@@ -2579,6 +2611,10 @@ static const int32_t s_InvokerIndices[1142] =
 	15296,
 	15296,
 	15296,
+	15296,
+	15296,
+	15296,
+	15296,
 	915,
 	15296,
 	15296,
@@ -2616,7 +2652,7 @@ static const int32_t s_InvokerIndices[1142] =
 	15296,
 	15296,
 	15296,
-	26436,
+	26437,
 	15296,
 	15296,
 	5566,
@@ -2715,14 +2751,14 @@ static const int32_t s_InvokerIndices[1142] =
 	15296,
 	15296,
 	15296,
-	26436,
-	25249,
+	26437,
+	25250,
 	15296,
 	11534,
 	11602,
 	15084,
 	15296,
-	26540,
+	26541,
 	15296,
 	8203,
 	15296,
@@ -3133,7 +3169,7 @@ static const int32_t s_InvokerIndices[1142] =
 	5876,
 	7203,
 	15296,
-	26540,
+	26541,
 	15296,
 	8203,
 	8203,
@@ -3144,25 +3180,36 @@ static const int32_t s_InvokerIndices[1142] =
 	15296,
 	18021,
 	21514,
-	26436,
+	26437,
 	19181,
 	16048,
-	24866,
-	26436,
-	26436,
-	26436,
+	24867,
+	26437,
+	26437,
+	26437,
 	21555,
-	24834,
+	24835,
 	19137,
-	24866,
-	24866,
-	24866,
-	24866,
-	24866,
-	26436,
-	24866,
-	24866,
-	26540,
+	24867,
+	24867,
+	24867,
+	24867,
+	24867,
+	26437,
+	24867,
+	24867,
+	26541,
+	15296,
+	15296,
+	15296,
+	15296,
+	5887,
+	9948,
+	15296,
+	15296,
+	15296,
+	5887,
+	15296,
 	15296,
 	15296,
 	15296,
@@ -3179,8 +3226,8 @@ static const int32_t s_InvokerIndices[1142] =
 	15296,
 	15296,
 	15296,
-	26436,
-	25249,
+	26437,
+	25250,
 	15296,
 	15296,
 	11602,
@@ -3201,8 +3248,8 @@ static const int32_t s_InvokerIndices[1142] =
 	15084,
 	15296,
 	15084,
-	26436,
-	25249,
+	26437,
+	25250,
 	15296,
 	15296,
 	15296,
@@ -3266,19 +3313,19 @@ static const int32_t s_InvokerIndices[1142] =
 	11697,
 	15296,
 	15296,
-	24849,
+	24850,
 	18284,
-	24849,
+	24850,
 	20069,
-	24849,
+	24850,
 	20069,
-	24849,
+	24850,
 	18285,
 	20069,
-	24849,
+	24850,
 	20069,
-	24849,
-	22418,
+	24850,
+	22419,
 	15296,
 	15296,
 	15296,
@@ -3307,6 +3354,7 @@ static const int32_t s_InvokerIndices[1142] =
 	15296,
 	15296,
 	15296,
+	8203,
 	11534,
 	15296,
 	14881,
@@ -3376,14 +3424,14 @@ static const int32_t s_InvokerIndices[1142] =
 	15084,
 	15296,
 	15084,
-	24849,
+	24850,
 	18285,
 	20069,
-	24849,
+	24850,
 	18285,
 	20069,
-	24849,
-	24849,
+	24850,
+	24850,
 	20038,
 	15296,
 	15296,
@@ -3416,11 +3464,11 @@ static const int32_t s_InvokerIndices[1142] =
 	15084,
 	15296,
 	15084,
-	26436,
+	26437,
 	19181,
-	24866,
-	26436,
-	24866,
+	24867,
+	26437,
+	24867,
 	15296,
 	15296,
 	15296,
@@ -3448,7 +3496,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1142,
+	1158,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

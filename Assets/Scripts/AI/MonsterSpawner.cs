@@ -243,18 +243,21 @@ namespace VRDungeonCrawler.AI
                 rb.angularVelocity = Vector3.zero;
 
                 // Add colliders sized to ORIGINAL (unscaled) mesh bounds
-                // This keeps hitboxes reasonable while visual is larger
-                // Trigger collider for spell detection - matches original mesh size
+                // Trigger collider for spell detection - reduced to 60% to match visible model
                 BoxCollider triggerCollider = monster.AddComponent<BoxCollider>();
                 triggerCollider.isTrigger = true;
-                triggerCollider.size = meshBounds.size;
+                triggerCollider.size = new Vector3(
+                    meshBounds.size.x * 0.6f,  // Narrower width
+                    meshBounds.size.y * 0.9f,  // Slightly shorter height
+                    meshBounds.size.z * 0.6f   // Narrower depth
+                );
                 triggerCollider.center = meshBounds.center;
 
-                // Physics collider - slightly smaller to prevent getting stuck
+                // Physics collider - small footprint at bottom
                 BoxCollider physicsCollider = monster.AddComponent<BoxCollider>();
                 physicsCollider.isTrigger = false;
-                physicsCollider.size = new Vector3(meshBounds.size.x * 0.9f, meshBounds.size.y, meshBounds.size.z * 0.9f);
-                physicsCollider.center = meshBounds.center;
+                physicsCollider.size = new Vector3(0.3f, 0.3f, 0.3f);
+                physicsCollider.center = new Vector3(meshBounds.center.x, meshBounds.min.y + 0.15f, meshBounds.center.z);
 
                 // DISABLED: Add ground alignment component for robust floor positioning
                 // Using simple Y position calculation instead for now
