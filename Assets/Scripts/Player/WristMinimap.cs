@@ -14,11 +14,25 @@ namespace VRDungeonCrawler.Player
         [Tooltip("Minimap size in world units")]
         public float minimapSize = 0.1f;
 
-        [Tooltip("Position offset from left hand (local space)")]
-        public Vector3 leftWristOffset = new Vector3(0f, 0.0f, -0.48f);
+        [Header("Position Settings - Try different values!")]
+        [Tooltip("Position offset from left hand (local space). X=left/right, Y=up/down, Z=forward(+)/back(-)")]
+        public Vector3 leftWristOffset = new Vector3(0f, -0.05f, -0.15f);
 
-        [Tooltip("Position offset from right hand (local space)")]
-        public Vector3 rightWristOffset = new Vector3(0f, 0.0f, -0.12f);
+        [Tooltip("Position offset from right hand (local space). X=left/right, Y=up/down, Z=forward(+)/back(-)")]
+        public Vector3 rightWristOffset = new Vector3(0f, -0.05f, -0.15f);
+
+        [Header("Quick Test")]
+        [Tooltip("Test: Place minimap far from hand to see if position updates work")]
+        public bool testMode = false;
+
+        [Tooltip("Test distance from hand")]
+        public float testDistance = 0.3f;
+
+        [Tooltip("Alternative: Use negative Y to position below hand")]
+        public bool useAlternativePositioning = false;
+
+        [Tooltip("If alternative positioning: offset along hand's 'down' direction")]
+        public float wristDistanceDown = 0.08f;
 
         [Tooltip("Rotation offset for minimap (to align with wrist)")]
         public Vector3 minimapRotationOffset = new Vector3(0f, 0f, 0f);
@@ -39,6 +53,7 @@ namespace VRDungeonCrawler.Player
         [Header("Debug")]
         public bool showDebug = false;
         public bool alwaysVisible = false; // For testing
+        public bool aggressiveLogging = false; // Log EVERY frame
 
         // Internal state
         private GameObject minimapRoot;
@@ -53,9 +68,39 @@ namespace VRDungeonCrawler.Player
         private bool isVisible = false;
         private Transform activeWrist;
 
+        void Awake()
+        {
+            // Make minimap persist across scene changes
+            DontDestroyOnLoad(gameObject);
+            Debug.Log("[WristMinimap] Minimap set to persist across scenes");
+
+            // Subscribe to scene changes to re-find hands
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        void OnDestroy()
+        {
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+        {
+            Debug.Log($"[WristMinimap] Scene loaded: {scene.name}. Re-finding hands...");
+
+            // Clear old references
+            leftHand = null;
+            rightHand = null;
+            headCamera = null;
+            activeWrist = null;
+
+            // Re-initialize after scene change
+            StartCoroutine(DelayedInitialization());
+        }
+
         void Start()
         {
             Debug.Log("[WristMinimap] Start() called - beginning delayed initialization...");
+            Debug.Log($"[WristMinimap] Current offset values: Left={leftWristOffset}, Right={rightWristOffset}");
             StartCoroutine(DelayedInitialization());
         }
 
@@ -321,7 +366,22 @@ namespace VRDungeonCrawler.Player
 
         void LateUpdate()
         {
-            if (headCamera == null) return;
+            if (aggressiveLogging && Time.frameCount % 60 == 0)
+            {
+                Debug.Log($"[WristMinimap] LateUpdate - Frame {Time.frameCount}");
+                Debug.Log($"  headCamera: {headCamera?.name ?? "NULL"}");
+                Debug.Log($"  leftHand: {leftHand?.name ?? "NULL"}");
+                Debug.Log($"  rightHand: {rightHand?.name ?? "NULL"}");
+                Debug.Log($"  activeWrist: {activeWrist?.name ?? "NULL"}");
+                Debug.Log($"  isVisible: {isVisible}");
+            }
+
+            if (headCamera == null)
+            {
+                if (aggressiveLogging && Time.frameCount % 60 == 0)
+                    Debug.LogWarning("[WristMinimap] LateUpdate EARLY EXIT - headCamera is NULL");
+                return;
+            }
 
             // Check wrist visibility
             Transform targetWrist = GetVisibleWrist();
@@ -342,6 +402,8 @@ namespace VRDungeonCrawler.Player
             {
                 if (!isVisible || targetWrist != activeWrist)
                 {
+                    if (aggressiveLogging)
+                        Debug.Log($"[WristMinimap] Showing minimap on {targetWrist.name}");
                     ShowMinimap(targetWrist);
                 }
                 // Update position every frame in LateUpdate for instant following
@@ -349,6 +411,8 @@ namespace VRDungeonCrawler.Player
             }
             else if (isVisible && !alwaysVisible)
             {
+                if (aggressiveLogging)
+                    Debug.Log("[WristMinimap] Hiding minimap - no visible wrist");
                 HideMinimap();
             }
 
@@ -406,28 +470,91 @@ namespace VRDungeonCrawler.Player
 
         void UpdateMinimapPosition(Transform wrist)
         {
+            // AGGRESSIVE LOGGING: Log every call
+            if (aggressiveLogging)
+            {
+                Debug.Log($"[WristMinimap] UpdateMinimapPosition CALLED - Frame {Time.frameCount}");
+            }
+
             if (minimapRoot == null || wrist == null)
             {
-                if (showDebug)
+                if (showDebug || aggressiveLogging)
                     Debug.LogWarning($"[WristMinimap] UpdateMinimapPosition failed: root={minimapRoot != null}, wrist={wrist != null}");
                 return;
             }
 
-            // Position relative to wrist (in wrist's local space)
-            Vector3 offset = wrist == leftHand ? leftWristOffset : rightWristOffset;
-            Vector3 worldOffset = wrist.TransformDirection(offset);
-            Vector3 targetPosition = wrist.position + worldOffset;
+            Vector3 oldPosition = minimapRoot.transform.position;
+            Vector3 targetPosition;
 
+            if (testMode)
+            {
+                // TEST MODE: Place very far from hand to verify position updates are working
+                targetPosition = wrist.position + wrist.forward * testDistance;
+                if (aggressiveLogging || (showDebug && Time.frameCount % 120 == 0))
+                {
+                    Debug.LogWarning($"[WristMinimap] TEST MODE ACTIVE - minimap at {testDistance}m in front of hand");
+                }
+            }
+            else if (useAlternativePositioning)
+            {
+                // Alternative: Position along hand's down direction (toward wrist/elbow)
+                targetPosition = wrist.position - wrist.up * wristDistanceDown;
+                if (aggressiveLogging)
+                {
+                    Debug.Log($"[WristMinimap] ALT positioning: wrist.pos={wrist.position}, wrist.up={wrist.up}, distance={wristDistanceDown}");
+                    Debug.Log($"[WristMinimap] Target = {targetPosition}");
+                }
+            }
+            else
+            {
+                // Standard: Use local offset
+                Vector3 offset = wrist == leftHand ? leftWristOffset : rightWristOffset;
+                Vector3 worldOffset = wrist.TransformDirection(offset);
+                targetPosition = wrist.position + worldOffset;
+
+                if (aggressiveLogging)
+                {
+                    Debug.Log($"[WristMinimap] STANDARD positioning:");
+                    Debug.Log($"  Wrist: {wrist.name}");
+                    Debug.Log($"  Local offset: {offset}");
+                    Debug.Log($"  World offset: {worldOffset}");
+                    Debug.Log($"  Wrist position: {wrist.position}");
+                    Debug.Log($"  Target position: {targetPosition}");
+                }
+            }
+
+            // ACTUALLY SET THE POSITION
             minimapRoot.transform.position = targetPosition;
 
-            if (showDebug && Time.frameCount % 60 == 0) // Log every 60 frames
+            if (aggressiveLogging)
+            {
+                Debug.Log($"[WristMinimap] Position SET:");
+                Debug.Log($"  Old: {oldPosition}");
+                Debug.Log($"  New: {minimapRoot.transform.position}");
+                Debug.Log($"  Changed: {Vector3.Distance(oldPosition, minimapRoot.transform.position) > 0.001f}");
+            }
+
+            if (showDebug && Time.frameCount % 120 == 0) // Log every 120 frames
             {
                 Debug.Log($"[WristMinimap] Position Update:");
                 Debug.Log($"  Wrist: {wrist.name}");
-                Debug.Log($"  Offset (local): {offset}");
-                Debug.Log($"  Offset (world): {worldOffset}");
+                Debug.Log($"  Alternative Mode: {useAlternativePositioning}");
+                if (useAlternativePositioning)
+                {
+                    Debug.Log($"  Distance down: {wristDistanceDown}");
+                    Debug.Log($"  Wrist up vector: {wrist.up}");
+                }
+                else
+                {
+                    Vector3 offset = wrist == leftHand ? leftWristOffset : rightWristOffset;
+                    Debug.Log($"  Offset (local): {offset}");
+                    Debug.Log($"  Wrist forward: {wrist.forward}");
+                    Debug.Log($"  Wrist up: {wrist.up}");
+                    Debug.Log($"  Wrist right: {wrist.right}");
+                }
                 Debug.Log($"  Wrist pos: {wrist.position}");
                 Debug.Log($"  Minimap pos: {targetPosition}");
+                Debug.Log($"  Distance: {Vector3.Distance(wrist.position, targetPosition):F3}m");
             }
 
             // Rotate with wrist like a real watch (not facing camera)
@@ -462,33 +589,78 @@ namespace VRDungeonCrawler.Player
 
             if (leftHand != null)
             {
+                // Hand position
                 Gizmos.color = Color.green;
-                Gizmos.DrawWireSphere(leftHand.position, 0.05f);
+                Gizmos.DrawWireSphere(leftHand.position, 0.02f);
+
+                // Draw hand axes
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(leftHand.position, leftHand.position + leftHand.right * 0.05f); // X = red
+                Gizmos.color = Color.green;
+                Gizmos.DrawLine(leftHand.position, leftHand.position + leftHand.up * 0.05f); // Y = green
+                Gizmos.color = Color.blue;
+                Gizmos.DrawLine(leftHand.position, leftHand.position + leftHand.forward * 0.05f); // Z = blue
 
                 // Draw where the minimap SHOULD be on left wrist
-                Vector3 targetPos = leftHand.position + leftHand.TransformDirection(leftWristOffset);
+                Vector3 targetPos;
+                if (useAlternativePositioning)
+                {
+                    targetPos = leftHand.position - leftHand.up * wristDistanceDown;
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawLine(leftHand.position, targetPos);
+                }
+                else
+                {
+                    targetPos = leftHand.position + leftHand.TransformDirection(leftWristOffset);
+                    Gizmos.color = Color.cyan;
+                    Gizmos.DrawLine(leftHand.position, targetPos);
+                }
+
                 Gizmos.color = Color.cyan;
-                Gizmos.DrawWireSphere(targetPos, 0.03f);
-                Gizmos.DrawLine(leftHand.position, targetPos);
+                Gizmos.DrawWireSphere(targetPos, 0.04f);
+                Gizmos.DrawWireCube(targetPos, Vector3.one * minimapSize);
             }
 
             if (rightHand != null)
             {
+                // Hand position
                 Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(rightHand.position, 0.05f);
+                Gizmos.DrawWireSphere(rightHand.position, 0.02f);
+
+                // Draw hand axes
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(rightHand.position, rightHand.position + rightHand.right * 0.05f); // X = red
+                Gizmos.color = Color.green;
+                Gizmos.DrawLine(rightHand.position, rightHand.position + rightHand.up * 0.05f); // Y = green
+                Gizmos.color = Color.blue;
+                Gizmos.DrawLine(rightHand.position, rightHand.position + rightHand.forward * 0.05f); // Z = blue
 
                 // Draw where the minimap SHOULD be on right wrist
-                Vector3 targetPos = rightHand.position + rightHand.TransformDirection(rightWristOffset);
+                Vector3 targetPos;
+                if (useAlternativePositioning)
+                {
+                    targetPos = rightHand.position - rightHand.up * wristDistanceDown;
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawLine(rightHand.position, targetPos);
+                }
+                else
+                {
+                    targetPos = rightHand.position + rightHand.TransformDirection(rightWristOffset);
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawLine(rightHand.position, targetPos);
+                }
+
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawWireSphere(targetPos, 0.03f);
-                Gizmos.DrawLine(rightHand.position, targetPos);
+                Gizmos.DrawWireSphere(targetPos, 0.04f);
+                Gizmos.DrawWireCube(targetPos, Vector3.one * minimapSize);
             }
 
             // Draw where the minimap ACTUALLY is
             if (minimapRoot != null && isVisible)
             {
                 Gizmos.color = Color.magenta;
-                Gizmos.DrawWireCube(minimapRoot.transform.position, Vector3.one * 0.02f);
+                Gizmos.DrawWireCube(minimapRoot.transform.position, Vector3.one * minimapSize * 1.2f);
+                Gizmos.DrawWireSphere(minimapRoot.transform.position, 0.01f);
             }
         }
 
@@ -509,7 +681,9 @@ namespace VRDungeonCrawler.Player
         [ContextMenu("Print Debug Info")]
         void PrintDebugInfo()
         {
+            Debug.Log("========================================");
             Debug.Log("=== WristMinimap Debug Info ===");
+            Debug.Log("========================================");
             Debug.Log($"Left Hand: {leftHand?.name ?? "NULL"}");
             Debug.Log($"Right Hand: {rightHand?.name ?? "NULL"}");
             Debug.Log($"Active Wrist: {activeWrist?.name ?? "NULL"}");
@@ -517,15 +691,42 @@ namespace VRDungeonCrawler.Player
             Debug.Log($"Minimap Root: {minimapRoot?.name ?? "NULL"}");
             Debug.Log($"Is Visible: {isVisible}");
             Debug.Log($"Always Visible: {alwaysVisible}");
+            Debug.Log("--- Position Settings ---");
+            Debug.Log($"Test Mode: {testMode}");
+            Debug.Log($"Alternative Positioning: {useAlternativePositioning}");
             Debug.Log($"Left Offset: {leftWristOffset}");
             Debug.Log($"Right Offset: {rightWristOffset}");
+            Debug.Log($"Wrist Distance Down: {wristDistanceDown}");
+            Debug.Log($"Test Distance: {testDistance}");
 
             if (activeWrist != null && minimapRoot != null)
             {
+                Debug.Log("--- Current State ---");
                 Debug.Log($"Wrist Position: {activeWrist.position}");
                 Debug.Log($"Minimap Position: {minimapRoot.transform.position}");
-                Debug.Log($"Distance: {Vector3.Distance(activeWrist.position, minimapRoot.transform.position)}");
+                Debug.Log($"Distance: {Vector3.Distance(activeWrist.position, minimapRoot.transform.position):F3}m");
+
+                // Calculate what position SHOULD be
+                Vector3 shouldBe;
+                if (testMode)
+                {
+                    shouldBe = activeWrist.position + activeWrist.forward * testDistance;
+                    Debug.Log($"Should Be (TEST): {shouldBe}");
+                }
+                else if (useAlternativePositioning)
+                {
+                    shouldBe = activeWrist.position - activeWrist.up * wristDistanceDown;
+                    Debug.Log($"Should Be (ALT): {shouldBe}");
+                }
+                else
+                {
+                    Vector3 offset = activeWrist == leftHand ? leftWristOffset : rightWristOffset;
+                    shouldBe = activeWrist.position + activeWrist.TransformDirection(offset);
+                    Debug.Log($"Should Be (STANDARD): {shouldBe}");
+                }
+                Debug.Log($"Position Error: {Vector3.Distance(shouldBe, minimapRoot.transform.position):F3}m");
             }
+            Debug.Log("========================================");
         }
 
         [ContextMenu("Reinitialize")]
@@ -545,6 +746,46 @@ namespace VRDungeonCrawler.Player
             isVisible = false;
 
             StartCoroutine(DelayedInitialization());
+        }
+
+        [ContextMenu("TEST: Move Minimap 1m Forward")]
+        void TestMoveExtreme()
+        {
+            if (minimapRoot == null)
+            {
+                Debug.LogError("[WristMinimap] Cannot test - minimapRoot is NULL!");
+                return;
+            }
+
+            if (activeWrist == null)
+            {
+                Debug.LogError("[WristMinimap] Cannot test - activeWrist is NULL!");
+                return;
+            }
+
+            Vector3 extremePos = activeWrist.position + activeWrist.forward * 1.0f;
+            Debug.LogWarning($"[WristMinimap] TEST: Moving minimap to extreme position 1m forward");
+            Debug.LogWarning($"  From: {minimapRoot.transform.position}");
+            Debug.LogWarning($"  To: {extremePos}");
+
+            minimapRoot.transform.position = extremePos;
+
+            Debug.LogWarning($"  Actual: {minimapRoot.transform.position}");
+            Debug.LogWarning($"  Success: {Vector3.Distance(minimapRoot.transform.position, extremePos) < 0.01f}");
+        }
+
+        [ContextMenu("TEST: Enable Aggressive Logging")]
+        void EnableAggressiveLogging()
+        {
+            aggressiveLogging = true;
+            Debug.LogWarning("[WristMinimap] Aggressive logging ENABLED - will log every frame!");
+        }
+
+        [ContextMenu("TEST: Disable Aggressive Logging")]
+        void DisableAggressiveLogging()
+        {
+            aggressiveLogging = false;
+            Debug.Log("[WristMinimap] Aggressive logging disabled");
         }
     }
 }

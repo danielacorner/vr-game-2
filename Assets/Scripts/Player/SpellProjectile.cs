@@ -49,6 +49,9 @@ namespace VRDungeonCrawler.Player
                     }
                 }
             }
+
+            // Ignore collisions with other spell projectiles (spells pass through each other)
+            StartCoroutine(IgnoreOtherSpells());
         }
 
         private void SetupVisuals()
@@ -238,6 +241,38 @@ namespace VRDungeonCrawler.Player
                 return 5; // Tier 2
             else
                 return 2; // Tier 1
+        }
+
+        /// <summary>
+        /// Coroutine to ignore collisions with other spell projectiles
+        /// Runs for a short duration to catch all existing and new spells
+        /// </summary>
+        private System.Collections.IEnumerator IgnoreOtherSpells()
+        {
+            Collider myCollider = GetComponent<Collider>();
+            if (myCollider == null) yield break;
+
+            // Run for 0.5 seconds to catch spells spawned at the same time
+            float endTime = Time.time + 0.5f;
+
+            while (Time.time < endTime)
+            {
+                // Find all spell projectiles in the scene
+                SpellProjectile[] allSpells = FindObjectsOfType<SpellProjectile>();
+
+                foreach (SpellProjectile otherSpell in allSpells)
+                {
+                    if (otherSpell == this) continue; // Skip self
+
+                    Collider otherCollider = otherSpell.GetComponent<Collider>();
+                    if (otherCollider != null)
+                    {
+                        Physics.IgnoreCollision(myCollider, otherCollider, true);
+                    }
+                }
+
+                yield return new WaitForSeconds(0.05f); // Check every 50ms
+            }
         }
     }
 }

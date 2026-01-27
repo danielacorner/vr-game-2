@@ -5753,6 +5753,10 @@ MonoBehaviour:
   minimapSize: 0.1
   leftWristOffset: {x: 0, y: 0.02, z: 0.06}
   rightWristOffset: {x: 0, y: 0.02, z: 0.06}
+  testMode: 0
+  testDistance: 0.3
+  useAlternativePositioning: 0
+  wristDistanceDown: 0.08
   minimapRotationOffset: {x: 0, y: 0, z: 0}
   activationDistance: 0.4
   updateInterval: 0.1
@@ -5762,6 +5766,7 @@ MonoBehaviour:
   visitedRoomColor: {r: 0.25, g: 0.25, b: 0.3, a: 1}
   showDebug: 1
   alwaysVisible: 1
+  aggressiveLogging: 1
 --- !u!1 &1059828671
 GameObject:
   m_ObjectHideFlags: 0
