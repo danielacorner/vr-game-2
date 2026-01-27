@@ -14,11 +14,14 @@ namespace VRDungeonCrawler.Player
         [Tooltip("Minimap size in world units")]
         public float minimapSize = 0.1f;
 
-        [Tooltip("Position offset from left hand")]
-        public Vector3 leftWristOffset = new Vector3(0f, 0.02f, 0.06f);
+        [Tooltip("Position offset from left hand (local space)")]
+        public Vector3 leftWristOffset = new Vector3(0f, 0.01f, -0.05f);
 
-        [Tooltip("Position offset from right hand")]
-        public Vector3 rightWristOffset = new Vector3(0f, 0.02f, 0.06f);
+        [Tooltip("Position offset from right hand (local space)")]
+        public Vector3 rightWristOffset = new Vector3(0f, 0.01f, -0.05f);
+
+        [Tooltip("Rotation offset for minimap (to align with wrist)")]
+        public Vector3 minimapRotationOffset = new Vector3(0f, 0f, 0f);
 
         [Tooltip("Distance from camera to show minimap")]
         [Range(0.1f, 1f)]
@@ -370,16 +373,21 @@ namespace VRDungeonCrawler.Player
         {
             if (minimapRoot == null || wrist == null) return;
 
+            // Position relative to wrist (in wrist's local space)
             Vector3 offset = wrist == leftHand ? leftWristOffset : rightWristOffset;
             minimapRoot.transform.position = wrist.position + wrist.TransformDirection(offset);
 
-            // Face camera
-            Vector3 toCamera = headCamera.position - minimapRoot.transform.position;
-            toCamera.y = 0; // Keep horizontal
-            if (toCamera.magnitude > 0.01f)
-            {
-                minimapRoot.transform.rotation = Quaternion.LookRotation(toCamera);
-            }
+            // Rotate with wrist like a real watch (not facing camera)
+            // The minimap should be parallel to the back of the hand
+            // Wrist forward = along the arm, wrist up = back of hand
+            Quaternion wristRotation = wrist.rotation;
+
+            // Apply 90 degree rotation to make it lie flat on wrist (like a watch face)
+            // The canvas needs to face up (along the wrist's "up" direction)
+            Quaternion watchOrientation = wristRotation * Quaternion.Euler(90f, 0f, 0f);
+
+            // Apply any custom rotation offset
+            minimapRoot.transform.rotation = watchOrientation * Quaternion.Euler(minimapRotationOffset);
         }
 
         void UpdatePlayerPosition()

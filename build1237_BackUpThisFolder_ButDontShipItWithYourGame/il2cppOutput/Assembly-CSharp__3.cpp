@@ -3282,6 +3282,7 @@ struct WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792  : public MonoBeha
 	float ___minimapSize;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___leftWristOffset;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___rightWristOffset;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___minimapRotationOffset;
 	float ___activationDistance;
 	float ___updateInterval;
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___backgroundColor;
@@ -5482,7 +5483,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool WristMinimap_IsWristVisible_m80D4238D5AC
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_get_normalized_m736BBF65D5CDA7A18414370D15B4DFCC1E466F07_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_Angle_mB16906B482814C140FE5BA9D041D2DC11E42A68D_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_from, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_to, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Transform_TransformDirection_m9BE1261DF2D48B7A4A27D31EE24D2D97F89E7757 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_direction, const RuntimeMethod* method) ;
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_op_Multiply_mCB375FCCC12A2EC8F9EB824A1BFB4453B58C2012_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_lhs, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___1_rhs, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_Euler_m5BCCC19216CFAD2426F15BC51A30421880D27B73_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_euler, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Transform_get_eulerAngles_mCAAF48EFCF628F1ED91C2FFE75A4FD19C039DD6A (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Application_get_isPlaying_m25B0ABDFEF54F5370CD3F263A813540843D00F34 (const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F Color_get_green_mEB001F2CD8C68C6BBAEF9101990B779D3AA2A6EF_inline (const RuntimeMethod* method) ;
@@ -5577,6 +5579,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m8855A6DE10F84DA7F4EC
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_set_useGravity_m1B1B22E093F9DC92D7BEEBBE6B02642B3B6C4389 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, bool ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_set_linearVelocity_m29AE03D5FC079EAD4202FCF72E2AEBDC19363985 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_set_angularVelocity_m23266B4E52BF0D2E65CC984AC73CC40B8D4A27E0 (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SummonableItem_CompleteSummon_m14157A7560577A6287AAE7596FF351F271F4EDE9 (SummonableItem_t080FB809B630EE9CE7B3E9DFC604D731CDD5DB32* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Time_get_fixedDeltaTime_m43136893D00AF5D5FE80AD05609558F6E2381381 (const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_Slerp_m0A9969F500E7716EA4F6BC4E7D5464372D8E9E15_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_a, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___1_b, float ___2_t, const RuntimeMethod* method) ;
@@ -13298,7 +13301,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_Start_m2DD9878A393E1AFA0F69
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* G_B20_0 = NULL;
 	WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792* G_B20_1 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:56>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:59>
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_0;
 		L_0 = Camera_get_main_m52C992F18E05355ABB9EEB64A4BF2215E12762DF(NULL);
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_1 = L_0;
@@ -13331,7 +13334,7 @@ IL_0012:
 		NullCheck(G_B3_1);
 		G_B3_1->___headCamera = G_B3_0;
 		Il2CppCodeGenWriteBarrier((void**)(&G_B3_1->___headCamera), (void*)G_B3_0);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:57>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:60>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = __this->___headCamera;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_4;
@@ -13342,20 +13345,20 @@ IL_0012:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:59>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:62>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralF95F871667535146B63DB6A1A44E5AED6272FEE4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:60>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:63>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:61>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:64>
 		return;
 	}
 
 IL_0037:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:65>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:68>
 		WristMinimap_FindHandControllers_m6AB79369BA922672EF0A7BC7A8A96B8B585801FF(__this, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:67>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:70>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = __this->___leftHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_6;
@@ -13376,10 +13379,10 @@ IL_0037:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:69>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:72>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralC213970C3D7753BDC26A7AF4F6FE6435FBB07FA2, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:70>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:73>
 		bool L_9 = __this->___showDebug;
 		if (!L_9)
 		{
@@ -13387,24 +13390,24 @@ IL_0037:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:72>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:75>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral890BBF247B2AAAD556CDA12D4C0BD05553E77CA0, NULL);
 	}
 
 IL_0075:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:74>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:77>
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(__this, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:75>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:78>
 		return;
 	}
 
 IL_007d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:78>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:81>
 		WristMinimap_CreateMinimapUI_m268E05C7A095ECED8C2511B17B8FD7F746530670(__this, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:80>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:83>
 		bool L_10 = __this->___showDebug;
 		if (!L_10)
 		{
@@ -13412,7 +13415,7 @@ IL_007d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:82>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:85>
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_11 = (StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)SZArrayNew(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248_il2cpp_TypeInfo_var, (uint32_t)6);
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_12 = L_11;
 		NullCheck(L_12);
@@ -13516,7 +13519,7 @@ IL_00ca:
 
 IL_00eb:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:85>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:88>
 		bool L_27 = __this->___alwaysVisible;
 		if (!L_27)
 		{
@@ -13524,7 +13527,7 @@ IL_00eb:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:87>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:90>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_28 = __this->___leftHand;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_29 = L_28;
 		if (L_29)
@@ -13550,7 +13553,7 @@ IL_0104:
 
 IL_0109:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:89>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:92>
 		return;
 	}
 }
@@ -13579,11 +13582,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_FindHandControllers_m6AB793
 	String_t* V_3 = NULL;
 	XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* V_4 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:94>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:97>
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24* L_0;
 		L_0 = Object_FindObjectsOfType_TisTransform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1_m60CCBE98D6122ABEBF66469239E6EFD9E7B184F3(Object_FindObjectsOfType_TisTransform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1_m60CCBE98D6122ABEBF66469239E6EFD9E7B184F3_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:95>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:98>
 		V_0 = L_0;
 		V_1 = 0;
 		goto IL_00f1;
@@ -13591,14 +13594,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_FindHandControllers_m6AB793
 
 IL_000d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:95>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:98>
 		TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24* L_1 = V_0;
 		int32_t L_2 = V_1;
 		NullCheck(L_1);
 		int32_t L_3 = L_2;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = (L_1)->GetAt(static_cast<il2cpp_array_size_t>(L_3));
 		V_2 = L_4;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:97>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:100>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = V_2;
 		NullCheck(L_5);
 		String_t* L_6;
@@ -13607,7 +13610,7 @@ IL_000d:
 		String_t* L_7;
 		L_7 = String_ToLower_m6191ABA3DC514ED47C10BDA23FD0DDCEAE7ACFBD(L_6, NULL);
 		V_3 = L_7;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:98>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:101>
 		String_t* L_8 = V_3;
 		NullCheck(L_8);
 		bool L_9;
@@ -13640,7 +13643,7 @@ IL_000d:
 
 IL_0044:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:100>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:103>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14 = __this->___leftHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_15;
@@ -13651,11 +13654,11 @@ IL_0044:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:102>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:105>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16 = V_2;
 		__this->___leftHand = L_16;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___leftHand), (void*)L_16);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:103>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:106>
 		bool L_17 = __this->___showDebug;
 		if (!L_17)
 		{
@@ -13663,7 +13666,7 @@ IL_0044:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:103>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:106>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18 = V_2;
 		NullCheck(L_18);
 		String_t* L_19;
@@ -13677,7 +13680,7 @@ IL_0044:
 
 IL_0078:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:106>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:109>
 		String_t* L_21 = V_3;
 		NullCheck(L_21);
 		bool L_22;
@@ -13710,7 +13713,7 @@ IL_0078:
 
 IL_009f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:108>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:111>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_27 = __this->___rightHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_28;
@@ -13721,11 +13724,11 @@ IL_009f:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:110>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:113>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_29 = V_2;
 		__this->___rightHand = L_29;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___rightHand), (void*)L_29);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:111>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:114>
 		bool L_30 = __this->___showDebug;
 		if (!L_30)
 		{
@@ -13733,7 +13736,7 @@ IL_009f:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:111>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:114>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31 = V_2;
 		NullCheck(L_31);
 		String_t* L_32;
@@ -13746,7 +13749,7 @@ IL_009f:
 
 IL_00d1:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:115>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:118>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_34 = __this->___leftHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_35;
@@ -13775,7 +13778,7 @@ IL_00ed:
 
 IL_00f1:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:95>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:98>
 		int32_t L_39 = V_1;
 		TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24* L_40 = V_0;
 		NullCheck(L_40);
@@ -13787,7 +13790,7 @@ IL_00f1:
 
 IL_00fa:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:120>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:123>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_41 = __this->___leftHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_42;
@@ -13810,12 +13813,12 @@ IL_00fa:
 
 IL_0116:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:122>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:125>
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_45;
 		L_45 = Object_FindFirstObjectByType_TisXROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE_m5DF86C6F6E4EA017A319E7149E3E5B6A1CF6B917(Object_FindFirstObjectByType_TisXROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE_m5DF86C6F6E4EA017A319E7149E3E5B6A1CF6B917_RuntimeMethod_var);
 		V_4 = L_45;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:123>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:126>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_46 = V_4;
 		bool L_47;
 		L_47 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_46, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
@@ -13825,7 +13828,7 @@ IL_0116:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:125>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:128>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_48 = __this->___leftHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_49;
@@ -13836,7 +13839,7 @@ IL_0116:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:126>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:129>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_50 = V_4;
 		NullCheck(L_50);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_51;
@@ -13849,7 +13852,7 @@ IL_0116:
 
 IL_014d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:127>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:130>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_53 = __this->___rightHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_54;
@@ -13860,7 +13863,7 @@ IL_014d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:128>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:131>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_55 = V_4;
 		NullCheck(L_55);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_56;
@@ -13873,7 +13876,7 @@ IL_014d:
 
 IL_0173:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:131>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:134>
 		return;
 	}
 }
@@ -13893,7 +13896,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 	int32_t V_1 = 0;
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* V_2 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:135>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:138>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_parent;
 		NullCheck(L_0);
 		TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24* L_1;
@@ -13905,14 +13908,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 
 IL_000b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:135>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:138>
 		TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24* L_2 = V_0;
 		int32_t L_3 = V_1;
 		NullCheck(L_2);
 		int32_t L_4 = L_3;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = (L_2)->GetAt(static_cast<il2cpp_array_size_t>(L_4));
 		V_2 = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:137>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:140>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6 = V_2;
 		NullCheck(L_6);
 		String_t* L_7;
@@ -13930,7 +13933,7 @@ IL_000b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:139>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:142>
 		bool L_11 = __this->___showDebug;
 		if (!L_11)
 		{
@@ -13938,7 +13941,7 @@ IL_000b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:139>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:142>
 		String_t* L_12 = ___1_searchTerm;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13 = V_2;
 		NullCheck(L_13);
@@ -13952,7 +13955,7 @@ IL_000b:
 
 IL_0045:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:140>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:143>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16 = V_2;
 		return L_16;
 	}
@@ -13965,7 +13968,7 @@ IL_0047:
 
 IL_004b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:135>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:138>
 		int32_t L_18 = V_1;
 		TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24* L_19 = V_0;
 		NullCheck(L_19);
@@ -13975,7 +13978,7 @@ IL_004b:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:143>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:146>
 		return (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL;
 	}
 }
@@ -13998,12 +14001,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_CreateMinimapUI_m268E05C7A0
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:149>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:152>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral5E89EAB0CFC49289E2E27B0B97932CDE7C9A1BCA, NULL);
 		__this->___minimapRoot = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___minimapRoot), (void*)L_0);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:150>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:153>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = __this->___minimapRoot;
 		NullCheck(L_1);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
@@ -14012,38 +14015,38 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_CreateMinimapUI_m268E05C7A0
 		L_3 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_2);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_2, L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:153>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:156>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___minimapRoot;
 		NullCheck(L_4);
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_5;
 		L_5 = GameObject_AddComponent_TisCanvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26_m13C85FD585C0679530F8B35D0B39D965702FD0F5(L_4, GameObject_AddComponent_TisCanvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26_m13C85FD585C0679530F8B35D0B39D965702FD0F5_RuntimeMethod_var);
 		__this->___minimapCanvas = L_5;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___minimapCanvas), (void*)L_5);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:154>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:157>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_6 = __this->___minimapCanvas;
 		NullCheck(L_6);
 		Canvas_set_renderMode_mD73E953F8A115CF469508448A00D0EDAFAF5AB47(L_6, 2, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:156>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:159>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = __this->___minimapRoot;
 		NullCheck(L_7);
 		CanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B* L_8;
 		L_8 = GameObject_AddComponent_TisCanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B_m1D199D3A55BF0356D541CB3048142A8D7E52521A(L_7, GameObject_AddComponent_TisCanvasScaler_t3BC095205EAD308CF3EAC27136A73387AC32FC3B_m1D199D3A55BF0356D541CB3048142A8D7E52521A_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:157>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:160>
 		NullCheck(L_8);
 		CanvasScaler_set_dynamicPixelsPerUnit_m7A081D5FD963F751140DCF1E5190ED4E51308CA2_inline(L_8, (100.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:159>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:162>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->___minimapRoot;
 		NullCheck(L_9);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_10;
 		L_10 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_9, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:160>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:163>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_11 = L_10;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_12;
 		memset((&L_12), 0, sizeof(L_12));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_12), (400.0f), (400.0f), NULL);
 		NullCheck(L_11);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_11, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:161>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:164>
 		float L_13 = __this->___minimapSize;
 		float L_14 = __this->___minimapSize;
 		float L_15 = __this->___minimapSize;
@@ -14052,10 +14055,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_CreateMinimapUI_m268E05C7A0
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_16), ((float)(L_13/(400.0f))), ((float)(L_14/(400.0f))), ((float)(L_15/(400.0f))), NULL);
 		NullCheck(L_11);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_11, L_16, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:164>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:167>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_17, _stringLiteral5230F5FD1E0998B73530AA850D3A5872D61228EC, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:165>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:168>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18 = L_17;
 		NullCheck(L_18);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_19;
@@ -14066,40 +14069,40 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_CreateMinimapUI_m268E05C7A0
 		L_21 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_20, NULL);
 		NullCheck(L_19);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_19, L_21, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:166>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:169>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22 = L_18;
 		NullCheck(L_22);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_23;
 		L_23 = GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0(L_22, GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:167>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:170>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_24 = __this->___backgroundColor;
 		NullCheck(L_23);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_23, L_24);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:168>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:171>
 		NullCheck(L_22);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_25;
 		L_25 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_22, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:169>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:172>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_26 = L_25;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_27;
 		L_27 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_26);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_26, L_27, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:170>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:173>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_28 = L_26;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_29;
 		L_29 = Vector2_get_one_m9097EB8DC23C26118A591AF16702796C3EF51DFB_inline(NULL);
 		NullCheck(L_28);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_28, L_29, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:171>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:174>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_30;
 		L_30 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_28);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_28, L_30, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:174>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:177>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_31 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_31, _stringLiteralBA84F814F80125A2E72AEB25CB2B1AEAEFC88406, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:175>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:178>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_32 = L_31;
 		NullCheck(L_32);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_33;
@@ -14110,45 +14113,45 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_CreateMinimapUI_m268E05C7A0
 		L_35 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_34, NULL);
 		NullCheck(L_33);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_33, L_35, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:176>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:179>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_36 = L_32;
 		NullCheck(L_36);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_37;
 		L_37 = GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0(L_36, GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:177>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:180>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_38;
 		memset((&L_38), 0, sizeof(L_38));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_38), (0.400000006f), (0.400000006f), (0.5f), NULL);
 		NullCheck(L_37);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_37, L_38);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:178>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:181>
 		NullCheck(L_36);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_39;
 		L_39 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_36, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:179>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:182>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_40 = L_39;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_41;
 		L_41 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_40);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_40, L_41, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:180>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:183>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_42 = L_40;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_43;
 		L_43 = Vector2_get_one_m9097EB8DC23C26118A591AF16702796C3EF51DFB_inline(NULL);
 		NullCheck(L_42);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_42, L_43, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:181>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:184>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_44;
 		memset((&L_44), 0, sizeof(L_44));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_44), (10.0f), (10.0f), NULL);
 		NullCheck(L_42);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_42, L_44, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:184>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:187>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_45 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_45, _stringLiteralB6F0795DD4F409C92875D0327F58FDEA357047F1, NULL);
 		__this->___minimapContent = L_45;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___minimapContent), (void*)L_45);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:185>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:188>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_46 = __this->___minimapContent;
 		NullCheck(L_46);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_47;
@@ -14159,39 +14162,39 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_CreateMinimapUI_m268E05C7A0
 		L_49 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_48, NULL);
 		NullCheck(L_47);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_47, L_49, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:186>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:189>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_50 = __this->___minimapContent;
 		NullCheck(L_50);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_51;
 		L_51 = GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388(L_50, GameObject_AddComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m771EB78FF8813B5AFF21AC0D252E5461943E6388_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:187>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:190>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_52 = L_51;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_53;
 		memset((&L_53), 0, sizeof(L_53));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_53), (0.100000001f), (0.100000001f), NULL);
 		NullCheck(L_52);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_52, L_53, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:188>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:191>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_54 = L_52;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_55;
 		memset((&L_55), 0, sizeof(L_55));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_55), (0.899999976f), (0.899999976f), NULL);
 		NullCheck(L_54);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_54, L_55, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:189>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:192>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_56;
 		L_56 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_54);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_54, L_56, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:192>
-		WristMinimap_DrawDungeonRooms_m8C04E7BFA9FD6573FE490E66657C5580465D0606(__this, NULL);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:195>
+		WristMinimap_DrawDungeonRooms_m8C04E7BFA9FD6573FE490E66657C5580465D0606(__this, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:198>
 		WristMinimap_CreatePlayerDot_m2B6CEF9B70DDBF754D3C9C37347C22FD4FA28EEB(__this, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:197>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:200>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_57 = __this->___minimapRoot;
 		NullCheck(L_57);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_57, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:198>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:201>
 		return;
 	}
 }
@@ -14244,12 +14247,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_DrawDungeonRooms_m8C04E7BFA
 	float V_18 = 0.0f;
 	float V_19 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:203>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:206>
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* L_0;
 		L_0 = Object_FindFirstObjectByType_TisDungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB_m338E64F1AA19478349A11DF8AD48EB51CF1411AF(Object_FindFirstObjectByType_TisDungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB_m338E64F1AA19478349A11DF8AD48EB51CF1411AF_RuntimeMethod_var);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:204>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:207>
 		DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* L_1 = V_0;
 		bool L_2;
 		L_2 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605(L_1, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
@@ -14259,7 +14262,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_DrawDungeonRooms_m8C04E7BFA
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:209>
 		bool L_3 = __this->___showDebug;
 		if (!L_3)
 		{
@@ -14267,21 +14270,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_DrawDungeonRooms_m8C04E7BFA
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:206>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:209>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(_stringLiteral3F7C4721BC1E26FD142211A4A1F62E0E2D094056, NULL);
 	}
 
 IL_0021:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:207>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:210>
 		return;
 	}
 
 IL_0022:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:211>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:212>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:214>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:215>
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_4 = { reinterpret_cast<intptr_t> (DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB_0_0_0_var) };
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.systemtype_class);
 		Type_t* L_5;
@@ -14290,7 +14293,7 @@ IL_0022:
 		FieldInfo_t* L_6;
 		L_6 = VirtualFuncInvoker2< FieldInfo_t*, String_t*, int32_t >::Invoke(83, L_5, _stringLiteral8A2F2AA073A38D96AB67DE6933C7C49CB00E6E12, ((int32_t)36));
 		V_1 = L_6;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:213>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:216>
 		FieldInfo_t* L_7 = V_1;
 		bool L_8;
 		L_8 = FieldInfo_op_Equality_mA38D84E1D9AA016F414CF2265C4B0DB1FEBBAB74(L_7, (FieldInfo_t*)NULL, NULL);
@@ -14300,20 +14303,20 @@ IL_0022:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:213>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:216>
 		return;
 	}
 
 IL_0043:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:215>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:218>
 		FieldInfo_t* L_9 = V_1;
 		DungeonGenerator_t0D584B0E0570F51F5C4ACB820A223BC9973129FB* L_10 = V_0;
 		NullCheck(L_9);
 		RuntimeObject* L_11;
 		L_11 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(23, L_9, L_10);
 		V_2 = ((List_1_t0CE8B4958F3C08F9F9180D9959EB210684E2C238*)IsInstClass((RuntimeObject*)L_11, List_1_t0CE8B4958F3C08F9F9180D9959EB210684E2C238_il2cpp_TypeInfo_var));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:216>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:219>
 		List_1_t0CE8B4958F3C08F9F9180D9959EB210684E2C238* L_12 = V_2;
 		if (!L_12)
 		{
@@ -14333,21 +14336,21 @@ IL_0043:
 
 IL_005b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:216>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:219>
 		return;
 	}
 
 IL_005c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:219>
-		V_3 = ((std::numeric_limits<float>::max)());
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:219>
-		V_4 = (-(std::numeric_limits<float>::max)());
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:220>
-		V_5 = ((std::numeric_limits<float>::max)());
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:220>
-		V_6 = (-(std::numeric_limits<float>::max)());
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:222>
+		V_3 = ((std::numeric_limits<float>::max)());
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:222>
+		V_4 = (-(std::numeric_limits<float>::max)());
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:223>
+		V_5 = ((std::numeric_limits<float>::max)());
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:223>
+		V_6 = (-(std::numeric_limits<float>::max)());
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:225>
 		List_1_t0CE8B4958F3C08F9F9180D9959EB210684E2C238* L_15 = V_2;
 		NullCheck(L_15);
 		Enumerator_t758D14A8B16326F8D67E30B2776332E081696EF0 L_16;
@@ -14372,16 +14375,16 @@ FINALLY_00fd:
 
 IL_0081_1:
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:222>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:225>
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_17;
 				L_17 = Enumerator_get_Current_m25990BFEF447AA65D702F7C8FEC75AF272B58E07_inline((&V_12), Enumerator_get_Current_m25990BFEF447AA65D702F7C8FEC75AF272B58E07_RuntimeMethod_var);
 				V_13 = L_17;
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:224>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:227>
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_18 = V_13;
 				NullCheck(L_18);
 				int32_t L_19 = L_18->___sizeInGrids;
 				V_14 = ((float)il2cpp_codegen_multiply(((float)L_19), (2.0f)));
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:225>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:228>
 				float L_20 = V_3;
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_21 = V_13;
 				NullCheck(L_21);
@@ -14390,7 +14393,7 @@ IL_0081_1:
 				float L_24;
 				L_24 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_20, L_23, NULL);
 				V_3 = L_24;
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:226>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:229>
 				float L_25 = V_4;
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_26 = V_13;
 				NullCheck(L_26);
@@ -14400,7 +14403,7 @@ IL_0081_1:
 				float L_30;
 				L_30 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(L_25, ((float)il2cpp_codegen_add(L_28, L_29)), NULL);
 				V_4 = L_30;
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:227>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:230>
 				float L_31 = V_5;
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_32 = V_13;
 				NullCheck(L_32);
@@ -14409,7 +14412,7 @@ IL_0081_1:
 				float L_35;
 				L_35 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_31, L_34, NULL);
 				V_5 = L_35;
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:228>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:231>
 				float L_36 = V_6;
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_37 = V_13;
 				NullCheck(L_37);
@@ -14423,7 +14426,7 @@ IL_0081_1:
 
 IL_00f2_1:
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:222>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:225>
 				bool L_42;
 				L_42 = Enumerator_MoveNext_mE6E5695643AF601CF08D5F55D40814D9E0691074((&V_12), Enumerator_MoveNext_mE6E5695643AF601CF08D5F55D40814D9E0691074_RuntimeMethod_var);
 				if (L_42)
@@ -14443,29 +14446,29 @@ IL_00f2_1:
 
 IL_010b:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:231>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:234>
 		float L_43 = V_4;
 		float L_44 = V_3;
 		V_7 = ((float)il2cpp_codegen_subtract(L_43, L_44));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:232>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:235>
 		float L_45 = V_6;
 		float L_46 = V_5;
 		V_8 = ((float)il2cpp_codegen_subtract(L_45, L_46));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:233>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:236>
 		float L_47 = V_3;
 		float L_48 = V_4;
 		V_9 = ((float)(((float)il2cpp_codegen_add(L_47, L_48))/(2.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:234>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:237>
 		float L_49 = V_5;
 		float L_50 = V_6;
 		V_10 = ((float)(((float)il2cpp_codegen_add(L_49, L_50))/(2.0f)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:236>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:239>
 		float L_51 = V_7;
 		float L_52 = V_8;
 		float L_53;
 		L_53 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(L_51, L_52, NULL);
 		V_11 = ((float)((320.0f)/L_53));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:239>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:242>
 		List_1_t0CE8B4958F3C08F9F9180D9959EB210684E2C238* L_54 = V_2;
 		NullCheck(L_54);
 		Enumerator_t758D14A8B16326F8D67E30B2776332E081696EF0 L_55;
@@ -14490,11 +14493,11 @@ FINALLY_021f:
 
 IL_014f_1:
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:239>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:242>
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_56;
 				L_56 = Enumerator_get_Current_m25990BFEF447AA65D702F7C8FEC75AF272B58E07_inline((&V_12), Enumerator_get_Current_m25990BFEF447AA65D702F7C8FEC75AF272B58E07_RuntimeMethod_var);
 				V_15 = L_56;
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:241>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:244>
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_57 = V_15;
 				NullCheck(L_57);
 				Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A L_58 = L_57->___gridPosition;
@@ -14505,7 +14508,7 @@ IL_014f_1:
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_62 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 				GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_62, L_61, NULL);
 				V_16 = L_62;
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:242>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:245>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_63 = V_16;
 				NullCheck(L_63);
 				Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_64;
@@ -14516,27 +14519,27 @@ IL_014f_1:
 				L_66 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_65, NULL);
 				NullCheck(L_64);
 				Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_64, L_66, (bool)0, NULL);
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:244>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:247>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_67 = V_16;
 				NullCheck(L_67);
 				Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_68;
 				L_68 = GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0(L_67, GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var);
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:245>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:248>
 				Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_69 = __this->___roomColor;
 				NullCheck(L_68);
 				VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_68, L_69);
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:247>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:250>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_70 = V_16;
 				NullCheck(L_70);
 				RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_71;
 				L_71 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_70, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:248>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:251>
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_72 = V_15;
 				NullCheck(L_72);
 				int32_t L_73 = L_72->___sizeInGrids;
 				float L_74 = V_11;
 				V_17 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)L_73), (2.0f))), L_74)), (0.899999976f)));
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:249>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:252>
 				RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_75 = L_71;
 				float L_76 = V_17;
 				float L_77 = V_17;
@@ -14545,7 +14548,7 @@ IL_014f_1:
 				Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_78), L_76, L_77, NULL);
 				NullCheck(L_75);
 				RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_75, L_78, NULL);
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:252>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:255>
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_79 = V_15;
 				NullCheck(L_79);
 				Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_80 = (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)(&L_79->___worldPosition);
@@ -14553,7 +14556,7 @@ IL_014f_1:
 				float L_82 = V_9;
 				float L_83 = V_11;
 				V_18 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_subtract(L_81, L_82)), L_83));
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:253>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:256>
 				DungeonRoom_t15A8D86143D9DEA4E388ED5E9DE61C644D0D42F7* L_84 = V_15;
 				NullCheck(L_84);
 				Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* L_85 = (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)(&L_84->___worldPosition);
@@ -14561,7 +14564,7 @@ IL_014f_1:
 				float L_87 = V_10;
 				float L_88 = V_11;
 				V_19 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_subtract(L_86, L_87)), L_88));
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:254>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:257>
 				float L_89 = V_18;
 				float L_90 = V_19;
 				Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_91;
@@ -14569,7 +14572,7 @@ IL_014f_1:
 				Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_91), L_89, L_90, NULL);
 				NullCheck(L_75);
 				RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_75, L_91, NULL);
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:256>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:259>
 				List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_92 = __this->___roomVisuals;
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_93 = V_16;
 				NullCheck(L_92);
@@ -14578,7 +14581,7 @@ IL_014f_1:
 
 IL_0211_1:
 			{
-				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:239>
+				//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:242>
 				bool L_94;
 				L_94 = Enumerator_MoveNext_mE6E5695643AF601CF08D5F55D40814D9E0691074((&V_12), Enumerator_MoveNext_mE6E5695643AF601CF08D5F55D40814D9E0691074_RuntimeMethod_var);
 				if (L_94)
@@ -14598,7 +14601,7 @@ IL_0211_1:
 
 IL_022d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:259>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:262>
 		bool L_95 = __this->___showDebug;
 		if (!L_95)
 		{
@@ -14606,7 +14609,7 @@ IL_022d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:260>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:263>
 		List_1_t0CE8B4958F3C08F9F9180D9959EB210684E2C238* L_96 = V_2;
 		NullCheck(L_96);
 		int32_t L_97;
@@ -14621,7 +14624,7 @@ IL_022d:
 
 IL_024f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:261>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:264>
 		return;
 	}
 }
@@ -14639,12 +14642,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_CreatePlayerDot_m2B6CEF9B70
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:265>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:268>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteralA7530840CD50C2AB4DA190185058CFAEB55A47F9, NULL);
 		__this->___playerDot = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___playerDot), (void*)L_0);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:266>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:269>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = __this->___playerDot;
 		NullCheck(L_1);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
@@ -14655,36 +14658,36 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_CreatePlayerDot_m2B6CEF9B70
 		L_4 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_3, NULL);
 		NullCheck(L_2);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_2, L_4, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:268>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:271>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = __this->___playerDot;
 		NullCheck(L_5);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_6;
 		L_6 = GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0(L_5, GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:269>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:272>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_7 = __this->___playerDotColor;
 		NullCheck(L_6);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_6, L_7);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:271>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:274>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8 = __this->___playerDot;
 		NullCheck(L_8);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9;
 		L_9 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_8, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:272>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:275>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_10 = L_9;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_11;
 		memset((&L_11), 0, sizeof(L_11));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_11), (15.0f), (15.0f), NULL);
 		NullCheck(L_10);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_10, L_11, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:273>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:276>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_12;
 		L_12 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_10);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_10, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:276>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:279>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_13, _stringLiteral010CF79B276B799D3075D15F60FEA1F42DE0231C, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:277>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:280>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = L_13;
 		NullCheck(L_14);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15;
@@ -14695,37 +14698,37 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_CreatePlayerDot_m2B6CEF9B70
 		L_17 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_16, NULL);
 		NullCheck(L_15);
 		Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_15, L_17, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:278>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:281>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18 = L_14;
 		NullCheck(L_18);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_19;
 		L_19 = GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0(L_18, GameObject_AddComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA327C9E1CA12BC531D587E7567F2067B96E6B6A0_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:279>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:282>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_20 = __this->___playerDotColor;
 		NullCheck(L_19);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_19, L_20);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:280>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:283>
 		NullCheck(L_18);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_21;
 		L_21 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_18, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:281>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:284>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_22 = L_21;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_23;
 		L_23 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_22);
 		RectTransform_set_anchorMin_m931442ABE3368D6D4309F43DF1D64AB64B0F52E3(L_22, L_23, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:282>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:285>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_24 = L_22;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_25;
 		L_25 = Vector2_get_one_m9097EB8DC23C26118A591AF16702796C3EF51DFB_inline(NULL);
 		NullCheck(L_24);
 		RectTransform_set_anchorMax_m52829ABEDD229ABD3DA20BCA676FA1DCA4A39B7D(L_24, L_25, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:283>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:286>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_26;
 		L_26 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_24);
 		RectTransform_set_sizeDelta_mC9A980EA6036E6725EF24CEDF3EE80A9B2B50EE5(L_24, L_26, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:284>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:287>
 		return;
 	}
 }
@@ -14747,7 +14750,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_Update_mF360BC80D3C2DD7C1B9
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* G_B8_0 = NULL;
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* G_B9_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:288>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:291>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___headCamera;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -14758,17 +14761,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_Update_mF360BC80D3C2DD7C1B9
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:288>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:291>
 		return;
 	}
 
 IL_000f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:291>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:294>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
 		L_2 = WristMinimap_GetVisibleWrist_m049C7491B6854F375EEC0CDE11BB01CB41004AC4(__this, NULL);
 		V_0 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:293>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:296>
 		bool L_3 = __this->___alwaysVisible;
 		if (!L_3)
 		{
@@ -14776,7 +14779,7 @@ IL_000f:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:295>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:298>
 		bool L_4 = __this->___isVisible;
 		if (L_4)
 		{
@@ -14784,7 +14787,7 @@ IL_000f:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:296>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:299>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = __this->___leftHand;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6 = L_5;
 		if (L_6)
@@ -14810,7 +14813,7 @@ IL_0037:
 
 IL_003c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:297>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:300>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = __this->___activeWrist;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9 = L_8;
 		if (L_9)
@@ -14842,7 +14845,7 @@ IL_0056:
 
 IL_0057:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:300>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:303>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_14;
@@ -14853,7 +14856,7 @@ IL_0057:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:302>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:305>
 		bool L_15 = __this->___isVisible;
 		if (!L_15)
 		{
@@ -14874,14 +14877,14 @@ IL_0057:
 
 IL_0076:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:304>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:307>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_19 = V_0;
 		WristMinimap_ShowMinimap_m4D7A187CE2400C40DB3BA2DECFD51E4869521EBB(__this, L_19, NULL);
 	}
 
 IL_007d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:306>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:309>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_20 = V_0;
 		WristMinimap_UpdateMinimapPosition_mEE6AE63BB6AAE24811DE9244CE0DB86A5A41C7D7(__this, L_20, NULL);
 		goto IL_009c;
@@ -14889,7 +14892,7 @@ IL_007d:
 
 IL_0086:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:308>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:311>
 		bool L_21 = __this->___isVisible;
 		if (!L_21)
 		{
@@ -14904,13 +14907,13 @@ IL_0086:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:310>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:313>
 		WristMinimap_HideMinimap_mE6B8928EA8EC5D7E4502B5CE86F57F21F3DF8445(__this, NULL);
 	}
 
 IL_009c:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:314>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:317>
 		float L_23;
 		L_23 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		float L_24 = __this->___nextUpdateTime;
@@ -14920,18 +14923,18 @@ IL_009c:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:316>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:319>
 		float L_25;
 		L_25 = Time_get_time_m3A271BB1B20041144AC5B7863B71AB1F0150374B(NULL);
 		float L_26 = __this->___updateInterval;
 		__this->___nextUpdateTime = ((float)il2cpp_codegen_add(L_25, L_26));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:317>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:320>
 		WristMinimap_UpdatePlayerPosition_m5070B53E3741E19D94F6BB3287288692598AFEA6(__this, NULL);
 	}
 
 IL_00c1:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:319>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:322>
 		return;
 	}
 }
@@ -14939,7 +14942,7 @@ IL_00c1:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* WristMinimap_GetVisibleWrist_m049C7491B6854F375EEC0CDE11BB01CB41004AC4 (WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:324>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:327>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___leftHand;
 		bool L_1;
 		L_1 = WristMinimap_IsWristVisible_m80D4238D5AC729EB4CCA3BB6FBB01E0170BABE78(__this, L_0, NULL);
@@ -14949,14 +14952,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:325>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:328>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___leftHand;
 		return L_2;
 	}
 
 IL_0015:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:326>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:329>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = __this->___rightHand;
 		bool L_4;
 		L_4 = WristMinimap_IsWristVisible_m80D4238D5AC729EB4CCA3BB6FBB01E0170BABE78(__this, L_3, NULL);
@@ -14966,14 +14969,14 @@ IL_0015:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:327>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:330>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = __this->___rightHand;
 		return L_5;
 	}
 
 IL_002a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:328>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:331>
 		return (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL;
 	}
 }
@@ -14991,7 +14994,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool WristMinimap_IsWristVisible_m80D4238D5AC
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:333>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:336>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_wrist;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -15014,13 +15017,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool WristMinimap_IsWristVisible_m80D4238D5AC
 
 IL_0017:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:333>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:336>
 		return (bool)0;
 	}
 
 IL_0019:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:335>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:338>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = __this->___headCamera;
 		NullCheck(L_4);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_5;
@@ -15031,7 +15034,7 @@ IL_0019:
 		L_7 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_6, NULL);
 		float L_8;
 		L_8 = Vector3_Distance_m2314DB9B8BD01157E013DF87BEA557375C7F9FF9_inline(L_5, L_7, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:336>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:339>
 		float L_9 = __this->___activationDistance;
 		if ((!(((float)L_8) > ((float)L_9))))
 		{
@@ -15039,13 +15042,13 @@ IL_0019:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:336>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:339>
 		return (bool)0;
 	}
 
 IL_0039:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:339>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:342>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10 = ___0_wrist;
 		NullCheck(L_10);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
@@ -15060,7 +15063,7 @@ IL_0039:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15;
 		L_15 = Vector3_get_normalized_m736BBF65D5CDA7A18414370D15B4DFCC1E466F07_inline((&V_1), NULL);
 		V_0 = L_15;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:340>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:343>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16 = __this->___headCamera;
 		NullCheck(L_16);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17;
@@ -15068,7 +15071,7 @@ IL_0039:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18 = V_0;
 		float L_19;
 		L_19 = Vector3_Angle_mB16906B482814C140FE5BA9D041D2DC11E42A68D_inline(L_17, L_18, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:342>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:345>
 		return (bool)((((float)L_19) < ((float)(70.0f)))? 1 : 0);
 	}
 }
@@ -15084,11 +15087,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_ShowMinimap_m4D7A187CE2400C
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:347>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:350>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_wrist;
 		__this->___activeWrist = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___activeWrist), (void*)L_0);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:348>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:351>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = __this->___minimapRoot;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -15099,13 +15102,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_ShowMinimap_m4D7A187CE2400C
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:350>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:353>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = __this->___minimapRoot;
 		NullCheck(L_3);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_3, (bool)1, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:351>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:354>
 		__this->___isVisible = (bool)1;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:352>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:355>
 		bool L_4 = __this->___showDebug;
 		if (!L_4)
 		{
@@ -15113,7 +15116,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_ShowMinimap_m4D7A187CE2400C
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:353>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:356>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = ___0_wrist;
 		NullCheck(L_5);
 		String_t* L_6;
@@ -15126,7 +15129,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_ShowMinimap_m4D7A187CE2400C
 
 IL_0045:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:355>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:358>
 		return;
 	}
 }
@@ -15142,7 +15145,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_HideMinimap_mE6B8928EA8EC5D
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:359>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:362>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___minimapRoot;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -15153,16 +15156,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_HideMinimap_mE6B8928EA8EC5D
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:361>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:364>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = __this->___minimapRoot;
 		NullCheck(L_2);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_2, (bool)0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:362>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:365>
 		__this->___isVisible = (bool)0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:363>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:366>
 		__this->___activeWrist = (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___activeWrist), (void*)(Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1*)NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:364>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:367>
 		bool L_3 = __this->___showDebug;
 		if (!L_3)
 		{
@@ -15170,14 +15173,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_HideMinimap_mE6B8928EA8EC5D
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:365>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:368>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral38F2B3F1C3746D02261C63FC49FE571E1352EBD1, NULL);
 	}
 
 IL_003a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:367>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:370>
 		return;
 	}
 }
@@ -15192,12 +15195,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_UpdateMinimapPosition_mEE6A
 	}
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_1;
+	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 G_B6_0;
 	memset((&G_B6_0), 0, sizeof(G_B6_0));
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:371>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:374>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___minimapRoot;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -15220,13 +15223,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_UpdateMinimapPosition_mEE6A
 
 IL_0017:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:371>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:374>
 		return;
 	}
 
 IL_0018:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:373>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:377>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = ___0_wrist;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = __this->___leftHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
@@ -15252,7 +15255,7 @@ IL_002e:
 IL_0034:
 	{
 		V_0 = G_B6_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:374>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:378>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->___minimapRoot;
 		NullCheck(L_9);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10;
@@ -15270,47 +15273,31 @@ IL_0034:
 		L_16 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_12, L_15, NULL);
 		NullCheck(L_10);
 		Transform_set_position_mA1A817124BB41B685043DED2A9BA48CDF37C4156(L_10, L_16, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:377>
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17 = __this->___headCamera;
-		NullCheck(L_17);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18;
-		L_18 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_17, NULL);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19 = __this->___minimapRoot;
-		NullCheck(L_19);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_20;
-		L_20 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_19, NULL);
-		NullCheck(L_20);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_21;
-		L_21 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_20, NULL);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_22;
-		L_22 = Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline(L_18, L_21, NULL);
-		V_1 = L_22;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:378>
-		(&V_1)->___y = (0.0f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:379>
-		float L_23;
-		L_23 = Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline((&V_1), NULL);
-		if ((!(((float)L_23) > ((float)(0.00999999978f)))))
-		{
-			goto IL_00a8;
-		}
-	}
-	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:381>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_24 = __this->___minimapRoot;
-		NullCheck(L_24);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_25;
-		L_25 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_24, NULL);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_26 = V_1;
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_27;
-		L_27 = Quaternion_LookRotation_mDB2CCA75B8E1AB98104F2A6E1A1EA57D0D1298D7_inline(L_26, NULL);
-		NullCheck(L_25);
-		Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D(L_25, L_27, NULL);
-	}
-
-IL_00a8:
-	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:383>
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17 = ___0_wrist;
+		NullCheck(L_17);
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_18;
+		L_18 = Transform_get_rotation_m32AF40CA0D50C797DA639A696F8EAEC7524C179C(L_17, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:387>
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_19;
+		L_19 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((90.0f), (0.0f), (0.0f), NULL);
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_20;
+		L_20 = Quaternion_op_Multiply_mCB375FCCC12A2EC8F9EB824A1BFB4453B58C2012_inline(L_18, L_19, NULL);
+		V_1 = L_20;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:390>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = __this->___minimapRoot;
+		NullCheck(L_21);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_22;
+		L_22 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_21, NULL);
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_23 = V_1;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_24 = __this->___minimapRotationOffset;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_25;
+		L_25 = Quaternion_Euler_m5BCCC19216CFAD2426F15BC51A30421880D27B73_inline(L_24, NULL);
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_26;
+		L_26 = Quaternion_op_Multiply_mCB375FCCC12A2EC8F9EB824A1BFB4453B58C2012_inline(L_23, L_25, NULL);
+		NullCheck(L_22);
+		Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D(L_22, L_26, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:391>
 		return;
 	}
 }
@@ -15326,7 +15313,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_UpdatePlayerPosition_m5070B
 	}
 	float V_0 = 0.0f;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:387>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:395>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___playerDot;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -15337,24 +15324,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_UpdatePlayerPosition_m5070B
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:387>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:395>
 		return;
 	}
 
 IL_000f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:390>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:398>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2 = __this->___playerDot;
 		NullCheck(L_2);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_3;
 		L_3 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_2, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:391>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:399>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_4 = L_3;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_5;
 		L_5 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		NullCheck(L_4);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_4, L_5, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:394>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:402>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6;
 		L_6 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
 		NullCheck(L_6);
@@ -15362,13 +15349,13 @@ IL_000f:
 		L_7 = Transform_get_eulerAngles_mCAAF48EFCF628F1ED91C2FFE75A4FD19C039DD6A(L_6, NULL);
 		float L_8 = L_7.___y;
 		V_0 = L_8;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:395>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:403>
 		float L_9 = V_0;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_10;
 		L_10 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), (0.0f), ((-L_9)), NULL);
 		NullCheck(L_4);
 		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(L_4, L_10, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:396>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:404>
 		return;
 	}
 }
@@ -15383,7 +15370,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_OnDrawGizmos_m9FDD6DB3AFB36
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:400>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:408>
 		bool L_0 = __this->___showDebug;
 		if (!L_0)
 		{
@@ -15402,13 +15389,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap_OnDrawGizmos_m9FDD6DB3AFB36
 
 IL_000f:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:400>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:408>
 		return;
 	}
 
 IL_0010:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:402>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:410>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___leftHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -15419,11 +15406,11 @@ IL_0010:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:404>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:412>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_4;
 		L_4 = Color_get_green_mEB001F2CD8C68C6BBAEF9101990B779D3AA2A6EF_inline(NULL);
 		Gizmos_set_color_m53927A2741937484180B20B55F7F20F8F60C5797(L_4, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:405>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:413>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5 = __this->___leftHand;
 		NullCheck(L_5);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
@@ -15433,7 +15420,7 @@ IL_0010:
 
 IL_003d:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:408>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:416>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = __this->___rightHand;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_8;
@@ -15444,11 +15431,11 @@ IL_003d:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:410>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:418>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_9;
 		L_9 = Color_get_red_mA2E53E7173FDC97E68E335049AB0FAAEE43A844D_inline(NULL);
 		Gizmos_set_color_m53927A2741937484180B20B55F7F20F8F60C5797(L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:411>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:419>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10 = __this->___rightHand;
 		NullCheck(L_10);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
@@ -15458,7 +15445,7 @@ IL_003d:
 
 IL_006a:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:413>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:421>
 		return;
 	}
 }
@@ -15478,41 +15465,46 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WristMinimap__ctor_m6AE85B1F13C5A87F03E4
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:18>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0;
 		memset((&L_0), 0, sizeof(L_0));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_0), (0.0f), (0.0199999996f), (0.0599999987f), NULL);
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_0), (0.0f), (0.00999999978f), (-0.0500000007f), NULL);
 		__this->___leftWristOffset = L_0;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:21>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
 		memset((&L_1), 0, sizeof(L_1));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_1), (0.0f), (0.0199999996f), (0.0599999987f), NULL);
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_1), (0.0f), (0.00999999978f), (-0.0500000007f), NULL);
 		__this->___rightWristOffset = L_1;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:25>
-		__this->___activationDistance = (0.400000006f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:28>
-		__this->___updateInterval = (0.100000001f);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:31>
-		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_2;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:24>
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2;
 		memset((&L_2), 0, sizeof(L_2));
-		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_2), (0.0500000007f), (0.0500000007f), (0.100000001f), (0.949999988f), NULL);
-		__this->___backgroundColor = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:32>
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_2), (0.0f), (0.0f), (0.0f), NULL);
+		__this->___minimapRotationOffset = L_2;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:28>
+		__this->___activationDistance = (0.400000006f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:31>
+		__this->___updateInterval = (0.100000001f);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:34>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_3;
 		memset((&L_3), 0, sizeof(L_3));
-		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_3), (0.300000012f), (0.300000012f), (0.349999994f), NULL);
-		__this->___roomColor = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:33>
+		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_3), (0.0500000007f), (0.0500000007f), (0.100000001f), (0.949999988f), NULL);
+		__this->___backgroundColor = L_3;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:35>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_4;
-		L_4 = Color_get_cyan_m182A29E7475C0A98ACC03E1CF5252BAB83F0BA31_inline(NULL);
-		__this->___playerDotColor = L_4;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:34>
+		memset((&L_4), 0, sizeof(L_4));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_4), (0.300000012f), (0.300000012f), (0.349999994f), NULL);
+		__this->___roomColor = L_4;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:36>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_5;
-		memset((&L_5), 0, sizeof(L_5));
-		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_5), (0.25f), (0.25f), (0.300000012f), NULL);
-		__this->___visitedRoomColor = L_5;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:48>
-		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_6 = (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*)il2cpp_codegen_object_new(List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B_il2cpp_TypeInfo_var);
-		List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC(L_6, List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC_RuntimeMethod_var);
-		__this->___roomVisuals = L_6;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___roomVisuals), (void*)L_6);
+		L_5 = Color_get_cyan_m182A29E7475C0A98ACC03E1CF5252BAB83F0BA31_inline(NULL);
+		__this->___playerDotColor = L_5;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:37>
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_6;
+		memset((&L_6), 0, sizeof(L_6));
+		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_6), (0.25f), (0.25f), (0.300000012f), NULL);
+		__this->___visitedRoomColor = L_6;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/WristMinimap.cs:51>
+		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_7 = (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*)il2cpp_codegen_object_new(List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B_il2cpp_TypeInfo_var);
+		List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC(L_7, List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC_RuntimeMethod_var);
+		__this->___roomVisuals = L_7;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___roomVisuals), (void*)L_7);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
 	}
@@ -24322,26 +24314,98 @@ IL_0058:
 		return L_10;
 	}
 }
-// Method Definition Index: 42212
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, const RuntimeMethod* method) 
+// Method Definition Index: 42260
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_op_Multiply_mCB375FCCC12A2EC8F9EB824A1BFB4453B58C2012_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_lhs, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___1_rhs, const RuntimeMethod* method) 
 {
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
+	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 V_0;
+	memset((&V_0), 0, sizeof(V_0));
 	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
+		il2cpp_codegen_initobj((&V_0), sizeof(Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974));
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_0 = ___0_lhs;
+		float L_1 = L_0.___w;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_2 = ___1_rhs;
+		float L_3 = L_2.___x;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_4 = ___0_lhs;
+		float L_5 = L_4.___x;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_6 = ___1_rhs;
+		float L_7 = L_6.___w;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_8 = ___0_lhs;
+		float L_9 = L_8.___y;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_10 = ___1_rhs;
+		float L_11 = L_10.___z;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_12 = ___0_lhs;
+		float L_13 = L_12.___z;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_14 = ___1_rhs;
+		float L_15 = L_14.___y;
+		(&V_0)->___x = ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_1, L_3)), ((float)il2cpp_codegen_multiply(L_5, L_7)))), ((float)il2cpp_codegen_multiply(L_9, L_11)))), ((float)il2cpp_codegen_multiply(L_13, L_15))));
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_16 = ___0_lhs;
+		float L_17 = L_16.___w;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_18 = ___1_rhs;
+		float L_19 = L_18.___y;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_20 = ___0_lhs;
+		float L_21 = L_20.___y;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_22 = ___1_rhs;
+		float L_23 = L_22.___w;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_24 = ___0_lhs;
+		float L_25 = L_24.___z;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_26 = ___1_rhs;
+		float L_27 = L_26.___x;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_28 = ___0_lhs;
+		float L_29 = L_28.___x;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_30 = ___1_rhs;
+		float L_31 = L_30.___z;
+		(&V_0)->___y = ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_17, L_19)), ((float)il2cpp_codegen_multiply(L_21, L_23)))), ((float)il2cpp_codegen_multiply(L_25, L_27)))), ((float)il2cpp_codegen_multiply(L_29, L_31))));
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_32 = ___0_lhs;
+		float L_33 = L_32.___w;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_34 = ___1_rhs;
+		float L_35 = L_34.___z;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_36 = ___0_lhs;
+		float L_37 = L_36.___z;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_38 = ___1_rhs;
+		float L_39 = L_38.___w;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_40 = ___0_lhs;
+		float L_41 = L_40.___x;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_42 = ___1_rhs;
+		float L_43 = L_42.___y;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_44 = ___0_lhs;
+		float L_45 = L_44.___y;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_46 = ___1_rhs;
+		float L_47 = L_46.___x;
+		(&V_0)->___z = ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_33, L_35)), ((float)il2cpp_codegen_multiply(L_37, L_39)))), ((float)il2cpp_codegen_multiply(L_41, L_43)))), ((float)il2cpp_codegen_multiply(L_45, L_47))));
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_48 = ___0_lhs;
+		float L_49 = L_48.___w;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_50 = ___1_rhs;
+		float L_51 = L_50.___w;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_52 = ___0_lhs;
+		float L_53 = L_52.___x;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_54 = ___1_rhs;
+		float L_55 = L_54.___x;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_56 = ___0_lhs;
+		float L_57 = L_56.___y;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_58 = ___1_rhs;
+		float L_59 = L_58.___y;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_60 = ___0_lhs;
+		float L_61 = L_60.___z;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_62 = ___1_rhs;
+		float L_63 = L_62.___z;
+		(&V_0)->___w = ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_multiply(L_49, L_51)), ((float)il2cpp_codegen_multiply(L_53, L_55)))), ((float)il2cpp_codegen_multiply(L_57, L_59)))), ((float)il2cpp_codegen_multiply(L_61, L_63))));
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_64 = V_0;
+		return L_64;
 	}
+}
+// Method Definition Index: 42271
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_Euler_m5BCCC19216CFAD2426F15BC51A30421880D27B73_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_euler, const RuntimeMethod* method) 
+{
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
+	memset((&V_0), 0, sizeof(V_0));
 	{
-		float L_0 = __this->___x;
-		float L_1 = __this->___x;
-		float L_2 = __this->___y;
-		float L_3 = __this->___y;
-		float L_4 = __this->___z;
-		float L_5 = __this->___z;
-		il2cpp_codegen_runtime_class_init_inline(Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2cpp_TypeInfo_var);
-		double L_6;
-		L_6 = sqrt(((double)((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_0, L_1)), ((float)il2cpp_codegen_multiply(L_2, L_3)))), ((float)il2cpp_codegen_multiply(L_4, L_5))))));
-		return ((float)L_6);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ___0_euler;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
+		L_1 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_0, (0.0174532924f), NULL);
+		V_0 = L_1;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_2;
+		L_2 = Quaternion_Internal_FromEulerRad_mD0C4C0EFE1D70EC0EA4A92B11F1A4D5B0A134E49((&V_0), NULL);
+		return L_2;
 	}
 }
 // Method Definition Index: 42065
@@ -24426,6 +24490,28 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRBaseInteractable_get_isSel
 		//<source_info:./Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Interaction/Interactables/XRBaseInteractable.cs:506>
 		bool L_0 = __this->___U3CisSelectedU3Ek__BackingField;
 		return L_0;
+	}
+}
+// Method Definition Index: 42212
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		float L_0 = __this->___x;
+		float L_1 = __this->___x;
+		float L_2 = __this->___y;
+		float L_3 = __this->___y;
+		float L_4 = __this->___z;
+		float L_5 = __this->___z;
+		il2cpp_codegen_runtime_class_init_inline(Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2cpp_TypeInfo_var);
+		double L_6;
+		L_6 = sqrt(((double)((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_0, L_1)), ((float)il2cpp_codegen_multiply(L_2, L_3)))), ((float)il2cpp_codegen_multiply(L_4, L_5))))));
+		return ((float)L_6);
 	}
 }
 // Method Definition Index: 42247
