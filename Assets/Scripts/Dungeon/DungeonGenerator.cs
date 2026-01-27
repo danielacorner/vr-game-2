@@ -43,6 +43,17 @@ namespace VRDungeonCrawler.Dungeon
         [Range(2, 8)]
         public int torchesPerRoom = 4;
 
+        [Header("Vertical Complexity")]
+        [Tooltip("Enable ramps and platforms")]
+        public bool enableVerticalComplexity = true;
+
+        [Tooltip("Chance for room to have raised platforms (0-1)")]
+        [Range(0f, 1f)]
+        public float platformRoomChance = 0.4f;
+
+        [Tooltip("Max height difference between rooms (via ramps)")]
+        public float maxRoomHeightDifference = 2.5f;
+
         [Header("Debug")]
         [Tooltip("Show debug information")]
         public bool showDebug = false;
@@ -231,21 +242,39 @@ namespace VRDungeonCrawler.Dungeon
                 }
             }
 
+            // Determine height offset for vertical complexity
+            float heightOffset = 0f;
+            if (enableVerticalComplexity && allRooms.Count > 0)
+            {
+                // Randomly vary height, but keep it reasonable for teleportation
+                float heightVariation = ((float)rng.NextDouble() - 0.5f) * maxRoomHeightDifference;
+                heightOffset = Mathf.Clamp(heightVariation, -maxRoomHeightDifference, maxRoomHeightDifference);
+            }
+
             Vector3 worldPos = new Vector3(
                 gridPos.x * DungeonRoomBuilder.GRID_SIZE,
-                0,
+                heightOffset,
                 gridPos.y * DungeonRoomBuilder.GRID_SIZE
             );
 
+            // Decide if this room should have platforms (not Start, Shop, or Boss rooms)
+            bool shouldHavePlatforms = enableVerticalComplexity &&
+                                      type != RoomType.Start &&
+                                      type != RoomType.Shop &&
+                                      type != RoomType.Boss &&
+                                      (float)rng.NextDouble() < platformRoomChance;
+
             if (showDebug)
-                Debug.Log($"[DungeonGenerator] Room worldPos: {worldPos}");
+                Debug.Log($"[DungeonGenerator] Room worldPos: {worldPos}, heightOffset: {heightOffset:F2}, hasPlatforms: {shouldHavePlatforms}");
 
             DungeonRoom room = new DungeonRoom
             {
                 gridPosition = gridPos,
                 worldPosition = worldPos,
                 roomType = type,
-                sizeInGrids = roomSizeInGrids
+                sizeInGrids = roomSizeInGrids,
+                heightOffset = heightOffset,
+                hasPlatforms = shouldHavePlatforms
             };
 
             allRooms.Add(room);
@@ -686,6 +715,18 @@ namespace VRDungeonCrawler.Dungeon
         {
             foreach (var room in allRooms)
             {
+                // Add ramps if there's a height difference with connected room
+                if (enableVerticalComplexity && room.connectedFrom != null)
+                {
+                    CreateRampBetweenRooms(room.connectedFrom, room);
+                }
+
+                // Add platforms within room if marked for platforms
+                if (room.hasPlatforms)
+                {
+                    AddPlatformsToRoom(room);
+                }
+
                 switch (room.roomType)
                 {
                     case RoomType.Start:
@@ -706,6 +747,227 @@ namespace VRDungeonCrawler.Dungeon
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Creates a ramp or stairs between two rooms if there's a height difference
+        /// </summary>
+        private void CreateRampBetweenRooms(DungeonRoom roomA, DungeonRoom roomB)
+        {
+            float heightDiff = Mathf.Abs(roomB.heightOffset - roomA.heightOffset);
+
+            // Only create transition if there's a significant height difference
+            if (heightDiff < 0.3f)
+                return;
+
+            Vector3 direction = (roomB.worldPosition - roomA.worldPosition).normalized;
+            Vector3 midpoint = (roomA.worldPosition + roomB.worldPosition) / 2f;
+
+            GameObject transition;
+            bool useStairs = heightDiff < 1.5f && (float)rng.NextDouble() < 0.5f; // 50% chance to use stairs for moderate heights
+
+            if (useStairs)
+            {
+                // Create stairs for moderate height changes
+                bool facingUp = roomB.heightOffset > roomA.heightOffset;
+                transition = CreateStairs(heightDiff, facingUp);
+                transition.name = "Stairs";
+                transition.transform.position = midpoint;
+
+                // Position at the lower room's level
+                if (!facingUp)
+                    transition.transform.position += Vector3.up * heightDiff;
+
+                // Rotate stairs to face the correct direction
+                float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                transition.transform.rotation = Quaternion.Euler(0, angle, 0);
+            }
+            else
+            {
+                // Create ramp for larger height changes or randomly
+                transition = CreateRamp(roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.4f, heightDiff);
+                transition.name = "Ramp";
+                transition.transform.position = midpoint;
+
+                // Rotate ramp to face the correct direction
+                float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                transition.transform.rotation = Quaternion.Euler(0, angle, 0);
+
+                // Tilt ramp based on height difference
+                float rampAngle = Mathf.Atan2(heightDiff, roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE) * Mathf.Rad2Deg;
+                transition.transform.rotation *= Quaternion.Euler(rampAngle, 0, 0);
+            }
+
+            // Parent to the higher room
+            transition.transform.SetParent(roomB.heightOffset > roomA.heightOffset ? roomB.roomObject.transform : roomA.roomObject.transform);
+
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] Created {(useStairs ? "stairs" : "ramp")} between {roomA.gridPosition} and {roomB.gridPosition}, height diff: {heightDiff:F2}m");
+        }
+
+        /// <summary>
+        /// Creates a ramp mesh
+        /// </summary>
+        private GameObject CreateRamp(float length, float height)
+        {
+            GameObject ramp = new GameObject("Ramp");
+
+            // Create ramp mesh
+            MeshFilter meshFilter = ramp.AddComponent<MeshFilter>();
+            MeshRenderer meshRenderer = ramp.AddComponent<MeshRenderer>();
+            MeshCollider meshCollider = ramp.AddComponent<MeshCollider>();
+
+            float width = 2.5f; // Wide enough for comfortable teleportation
+
+            // Create simple ramp mesh (triangular prism)
+            Mesh mesh = new Mesh();
+            Vector3[] vertices = new Vector3[]
+            {
+                // Bottom front left/right
+                new Vector3(-width/2, 0, 0),        // 0
+                new Vector3(width/2, 0, 0),         // 1
+                // Bottom back left/right
+                new Vector3(-width/2, 0, length),   // 2
+                new Vector3(width/2, 0, length),    // 3
+                // Top back left/right (raised)
+                new Vector3(-width/2, height, length), // 4
+                new Vector3(width/2, height, length)   // 5
+            };
+
+            int[] triangles = new int[]
+            {
+                // Bottom face
+                0, 2, 1,
+                1, 2, 3,
+                // Sloped surface (walking surface)
+                0, 1, 4,
+                1, 5, 4,
+                // Left side triangle
+                0, 4, 2,
+                // Right side triangle
+                1, 3, 5,
+                // Back face
+                2, 4, 3,
+                3, 4, 5
+            };
+
+            mesh.vertices = vertices;
+            mesh.triangles = triangles;
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
+            meshFilter.mesh = mesh;
+
+            meshRenderer.material = DungeonRoomBuilder.CreatePolytopiaStone(DungeonRoomBuilder.STONE_FLOOR);
+            meshCollider.sharedMesh = mesh;
+
+            // Add TeleportationArea
+            var teleportArea = ramp.AddComponent<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationArea>();
+            teleportArea.interactionLayers = UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask.GetMask("Teleport");
+
+            return ramp;
+        }
+
+        /// <summary>
+        /// Creates stairs for smaller height differences
+        /// </summary>
+        private GameObject CreateStairs(float totalHeight, bool facingPositiveZ = true)
+        {
+            GameObject stairs = new GameObject("Stairs");
+
+            float stepHeight = 0.25f; // Each step is 25cm high
+            float stepDepth = 0.5f;   // Each step is 50cm deep
+            float stairWidth = 2.5f;   // Same width as ramps
+
+            int stepCount = Mathf.CeilToInt(totalHeight / stepHeight);
+
+            for (int i = 0; i < stepCount; i++)
+            {
+                GameObject step = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                step.name = $"Step_{i}";
+                step.transform.SetParent(stairs.transform);
+
+                float yPos = i * stepHeight;
+                float zPos = i * stepDepth * (facingPositiveZ ? 1 : -1);
+
+                step.transform.localPosition = new Vector3(0, yPos, zPos);
+                step.transform.localScale = new Vector3(stairWidth, stepHeight, stepDepth);
+
+                // Apply stone material
+                step.GetComponent<Renderer>().material = DungeonRoomBuilder.CreatePolytopiaStone(DungeonRoomBuilder.STONE_FLOOR);
+
+                // Add TeleportationArea to each step
+                var teleportArea = step.AddComponent<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationArea>();
+                teleportArea.interactionLayers = UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask.GetMask("Teleport");
+            }
+
+            return stairs;
+        }
+
+        /// <summary>
+        /// Adds platforms at different heights within a room for jump puzzles
+        /// </summary>
+        private void AddPlatformsToRoom(DungeonRoom room)
+        {
+            float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.35f;
+            int platformCount = rng.Next(3, 6); // 3-5 platforms
+
+            // Create platforms at various heights
+            float[] heights = new float[] { 0.5f, 1f, 1.5f, 2f }; // All within teleport reach
+
+            for (int i = 0; i < platformCount; i++)
+            {
+                Vector3 localPos = GetRandomPositionInRoom(roomRadius * 0.8f); // Keep away from edges
+                float platformHeight = heights[rng.Next(heights.Length)];
+                localPos.y = platformHeight;
+
+                GameObject platform = CreatePlatform(rng.Next(0, 3)); // Different platform types
+                platform.name = $"Platform_{i}";
+                platform.transform.SetParent(room.roomObject.transform);
+                platform.transform.localPosition = localPos;
+
+                // Random rotation for variety
+                platform.transform.localRotation = Quaternion.Euler(0, rng.Next(0, 4) * 90f, 0);
+
+                if (showDebug)
+                    Debug.Log($"[DungeonGenerator] Added platform at {localPos} in room {room.gridPosition}");
+            }
+        }
+
+        /// <summary>
+        /// Creates a platform for jump puzzles
+        /// </summary>
+        private GameObject CreatePlatform(int type)
+        {
+            GameObject platform;
+            float platformSize = 1.5f + ((float)rng.NextDouble() * 1f); // 1.5-2.5m wide
+
+            switch (type)
+            {
+                case 0: // Square platform
+                    platform = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    platform.transform.localScale = new Vector3(platformSize, 0.2f, platformSize);
+                    break;
+
+                case 1: // Circular platform
+                    platform = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                    platform.transform.localScale = new Vector3(platformSize, 0.1f, platformSize);
+                    break;
+
+                default: // Hexagonal-ish platform (cube rotated 45°)
+                    platform = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    platform.transform.localScale = new Vector3(platformSize, 0.2f, platformSize);
+                    platform.transform.Rotate(0, 45f, 0);
+                    break;
+            }
+
+            // Apply stone material
+            platform.GetComponent<Renderer>().material = DungeonRoomBuilder.CreatePolytopiaStone(DungeonRoomBuilder.STONE_ACCENT);
+
+            // Add TeleportationArea to platform
+            var teleportArea = platform.AddComponent<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationArea>();
+            teleportArea.interactionLayers = UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask.GetMask("Teleport");
+
+            return platform;
         }
 
         private void DecorateCombatRoom(DungeonRoom room)
@@ -1351,6 +1613,8 @@ namespace VRDungeonCrawler.Dungeon
         public GameObject roomObject;
         public int sizeInGrids;
         public DungeonRoom connectedFrom;
+        public float heightOffset; // Y-offset for vertical complexity
+        public bool hasPlatforms; // Room contains jump puzzle platforms
     }
 
     public enum RoomType

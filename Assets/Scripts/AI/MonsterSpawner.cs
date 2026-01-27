@@ -169,7 +169,7 @@ namespace VRDungeonCrawler.AI
                 monsterAI.aggroRange = 2f; // Detect player within 2m
                 monsterAI.showDebug = true; // ENABLE DEBUG
 
-                // Add SkeletonAnimator for skeleton monsters
+                // Add appropriate animator for each monster type
                 if (type == MonsterType.Skeleton)
                 {
                     SkeletonAnimator animator = monster.AddComponent<SkeletonAnimator>();
@@ -190,6 +190,28 @@ namespace VRDungeonCrawler.AI
                     eyeEffect.enableFireParticles = true;
                     eyeEffect.fireParticleCount = 10;
                     eyeEffect.showDebug = true; // ENABLE DEBUG
+                }
+                else if (type == MonsterType.Goblin)
+                {
+                    GoblinAnimator animator = monster.AddComponent<GoblinAnimator>();
+                    animator.walkCycleSpeed = 6f;
+                    animator.idleTwitchSpeed = 2f;
+                    animator.legSwingAngle = 30f;
+                    animator.armSwingAngle = 20f;
+                    animator.headTwitchAmount = 8f;
+                    animator.earWiggleAmount = 15f;
+                    animator.showDebug = true; // ENABLE DEBUG
+                }
+                else if (type == MonsterType.Slime)
+                {
+                    SlimeAnimator animator = monster.AddComponent<SlimeAnimator>();
+                    animator.bounceCycleSpeed = 4f;
+                    animator.jiggleSpeed = 3f;
+                    animator.bounceStretchAmount = 0.3f;
+                    animator.bounceSquashAmount = 0.2f;
+                    animator.bounceHeight = 0.15f;
+                    animator.jiggleAmount = 0.05f;
+                    animator.showDebug = true; // ENABLE DEBUG
                 }
 
                 // Add Rigidbody if not present

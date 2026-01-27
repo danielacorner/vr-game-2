@@ -1059,6 +1059,7 @@ UnityEngine.Mesh::get_vertexBufferTarget_Injected
 UnityEngine.Mesh::get_indexFormat_Injected
 UnityEngine.Mesh::GetVertexAttributeFormat_Injected
 UnityEngine.MeshCollider::get_convex_Injected
+UnityEngine.MeshCollider::set_sharedMesh_Injected
 UnityEngine.MeshFilter::get_mesh_Injected
 UnityEngine.MeshFilter::get_sharedMesh_Injected
 UnityEngine.MeshFilter::set_mesh_Injected

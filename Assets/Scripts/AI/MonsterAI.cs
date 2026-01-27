@@ -60,6 +60,9 @@ namespace VRDungeonCrawler.AI
         private Transform playerTarget = null;
         private float lastAggroTime = 0f;
 
+        // Public property to expose aggro state to other components
+        public bool IsAggro => isAggro;
+
         void Awake()
         {
             monsterBase = GetComponent<MonsterBase>();

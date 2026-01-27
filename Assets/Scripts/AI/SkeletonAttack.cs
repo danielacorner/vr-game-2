@@ -47,14 +47,10 @@ namespace VRDungeonCrawler.AI
 
         void Update()
         {
-            // Check aggro state
+            // Check aggro state (using public property)
             if (monsterAI != null)
             {
-                var field = typeof(MonsterAI).GetField("isAggro", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (field != null)
-                {
-                    isAggro = (bool)field.GetValue(monsterAI);
-                }
+                isAggro = monsterAI.IsAggro;
             }
 
             // Only attack when aggro
