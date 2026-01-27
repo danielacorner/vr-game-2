@@ -113,7 +113,7 @@ namespace VRDungeonCrawler.AI
         {
             // Calculate spawn position (random around spawner, away from structure)
             Vector3 spawnOffset = Random.insideUnitSphere * spawnRadius;
-            spawnOffset.y = 0f; // Keep on ground level
+            spawnOffset.y = 0f; // Will calculate Y later based on ground
             Vector3 spawnPosition = transform.position + spawnOffset;
 
             // Ensure minimum distance from spawner center to avoid collision
@@ -123,26 +123,6 @@ namespace VRDungeonCrawler.AI
                 horizontalOffset = horizontalOffset.normalized * 2.5f;
                 spawnPosition.x = transform.position.x + horizontalOffset.x;
                 spawnPosition.z = transform.position.z + horizontalOffset.y;
-            }
-
-            // Raycast down to find the actual ground height
-            RaycastHit hit;
-            Vector3 rayStart = new Vector3(spawnPosition.x, 50f, spawnPosition.z);
-            if (Physics.Raycast(rayStart, Vector3.down, out hit, 100f))
-            {
-                // Spawn 1.05m above ground (collider bottom is at -1.0, so this puts it at +0.05 above ground)
-                spawnPosition.y = hit.point.y + 1.05f;
-
-                if (showDebug)
-                    Debug.Log($"[MonsterSpawner] Ground found at Y={hit.point.y}, spawning at Y={spawnPosition.y}");
-            }
-            else
-            {
-                // Fallback if raycast fails
-                spawnPosition.y = 1.05f;
-
-                if (showDebug)
-                    Debug.LogWarning($"[MonsterSpawner] No ground found, using fallback Y=1.05");
             }
 
             // Build monster based on type
@@ -169,27 +149,13 @@ namespace VRDungeonCrawler.AI
             {
                 Debug.Log($"[MonsterSpawner] ========== SPAWNING {type} ==========");
 
-                // Calculate mesh bounds BEFORE scaling (for accurate collider sizing)
-                Bounds meshBounds = CalculateMeshBounds(monster);
-
-                Debug.Log($"[MonsterSpawner] Original mesh bounds: center={meshBounds.center}, size={meshBounds.size}");
-
-                // DON'T scale visual meshes - keep monsters at original size for now to debug
-                // ScaleVisualMeshes(monster, 1.5f);
-
-                // Simple approach: spawn at ground level + half monster height
-                // This ensures the monster's bottom is at ground level
-                float monsterHeight = meshBounds.size.y;
-                float monsterBottom = meshBounds.center.y - (monsterHeight / 2f);
-                spawnPosition.y = 0f - monsterBottom; // Ground is at Y=0
-
-                Debug.Log($"[MonsterSpawner] Monster height={monsterHeight:F2}, bottom offset={monsterBottom:F2}, spawn Y={spawnPosition.y:F2}");
-
-                // Set initial position and rotation
-                monster.transform.position = spawnPosition;
+                // Set temporary position high up to calculate mesh bounds
+                monster.transform.position = new Vector3(spawnPosition.x, 100f, spawnPosition.z);
                 monster.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
 
-                Debug.Log($"[MonsterSpawner] Monster positioned at {monster.transform.position}");
+                // Calculate mesh bounds for collider sizing
+                Bounds meshBounds = CalculateMeshBounds(monster);
+                Debug.Log($"[MonsterSpawner] Mesh bounds: center={meshBounds.center}, size={meshBounds.size}");
 
                 // Add MonsterBase component and configure
                 MonsterBase monsterBase = monster.AddComponent<MonsterBase>();
@@ -234,13 +200,40 @@ namespace VRDungeonCrawler.AI
                     rb.mass = 1f;
                     rb.linearDamping = 2f;
                     rb.angularDamping = 1f;
-                    rb.useGravity = true;
+                    rb.useGravity = false; // DISABLED initially - will enable after positioning
                     rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.collisionDetectionMode = CollisionDetectionMode.Continuous; // Prevent sinking through terrain
+                    rb.interpolation = RigidbodyInterpolation.Interpolate; // Smooth movement
                 }
 
                 // Reset velocity to prevent initial fast movement
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
+
+                Debug.Log($"[MonsterSpawner] Rigidbody added with gravity DISABLED temporarily");
+
+                // Calculate lowest vertex FIRST for accurate collider placement
+                float lowestLocalY = float.MaxValue;
+                MeshFilter[] meshFiltersForLowest = monster.GetComponentsInChildren<MeshFilter>();
+
+                foreach (MeshFilter mf in meshFiltersForLowest)
+                {
+                    if (mf.mesh == null) continue;
+
+                    Vector3[] vertices = mf.mesh.vertices;
+                    Transform meshTransform = mf.transform;
+
+                    foreach (Vector3 localVert in vertices)
+                    {
+                        Vector3 monsterLocalVert = monster.transform.InverseTransformPoint(meshTransform.TransformPoint(localVert));
+                        if (monsterLocalVert.y < lowestLocalY)
+                        {
+                            lowestLocalY = monsterLocalVert.y;
+                        }
+                    }
+                }
+
+                Debug.Log($"[MonsterSpawner] Calculated lowestLocalY for colliders: {lowestLocalY:F2}");
 
                 // Add colliders sized to ORIGINAL (unscaled) mesh bounds
                 // Trigger collider for spell detection - reduced to 60% to match visible model
@@ -253,16 +246,29 @@ namespace VRDungeonCrawler.AI
                 );
                 triggerCollider.center = meshBounds.center;
 
-                // Physics collider - small footprint at bottom
-                BoxCollider physicsCollider = monster.AddComponent<BoxCollider>();
+                // Physics collider - capsule for better ground contact and anti-sinking
+                // Position capsule so its BOTTOM is at the lowest vertex point
+                CapsuleCollider physicsCollider = monster.AddComponent<CapsuleCollider>();
                 physicsCollider.isTrigger = false;
-                physicsCollider.size = new Vector3(0.3f, 0.3f, 0.3f);
-                physicsCollider.center = new Vector3(meshBounds.center.x, meshBounds.min.y + 0.15f, meshBounds.center.z);
+                physicsCollider.radius = 0.25f; // Wide enough for stability
+                physicsCollider.height = 1.0f; // Tall enough to prevent sinking
+                physicsCollider.direction = 1; // Y-axis orientation
 
-                // DISABLED: Add ground alignment component for robust floor positioning
-                // Using simple Y position calculation instead for now
-                // MonsterGroundAlignment groundAlignment = monster.AddComponent<MonsterGroundAlignment>();
-                // groundAlignment.showDebug = showDebug;
+                // Capsule bottom is at center.y - height/2
+                // We want: center.y - height/2 = lowestLocalY
+                // So: center.y = lowestLocalY + height/2
+                float capsuleCenterY = lowestLocalY + (physicsCollider.height / 2f);
+                physicsCollider.center = new Vector3(0f, capsuleCenterY, 0f);
+
+                Debug.Log($"[MonsterSpawner] Capsule: center.y={capsuleCenterY:F2}, bottom will be at {capsuleCenterY - 0.5f:F2} (should match lowestLocalY={lowestLocalY:F2})");
+
+                // Add ground keeper component to prevent sinking through terrain
+                MonsterGroundKeeper groundKeeper = monster.AddComponent<MonsterGroundKeeper>();
+                groundKeeper.checkInterval = 0.2f; // Check 5 times per second
+                groundKeeper.raycastDistance = 5f;
+                groundKeeper.groundOffset = 0.05f; // Stay 5cm above ground
+                groundKeeper.correctionSpeed = 10f; // Fast correction if sinking
+                groundKeeper.showDebug = showDebug;
 
                 // Add visual debug sphere to see collider bounds
                 if (showDebug)
@@ -286,62 +292,89 @@ namespace VRDungeonCrawler.AI
                     Destroy(debugSphere.GetComponent<Collider>());
                 }
 
-                // Final ground position adjustment using raycast
-                // Find ACTUAL lowest vertex in all meshes (not just bounding box)
-                float lowestY = float.MaxValue;
-                MeshFilter[] meshFilters = monster.GetComponentsInChildren<MeshFilter>();
+                // === FINAL POSITIONING: Find ground and place monster correctly ===
+                // (lowestLocalY was already calculated above for collider setup)
+                Debug.Log($"[MonsterSpawner] {type} using lowestLocalY={lowestLocalY:F2}m for positioning");
 
-                foreach (MeshFilter mf in meshFilters)
-                {
-                    if (mf.mesh == null) continue;
-
-                    Vector3[] vertices = mf.mesh.vertices;
-                    Transform meshTransform = mf.transform;
-
-                    foreach (Vector3 localVert in vertices)
-                    {
-                        // Convert to world space
-                        Vector3 worldVert = meshTransform.TransformPoint(localVert);
-                        if (worldVert.y < lowestY)
-                        {
-                            lowestY = worldVert.y;
-                        }
-                    }
-                }
-
-                Debug.Log($"[MonsterSpawner] {type} actual lowest vertex in world space: Y={lowestY:F2}");
-
-                // Raycast down from monster to find exact ground level
-                // IMPORTANT: Disable monster's colliders first so raycast doesn't hit itself!
+                // Step 2: Raycast down to find ground level at spawn position
+                // Disable monster's colliders so raycast doesn't hit itself
                 triggerCollider.enabled = false;
                 physicsCollider.enabled = false;
 
                 RaycastHit groundHit;
-                Vector3 groundRayStart = monster.transform.position + Vector3.up * 2f;
+                Vector3 rayStart = new Vector3(spawnPosition.x, 50f, spawnPosition.z);
 
-                // Raycast to find actual terrain (monster colliders disabled)
-                bool hitGround = Physics.Raycast(groundRayStart, Vector3.down, out groundHit, 20f);
+                Debug.Log($"[MonsterSpawner] Raycasting from {rayStart} down to find ground...");
+                bool hitGround = Physics.Raycast(rayStart, Vector3.down, out groundHit, 100f, ~0, QueryTriggerInteraction.Ignore);
 
-                Debug.Log($"[MonsterSpawner] Raycast from Y={groundRayStart.y:F2}: {(hitGround ? $"HIT {groundHit.collider.gameObject.name} at Y={groundHit.point.y:F2}" : "MISSED")}");
+                if (hitGround)
+                {
+                    Debug.Log($"[MonsterSpawner] ✓ HIT: {groundHit.collider.gameObject.name} at Y={groundHit.point.y:F2}, distance={groundHit.distance:F2}m");
+                }
+                else
+                {
+                    Debug.LogError($"[MonsterSpawner] ✗ RAYCAST MISS from {rayStart}!");
 
-                // Re-enable colliders
+                    // Try with debug visualization
+                    Debug.DrawRay(rayStart, Vector3.down * 100f, Color.red, 5f);
+                }
+
+                // Re-enable colliders immediately
                 triggerCollider.enabled = true;
                 physicsCollider.enabled = true;
 
                 if (hitGround)
                 {
-                    // Calculate how much to adjust: difference between ground and current lowest point
-                    float yAdjustment = groundHit.point.y - lowestY;
-                    Vector3 finalPos = monster.transform.position;
-                    finalPos.y += yAdjustment;
-                    monster.transform.position = finalPos;
+                    // Step 3: Position monster so its lowest vertex is exactly at ground level (plus small offset)
+                    float groundY = groundHit.point.y;
+                    float groundOffset = 0.05f; // 5cm above ground to prevent z-fighting
 
-                    Debug.Log($"[MonsterSpawner] Ground at Y={groundHit.point.y:F2}, lowest mesh at Y={lowestY:F2}, adjustment={yAdjustment:F2}, final Y={finalPos.y:F2}");
+                    // Monster's pivot needs to be positioned so that (pivot.y + lowestLocalY) = groundY + offset
+                    float monsterPivotY = groundY + groundOffset - lowestLocalY;
+
+                    spawnPosition.y = monsterPivotY;
+                    monster.transform.position = spawnPosition;
+
+                    Debug.Log($"[MonsterSpawner] ✓✓✓ POSITIONING ✓✓✓");
+                    Debug.Log($"[MonsterSpawner]   Ground Y: {groundY:F2}");
+                    Debug.Log($"[MonsterSpawner]   Lowest vertex offset: {lowestLocalY:F2}");
+                    Debug.Log($"[MonsterSpawner]   Calculated pivot Y: {monsterPivotY:F2}");
+                    Debug.Log($"[MonsterSpawner]   Expected lowest point world Y: {monsterPivotY + lowestLocalY:F2}");
+                    Debug.Log($"[MonsterSpawner]   Final position: {monster.transform.position}");
+
+                    // Create visual debug marker at ground hit point
+                    if (showDebug)
+                    {
+                        GameObject groundMarker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                        groundMarker.name = "DEBUG_GroundHitPoint";
+                        groundMarker.transform.position = groundHit.point;
+                        groundMarker.transform.localScale = Vector3.one * 0.2f;
+
+                        MeshRenderer markerRenderer = groundMarker.GetComponent<MeshRenderer>();
+                        Material markerMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                        markerMat.color = Color.red;
+                        markerMat.EnableKeyword("_EMISSION");
+                        markerMat.SetColor("_EmissionColor", Color.red * 2f);
+                        markerRenderer.material = markerMat;
+
+                        Destroy(groundMarker.GetComponent<Collider>());
+                        Destroy(groundMarker, 10f); // Remove after 10 seconds
+                    }
                 }
                 else
                 {
-                    Debug.LogError($"[MonsterSpawner] Ground raycast missed from Y={groundRayStart.y:F2}! Monster will float. Check terrain setup.");
+                    Debug.LogError($"[MonsterSpawner] ✗✗✗ RAYCAST MISSED! ✗✗✗");
+                    Debug.LogError($"[MonsterSpawner] No ground found at X={spawnPosition.x:F2}, Z={spawnPosition.z:F2}");
+                    Debug.LogError($"[MonsterSpawner] This means TERRAIN COLLIDER IS MISSING OR DISABLED!");
+
+                    // Fallback: place at spawner's Y level
+                    spawnPosition.y = transform.position.y;
+                    monster.transform.position = spawnPosition;
                 }
+
+                // Re-enable gravity now that monster is positioned correctly
+                rb.useGravity = true;
+                Debug.Log($"[MonsterSpawner] ✓ Gravity re-enabled, spawn complete!");
 
                 // Track active monster
                 activeMonsters[type].Add(monster);

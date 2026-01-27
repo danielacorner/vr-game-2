@@ -86,6 +86,9 @@ namespace VRDungeonCrawler.Editor
             // Fix terrain material (remove reflectiveness)
             FixTerrainMaterial(terrain);
 
+            // Fix terrain physics (ensure proper collision)
+            FixTerrainPhysics(terrain);
+
             // Position MonsterSpawner at pit floor
             if (spawner != null)
             {
@@ -120,8 +123,8 @@ namespace VRDungeonCrawler.Editor
             float[,] heights = new float[height, width];
 
             // Perlin noise settings
-            float scale = 80f; // VERY large scale = very smooth, gentle rolling hills
-            float heightMultiplier = 0.035f; // Minimal variation = very subtle bumps
+            float scale = 200f; // MASSIVE scale = super smooth, very far apart, barely visible undulation
+            float heightMultiplier = 0.01f; // Minimal variation = almost flat with tiny subtle bumps
             float offsetX = Random.Range(0f, 10000f); // Random seed
             float offsetY = Random.Range(0f, 10000f);
 
@@ -267,7 +270,7 @@ namespace VRDungeonCrawler.Editor
         {
             Debug.Log("[RealisticTerrain] Fixing terrain material (removing reflectiveness)...");
 
-            // Get terrain material - create if doesn't exist
+            // Get or create terrain material
             Material terrainMat = terrain.materialTemplate;
             if (terrainMat == null)
             {
@@ -275,11 +278,76 @@ namespace VRDungeonCrawler.Editor
                 terrain.materialTemplate = terrainMat;
             }
 
-            // Set smoothness to 0 (no reflectiveness) and metallic to 0
-            terrainMat.SetFloat("_Smoothness", 0f);
-            terrainMat.SetFloat("_Metallic", 0f);
+            // Remove ALL reflectiveness and shine - AGGRESSIVE
+            terrainMat.SetFloat("_Smoothness", 0f);     // No glossiness
+            terrainMat.SetFloat("_Metallic", 0f);       // Not metallic at all
 
-            Debug.Log("[RealisticTerrain] ✓ Terrain material fixed (smoothness=0, metallic=0)");
+            // Disable all reflections and specular
+            if (terrainMat.HasProperty("_SpecularHighlights"))
+                terrainMat.SetFloat("_SpecularHighlights", 0f);
+            if (terrainMat.HasProperty("_EnvironmentReflections"))
+                terrainMat.SetFloat("_EnvironmentReflections", 0f);
+            if (terrainMat.HasProperty("_GlossMapScale"))
+                terrainMat.SetFloat("_GlossMapScale", 0f);
+            if (terrainMat.HasProperty("_SpecColor"))
+                terrainMat.SetColor("_SpecColor", Color.black);
+            if (terrainMat.HasProperty("_GlossyReflections"))
+                terrainMat.SetFloat("_GlossyReflections", 0f);
+            if (terrainMat.HasProperty("_Glossiness"))
+                terrainMat.SetFloat("_Glossiness", 0f);
+
+            // Disable shader keywords for reflections
+            terrainMat.DisableKeyword("_SPECULARHIGHLIGHTS_OFF");
+            terrainMat.EnableKeyword("_SPECULARHIGHLIGHTS_OFF");
+            terrainMat.DisableKeyword("_GLOSSYREFLECTIONS_OFF");
+            terrainMat.EnableKeyword("_GLOSSYREFLECTIONS_OFF");
+
+            // Also set on terrain data's material
+            TerrainData terrainData = terrain.terrainData;
+            foreach (TerrainLayer layer in terrainData.terrainLayers)
+            {
+                if (layer != null)
+                {
+                    layer.smoothness = 0f;
+                    layer.metallic = 0f;
+                    EditorUtility.SetDirty(layer);
+                }
+            }
+
+            EditorUtility.SetDirty(terrainMat);
+            EditorUtility.SetDirty(terrain);
+
+            Debug.Log("[RealisticTerrain] ✓ Terrain material fixed (completely matte, no reflections)");
+        }
+
+        static void FixTerrainPhysics(Terrain terrain)
+        {
+            Debug.Log("[RealisticTerrain] Fixing terrain physics for proper collision...");
+
+            // Ensure TerrainCollider is present and enabled
+            TerrainCollider terrainCollider = terrain.GetComponent<TerrainCollider>();
+            if (terrainCollider == null)
+            {
+                terrainCollider = terrain.gameObject.AddComponent<TerrainCollider>();
+                Debug.Log("[RealisticTerrain] Added missing TerrainCollider");
+            }
+
+            terrainCollider.enabled = true;
+
+            // Set terrain physics material for better collision (no bounce, good friction)
+            PhysicsMaterial terrainPhysicsMat = new PhysicsMaterial("TerrainPhysics");
+            terrainPhysicsMat.dynamicFriction = 0.8f; // Good friction to prevent sliding
+            terrainPhysicsMat.staticFriction = 0.8f;
+            terrainPhysicsMat.bounciness = 0f; // No bouncing
+            terrainPhysicsMat.frictionCombine = PhysicsMaterialCombine.Maximum; // Use maximum friction
+            terrainPhysicsMat.bounceCombine = PhysicsMaterialCombine.Minimum; // Use minimum bounce
+
+            terrainCollider.material = terrainPhysicsMat;
+
+            // Ensure terrain is on Default layer (0) for collision
+            terrain.gameObject.layer = 0;
+
+            Debug.Log("[RealisticTerrain] ✓ Terrain physics fixed (collider enabled, friction added)");
         }
 
         static void CreateSpawnerVisualTower(GameObject spawner)
