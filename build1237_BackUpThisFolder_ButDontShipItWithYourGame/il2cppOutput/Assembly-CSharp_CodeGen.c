@@ -537,6 +537,7 @@ extern void WristMinimap_Reinitialize_m02F17E1D447F9806538FAFE7ED5B923F30A9FD8D 
 extern void WristMinimap_TestMoveExtreme_mD96391CAE990C29C567DE777BA2C0CAEB6D0CBD2 (void);
 extern void WristMinimap_EnableAggressiveLogging_mFE332880A1ABFF30AB9BCE54B211195E1AE374A6 (void);
 extern void WristMinimap_DisableAggressiveLogging_m23449A9497B17721E00E44F38B82B797E4D95085 (void);
+extern void WristMinimap_ResetOffsetValues_mC847BBB8E62F17BD90E695D2DF41D24D851A452F (void);
 extern void WristMinimap__ctor_m6AE85B1F13C5A87F03E4D8122D72039F2F711200 (void);
 extern void U3CDelayedInitializationU3Ed__32__ctor_m7AE80A9C3AC4ABF9BCEE15682B54235A11EEA439 (void);
 extern void U3CDelayedInitializationU3Ed__32_System_IDisposable_Dispose_m4B98DCB9E81BCEBDA249BCCF4FE351B655379C5A (void);
@@ -1255,7 +1256,7 @@ extern void SlimeAnimator_AnimateEyeTracking_m5F3A4876598254C8D0A89E6FF63BE48DDC
 extern void SlimeAnimator_StartAttack_mA671BF2A7BB57B52414143EDBB21B36A92B1534A (void);
 extern void SlimeAnimator_AnimateAttack_m095794A208CCC44783EC3029DE6095668B6C74C4 (void);
 extern void SlimeAnimator__ctor_m89C3B6F3B8BE5B2539A5A2F6EF988D0273CADCF9 (void);
-static Il2CppMethodPointer s_methodPointers[1248] = 
+static Il2CppMethodPointer s_methodPointers[1249] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1787,6 +1788,7 @@ static Il2CppMethodPointer s_methodPointers[1248] =
 	WristMinimap_TestMoveExtreme_mD96391CAE990C29C567DE777BA2C0CAEB6D0CBD2,
 	WristMinimap_EnableAggressiveLogging_mFE332880A1ABFF30AB9BCE54B211195E1AE374A6,
 	WristMinimap_DisableAggressiveLogging_m23449A9497B17721E00E44F38B82B797E4D95085,
+	WristMinimap_ResetOffsetValues_mC847BBB8E62F17BD90E695D2DF41D24D851A452F,
 	WristMinimap__ctor_m6AE85B1F13C5A87F03E4D8122D72039F2F711200,
 	U3CDelayedInitializationU3Ed__32__ctor_m7AE80A9C3AC4ABF9BCEE15682B54235A11EEA439,
 	U3CDelayedInitializationU3Ed__32_System_IDisposable_Dispose_m4B98DCB9E81BCEBDA249BCCF4FE351B655379C5A,
@@ -2511,7 +2513,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x0600012F, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1248] = 
+static const int32_t s_InvokerIndices[1249] = 
 {
 	15301,
 	15301,
@@ -3035,6 +3037,7 @@ static const int32_t s_InvokerIndices[1248] =
 	11607,
 	15301,
 	11607,
+	15301,
 	15301,
 	15301,
 	15301,
@@ -3766,7 +3769,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1248,
+	1249,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

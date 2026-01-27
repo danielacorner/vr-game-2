@@ -15,11 +15,11 @@ namespace VRDungeonCrawler.Player
         public float minimapSize = 0.1f;
 
         [Header("Position Settings - Try different values!")]
-        [Tooltip("Position offset from left hand (local space). X=left/right, Y=up/down, Z=forward(+)/back(-)")]
-        public Vector3 leftWristOffset = new Vector3(0f, -0.05f, -0.15f);
+        [Tooltip("Position offset from left hand (local space). X=left/right, Y=up/down, Z=forward(+)/back(-). Negative Z goes toward wrist from fingertip.")]
+        public Vector3 leftWristOffset = new Vector3(0f, 0f, -0.15f);
 
-        [Tooltip("Position offset from right hand (local space). X=left/right, Y=up/down, Z=forward(+)/back(-)")]
-        public Vector3 rightWristOffset = new Vector3(0f, -0.05f, -0.15f);
+        [Tooltip("Position offset from right hand (local space). X=left/right, Y=up/down, Z=forward(+)/back(-). Negative Z goes toward wrist from fingertip.")]
+        public Vector3 rightWristOffset = new Vector3(0f, 0f, -0.15f);
 
         [Header("Quick Test")]
         [Tooltip("Test: Place minimap far from hand to see if position updates work")]
@@ -786,6 +786,25 @@ namespace VRDungeonCrawler.Player
         {
             aggressiveLogging = false;
             Debug.Log("[WristMinimap] Aggressive logging disabled");
+        }
+
+        [ContextMenu("RESET: Fix Offset Values")]
+        void ResetOffsetValues()
+        {
+            // Force reset to wrist position (negative Z goes backward from fingertip toward wrist)
+            leftWristOffset = new Vector3(0f, 0f, -0.15f);
+            rightWristOffset = new Vector3(0f, 0f, -0.15f);
+
+            Debug.LogWarning("[WristMinimap] RESET OFFSETS:");
+            Debug.LogWarning($"  Left offset: {leftWristOffset}");
+            Debug.LogWarning($"  Right offset: {rightWristOffset}");
+            Debug.LogWarning("  These values are now saved. Minimap should move to wrist position.");
+
+            // Force immediate update if minimap is visible
+            if (activeWrist != null)
+            {
+                UpdateMinimapPosition(activeWrist);
+            }
         }
     }
 }
