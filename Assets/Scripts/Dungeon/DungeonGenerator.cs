@@ -995,9 +995,13 @@ namespace VRDungeonCrawler.Dungeon
             // Add wall torches
             AddWallTorches(room);
 
-            // Spawn skeleton monsters (2-3 for combat rooms)
-            int skeletonCount = rng.Next(2, 4);
+            // Spawn monsters - mix of skeletons and slimes (25% skeletons, 75% slimes)
+            int totalMonsters = rng.Next(2, 4);
+            int skeletonCount = Mathf.Max(0, totalMonsters / 4); // 25% are skeletons
+            int slimeCount = totalMonsters - skeletonCount;
+
             SpawnSkeletons(room, skeletonCount);
+            SpawnSlimes(room, slimeCount);
         }
 
         private void DecorateTreasureRoom(DungeonRoom room)
@@ -1042,9 +1046,13 @@ namespace VRDungeonCrawler.Dungeon
 
             AddWallTorches(room);
 
-            // Spawn skeleton guards (1-2 guarding the treasure)
-            int skeletonCount = rng.Next(1, 3);
+            // Spawn monster guards - mix of skeletons and slimes
+            int totalMonsters = rng.Next(1, 3);
+            int skeletonCount = Mathf.Max(0, totalMonsters / 4); // 25% are skeletons
+            int slimeCount = totalMonsters - skeletonCount;
+
             SpawnSkeletons(room, skeletonCount);
+            SpawnSlimes(room, slimeCount);
         }
 
         private void DecoratePuzzleRoom(DungeonRoom room)
@@ -1084,9 +1092,13 @@ namespace VRDungeonCrawler.Dungeon
 
             AddWallTorches(room);
 
-            // Spawn skeleton wanderers (0-1 for puzzle rooms - light defense)
-            int skeletonCount = rng.Next(0, 2);
+            // Spawn monster wanderers (0-1 for puzzle rooms - light defense)
+            int totalMonsters = rng.Next(0, 2);
+            int skeletonCount = totalMonsters > 0 && (float)rng.NextDouble() < 0.25f ? 1 : 0; // 25% chance skeleton
+            int slimeCount = totalMonsters - skeletonCount;
+
             SpawnSkeletons(room, skeletonCount);
+            SpawnSlimes(room, slimeCount);
         }
 
         private void DecorateShopRoom(DungeonRoom room)
@@ -1193,9 +1205,13 @@ namespace VRDungeonCrawler.Dungeon
 
             AddWallTorches(room, torchesPerRoom * 2); // Extra bright boss room
 
-            // Spawn skeleton horde for boss room (2-4 skeletons - intense combat)
-            int skeletonCount = rng.Next(2, 5);
+            // Spawn monster horde for boss room (2-4 monsters - intense combat)
+            int totalMonsters = rng.Next(2, 5);
+            int skeletonCount = Mathf.Max(0, totalMonsters / 4); // 25% are skeletons
+            int slimeCount = totalMonsters - skeletonCount;
+
             SpawnSkeletons(room, skeletonCount);
+            SpawnSlimes(room, slimeCount);
         }
 
         /// <summary>
@@ -1555,6 +1571,128 @@ namespace VRDungeonCrawler.Dungeon
 
             if (showDebug)
                 Debug.Log($"[DungeonGenerator] Spawned {count} skeletons in {room.roomType} room at {room.gridPosition}");
+        }
+
+        /// <summary>
+        /// Spawns slime monsters in a room using MonsterBuilder
+        /// </summary>
+        /// <param name="room">Room to spawn in</param>
+        /// <param name="count">Number of slimes to spawn</param>
+        private void SpawnSlimes(DungeonRoom room, int count)
+        {
+            if (count <= 0) return;
+
+            float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.35f;
+
+            for (int i = 0; i < count; i++)
+            {
+                Vector3 localPos = GetRandomPositionInRoom(roomRadius);
+
+                const float FLOOR_TOP = 0.05f;
+                localPos.y = FLOOR_TOP;
+
+                // Use MonsterBuilder to create slime
+                GameObject slime = AI.MonsterBuilder.CreateSlime();
+                slime.transform.SetParent(room.roomObject.transform);
+                slime.transform.localPosition = localPos;
+                slime.transform.localRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+
+                // Find lowest vertex for positioning
+                float lowestRoomY = float.MaxValue;
+                float lowestSlimeLocalY = float.MaxValue;
+                MeshFilter[] meshFilters = slime.GetComponentsInChildren<MeshFilter>();
+
+                foreach (MeshFilter mf in meshFilters)
+                {
+                    if (mf.mesh != null)
+                    {
+                        Vector3[] vertices = mf.mesh.vertices;
+                        Transform meshTransform = mf.transform;
+
+                        foreach (Vector3 localVert in vertices)
+                        {
+                            Vector3 worldVert = meshTransform.TransformPoint(localVert);
+                            Vector3 roomLocalVert = room.roomObject.transform.InverseTransformPoint(worldVert);
+                            if (roomLocalVert.y < lowestRoomY)
+                                lowestRoomY = roomLocalVert.y;
+
+                            Vector3 slimeLocalVert = slime.transform.InverseTransformPoint(worldVert);
+                            if (slimeLocalVert.y < lowestSlimeLocalY)
+                                lowestSlimeLocalY = slimeLocalVert.y;
+                        }
+                    }
+                }
+
+                // Adjust Y position
+                if (lowestRoomY < FLOOR_TOP)
+                {
+                    localPos.y += (FLOOR_TOP - lowestRoomY);
+                    slime.transform.localPosition = localPos;
+                }
+
+                Bounds meshBounds = CalculateMonsterBounds(slime);
+                float colliderHeight = meshBounds.size.y;
+                float colliderCenterY = lowestSlimeLocalY + (colliderHeight / 2f);
+                Vector3 colliderCenter = new Vector3(meshBounds.center.x, colliderCenterY, meshBounds.center.z);
+
+                // Add MonsterBase component
+                AI.MonsterBase monsterBase = slime.AddComponent<AI.MonsterBase>();
+                monsterBase.monsterType = AI.MonsterType.Slime;
+                monsterBase.maxHP = 10; // Less HP than skeletons
+                monsterBase.currentHP = 10;
+                monsterBase.knockbackForce = 5f;
+                monsterBase.showDebug = false;
+
+                // Add MonsterAI component
+                AI.MonsterAI monsterAI = slime.AddComponent<AI.MonsterAI>();
+                monsterAI.walkSpeed = 1f;
+                monsterAI.chaseSpeed = 3f;
+                monsterAI.aggroRange = 2f;
+                monsterAI.maxRoamDistance = 8f;
+                monsterAI.showDebug = true;
+
+                // Add SlimeAnimator
+                AI.SlimeAnimator animator = slime.AddComponent<AI.SlimeAnimator>();
+                animator.bounceCycleSpeed = 4f;
+                animator.jiggleSpeed = 3f;
+                animator.bounceStretchAmount = 0.3f;
+                animator.bounceSquashAmount = 0.2f;
+                animator.bounceHeight = 0.15f;
+                animator.jiggleAmount = 0.05f;
+                animator.showDebug = true;
+
+                // Add Rigidbody
+                Rigidbody rb = slime.GetComponent<Rigidbody>();
+                if (rb == null)
+                {
+                    rb = slime.AddComponent<Rigidbody>();
+                    rb.mass = 0.8f; // Lighter than skeletons
+                    rb.linearDamping = 2f;
+                    rb.angularDamping = 1f;
+                    rb.useGravity = true;
+                    rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                }
+
+                // Add colliders
+                BoxCollider triggerCollider = slime.AddComponent<BoxCollider>();
+                triggerCollider.isTrigger = true;
+                triggerCollider.size = new Vector3(
+                    meshBounds.size.x * 0.6f,
+                    meshBounds.size.y * 0.9f,
+                    meshBounds.size.z * 0.6f
+                );
+                triggerCollider.center = colliderCenter;
+
+                // Small physics footprint
+                BoxCollider physicsCollider = slime.AddComponent<BoxCollider>();
+                physicsCollider.isTrigger = false;
+                physicsCollider.size = new Vector3(0.3f, 0.3f, 0.3f);
+                physicsCollider.center = new Vector3(0f, lowestSlimeLocalY + 0.15f, 0f);
+            }
+
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] Spawned {count} slimes in {room.roomType} room at {room.gridPosition}");
         }
 
         /// <summary>

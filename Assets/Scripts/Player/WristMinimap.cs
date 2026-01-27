@@ -1,0 +1,415 @@
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic;
+
+namespace VRDungeonCrawler.Player
+{
+    /// <summary>
+    /// Simple wrist-mounted minimap that shows dungeon layout
+    /// Appears on left wrist when looking at it
+    /// </summary>
+    public class WristMinimap : MonoBehaviour
+    {
+        [Header("Minimap Settings")]
+        [Tooltip("Minimap size in world units")]
+        public float minimapSize = 0.1f;
+
+        [Tooltip("Position offset from left hand")]
+        public Vector3 leftWristOffset = new Vector3(0f, 0.02f, 0.06f);
+
+        [Tooltip("Position offset from right hand")]
+        public Vector3 rightWristOffset = new Vector3(0f, 0.02f, 0.06f);
+
+        [Tooltip("Distance from camera to show minimap")]
+        [Range(0.1f, 1f)]
+        public float activationDistance = 0.4f;
+
+        [Tooltip("Update interval in seconds")]
+        public float updateInterval = 0.1f;
+
+        [Header("Colors")]
+        public Color backgroundColor = new Color(0.05f, 0.05f, 0.1f, 0.95f);
+        public Color roomColor = new Color(0.3f, 0.3f, 0.35f);
+        public Color playerDotColor = Color.cyan;
+        public Color visitedRoomColor = new Color(0.25f, 0.25f, 0.3f);
+
+        [Header("Debug")]
+        public bool showDebug = false;
+        public bool alwaysVisible = false; // For testing
+
+        // Internal state
+        private GameObject minimapRoot;
+        private Canvas minimapCanvas;
+        private GameObject minimapContent;
+        private Transform leftHand;
+        private Transform rightHand;
+        private Transform headCamera;
+        private float nextUpdateTime;
+        private List<GameObject> roomVisuals = new List<GameObject>();
+        private GameObject playerDot;
+        private bool isVisible = false;
+        private Transform activeWrist;
+
+        void Start()
+        {
+            // Find camera
+            headCamera = Camera.main?.transform;
+            if (headCamera == null)
+            {
+                Debug.LogError("[WristMinimap] No main camera found!");
+                enabled = false;
+                return;
+            }
+
+            // Find hand controllers using multiple methods
+            FindHandControllers();
+
+            if (leftHand == null && rightHand == null)
+            {
+                Debug.LogError("[WristMinimap] No hand controllers found! Minimap disabled.");
+                if (showDebug)
+                {
+                    Debug.Log("[WristMinimap] Searched for: LeftHand, RightHand, Left, Right, LeftHandController, RightHandController");
+                }
+                enabled = false;
+                return;
+            }
+
+            CreateMinimapUI();
+
+            if (showDebug)
+            {
+                Debug.Log($"[WristMinimap] Initialized. LeftHand: {leftHand?.name}, RightHand: {rightHand?.name}, Camera: {headCamera.name}");
+            }
+
+            if (alwaysVisible)
+            {
+                ShowMinimap(leftHand ?? rightHand);
+            }
+        }
+
+        void FindHandControllers()
+        {
+            // Method 1: Search by common names
+            Transform[] allTransforms = FindObjectsOfType<Transform>();
+            foreach (Transform t in allTransforms)
+            {
+                string name = t.name.ToLower();
+                if (name.Contains("lefthand") || (name.Contains("left") && name.Contains("controller")))
+                {
+                    if (leftHand == null)
+                    {
+                        leftHand = t;
+                        if (showDebug) Debug.Log($"[WristMinimap] Found left hand: {t.name}");
+                    }
+                }
+                else if (name.Contains("righthand") || (name.Contains("right") && name.Contains("controller")))
+                {
+                    if (rightHand == null)
+                    {
+                        rightHand = t;
+                        if (showDebug) Debug.Log($"[WristMinimap] Found right hand: {t.name}");
+                    }
+                }
+
+                if (leftHand != null && rightHand != null)
+                    break;
+            }
+
+            // Method 2: Try to find under XR Origin
+            if (leftHand == null || rightHand == null)
+            {
+                Unity.XR.CoreUtils.XROrigin xrOrigin = FindFirstObjectByType<Unity.XR.CoreUtils.XROrigin>();
+                if (xrOrigin != null)
+                {
+                    if (leftHand == null)
+                        leftHand = FindInChildren(xrOrigin.transform, "left");
+                    if (rightHand == null)
+                        rightHand = FindInChildren(xrOrigin.transform, "right");
+                }
+            }
+        }
+
+        Transform FindInChildren(Transform parent, string searchTerm)
+        {
+            foreach (Transform child in parent.GetComponentsInChildren<Transform>())
+            {
+                if (child.name.ToLower().Contains(searchTerm))
+                {
+                    if (showDebug) Debug.Log($"[WristMinimap] Found {searchTerm}: {child.name}");
+                    return child;
+                }
+            }
+            return null;
+        }
+
+        void CreateMinimapUI()
+        {
+            // Create root object
+            minimapRoot = new GameObject("WristMinimap");
+            minimapRoot.transform.SetParent(transform);
+
+            // Create canvas
+            minimapCanvas = minimapRoot.AddComponent<Canvas>();
+            minimapCanvas.renderMode = RenderMode.WorldSpace;
+
+            CanvasScaler scaler = minimapRoot.AddComponent<CanvasScaler>();
+            scaler.dynamicPixelsPerUnit = 100;
+
+            RectTransform canvasRT = minimapRoot.GetComponent<RectTransform>();
+            canvasRT.sizeDelta = new Vector2(400, 400);
+            canvasRT.localScale = new Vector3(minimapSize / 400f, minimapSize / 400f, minimapSize / 400f);
+
+            // Background
+            GameObject bg = new GameObject("Background");
+            bg.transform.SetParent(minimapRoot.transform, false);
+            Image bgImage = bg.AddComponent<Image>();
+            bgImage.color = backgroundColor;
+            RectTransform bgRT = bg.GetComponent<RectTransform>();
+            bgRT.anchorMin = Vector2.zero;
+            bgRT.anchorMax = Vector2.one;
+            bgRT.sizeDelta = Vector2.zero;
+
+            // Border
+            GameObject border = new GameObject("Border");
+            border.transform.SetParent(minimapRoot.transform, false);
+            Image borderImage = border.AddComponent<Image>();
+            borderImage.color = new Color(0.4f, 0.4f, 0.5f);
+            RectTransform borderRT = border.GetComponent<RectTransform>();
+            borderRT.anchorMin = Vector2.zero;
+            borderRT.anchorMax = Vector2.one;
+            borderRT.sizeDelta = new Vector2(10, 10); // Outline
+
+            // Content area
+            minimapContent = new GameObject("Content");
+            minimapContent.transform.SetParent(minimapRoot.transform, false);
+            RectTransform contentRT = minimapContent.AddComponent<RectTransform>();
+            contentRT.anchorMin = new Vector2(0.1f, 0.1f);
+            contentRT.anchorMax = new Vector2(0.9f, 0.9f);
+            contentRT.sizeDelta = Vector2.zero;
+
+            // Draw dungeon rooms
+            DrawDungeonRooms();
+
+            // Create player dot
+            CreatePlayerDot();
+
+            minimapRoot.SetActive(false);
+        }
+
+        void DrawDungeonRooms()
+        {
+            // Find dungeon generator
+            Dungeon.DungeonGenerator dungeonGen = FindFirstObjectByType<Dungeon.DungeonGenerator>();
+            if (dungeonGen == null)
+            {
+                if (showDebug) Debug.LogWarning("[WristMinimap] No dungeon generator found");
+                return;
+            }
+
+            // Get rooms via reflection
+            var roomsField = typeof(Dungeon.DungeonGenerator).GetField("allRooms",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (roomsField == null) return;
+
+            List<Dungeon.DungeonRoom> rooms = roomsField.GetValue(dungeonGen) as List<Dungeon.DungeonRoom>;
+            if (rooms == null || rooms.Count == 0) return;
+
+            // Find bounds of dungeon
+            float minX = float.MaxValue, maxX = float.MinValue;
+            float minZ = float.MaxValue, maxZ = float.MinValue;
+
+            foreach (var room in rooms)
+            {
+                float roomSize = room.sizeInGrids * 2f;
+                minX = Mathf.Min(minX, room.worldPosition.x);
+                maxX = Mathf.Max(maxX, room.worldPosition.x + roomSize);
+                minZ = Mathf.Min(minZ, room.worldPosition.z);
+                maxZ = Mathf.Max(maxZ, room.worldPosition.z + roomSize);
+            }
+
+            float dungeonWidth = maxX - minX;
+            float dungeonHeight = maxZ - minZ;
+            float dungeonCenterX = (minX + maxX) / 2f;
+            float dungeonCenterZ = (minZ + maxZ) / 2f;
+
+            float scale = 320f / Mathf.Max(dungeonWidth, dungeonHeight);
+
+            // Draw each room
+            foreach (var room in rooms)
+            {
+                GameObject roomObj = new GameObject($"Room_{room.gridPosition}");
+                roomObj.transform.SetParent(minimapContent.transform, false);
+
+                Image roomImage = roomObj.AddComponent<Image>();
+                roomImage.color = roomColor;
+
+                RectTransform roomRT = roomObj.GetComponent<RectTransform>();
+                float roomSize = room.sizeInGrids * 2f * scale * 0.9f;
+                roomRT.sizeDelta = new Vector2(roomSize, roomSize);
+
+                // Position relative to dungeon center
+                float x = (room.worldPosition.x - dungeonCenterX) * scale;
+                float z = (room.worldPosition.z - dungeonCenterZ) * scale;
+                roomRT.anchoredPosition = new Vector2(x, z);
+
+                roomVisuals.Add(roomObj);
+            }
+
+            if (showDebug)
+                Debug.Log($"[WristMinimap] Drew {rooms.Count} rooms on minimap");
+        }
+
+        void CreatePlayerDot()
+        {
+            playerDot = new GameObject("PlayerDot");
+            playerDot.transform.SetParent(minimapContent.transform, false);
+
+            Image dotImage = playerDot.AddComponent<Image>();
+            dotImage.color = playerDotColor;
+
+            RectTransform dotRT = playerDot.GetComponent<RectTransform>();
+            dotRT.sizeDelta = new Vector2(15, 15);
+            dotRT.anchoredPosition = Vector2.zero;
+
+            // Make it round
+            GameObject circle = new GameObject("Circle");
+            circle.transform.SetParent(playerDot.transform, false);
+            Image circleImage = circle.AddComponent<Image>();
+            circleImage.color = playerDotColor;
+            RectTransform circleRT = circle.GetComponent<RectTransform>();
+            circleRT.anchorMin = Vector2.zero;
+            circleRT.anchorMax = Vector2.one;
+            circleRT.sizeDelta = Vector2.zero;
+        }
+
+        void Update()
+        {
+            if (headCamera == null) return;
+
+            // Check wrist visibility
+            Transform targetWrist = GetVisibleWrist();
+
+            if (alwaysVisible)
+            {
+                if (!isVisible)
+                    ShowMinimap(leftHand ?? rightHand);
+                targetWrist = activeWrist ?? leftHand ?? rightHand;
+            }
+
+            if (targetWrist != null)
+            {
+                if (!isVisible || targetWrist != activeWrist)
+                {
+                    ShowMinimap(targetWrist);
+                }
+                UpdateMinimapPosition(targetWrist);
+            }
+            else if (isVisible && !alwaysVisible)
+            {
+                HideMinimap();
+            }
+
+            // Update player position
+            if (Time.time >= nextUpdateTime)
+            {
+                nextUpdateTime = Time.time + updateInterval;
+                UpdatePlayerPosition();
+            }
+        }
+
+        Transform GetVisibleWrist()
+        {
+            // Check both wrists, prioritize left
+            if (IsWristVisible(leftHand))
+                return leftHand;
+            if (IsWristVisible(rightHand))
+                return rightHand;
+            return null;
+        }
+
+        bool IsWristVisible(Transform wrist)
+        {
+            if (wrist == null || headCamera == null) return false;
+
+            float distance = Vector3.Distance(headCamera.position, wrist.position);
+            if (distance > activationDistance) return false;
+
+            // Check if looking at wrist (angle check)
+            Vector3 toWrist = (wrist.position - headCamera.position).normalized;
+            float angle = Vector3.Angle(headCamera.forward, toWrist);
+
+            return angle < 70f;
+        }
+
+        void ShowMinimap(Transform wrist)
+        {
+            activeWrist = wrist;
+            if (minimapRoot != null)
+            {
+                minimapRoot.SetActive(true);
+                isVisible = true;
+                if (showDebug)
+                    Debug.Log($"[WristMinimap] Showing on {wrist.name}");
+            }
+        }
+
+        void HideMinimap()
+        {
+            if (minimapRoot != null)
+            {
+                minimapRoot.SetActive(false);
+                isVisible = false;
+                activeWrist = null;
+                if (showDebug)
+                    Debug.Log("[WristMinimap] Hidden");
+            }
+        }
+
+        void UpdateMinimapPosition(Transform wrist)
+        {
+            if (minimapRoot == null || wrist == null) return;
+
+            Vector3 offset = wrist == leftHand ? leftWristOffset : rightWristOffset;
+            minimapRoot.transform.position = wrist.position + wrist.TransformDirection(offset);
+
+            // Face camera
+            Vector3 toCamera = headCamera.position - minimapRoot.transform.position;
+            toCamera.y = 0; // Keep horizontal
+            if (toCamera.magnitude > 0.01f)
+            {
+                minimapRoot.transform.rotation = Quaternion.LookRotation(toCamera);
+            }
+        }
+
+        void UpdatePlayerPosition()
+        {
+            if (playerDot == null) return;
+
+            // Keep player dot centered (the minimap camera follows the player)
+            RectTransform dotRT = playerDot.GetComponent<RectTransform>();
+            dotRT.anchoredPosition = Vector2.zero;
+
+            // Rotate based on player facing direction
+            float yaw = transform.eulerAngles.y;
+            dotRT.localRotation = Quaternion.Euler(0, 0, -yaw);
+        }
+
+        void OnDrawGizmos()
+        {
+            if (!showDebug || !Application.isPlaying) return;
+
+            if (leftHand != null)
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireSphere(leftHand.position, 0.05f);
+            }
+
+            if (rightHand != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(rightHand.position, 0.05f);
+            }
+        }
+    }
+}

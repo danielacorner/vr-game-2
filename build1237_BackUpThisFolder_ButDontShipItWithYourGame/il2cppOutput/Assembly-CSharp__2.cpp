@@ -15002,7 +15002,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerMovementController__ctor_m6B55FDF1
 {
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/PlayerMovementController.cs:18>
-		__this->___moveSpeedMultiplier = (4.0f);
+		__this->___moveSpeedMultiplier = (2.0f);
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/PlayerMovementController.cs:21>
 		__this->___enableDualJoystickMovement = (bool)1;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/PlayerMovementController.cs:28>

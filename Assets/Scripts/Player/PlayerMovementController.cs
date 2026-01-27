@@ -15,7 +15,7 @@ namespace VRDungeonCrawler.Player
     {
         [Header("Movement Settings")]
         [Tooltip("Base movement speed multiplier (1.5 = 1.5x faster)")]
-        public float moveSpeedMultiplier = 4f;
+        public float moveSpeedMultiplier = 2f; // Reduced by half from 4f
 
         [Tooltip("Enable dual joystick movement (both left and right sticks move player)")]
         public bool enableDualJoystickMovement = true;
