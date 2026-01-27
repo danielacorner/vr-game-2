@@ -56,9 +56,10 @@ namespace VRDungeonCrawler.Editor
 
             Debug.Log($"[RealisticTerrain] Terrain heightmap: {width}x{height}");
 
-            // Reset terrain position to ground level
-            terrain.transform.position = new Vector3(terrain.transform.position.x, 0f, terrain.transform.position.z);
-            Debug.Log($"[RealisticTerrain] Terrain position reset to Y=0");
+            // Lower terrain so pit can go below ground level
+            // With Y=-3, heightmap value 0 will be 3m below ground, creating a proper pit
+            terrain.transform.position = new Vector3(terrain.transform.position.x, -3f, terrain.transform.position.z);
+            Debug.Log($"[RealisticTerrain] Terrain position lowered to Y=-3 (allows pit below ground)");
 
             // Find monster spawner
             GameObject spawner = GameObject.Find("MonsterSpawner");
@@ -163,7 +164,7 @@ namespace VRDungeonCrawler.Editor
 
             // Pit settings
             float pitDiameter = 12f;
-            float pitDepth = 0.7f; // 70% of terrain height = VERY deep pit!
+            float pitDepth = 0.95f; // 95% of terrain height = EXTREMELY deep pit (goes almost to terrain bottom)!
             float pitRadiusWorld = pitDiameter / 2f;
 
             // Convert pit center to terrain coordinates
@@ -218,8 +219,8 @@ namespace VRDungeonCrawler.Editor
                         // Calculate final depth
                         float depthAtThisPoint = pitDepth * falloff * depthVariation;
 
-                        // Lower the terrain
-                        heights[z, x] = Mathf.Max(0.05f, heights[z, x] - depthAtThisPoint);
+                        // Lower the terrain (allow it to reach 0 - absolute bottom)
+                        heights[z, x] = Mathf.Max(0f, heights[z, x] - depthAtThisPoint);
 
                         modifiedPixels++;
                     }
