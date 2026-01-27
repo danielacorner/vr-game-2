@@ -507,12 +507,13 @@ extern void WristHealthUI_UpdateWristHearts_m299CFBD211E7102E5A30DC5524361607E21
 extern void WristHealthUI_OnDestroy_m5A921FDEF101A7B2F2928D68F97EA2A3C2074BB5 (void);
 extern void WristHealthUI__ctor_mF46297C3C07913318D15BAFDB1AD4FD97C5BD1B9 (void);
 extern void WristMinimap_Start_m2DD9878A393E1AFA0F69546B55D60A1979E0BCDE (void);
+extern void WristMinimap_DelayedInitialization_m6217BFADD826507F57EED3AA8744D19E28A55F74 (void);
 extern void WristMinimap_FindHandControllers_m6AB79369BA922672EF0A7BC7A8A96B8B585801FF (void);
 extern void WristMinimap_FindInChildren_m6B5DE51D87D3B680942282D6429367F19553D3DB (void);
 extern void WristMinimap_CreateMinimapUI_m268E05C7A095ECED8C2511B17B8FD7F746530670 (void);
 extern void WristMinimap_DrawDungeonRooms_m8C04E7BFA9FD6573FE490E66657C5580465D0606 (void);
 extern void WristMinimap_CreatePlayerDot_m2B6CEF9B70DDBF754D3C9C37347C22FD4FA28EEB (void);
-extern void WristMinimap_Update_mF360BC80D3C2DD7C1B9B3EBD7D458F94F7AE072B (void);
+extern void WristMinimap_LateUpdate_m5C5F2C45AA9C681DCAD0464FAA59E7255E7D8305 (void);
 extern void WristMinimap_GetVisibleWrist_m049C7491B6854F375EEC0CDE11BB01CB41004AC4 (void);
 extern void WristMinimap_IsWristVisible_m80D4238D5AC729EB4CCA3BB6FBB01E0170BABE78 (void);
 extern void WristMinimap_ShowMinimap_m4D7A187CE2400C40DB3BA2DECFD51E4869521EBB (void);
@@ -520,7 +521,16 @@ extern void WristMinimap_HideMinimap_mE6B8928EA8EC5D7E4502B5CE86F57F21F3DF8445 (
 extern void WristMinimap_UpdateMinimapPosition_mEE6AE63BB6AAE24811DE9244CE0DB86A5A41C7D7 (void);
 extern void WristMinimap_UpdatePlayerPosition_m5070B53E3741E19D94F6BB3287288692598AFEA6 (void);
 extern void WristMinimap_OnDrawGizmos_m9FDD6DB3AFB362BA901C1C1336FDAA3905153A3D (void);
+extern void WristMinimap_ForceUpdatePosition_m93FD684D8C85D07792CC1283379984D50A43F28E (void);
+extern void WristMinimap_PrintDebugInfo_mA3421915F126365B2D5FE2469D3DEBA622E2511B (void);
+extern void WristMinimap_Reinitialize_m02F17E1D447F9806538FAFE7ED5B923F30A9FD8D (void);
 extern void WristMinimap__ctor_m6AE85B1F13C5A87F03E4D8122D72039F2F711200 (void);
+extern void U3CDelayedInitializationU3Ed__24__ctor_m426414E0CEB624ED5F16CEC58BD70780542D2679 (void);
+extern void U3CDelayedInitializationU3Ed__24_System_IDisposable_Dispose_mA00FF165A582552283B58EFF599F78DB0799DF46 (void);
+extern void U3CDelayedInitializationU3Ed__24_MoveNext_m175F9CA57BF1D100F0478748C522F4CA2BE930F3 (void);
+extern void U3CDelayedInitializationU3Ed__24_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m350DF355828B6F1D84230C9A4D4E77FBE3E33B89 (void);
+extern void U3CDelayedInitializationU3Ed__24_System_Collections_IEnumerator_Reset_m685921F8914AAC9F2A2087C8DE1A9717D7D23C51 (void);
+extern void U3CDelayedInitializationU3Ed__24_System_Collections_IEnumerator_get_Current_mB484D7758D7182234CEBBCB203FB855A113BB2CE (void);
 extern void XRButtonHighlight_Start_mAF150B0FDE85D5A7C31CCE341721284DFDB75842 (void);
 extern void XRButtonHighlight_OnPointerEnter_mFD593472F2828530188B283C58DF86FF09EFB0E5 (void);
 extern void XRButtonHighlight_OnPointerExit_mEE7AA4F0D86F044135187BE30F54FB0CEF989862 (void);
@@ -1232,7 +1242,7 @@ extern void SlimeAnimator_AnimateEyeTracking_m5F3A4876598254C8D0A89E6FF63BE48DDC
 extern void SlimeAnimator_StartAttack_mA671BF2A7BB57B52414143EDBB21B36A92B1534A (void);
 extern void SlimeAnimator_AnimateAttack_m095794A208CCC44783EC3029DE6095668B6C74C4 (void);
 extern void SlimeAnimator__ctor_m89C3B6F3B8BE5B2539A5A2F6EF988D0273CADCF9 (void);
-static Il2CppMethodPointer s_methodPointers[1225] = 
+static Il2CppMethodPointer s_methodPointers[1235] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1734,12 +1744,13 @@ static Il2CppMethodPointer s_methodPointers[1225] =
 	WristHealthUI_OnDestroy_m5A921FDEF101A7B2F2928D68F97EA2A3C2074BB5,
 	WristHealthUI__ctor_mF46297C3C07913318D15BAFDB1AD4FD97C5BD1B9,
 	WristMinimap_Start_m2DD9878A393E1AFA0F69546B55D60A1979E0BCDE,
+	WristMinimap_DelayedInitialization_m6217BFADD826507F57EED3AA8744D19E28A55F74,
 	WristMinimap_FindHandControllers_m6AB79369BA922672EF0A7BC7A8A96B8B585801FF,
 	WristMinimap_FindInChildren_m6B5DE51D87D3B680942282D6429367F19553D3DB,
 	WristMinimap_CreateMinimapUI_m268E05C7A095ECED8C2511B17B8FD7F746530670,
 	WristMinimap_DrawDungeonRooms_m8C04E7BFA9FD6573FE490E66657C5580465D0606,
 	WristMinimap_CreatePlayerDot_m2B6CEF9B70DDBF754D3C9C37347C22FD4FA28EEB,
-	WristMinimap_Update_mF360BC80D3C2DD7C1B9B3EBD7D458F94F7AE072B,
+	WristMinimap_LateUpdate_m5C5F2C45AA9C681DCAD0464FAA59E7255E7D8305,
 	WristMinimap_GetVisibleWrist_m049C7491B6854F375EEC0CDE11BB01CB41004AC4,
 	WristMinimap_IsWristVisible_m80D4238D5AC729EB4CCA3BB6FBB01E0170BABE78,
 	WristMinimap_ShowMinimap_m4D7A187CE2400C40DB3BA2DECFD51E4869521EBB,
@@ -1747,7 +1758,16 @@ static Il2CppMethodPointer s_methodPointers[1225] =
 	WristMinimap_UpdateMinimapPosition_mEE6AE63BB6AAE24811DE9244CE0DB86A5A41C7D7,
 	WristMinimap_UpdatePlayerPosition_m5070B53E3741E19D94F6BB3287288692598AFEA6,
 	WristMinimap_OnDrawGizmos_m9FDD6DB3AFB362BA901C1C1336FDAA3905153A3D,
+	WristMinimap_ForceUpdatePosition_m93FD684D8C85D07792CC1283379984D50A43F28E,
+	WristMinimap_PrintDebugInfo_mA3421915F126365B2D5FE2469D3DEBA622E2511B,
+	WristMinimap_Reinitialize_m02F17E1D447F9806538FAFE7ED5B923F30A9FD8D,
 	WristMinimap__ctor_m6AE85B1F13C5A87F03E4D8122D72039F2F711200,
+	U3CDelayedInitializationU3Ed__24__ctor_m426414E0CEB624ED5F16CEC58BD70780542D2679,
+	U3CDelayedInitializationU3Ed__24_System_IDisposable_Dispose_mA00FF165A582552283B58EFF599F78DB0799DF46,
+	U3CDelayedInitializationU3Ed__24_MoveNext_m175F9CA57BF1D100F0478748C522F4CA2BE930F3,
+	U3CDelayedInitializationU3Ed__24_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m350DF355828B6F1D84230C9A4D4E77FBE3E33B89,
+	U3CDelayedInitializationU3Ed__24_System_Collections_IEnumerator_Reset_m685921F8914AAC9F2A2087C8DE1A9717D7D23C51,
+	U3CDelayedInitializationU3Ed__24_System_Collections_IEnumerator_get_Current_mB484D7758D7182234CEBBCB203FB855A113BB2CE,
 	XRButtonHighlight_Start_mAF150B0FDE85D5A7C31CCE341721284DFDB75842,
 	XRButtonHighlight_OnPointerEnter_mFD593472F2828530188B283C58DF86FF09EFB0E5,
 	XRButtonHighlight_OnPointerExit_mEE7AA4F0D86F044135187BE30F54FB0CEF989862,
@@ -2465,7 +2485,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x0600012F, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1225] = 
+static const int32_t s_InvokerIndices[1235] = 
 {
 	15301,
 	15301,
@@ -2967,6 +2987,7 @@ static const int32_t s_InvokerIndices[1225] =
 	15301,
 	15301,
 	15301,
+	15089,
 	15301,
 	4419,
 	15301,
@@ -2981,6 +3002,15 @@ static const int32_t s_InvokerIndices[1225] =
 	15301,
 	15301,
 	15301,
+	15301,
+	15301,
+	15301,
+	11539,
+	15301,
+	14886,
+	15089,
+	15301,
+	15089,
 	15301,
 	11607,
 	11607,
@@ -3697,7 +3727,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1225,
+	1235,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

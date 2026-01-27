@@ -15,10 +15,10 @@ namespace VRDungeonCrawler.Player
         public float minimapSize = 0.1f;
 
         [Tooltip("Position offset from left hand (local space)")]
-        public Vector3 leftWristOffset = new Vector3(0f, 0.01f, -0.05f);
+        public Vector3 leftWristOffset = new Vector3(0f, 0.0f, -0.48f);
 
         [Tooltip("Position offset from right hand (local space)")]
-        public Vector3 rightWristOffset = new Vector3(0f, 0.01f, -0.05f);
+        public Vector3 rightWristOffset = new Vector3(0f, 0.0f, -0.12f);
 
         [Tooltip("Rotation offset for minimap (to align with wrist)")]
         public Vector3 minimapRotationOffset = new Vector3(0f, 0f, 0f);
@@ -55,35 +55,68 @@ namespace VRDungeonCrawler.Player
 
         void Start()
         {
+            Debug.Log("[WristMinimap] Start() called - beginning delayed initialization...");
+            StartCoroutine(DelayedInitialization());
+        }
+
+        System.Collections.IEnumerator DelayedInitialization()
+        {
+            // Wait for VR to fully initialize
+            yield return new WaitForSeconds(2f);
+
+            Debug.Log("[WristMinimap] Delayed initialization starting...");
+
             // Find camera
-            headCamera = Camera.main?.transform;
-            if (headCamera == null)
+            for (int attempt = 0; attempt < 5; attempt++)
             {
-                Debug.LogError("[WristMinimap] No main camera found!");
-                enabled = false;
-                return;
+                headCamera = Camera.main?.transform;
+                if (headCamera != null)
+                {
+                    Debug.Log($"[WristMinimap] Found camera: {headCamera.name}");
+                    break;
+                }
+                Debug.LogWarning($"[WristMinimap] Camera not found (attempt {attempt + 1}/5), retrying...");
+                yield return new WaitForSeconds(0.5f);
             }
 
-            // Find hand controllers using multiple methods
-            FindHandControllers();
+            if (headCamera == null)
+            {
+                Debug.LogError("[WristMinimap] No main camera found after 5 attempts! Minimap disabled.");
+                enabled = false;
+                yield break;
+            }
+
+            // Find hand controllers with retries
+            for (int attempt = 0; attempt < 5; attempt++)
+            {
+                FindHandControllers();
+
+                if (leftHand != null || rightHand != null)
+                {
+                    Debug.Log($"[WristMinimap] Found hands - Left: {leftHand?.name}, Right: {rightHand?.name}");
+                    break;
+                }
+
+                Debug.LogWarning($"[WristMinimap] Hands not found (attempt {attempt + 1}/5), retrying...");
+                yield return new WaitForSeconds(0.5f);
+            }
 
             if (leftHand == null && rightHand == null)
             {
-                Debug.LogError("[WristMinimap] No hand controllers found! Minimap disabled.");
-                if (showDebug)
-                {
-                    Debug.Log("[WristMinimap] Searched for: LeftHand, RightHand, Left, Right, LeftHandController, RightHandController");
-                }
+                Debug.LogError("[WristMinimap] No hand controllers found after 5 attempts! Minimap disabled.");
+                Debug.LogError("[WristMinimap] Searched for: LeftHand, RightHand, Left, Right, LeftHandController, RightHandController");
                 enabled = false;
-                return;
+                yield break;
             }
 
             CreateMinimapUI();
 
-            if (showDebug)
-            {
-                Debug.Log($"[WristMinimap] Initialized. LeftHand: {leftHand?.name}, RightHand: {rightHand?.name}, Camera: {headCamera.name}");
-            }
+            Debug.Log($"[WristMinimap] Successfully initialized!");
+            Debug.Log($"  LeftHand: {leftHand?.name}");
+            Debug.Log($"  RightHand: {rightHand?.name}");
+            Debug.Log($"  Camera: {headCamera.name}");
+            Debug.Log($"  Left Offset: {leftWristOffset}");
+            Debug.Log($"  Right Offset: {rightWristOffset}");
 
             if (alwaysVisible)
             {
@@ -148,9 +181,9 @@ namespace VRDungeonCrawler.Player
 
         void CreateMinimapUI()
         {
-            // Create root object
+            // Create root object - NO PARENT so it can move freely in world space
             minimapRoot = new GameObject("WristMinimap");
-            minimapRoot.transform.SetParent(transform);
+            minimapRoot.transform.SetParent(null); // Ensure it's in world space, not parented
 
             // Create canvas
             minimapCanvas = minimapRoot.AddComponent<Canvas>();
@@ -286,7 +319,7 @@ namespace VRDungeonCrawler.Player
             circleRT.sizeDelta = Vector2.zero;
         }
 
-        void Update()
+        void LateUpdate()
         {
             if (headCamera == null) return;
 
@@ -298,6 +331,11 @@ namespace VRDungeonCrawler.Player
                 if (!isVisible)
                     ShowMinimap(leftHand ?? rightHand);
                 targetWrist = activeWrist ?? leftHand ?? rightHand;
+
+                if (showDebug && Time.frameCount % 120 == 0)
+                {
+                    Debug.Log($"[WristMinimap] AlwaysVisible mode: activeWrist={activeWrist?.name}, targetWrist={targetWrist?.name}");
+                }
             }
 
             if (targetWrist != null)
@@ -306,6 +344,7 @@ namespace VRDungeonCrawler.Player
                 {
                     ShowMinimap(targetWrist);
                 }
+                // Update position every frame in LateUpdate for instant following
                 UpdateMinimapPosition(targetWrist);
             }
             else if (isVisible && !alwaysVisible)
@@ -313,12 +352,8 @@ namespace VRDungeonCrawler.Player
                 HideMinimap();
             }
 
-            // Update player position
-            if (Time.time >= nextUpdateTime)
-            {
-                nextUpdateTime = Time.time + updateInterval;
-                UpdatePlayerPosition();
-            }
+            // Update player position every frame for smooth rotation
+            UpdatePlayerPosition();
         }
 
         Transform GetVisibleWrist()
@@ -371,11 +406,29 @@ namespace VRDungeonCrawler.Player
 
         void UpdateMinimapPosition(Transform wrist)
         {
-            if (minimapRoot == null || wrist == null) return;
+            if (minimapRoot == null || wrist == null)
+            {
+                if (showDebug)
+                    Debug.LogWarning($"[WristMinimap] UpdateMinimapPosition failed: root={minimapRoot != null}, wrist={wrist != null}");
+                return;
+            }
 
             // Position relative to wrist (in wrist's local space)
             Vector3 offset = wrist == leftHand ? leftWristOffset : rightWristOffset;
-            minimapRoot.transform.position = wrist.position + wrist.TransformDirection(offset);
+            Vector3 worldOffset = wrist.TransformDirection(offset);
+            Vector3 targetPosition = wrist.position + worldOffset;
+
+            minimapRoot.transform.position = targetPosition;
+
+            if (showDebug && Time.frameCount % 60 == 0) // Log every 60 frames
+            {
+                Debug.Log($"[WristMinimap] Position Update:");
+                Debug.Log($"  Wrist: {wrist.name}");
+                Debug.Log($"  Offset (local): {offset}");
+                Debug.Log($"  Offset (world): {worldOffset}");
+                Debug.Log($"  Wrist pos: {wrist.position}");
+                Debug.Log($"  Minimap pos: {targetPosition}");
+            }
 
             // Rotate with wrist like a real watch (not facing camera)
             // The minimap should be parallel to the back of the hand
@@ -411,13 +464,87 @@ namespace VRDungeonCrawler.Player
             {
                 Gizmos.color = Color.green;
                 Gizmos.DrawWireSphere(leftHand.position, 0.05f);
+
+                // Draw where the minimap SHOULD be on left wrist
+                Vector3 targetPos = leftHand.position + leftHand.TransformDirection(leftWristOffset);
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawWireSphere(targetPos, 0.03f);
+                Gizmos.DrawLine(leftHand.position, targetPos);
             }
 
             if (rightHand != null)
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawWireSphere(rightHand.position, 0.05f);
+
+                // Draw where the minimap SHOULD be on right wrist
+                Vector3 targetPos = rightHand.position + rightHand.TransformDirection(rightWristOffset);
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawWireSphere(targetPos, 0.03f);
+                Gizmos.DrawLine(rightHand.position, targetPos);
             }
+
+            // Draw where the minimap ACTUALLY is
+            if (minimapRoot != null && isVisible)
+            {
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawWireCube(minimapRoot.transform.position, Vector3.one * 0.02f);
+            }
+        }
+
+        [ContextMenu("Force Update Position")]
+        void ForceUpdatePosition()
+        {
+            if (activeWrist != null)
+            {
+                Debug.Log($"[WristMinimap] Forcing position update on {activeWrist.name}");
+                UpdateMinimapPosition(activeWrist);
+            }
+            else
+            {
+                Debug.LogWarning("[WristMinimap] No active wrist!");
+            }
+        }
+
+        [ContextMenu("Print Debug Info")]
+        void PrintDebugInfo()
+        {
+            Debug.Log("=== WristMinimap Debug Info ===");
+            Debug.Log($"Left Hand: {leftHand?.name ?? "NULL"}");
+            Debug.Log($"Right Hand: {rightHand?.name ?? "NULL"}");
+            Debug.Log($"Active Wrist: {activeWrist?.name ?? "NULL"}");
+            Debug.Log($"Head Camera: {headCamera?.name ?? "NULL"}");
+            Debug.Log($"Minimap Root: {minimapRoot?.name ?? "NULL"}");
+            Debug.Log($"Is Visible: {isVisible}");
+            Debug.Log($"Always Visible: {alwaysVisible}");
+            Debug.Log($"Left Offset: {leftWristOffset}");
+            Debug.Log($"Right Offset: {rightWristOffset}");
+
+            if (activeWrist != null && minimapRoot != null)
+            {
+                Debug.Log($"Wrist Position: {activeWrist.position}");
+                Debug.Log($"Minimap Position: {minimapRoot.transform.position}");
+                Debug.Log($"Distance: {Vector3.Distance(activeWrist.position, minimapRoot.transform.position)}");
+            }
+        }
+
+        [ContextMenu("Reinitialize")]
+        void Reinitialize()
+        {
+            Debug.Log("[WristMinimap] Manual reinitialization requested...");
+            StopAllCoroutines();
+
+            // Clean up existing
+            if (minimapRoot != null)
+                Destroy(minimapRoot);
+
+            leftHand = null;
+            rightHand = null;
+            headCamera = null;
+            activeWrist = null;
+            isVisible = false;
+
+            StartCoroutine(DelayedInitialization());
         }
     }
 }

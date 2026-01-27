@@ -5753,13 +5753,14 @@ MonoBehaviour:
   minimapSize: 0.1
   leftWristOffset: {x: 0, y: 0.02, z: 0.06}
   rightWristOffset: {x: 0, y: 0.02, z: 0.06}
+  minimapRotationOffset: {x: 0, y: 0, z: 0}
   activationDistance: 0.4
   updateInterval: 0.1
   backgroundColor: {r: 0.05, g: 0.05, b: 0.1, a: 0.95}
   roomColor: {r: 0.3, g: 0.3, b: 0.35, a: 1}
   playerDotColor: {r: 0, g: 1, b: 1, a: 1}
   visitedRoomColor: {r: 0.25, g: 0.25, b: 0.3, a: 1}
-  showDebug: 0
+  showDebug: 1
   alwaysVisible: 1
 --- !u!1 &1059828671
 GameObject:
