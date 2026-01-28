@@ -139,8 +139,8 @@ namespace VRDungeonCrawler.Player
             layout.childControlWidth = false;
             layout.childControlHeight = false;
 
-            // Create heart icons (max health count)
-            int maxHealth = PlayerHealth.Instance != null ? PlayerHealth.Instance.maxHealth : 5;
+            // Create heart icons (max health count - use ceiling to handle fractional hearts)
+            int maxHealth = PlayerHealth.Instance != null ? Mathf.CeilToInt(PlayerHealth.Instance.maxHealth) : 5;
             for (int i = 0; i < maxHealth; i++)
             {
                 CreateHeartIcon(heartsContainer.transform, i);
@@ -193,15 +193,15 @@ namespace VRDungeonCrawler.Player
             return Sprite.Create(tex, new Rect(0, 0, resolution, resolution), new Vector2(0.5f, 0.5f));
         }
 
-        void UpdateHearts(int currentHealth, int maxHealth)
+        void UpdateHearts(float currentHealth, float maxHealth)
         {
             if (showDebug)
-                Debug.Log($"[WristHealthUI] Updating hearts: {currentHealth}/{maxHealth}");
+                Debug.Log($"[WristHealthUI] Updating hearts: {currentHealth:F1}/{maxHealth:F1}");
 
-            UpdateWristHearts(leftHearts, currentHealth);
+            UpdateWristHearts(leftHearts, Mathf.CeilToInt(currentHealth));
             if (showOnBothWrists)
             {
-                UpdateWristHearts(rightHearts, currentHealth);
+                UpdateWristHearts(rightHearts, Mathf.CeilToInt(currentHealth));
             }
         }
 

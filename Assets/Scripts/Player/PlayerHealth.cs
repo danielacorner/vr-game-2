@@ -10,16 +10,16 @@ namespace VRDungeonCrawler.Player
     {
         [Header("Health Settings")]
         [Tooltip("Maximum health (hearts)")]
-        public int maxHealth = 5;
+        public float maxHealth = 5f;
 
-        [Tooltip("Current health")]
-        public int currentHealth = 5;
+        [Tooltip("Current health (supports half hearts)")]
+        public float currentHealth = 5f;
 
         [Tooltip("Invulnerability time after taking damage (seconds)")]
         public float invulnerabilityDuration = 1f;
 
         [Header("Events")]
-        public UnityEvent<int, int> onHealthChanged; // current, max
+        public UnityEvent<float, float> onHealthChanged; // current, max
         public UnityEvent onDeath;
 
         [Header("Debug")]
@@ -69,9 +69,9 @@ namespace VRDungeonCrawler.Player
         }
 
         /// <summary>
-        /// Apply damage to the player
+        /// Apply damage to the player (supports half hearts)
         /// </summary>
-        public void TakeDamage(int damage, Vector3 damageSource)
+        public void TakeDamage(float damage, Vector3 damageSource)
         {
             if (isInvulnerable)
             {
@@ -104,9 +104,9 @@ namespace VRDungeonCrawler.Player
         }
 
         /// <summary>
-        /// Heal the player
+        /// Heal the player (supports half hearts)
         /// </summary>
-        public void Heal(int amount)
+        public void Heal(float amount)
         {
             if (currentHealth >= maxHealth)
                 return;
