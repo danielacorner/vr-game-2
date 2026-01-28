@@ -22,7 +22,7 @@ namespace VRDungeonCrawler.Utils
             // Rotate hands for natural controller grip, flipped 180° so thumbs are on correct side
             // Left: +90° (was -90°), Right: -90° (was +90°)
             handRoot.transform.localRotation = Quaternion.Euler(0, 0, isLeftHand ? 90f : -90f);
-            handRoot.transform.localScale = Vector3.one * 1.2f; // Scale up by 1.2x
+            handRoot.transform.localScale = Vector3.one * 1.44f; // Scale up by 1.44x (1.2 * 1.2)
 
             float handMirror = isLeftHand ? 1f : -1f;
 

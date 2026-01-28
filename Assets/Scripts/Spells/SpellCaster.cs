@@ -50,11 +50,11 @@ namespace VRDungeonCrawler.Spells
         private Vector3 releaseVelocity = Vector3.zero;
 
         // Finger animation for pointing gesture when charging
-        private Transform ringFingerSegment0 = null;
-        private Transform pinkyFingerSegment0 = null;
-        private Quaternion ringFingerRestRotation;
-        private Quaternion pinkyFingerRestRotation;
-        private const float fingerCurlAngle = 70f; // Degrees to curl inward
+        private Transform[] ringFingerSegments = null;
+        private Transform[] pinkyFingerSegments = null;
+        private Quaternion[] ringFingerRestRotations;
+        private Quaternion[] pinkyFingerRestRotations;
+        private const float fingerCurlAngle = 70f; // Degrees to curl inward per segment
 
         private void Start()
         {
@@ -85,21 +85,61 @@ namespace VRDungeonCrawler.Spells
                 return;
             }
 
-            // Find ring and pinky finger first segments
-            ringFingerSegment0 = handRoot.Find("Palm/Ring_Segment0");
-            pinkyFingerSegment0 = handRoot.Find("Palm/Pinky_Segment0");
+            // Find all segments of ring and pinky fingers (typically 3 segments each)
+            ringFingerSegments = FindAllFingerSegments(handRoot, "Ring");
+            pinkyFingerSegments = FindAllFingerSegments(handRoot, "Pinky");
 
-            if (ringFingerSegment0 != null)
+            if (ringFingerSegments != null && ringFingerSegments.Length > 0)
             {
-                ringFingerRestRotation = ringFingerSegment0.localRotation;
-                Debug.Log($"[SpellCaster] Found ring finger for {(isLeftHand ? "left" : "right")} hand");
+                ringFingerRestRotations = new Quaternion[ringFingerSegments.Length];
+                for (int i = 0; i < ringFingerSegments.Length; i++)
+                {
+                    ringFingerRestRotations[i] = ringFingerSegments[i].localRotation;
+                }
+                Debug.Log($"[SpellCaster] Found {ringFingerSegments.Length} ring finger segments for {(isLeftHand ? "left" : "right")} hand");
             }
 
-            if (pinkyFingerSegment0 != null)
+            if (pinkyFingerSegments != null && pinkyFingerSegments.Length > 0)
             {
-                pinkyFingerRestRotation = pinkyFingerSegment0.localRotation;
-                Debug.Log($"[SpellCaster] Found pinky finger for {(isLeftHand ? "left" : "right")} hand");
+                pinkyFingerRestRotations = new Quaternion[pinkyFingerSegments.Length];
+                for (int i = 0; i < pinkyFingerSegments.Length; i++)
+                {
+                    pinkyFingerRestRotations[i] = pinkyFingerSegments[i].localRotation;
+                }
+                Debug.Log($"[SpellCaster] Found {pinkyFingerSegments.Length} pinky finger segments for {(isLeftHand ? "left" : "right")} hand");
             }
+        }
+
+        private Transform[] FindAllFingerSegments(Transform handRoot, string fingerName)
+        {
+            // Find all segments of a finger (Palm/FingerName_Segment0, Segment0/FingerName_Segment1, etc.)
+            System.Collections.Generic.List<Transform> segments = new System.Collections.Generic.List<Transform>();
+
+            Transform palmTransform = handRoot.Find("Palm");
+            if (palmTransform == null)
+                return null;
+
+            // Start with segment 0
+            Transform currentSegment = palmTransform.Find($"{fingerName}_Segment0");
+            if (currentSegment == null)
+                return null;
+
+            segments.Add(currentSegment);
+
+            // Find subsequent segments (they're children of the previous segment)
+            int segmentIndex = 1;
+            while (true)
+            {
+                Transform nextSegment = currentSegment.Find($"{fingerName}_Segment{segmentIndex}");
+                if (nextSegment == null)
+                    break;
+
+                segments.Add(nextSegment);
+                currentSegment = nextSegment;
+                segmentIndex++;
+            }
+
+            return segments.ToArray();
         }
 
         private void FindDevice()
@@ -381,33 +421,45 @@ namespace VRDungeonCrawler.Spells
 
         private void CurlFingers()
         {
-            // Curl ring finger and pinky inward to create pointing gesture
-            if (ringFingerSegment0 != null)
+            // Curl all segments of ring finger and pinky inward to create pointing gesture
+            if (ringFingerSegments != null && ringFingerRestRotations != null)
             {
-                // Rotate around X-axis to curl inward
-                Quaternion curlRotation = Quaternion.Euler(fingerCurlAngle, 0, 0);
-                ringFingerSegment0.localRotation = ringFingerRestRotation * curlRotation;
+                for (int i = 0; i < ringFingerSegments.Length; i++)
+                {
+                    // Rotate around X-axis to curl inward, progressively more for each segment
+                    Quaternion curlRotation = Quaternion.Euler(fingerCurlAngle, 0, 0);
+                    ringFingerSegments[i].localRotation = ringFingerRestRotations[i] * curlRotation;
+                }
             }
 
-            if (pinkyFingerSegment0 != null)
+            if (pinkyFingerSegments != null && pinkyFingerRestRotations != null)
             {
-                // Rotate around X-axis to curl inward
-                Quaternion curlRotation = Quaternion.Euler(fingerCurlAngle, 0, 0);
-                pinkyFingerSegment0.localRotation = pinkyFingerRestRotation * curlRotation;
+                for (int i = 0; i < pinkyFingerSegments.Length; i++)
+                {
+                    // Rotate around X-axis to curl inward, progressively more for each segment
+                    Quaternion curlRotation = Quaternion.Euler(fingerCurlAngle, 0, 0);
+                    pinkyFingerSegments[i].localRotation = pinkyFingerRestRotations[i] * curlRotation;
+                }
             }
         }
 
         private void UncurlFingers()
         {
-            // Return fingers to rest position
-            if (ringFingerSegment0 != null)
+            // Return all segments to rest position
+            if (ringFingerSegments != null && ringFingerRestRotations != null)
             {
-                ringFingerSegment0.localRotation = ringFingerRestRotation;
+                for (int i = 0; i < ringFingerSegments.Length; i++)
+                {
+                    ringFingerSegments[i].localRotation = ringFingerRestRotations[i];
+                }
             }
 
-            if (pinkyFingerSegment0 != null)
+            if (pinkyFingerSegments != null && pinkyFingerRestRotations != null)
             {
-                pinkyFingerSegment0.localRotation = pinkyFingerRestRotation;
+                for (int i = 0; i < pinkyFingerSegments.Length; i++)
+                {
+                    pinkyFingerSegments[i].localRotation = pinkyFingerRestRotations[i];
+                }
             }
         }
 

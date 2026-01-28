@@ -632,7 +632,108 @@ namespace VRDungeonCrawler.Dungeon
             // Also remove the opposite wall in roomB (opposite direction)
             RemoveWallSection(roomB.roomObject, doorway.transform.position, -direction);
 
+            // Create corridor hallway between rooms if they're far apart
+            float distance = Vector3.Distance(roomA.worldPosition, roomB.worldPosition);
+            float roomDiameter = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE;
+            if (distance > roomDiameter * 1.5f) // If rooms are spaced apart, add corridor
+            {
+                CreateCorridorBetweenRooms(roomA, roomB, direction);
+            }
+
             Debug.Log($"[CreateDoorwayBetweenRooms] Created doorway between {roomA.roomType} at {roomA.gridPosition} and {roomB.roomType} at {roomB.gridPosition}");
+        }
+
+        private void CreateCorridorBetweenRooms(DungeonRoom roomA, DungeonRoom roomB, Vector3 direction)
+        {
+            // Calculate corridor dimensions
+            Vector3 startPos = roomA.worldPosition + direction * (roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE / 2f);
+            Vector3 endPos = roomB.worldPosition - direction * (roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE / 2f);
+            float corridorLength = Vector3.Distance(startPos, endPos);
+            Vector3 corridorCenter = (startPos + endPos) / 2f;
+
+            // Use average height of the two rooms
+            corridorCenter.y = (roomA.worldPosition.y + roomA.heightOffset + roomB.worldPosition.y + roomB.heightOffset) / 2f;
+
+            // Create corridor GameObject
+            GameObject corridor = new GameObject($"Corridor_{roomA.gridPosition}_to_{roomB.gridPosition}");
+            corridor.transform.SetParent(transform);
+            corridor.transform.position = corridorCenter;
+
+            // Corridor width (narrower than rooms for dungeon feel)
+            float corridorWidth = DungeonRoomBuilder.GRID_SIZE * 1.5f; // 3m wide
+
+            // Determine orientation
+            bool isEastWest = Mathf.Abs(direction.x) > Mathf.Abs(direction.z);
+
+            // Create floor
+            GameObject corridorFloor = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            corridorFloor.name = "Floor";
+            corridorFloor.transform.SetParent(corridor.transform);
+            corridorFloor.transform.localPosition = Vector3.zero;
+            if (isEastWest)
+            {
+                corridorFloor.transform.localScale = new Vector3(corridorLength, 0.2f, corridorWidth);
+            }
+            else
+            {
+                corridorFloor.transform.localScale = new Vector3(corridorWidth, 0.2f, corridorLength);
+            }
+            corridorFloor.GetComponent<Renderer>().material = DungeonRoomBuilder.CreatePolytopiaStone(DungeonRoomBuilder.STONE_FLOOR);
+
+            // Add teleportation to corridor floor
+            var teleportArea = corridorFloor.AddComponent<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationArea>();
+            teleportArea.interactionLayers = UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask.GetMask("Teleport");
+
+            // Create ceiling
+            GameObject corridorCeiling = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            corridorCeiling.name = "Ceiling";
+            corridorCeiling.transform.SetParent(corridor.transform);
+            corridorCeiling.transform.localPosition = new Vector3(0, DungeonRoomBuilder.WALL_HEIGHT, 0);
+            if (isEastWest)
+            {
+                corridorCeiling.transform.localScale = new Vector3(corridorLength, 0.2f, corridorWidth);
+            }
+            else
+            {
+                corridorCeiling.transform.localScale = new Vector3(corridorWidth, 0.2f, corridorLength);
+            }
+            corridorCeiling.GetComponent<Renderer>().material = DungeonRoomBuilder.CreatePolytopiaStone(DungeonRoomBuilder.STONE_WALL);
+            Destroy(corridorCeiling.GetComponent<Collider>()); // No collision on ceiling
+
+            // Create side walls
+            GameObject leftWall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            leftWall.name = "LeftWall";
+            leftWall.transform.SetParent(corridor.transform);
+            GameObject rightWall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            rightWall.name = "RightWall";
+            rightWall.transform.SetParent(corridor.transform);
+
+            if (isEastWest)
+            {
+                // Corridor runs east-west, walls run north-south
+                leftWall.transform.localPosition = new Vector3(0, DungeonRoomBuilder.WALL_HEIGHT / 2f, corridorWidth / 2f);
+                leftWall.transform.localScale = new Vector3(corridorLength, DungeonRoomBuilder.WALL_HEIGHT, DungeonRoomBuilder.WALL_THICKNESS);
+                rightWall.transform.localPosition = new Vector3(0, DungeonRoomBuilder.WALL_HEIGHT / 2f, -corridorWidth / 2f);
+                rightWall.transform.localScale = new Vector3(corridorLength, DungeonRoomBuilder.WALL_HEIGHT, DungeonRoomBuilder.WALL_THICKNESS);
+            }
+            else
+            {
+                // Corridor runs north-south, walls run east-west
+                leftWall.transform.localPosition = new Vector3(-corridorWidth / 2f, DungeonRoomBuilder.WALL_HEIGHT / 2f, 0);
+                leftWall.transform.localScale = new Vector3(DungeonRoomBuilder.WALL_THICKNESS, DungeonRoomBuilder.WALL_HEIGHT, corridorLength);
+                rightWall.transform.localPosition = new Vector3(corridorWidth / 2f, DungeonRoomBuilder.WALL_HEIGHT / 2f, 0);
+                rightWall.transform.localScale = new Vector3(DungeonRoomBuilder.WALL_THICKNESS, DungeonRoomBuilder.WALL_HEIGHT, corridorLength);
+            }
+
+            leftWall.GetComponent<Renderer>().material = DungeonRoomBuilder.CreatePolytopiaStone(DungeonRoomBuilder.STONE_WALL);
+            rightWall.GetComponent<Renderer>().material = DungeonRoomBuilder.CreatePolytopiaStone(DungeonRoomBuilder.STONE_WALL);
+
+            // Rotate corridor to face the correct direction
+            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            corridor.transform.rotation = Quaternion.Euler(0, angle, 0);
+
+            if (showDebug)
+                Debug.Log($"[DungeonGenerator] Created corridor between {roomA.gridPosition} and {roomB.gridPosition}, length: {corridorLength:F1}m");
         }
 
         private void RemoveWallSection(GameObject roomObj, Vector3 doorwayPos, Vector3 direction)
@@ -756,8 +857,9 @@ namespace VRDungeonCrawler.Dungeon
         {
             float heightDiff = Mathf.Abs(roomB.heightOffset - roomA.heightOffset);
 
-            // Only create transition if there's a significant height difference
-            if (heightDiff < 0.3f)
+            // Create transition for any height difference > 0.1m (very low threshold)
+            // This ensures almost all vertical gaps are covered
+            if (heightDiff < 0.1f)
                 return;
 
             Vector3 direction = (roomB.worldPosition - roomA.worldPosition).normalized;
