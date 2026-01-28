@@ -74,6 +74,22 @@ namespace VRDungeonCrawler.Player
         private bool isVisible = false;
         private Transform activeWrist;
 
+        // Fog of war tracking
+        private Dictionary<Vector2Int, RoomVisualData> roomVisualMap = new Dictionary<Vector2Int, RoomVisualData>();
+        private HashSet<Vector2Int> visitedRooms = new HashSet<Vector2Int>();
+        private Vector2Int currentPlayerRoomPos = Vector2Int.zero;
+        private Dungeon.DungeonGenerator dungeonGen;
+        private Dictionary<Vector2Int, List<Vector2Int>> roomConnections = new Dictionary<Vector2Int, List<Vector2Int>>();
+
+        // Room visual data
+        private class RoomVisualData
+        {
+            public GameObject visualObject;
+            public Image image;
+            public Dungeon.DungeonRoom roomData;
+            public Vector2Int gridPos;
+        }
+
         void Awake()
         {
             // Singleton pattern - only one minimap should exist
@@ -298,14 +314,14 @@ namespace VRDungeonCrawler.Player
 
         void CreateMinimapUI()
         {
-            // Clean up any existing WristMinimap canvases from old sessions
-            GameObject[] oldMinimaps = GameObject.FindObjectsOfType<GameObject>().Where(go => go.name == "WristMinimap" && go != minimapRoot).ToArray();
-            if (oldMinimaps.Length > 0)
+            // Clean up ANY existing WristMinimap canvases BEFORE creating new one
+            GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+            foreach (GameObject obj in allObjects)
             {
-                Debug.Log($"[WristMinimap] Cleaning up {oldMinimaps.Length} old minimap canvas(es)");
-                foreach (GameObject old in oldMinimaps)
+                if (obj.name == "WristMinimap" || obj.name.Contains("WristMinimap"))
                 {
-                    Destroy(old);
+                    Debug.Log($"[WristMinimap] Destroying old minimap canvas: {obj.name}");
+                    DestroyImmediate(obj);
                 }
             }
 
@@ -367,7 +383,7 @@ namespace VRDungeonCrawler.Player
         void DrawDungeonRooms()
         {
             // Find dungeon generator
-            Dungeon.DungeonGenerator dungeonGen = FindFirstObjectByType<Dungeon.DungeonGenerator>();
+            dungeonGen = FindFirstObjectByType<Dungeon.DungeonGenerator>();
             if (dungeonGen == null)
             {
                 if (showDebug) Debug.LogWarning("[WristMinimap] No dungeon generator found");
@@ -381,6 +397,10 @@ namespace VRDungeonCrawler.Player
 
             List<Dungeon.DungeonRoom> rooms = roomsField.GetValue(dungeonGen) as List<Dungeon.DungeonRoom>;
             if (rooms == null || rooms.Count == 0) return;
+
+            // Clear previous room tracking
+            roomVisualMap.Clear();
+            visitedRooms.Clear();
 
             // Find bounds of dungeon
             float minX = float.MaxValue, maxX = float.MinValue;
@@ -421,10 +441,79 @@ namespace VRDungeonCrawler.Player
                 roomRT.anchoredPosition = new Vector2(x, z);
 
                 roomVisuals.Add(roomObj);
+
+                // Store room visual data for fog of war
+                RoomVisualData visualData = new RoomVisualData
+                {
+                    visualObject = roomObj,
+                    image = roomImage,
+                    roomData = room,
+                    gridPos = room.gridPosition
+                };
+                roomVisualMap[room.gridPosition] = visualData;
+
+                // Start with all rooms hidden (fog of war)
+                Color hiddenColor = roomImage.color;
+                hiddenColor.a = 0f;
+                roomImage.color = hiddenColor;
+
+                // Mark Start room as visited initially
+                if (room.roomType == Dungeon.RoomType.Start)
+                {
+                    visitedRooms.Add(room.gridPosition);
+                    currentPlayerRoomPos = room.gridPosition;
+                    if (showDebug)
+                        Debug.Log($"[WristMinimap] Marked Start room {room.gridPosition} as initially visited");
+                }
+            }
+
+            // Build connection map from connectedFrom relationships
+            BuildRoomConnectionMap();
+
+            if (showDebug)
+                Debug.Log($"[WristMinimap] Drew {rooms.Count} rooms on minimap with fog of war");
+
+            // Force an immediate fog of war update to show Start room and neighbors
+            UpdateFogOfWarImmediate();
+        }
+
+        void BuildRoomConnectionMap()
+        {
+            roomConnections.Clear();
+
+            // Initialize empty connection lists for all rooms
+            foreach (var kvp in roomVisualMap)
+            {
+                roomConnections[kvp.Key] = new List<Vector2Int>();
+            }
+
+            // Build bidirectional connections from connectedFrom relationships
+            foreach (var kvp in roomVisualMap)
+            {
+                Vector2Int roomPos = kvp.Key;
+                Dungeon.DungeonRoom room = kvp.Value.roomData;
+
+                if (room.connectedFrom != null)
+                {
+                    Vector2Int parentPos = room.connectedFrom.gridPosition;
+
+                    // Add bidirectional connection
+                    if (!roomConnections[roomPos].Contains(parentPos))
+                    {
+                        roomConnections[roomPos].Add(parentPos);
+                    }
+                    if (roomConnections.ContainsKey(parentPos) && !roomConnections[parentPos].Contains(roomPos))
+                    {
+                        roomConnections[parentPos].Add(roomPos);
+                    }
+
+                    if (showDebug)
+                        Debug.Log($"[WristMinimap] Connection: ({roomPos.x}, {roomPos.y}) <-> ({parentPos.x}, {parentPos.y})");
+                }
             }
 
             if (showDebug)
-                Debug.Log($"[WristMinimap] Drew {rooms.Count} rooms on minimap");
+                Debug.Log($"[WristMinimap] Built connection map for {roomConnections.Count} rooms");
         }
 
         void CreatePlayerDot()
@@ -597,6 +686,9 @@ namespace VRDungeonCrawler.Player
 
             // Update player position every frame for smooth rotation
             UpdatePlayerPosition();
+
+            // Update fog of war based on player's current room
+            UpdateFogOfWar();
         }
 
         Transform GetVisibleWrist()
@@ -845,6 +937,178 @@ namespace VRDungeonCrawler.Player
             // Rotate based on player facing direction
             float yaw = transform.eulerAngles.y;
             dotRT.localRotation = Quaternion.Euler(0, 0, -yaw);
+        }
+
+        void UpdateFogOfWar()
+        {
+            if (dungeonGen == null || roomVisualMap.Count == 0)
+                return;
+
+            // Find which room the player is currently in
+            Unity.XR.CoreUtils.XROrigin xrOrigin = FindFirstObjectByType<Unity.XR.CoreUtils.XROrigin>();
+            if (xrOrigin == null)
+                return;
+
+            Vector3 playerPos = xrOrigin.transform.position;
+            Vector2Int playerRoomPos = GetRoomAtPosition(playerPos);
+
+            // If player entered a new room, mark it as visited
+            if (playerRoomPos != currentPlayerRoomPos && playerRoomPos != Vector2Int.zero)
+            {
+                currentPlayerRoomPos = playerRoomPos;
+                if (roomVisualMap.ContainsKey(playerRoomPos))
+                {
+                    bool wasNew = visitedRooms.Add(playerRoomPos);
+                    if (wasNew)
+                        Debug.Log($"[WristMinimap] Player entered NEW room at ({playerRoomPos.x}, {playerRoomPos.y}), now visited {visitedRooms.Count} rooms");
+                }
+            }
+
+            UpdateFogOfWarImmediate();
+        }
+
+        void UpdateFogOfWarImmediate()
+        {
+            if (roomVisualMap.Count == 0)
+                return;
+
+            // Update visibility for all rooms
+            int visitedCount = 0;
+            int neighborCount = 0;
+            int hiddenCount = 0;
+
+            foreach (var kvp in roomVisualMap)
+            {
+                Vector2Int roomPos = kvp.Key;
+                RoomVisualData visualData = kvp.Value;
+
+                if (visitedRooms.Contains(roomPos))
+                {
+                    // Visited room - full brightness
+                    SetRoomOpacity(visualData, 1f);
+                    visitedCount++;
+                }
+                else if (IsNeighborOfVisitedRoom(roomPos))
+                {
+                    // Neighbor of visited room - half brightness
+                    SetRoomOpacity(visualData, 0.5f);
+                    neighborCount++;
+                }
+                else
+                {
+                    // Unvisited, non-neighbor - hidden
+                    SetRoomOpacity(visualData, 0f);
+                    hiddenCount++;
+                }
+            }
+
+            if (showDebug && Time.frameCount % 120 == 0)
+            {
+                Debug.Log($"[WristMinimap] Fog of War - Visited: {visitedCount}, Neighbors: {neighborCount}, Hidden: {hiddenCount}");
+                Debug.Log($"[WristMinimap] Current player room: ({currentPlayerRoomPos.x}, {currentPlayerRoomPos.y})");
+
+                // Log visited rooms individually
+                foreach (Vector2Int pos in visitedRooms)
+                {
+                    Debug.Log($"[WristMinimap] Visited room at: ({pos.x}, {pos.y})");
+                }
+
+                // Log first few room positions to see the grid structure
+                int count = 0;
+                foreach (var kvp in roomVisualMap)
+                {
+                    if (count < 5)
+                    {
+                        Vector2Int pos = kvp.Key;
+                        Debug.Log($"[WristMinimap] Room {count} grid position: ({pos.x}, {pos.y})");
+                        count++;
+                    }
+                }
+            }
+        }
+
+        Vector2Int GetRoomAtPosition(Vector3 worldPos)
+        {
+            // Find which room contains this world position
+            foreach (var kvp in roomVisualMap)
+            {
+                Dungeon.DungeonRoom room = kvp.Value.roomData;
+                float roomSize = room.sizeInGrids * 2f;
+
+                // Check if position is inside this room's bounds
+                if (worldPos.x >= room.worldPosition.x && worldPos.x <= room.worldPosition.x + roomSize &&
+                    worldPos.z >= room.worldPosition.z && worldPos.z <= room.worldPosition.z + roomSize)
+                {
+                    return room.gridPosition;
+                }
+            }
+
+            return Vector2Int.zero;
+        }
+
+        bool IsNeighborOfVisitedRoom(Vector2Int roomPos)
+        {
+            // Check if this room is connected to any visited room via actual doorways
+            if (!roomConnections.ContainsKey(roomPos))
+                return false;
+
+            List<Vector2Int> connections = roomConnections[roomPos];
+            foreach (Vector2Int connectedRoomPos in connections)
+            {
+                if (visitedRooms.Contains(connectedRoomPos))
+                {
+                    Debug.Log($"[WristMinimap] Room ({roomPos.x}, {roomPos.y}) is connected neighbor of visited room ({connectedRoomPos.x}, {connectedRoomPos.y})");
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        void SetRoomOpacity(RoomVisualData visualData, float opacity)
+        {
+            if (visualData.image == null)
+            {
+                Debug.LogWarning("[WristMinimap] SetRoomOpacity called with null image!");
+                return;
+            }
+
+            if (opacity <= 0f)
+            {
+                // Hidden - make fully transparent
+                Color color = visualData.image.color;
+                color.a = 0f;
+                visualData.image.color = color;
+
+                if (showDebug && Time.frameCount % 120 == 0)
+                    Debug.Log($"[WristMinimap] Room {visualData.gridPos} set to HIDDEN (alpha=0)");
+            }
+            else if (opacity < 1f)
+            {
+                // Half-visible neighbor - use darker color with full alpha
+                // Use half brightness of the base room color
+                Color baseColor = roomColor;
+                Color dimmedColor = new Color(
+                    baseColor.r * 0.5f,
+                    baseColor.g * 0.5f,
+                    baseColor.b * 0.5f,
+                    1f  // Full alpha
+                );
+                visualData.image.color = dimmedColor;
+
+                if (showDebug && Time.frameCount % 120 == 0)
+                    Debug.Log($"[WristMinimap] Room {visualData.gridPos} set to NEIGHBOR (dimmed: {dimmedColor})");
+            }
+            else
+            {
+                // Fully visited - use full brightness with full alpha
+                Color fullColor = roomColor;
+                fullColor.a = 1f;
+                visualData.image.color = fullColor;
+
+                if (showDebug && Time.frameCount % 120 == 0)
+                    Debug.Log($"[WristMinimap] Room {visualData.gridPos} set to VISITED (full: {fullColor})");
+            }
         }
 
         void OnDrawGizmos()
