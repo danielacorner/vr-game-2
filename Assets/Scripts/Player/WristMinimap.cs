@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VRDungeonCrawler.Player
 {
@@ -15,11 +16,11 @@ namespace VRDungeonCrawler.Player
         public float minimapSize = 0.1f;
 
         [Header("Position Settings - Try different values!")]
-        [Tooltip("Position offset from left hand (local space). X=left/right, Y=up/down(-30cm=wrist), Z=forward(+)/back(-).")]
-        public Vector3 leftWristOffset = new Vector3(0f, 0f, -0.1f);
+        [Tooltip("Position offset from left hand (local space). X=left/right, Y=up(back of hand)/down(wrist), Z=forward(knuckles)/back(palm). Use -Y for wrist!")]
+        public Vector3 leftWristOffset = new Vector3(0f, -0.1f, 0f);
 
-        [Tooltip("Position offset from right hand (local space). X=left/right, Y=up/down(-30cm=wrist), Z=forward(+)/back(-).")]
-        public Vector3 rightWristOffset = new Vector3(0f, -0.3f, 0f);
+        [Tooltip("Position offset from right hand (local space). X=left/right, Y=up(back of hand)/down(wrist), Z=forward(knuckles)/back(palm). Use -Y for wrist!")]
+        public Vector3 rightWristOffset = new Vector3(0f, -0.1f, 0f);
 
         [Header("Quick Test")]
         [Tooltip("Test: Place minimap far from hand to see if position updates work")]
@@ -34,8 +35,12 @@ namespace VRDungeonCrawler.Player
         [Tooltip("If alternative positioning: offset along hand's 'down' direction")]
         public float wristDistanceDown = 0.08f;
 
-        [Tooltip("Rotation offset for minimap (to align with wrist)")]
-        public Vector3 minimapRotationOffset = new Vector3(0f, 0f, 0f);
+        [Header("Rotation Settings")]
+        [Tooltip("Rotation offset for LEFT hand minimap (Euler angles). Z=-90 = 90° counterclockwise")]
+        public Vector3 leftMinimapRotationOffset = new Vector3(0f, 0f, -90f);
+
+        [Tooltip("Rotation offset for RIGHT hand minimap (Euler angles). Z=90 = 90° clockwise")]
+        public Vector3 rightMinimapRotationOffset = new Vector3(0f, 0f, 90f);
 
         [Tooltip("Distance from camera to show minimap")]
         [Range(0.1f, 1f)]
@@ -79,11 +84,14 @@ namespace VRDungeonCrawler.Player
                 // Copy the NEW offset values to the existing instance (in case scene has updated values)
                 instance.leftWristOffset = this.leftWristOffset;
                 instance.rightWristOffset = this.rightWristOffset;
+                instance.leftMinimapRotationOffset = this.leftMinimapRotationOffset;
+                instance.rightMinimapRotationOffset = this.rightMinimapRotationOffset;
                 instance.minimapSize = this.minimapSize;
                 instance.alwaysVisible = this.alwaysVisible;
                 instance.aggressiveLogging = this.aggressiveLogging;
 
                 Debug.Log($"[WristMinimap] Updated offsets: Left={instance.leftWristOffset}, Right={instance.rightWristOffset}");
+                Debug.Log($"[WristMinimap] Updated rotations: Left={instance.leftMinimapRotationOffset}, Right={instance.rightMinimapRotationOffset}");
 
                 Destroy(gameObject);
                 return;
@@ -290,6 +298,17 @@ namespace VRDungeonCrawler.Player
 
         void CreateMinimapUI()
         {
+            // Clean up any existing WristMinimap canvases from old sessions
+            GameObject[] oldMinimaps = GameObject.FindObjectsOfType<GameObject>().Where(go => go.name == "WristMinimap" && go != minimapRoot).ToArray();
+            if (oldMinimaps.Length > 0)
+            {
+                Debug.Log($"[WristMinimap] Cleaning up {oldMinimaps.Length} old minimap canvas(es)");
+                foreach (GameObject old in oldMinimaps)
+                {
+                    Destroy(old);
+                }
+            }
+
             // Create root object - NO PARENT so it can move freely in world space
             minimapRoot = new GameObject("WristMinimap");
             minimapRoot.transform.SetParent(null); // Ensure it's in world space, not parented
@@ -631,6 +650,16 @@ namespace VRDungeonCrawler.Player
                     Debug.Log($"  World offset: {worldOffset}");
                     Debug.Log($"  Wrist position: {wrist.position}");
                     Debug.Log($"  Target position: {targetPosition}");
+                    Debug.Log($"  === Controller Coordinate System ===");
+                    Debug.Log($"  Controller Forward (+Z): {wrist.forward} (points toward: knuckles/fingers)");
+                    Debug.Log($"  Controller Right (+X): {wrist.right}");
+                    Debug.Log($"  Controller Up (+Y): {wrist.up} (points toward: back of hand)");
+                    Debug.Log($"  Controller Back (-Z): {-wrist.forward} (points toward: palm)");
+                    Debug.Log($"  Controller Down (-Y): {-wrist.up} (points toward: wrist/forearm)");
+                    Debug.Log($"  === Offset Analysis ===");
+                    Debug.Log($"  Offset X={offset.x} component: {wrist.right * offset.x}");
+                    Debug.Log($"  Offset Y={offset.y} component: {wrist.up * offset.y}");
+                    Debug.Log($"  Offset Z={offset.z} component: {wrist.forward * offset.z}");
 
                     // Check if this is the fingertip attach child
                     if (wrist.name.ToLower().Contains("attach"))
@@ -685,8 +714,14 @@ namespace VRDungeonCrawler.Player
             // The canvas needs to face up (along the wrist's "up" direction)
             Quaternion watchOrientation = wristRotation * Quaternion.Euler(90f, 0f, 0f);
 
-            // Apply any custom rotation offset
-            minimapRoot.transform.rotation = watchOrientation * Quaternion.Euler(minimapRotationOffset);
+            // Apply custom rotation offset based on which hand (for wristwatch-like orientation)
+            Vector3 rotationOffset = (wrist == leftHand) ? leftMinimapRotationOffset : rightMinimapRotationOffset;
+            minimapRoot.transform.rotation = watchOrientation * Quaternion.Euler(rotationOffset);
+
+            if (aggressiveLogging && Time.frameCount % 120 == 0)
+            {
+                Debug.Log($"[WristMinimap] Rotation applied: hand={wrist.name}, offset={rotationOffset}, final={minimapRoot.transform.rotation.eulerAngles}");
+            }
         }
 
         void UpdatePlayerPosition()

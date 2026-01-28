@@ -10036,10 +10036,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 	}
 	float V_0 = 0.0f;
 	String_t* G_B3_0 = NULL;
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B5_0 = NULL;
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B4_0 = NULL;
+	float G_B5_0 = 0.0f;
+	float G_B5_1 = 0.0f;
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* G_B5_2 = NULL;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B5_3 = NULL;
+	float G_B4_0 = 0.0f;
+	float G_B4_1 = 0.0f;
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* G_B4_2 = NULL;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B4_3 = NULL;
 	float G_B6_0 = 0.0f;
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B6_1 = NULL;
+	float G_B6_1 = 0.0f;
+	float G_B6_2 = 0.0f;
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* G_B6_3 = NULL;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B6_4 = NULL;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B8_0 = NULL;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B7_0 = NULL;
+	float G_B9_0 = 0.0f;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B9_1 = NULL;
 	{
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:19>
 		bool L_0 = ___1_isLeftHand;
@@ -10079,132 +10092,166 @@ IL_000f:
 		L_7 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_6);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_6, L_7, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:22>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:24>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8 = L_5;
 		NullCheck(L_8);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_9;
 		L_9 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_8, NULL);
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_10;
-		L_10 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
-		NullCheck(L_9);
-		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(L_9, L_10, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:23>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = L_8;
-		NullCheck(L_11);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_12;
-		L_12 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_11, NULL);
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13;
-		L_13 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
-		NullCheck(L_12);
-		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_12, L_13, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:25>
-		bool L_14 = ___1_isLeftHand;
-		if (L_14)
+		bool L_10 = ___1_isLeftHand;
+		if (L_10)
 		{
-			G_B5_0 = L_11;
-			goto IL_005a;
+			G_B5_0 = (0.0f);
+			G_B5_1 = (0.0f);
+			G_B5_2 = L_9;
+			G_B5_3 = L_8;
+			goto IL_004a;
 		}
-		G_B4_0 = L_11;
+		G_B4_0 = (0.0f);
+		G_B4_1 = (0.0f);
+		G_B4_2 = L_9;
+		G_B4_3 = L_8;
 	}
 	{
-		G_B6_0 = (-1.0f);
+		G_B6_0 = (-90.0f);
 		G_B6_1 = G_B4_0;
-		goto IL_005f;
+		G_B6_2 = G_B4_1;
+		G_B6_3 = G_B4_2;
+		G_B6_4 = G_B4_3;
+		goto IL_004f;
 	}
 
-IL_005a:
+IL_004a:
 	{
-		G_B6_0 = (1.0f);
+		G_B6_0 = (90.0f);
 		G_B6_1 = G_B5_0;
+		G_B6_2 = G_B5_1;
+		G_B6_3 = G_B5_2;
+		G_B6_4 = G_B5_3;
 	}
 
-IL_005f:
+IL_004f:
 	{
-		V_0 = G_B6_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:28>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_15 = G_B6_1;
-		NullCheck(L_15);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16;
-		L_16 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_15, NULL);
-		float L_17 = V_0;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18;
-		L_18 = PolytopiaHandGenerator_CreatePalmObject_m4C10ED4ABB0D2DAC365819589D16CC0F3BFD37F4(L_16, L_17, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:34>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:35>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19 = L_18;
-		NullCheck(L_19);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_20;
-		L_20 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_19, NULL);
-		float L_21 = V_0;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_22;
-		memset((&L_22), 0, sizeof(L_22));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_22), ((float)il2cpp_codegen_multiply((0.0299999993f), L_21)), (-0.00999999978f), (0.00499999989f), NULL);
-		float L_23 = V_0;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_11;
+		L_11 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline(G_B6_2, G_B6_1, G_B6_0, NULL);
+		NullCheck(G_B6_3);
+		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(G_B6_3, L_11, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:25>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = G_B6_4;
+		NullCheck(L_12);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_13;
+		L_13 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_12, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
+		L_14 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
+		NullCheck(L_13);
+		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_13, L_14, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:27>
+		bool L_15 = ___1_isLeftHand;
+		if (L_15)
+		{
+			G_B8_0 = L_12;
+			goto IL_0073;
+		}
+		G_B7_0 = L_12;
+	}
+	{
+		G_B9_0 = (-1.0f);
+		G_B9_1 = G_B7_0;
+		goto IL_0078;
+	}
+
+IL_0073:
+	{
+		G_B9_0 = (1.0f);
+		G_B9_1 = G_B8_0;
+	}
+
+IL_0078:
+	{
+		V_0 = G_B9_0;
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:30>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = G_B9_1;
+		NullCheck(L_16);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17;
+		L_17 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_16, NULL);
+		float L_18 = V_0;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19;
+		L_19 = PolytopiaHandGenerator_CreatePalmObject_m4C10ED4ABB0D2DAC365819589D16CC0F3BFD37F4(L_17, L_18, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:36>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:37>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_20 = L_19;
+		NullCheck(L_20);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
+		L_21 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_20, NULL);
+		float L_22 = V_0;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23;
+		memset((&L_23), 0, sizeof(L_23));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_23), ((float)il2cpp_codegen_multiply((0.0299999993f), L_22)), (-0.00999999978f), (0.00499999989f), NULL);
 		float L_24 = V_0;
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_25;
-		L_25 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), ((float)il2cpp_codegen_multiply((60.0f), L_23)), ((float)il2cpp_codegen_multiply((80.0f), L_24)), NULL);
-		float L_26 = V_0;
-		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_20, _stringLiteral85854D21F273A756078468B1F896F112B0E08118, L_22, L_25, 2, (0.0160000008f), (0.0240000002f), L_26, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:38>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:39>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_27 = L_19;
-		NullCheck(L_27);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_28;
-		L_28 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_27, NULL);
-		float L_29 = V_0;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_30;
-		memset((&L_30), 0, sizeof(L_30));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_30), ((float)il2cpp_codegen_multiply((0.0199999996f), L_29)), (0.0f), (0.0480000004f), NULL);
-		float L_31 = V_0;
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_32;
-		L_32 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), ((float)il2cpp_codegen_multiply((8.0f), L_31)), (0.0f), NULL);
-		float L_33 = V_0;
-		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_28, _stringLiteral1C3B83E7128DFE5344885801249731AA7F849057, L_30, L_32, 3, (0.0109999999f), (0.0320000015f), L_33, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:42>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:43>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_34 = L_27;
-		NullCheck(L_34);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_35;
-		L_35 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_34, NULL);
-		float L_36 = V_0;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_37;
-		memset((&L_37), 0, sizeof(L_37));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_37), ((float)il2cpp_codegen_multiply((0.00499999989f), L_36)), (0.0f), (0.0520000011f), NULL);
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_38;
-		L_38 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
-		float L_39 = V_0;
-		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_35, _stringLiteralE32F71F01B50192A097A0D355AA140AD6D6D0529, L_37, L_38, 3, (0.0109999999f), (0.0359999985f), L_39, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:46>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:47>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_40 = L_34;
-		NullCheck(L_40);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_41;
-		L_41 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_40, NULL);
-		float L_42 = V_0;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_43;
-		memset((&L_43), 0, sizeof(L_43));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_43), ((float)il2cpp_codegen_multiply((-0.00999999978f), L_42)), (0.0f), (0.0500000007f), NULL);
-		float L_44 = V_0;
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_45;
-		L_45 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), ((float)il2cpp_codegen_multiply((-5.0f), L_44)), (0.0f), NULL);
-		float L_46 = V_0;
-		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_41, _stringLiteral87B3F6E1AA5CDEBB5C0505DB4D4C8535C5A009B3, L_43, L_45, 3, (0.00999999978f), (0.0329999998f), L_46, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:50>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:51>
-		NullCheck(L_40);
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_47;
-		L_47 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_40, NULL);
-		float L_48 = V_0;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_49;
-		memset((&L_49), 0, sizeof(L_49));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_49), ((float)il2cpp_codegen_multiply((-0.0250000004f), L_48)), (0.0f), (0.0439999998f), NULL);
-		float L_50 = V_0;
-		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_51;
-		L_51 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), ((float)il2cpp_codegen_multiply((-10.0f), L_50)), (0.0f), NULL);
-		float L_52 = V_0;
-		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_47, _stringLiteral2DB3A185EDEB5BCA081E29CE64151E2118EE63FD, L_49, L_51, 3, (0.00899999961f), (0.0280000009f), L_52, NULL);
+		float L_25 = V_0;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_26;
+		L_26 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), ((float)il2cpp_codegen_multiply((60.0f), L_24)), ((float)il2cpp_codegen_multiply((80.0f), L_25)), NULL);
+		float L_27 = V_0;
+		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_21, _stringLiteral85854D21F273A756078468B1F896F112B0E08118, L_23, L_26, 2, (0.0160000008f), (0.0240000002f), L_27, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:40>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:41>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_28 = L_20;
+		NullCheck(L_28);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_29;
+		L_29 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_28, NULL);
+		float L_30 = V_0;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_31;
+		memset((&L_31), 0, sizeof(L_31));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_31), ((float)il2cpp_codegen_multiply((0.0199999996f), L_30)), (0.0f), (0.0480000004f), NULL);
+		float L_32 = V_0;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_33;
+		L_33 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), ((float)il2cpp_codegen_multiply((8.0f), L_32)), (0.0f), NULL);
+		float L_34 = V_0;
+		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_29, _stringLiteral1C3B83E7128DFE5344885801249731AA7F849057, L_31, L_33, 3, (0.0109999999f), (0.0320000015f), L_34, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:44>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:45>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_35 = L_28;
+		NullCheck(L_35);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_36;
+		L_36 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_35, NULL);
+		float L_37 = V_0;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_38;
+		memset((&L_38), 0, sizeof(L_38));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_38), ((float)il2cpp_codegen_multiply((0.00499999989f), L_37)), (0.0f), (0.0520000011f), NULL);
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_39;
+		L_39 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
+		float L_40 = V_0;
+		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_36, _stringLiteralE32F71F01B50192A097A0D355AA140AD6D6D0529, L_38, L_39, 3, (0.0109999999f), (0.0359999985f), L_40, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:48>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:49>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_41 = L_35;
+		NullCheck(L_41);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_42;
+		L_42 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_41, NULL);
+		float L_43 = V_0;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_44;
+		memset((&L_44), 0, sizeof(L_44));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_44), ((float)il2cpp_codegen_multiply((-0.00999999978f), L_43)), (0.0f), (0.0500000007f), NULL);
+		float L_45 = V_0;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_46;
+		L_46 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), ((float)il2cpp_codegen_multiply((-5.0f), L_45)), (0.0f), NULL);
+		float L_47 = V_0;
+		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_42, _stringLiteral87B3F6E1AA5CDEBB5C0505DB4D4C8535C5A009B3, L_44, L_46, 3, (0.00999999978f), (0.0329999998f), L_47, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:52>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:53>
-		return L_15;
+		NullCheck(L_41);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_48;
+		L_48 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_41, NULL);
+		float L_49 = V_0;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_50;
+		memset((&L_50), 0, sizeof(L_50));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_50), ((float)il2cpp_codegen_multiply((-0.0250000004f), L_49)), (0.0f), (0.0439999998f), NULL);
+		float L_51 = V_0;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_52;
+		L_52 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline((0.0f), ((float)il2cpp_codegen_multiply((-10.0f), L_51)), (0.0f), NULL);
+		float L_53 = V_0;
+		PolytopiaHandGenerator_CreateArticulatedFinger_m9C8040D62A738BD9DE616CCE16EA796A0CD71C26(L_48, _stringLiteral2DB3A185EDEB5BCA081E29CE64151E2118EE63FD, L_50, L_52, 3, (0.00899999961f), (0.0280000009f), L_53, NULL);
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:55>
+		return L_16;
 	}
 }
 // Method Definition Index: 57969
@@ -10221,10 +10268,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 	}
 	MeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5* V_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:58>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:60>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_0, _stringLiteral20D62EF9F7CDDD4204481F9D34252DA7549A87F0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:59>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:61>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = L_0;
 		NullCheck(L_1);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2;
@@ -10232,7 +10279,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = ___0_parent;
 		NullCheck(L_2);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_2, L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:60>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:62>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = L_1;
 		NullCheck(L_4);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_5;
@@ -10241,7 +10288,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 		L_6 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_5);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_5, L_6, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:61>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:63>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = L_4;
 		NullCheck(L_7);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8;
@@ -10250,18 +10297,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 		L_9 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
 		NullCheck(L_8);
 		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(L_8, L_9, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:63>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:65>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = L_7;
 		NullCheck(L_10);
 		MeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5* L_11;
 		L_11 = GameObject_AddComponent_TisMeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5_mEAB8177A64DF1A50BB7996ACEEEADCD65358AC94(L_10, GameObject_AddComponent_TisMeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5_mEAB8177A64DF1A50BB7996ACEEEADCD65358AC94_RuntimeMethod_var);
 		V_0 = L_11;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:64>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:66>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = L_10;
 		NullCheck(L_12);
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_13;
 		L_13 = GameObject_AddComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_mCDD3E77673305199F52C772AE8C7952F3864740D(L_12, GameObject_AddComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_mCDD3E77673305199F52C772AE8C7952F3864740D_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:67>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:69>
 		MeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5* L_14 = V_0;
 		float L_15 = ___1_handMirror;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
@@ -10271,12 +10318,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651
 		L_17 = PolytopiaHandGenerator_CreateSimpleBox_mDBDB7803E39D6D16E333E8A34C2F80C48828BBA6(L_16, NULL);
 		NullCheck(L_14);
 		MeshFilter_set_mesh_mD2988E2D835205FD6B6CD35A61E1592844D971F8(L_14, L_17, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:68>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:70>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_18;
 		L_18 = PolytopiaHandGenerator_CreatePolytopiaHandMaterial_m309F509B691D2B230D594BC2DD6BA91E01287371(NULL);
 		NullCheck(L_13);
 		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_13, L_18, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:70>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:72>
 		return L_12;
 	}
 }
@@ -10308,24 +10355,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PolytopiaHandGenerator_CreateArticulated
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* G_B4_1 = NULL;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* G_B4_2 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:76>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:78>
 		float L_0 = ___6_totalLength;
 		int32_t L_1 = ___4_segments;
 		V_0 = ((float)(L_0/((float)L_1)));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:77>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:79>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = ___0_parent;
 		V_1 = L_2;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:78>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:80>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = ___2_basePos;
 		V_2 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:80>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:82>
 		V_3 = 0;
 		goto IL_00bb;
 	}
 
 IL_0012:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:82>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:84>
 		String_t* L_4 = ___1_fingerName;
 		int32_t L_5 = V_3;
 		int32_t L_6 = L_5;
@@ -10334,7 +10381,7 @@ IL_0012:
 		L_8 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteralED4BA07AA9E4B57133EB3B8B9982DFCAF6355B68, L_4, L_7, NULL);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 		GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_9, L_8, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:83>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:85>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = L_9;
 		NullCheck(L_10);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11;
@@ -10342,7 +10389,7 @@ IL_0012:
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_12 = V_1;
 		NullCheck(L_11);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_11, L_12, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:84>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:86>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13 = L_10;
 		NullCheck(L_13);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14;
@@ -10350,7 +10397,7 @@ IL_0012:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15 = V_2;
 		NullCheck(L_14);
 		Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_14, L_15, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:85>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:87>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = L_13;
 		NullCheck(L_16);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17;
@@ -10386,22 +10433,22 @@ IL_0051:
 	{
 		NullCheck(G_B4_1);
 		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(G_B4_1, G_B4_0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:87>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:89>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = G_B4_2;
 		NullCheck(L_21);
 		MeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5* L_22;
 		L_22 = GameObject_AddComponent_TisMeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5_mEAB8177A64DF1A50BB7996ACEEEADCD65358AC94(L_21, GameObject_AddComponent_TisMeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5_mEAB8177A64DF1A50BB7996ACEEEADCD65358AC94_RuntimeMethod_var);
 		V_4 = L_22;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:88>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:90>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_23 = L_21;
 		NullCheck(L_23);
 		MeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE* L_24;
 		L_24 = GameObject_AddComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_mCDD3E77673305199F52C772AE8C7952F3864740D(L_23, GameObject_AddComponent_TisMeshRenderer_t4B7747212F0B88244BB7790C61AE124BFC15BAAE_mCDD3E77673305199F52C772AE8C7952F3864740D_RuntimeMethod_var);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:91>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:93>
 		float L_25 = ___5_thickness;
 		int32_t L_26 = V_3;
 		V_5 = ((float)il2cpp_codegen_multiply(L_25, ((float)il2cpp_codegen_subtract((1.0f), ((float)il2cpp_codegen_multiply(((float)L_26), (0.0299999993f)))))));
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:92>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:94>
 		MeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5* L_27 = V_4;
 		float L_28 = V_5;
 		float L_29 = ___7_handMirror;
@@ -10416,27 +10463,27 @@ IL_0051:
 		L_34 = PolytopiaHandGenerator_CreateSimpleBox_mDBDB7803E39D6D16E333E8A34C2F80C48828BBA6(L_33, NULL);
 		NullCheck(L_27);
 		MeshFilter_set_mesh_mD2988E2D835205FD6B6CD35A61E1592844D971F8(L_27, L_34, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:93>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:95>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_35;
 		L_35 = PolytopiaHandGenerator_CreatePolytopiaHandMaterial_m309F509B691D2B230D594BC2DD6BA91E01287371(NULL);
 		NullCheck(L_24);
 		Renderer_set_material_m21E88977071E0A914D62F3D9CFF0193B3117C45A(L_24, L_35, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:96>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:98>
 		NullCheck(L_23);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_36;
 		L_36 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_23, NULL);
 		V_1 = L_36;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:97>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:99>
 		float L_37 = V_0;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_2), (0.0f), (0.0f), L_37, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:80>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:82>
 		int32_t L_38 = V_3;
 		V_3 = ((int32_t)il2cpp_codegen_add(L_38, 1));
 	}
 
 IL_00bb:
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:80>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:82>
 		int32_t L_39 = V_3;
 		int32_t L_40 = ___4_segments;
 		if ((((int32_t)L_39) < ((int32_t)L_40)))
@@ -10445,7 +10492,7 @@ IL_00bb:
 		}
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:99>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:101>
 		return;
 	}
 }
@@ -10468,21 +10515,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D
 	Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* V_2 = NULL;
 	Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* V_3 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:107>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:109>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_0 = (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4*)il2cpp_codegen_object_new(Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4_il2cpp_TypeInfo_var);
 		Mesh__ctor_m5A9AECEDDAFFD84811ED8928012BDE97A9CEBD00(L_0, NULL);
 		V_0 = L_0;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:108>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:110>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_1 = V_0;
 		NullCheck(L_1);
 		Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_1, _stringLiteral678A8166FF47C7E8B186EB99083B62279A06B5D6, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:110>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:112>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2 = ___0_size;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Vector3_op_Division_mCC6BB24E372AB96B8380D1678446EF6A8BAE13BB_inline(L_2, (2.0f), NULL);
 		V_1 = L_3;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:113>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:114>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:115>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:116>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:117>
@@ -10494,6 +10539,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:123>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:124>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:125>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:126>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:127>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_4 = (Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C*)SZArrayNew(Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var, (uint32_t)8);
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_5 = L_4;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6 = V_1;
@@ -10592,8 +10639,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D
 		NullCheck(L_61);
 		(L_61)->SetAt(static_cast<il2cpp_array_size_t>(7), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_68);
 		V_2 = L_61;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:128>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:129>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:130>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:131>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:132>
@@ -10607,30 +10652,32 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:140>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:141>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:142>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:143>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:144>
 		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_69 = (Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C*)SZArrayNew(Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var, (uint32_t)((int32_t)36));
 		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_70 = L_69;
 		RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 L_71 = { reinterpret_cast<intptr_t> (U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____21045EF6C99062779C1DAA45CEAC0D240742F9FACCD2BAEC90311041B223E8AB_FieldInfo_var) };
 		RuntimeHelpers_InitializeArray_m751372AA3F24FBF6DA9B9D687CBFA2DE436CAB9B((RuntimeArray*)L_70, L_71, NULL);
 		V_3 = L_70;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:144>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:146>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_72 = V_0;
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_73 = V_2;
 		NullCheck(L_72);
 		Mesh_set_vertices_m5BB814D89E9ACA00DBF19F7D8E22CB73AC73FE5C(L_72, L_73, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:145>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:147>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_74 = V_0;
 		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_75 = V_3;
 		NullCheck(L_74);
 		Mesh_set_triangles_m124405320579A8D92711BB5A124644963A26F60B(L_74, L_75, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:146>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:148>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_76 = V_0;
 		NullCheck(L_76);
 		Mesh_RecalculateNormals_m3AA2788914611444E030CA310E03E3CFE683902B(L_76, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:147>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:149>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_77 = V_0;
 		NullCheck(L_77);
 		Mesh_RecalculateBounds_mA9B293F57C6CD298AE2D2DB19061FC23B05AB90B(L_77, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:149>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:151>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_78 = V_0;
 		return L_78;
 	}
@@ -10648,27 +10695,27 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Material_t18053F08F347D0DCA5E1140EC7EC4533DD8
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:157>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:159>
 		Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* L_0;
 		L_0 = Shader_Find_m183AA54F78320212DDEC811592F98456898A41C5(_stringLiteral9B4FEEFA76B93D58B6E47CD9FF76F6E287D0D321, NULL);
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_1 = (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3*)il2cpp_codegen_object_new(Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3_il2cpp_TypeInfo_var);
 		Material__ctor_m7FDF47105D66D19591BE505A0C42B0F90D88C9BF(L_1, L_0, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:160>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:162>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_2 = L_1;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_3;
 		memset((&L_3), 0, sizeof(L_3));
 		Color__ctor_mCD6889CDE39F18704CD6EA8E2EFBFA48BA3E13B0_inline((&L_3), (1.0f), (0.819999993f), (0.680000007f), NULL);
 		NullCheck(L_2);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_2, L_3, NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:163>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:165>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_4 = L_2;
 		NullCheck(L_4);
 		Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836(L_4, _stringLiteral7FA9CF1AB5965D2B2EBDA6CD59455C154F216B2F, (0.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:164>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:166>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_5 = L_4;
 		NullCheck(L_5);
 		Material_SetFloat_m879CF81D740BAE6F23C9822400679F4D16365836(L_5, _stringLiteral7F94A8E8715AB28B4A3A63F016AFABE058C94FF0, (0.0f), NULL);
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:166>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:168>
 		return L_5;
 	}
 }
@@ -10683,8 +10730,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C
 	}
 	ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* V_0 = NULL;
 	{
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:174>
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:175>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:176>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:177>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:178>
@@ -10693,6 +10738,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:181>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:182>
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:183>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:184>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:185>
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_0 = (ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389*)SZArrayNew(ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389_il2cpp_TypeInfo_var, (uint32_t)7);
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_1 = L_0;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_2;
@@ -10737,7 +10784,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C
 		NullCheck(L_13);
 		(L_13)->SetAt(static_cast<il2cpp_array_size_t>(6), (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F)L_14);
 		V_0 = L_13;
-		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:184>
+		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Utils/PolytopiaHandGenerator.cs:186>
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_15 = V_0;
 		int32_t L_16 = ___0_colorIndex;
 		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_17 = V_0;
@@ -21733,7 +21780,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* InputActionMap_get_name
 		return L_0;
 	}
 }
-// Method Definition Index: 77641
+// Method Definition Index: 77642
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* XROrigin_get_Camera_m8959027D616F5BD9AEAE3E41ADEE23BBC2CE3629_inline (XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -21742,7 +21789,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Camera_tA92CC927D7439999BC82DBEDC
 		return L_0;
 	}
 }
-// Method Definition Index: 77642
+// Method Definition Index: 77643
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XROrigin_set_Camera_m4C858ED48CE3A20504A55FAA1A24FE05D1CC450B_inline (XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* __this, Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -21941,7 +21988,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void SnapTurnProvider_set_enableT
 		return;
 	}
 }
-// Method Definition Index: 77651
+// Method Definition Index: 77652
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XROrigin_get_RequestedTrackingOriginMode_m8475634D9A0C8ECA371A3F2EC216A55F7D2F2D3C_inline (XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -22188,7 +22235,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_0;
 	}
 }
-// Method Definition Index: 70886
+// Method Definition Index: 70887
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ButtonClickedEvent_t8EA72E90B3BD1392FB3B3EF167D5121C23569E4C* Button_get_onClick_m701712A7F7F000CC80D517C4510697E15722C35C_inline (Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* __this, const RuntimeMethod* method) 
 {
 	{
@@ -22313,7 +22360,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E
 		return L_1;
 	}
 }
-// Method Definition Index: 71945
+// Method Definition Index: 71946
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11 Selectable_get_colors_mB53E365D02351D4B64084295C4B2A7AF2DEC4750_inline (Selectable_t3251808068A17B8E92FB33590A4C2FA66D456712* __this, const RuntimeMethod* method) 
 {
 	{
@@ -22322,7 +22369,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ColorBlock_tDD7C62E7AFE442652FC98
 		return L_0;
 	}
 }
-// Method Definition Index: 70927
+// Method Definition Index: 70928
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ColorBlock_set_normalColor_m3EBF594F6FA2C6494ACA9FCB9B458807D85B96F8_inline (ColorBlock_tDD7C62E7AFE442652FC98F8D058CE8AE6BFD7C11* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -22343,7 +22390,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED02
 		return L_0;
 	}
 }
-// Method Definition Index: 58895
+// Method Definition Index: 58896
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GameManager_t6832A1C80D7A2CDB7E4E2D600CB0CED2A6C9B2B5* GameManager_get_Instance_mBB3386F4669F90A4E51FD071A0C8DA3730EB2D31_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;

@@ -2291,7 +2291,8 @@ struct WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792  : public MonoBeha
 	float ___testDistance;
 	bool ___useAlternativePositioning;
 	float ___wristDistanceDown;
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___minimapRotationOffset;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___leftMinimapRotationOffset;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___rightMinimapRotationOffset;
 	float ___activationDistance;
 	float ___updateInterval;
 	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___backgroundColor;

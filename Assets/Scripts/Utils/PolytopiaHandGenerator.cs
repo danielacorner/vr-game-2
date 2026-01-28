@@ -19,7 +19,9 @@ namespace VRDungeonCrawler.Utils
             GameObject handRoot = new GameObject(isLeftHand ? "PolytopiaHand_L" : "PolytopiaHand_R");
             handRoot.transform.SetParent(parent);
             handRoot.transform.localPosition = Vector3.zero;
-            handRoot.transform.localRotation = Quaternion.identity; // No rotation - proper orientation!
+            // Rotate hands for natural controller grip, flipped 180° so thumbs are on correct side
+            // Left: +90° (was -90°), Right: -90° (was +90°)
+            handRoot.transform.localRotation = Quaternion.Euler(0, 0, isLeftHand ? 90f : -90f);
             handRoot.transform.localScale = Vector3.one;
 
             float handMirror = isLeftHand ? 1f : -1f;
