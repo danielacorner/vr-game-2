@@ -465,8 +465,8 @@ namespace VRDungeonCrawler.Dungeon
         {
             GameObject rubble = new GameObject("RubblePile");
 
-            // Create 3-5 random rock pieces
-            int rockCount = Random.Range(3, 6);
+            // Create 2-3 random rock pieces (reduced from 3-6 for better performance)
+            int rockCount = Random.Range(2, 4);
             for (int i = 0; i < rockCount; i++)
             {
                 GameObject rock = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -498,6 +498,13 @@ namespace VRDungeonCrawler.Dungeon
                     Random.Range(0.38f, 0.48f)
                 );
                 rock.GetComponent<Renderer>().material = CreatePolytopiaStone(rubbleColor);
+
+                // Remove collider for performance (rubble is just decorative)
+                Collider collider = rock.GetComponent<Collider>();
+                if (collider != null)
+                {
+                    Object.DestroyImmediate(collider);
+                }
             }
 
             return rubble;

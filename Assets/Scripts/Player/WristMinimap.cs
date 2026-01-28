@@ -160,8 +160,8 @@ namespace VRDungeonCrawler.Player
             Debug.Log($"  LeftHand: {leftHand?.name}");
             Debug.Log($"  RightHand: {rightHand?.name}");
             Debug.Log($"  Camera: {headCamera.name}");
-            Debug.Log($"  Left Offset: {leftWristOffset}");
-            Debug.Log($"  Right Offset: {rightWristOffset}");
+            Debug.LogWarning($"  LEFT OFFSET: {leftWristOffset} (should be (0, 0, -0.15) for wrist)");
+            Debug.LogWarning($"  RIGHT OFFSET: {rightWristOffset} (should be (0, 0, -0.15) for wrist)");
 
             if (alwaysVisible)
             {
@@ -171,36 +171,67 @@ namespace VRDungeonCrawler.Player
 
         void FindHandControllers()
         {
-            // Method 1: Search by common names
-            Transform[] allTransforms = FindObjectsOfType<Transform>();
-            foreach (Transform t in allTransforms)
+            // Method 1: Try to find actual controller/wrist base (not attach child)
+            Unity.XR.CoreUtils.XROrigin xrOrigin = FindFirstObjectByType<Unity.XR.CoreUtils.XROrigin>();
+            if (xrOrigin != null)
             {
-                string name = t.name.ToLower();
-                if (name.Contains("lefthand") || (name.Contains("left") && name.Contains("controller")))
+                // Look for LeftHand/RightHand Controller (base transform, not attach child)
+                Transform[] allTransforms = xrOrigin.GetComponentsInChildren<Transform>();
+
+                foreach (Transform t in allTransforms)
                 {
-                    if (leftHand == null)
+                    string name = t.name.ToLower();
+
+                    // Prioritize controller base, NOT attach child
+                    bool isLeftController = name.Contains("lefthand") && name.Contains("controller") && !name.Contains("attach");
+                    bool isRightController = name.Contains("righthand") && name.Contains("controller") && !name.Contains("attach");
+
+                    if (isLeftController && leftHand == null)
                     {
                         leftHand = t;
-                        if (showDebug) Debug.Log($"[WristMinimap] Found left hand: {t.name}");
+                        Debug.Log($"[WristMinimap] Found left controller BASE: {t.name} (path: {GetTransformPath(t)})");
                     }
-                }
-                else if (name.Contains("righthand") || (name.Contains("right") && name.Contains("controller")))
-                {
-                    if (rightHand == null)
+                    else if (isRightController && rightHand == null)
                     {
                         rightHand = t;
-                        if (showDebug) Debug.Log($"[WristMinimap] Found right hand: {t.name}");
+                        Debug.Log($"[WristMinimap] Found right controller BASE: {t.name} (path: {GetTransformPath(t)})");
                     }
                 }
-
-                if (leftHand != null && rightHand != null)
-                    break;
             }
 
-            // Method 2: Try to find under XR Origin
+            // Method 2: Search all transforms if Method 1 failed
             if (leftHand == null || rightHand == null)
             {
-                Unity.XR.CoreUtils.XROrigin xrOrigin = FindFirstObjectByType<Unity.XR.CoreUtils.XROrigin>();
+                Debug.LogWarning("[WristMinimap] Controller base not found, searching all transforms...");
+                Transform[] allTransforms = FindObjectsOfType<Transform>();
+                foreach (Transform t in allTransforms)
+                {
+                    string name = t.name.ToLower();
+
+                    // Avoid attach children
+                    if (name.Contains("attach"))
+                        continue;
+
+                    if ((name.Contains("lefthand") || (name.Contains("left") && name.Contains("controller"))) && leftHand == null)
+                    {
+                        leftHand = t;
+                        Debug.Log($"[WristMinimap] Found left hand: {t.name} (path: {GetTransformPath(t)})");
+                    }
+                    else if ((name.Contains("righthand") || (name.Contains("right") && name.Contains("controller"))) && rightHand == null)
+                    {
+                        rightHand = t;
+                        Debug.Log($"[WristMinimap] Found right hand: {t.name} (path: {GetTransformPath(t)})");
+                    }
+
+                    if (leftHand != null && rightHand != null)
+                        break;
+                }
+            }
+
+            // Method 3: Last resort - use attach child but warn
+            if (leftHand == null || rightHand == null)
+            {
+                Debug.LogWarning("[WristMinimap] Controller base not found, falling back to attach child (fingertip)...");
                 if (xrOrigin != null)
                 {
                     if (leftHand == null)
@@ -209,6 +240,18 @@ namespace VRDungeonCrawler.Player
                         rightHand = FindInChildren(xrOrigin.transform, "right");
                 }
             }
+        }
+
+        string GetTransformPath(Transform t)
+        {
+            string path = t.name;
+            Transform parent = t.parent;
+            while (parent != null)
+            {
+                path = parent.name + "/" + path;
+                parent = parent.parent;
+            }
+            return path;
         }
 
         Transform FindInChildren(Transform parent, string searchTerm)
@@ -343,25 +386,71 @@ namespace VRDungeonCrawler.Player
 
         void CreatePlayerDot()
         {
-            playerDot = new GameObject("PlayerDot");
+            playerDot = new GameObject("PlayerArrow");
             playerDot.transform.SetParent(minimapContent.transform, false);
 
-            Image dotImage = playerDot.AddComponent<Image>();
-            dotImage.color = playerDotColor;
-
-            RectTransform dotRT = playerDot.GetComponent<RectTransform>();
-            dotRT.sizeDelta = new Vector2(15, 15);
+            RectTransform dotRT = playerDot.AddComponent<RectTransform>();
+            dotRT.sizeDelta = new Vector2(20, 20);
             dotRT.anchoredPosition = Vector2.zero;
 
-            // Make it round
-            GameObject circle = new GameObject("Circle");
-            circle.transform.SetParent(playerDot.transform, false);
-            Image circleImage = circle.AddComponent<Image>();
-            circleImage.color = playerDotColor;
-            RectTransform circleRT = circle.GetComponent<RectTransform>();
-            circleRT.anchorMin = Vector2.zero;
-            circleRT.anchorMax = Vector2.one;
-            circleRT.sizeDelta = Vector2.zero;
+            // Create arrow using a triangle
+            GameObject arrow = new GameObject("ArrowTriangle");
+            arrow.transform.SetParent(playerDot.transform, false);
+
+            // Add Image component for the arrow
+            Image arrowImage = arrow.AddComponent<Image>();
+            arrowImage.color = playerDotColor;
+
+            // Create triangle sprite for arrow pointing up (forward)
+            // Unity's default sprite is a square, so we'll use a filled triangle
+            RectTransform arrowRT = arrow.GetComponent<RectTransform>();
+            arrowRT.anchorMin = Vector2.zero;
+            arrowRT.anchorMax = Vector2.one;
+            arrowRT.sizeDelta = Vector2.zero;
+
+            // Create triangle mesh for the arrow
+            CreateArrowTriangle(arrow);
+        }
+
+        void CreateArrowTriangle(GameObject arrowObj)
+        {
+            // Create a canvas triangle by using vertices
+            // For UI, we'll create three small boxes to form a triangle shape
+            // Better approach: use a polygon or create actual triangle
+
+            // Create arrow using simple Image rotation
+            // Arrow points UP (forward in minimap space)
+            Image arrowImage = arrowObj.GetComponent<Image>();
+
+            // Try to find or create a triangle sprite
+            // For now, we'll create a diamond/arrow shape using transform
+            GameObject tip = new GameObject("Tip");
+            tip.transform.SetParent(arrowObj.transform, false);
+            Image tipImage = tip.AddComponent<Image>();
+            tipImage.color = playerDotColor;
+            RectTransform tipRT = tip.GetComponent<RectTransform>();
+            tipRT.sizeDelta = new Vector2(8, 12); // Narrow and tall
+            tipRT.anchoredPosition = new Vector2(0, 4); // Top
+            tipRT.rotation = Quaternion.Euler(0, 0, 0);
+
+            GameObject base1 = new GameObject("BaseLeft");
+            base1.transform.SetParent(arrowObj.transform, false);
+            Image base1Image = base1.AddComponent<Image>();
+            base1Image.color = playerDotColor;
+            RectTransform base1RT = base1.GetComponent<RectTransform>();
+            base1RT.sizeDelta = new Vector2(6, 6);
+            base1RT.anchoredPosition = new Vector2(-3, -3);
+
+            GameObject base2 = new GameObject("BaseRight");
+            base2.transform.SetParent(arrowObj.transform, false);
+            Image base2Image = base2.AddComponent<Image>();
+            base2Image.color = playerDotColor;
+            RectTransform base2RT = base2.GetComponent<RectTransform>();
+            base2RT.sizeDelta = new Vector2(6, 6);
+            base2RT.anchoredPosition = new Vector2(3, -3);
+
+            // Destroy the parent image since we're building arrow from children
+            Destroy(arrowImage);
         }
 
         void LateUpdate()
@@ -516,10 +605,19 @@ namespace VRDungeonCrawler.Player
                 {
                     Debug.Log($"[WristMinimap] STANDARD positioning:");
                     Debug.Log($"  Wrist: {wrist.name}");
+                    Debug.Log($"  Wrist Path: {GetTransformPath(wrist)}");
                     Debug.Log($"  Local offset: {offset}");
                     Debug.Log($"  World offset: {worldOffset}");
                     Debug.Log($"  Wrist position: {wrist.position}");
                     Debug.Log($"  Target position: {targetPosition}");
+
+                    // Check if this is the fingertip attach child
+                    if (wrist.name.ToLower().Contains("attach"))
+                    {
+                        Debug.LogError("[WristMinimap] ⚠️ WARNING: Using Attach Child (fingertip) instead of controller base!");
+                        Debug.LogError("  This will place minimap at fingers instead of wrist.");
+                        Debug.LogError("  The FindHandControllers() method should find parent transform, not attach child.");
+                    }
                 }
             }
 
@@ -574,9 +672,69 @@ namespace VRDungeonCrawler.Player
         {
             if (playerDot == null) return;
 
-            // Keep player dot centered (the minimap camera follows the player)
             RectTransform dotRT = playerDot.GetComponent<RectTransform>();
-            dotRT.anchoredPosition = Vector2.zero;
+
+            // Find dungeon generator to get dungeon bounds
+            Dungeon.DungeonGenerator dungeonGen = FindFirstObjectByType<Dungeon.DungeonGenerator>();
+            if (dungeonGen == null)
+            {
+                // No dungeon, keep centered
+                dotRT.anchoredPosition = Vector2.zero;
+            }
+            else
+            {
+                // Get rooms via reflection
+                var roomsField = typeof(Dungeon.DungeonGenerator).GetField("allRooms",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (roomsField != null)
+                {
+                    List<Dungeon.DungeonRoom> rooms = roomsField.GetValue(dungeonGen) as List<Dungeon.DungeonRoom>;
+                    if (rooms != null && rooms.Count > 0)
+                    {
+                        // Find dungeon bounds
+                        float minX = float.MaxValue, maxX = float.MinValue;
+                        float minZ = float.MaxValue, maxZ = float.MinValue;
+
+                        foreach (var room in rooms)
+                        {
+                            float roomSize = room.sizeInGrids * 2f;
+                            minX = Mathf.Min(minX, room.worldPosition.x);
+                            maxX = Mathf.Max(maxX, room.worldPosition.x + roomSize);
+                            minZ = Mathf.Min(minZ, room.worldPosition.z);
+                            maxZ = Mathf.Max(maxZ, room.worldPosition.z + roomSize);
+                        }
+
+                        float dungeonWidth = maxX - minX;
+                        float dungeonHeight = maxZ - minZ;
+                        float dungeonCenterX = (minX + maxX) / 2f;
+                        float dungeonCenterZ = (minZ + maxZ) / 2f;
+
+                        // Get player position (this WristMinimap component is on the player)
+                        Vector3 playerPos = transform.position;
+
+                        // Calculate player position relative to dungeon center
+                        float relativeX = playerPos.x - dungeonCenterX;
+                        float relativeZ = playerPos.z - dungeonCenterZ;
+
+                        // Scale to minimap coordinates (320 is the content size)
+                        float scale = 320f / Mathf.Max(dungeonWidth, dungeonHeight);
+                        float minimapX = relativeX * scale;
+                        float minimapZ = relativeZ * scale;
+
+                        // Update arrow position on minimap
+                        dotRT.anchoredPosition = new Vector2(minimapX, minimapZ);
+                    }
+                    else
+                    {
+                        // No rooms, keep centered
+                        dotRT.anchoredPosition = Vector2.zero;
+                    }
+                }
+                else
+                {
+                    dotRT.anchoredPosition = Vector2.zero;
+                }
+            }
 
             // Rotate based on player facing direction
             float yaw = transform.eulerAngles.y;
@@ -800,11 +958,34 @@ namespace VRDungeonCrawler.Player
             Debug.LogWarning($"  Right offset: {rightWristOffset}");
             Debug.LogWarning("  These values are now saved. Minimap should move to wrist position.");
 
+            #if UNITY_EDITOR
+            UnityEditor.EditorUtility.SetDirty(this);
+            #endif
+
             // Force immediate update if minimap is visible
             if (activeWrist != null)
             {
                 UpdateMinimapPosition(activeWrist);
             }
+        }
+
+        [ContextMenu("DEBUG: Show Current Settings")]
+        void ShowCurrentSettings()
+        {
+            Debug.Log("========================================");
+            Debug.Log("=== CURRENT WRIST MINIMAP SETTINGS ===");
+            Debug.Log("========================================");
+            Debug.LogWarning($"Left Wrist Offset: {leftWristOffset}");
+            Debug.LogWarning($"Right Wrist Offset: {rightWristOffset}");
+            Debug.Log($"Test Mode: {testMode}");
+            Debug.Log($"Alternative Positioning: {useAlternativePositioning}");
+            Debug.Log($"Always Visible: {alwaysVisible}");
+            Debug.Log($"Aggressive Logging: {aggressiveLogging}");
+            Debug.Log("========================================");
+            Debug.Log("Expected values for WRIST position:");
+            Debug.Log("  leftWristOffset = (0, 0, -0.15)");
+            Debug.Log("  rightWristOffset = (0, 0, -0.15)");
+            Debug.Log("========================================");
         }
     }
 }

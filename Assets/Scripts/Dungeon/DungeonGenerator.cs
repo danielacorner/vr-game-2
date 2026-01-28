@@ -989,8 +989,9 @@ namespace VRDungeonCrawler.Dungeon
                 pillar.transform.localPosition = localPos;
             }
 
-            // Add ancient dungeon decorations
-            AddAncientDecorations(room, density: 0.7f);
+            // Add ancient dungeon decorations (reduced density for Start room to minimize entrance clutter)
+            float decorationDensity = (room.roomType == RoomType.Start) ? 0.2f : 0.7f;
+            AddAncientDecorations(room, density: decorationDensity);
 
             // Add wall torches
             AddWallTorches(room);
