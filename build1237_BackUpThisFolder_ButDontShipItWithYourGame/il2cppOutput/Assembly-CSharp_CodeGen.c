@@ -529,6 +529,7 @@ extern void WristMinimap_CreateMinimapUI_m268E05C7A095ECED8C2511B17B8FD7F7465306
 extern void WristMinimap_DrawDungeonRooms_m8C04E7BFA9FD6573FE490E66657C5580465D0606 (void);
 extern void WristMinimap_CreatePlayerDot_m2B6CEF9B70DDBF754D3C9C37347C22FD4FA28EEB (void);
 extern void WristMinimap_CreateArrowTriangle_m9FB4BDDDCE17054A3737A0A864D45E4B3D5D20E5 (void);
+extern void WristMinimap_CreateNorthIndicator_mCCBF1B16D198DFCDBA05E72EC137AFB530AB6862 (void);
 extern void WristMinimap_LateUpdate_m5C5F2C45AA9C681DCAD0464FAA59E7255E7D8305 (void);
 extern void WristMinimap_GetVisibleWrist_m049C7491B6854F375EEC0CDE11BB01CB41004AC4 (void);
 extern void WristMinimap_IsWristVisible_m80D4238D5AC729EB4CCA3BB6FBB01E0170BABE78 (void);
@@ -1275,7 +1276,7 @@ extern void SlimeAnimator_AnimateEyeTracking_m5F3A4876598254C8D0A89E6FF63BE48DDC
 extern void SlimeAnimator_StartAttack_mA671BF2A7BB57B52414143EDBB21B36A92B1534A (void);
 extern void SlimeAnimator_AnimateAttack_m095794A208CCC44783EC3029DE6095668B6C74C4 (void);
 extern void SlimeAnimator__ctor_m89C3B6F3B8BE5B2539A5A2F6EF988D0273CADCF9 (void);
-static Il2CppMethodPointer s_methodPointers[1268] = 
+static Il2CppMethodPointer s_methodPointers[1269] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1799,6 +1800,7 @@ static Il2CppMethodPointer s_methodPointers[1268] =
 	WristMinimap_DrawDungeonRooms_m8C04E7BFA9FD6573FE490E66657C5580465D0606,
 	WristMinimap_CreatePlayerDot_m2B6CEF9B70DDBF754D3C9C37347C22FD4FA28EEB,
 	WristMinimap_CreateArrowTriangle_m9FB4BDDDCE17054A3737A0A864D45E4B3D5D20E5,
+	WristMinimap_CreateNorthIndicator_mCCBF1B16D198DFCDBA05E72EC137AFB530AB6862,
 	WristMinimap_LateUpdate_m5C5F2C45AA9C681DCAD0464FAA59E7255E7D8305,
 	WristMinimap_GetVisibleWrist_m049C7491B6854F375EEC0CDE11BB01CB41004AC4,
 	WristMinimap_IsWristVisible_m80D4238D5AC729EB4CCA3BB6FBB01E0170BABE78,
@@ -2551,7 +2553,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] =
 {
 	{ 0x0600012F, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1268] = 
+static const int32_t s_InvokerIndices[1269] = 
 {
 	15301,
 	15301,
@@ -3075,6 +3077,7 @@ static const int32_t s_InvokerIndices[1268] =
 	15301,
 	15301,
 	11607,
+	15301,
 	15301,
 	15089,
 	8208,
@@ -3826,7 +3829,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1268,
+	1269,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,

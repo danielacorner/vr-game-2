@@ -36,11 +36,11 @@ namespace VRDungeonCrawler.Player
         public float wristDistanceDown = 0.08f;
 
         [Header("Rotation Settings")]
-        [Tooltip("Rotation offset for LEFT hand minimap (Euler angles). Z=-90 = 90° counterclockwise")]
-        public Vector3 leftMinimapRotationOffset = new Vector3(0f, 0f, -90f);
+        [Tooltip("Rotation offset for LEFT hand minimap (Euler angles). Y=90 rotates outward from wrist like a watch")]
+        public Vector3 leftMinimapRotationOffset = new Vector3(0f, 90f, 0f);
 
-        [Tooltip("Rotation offset for RIGHT hand minimap (Euler angles). Z=90 = 90° clockwise")]
-        public Vector3 rightMinimapRotationOffset = new Vector3(0f, 0f, 90f);
+        [Tooltip("Rotation offset for RIGHT hand minimap (Euler angles). Y=-90 rotates outward from wrist like a watch")]
+        public Vector3 rightMinimapRotationOffset = new Vector3(0f, -90f, 0f);
 
         [Tooltip("Distance from camera to show minimap")]
         [Range(0.1f, 1f)]
@@ -358,6 +358,9 @@ namespace VRDungeonCrawler.Player
             // Create player dot
             CreatePlayerDot();
 
+            // Add North indicator to show rotation clearly
+            CreateNorthIndicator();
+
             minimapRoot.SetActive(false);
         }
 
@@ -491,6 +494,53 @@ namespace VRDungeonCrawler.Player
 
             // Destroy the parent image since we're building arrow from children
             Destroy(arrowImage);
+        }
+
+        void CreateNorthIndicator()
+        {
+            // Add a visual "N" indicator at the top of the minimap to show rotation
+            GameObject northMarker = new GameObject("NorthMarker");
+            northMarker.transform.SetParent(minimapRoot.transform, false);
+
+            RectTransform northRT = northMarker.AddComponent<RectTransform>();
+            northRT.anchorMin = new Vector2(0.5f, 0.95f);
+            northRT.anchorMax = new Vector2(0.5f, 0.95f);
+            northRT.sizeDelta = new Vector2(40, 40);
+            northRT.anchoredPosition = Vector2.zero;
+
+            // Create a small upward-pointing triangle
+            Image markerImage = northMarker.AddComponent<Image>();
+            markerImage.color = new Color(1f, 0.3f, 0.3f, 0.9f); // Red to stand out
+
+            // Create triangle using child objects
+            GameObject tip = new GameObject("NorthTip");
+            tip.transform.SetParent(northMarker.transform, false);
+            Image tipImage = tip.AddComponent<Image>();
+            tipImage.color = new Color(1f, 0.3f, 0.3f, 0.9f);
+            RectTransform tipRT = tip.GetComponent<RectTransform>();
+            tipRT.sizeDelta = new Vector2(6, 20);
+            tipRT.anchoredPosition = new Vector2(0, 5);
+
+            GameObject leftWing = new GameObject("LeftWing");
+            leftWing.transform.SetParent(northMarker.transform, false);
+            Image leftImage = leftWing.AddComponent<Image>();
+            leftImage.color = new Color(1f, 0.3f, 0.3f, 0.9f);
+            RectTransform leftRT = leftWing.GetComponent<RectTransform>();
+            leftRT.sizeDelta = new Vector2(8, 8);
+            leftRT.anchoredPosition = new Vector2(-6, -2);
+
+            GameObject rightWing = new GameObject("RightWing");
+            rightWing.transform.SetParent(northMarker.transform, false);
+            Image rightImage = rightWing.AddComponent<Image>();
+            rightImage.color = new Color(1f, 0.3f, 0.3f, 0.9f);
+            RectTransform rightRT = rightWing.GetComponent<RectTransform>();
+            rightRT.sizeDelta = new Vector2(8, 8);
+            rightRT.anchoredPosition = new Vector2(6, -2);
+
+            // Destroy parent image
+            Destroy(markerImage);
+
+            Debug.Log("[WristMinimap] Created North indicator (red arrow at top)");
         }
 
         void LateUpdate()
