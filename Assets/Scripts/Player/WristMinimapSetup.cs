@@ -34,9 +34,9 @@ namespace VRDungeonCrawler.Player
                 Debug.LogWarning($"[WristMinimapSetup] WristMinimap already exists on: {existing.gameObject.name}");
                 Debug.LogWarning($"  Current offsets: Left={existing.leftWristOffset}, Right={existing.rightWristOffset}");
 
-                // Fix the offsets
-                existing.leftWristOffset = new Vector3(0f, 0f, -0.15f);
-                existing.rightWristOffset = new Vector3(0f, 0f, -0.15f);
+                // Fix the offsets (negative Y to move down toward wrist - 30cm)
+                existing.leftWristOffset = new Vector3(0f, -0.3f, 0f);
+                existing.rightWristOffset = new Vector3(0f, -0.3f, 0f);
                 existing.alwaysVisible = debugMode;
                 existing.aggressiveLogging = debugMode;
 
@@ -52,9 +52,9 @@ namespace VRDungeonCrawler.Player
             GameObject minimapObj = new GameObject("WristMinimap_System");
             WristMinimap minimap = minimapObj.AddComponent<WristMinimap>();
 
-            // Set correct offset values (negative Z = toward wrist from fingertip)
-            minimap.leftWristOffset = new Vector3(0f, 0f, -0.15f);
-            minimap.rightWristOffset = new Vector3(0f, 0f, -0.15f);
+            // Set correct offset values (negative Y = down toward wrist - 30cm)
+            minimap.leftWristOffset = new Vector3(0f, -0.3f, 0f);
+            minimap.rightWristOffset = new Vector3(0f, -0.3f, 0f);
             minimap.alwaysVisible = debugMode;
             minimap.aggressiveLogging = debugMode;
 

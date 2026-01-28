@@ -2956,6 +2956,10 @@ struct SpellManager_t6D83A0653E168281D9644685A4DD600E9C6139FD_StaticFields
 {
 	SpellManager_t6D83A0653E168281D9644685A4DD600E9C6139FD* ___U3CInstanceU3Ek__BackingField;
 };
+struct WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792_StaticFields
+{
+	WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792* ___instance;
+};
 struct XRBaseInteractable_t76185BD6DF3BC86B3CDD82E6368C3C7157E39AE4_StaticFields
 {
 	ProfilerMarker_tA256E18DA86EDBC5528CE066FC91C96EE86501AD ___s_ProcessInteractionStrengthMarker;
@@ -17153,14 +17157,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SetupWristMinimap_SetupMinimap_mE2D755DD
 		WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792* L_16 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17;
 		memset((&L_17), 0, sizeof(L_17));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_17), (0.0f), (0.0f), (-0.150000006f), NULL);
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_17), (0.0f), (-0.300000012f), (0.0f), NULL);
 		NullCheck(L_16);
 		L_16->___leftWristOffset = L_17;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SetupWristMinimap.cs:24>
 		WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792* L_18 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_19;
 		memset((&L_19), 0, sizeof(L_19));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_19), (0.0f), (0.0f), (-0.150000006f), NULL);
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_19), (0.0f), (-0.300000012f), (0.0f), NULL);
 		NullCheck(L_18);
 		L_18->___rightWristOffset = L_19;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SetupWristMinimap.cs:25>
@@ -17207,14 +17211,14 @@ IL_00c3:
 		WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792* L_33 = L_32;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_34;
 		memset((&L_34), 0, sizeof(L_34));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_34), (0.0f), (0.0f), (-0.150000006f), NULL);
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_34), (0.0f), (-0.300000012f), (0.0f), NULL);
 		NullCheck(L_33);
 		L_33->___leftWristOffset = L_34;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SetupWristMinimap.cs:43>
 		WristMinimap_tABEC1CD76F1C48E9F1BB5346A9760A3923CA1792* L_35 = L_33;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_36;
 		memset((&L_36), 0, sizeof(L_36));
-		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_36), (0.0f), (0.0f), (-0.150000006f), NULL);
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_36), (0.0f), (-0.300000012f), (0.0f), NULL);
 		NullCheck(L_35);
 		L_35->___rightWristOffset = L_36;
 		//<source_info:/Users/danielcorner/vr-game-2/Assets/Scripts/Player/SetupWristMinimap.cs:44>

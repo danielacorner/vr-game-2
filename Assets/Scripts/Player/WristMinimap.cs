@@ -15,11 +15,11 @@ namespace VRDungeonCrawler.Player
         public float minimapSize = 0.1f;
 
         [Header("Position Settings - Try different values!")]
-        [Tooltip("Position offset from left hand (local space). X=left/right, Y=up/down, Z=forward(+)/back(-). Negative Z goes toward wrist from fingertip.")]
-        public Vector3 leftWristOffset = new Vector3(0f, 0f, -0.15f);
+        [Tooltip("Position offset from left hand (local space). X=left/right, Y=up/down(-30cm=wrist), Z=forward(+)/back(-).")]
+        public Vector3 leftWristOffset = new Vector3(0f, 0f, -0.1f);
 
-        [Tooltip("Position offset from right hand (local space). X=left/right, Y=up/down, Z=forward(+)/back(-). Negative Z goes toward wrist from fingertip.")]
-        public Vector3 rightWristOffset = new Vector3(0f, 0f, -0.15f);
+        [Tooltip("Position offset from right hand (local space). X=left/right, Y=up/down(-30cm=wrist), Z=forward(+)/back(-).")]
+        public Vector3 rightWristOffset = new Vector3(0f, -0.3f, 0f);
 
         [Header("Quick Test")]
         [Tooltip("Test: Place minimap far from hand to see if position updates work")]
@@ -56,6 +56,7 @@ namespace VRDungeonCrawler.Player
         public bool aggressiveLogging = false; // Log EVERY frame
 
         // Internal state
+        private static WristMinimap instance;
         private GameObject minimapRoot;
         private Canvas minimapCanvas;
         private GameObject minimapContent;
@@ -70,6 +71,26 @@ namespace VRDungeonCrawler.Player
 
         void Awake()
         {
+            // Singleton pattern - only one minimap should exist
+            if (instance != null && instance != this)
+            {
+                Debug.LogWarning($"[WristMinimap] Found existing instance. Copying new offset values from {gameObject.name} to {instance.gameObject.name}");
+
+                // Copy the NEW offset values to the existing instance (in case scene has updated values)
+                instance.leftWristOffset = this.leftWristOffset;
+                instance.rightWristOffset = this.rightWristOffset;
+                instance.minimapSize = this.minimapSize;
+                instance.alwaysVisible = this.alwaysVisible;
+                instance.aggressiveLogging = this.aggressiveLogging;
+
+                Debug.Log($"[WristMinimap] Updated offsets: Left={instance.leftWristOffset}, Right={instance.rightWristOffset}");
+
+                Destroy(gameObject);
+                return;
+            }
+
+            instance = this;
+
             // Make minimap persist across scene changes
             DontDestroyOnLoad(gameObject);
             Debug.Log("[WristMinimap] Minimap set to persist across scenes");

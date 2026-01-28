@@ -17,10 +17,10 @@ namespace VRDungeonCrawler.Dungeon
 
         [Header("Features")]
         [Tooltip("Add decorative pillars")]
-        public bool addPillars = true;
+        public bool addPillars = false;
 
         [Tooltip("Add torches for lighting")]
-        public bool addTorches = true;
+        public bool addTorches = false;
 
         [Tooltip("Add doorways")]
         public bool addDoorways = true;

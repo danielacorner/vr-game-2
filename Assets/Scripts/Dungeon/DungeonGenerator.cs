@@ -972,29 +972,42 @@ namespace VRDungeonCrawler.Dungeon
 
         private void DecorateCombatRoom(DungeonRoom room)
         {
-            // Add pillars for cover - mix of intact and broken
-            int pillarCount = rng.Next(this.pillarCount.x, this.pillarCount.y + 1);
-            float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.35f;
+            // Skip all decorations for Start room to keep entrance clean
+            bool isStartRoom = (room.roomType == RoomType.Start);
 
-            for (int i = 0; i < pillarCount; i++)
+            if (isStartRoom)
             {
-                Vector3 localPos = GetRandomPositionInRoom(roomRadius);
-
-                // 30% chance for broken pillar
-                GameObject pillar = (float)rng.NextDouble() < 0.3f
-                    ? DungeonRoomBuilder.CreateBrokenPillar()
-                    : DungeonRoomBuilder.CreatePillar();
-
-                pillar.transform.SetParent(room.roomObject.transform);
-                pillar.transform.localPosition = localPos;
+                Debug.Log($"[DungeonGenerator] Skipping decorations for Start room: {room.roomObject.name}");
+                return;
             }
 
-            // Add ancient dungeon decorations (reduced density for Start room to minimize entrance clutter)
-            float decorationDensity = (room.roomType == RoomType.Start) ? 0.2f : 0.7f;
-            AddAncientDecorations(room, density: decorationDensity);
+            Debug.Log($"[DungeonGenerator] Adding decorations to {room.roomType} room: {room.roomObject.name}");
 
-            // Add wall torches
-            AddWallTorches(room);
+            if (true)
+            {
+                // Add pillars for cover - mix of intact and broken
+                int pillarCount = rng.Next(this.pillarCount.x, this.pillarCount.y + 1);
+                float roomRadius = roomSizeInGrids * DungeonRoomBuilder.GRID_SIZE * 0.35f;
+
+                for (int i = 0; i < pillarCount; i++)
+                {
+                    Vector3 localPos = GetRandomPositionInRoom(roomRadius);
+
+                    // 30% chance for broken pillar
+                    GameObject pillar = (float)rng.NextDouble() < 0.3f
+                        ? DungeonRoomBuilder.CreateBrokenPillar()
+                        : DungeonRoomBuilder.CreatePillar();
+
+                    pillar.transform.SetParent(room.roomObject.transform);
+                    pillar.transform.localPosition = localPos;
+                }
+
+                // Add ancient dungeon decorations
+                AddAncientDecorations(room, density: 0.7f);
+
+                // Add wall torches
+                AddWallTorches(room);
+            }
 
             // Spawn monsters - mix of skeletons and slimes (25% skeletons, 75% slimes)
             int totalMonsters = rng.Next(2, 4);

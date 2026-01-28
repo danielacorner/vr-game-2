@@ -165,8 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRDungeonCrawler.Dungeon.DungeonEntranceRoom
   roomWidth: 30
   roomLength: 10
-  addPillars: 1
-  addTorches: 1
+  addPillars: 0
+  addTorches: 0
   addDoorways: 1
   addCeiling: 1
   addAmbientLight: 1
