@@ -1085,8 +1085,22 @@ namespace VRDungeonCrawler.Player
             }
             else if (opacity < 1f)
             {
-                // Half-visible neighbor - use darker color with full alpha
-                // Use half brightness of the base room color
+                // Adjacent neighbor - use full brightness to make it stand out
+                Color baseColor = roomColor;
+                Color brightColor = new Color(
+                    baseColor.r,
+                    baseColor.g,
+                    baseColor.b,
+                    1f  // Full alpha
+                );
+                visualData.image.color = brightColor;
+
+                if (showDebug && Time.frameCount % 120 == 0)
+                    Debug.Log($"[WristMinimap] Room {visualData.gridPos} set to NEIGHBOR (bright: {brightColor})");
+            }
+            else
+            {
+                // Fully visited - use dimmed color to differentiate from adjacent
                 Color baseColor = roomColor;
                 Color dimmedColor = new Color(
                     baseColor.r * 0.5f,
@@ -1097,17 +1111,7 @@ namespace VRDungeonCrawler.Player
                 visualData.image.color = dimmedColor;
 
                 if (showDebug && Time.frameCount % 120 == 0)
-                    Debug.Log($"[WristMinimap] Room {visualData.gridPos} set to NEIGHBOR (dimmed: {dimmedColor})");
-            }
-            else
-            {
-                // Fully visited - use full brightness with full alpha
-                Color fullColor = roomColor;
-                fullColor.a = 1f;
-                visualData.image.color = fullColor;
-
-                if (showDebug && Time.frameCount % 120 == 0)
-                    Debug.Log($"[WristMinimap] Room {visualData.gridPos} set to VISITED (full: {fullColor})");
+                    Debug.Log($"[WristMinimap] Room {visualData.gridPos} set to VISITED (dimmed: {dimmedColor})");
             }
         }
 

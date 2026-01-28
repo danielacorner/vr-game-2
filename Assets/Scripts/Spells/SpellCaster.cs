@@ -49,6 +49,13 @@ namespace VRDungeonCrawler.Spells
         private Vector3 currentHandVelocity = Vector3.zero;
         private Vector3 releaseVelocity = Vector3.zero;
 
+        // Finger animation for pointing gesture when charging
+        private Transform ringFingerSegment0 = null;
+        private Transform pinkyFingerSegment0 = null;
+        private Quaternion ringFingerRestRotation;
+        private Quaternion pinkyFingerRestRotation;
+        private const float fingerCurlAngle = 70f; // Degrees to curl inward
+
         private void Start()
         {
             // Auto-set spawn point if not assigned
@@ -62,7 +69,37 @@ namespace VRDungeonCrawler.Spells
                 Debug.LogWarning("[SpellCaster] No NearFarInteractor found - UI interaction detection may not work");
             }
 
+            // Find finger bones for animation
+            FindFingerBones();
+
             FindDevice();
+        }
+
+        private void FindFingerBones()
+        {
+            // Find the hand object (should be child of controller)
+            Transform handRoot = transform.Find(isLeftHand ? "PolytopiaHand_L" : "PolytopiaHand_R");
+            if (handRoot == null)
+            {
+                Debug.LogWarning("[SpellCaster] Hand root not found - finger animation disabled");
+                return;
+            }
+
+            // Find ring and pinky finger first segments
+            ringFingerSegment0 = handRoot.Find("Palm/Ring_Segment0");
+            pinkyFingerSegment0 = handRoot.Find("Palm/Pinky_Segment0");
+
+            if (ringFingerSegment0 != null)
+            {
+                ringFingerRestRotation = ringFingerSegment0.localRotation;
+                Debug.Log($"[SpellCaster] Found ring finger for {(isLeftHand ? "left" : "right")} hand");
+            }
+
+            if (pinkyFingerSegment0 != null)
+            {
+                pinkyFingerRestRotation = pinkyFingerSegment0.localRotation;
+                Debug.Log($"[SpellCaster] Found pinky finger for {(isLeftHand ? "left" : "right")} hand");
+            }
         }
 
         private void FindDevice()
@@ -227,6 +264,9 @@ namespace VRDungeonCrawler.Spells
             isCharging = true;
             isFullyCharged = false;
             isFadingOut = false;
+
+            // Curl fingers to pointing gesture
+            CurlFingers();
         }
 
         private void UpdateCharging()
@@ -310,6 +350,9 @@ namespace VRDungeonCrawler.Spells
                 chargeEffect = null;
                 currentChargeProgress = 0f;
             }
+
+            // Uncurl fingers back to rest position
+            UncurlFingers();
         }
 
         private void CancelCharge()
@@ -330,6 +373,41 @@ namespace VRDungeonCrawler.Spells
             {
                 Destroy(chargeBubble);
                 chargeBubble = null;
+            }
+
+            // Uncurl fingers back to rest position
+            UncurlFingers();
+        }
+
+        private void CurlFingers()
+        {
+            // Curl ring finger and pinky inward to create pointing gesture
+            if (ringFingerSegment0 != null)
+            {
+                // Rotate around X-axis to curl inward
+                Quaternion curlRotation = Quaternion.Euler(fingerCurlAngle, 0, 0);
+                ringFingerSegment0.localRotation = ringFingerRestRotation * curlRotation;
+            }
+
+            if (pinkyFingerSegment0 != null)
+            {
+                // Rotate around X-axis to curl inward
+                Quaternion curlRotation = Quaternion.Euler(fingerCurlAngle, 0, 0);
+                pinkyFingerSegment0.localRotation = pinkyFingerRestRotation * curlRotation;
+            }
+        }
+
+        private void UncurlFingers()
+        {
+            // Return fingers to rest position
+            if (ringFingerSegment0 != null)
+            {
+                ringFingerSegment0.localRotation = ringFingerRestRotation;
+            }
+
+            if (pinkyFingerSegment0 != null)
+            {
+                pinkyFingerSegment0.localRotation = pinkyFingerRestRotation;
             }
         }
 

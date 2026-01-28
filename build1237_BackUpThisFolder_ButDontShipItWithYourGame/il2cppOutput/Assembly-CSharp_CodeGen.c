@@ -119,6 +119,7 @@ extern void PhysicsSpellProjectile_OnDrawGizmosSelected_m4C9EA40769C68455C44A694
 extern void PhysicsSpellProjectile_GetDamage_mEA1E3B9C42FFD6B25B59FE8962A9295FE551AE9C (void);
 extern void PhysicsSpellProjectile__ctor_m96099F6228DC4AA4F94C2DE2C168FCBA58BF72B4 (void);
 extern void SpellCaster_Start_m20472B965FB34069815F4DCA00B0227BD641C59C (void);
+extern void SpellCaster_FindFingerBones_mAF2A207FC24069A72F13950ACCED6D627930A2A6 (void);
 extern void SpellCaster_FindDevice_mB731392F22D741AAEC35248A0DF4C00959FBF2F6 (void);
 extern void SpellCaster_Update_m59B95AD09C6D3C9BBD5A28AE3AF3EED30709B609 (void);
 extern void SpellCaster_IsPointingAtUI_m5A9FC33BEC4A00BCCCAC08F1471E086E56C3BF52 (void);
@@ -126,6 +127,8 @@ extern void SpellCaster_StartCharging_m0F6B8EFFD8B5B150DCB76D028197FD7359E6D63B 
 extern void SpellCaster_UpdateCharging_m47FED38475054759CB87DEA9A6213699409C27F0 (void);
 extern void SpellCaster_StopCharging_mFBA801E5B2662A23FBA6B96063BB4B56A658850A (void);
 extern void SpellCaster_CancelCharge_m13A125861DAF86F2092B93D6E8849F6A4940BA87 (void);
+extern void SpellCaster_CurlFingers_mC88F7ADF8C04712837E9CCD8AC9391C9C4B759FE (void);
+extern void SpellCaster_UncurlFingers_m824412301B96D1B39AC8BA8172FDE56C0494724F (void);
 extern void SpellCaster_UpdateFadeOut_m4EAE48DB7E1D03A9FFDC21EAC8619437B214D892 (void);
 extern void SpellCaster_CreateChargeCompletePopEffect_mE82EB33425524BEC13DCBA6EEF5A40B6E41FF86A (void);
 extern void SpellCaster_CreateChargingBubble_mBE7E5373F1F88161F949383E386AC11E1B3DE89A (void);
@@ -1295,7 +1298,7 @@ extern void SlimeAnimator_AnimateEyeTracking_m5F3A4876598254C8D0A89E6FF63BE48DDC
 extern void SlimeAnimator_StartAttack_mA671BF2A7BB57B52414143EDBB21B36A92B1534A (void);
 extern void SlimeAnimator_AnimateAttack_m095794A208CCC44783EC3029DE6095668B6C74C4 (void);
 extern void SlimeAnimator__ctor_m89C3B6F3B8BE5B2539A5A2F6EF988D0273CADCF9 (void);
-static Il2CppMethodPointer s_methodPointers[1288] = 
+static Il2CppMethodPointer s_methodPointers[1291] = 
 {
 	TestAwake_Awake_m3D74503A1B0DFEB8C4A039AB69F34882E99BC93F,
 	TestAwake_Start_m0C3A035154D1B373E84D45250D04A3D05CB891FD,
@@ -1409,6 +1412,7 @@ static Il2CppMethodPointer s_methodPointers[1288] =
 	PhysicsSpellProjectile_GetDamage_mEA1E3B9C42FFD6B25B59FE8962A9295FE551AE9C,
 	PhysicsSpellProjectile__ctor_m96099F6228DC4AA4F94C2DE2C168FCBA58BF72B4,
 	SpellCaster_Start_m20472B965FB34069815F4DCA00B0227BD641C59C,
+	SpellCaster_FindFingerBones_mAF2A207FC24069A72F13950ACCED6D627930A2A6,
 	SpellCaster_FindDevice_mB731392F22D741AAEC35248A0DF4C00959FBF2F6,
 	SpellCaster_Update_m59B95AD09C6D3C9BBD5A28AE3AF3EED30709B609,
 	SpellCaster_IsPointingAtUI_m5A9FC33BEC4A00BCCCAC08F1471E086E56C3BF52,
@@ -1416,6 +1420,8 @@ static Il2CppMethodPointer s_methodPointers[1288] =
 	SpellCaster_UpdateCharging_m47FED38475054759CB87DEA9A6213699409C27F0,
 	SpellCaster_StopCharging_mFBA801E5B2662A23FBA6B96063BB4B56A658850A,
 	SpellCaster_CancelCharge_m13A125861DAF86F2092B93D6E8849F6A4940BA87,
+	SpellCaster_CurlFingers_mC88F7ADF8C04712837E9CCD8AC9391C9C4B759FE,
+	SpellCaster_UncurlFingers_m824412301B96D1B39AC8BA8172FDE56C0494724F,
 	SpellCaster_UpdateFadeOut_m4EAE48DB7E1D03A9FFDC21EAC8619437B214D892,
 	SpellCaster_CreateChargeCompletePopEffect_mE82EB33425524BEC13DCBA6EEF5A40B6E41FF86A,
 	SpellCaster_CreateChargingBubble_mBE7E5373F1F88161F949383E386AC11E1B3DE89A,
@@ -2589,9 +2595,9 @@ static Il2CppMethodPointer s_methodPointers[1288] =
 extern void FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] = 
 {
-	{ 0x0600012F, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
+	{ 0x06000132, FingerPose__ctor_m346C48762E71A83582FC9935B368EB1AA1E049A6_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[1288] = 
+static const int32_t s_InvokerIndices[1291] = 
 {
 	15326,
 	15326,
@@ -2707,7 +2713,10 @@ static const int32_t s_InvokerIndices[1288] =
 	15326,
 	15326,
 	15326,
+	15326,
 	14911,
+	15326,
+	15326,
 	15326,
 	15326,
 	15326,
@@ -3886,7 +3895,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	1288,
+	1291,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,
